@@ -19,12 +19,12 @@ export interface PlanetDef {
 }
 
 export const PLANETS: PlanetDef[] = [
-  { name: 'flags', desc: 'ctf & writeups', href: '/writeups/', a: 0.15, e: 0.06, size: 4.5, color: 'oklch(0.72 0.14 25)', phase: 0.8, peri: 0.4 },
-  { name: 'kernels', desc: 'linux & the homelab', href: '/uses/', a: 0.21, e: 0.03, size: 6, color: 'oklch(0.83 0.13 215)', phase: 2.6, peri: 1.9 },
-  { name: '言', desc: 'japanese, one kanji at a time', href: '/chart/#nihongo', a: 0.27, e: 0.09, size: 4, color: 'oklch(0.78 0.11 350)', phase: 4.4, peri: 3.1 },
-  { name: 'chords', desc: 'guitar, daily', href: '/chart/#chords', a: 0.33, e: 0.05, size: 5.5, color: 'oklch(0.78 0.13 55)', phase: 1.7, peri: 5.2 },
-  { name: 'ink', desc: 'heavy books', href: '/chart/#library', a: 0.39, e: 0.12, size: 5, color: 'oklch(0.88 0.03 90)', phase: 5.6, peri: 2.4 },
-  { name: 'kepler', desc: 'orbital mechanics', href: 'https://github.com/Pedronane/gravity-sandbox', a: 0.46, e: 0.17, size: 5, color: 'oklch(0.7 0.1 265)', phase: 3.5, peri: 0.9 },
+  { name: 'flags', desc: 'ctf & writeups', href: '/writeups/', a: 0.14, e: 0.02, size: 4.5, color: 'oklch(0.72 0.14 25)', phase: 0.8, peri: 0.4 },
+  { name: 'kernels', desc: 'linux & the homelab', href: '/uses/', a: 0.2, e: 0.03, size: 6, color: 'oklch(0.83 0.13 215)', phase: 2.6, peri: 1.9 },
+  { name: '言', desc: 'japanese, one kanji at a time', href: '/chart/#nihongo', a: 0.26, e: 0.04, size: 4, color: 'oklch(0.78 0.11 350)', phase: 4.4, peri: 3.1 },
+  { name: 'chords', desc: 'guitar, daily', href: '/chart/#chords', a: 0.32, e: 0.03, size: 5.5, color: 'oklch(0.78 0.13 55)', phase: 1.7, peri: 5.2 },
+  { name: 'ink', desc: 'heavy books', href: '/chart/#library', a: 0.38, e: 0.05, size: 5, color: 'oklch(0.88 0.03 90)', phase: 5.6, peri: 2.4 },
+  { name: 'kepler', desc: 'orbital mechanics', href: 'https://github.com/Pedronane/gravity-sandbox', a: 0.45, e: 0.07, size: 5, color: 'oklch(0.7 0.1 265)', phase: 3.5, peri: 0.9 },
 ];
 
 interface Planet extends PlanetDef {
@@ -248,8 +248,8 @@ export function startSolar(canvas: HTMLCanvasElement): SolarSim {
     for (const p of planets) {
       const px = p.x - c.x;
       const py = p.y - c.y;
-      const pd = Math.max(Math.hypot(px, py), p.size + 2);
-      const pa = (sign * GM * 0.004) / (pd * pd);
+      const pd = Math.max(Math.hypot(px, py), p.size + 3);
+      const pa = (sign * GM * 0.03) / (pd * pd);
       ax += (pa * px) / pd;
       ay += (pa * py) / pd;
     }
@@ -281,14 +281,47 @@ export function startSolar(canvas: HTMLCanvasElement): SolarSim {
 
   function drawAim() {
     if (!dragging) return;
-    ctx.setLineDash([4, 5]);
+    ctx.setLineDash([3, 6]);
     ctx.beginPath();
     ctx.moveTo(dragStart.x, dragStart.y);
     ctx.lineTo(dragNow.x, dragNow.y);
-    ctx.strokeStyle = 'oklch(0.85 0.1 200 / 0.6)';
+    ctx.strokeStyle = 'oklch(0.85 0.1 200 / 0.35)';
     ctx.lineWidth = 1;
     ctx.stroke();
     ctx.setLineDash([]);
+
+    const ghost: Comet = {
+      x: dragStart.x,
+      y: dragStart.y,
+      vx: (dragStart.x - dragNow.x) * 2.4,
+      vy: (dragStart.y - dragNow.y) * 2.4,
+      ax: 0,
+      ay: 0,
+      trail: [],
+    };
+    [ghost.ax, ghost.ay] = cometAcc(ghost);
+    const dt = 1 / 40;
+    const limit = Math.max(w, h);
+    ctx.beginPath();
+    ctx.moveTo(ghost.x, ghost.y);
+    for (let i = 0; i < 110; i++) {
+      ghost.x += ghost.vx * dt + 0.5 * ghost.ax * dt * dt;
+      ghost.y += ghost.vy * dt + 0.5 * ghost.ay * dt * dt;
+      const [nax, nay] = cometAcc(ghost);
+      ghost.vx += 0.5 * (ghost.ax + nax) * dt;
+      ghost.vy += 0.5 * (ghost.ay + nay) * dt;
+      ghost.ax = nax;
+      ghost.ay = nay;
+      ctx.lineTo(ghost.x, ghost.y);
+      const ds = Math.hypot(ghost.x - cx(), ghost.y - cy());
+      if (ds < starR() + 2 || ds > limit) break;
+    }
+    ctx.setLineDash([2, 7]);
+    ctx.strokeStyle = 'oklch(0.9 0.08 200 / 0.5)';
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+    ctx.setLineDash([]);
+
     ctx.beginPath();
     ctx.arc(dragStart.x, dragStart.y, 3, 0, Math.PI * 2);
     ctx.fillStyle = 'oklch(0.92 0.06 200)';
@@ -347,7 +380,7 @@ export function startSolar(canvas: HTMLCanvasElement): SolarSim {
     }
     if (!coarse) {
       pointerHov = planetAt(x, y);
-      canvas.style.cursor = pointerHov ? 'pointer' : 'crosshair';
+      canvas.style.cursor = pointerHov ? 'pointer' : 'default';
     }
   };
 

@@ -12,7 +12,7 @@ import OrbitDivider from '../components/OrbitDivider.astro';
   <Hero />
 
   <section id="about" class="prose">
-    <h2>Hello, traveler</h2>
+    <h2>About</h2>
     <div class="about-grid">
       <div class="about-photo" aria-hidden="true">
         <svg viewBox="0 0 160 160">
@@ -49,7 +49,7 @@ import OrbitDivider from '../components/OrbitDivider.astro';
   <OrbitDivider />
 
   <section class="prose">
-    <h2>Things I orbit</h2>
+    <h2>Projects</h2>
 
     <article class="project">
       <h3>
@@ -85,19 +85,34 @@ import OrbitDivider from '../components/OrbitDivider.astro';
       <p class="mono-label">raspberry pi · docker · jellyfin · home assistant · tailscale</p>
     </article>
 
+    <article class="project">
+      <h3>
+        <svg class="orbit-bullet" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+          <circle cx="8" cy="8" r="2.4" fill="var(--amber)" />
+          <ellipse cx="8" cy="8" rx="7" ry="3.4" fill="none" stroke="var(--cyan)" stroke-width="1" transform="rotate(-24 8 8)" />
+        </svg>
+        Exam trainer
+      </h3>
+      <p>
+        Study tools I built for my own final exams: quizzes, a full exam simulator, a
+        subnetting trainer. Built to learn twice — once writing it, once using it. If
+        you're facing the same exam, it's yours too.
+      </p>
+      <p class="mono-label">study tools · 2026 · <a href="https://github.com/Pedronane/sistemi-esame">source</a></p>
+    </article>
+
     <p class="chart-cta">
-      Everything else — the books, the chords, the kanji — is mapped on the
-      <a href="/chart/">star chart</a>.
+      The rest — books, chords, kanji — lives on the <a href="/chart/">star chart</a>.
     </p>
   </section>
 
   <OrbitDivider />
 
   <section class="prose contact">
-    <h2>Send a signal</h2>
+    <h2>Contact</h2>
     <p>
       Books, security, orbital mechanics, or something I haven't thought of yet —
-      transmissions welcome.
+      write me.
     </p>
     <p class="mono-label">
       <a href="mailto:march3sipietro@gmail.com">email</a> ·

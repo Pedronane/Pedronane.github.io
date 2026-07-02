@@ -5,6 +5,18 @@ description: "Current mission status: exams, orbits, summer plans."
 kicker: "last updated · july 2026"
 ---
 
+<p class="mono-label" id="summer-bar">summer 2026 [························] --%</p>
+<script is:inline>
+  (() => {
+    const start = Date.parse('2026-06-21');
+    const end = Date.parse('2026-09-22');
+    const k = Math.min(Math.max((Date.now() - start) / (end - start), 0), 1);
+    const filled = Math.round(k * 24);
+    document.getElementById('summer-bar').textContent =
+      `summer 2026 [${'█'.repeat(filled)}${'·'.repeat(24 - filled)}] ${Math.round(k * 100)}%`;
+  })();
+</script>
+
 ## Right now
 
 - **Maturità.** Final high-school exams, July 2026. The last boss of a five-year run.

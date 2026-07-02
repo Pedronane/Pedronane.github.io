@@ -48,6 +48,7 @@ interface Flare {
 
 export interface SolarSim {
   invertGravity: () => boolean;
+  highlight: (name: string | null) => void;
   destroy: () => void;
 }
 
@@ -89,6 +90,8 @@ export function startSolar(canvas: HTMLCanvasElement): SolarSim {
   const flares: Flare[] = [];
 
   let hovered: Planet | null = null;
+  let pointerHov: Planet | null = null;
+  let linkHov: Planet | null = null;
   let lastTapped: Planet | null = null;
   let tapTimer = 0;
   let dragging = false;
@@ -258,6 +261,7 @@ export function startSolar(canvas: HTMLCanvasElement): SolarSim {
   }
 
   function frame(dt: number) {
+    hovered = pointerHov ?? linkHov;
     ctx.clearRect(0, 0, w, h);
     for (const p of planets) {
       advance(p, dt);
@@ -287,7 +291,7 @@ export function startSolar(canvas: HTMLCanvasElement): SolarSim {
 
   function planetAt(x: number, y: number): Planet | null {
     for (const p of planets) {
-      if (Math.hypot(p.x - x, p.y - y) < Math.max(16, p.size + 11)) return p;
+      if (Math.hypot(p.x - x, p.y - y) < Math.max(22, p.size + 15)) return p;
     }
     return null;
   }
@@ -304,8 +308,8 @@ export function startSolar(canvas: HTMLCanvasElement): SolarSim {
       return;
     }
     if (!coarse) {
-      hovered = planetAt(x, y);
-      canvas.style.cursor = hovered ? 'pointer' : 'crosshair';
+      pointerHov = planetAt(x, y);
+      canvas.style.cursor = pointerHov ? 'pointer' : 'crosshair';
     }
   };
 
@@ -343,11 +347,11 @@ export function startSolar(canvas: HTMLCanvasElement): SolarSim {
     const p = planetAt(x, y);
     if (p && p === pressPlanet && performance.now() - pressAt < 500) {
       if (coarse && lastTapped !== p) {
-        hovered = p;
+        pointerHov = p;
         lastTapped = p;
         clearTimeout(tapTimer);
         tapTimer = window.setTimeout(() => {
-          if (hovered === p) hovered = null;
+          if (pointerHov === p) pointerHov = null;
           lastTapped = null;
           if (reduced) frame(0);
         }, 2200);
@@ -379,6 +383,10 @@ export function startSolar(canvas: HTMLCanvasElement): SolarSim {
     invertGravity() {
       inverted = !inverted;
       return inverted;
+    },
+    highlight(name) {
+      linkHov = name ? (planets.find((p) => p.name === name) ?? null) : null;
+      if (reduced) frame(0);
     },
     destroy() {
       cancelAnimationFrame(raf);

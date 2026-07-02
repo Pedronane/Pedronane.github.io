@@ -3,7 +3,7 @@
   <div class="hero-text">
     <h1>Pietro Marchesi</h1>
     <p class="tagline">Exploring systems — from kernels to Kepler.</p>
-    <p class="hero-hint mono-label">n-body simulation running live<span class="sudo-hint"> · type <code>sudo</code> if you dare</span></p>
+    <p class="hero-hint mono-label">drag to launch a comet · <span class="planet-hint">planets are doors</span><span class="sudo-hint"> · type <code>sudo</code> if you dare</span></p>
   </div>
   <div class="gravity-toast mono-label" id="gravity-toast" role="status">gravity inverted</div>
   <a href="#about" class="scroll-hint" aria-label="Scroll to about">
@@ -26,6 +26,7 @@
     inset: 0;
     width: 100%;
     height: 100%;
+    touch-action: pan-y;
   }
 
   .hero-text {
@@ -33,6 +34,7 @@
     text-align: center;
     padding: 0 1.5rem;
     animation: rise 0.7s var(--ease-expo) both;
+    pointer-events: none;
   }
 
   @keyframes rise {
@@ -109,10 +111,10 @@
 </style>
 
 <script>
-  import { startSim } from '../scripts/nbody';
+  import { startSolar } from '../scripts/solar';
 
   const canvas = document.getElementById('nbody') as HTMLCanvasElement;
-  const sim = startSim(canvas);
+  const sim = startSolar(canvas);
 
   const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
   let progress = 0;

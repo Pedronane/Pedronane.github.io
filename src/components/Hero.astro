@@ -57,10 +57,11 @@ const DEST: Record<string, string> = {
     animation: rise 0.7s var(--ease-expo) backwards;
     pointer-events: none;
     transition: transform 0.8s var(--ease-expo);
+    z-index: 11;
   }
 
   .hero-text.playing {
-    transform: translateY(calc(-50svh + 7.5rem)) scale(0.5);
+    transform: translate(var(--dock-x, 0px), var(--dock-y, -38svh)) scale(0.34);
   }
 
   .tagline,
@@ -237,10 +238,30 @@ const DEST: Record<string, string> = {
     const canvas = document.getElementById('nbody') as HTMLCanvasElement | null;
     if (!canvas || canvas.dataset.init) return;
     canvas.dataset.init = '1';
-    const heroText = document.querySelector('.hero-text');
+    const heroText = document.querySelector<HTMLElement>('.hero-text')!;
+    const h1 = heroText.querySelector('h1')!;
+    const SCALE = 0.34;
+
+    const dockVars = () => {
+      if (heroText.classList.contains('playing')) return;
+      const box = heroText.getBoundingClientRect();
+      const r = h1.getBoundingClientRect();
+      const boxCx = box.left + box.width / 2;
+      const boxCy = box.top + box.height / 2;
+      const h1Cx = r.left + r.width / 2;
+      const h1Cy = r.top + r.height / 2;
+      const targetCx = 62 + (r.width * SCALE) / 2;
+      const targetCy = 29;
+      heroText.style.setProperty('--dock-x', `${targetCx - boxCx - (h1Cx - boxCx) * SCALE}px`);
+      heroText.style.setProperty('--dock-y', `${targetCy - boxCy - (h1Cy - boxCy) * SCALE}px`);
+    };
+    dockVars();
+    window.addEventListener('resize', () => setTimeout(dockVars, 200));
+
     sim = startSolar(canvas, {
       onPlay(playing) {
-        heroText?.classList.toggle('playing', playing);
+        if (playing) dockVars();
+        heroText.classList.toggle('playing', playing);
       },
     });
 

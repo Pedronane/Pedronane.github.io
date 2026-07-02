@@ -54,21 +54,23 @@ const DEST: Record<string, string> = {
     position: relative;
     text-align: center;
     padding: 0 1.5rem;
-    animation: rise 0.7s var(--ease-expo) both;
+    animation: rise 0.7s var(--ease-expo) backwards;
     pointer-events: none;
-    transition: opacity 0.6s var(--ease-quart), filter 0.6s var(--ease-quart);
+    transition: transform 0.8s var(--ease-expo);
   }
 
   .hero-text.playing {
-    opacity: 0.05;
-    filter: blur(2px);
+    transform: translateY(calc(-50svh + 7.5rem)) scale(0.5);
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .hero-text.playing {
-      opacity: 1;
-      filter: none;
-    }
+  .tagline,
+  .hero-hint {
+    transition: opacity 0.4s var(--ease-quart);
+  }
+
+  .hero-text.playing .tagline,
+  .hero-text.playing .hero-hint {
+    opacity: 0;
   }
 
   @keyframes rise {

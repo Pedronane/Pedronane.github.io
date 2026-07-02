@@ -195,30 +195,43 @@ const DEST: Record<string, string> = {
 </style>
 
 <script>
-  import { startSolar } from '../scripts/solar';
+  import { startSolar, type SolarSim } from '../scripts/solar';
 
-  const canvas = document.getElementById('nbody') as HTMLCanvasElement;
-  const sim = startSolar(canvas);
-
-  for (const link of document.querySelectorAll<HTMLAnchorElement>('.system-index a')) {
-    link.addEventListener('mouseenter', () => sim.highlight(link.dataset.planet!));
-    link.addEventListener('mouseleave', () => sim.highlight(null));
-  }
+  let sim: SolarSim | null = null;
 
   const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
   let progress = 0;
-  const toast = document.getElementById('gravity-toast')!;
   let toastTimer = 0;
 
   document.addEventListener('keydown', (e) => {
+    if (!sim) return;
     progress = e.key === KONAMI[progress] ? progress + 1 : (e.key === KONAMI[0] ? 1 : 0);
     if (progress === KONAMI.length) {
       progress = 0;
       const inverted = sim.invertGravity();
+      const toast = document.getElementById('gravity-toast');
+      if (!toast) return;
       toast.textContent = inverted ? 'gravity inverted — good luck out there' : 'gravity restored';
       toast.classList.add('show');
       clearTimeout(toastTimer);
       toastTimer = window.setTimeout(() => toast.classList.remove('show'), 2600);
     }
+  });
+
+  document.addEventListener('astro:page-load', () => {
+    const canvas = document.getElementById('nbody') as HTMLCanvasElement | null;
+    if (!canvas || canvas.dataset.init) return;
+    canvas.dataset.init = '1';
+    sim = startSolar(canvas);
+
+    for (const link of document.querySelectorAll<HTMLAnchorElement>('.system-index a')) {
+      link.addEventListener('mouseenter', () => sim?.highlight(link.dataset.planet!));
+      link.addEventListener('mouseleave', () => sim?.highlight(null));
+    }
+  });
+
+  document.addEventListener('astro:before-swap', () => {
+    sim?.destroy();
+    sim = null;
   });
 </script>

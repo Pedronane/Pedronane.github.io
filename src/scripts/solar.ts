@@ -2,6 +2,10 @@ const GM = 520000;
 const DT_MAX = 1 / 30;
 const TRAIL_MAX = 80;
 
+function shade(color: string, dl: number): string {
+  return color.replace(/oklch\(([\d.]+)/, (_, l) => `oklch(${Math.max(0.05, Math.min(0.98, parseFloat(l) + dl)).toFixed(3)}`);
+}
+
 export interface PlanetDef {
   name: string;
   desc: string;
@@ -130,25 +134,48 @@ export function startSolar(canvas: HTMLCanvasElement): SolarSim {
     ctx.restore();
   }
 
-  function drawStar() {
+  function drawStar(t: number) {
+    const r = starR() * (1 + 0.035 * Math.sin(t * 1.7));
+    const glow: [number, number][] = [[4.2, 0.05], [2.6, 0.1], [1.55, 0.22]];
+    for (const [mult, alpha] of glow) {
+      const g = ctx.createRadialGradient(cx(), cy(), r * 0.5, cx(), cy(), r * mult);
+      g.addColorStop(0, `oklch(0.8 0.15 70 / ${alpha})`);
+      g.addColorStop(1, 'oklch(0.8 0.15 70 / 0)');
+      ctx.beginPath();
+      ctx.arc(cx(), cy(), r * mult, 0, Math.PI * 2);
+      ctx.fillStyle = g;
+      ctx.fill();
+    }
+    const core = ctx.createRadialGradient(cx(), cy(), 0, cx(), cy(), r);
+    core.addColorStop(0, 'oklch(0.97 0.06 85)');
+    core.addColorStop(0.45, 'oklch(0.86 0.14 75)');
+    core.addColorStop(1, 'oklch(0.72 0.16 60)');
     ctx.beginPath();
-    ctx.arc(cx(), cy(), starR(), 0, Math.PI * 2);
-    ctx.fillStyle = 'oklch(0.8 0.15 70)';
-    ctx.shadowBlur = 30;
-    ctx.shadowColor = 'oklch(0.8 0.15 70 / 0.9)';
+    ctx.arc(cx(), cy(), r, 0, Math.PI * 2);
+    ctx.fillStyle = core;
     ctx.fill();
-    ctx.shadowBlur = 0;
   }
 
   function drawPlanet(p: Planet) {
     const active = p === hovered;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size + (active ? 1.5 : 0), 0, Math.PI * 2);
-    ctx.fillStyle = p.color;
+    const size = p.size + (active ? 1.5 : 0);
+    const dx = cx() - p.x;
+    const dy = cy() - p.y;
+    const d = Math.hypot(dx, dy) || 1;
+    const lx = p.x + (dx / d) * size * 0.5;
+    const ly = p.y + (dy / d) * size * 0.5;
+    const g = ctx.createRadialGradient(lx, ly, size * 0.1, p.x, p.y, size * 1.08);
+    g.addColorStop(0, shade(p.color, 0.13));
+    g.addColorStop(0.5, p.color);
+    g.addColorStop(0.85, shade(p.color, -0.28));
+    g.addColorStop(1, shade(p.color, -0.42));
     if (active) {
-      ctx.shadowBlur = 14;
+      ctx.shadowBlur = 16;
       ctx.shadowColor = p.color;
     }
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
+    ctx.fillStyle = g;
     ctx.fill();
     ctx.shadowBlur = 0;
 
@@ -179,9 +206,17 @@ export function startSolar(canvas: HTMLCanvasElement): SolarSim {
       ctx.lineWidth = 1.4;
       ctx.stroke();
     }
+    const g = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, 8);
+    g.addColorStop(0, 'oklch(0.95 0.05 200 / 0.9)');
+    g.addColorStop(0.3, 'oklch(0.85 0.1 200 / 0.35)');
+    g.addColorStop(1, 'oklch(0.85 0.1 200 / 0)');
     ctx.beginPath();
-    ctx.arc(c.x, c.y, 2.2, 0, Math.PI * 2);
-    ctx.fillStyle = 'oklch(0.92 0.06 200)';
+    ctx.arc(c.x, c.y, 8, 0, Math.PI * 2);
+    ctx.fillStyle = g;
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(c.x, c.y, 1.8, 0, Math.PI * 2);
+    ctx.fillStyle = 'oklch(0.95 0.04 210)';
     ctx.fill();
   }
 
@@ -260,7 +295,10 @@ export function startSolar(canvas: HTMLCanvasElement): SolarSim {
     ctx.fill();
   }
 
+  let elapsed = 0;
+
   function frame(dt: number) {
+    elapsed += dt;
     hovered = pointerHov ?? linkHov;
     ctx.clearRect(0, 0, w, h);
     for (const p of planets) {
@@ -268,7 +306,7 @@ export function startSolar(canvas: HTMLCanvasElement): SolarSim {
       planetPos(p);
     }
     for (const p of planets) drawOrbit(p);
-    drawStar();
+    drawStar(elapsed);
     stepComets(dt);
     for (const c of comets) drawComet(c);
     drawFlares(dt);

@@ -33,7 +33,6 @@ html {
 }
 
 body {
-  background: var(--void);
   color: var(--body);
   font-family: var(--font-body);
   font-size: 1.0625rem;
@@ -129,6 +128,16 @@ pre code {
   width: min(280px, 60%);
   margin: var(--space-section) auto 0;
   color: var(--line);
+}
+
+.meteor {
+  position: fixed;
+  z-index: -1;
+  width: 110px;
+  height: 1.5px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, oklch(0.9 0.03 230 / 0.7) 70%, oklch(0.97 0.02 230));
+  border-radius: 1px;
 }
 
 @media (prefers-reduced-motion: reduce) {

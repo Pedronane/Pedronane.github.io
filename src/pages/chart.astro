@@ -231,7 +231,10 @@ const constellations: Constellation[] = [
 </style>
 
 <script>
-  const svg = document.getElementById('chart')!;
+  document.addEventListener('astro:page-load', () => {
+  const svg = document.getElementById('chart');
+  if (!svg || svg.dataset.init) return;
+  svg.dataset.init = '1';
   const tooltip = document.getElementById('tooltip')!;
   const wrap = tooltip.parentElement!;
 
@@ -263,4 +266,5 @@ const constellations: Constellation[] = [
       }, 2600);
     }
   }
+  });
 </script>

@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="404 · lost in space" description="This page drifted beyond the observable site.">
   <section class="lost">
-    <canvas id="nbody" aria-hidden="true"></canvas>
+    <canvas id="nbody404" aria-hidden="true"></canvas>
     <div class="lost-text">
       <p class="mono-label">error 404</p>
       <h1>Lost in space</h1>
@@ -25,7 +25,7 @@ import Layout from '../layouts/Layout.astro';
     place-items: center;
   }
 
-  #nbody {
+  #nbody404 {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -73,6 +73,10 @@ import Layout from '../layouts/Layout.astro';
 <script>
   import { startSim } from '../scripts/nbody';
 
-  const sim = startSim(document.getElementById('nbody') as HTMLCanvasElement);
-  sim.invertGravity();
+  document.addEventListener('astro:page-load', () => {
+    const canvas = document.getElementById('nbody404') as HTMLCanvasElement | null;
+    if (!canvas || canvas.dataset.init) return;
+    canvas.dataset.init = '1';
+    startSim(canvas).invertGravity();
+  });
 </script>

@@ -89,10 +89,6 @@
 </style>
 
 <script>
-  const overlay = document.getElementById('terminal')!;
-  const body = document.getElementById('terminal-body')!;
-  const input = document.getElementById('terminal-input') as HTMLInputElement;
-
   const FILES: Record<string, string> = {
     'roadmap.txt': [
       '[x] learn how machines think',
@@ -109,18 +105,21 @@
     help: () => 'available: whoami · ls · cat <file> · clear · exit',
     whoami: () => 'pietro — student, aspiring pentester, orbit enthusiast',
     ls: () => Object.keys(FILES).join('  '),
-    clear: () => { body.textContent = ''; return ''; },
+    clear: () => { termBody().textContent = ''; return ''; },
     exit: () => { close(); return ''; },
     sudo: () => 'pietro is not in the sudoers file. this incident will be reported. (to whom? space is big.)',
   };
+
+  const overlay = () => document.getElementById('terminal');
+  const termBody = () => document.getElementById('terminal-body')!;
 
   function print(text: string, cls?: string) {
     if (!text) return;
     const line = document.createElement('div');
     if (cls) line.className = cls;
     line.textContent = text;
-    body.appendChild(line);
-    body.scrollTop = body.scrollHeight;
+    termBody().appendChild(line);
+    termBody().scrollTop = termBody().scrollHeight;
   }
 
   function run(raw: string) {
@@ -138,34 +137,46 @@
   }
 
   function open() {
-    overlay.hidden = false;
-    body.textContent = '';
+    const el = overlay();
+    if (!el) return;
+    el.hidden = false;
+    termBody().textContent = '';
     print('you found the shell. welcome aboard.', 'accent');
     print("type 'help' to look around, 'exit' to float away.");
+    const input = document.getElementById('terminal-input') as HTMLInputElement;
     input.value = '';
     input.focus();
   }
 
   function close() {
-    overlay.hidden = true;
+    const el = overlay();
+    if (el) el.hidden = true;
   }
 
-  document.getElementById('terminal-close')!.addEventListener('click', close);
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) close();
-  });
+  document.addEventListener('astro:page-load', () => {
+    const el = overlay();
+    if (!el || el.dataset.init) return;
+    el.dataset.init = '1';
+    const input = document.getElementById('terminal-input') as HTMLInputElement;
 
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      run(input.value);
-      input.value = '';
-    }
-    if (e.key === 'Escape') close();
+    document.getElementById('terminal-close')!.addEventListener('click', close);
+    el.addEventListener('click', (e) => {
+      if (e.target === el) close();
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        run(input.value);
+        input.value = '';
+      }
+      if (e.key === 'Escape') close();
+    });
   });
 
   let buffer = '';
   document.addEventListener('keydown', (e) => {
-    if (!overlay.hidden || e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+    const el = overlay();
+    if (!el || !el.hidden || e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
     if (e.key.length === 1) {
       buffer = (buffer + e.key.toLowerCase()).slice(-4);
       if (buffer === 'sudo') {

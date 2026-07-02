@@ -1,0 +1,177 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Terminal from '../components/Terminal.astro';
+import OrbitDivider from '../components/OrbitDivider.astro';
+---
+
+<Layout
+  title="Pietro Marchesi"
+  description="Student of systems — cybersecurity, orbital mechanics, guitar, heavy books. Exploring everything from kernels to Kepler."
+>
+  <Hero />
+
+  <section id="about" class="prose">
+    <h2>Hello, traveler</h2>
+    <div class="about-grid">
+      <div class="about-photo" aria-hidden="true">
+        <svg viewBox="0 0 160 160">
+          <circle cx="80" cy="80" r="52" fill="var(--surface)" stroke="var(--line)" />
+          <circle cx="80" cy="66" r="18" fill="var(--cyan-dim)" opacity="0.8" />
+          <path d="M46 116 q34 -28 68 0 v10 h-68 z" fill="var(--cyan-dim)" opacity="0.8" />
+          <ellipse cx="80" cy="80" rx="74" ry="30" fill="none" stroke="var(--cyan-dim)" stroke-width="1" transform="rotate(-18 80 80)" />
+          <circle cx="18" cy="100" r="3" fill="var(--amber)" />
+        </svg>
+        <span class="mono-label">photo incoming</span>
+      </div>
+      <div class="about-text">
+        <p>
+          I'm Pietro — final-year student at a technical institute near Brescia, Italy,
+          about to start engineering at the University of Trento. I like understanding
+          systems from the inside: the packet under the protocol, the kernel under the
+          shell, the gravity under the orbit.
+        </p>
+        <p>
+          Security is the plan. Not the hoodie-and-green-text kind — the kind where you
+          understand a machine well enough to find where it lies to itself. I'm walking
+          the long road: CTFs now, certifications next, and one day the job title.
+        </p>
+        <p>
+          Away from a terminal I play guitar every day, read novels heavy enough to
+          double as dumbbells, study Japanese one kanji at a time, and hold the front
+          line as a tank when my guild needs me. Ambition and calm, in alternating
+          current.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <OrbitDivider />
+
+  <section class="prose">
+    <h2>Things I orbit</h2>
+
+    <article class="project">
+      <h3>
+        <svg class="orbit-bullet" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+          <circle cx="8" cy="8" r="2.4" fill="var(--amber)" />
+          <ellipse cx="8" cy="8" rx="7" ry="3.4" fill="none" stroke="var(--cyan)" stroke-width="1" transform="rotate(-24 8 8)" />
+        </svg>
+        Gravity Sandbox
+      </h3>
+      <p>
+        An N-body gravity simulator I'm building from first principles — every integrator
+        and every force written by hand, because the point is learning the physics, not
+        shipping the tool. The animation on this very page is its JavaScript descendant:
+        same velocity Verlet, same Newton, different sky.
+      </p>
+      <p class="mono-label">python · pygame · velocity verlet · <a href="https://github.com/Pedronane/gravity-sandbox">source</a></p>
+    </article>
+
+    <article class="project">
+      <h3>
+        <svg class="orbit-bullet" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+          <circle cx="8" cy="8" r="2.4" fill="var(--amber)" />
+          <ellipse cx="8" cy="8" rx="7" ry="3.4" fill="none" stroke="var(--cyan)" stroke-width="1" transform="rotate(-24 8 8)" />
+        </svg>
+        The Homelab
+      </h3>
+      <p>
+        A Raspberry Pi that refuses to admit it has 4&nbsp;GB of RAM: photo backups, media
+        server, home automation, all containerized, all reachable from anywhere through a
+        private mesh. My quiet little data center — it hums on a shelf and teaches me more
+        about ops than any tutorial.
+      </p>
+      <p class="mono-label">raspberry pi · docker · jellyfin · home assistant · tailscale</p>
+    </article>
+  </section>
+
+  <OrbitDivider />
+
+  <section class="prose contact">
+    <h2>Send a signal</h2>
+    <p>
+      Books, security, orbital mechanics, or something I haven't thought of yet —
+      transmissions welcome.
+    </p>
+    <p class="mono-label">
+      <a href="mailto:march3sipietro@gmail.com">email</a> ·
+      <a href="https://github.com/Pedronane">github</a>
+    </p>
+  </section>
+
+  <Terminal />
+</Layout>
+
+<style>
+  section.prose {
+    padding-top: var(--space-section);
+  }
+
+  section.prose:last-of-type {
+    padding-bottom: var(--space-section);
+  }
+
+  .about-grid {
+    display: flex;
+    gap: 2.2rem;
+    align-items: flex-start;
+    margin-top: 1.6rem;
+    flex-wrap: wrap;
+  }
+
+  .about-photo {
+    flex: 0 0 150px;
+    display: grid;
+    justify-items: center;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+  }
+
+  .about-photo svg {
+    width: 150px;
+    height: 150px;
+  }
+
+  .about-text {
+    flex: 1 1 20rem;
+  }
+
+  .about-text > * + * {
+    margin-top: 1.1rem;
+  }
+
+  .project {
+    margin-top: 2.6rem;
+  }
+
+  .project h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+
+  .orbit-bullet {
+    flex-shrink: 0;
+    transition: transform 0.5s var(--ease-expo);
+  }
+
+  .project:hover .orbit-bullet {
+    transform: rotate(180deg);
+  }
+
+  .project p {
+    margin-top: 0.8rem;
+  }
+
+  .contact {
+    text-align: center;
+  }
+
+  .contact p {
+    margin-inline: auto;
+    margin-top: 1rem;
+  }
+</style>

@@ -1,0 +1,177 @@
+<div class="terminal" id="terminal" hidden>
+  <div class="terminal-window" role="dialog" aria-label="Terminal">
+    <div class="terminal-bar mono-label">
+      <span>pietro@orbit — bash</span>
+      <button id="terminal-close" aria-label="Close terminal">✕</button>
+    </div>
+    <div class="terminal-body" id="terminal-body"></div>
+    <div class="terminal-input-row">
+      <span class="prompt">pietro@orbit:~$</span>
+      <input id="terminal-input" type="text" autocomplete="off" spellcheck="false" aria-label="Terminal command" />
+    </div>
+  </div>
+</div>
+
+<style>
+  .terminal[hidden] {
+    display: none;
+  }
+
+  .terminal {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-terminal);
+    display: grid;
+    place-items: center;
+    background: oklch(0.13 0.035 275 / 0.7);
+    padding: 1.5rem;
+  }
+
+  .terminal-window {
+    width: min(620px, 100%);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 0 60px oklch(0.83 0.13 215 / 0.12);
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    overflow: hidden;
+  }
+
+  .terminal-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.9rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .terminal-bar button {
+    background: none;
+    border: none;
+    color: var(--faint);
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  .terminal-bar button:hover { color: var(--amber); }
+
+  .terminal-body {
+    padding: 0.9rem;
+    max-height: 45vh;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    color: var(--body);
+    line-height: 1.6;
+  }
+
+  .terminal-body :global(.cmd) { color: var(--ink); }
+  .terminal-body :global(.accent) { color: var(--cyan); }
+
+  .terminal-input-row {
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.7rem 0.9rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .prompt { color: var(--cyan); }
+
+  #terminal-input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--ink);
+    font: inherit;
+    caret-color: var(--amber);
+  }
+</style>
+
+<script>
+  const overlay = document.getElementById('terminal')!;
+  const body = document.getElementById('terminal-body')!;
+  const input = document.getElementById('terminal-input') as HTMLInputElement;
+
+  const FILES: Record<string, string> = {
+    'roadmap.txt': [
+      '[x] learn how machines think',
+      '[x] high school, technical informatics',
+      '[ ] maturità — july 2026',
+      '[ ] university of trento',
+      '[ ] eJPT → Security+ → OSCP',
+      '[ ] somewhere that launches things into orbit',
+    ].join('\n'),
+    'interests.txt': 'cybersecurity, orbital mechanics, guitar, heavy russian novels, 日本語, linux',
+  };
+
+  const COMMANDS: Record<string, () => string> = {
+    help: () => 'available: whoami · ls · cat <file> · clear · exit',
+    whoami: () => 'pietro — student, aspiring pentester, orbit enthusiast',
+    ls: () => Object.keys(FILES).join('  '),
+    clear: () => { body.textContent = ''; return ''; },
+    exit: () => { close(); return ''; },
+    sudo: () => 'pietro is not in the sudoers file. this incident will be reported. (to whom? space is big.)',
+  };
+
+  function print(text: string, cls?: string) {
+    if (!text) return;
+    const line = document.createElement('div');
+    if (cls) line.className = cls;
+    line.textContent = text;
+    body.appendChild(line);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function run(raw: string) {
+    const cmd = raw.trim();
+    print(`pietro@orbit:~$ ${cmd}`, 'cmd');
+    if (!cmd) return;
+    const [name, ...args] = cmd.split(/\s+/);
+    if (name === 'cat') {
+      const file = args[0] ?? '';
+      print(FILES[file] ?? `cat: ${file || '?'}: no such file`);
+      return;
+    }
+    const fn = COMMANDS[name];
+    print(fn ? fn() : `${name}: command not found — try 'help'`);
+  }
+
+  function open() {
+    overlay.hidden = false;
+    body.textContent = '';
+    print('you found the shell. welcome aboard.', 'accent');
+    print("type 'help' to look around, 'exit' to float away.");
+    input.value = '';
+    input.focus();
+  }
+
+  function close() {
+    overlay.hidden = true;
+  }
+
+  document.getElementById('terminal-close')!.addEventListener('click', close);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) close();
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      run(input.value);
+      input.value = '';
+    }
+    if (e.key === 'Escape') close();
+  });
+
+  let buffer = '';
+  document.addEventListener('keydown', (e) => {
+    if (!overlay.hidden || e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+    if (e.key.length === 1) {
+      buffer = (buffer + e.key.toLowerCase()).slice(-4);
+      if (buffer === 'sudo') {
+        buffer = '';
+        open();
+      }
+    }
+  });
+</script>

@@ -1,0 +1,114 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const writeups = (await getCollection('writeups', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const fmt = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: '2-digit' });
+---
+
+<Layout title="Writeups · Pietro Marchesi" description="CTF writeups — how each box fell, and what it taught me.">
+  <main class="prose page">
+    <p class="mono-label kicker">flight log</p>
+    <h1>Writeups</h1>
+    <p>
+      How each challenge fell, dead ends included. I write these to remember how I
+      think — if they help you too, even better.
+    </p>
+
+    {writeups.length === 0 ? (
+      <div class="empty">
+        <svg width="72" height="72" viewBox="0 0 72 72" aria-hidden="true">
+          <ellipse cx="36" cy="36" rx="30" ry="13" fill="none" stroke="var(--line)" stroke-width="1.5" transform="rotate(-20 36 36)" />
+          <circle cx="36" cy="36" r="7" fill="var(--surface)" stroke="var(--cyan-dim)" />
+          <circle cx="61" cy="26" r="2.5" fill="var(--amber)" />
+        </svg>
+        <p><strong>No transmissions yet.</strong></p>
+        <p class="empty-sub">First flags are being captured. Check back after the maturità.</p>
+      </div>
+    ) : (
+      <ul class="log">
+        {writeups.map((w) => (
+          <li>
+            <a href={`/writeups/${w.id}/`}>
+              <span class="mono-label date">{fmt.format(w.data.pubDate)}</span>
+              <span class="log-title">{w.data.title}</span>
+              <span class="mono-label platform">{w.data.platform}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </main>
+</Layout>
+
+<style>
+  .page {
+    padding-top: clamp(7rem, 16vh, 10rem);
+    padding-bottom: var(--space-section);
+  }
+
+  h1 {
+    font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+    font-weight: 700;
+    margin-bottom: 1.4rem;
+  }
+
+  .kicker {
+    color: var(--cyan);
+    margin-bottom: 0.8rem;
+  }
+
+  .empty {
+    margin-top: 3.5rem;
+    text-align: center;
+    display: grid;
+    justify-items: center;
+    gap: 0.4rem;
+  }
+
+  .empty svg {
+    margin-bottom: 0.8rem;
+  }
+
+  .empty-sub {
+    color: var(--faint);
+    font-size: 0.95rem;
+  }
+
+  .log {
+    list-style: none;
+    margin-top: 2.5rem;
+  }
+
+  .log a {
+    display: flex;
+    align-items: baseline;
+    gap: 1.2rem;
+    padding: 0.9rem 0.4rem;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    color: var(--ink);
+    transition: background 0.2s var(--ease-quart);
+  }
+
+  .log a:hover {
+    background: color-mix(in oklch, var(--surface) 60%, transparent);
+  }
+
+  .log a:hover .log-title {
+    color: var(--cyan);
+  }
+
+  .log-title {
+    flex: 1;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+  }
+
+  .date {
+    flex-shrink: 0;
+  }
+</style>

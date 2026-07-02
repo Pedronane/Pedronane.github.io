@@ -7,6 +7,7 @@ interface Star {
   label: string;
   note: string;
   lit: boolean;
+  quest?: string;
 }
 
 interface Constellation {
@@ -27,9 +28,9 @@ const constellations: Constellation[] = [
       { x: 95, y: 120, label: 'picoCTF', note: 'first flags ever captured', lit: true },
       { x: 175, y: 90, label: 'OverTheWire', note: 'where ssh became muscle memory', lit: true },
       { x: 250, y: 140, label: 'TryHackMe', note: 'rooms, paths, late nights', lit: true },
-      { x: 205, y: 200, label: 'first HTB box', note: 'waiting for me', lit: false },
-      { x: 300, y: 215, label: 'eJPT', note: 'first certification on the roadmap', lit: false },
-      { x: 380, y: 165, label: 'OSCP', note: 'the distant bright one', lit: false },
+      { x: 205, y: 200, label: 'first HTB box', note: 'waiting for me', lit: false, quest: 'root one retired easy box, write it up' },
+      { x: 300, y: 215, label: 'eJPT', note: 'first certification on the roadmap', lit: false, quest: 'finish the INE path, book the voucher' },
+      { x: 380, y: 165, label: 'OSCP', note: 'the distant bright one', lit: false, quest: 'earned only after eJPT and ~100 boxes' },
     ],
   },
   {
@@ -41,8 +42,8 @@ const constellations: Constellation[] = [
       { x: 470, y: 110, label: 'Euler', note: 'first integrator, gravity sandbox M1', lit: true },
       { x: 545, y: 140, label: 'Verlet', note: 'energy finally conserved, M4', lit: true },
       { x: 620, y: 105, label: 'this website', note: 'the hero up there runs my physics', lit: true },
-      { x: 700, y: 130, label: 'Kepler problem', note: 'orbits from first principles', lit: false },
-      { x: 780, y: 80, label: 'ESA', note: 'somewhere that launches things', lit: false },
+      { x: 700, y: 130, label: 'Kepler problem', note: 'orbits from first principles', lit: false, quest: 'derive the ellipse from F=GMm/r² — M8→M13' },
+      { x: 780, y: 80, label: 'ESA', note: 'somewhere that launches things', lit: false, quest: 'degree first. then everything else.' },
     ],
   },
   {
@@ -54,7 +55,7 @@ const constellations: Constellation[] = [
       { x: 760, y: 210, label: 'Blackbird', note: 'The Beatles, fingerpicking rite of passage', lit: true },
       { x: 840, y: 240, label: 'Take On Me', note: 'a-ha — yes, on guitar', lit: true },
       { x: 905, y: 200, label: 'Black', note: 'Pearl Jam, played until the neighbors knew it', lit: true },
-      { x: 855, y: 320, label: 'first own song', note: 'still a hum without a name', lit: false },
+      { x: 855, y: 320, label: 'first own song', note: 'still a hum without a name', lit: false, quest: 'four chords that are mine, start to finish' },
     ],
   },
   {
@@ -66,8 +67,8 @@ const constellations: Constellation[] = [
       { x: 420, y: 260, label: 'ひらがな', note: 'the first alphabet fell', lit: true },
       { x: 490, y: 290, label: 'カタカナ', note: 'the second one too', lit: true },
       { x: 560, y: 265, label: 'Tae Kim', note: 'grammar, chapter by chapter', lit: true },
-      { x: 530, y: 340, label: 'first manga raw', note: 'no translation, no mercy', lit: false },
-      { x: 610, y: 320, label: 'JLPT N5', note: 'making it official', lit: false },
+      { x: 530, y: 340, label: 'first manga raw', note: 'no translation, no mercy', lit: false, quest: 'finish Tae Kim, then buy one and struggle' },
+      { x: 610, y: 320, label: 'JLPT N5', note: 'making it official', lit: false, quest: '~800 words, kanji deck, a December session' },
     ],
   },
   {
@@ -79,7 +80,7 @@ const constellations: Constellation[] = [
       { x: 100, y: 430, label: 'Crime and Punishment', note: 'Dostoevsky — the door in', lit: true },
       { x: 185, y: 465, label: 'The Trial', note: 'Kafka, read with growing unease', lit: true },
       { x: 265, y: 430, label: 'The Stranger', note: 'Camus under the sun', lit: true },
-      { x: 230, y: 515, label: 'Infinite Jest', note: 'DFW — the heaviest one, in the crosshairs', lit: false },
+      { x: 230, y: 515, label: 'Infinite Jest', note: 'DFW — the heaviest one, in the crosshairs', lit: false, quest: '1079 pages, no skipping the endnotes' },
     ],
   },
   {
@@ -92,7 +93,7 @@ const constellations: Constellation[] = [
       { x: 760, y: 460, label: 'Hyprland rice', note: 'the desktop repaints itself', lit: true },
       { x: 840, y: 425, label: 'neovim', note: 'config as a small garden', lit: true },
       { x: 905, y: 480, label: 'the homelab', note: 'a Pi that dreams big', lit: true },
-      { x: 800, y: 520, label: 'NixOS', note: 'declarative everything, someday daily', lit: false },
+      { x: 800, y: 520, label: 'NixOS', note: 'declarative everything, someday daily', lit: false, quest: 'one flake to rule the whole machine' },
     ],
   },
 ];
@@ -105,7 +106,8 @@ const constellations: Constellation[] = [
       <h1>Star chart</h1>
       <p>
         My interests as constellations. <strong>Filled stars are reached</strong> —
-        hollow ones are still waiting for their light. Hover to read.
+        hollow ones are still waiting for their light. Hover to read; click a hollow
+        one to see what it takes to light it.
       </p>
     </header>
 
@@ -121,7 +123,7 @@ const constellations: Constellation[] = [
               stroke-width="1"
             />
             {c.stars.map((s) => (
-              <g class="star" data-label={s.label} data-note={s.note} data-lit={s.lit}>
+              <g class="star" data-label={s.label} data-note={s.note} data-lit={s.lit} data-quest={s.quest}>
                 <circle class="hit" cx={s.x} cy={s.y} r="14" fill="transparent" />
                 {s.lit ? (
                   <circle class="dot" cx={s.x} cy={s.y} r="4" fill={c.color} />
@@ -220,6 +222,12 @@ const constellations: Constellation[] = [
     color: var(--faint);
   }
 
+  .tooltip :global(.quest) {
+    display: block;
+    color: var(--amber);
+    margin-top: 0.2rem;
+  }
+
   .tooltip[hidden] {
     display: none;
   }
@@ -237,22 +245,39 @@ const constellations: Constellation[] = [
   svg.dataset.init = '1';
   const tooltip = document.getElementById('tooltip')!;
   const wrap = tooltip.parentElement!;
+  let pinned = false;
 
   svg.addEventListener('pointerover', (e) => {
     const star = (e.target as Element).closest('.star') as SVGGElement | null;
-    if (!star) return;
+    if (!star || pinned) return;
+    show(star, false);
+  });
+
+  svg.addEventListener('pointerout', (e) => {
+    if (!pinned && (e.target as Element).closest('.star')) tooltip.hidden = true;
+  });
+
+  document.addEventListener('click', (e) => {
+    const star = (e.target as Element).closest?.('.star') as SVGGElement | null;
+    if (!star || star.dataset.lit === 'true' || !star.dataset.quest) {
+      pinned = false;
+      tooltip.hidden = true;
+      return;
+    }
+    pinned = true;
+    show(star, true);
+  });
+
+  function show(star: SVGGElement, withQuest: boolean) {
     const lit = star.dataset.lit === 'true';
-    tooltip.innerHTML = `<strong>${star.dataset.label}</strong><span class="note">${star.dataset.note}${lit ? '' : ' · not yet lit'}</span>`;
+    const quest = withQuest && star.dataset.quest ? `<span class="quest">→ ${star.dataset.quest}</span>` : '';
+    tooltip.innerHTML = `<strong>${star.dataset.label}</strong><span class="note">${star.dataset.note}${lit ? '' : ' · not yet lit'}</span>${quest}`;
     const dot = star.querySelector('.dot')!.getBoundingClientRect();
     const box = wrap.getBoundingClientRect();
     tooltip.style.left = `${dot.x + dot.width / 2 - box.x}px`;
     tooltip.style.top = `${dot.y - box.y}px`;
     tooltip.hidden = false;
-  });
-
-  svg.addEventListener('pointerout', (e) => {
-    if ((e.target as Element).closest('.star')) tooltip.hidden = true;
-  });
+  }
 
   const hash = window.location.hash.slice(1);
   if (hash) {

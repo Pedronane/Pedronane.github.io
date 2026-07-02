@@ -31,6 +31,10 @@ interface Planet extends PlanetDef {
   theta: number;
   x: number;
   y: number;
+  vx: number;
+  vy: number;
+  px: number;
+  py: number;
   n: number;
 }
 
@@ -41,6 +45,9 @@ interface Comet {
   vy: number;
   ax: number;
   ay: number;
+  swept: number;
+  lastAngle: number;
+  orbits: number;
   trail: { x: number; y: number }[];
 }
 
@@ -52,11 +59,17 @@ interface Flare {
 
 export interface SolarSim {
   invertGravity: () => boolean;
+  toggleFree: () => boolean;
   highlight: (name: string | null) => void;
   destroy: () => void;
 }
 
-export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing: boolean) => void }): SolarSim {
+interface SolarOpts {
+  onPlay?: (playing: boolean) => void;
+  onOrbit?: (orbits: number, best: number) => void;
+}
+
+export function startSolar(canvas: HTMLCanvasElement, opts?: SolarOpts): SolarSim {
   const ctx = canvas.getContext('2d')!;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   const coarse = window.matchMedia('(pointer: coarse)').matches;
@@ -82,11 +95,22 @@ export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing
   const cx = () => w / 2;
   const cy = () => h / 2;
 
+  let sx = cx();
+  let sy = cy();
+  let svx = 0;
+  let svy = 0;
+  let freeMode = false;
+  const FREE_MASS = GM / 28;
+
   const planets: Planet[] = PLANETS.map((p) => ({
     ...p,
     theta: p.phase,
     x: 0,
     y: 0,
+    vx: 0,
+    vy: 0,
+    px: 0,
+    py: 0,
     n: 0.55 * Math.pow(p.a / 0.21, -1.5) * (inverted ? -1 : 1),
   }));
 
@@ -108,8 +132,8 @@ export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing
 
   function planetPos(p: Planet) {
     const r = (p.a * scale * (1 - p.e * p.e)) / (1 + p.e * Math.cos(p.theta));
-    p.x = cx() + r * Math.cos(p.theta + p.peri);
-    p.y = cy() + r * Math.sin(p.theta + p.peri);
+    p.x = sx + r * Math.cos(p.theta + p.peri);
+    p.y = sy + r * Math.sin(p.theta + p.peri);
     return r;
   }
 
@@ -124,7 +148,7 @@ export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing
     const b = a * Math.sqrt(1 - p.e * p.e);
     const c = a * p.e;
     ctx.save();
-    ctx.translate(cx(), cy());
+    ctx.translate(sx, sy);
     ctx.rotate(p.peri);
     ctx.beginPath();
     ctx.ellipse(-c, 0, a, b, 0, 0, Math.PI * 2);
@@ -138,20 +162,20 @@ export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing
     const r = starR() * (1 + 0.035 * Math.sin(t * 1.7));
     const glow: [number, number][] = [[4.2, 0.05], [2.6, 0.1], [1.55, 0.22]];
     for (const [mult, alpha] of glow) {
-      const g = ctx.createRadialGradient(cx(), cy(), r * 0.5, cx(), cy(), r * mult);
+      const g = ctx.createRadialGradient(sx, sy, r * 0.5, sx, sy, r * mult);
       g.addColorStop(0, `oklch(0.8 0.15 70 / ${alpha})`);
       g.addColorStop(1, 'oklch(0.8 0.15 70 / 0)');
       ctx.beginPath();
-      ctx.arc(cx(), cy(), r * mult, 0, Math.PI * 2);
+      ctx.arc(sx, sy, r * mult, 0, Math.PI * 2);
       ctx.fillStyle = g;
       ctx.fill();
     }
-    const core = ctx.createRadialGradient(cx(), cy(), 0, cx(), cy(), r);
+    const core = ctx.createRadialGradient(sx, sy, 0, sx, sy, r);
     core.addColorStop(0, 'oklch(0.97 0.06 85)');
     core.addColorStop(0.45, 'oklch(0.86 0.14 75)');
     core.addColorStop(1, 'oklch(0.72 0.16 60)');
     ctx.beginPath();
-    ctx.arc(cx(), cy(), r, 0, Math.PI * 2);
+    ctx.arc(sx, sy, r, 0, Math.PI * 2);
     ctx.fillStyle = core;
     ctx.fill();
   }
@@ -159,8 +183,8 @@ export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing
   function drawPlanet(p: Planet) {
     const active = p === hovered;
     const size = p.size + (active ? 1.5 : 0);
-    const dx = cx() - p.x;
-    const dy = cy() - p.y;
+    const dx = sx - p.x;
+    const dy = sy - p.y;
     const d = Math.hypot(dx, dy) || 1;
     const lx = p.x + (dx / d) * size * 0.5;
     const ly = p.y + (dy / d) * size * 0.5;
@@ -239,8 +263,8 @@ export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing
 
   function cometAcc(c: Comet): [number, number] {
     const sign = inverted ? -0.35 : 1;
-    const dx = cx() - c.x;
-    const dy = cy() - c.y;
+    const dx = sx - c.x;
+    const dy = sy - c.y;
     const d = Math.max(Math.hypot(dx, dy), starR());
     const a = (sign * GM) / (d * d);
     let ax = (a * dx) / d;
@@ -270,10 +294,26 @@ export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing
       c.trail.push({ x: c.x, y: c.y });
       if (c.trail.length > TRAIL_MAX) c.trail.shift();
 
-      if (Math.hypot(c.x - cx(), c.y - cy()) < starR() + 2) {
-        flares.push({ x: cx(), y: cy(), t: 0 });
+      const ang = Math.atan2(c.y - sy, c.x - sx);
+      let dAng = ang - c.lastAngle;
+      if (dAng > Math.PI) dAng -= Math.PI * 2;
+      if (dAng < -Math.PI) dAng += Math.PI * 2;
+      c.swept += dAng;
+      c.lastAngle = ang;
+      const o = Math.floor(Math.abs(c.swept) / (Math.PI * 2));
+      if (o > c.orbits) {
+        c.orbits = o;
+        if (o > best) {
+          best = o;
+          try { localStorage.setItem('comet-orbit-best', String(best)); } catch {}
+        }
+        opts?.onOrbit?.(o, best);
+      }
+
+      if (Math.hypot(c.x - sx, c.y - sy) < starR() + 2) {
+        flares.push({ x: sx, y: sy, t: 0 });
         comets.splice(i, 1);
-      } else if (Math.hypot(c.x - cx(), c.y - cy()) > limit) {
+      } else if (Math.hypot(c.x - sx, c.y - sy) > limit) {
         comets.splice(i, 1);
       }
     }
@@ -297,6 +337,9 @@ export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing
       vy: (dragStart.y - dragNow.y) * 2.4,
       ax: 0,
       ay: 0,
+      swept: 0,
+      lastAngle: 0,
+      orbits: 0,
       trail: [],
     };
     [ghost.ax, ghost.ay] = cometAcc(ghost);
@@ -313,7 +356,7 @@ export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing
       ghost.ax = nax;
       ghost.ay = nay;
       ctx.lineTo(ghost.x, ghost.y);
-      const ds = Math.hypot(ghost.x - cx(), ghost.y - cy());
+      const ds = Math.hypot(ghost.x - sx, ghost.y - sy);
       if (ds < starR() + 2 || ds > limit) break;
     }
     ctx.setLineDash([2, 7]);
@@ -332,6 +375,49 @@ export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing
   let wasPlaying = false;
   let calmSince = 0;
   let lastAction = -10;
+  let best = 0;
+  try { best = Number(localStorage.getItem('comet-orbit-best')) || 0; } catch {}
+
+  function freeStep(dt: number) {
+    const sign = inverted ? -1 : 1;
+    for (const p of planets) {
+      const dxs = sx - p.x;
+      const dys = sy - p.y;
+      const ds = Math.max(Math.hypot(dxs, dys), starR() + p.size);
+      const aS = (sign * GM) / (ds * ds);
+      let ax = (aS * dxs) / ds;
+      let ay = (aS * dys) / ds;
+      for (const q of planets) {
+        if (q === p) continue;
+        const dx = q.x - p.x;
+        const dy = q.y - p.y;
+        const d = Math.max(Math.hypot(dx, dy), p.size + q.size);
+        const a = (sign * FREE_MASS) / (d * d);
+        ax += (a * dx) / d;
+        ay += (a * dy) / d;
+      }
+      p.vx += ax * dt;
+      p.vy += ay * dt;
+    }
+    let sax = 0;
+    let say = 0;
+    for (const p of planets) {
+      const dx = p.x - sx;
+      const dy = p.y - sy;
+      const d = Math.max(Math.hypot(dx, dy), starR() + p.size);
+      const a = (sign * FREE_MASS) / (d * d);
+      sax += (a * dx) / d;
+      say += (a * dy) / d;
+    }
+    svx += sax * dt;
+    svy += say * dt;
+    sx += svx * dt;
+    sy += svy * dt;
+    for (const p of planets) {
+      p.x += p.vx * dt;
+      p.y += p.vy * dt;
+    }
+  }
 
   function frame(dt: number) {
     elapsed += dt;
@@ -344,11 +430,21 @@ export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing
     }
     hovered = pointerHov ?? linkHov;
     ctx.clearRect(0, 0, w, h);
-    for (const p of planets) {
-      advance(p, dt);
-      planetPos(p);
+    if (freeMode) {
+      freeStep(dt);
+    } else {
+      for (const p of planets) {
+        advance(p, dt);
+        planetPos(p);
+        if (dt > 0) {
+          p.vx = (p.x - p.px) / dt;
+          p.vy = (p.y - p.py) / dt;
+        }
+        p.px = p.x;
+        p.py = p.y;
+      }
+      for (const p of planets) drawOrbit(p);
     }
-    for (const p of planets) drawOrbit(p);
     drawStar(elapsed);
     stepComets(dt);
     for (const c of comets) drawComet(c);
@@ -422,6 +518,9 @@ export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing
           vy: dy * 2.4,
           ax: 0,
           ay: 0,
+          swept: 0,
+          lastAngle: Math.atan2(dragStart.y - sy, dragStart.x - sx),
+          orbits: 0,
           trail: [],
         });
       }
@@ -454,6 +553,10 @@ export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing
     clearTimeout(resizeTimer);
     resizeTimer = window.setTimeout(() => {
       resize();
+      if (!freeMode) {
+        sx = cx();
+        sy = cy();
+      }
       if (reduced) {
         for (const p of planets) planetPos(p);
         frame(0);
@@ -466,6 +569,21 @@ export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing
     invertGravity() {
       inverted = !inverted;
       return inverted;
+    },
+    toggleFree() {
+      freeMode = !freeMode;
+      if (!freeMode) {
+        sx = cx();
+        sy = cy();
+        svx = 0;
+        svy = 0;
+        for (const p of planets) {
+          planetPos(p);
+          p.px = p.x;
+          p.py = p.y;
+        }
+      }
+      return freeMode;
     },
     highlight(name) {
       linkHov = name ? (planets.find((p) => p.name === name) ?? null) : null;

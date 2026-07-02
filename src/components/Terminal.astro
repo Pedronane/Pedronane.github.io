@@ -102,11 +102,15 @@
   };
 
   const COMMANDS: Record<string, () => string> = {
-    help: () => 'available: whoami · ls · cat <file> · clear · exit',
+    help: () => 'available: whoami · ls · cat <file> · orbit · clear · exit',
     whoami: () => 'pietro — student, aspiring pentester, orbit enthusiast',
     ls: () => Object.keys(FILES).join('  '),
     clear: () => { termBody().textContent = ''; return ''; },
     exit: () => { close(); return ''; },
+    orbit: () => {
+      document.dispatchEvent(new CustomEvent('orbit-mode'));
+      return 'toggling the rails... look at the sky behind me. run it again to switch back.';
+    },
     sudo: () => 'pietro is not in the sudoers file. this incident will be reported. (to whom? space is big.)',
   };
 
@@ -181,6 +185,7 @@
       buffer = (buffer + e.key.toLowerCase()).slice(-4);
       if (buffer === 'sudo') {
         buffer = '';
+        e.preventDefault();
         open();
       }
     }

@@ -1,5 +1,8 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import unbounded700 from '@fontsource/unbounded/files/unbounded-latin-700-normal.woff2?url';
+import literataItalic from '@fontsource/literata/files/literata-latin-400-italic.woff2?url';
+import jbMono from '@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2?url';
 import '@fontsource/unbounded/500.css';
 import '@fontsource/unbounded/600.css';
 import '@fontsource/unbounded/700.css';
@@ -70,6 +73,9 @@ const galaxies = [
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href={unbounded700} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={literataItalic} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={jbMono} as="font" type="font/woff2" crossorigin />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title="Pietro Marchesi · writeups" href={new URL('rss.xml', Astro.site)} />
     <meta property="og:title" content={title} />

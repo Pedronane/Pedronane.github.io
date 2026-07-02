@@ -242,21 +242,20 @@ const DEST: Record<string, string> = {
     const h1 = heroText.querySelector('h1')!;
     const SCALE = 0.34;
 
+    const hero = canvas.closest('.hero') as HTMLElement;
+
     const dockVars = () => {
-      if (heroText.classList.contains('playing')) return;
-      const box = heroText.getBoundingClientRect();
-      const r = h1.getBoundingClientRect();
-      const boxCx = box.left + box.width / 2;
-      const boxCy = box.top + box.height / 2;
-      const h1Cx = r.left + r.width / 2;
-      const h1Cy = r.top + r.height / 2;
-      const targetCx = 62 + (r.width * SCALE) / 2;
+      const heroRect = hero.getBoundingClientRect();
+      const boxCx = heroRect.left + heroText.offsetLeft + heroText.offsetWidth / 2;
+      const boxCy = heroRect.top + heroText.offsetTop + heroText.offsetHeight / 2;
+      const h1Cx = heroRect.left + heroText.offsetLeft + h1.offsetLeft + h1.offsetWidth / 2;
+      const h1Cy = heroRect.top + heroText.offsetTop + h1.offsetTop + h1.offsetHeight / 2;
+      const targetCx = 62 + (h1.offsetWidth * SCALE) / 2;
       const targetCy = 29;
       heroText.style.setProperty('--dock-x', `${targetCx - boxCx - (h1Cx - boxCx) * SCALE}px`);
       heroText.style.setProperty('--dock-y', `${targetCy - boxCy - (h1Cy - boxCy) * SCALE}px`);
     };
     dockVars();
-    window.addEventListener('resize', () => setTimeout(dockVars, 200));
 
     sim = startSolar(canvas, {
       onPlay(playing) {

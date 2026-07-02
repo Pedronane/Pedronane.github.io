@@ -331,10 +331,11 @@ export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing
   let elapsed = 0;
   let wasPlaying = false;
   let calmSince = 0;
+  let lastAction = -10;
 
   function frame(dt: number) {
     elapsed += dt;
-    const busy = dragging || comets.length > 0;
+    const busy = dragging || (comets.length > 0 && elapsed - lastAction < 6);
     if (busy) calmSince = elapsed;
     const playing = busy || elapsed - calmSince < 1.2;
     if (playing !== wasPlaying) {
@@ -399,6 +400,7 @@ export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing
     pressAt = performance.now();
     if (!pressPlanet && !reduced) {
       dragging = true;
+      lastAction = elapsed;
       dragStart = { x, y };
       dragNow = { x, y };
       canvas.setPointerCapture(e.pointerId);
@@ -409,6 +411,7 @@ export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing
     const { x, y } = pos(e);
     if (dragging) {
       dragging = false;
+      lastAction = elapsed;
       const dx = dragStart.x - x;
       const dy = dragStart.y - y;
       if (Math.hypot(dx, dy) > 12 && comets.length < 12) {

@@ -56,7 +56,7 @@ export interface SolarSim {
   destroy: () => void;
 }
 
-export function startSolar(canvas: HTMLCanvasElement): SolarSim {
+export function startSolar(canvas: HTMLCanvasElement, opts?: { onPlay?: (playing: boolean) => void }): SolarSim {
   const ctx = canvas.getContext('2d')!;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   const coarse = window.matchMedia('(pointer: coarse)').matches;
@@ -329,9 +329,18 @@ export function startSolar(canvas: HTMLCanvasElement): SolarSim {
   }
 
   let elapsed = 0;
+  let wasPlaying = false;
+  let calmSince = 0;
 
   function frame(dt: number) {
     elapsed += dt;
+    const busy = dragging || comets.length > 0;
+    if (busy) calmSince = elapsed;
+    const playing = busy || elapsed - calmSince < 1.2;
+    if (playing !== wasPlaying) {
+      wasPlaying = playing;
+      opts?.onPlay?.(playing);
+    }
     hovered = pointerHov ?? linkHov;
     ctx.clearRect(0, 0, w, h);
     for (const p of planets) {

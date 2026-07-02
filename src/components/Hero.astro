@@ -56,6 +56,19 @@ const DEST: Record<string, string> = {
     padding: 0 1.5rem;
     animation: rise 0.7s var(--ease-expo) both;
     pointer-events: none;
+    transition: opacity 0.6s var(--ease-quart), filter 0.6s var(--ease-quart);
+  }
+
+  .hero-text.playing {
+    opacity: 0.05;
+    filter: blur(2px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-text.playing {
+      opacity: 1;
+      filter: none;
+    }
   }
 
   @keyframes rise {
@@ -222,7 +235,12 @@ const DEST: Record<string, string> = {
     const canvas = document.getElementById('nbody') as HTMLCanvasElement | null;
     if (!canvas || canvas.dataset.init) return;
     canvas.dataset.init = '1';
-    sim = startSolar(canvas);
+    const heroText = document.querySelector('.hero-text');
+    sim = startSolar(canvas, {
+      onPlay(playing) {
+        heroText?.classList.toggle('playing', playing);
+      },
+    });
 
     for (const link of document.querySelectorAll<HTMLAnchorElement>('.system-index a')) {
       link.addEventListener('mouseenter', () => sim?.highlight(link.dataset.planet!));

@@ -106,8 +106,8 @@ const constellations: Constellation[] = [
       <h1>Star chart</h1>
       <p>
         My interests as constellations. <strong>Filled stars are reached</strong> —
-        hollow ones are still waiting for their light. Hover to read; click a hollow
-        one to see what it takes to light it.
+        hollow ones are still waiting for their light. Tap a star to read it; the
+        hollow ones show what it takes to light them.
       </p>
     </header>
 
@@ -200,8 +200,22 @@ const constellations: Constellation[] = [
     transform-box: fill-box;
   }
 
-  .star:hover .dot {
+  .star:hover .dot,
+  .star.sel .dot {
     transform: scale(1.7);
+  }
+
+  @media (hover: none) {
+    .hit { r: 24; }
+
+    .constellation text { font-size: 16px; }
+
+    .tooltip {
+      white-space: normal;
+      width: max-content;
+      max-width: min(15rem, 62vw);
+      text-align: center;
+    }
   }
 
   .tooltip {
@@ -245,26 +259,35 @@ const constellations: Constellation[] = [
   svg.dataset.init = '1';
   const tooltip = document.getElementById('tooltip')!;
   const wrap = tooltip.parentElement!;
-  let pinned = false;
+  const coarse = matchMedia('(hover: none)').matches;
+  let pinned: SVGGElement | null = null;
 
-  svg.addEventListener('pointerover', (e) => {
-    const star = (e.target as Element).closest('.star') as SVGGElement | null;
-    if (!star || pinned) return;
-    show(star, false);
-  });
+  const setPinned = (star: SVGGElement | null) => {
+    pinned?.classList.remove('sel');
+    pinned = star;
+    pinned?.classList.add('sel');
+  };
 
-  svg.addEventListener('pointerout', (e) => {
-    if (!pinned && (e.target as Element).closest('.star')) tooltip.hidden = true;
-  });
+  if (!coarse) {
+    svg.addEventListener('pointerover', (e) => {
+      const star = (e.target as Element).closest('.star') as SVGGElement | null;
+      if (!star || pinned) return;
+      show(star, false);
+    });
+
+    svg.addEventListener('pointerout', (e) => {
+      if (!pinned && (e.target as Element).closest('.star')) tooltip.hidden = true;
+    });
+  }
 
   document.addEventListener('click', (e) => {
     const star = (e.target as Element).closest?.('.star') as SVGGElement | null;
-    if (!star || star.dataset.lit === 'true' || !star.dataset.quest) {
-      pinned = false;
+    if (!star || star === pinned) {
+      setPinned(null);
       tooltip.hidden = true;
       return;
     }
-    pinned = true;
+    setPinned(star);
     show(star, true);
   });
 
@@ -274,9 +297,11 @@ const constellations: Constellation[] = [
     tooltip.innerHTML = `<strong>${star.dataset.label}</strong><span class="note">${star.dataset.note}${lit ? '' : ' · not yet lit'}</span>${quest}`;
     const dot = star.querySelector('.dot')!.getBoundingClientRect();
     const box = wrap.getBoundingClientRect();
-    tooltip.style.left = `${dot.x + dot.width / 2 - box.x}px`;
-    tooltip.style.top = `${dot.y - box.y}px`;
     tooltip.hidden = false;
+    const half = tooltip.offsetWidth / 2;
+    const cx = dot.x + dot.width / 2 - box.x;
+    tooltip.style.left = `${Math.max(half + 4, Math.min(cx, box.width - half - 4))}px`;
+    tooltip.style.top = `${dot.y - box.y}px`;
   }
 
   const hash = window.location.hash.slice(1);

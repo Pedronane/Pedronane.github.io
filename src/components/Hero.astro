@@ -81,7 +81,7 @@ const DEST: Record<string, string> = {
   }
 
   h1 {
-    font-size: clamp(1.9rem, 6.5vw, 4.2rem);
+    font-size: clamp(1.6rem, 7vw, 4.2rem);
     font-weight: 700;
     letter-spacing: -0.01em;
     text-shadow: 0 0 40px oklch(0.13 0.035 275 / 0.9);
@@ -271,6 +271,7 @@ const DEST: Record<string, string> = {
     const SCALE = 0.34;
 
     const hero = canvas.closest('.hero') as HTMLElement;
+    const navLinks = document.querySelector<HTMLElement>('.nav-links');
 
     const dockVars = () => {
       const heroRect = hero.getBoundingClientRect();
@@ -285,11 +286,27 @@ const DEST: Record<string, string> = {
     };
     dockVars();
 
+    const updateCollide = (playing: boolean) => {
+      if (!playing || !navLinks) {
+        document.body.classList.remove('nav-collide');
+        return;
+      }
+      const titleRight = 62 + h1.offsetWidth * SCALE;
+      const linksLeft = navLinks.getBoundingClientRect().left;
+      document.body.classList.toggle('nav-collide', titleRight + 20 > linksLeft);
+    };
+
+    window.addEventListener('resize', () => {
+      dockVars();
+      updateCollide(heroText.classList.contains('playing'));
+    });
+
     const score = document.getElementById('orbit-score')!;
     sim = startSolar(canvas, {
       onPlay(playing) {
         if (playing) dockVars();
         heroText.classList.toggle('playing', playing);
+        updateCollide(playing);
       },
       onOrbit(orbits, best) {
         score.hidden = false;
@@ -306,5 +323,6 @@ const DEST: Record<string, string> = {
   document.addEventListener('astro:before-swap', () => {
     sim?.destroy();
     sim = null;
+    document.body.classList.remove('nav-collide');
   });
 </script>

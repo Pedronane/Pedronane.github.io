@@ -130,6 +130,11 @@ pre code {
   color: var(--line);
 }
 
+body.nav-collide .nav-links {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .meteor {
   position: fixed;
   z-index: -1;

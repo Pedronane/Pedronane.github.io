@@ -201,6 +201,7 @@ const galaxies = [
   .nav-links {
     display: flex;
     gap: 1.8rem;
+    transition: opacity 0.4s var(--ease-quart);
   }
 
   .nav-links a {
@@ -228,6 +229,20 @@ const galaxies = [
 
   .nav-links a:hover::after {
     right: 0;
+  }
+
+  @media (max-width: 720px) {
+    nav {
+      padding: 0.85rem 1.1rem;
+    }
+
+    .nav-links {
+      gap: 1.05rem;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+    }
   }
 
   footer {

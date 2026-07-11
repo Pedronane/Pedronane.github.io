@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dieta da studente — pronto per settembre</title>
+<style>
+:root{
+  --bg:#fafaf6; --card:#f1f2ea; --ink:#20261f; --muted:#5f6a5c;
+  --accent:#35703f; --accent-ink:#ffffff; --line:#d9dcd0; --gold:#9a6b12;
+  --code:#eceee3;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#161914; --card:#1e231c; --ink:#e6e9df; --muted:#9aa694;
+    --accent:#7cb886; --accent-ink:#12160f; --line:#333a2f; --gold:#d3a94a; --code:#232a21; }
+}
+:root[data-theme="dark"]{ --bg:#161914; --card:#1e231c; --ink:#e6e9df; --muted:#9aa694;
+  --accent:#7cb886; --accent-ink:#12160f; --line:#333a2f; --gold:#d3a94a; --code:#232a21; }
+:root[data-theme="light"]{ --bg:#fafaf6; --card:#f1f2ea; --ink:#20261f; --muted:#5f6a5c;
+  --accent:#35703f; --accent-ink:#ffffff; --line:#d9dcd0; --gold:#9a6b12; --code:#eceee3; }
+
+body{ background:var(--bg); color:var(--ink);
+  font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif;
+  margin:0; padding:2.5rem 1.25rem 5rem; }
+main{ max-width:760px; margin:0 auto; display:flex; flex-direction:column; gap:3rem; }
+h1,h2,h3{ font-family:Georgia,"Times New Roman",serif; line-height:1.25; text-wrap:balance; margin:0; }
+h1{ font-size:2.1rem; font-weight:600; }
+h2{ font-size:1.45rem; font-weight:600; padding-bottom:.4rem; border-bottom:2px solid var(--accent); }
+h3{ font-size:1.1rem; font-weight:600; }
+p{ margin:0; }
+section{ display:flex; flex-direction:column; gap:1rem; }
+.eyebrow{ text-transform:uppercase; letter-spacing:.12em; font-size:.75rem; color:var(--accent); font-weight:600; }
+.lead{ color:var(--muted); font-size:1.05rem; max-width:60ch; }
+
+.stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:.75rem; margin-top:.5rem; }
+.stat{ background:var(--card); border:1px solid var(--line); border-radius:6px; padding:.9rem 1rem; }
+.stat b{ display:block; font-size:1.5rem; font-family:Georgia,serif; font-variant-numeric:tabular-nums; }
+.stat span{ font-size:.8rem; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
+
+.tablewrap{ overflow-x:auto; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; font-size:.92rem; min-width:560px; }
+th{ text-align:left; background:var(--card); padding:.6rem .8rem; font-size:.78rem;
+  text-transform:uppercase; letter-spacing:.07em; color:var(--muted); border-bottom:1px solid var(--line); }
+td{ padding:.6rem .8rem; border-bottom:1px solid var(--line); vertical-align:top; }
+tr:last-child td{ border-bottom:none; }
+td.num{ font-variant-numeric:tabular-nums; white-space:nowrap; }
+td:first-child{ font-weight:600; white-space:nowrap; }
+
+.card{ background:var(--card); border:1px solid var(--line); border-radius:6px; padding:1.1rem 1.25rem; display:flex; flex-direction:column; gap:.45rem; }
+.card .tag{ font-size:.75rem; color:var(--gold); font-weight:600; text-transform:uppercase; letter-spacing:.08em; }
+.cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:.85rem; }
+.card p{ font-size:.92rem; }
+.card .macro{ font-size:.82rem; color:var(--muted); font-variant-numeric:tabular-nums; }
+
+ol,ul{ margin:0; padding-left:1.35rem; display:flex; flex-direction:column; gap:.4rem; }
+li::marker{ color:var(--accent); font-weight:600; }
+.note{ border-left:3px solid var(--gold); background:var(--card); padding:.8rem 1rem; border-radius:0 6px 6px 0; font-size:.92rem; }
+.note b:first-child{ color:var(--gold); }
+code{ background:var(--code); border-radius:4px; padding:.1em .4em; font-size:.88em; font-family:ui-monospace,Menlo,Consolas,monospace; }
+a{ color:var(--accent); }
+.sources{ font-size:.85rem; color:var(--muted); }
+.sources a{ color:var(--muted); }
+</style>
+</head>
+<body>
+<main>
+
+<header style="display:flex;flex-direction:column;gap:.8rem">
+  <span class="eyebrow">Piano alimentare · settembre 2026 · Trento</span>
+  <h1>Dieta da studente: massa muscolare a 45&nbsp;€ a settimana</h1>
+  <p class="lead">Costruito per te: 18 anni, 185&nbsp;cm, 73&nbsp;kg, allenamento a corpo libero, pranzo spesso in università (funziona anche freddo), e l'estate per imparare a cucinare ogni piatto prima di partire.</p>
+  <div class="stats">
+    <div class="stat"><b>~2.900 kcal</b><span>al giorno</span></div>
+    <div class="stat"><b>~145 g</b><span>proteine (2 g/kg)</span></div>
+    <div class="stat"><b>40–50 €</b><span>spesa a settimana</span></div>
+    <div class="stat"><b>~2 h</b><span>meal prep domenica</span></div>
+  </div>
+</header>
+
+<section>
+  <h2>I tuoi numeri, spiegati</h2>
+  <p>Metabolismo basale (formula Mifflin-St Jeor sui tuoi dati): <b>~1.800 kcal</b>. Con studio, spostamenti e calisthenics 3–4 volte a settimana il fabbisogno reale sale a <b>~2.750 kcal</b>. Per costruire muscolo serve un surplus piccolo — <b>+150/250 kcal</b>, non di più: sei alto e magro, un surplus grande diventerebbe grasso, non muscolo.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Macro</th><th>Target/giorno</th><th>Perché</th></tr>
+    <tr><td>Proteine</td><td class="num">140–150 g (2 g/kg)</td><td>Il range con più evidenze per l'ipertrofia è 1,6–2,2 g/kg; stare a 2 copre anche le giornate imperfette</td></tr>
+    <tr><td>Grassi</td><td class="num">75–85 g (~1 g/kg)</td><td>Ormoni e assorbimento vitamine; a 18 anni non scendere sotto 0,8 g/kg</td></tr>
+    <tr><td>Carboidrati</td><td class="num">380–420 g</td><td>Tutto il resto delle calorie: sono il carburante degli allenamenti</td></tr>
+  </table></div>
+  <div class="note"><b>Verifica ogni 2 settimane:</b> pesati al mattino a digiuno, 2–3 volte a settimana, e fai la media. Obiettivo: <b>+0,2/0,4 kg a settimana</b>. Se non sali, aggiungi 200 kcal (es. 30 g di avena + 10 g di burro d'arachidi a colazione). Se sali più veloce, toglile.</div>
+</section>
+
+<section>
+  <h2>La struttura della giornata</h2>
+  <p>Quattro pasti fissi. La colazione e lo spuntino sono sempre uguali (zero decisioni), pranzo e cena ruotano.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Pasto</th><th>Cosa</th><th>kcal</th><th>Proteine</th></tr>
+    <tr><td>Colazione</td><td>Avena 100 g + latte 300 ml + banana + burro d'arachidi 20 g (porridge o overnight oats freddi)</td><td class="num">~770</td><td class="num">28 g</td></tr>
+    <tr><td>Pranzo</td><td>Schiscetta: base carbo (riso/pasta/couscous 120 g crudi) + proteina (35–40 g) + verdura + olio 10 g</td><td class="num">~850</td><td class="num">40 g</td></tr>
+    <tr><td>Spuntino</td><td>Yogurt greco 250 g + frutta secca 30 g + un frutto</td><td class="num">~450</td><td class="num">25 g</td></tr>
+    <tr><td>Cena</td><td>Proteina calda (pollo/uova/pesce/legumi) + carbo (pane/patate/riso) + verdura</td><td class="num">~850</td><td class="num">45 g</td></tr>
+  </table></div>
+  <p class="sources">Totale ~2.900 kcal, ~140 g proteine. Il resto arriva da olio, pane e frutta sparsi nella giornata.</p>
+</section>
+
+<section>
+  <h2>I 5 pranzi da portare in università</h2>
+  <p>Tutti buoni anche freddi — se poi c'è il microonde, meglio. Si preparano la sera prima in 10 minuti usando le basi del meal prep. Contenitore ermetico + borsa termica con siberino.</p>
+  <div class="cards">
+    <div class="card"><span class="tag">Lunedì</span><h3>Insalata di riso tonno e uova</h3><p>Riso 120 g (già cotto domenica) + tonno 160 g sgocciolato + 1 uovo sodo + mais + pomodorini + olio.</p><p class="macro">~820 kcal · 42 g proteine · ~2,20 €</p></div>
+    <div class="card"><span class="tag">Martedì</span><h3>Pasta fredda pollo e pomodorini</h3><p>Pasta corta 120 g + pollo del batch 130 g + pomodorini + mozzarella 60 g + basilico + olio.</p><p class="macro">~880 kcal · 45 g proteine · ~2,50 €</p></div>
+    <div class="card"><span class="tag">Mercoledì</span><h3>Couscous ceci e feta</h3><p>Couscous 100 g (5 min con acqua bollente) + ceci 240 g sgocciolati + feta 50 g + zucchine grigliate + limone.</p><p class="macro">~800 kcal · 32 g proteine · ~2,00 €</p></div>
+    <div class="card"><span class="tag">Giovedì</span><h3>Insalata di lenticchie e uova sode</h3><p>Lenticchie 250 g cotte + 2 uova sode + carote + cipolla rossa + olio e aceto. Più buona il giorno dopo.</p><p class="macro">~750 kcal · 38 g proteine · ~1,80 €</p></div>
+    <div class="card"><span class="tag">Venerdì</span><h3>Wrap pollo e hummus</h3><p>2 piadine integrali + pollo del batch 130 g + hummus + insalata + pomodoro. Avvolti nella carta stagnola reggono ore.</p><p class="macro">~850 kcal · 44 g proteine · ~2,60 €</p></div>
+  </div>
+  <div class="note"><b>Sicurezza:</b> riso e pasta cotti vanno raffreddati e messi in frigo entro un'ora (il riso lasciato tiepido è il classico caso di intossicazione da <i>Bacillus cereus</i>). In frigo durano 3 giorni; il pollo cotto 3–4.</div>
+</section>
+
+<section>
+  <h2>La formula a 3 slot (contro la noia)</h2>
+  <p>I 5 pranzi non sono ricette fisse: sono combinazioni di <b>base + proteina + condimento</b>. Cambiando un solo slot il piatto diventa "nuovo", con la stessa spesa e la stessa tecnica.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Slot</th><th>Opzioni</th></tr>
+    <tr><td>Base carbo</td><td>riso · pasta · couscous · farro · patate</td></tr>
+    <tr><td>Proteina</td><td>pollo · tonno · uova · ceci · lenticchie · sgombro · tacchino</td></tr>
+    <tr><td>Condimento</td><td>vedi cassetta delle spezie qui sotto</td></tr>
+  </table></div>
+  <p>Esempi: stessa insalata di riso ma con sgombro e olive invece di tonno e mais; stesso couscous ma con pollo e curry invece di ceci e feta. I pranzi restano ripetibili e industriali; la varietà vera si sperimenta a cena, con una ricetta nuova ogni 1–2 settimane.</p>
+  <h3>Cassetta delle spezie (~10 €)</h3>
+  <p>La leva più economica contro la noia: lo stesso pollo diventa 5 piatti diversi.</p>
+  <ul>
+    <li><b>Curry</b> — a cena eventualmente con latte di cocco</li>
+    <li><b>Paprika affumicata</b> + aglio in polvere — pollo "tex-mex"</li>
+    <li><b>Limone + origano</b> — stile greco, sta bene con feta e yogurt</li>
+    <li><b>Pesto</b> (vasetto) — per pasta fredda e riso</li>
+    <li><b>Salsa yogurt + erba cipollina</b> — con lo yogurt greco già in lista, per wrap e patate</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Meal prep della domenica (~2 ore)</h2>
+  <p>Una sessione sola copre i pranzi e metà delle cene della settimana. In ordine, così i tempi si sovrappongono:</p>
+  <ol>
+    <li><b>Forno a 200&nbsp;°C:</b> 800 g di cosce/petto di pollo con patate, olio, rosmarino e paprika su una teglia → 40 min. È il "batch" di pollo per pranzi e una cena.</li>
+    <li><b>Intanto, pentola 1:</b> 350 g di riso, scolato e raffreddato subito sotto acqua fredda.</li>
+    <li><b>Pentola 2:</b> 6 uova sode (9 min da bollore) → in frigo col guscio, durano una settimana.</li>
+    <li><b>Padella:</b> verdure a rotazione (zucchine, peperoni) grigliate, oppure surgelate saltate al momento nei giorni feriali.</li>
+    <li><b>Porziona</b> in 4–5 contenitori: base carbo + proteina separate dalla verdura, condisci solo la mattina stessa.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Lista spesa settimanale (~45 €)</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Alimento</th><th>Quantità</th><th>Prezzo stimato</th></tr>
+    <tr><td>Uova</td><td>12–18</td><td class="num">4,00 €</td></tr>
+    <tr><td>Pollo (petto + cosce)</td><td>1,2 kg</td><td class="num">8,00 €</td></tr>
+    <tr><td>Tonno al naturale/olio</td><td>6 scatolette</td><td class="num">5,00 €</td></tr>
+    <tr><td>Sgombro in scatola</td><td>2 confezioni</td><td class="num">3,00 €</td></tr>
+    <tr><td>Yogurt greco (marca supermercato)</td><td>1,5 kg</td><td class="num">5,00 €</td></tr>
+    <tr><td>Latte</td><td>3 L</td><td class="num">3,50 €</td></tr>
+    <tr><td>Fiocchi d'avena</td><td>1 kg (dura 10 giorni)</td><td class="num">2,00 €</td></tr>
+    <tr><td>Pasta + riso + couscous</td><td>~1,5 kg</td><td class="num">3,00 €</td></tr>
+    <tr><td>Legumi (lenticchie, ceci)</td><td>3–4 scatole o 500 g secchi</td><td class="num">2,50 €</td></tr>
+    <tr><td>Pane / piadine integrali</td><td>—</td><td class="num">2,50 €</td></tr>
+    <tr><td>Frutta (banane + stagione)</td><td>~2 kg</td><td class="num">4,50 €</td></tr>
+    <tr><td>Verdura (fresca + surgelata)</td><td>—</td><td class="num">5,00 €</td></tr>
+    <tr><td>Burro d'arachidi + frutta secca</td><td>—</td><td class="num">3,50 €</td></tr>
+    <tr><td>Mozzarella/feta, parmigiano</td><td>—</td><td class="num">3,50 €</td></tr>
+  </table></div>
+  <p class="sources">Totale ~45 €. Olio EVO, spezie e hummus si comprano una volta al mese. I discount (Lidl, Eurospin, MD) tengono questi prezzi; a Trento c'è tutto.</p>
+</section>
+
+<section>
+  <h2>Cosa imparare a cucinare quest'estate</h2>
+  <p>Da qui a settembre hai ~8 settimane. Una tecnica a settimana, cucinandola davvero per la famiglia almeno una volta:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Settimana</th><th>Impari</th><th>Il test è superato quando…</th></tr>
+    <tr><td>14–20 lug</td><td>Uova: sode, strapazzate, frittata</td><td>La frittata si gira senza rompersi</td></tr>
+    <tr><td>21–27 lug</td><td>Riso e pasta: cottura, sale, raffreddamento per il meal prep</td><td>Il riso resta sgranato, non un blocco</td></tr>
+    <tr><td>28 lug–3 ago</td><td>Pollo in padella: fette sottili, fuoco vivo, non stracotto</td><td>Dentro morbido, fuori dorato</td></tr>
+    <tr><td>4–10 ago</td><td>Insalata di riso e pasta fredda (i tuoi pranzi 1 e 2)</td><td>Le porti a una giornata fuori casa</td></tr>
+    <tr><td>11–17 ago</td><td>Teglia al forno: pollo + patate + verdure insieme</td><td>Tutto cotto al punto giusto nello stesso tempo</td></tr>
+    <tr><td>18–24 ago</td><td>Legumi: lenticchie in umido, ceci saltati, couscous</td><td>Cucini la cena di legumi senza ricetta</td></tr>
+    <tr><td>25–31 ago</td><td>Ragù veloce + sugo di pomodoro</td><td>La pasta del sabato la fai tu</td></tr>
+    <tr><td>1–7 set</td><td>Prova generale: un intero meal prep domenicale</td><td>5 schiscette in frigo in 2 ore</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>Regole che tengono in piedi tutto</h2>
+  <ul>
+    <li><b>Proteine a ogni pasto</b> (25–45 g): conta più della perfezione dei totali giornalieri.</li>
+    <li><b>Un pasto libero a settimana</b> (il sabato sera): pizza con i coinquilini senza sensi di colpa. La dieta che regge è quella che non ti isola.</li>
+    <li><b>Pesa crudo.</b> I grammi del piano sono sempre a crudo; compra una bilancia da cucina (~10 €), è l'attrezzo più importante insieme a 5 contenitori ermetici.</li>
+    <li><b>Congelatore = secondo frigo:</b> pollo in porzioni, pane a fette, verdure surgelate. Zero sprechi = budget rispettato.</li>
+    <li><b>Il muscolo si costruisce in palestra (o alla sbarra) e nel sonno:</b> senza allenamento progressivo e 7–9 ore di sonno il surplus diventa solo grasso. La dieta è il terzo pilastro, non il primo.</li>
+    <li><b>Niente integratori necessari</b> a questi numeri: le proteine in polvere sono solo una comodità se un giorno non arrivi a 140 g, non un obbligo.</li>
+  </ul>
+  <p class="sources">Riferimenti: il range proteico 1,6–2,2 g/kg viene dalla <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5867436/">meta-analisi di Morton et al.</a>; evidenze più recenti (2024–2025) discusse su <a href="https://www.strongerbyscience.com/protein-science/">Stronger by Science</a> suggeriscono che intake ≥2 g/kg non fanno danno e possono dare un piccolo vantaggio — per questo il target è 2 e non 1,6. Nota: questo è un piano informativo costruito su linee guida generali, non una prescrizione medica.</p>
+</section>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Allenamento calisthenics — massa + skill</title>
+<style>
+:root{
+  --bg:#fafaf6; --card:#f2f0ea; --ink:#26221f; --muted:#6a625c;
+  --accent:#8a4419; --accent-ink:#ffffff; --line:#dcd7d0; --gold:#9a6b12;
+  --code:#eee9e3; --rest:#a39b93;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#191614; --card:#231e1c; --ink:#e9e4df; --muted:#a69a94;
+    --accent:#d99a68; --accent-ink:#160f0c; --line:#3a332f; --gold:#d3a94a; --code:#2a2421; --rest:#6e645e; }
+}
+:root[data-theme="dark"]{ --bg:#191614; --card:#231e1c; --ink:#e9e4df; --muted:#a69a94;
+  --accent:#d99a68; --accent-ink:#160f0c; --line:#3a332f; --gold:#d3a94a; --code:#2a2421; --rest:#6e645e; }
+:root[data-theme="light"]{ --bg:#fafaf6; --card:#f2f0ea; --ink:#26221f; --muted:#6a625c;
+  --accent:#8a4419; --accent-ink:#ffffff; --line:#dcd7d0; --gold:#9a6b12; --code:#eee9e3; --rest:#a39b93; }
+
+body{ background:var(--bg); color:var(--ink);
+  font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif;
+  margin:0; padding:2.5rem 1.25rem 5rem; }
+main{ max-width:760px; margin:0 auto; display:flex; flex-direction:column; gap:3rem; }
+h1,h2,h3{ font-family:Georgia,"Times New Roman",serif; line-height:1.25; text-wrap:balance; margin:0; }
+h1{ font-size:2.1rem; font-weight:600; }
+h2{ font-size:1.45rem; font-weight:600; padding-bottom:.4rem; border-bottom:2px solid var(--accent); }
+h3{ font-size:1.1rem; font-weight:600; }
+p{ margin:0; }
+section{ display:flex; flex-direction:column; gap:1rem; }
+.eyebrow{ text-transform:uppercase; letter-spacing:.12em; font-size:.75rem; color:var(--accent); font-weight:600; }
+.lead{ color:var(--muted); font-size:1.05rem; max-width:60ch; }
+
+.plans{ display:flex; gap:1rem; font-size:.85rem; }
+.plans a{ color:var(--muted); text-decoration:none; padding-bottom:.15rem; }
+.plans a:hover{ color:var(--ink); }
+.plans a[aria-current="page"]{ color:var(--accent); font-weight:600; border-bottom:2px solid var(--accent); }
+
+.stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:.75rem; margin-top:.5rem; }
+.stat{ background:var(--card); border:1px solid var(--line); border-radius:6px; padding:.9rem 1rem; }
+.stat b{ display:block; font-size:1.5rem; font-family:Georgia,serif; font-variant-numeric:tabular-nums; }
+.stat span{ font-size:.8rem; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
+
+.week{ display:grid; grid-template-columns:repeat(7,1fr); gap:.4rem; }
+.day{ border:1px solid var(--line); border-radius:6px; padding:.55rem .3rem .6rem; text-align:center;
+  display:flex; flex-direction:column; gap:.15rem; background:var(--card); }
+.day span{ font-size:.7rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); }
+.day b{ font-size:.82rem; line-height:1.25; }
+.day.rest{ background:transparent; }
+.day.rest b{ color:var(--rest); font-weight:400; font-style:italic; }
+.day.today{ border-color:var(--accent); box-shadow:inset 0 0 0 1px var(--accent); }
+.day.today span{ color:var(--accent); }
+@media (max-width:560px){
+  .week{ grid-template-columns:repeat(7,minmax(64px,1fr)); overflow-x:auto; padding-bottom:.4rem; }
+}
+
+.tablewrap{ overflow-x:auto; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; font-size:.92rem; min-width:560px; }
+th{ text-align:left; background:var(--card); padding:.6rem .8rem; font-size:.78rem;
+  text-transform:uppercase; letter-spacing:.07em; color:var(--muted); border-bottom:1px solid var(--line); }
+td{ padding:.6rem .8rem; border-bottom:1px solid var(--line); vertical-align:top; }
+tr:last-child td{ border-bottom:none; }
+td.num{ font-variant-numeric:tabular-nums; white-space:nowrap; }
+td:first-child{ font-weight:600; }
+caption{ text-align:left; padding:.7rem .8rem .2rem; font-weight:600; font-family:Georgia,serif; font-size:1.05rem; }
+.session-head{ display:flex; align-items:baseline; gap:.6rem; flex-wrap:wrap; }
+.session-head .when{ font-size:.8rem; color:var(--gold); font-weight:600; text-transform:uppercase; letter-spacing:.08em; }
+
+ol,ul{ margin:0; padding-left:1.35rem; display:flex; flex-direction:column; gap:.4rem; }
+li::marker{ color:var(--accent); font-weight:600; }
+.note{ border-left:3px solid var(--gold); background:var(--card); padding:.8rem 1rem; border-radius:0 6px 6px 0; font-size:.92rem; }
+.note b:first-child{ color:var(--gold); }
+code{ background:var(--code); border-radius:4px; padding:.1em .4em; font-size:.88em; font-family:ui-monospace,Menlo,Consolas,monospace; }
+a{ color:var(--accent); }
+.sources{ font-size:.85rem; color:var(--muted); }
+
+.milestones{ list-style:none; padding:0; counter-reset:ms; }
+.milestones li{ counter-increment:ms; display:grid; grid-template-columns:2.2rem 1fr; gap:.75rem; align-items:baseline;
+  padding:.55rem 0; border-bottom:1px solid var(--line); }
+.milestones li:last-child{ border-bottom:none; }
+.milestones li::before{ content:counter(ms); font-family:Georgia,serif; font-size:1.3rem; color:var(--accent);
+  text-align:center; font-variant-numeric:tabular-nums; }
+
+@media print{
+  body{ padding:0; background:#fff; color:#000; }
+  .plans{ display:none; }
+  .tablewrap{ break-inside:avoid; }
+}
+</style>
+</head>
+<body>
+<main>
+
+<header style="display:flex;flex-direction:column;gap:.8rem">
+  <nav class="plans" aria-label="Piani">
+    <a href="allenamento-calisthenics.html" aria-current="page">Allenamento</a>
+    <a href="dieta-settembre.html">Dieta</a>
+  </nav>
+  <span class="eyebrow">Piano di allenamento · da luglio 2026</span>
+  <h1>Calisthenics: massa e primi skill con sbarra, parallele e un elastico</h1>
+  <p class="lead">Quattro sessioni a settimana negli slot già sul tuo calendario (9:15–10:45). Partenza: 3–4 trazioni. La dieta da 2.900&nbsp;kcal è il motore; questo è il lavoro che le dà una direzione.</p>
+  <div class="stats">
+    <div class="stat"><b>4 giorni</b><span>a settimana</span></div>
+    <div class="stat"><b>45–60 min</b><span>a sessione</span></div>
+    <div class="stat"><b>3–4</b><span>trazioni (oggi)</span></div>
+    <div class="stat"><b>Muscle-up</b><span>traguardo lungo</span></div>
+  </div>
+</header>
+
+<section>
+  <h2>La settimana</h2>
+  <div class="week" id="week">
+    <div class="day" data-d="1"><span>Lun</span><b>Pull A</b></div>
+    <div class="day rest" data-d="2"><span>Mar</span><b>riposo</b></div>
+    <div class="day" data-d="3"><span>Mer</span><b>Push A</b></div>
+    <div class="day rest" data-d="4"><span>Gio</span><b>riposo</b></div>
+    <div class="day" data-d="5"><span>Ven</span><b>Pull B</b></div>
+    <div class="day rest" data-d="6"><span>Sab</span><b>riposo</b></div>
+    <div class="day" data-d="0"><span>Dom</span><b>Push B + gambe</b></div>
+  </div>
+  <p>Dom→Lun sono consecutivi ma push→pull: muscoli diversi, funziona. Se salti un giorno, sposta la sessione al giorno dopo e scala tutto — mai due sessioni recuperate in una.</p>
+</section>
+
+<section>
+  <h2>Riscaldamento — ogni sessione, ~8 minuti</h2>
+  <ul>
+    <li>2 min di jumping jack o corsa sul posto</li>
+    <li>Circonduzioni di spalle, gomiti e polsi</li>
+    <li>Band pull-apart con elastico ×15</li>
+    <li>Scapular pull-up ×8 nei giorni pull · scapular push-up ×10 nei giorni push</li>
+    <li>1 serie leggera del primo esercizio, a metà delle reps</li>
+  </ul>
+</section>
+
+<section>
+  <div class="session-head"><h2 style="border:none;padding:0">Le quattro sessioni</h2></div>
+
+  <div class="session-head"><h3>Pull A</h3><span class="when">lunedì</span></div>
+  <div class="tablewrap"><table>
+    <tr><th>Esercizio</th><th>Serie × reps</th><th>Note</th></tr>
+    <tr><td>Trazioni pronate</td><td class="num">5 × max−1</td><td>Fermati a 1 rep dal cedimento. Con 3–4 di max saranno serie da 2–3: va bene così</td></tr>
+    <tr><td>Trazioni assistite con elastico</td><td class="num">3 × 6–8</td><td>Elastico sotto piede o ginocchio — è il volume che le trazioni pure non danno</td></tr>
+    <tr><td>Negative lente</td><td class="num">3 × 3–5</td><td>Sali con un salto o uno sgabello, scendi in 4–5 s controllati</td></tr>
+    <tr><td>Body row</td><td class="num">3 × 8–12</td><td>Sotto le parallele dei dips se l'altezza lo permette; altrimenti row con elastico ancorato alla sbarra</td></tr>
+    <tr><td>Curl con elastico</td><td class="num">3 × 12–15</td><td></td></tr>
+    <tr><td>Knee raise alla sbarra</td><td class="num">3 × 8–12</td><td>Core + presa. A 12 pulite, passa a leg raise a gambe tese</td></tr>
+  </table></div>
+
+  <div class="session-head"><h3>Push A</h3><span class="when">mercoledì</span></div>
+  <div class="tablewrap"><table>
+    <tr><th>Esercizio</th><th>Serie × reps</th><th>Note</th></tr>
+    <tr><td>Dips</td><td class="num">4 × 5–8</td><td>Sotto le 5 pulite: elastico agganciato alle parallele, sotto le ginocchia</td></tr>
+    <tr><td>Piegamenti</td><td class="num">4 × 8–15</td><td>Oltre le 15: piedi rialzati o presa stretta (diamond)</td></tr>
+    <tr><td>Pike push-up</td><td class="num">3 × 6–10</td><td>Spalle: bacino alto, testa verso il pavimento</td></tr>
+    <tr><td>Overhead press con elastico</td><td class="num">3 × 10–12</td><td>In piedi sopra l'elastico</td></tr>
+    <tr><td>Estensioni tricipiti con elastico</td><td class="num">3 × 12–15</td><td>Elastico ancorato alla sbarra</td></tr>
+    <tr><td>Plank</td><td class="num">3 × 40–60 s</td><td></td></tr>
+  </table></div>
+
+  <div class="session-head"><h3>Pull B</h3><span class="when">venerdì</span></div>
+  <div class="tablewrap"><table>
+    <tr><th>Esercizio</th><th>Serie × reps</th><th>Note</th></tr>
+    <tr><td>Chin-up (presa supina)</td><td class="num">5 × max−1</td><td>Più facili delle pronate, più bicipite</td></tr>
+    <tr><td>Trazioni assistite con elastico</td><td class="num">3 × 6–8</td><td></td></tr>
+    <tr><td>Tuck front lever hold</td><td class="num">4 × 5–10 s</td><td>Skill: ginocchia al petto, corpo orizzontale, braccia tese. Schiena tonda ok all'inizio</td></tr>
+    <tr><td>Body row / row con elastico</td><td class="num">3 × 8–12</td><td></td></tr>
+    <tr><td>Face pull con elastico</td><td class="num">3 × 15</td><td>Salute delle spalle: non saltarlo mai</td></tr>
+    <tr><td>Hollow hold</td><td class="num">3 × 20–30 s</td><td>La base per L-sit e front lever</td></tr>
+  </table></div>
+
+  <div class="session-head"><h3>Push B + gambe</h3><span class="when">domenica</span></div>
+  <div class="tablewrap"><table>
+    <tr><th>Esercizio</th><th>Serie × reps</th><th>Note</th></tr>
+    <tr><td>Dips</td><td class="num">4 × 5–8</td><td></td></tr>
+    <tr><td>Piegamenti presa larga</td><td class="num">3 × 8–15</td><td></td></tr>
+    <tr><td>Squat</td><td class="num">4 × 15–20</td><td>Quando 20 è facile: bulgarian split squat col piede su una sedia, 3 × 8–12 per gamba</td></tr>
+    <tr><td>Affondi</td><td class="num">3 × 10 per gamba</td><td>Camminati o sul posto</td></tr>
+    <tr><td>Nordic curl assistito / glute bridge</td><td class="num">3 × 10–15</td><td>Femorali</td></tr>
+    <tr><td>Calf raise su gradino</td><td class="num">3 × 15–20</td><td></td></tr>
+    <tr><td>L-sit progression</td><td class="num">4 × 5–15 s</td><td>Skill, alle parallele: tuck → una gamba tesa → L-sit completo</td></tr>
+  </table></div>
+
+  <p class="sources">Riposo: 2–3 min sui fondamentali (trazioni, dips), 60–90 s sul resto.</p>
+</section>
+
+<section>
+  <h2>Come si progredisce</h2>
+  <ul>
+    <li><b>Doppia progressione:</b> quando raggiungi il tetto del range di reps in tutte le serie, la volta dopo alzi la difficoltà — variante più dura, elastico più lento, discesa più lenta.</li>
+    <li><b>Trazioni:</b> a farle salire è il volume settimanale totale (serie al limite + assistite + negative). Ritesta il massimale ogni 2 settimane, non a ogni sessione.</li>
+    <li><b>Elastico → via:</b> quando fai 8 assistite facili, prova una serie senza.</li>
+    <li><b>Scarico:</b> ogni 6–8 settimane, una settimana a metà serie e niente cedimento.</li>
+  </ul>
+  <div class="note"><b>Tracking obbligatorio:</b> a ogni sessione segna esercizio, serie × reps effettive e variante/elastico usato — basta una nota sul telefono. Senza log la doppia progressione non funziona: la memoria mente sempre al rialzo.</div>
+</section>
+
+<section>
+  <h2>Milestone skill — in ordine, senza saltare</h2>
+  <ol class="milestones">
+    <li><span>L-sit 10 s alle parallele</span></li>
+    <li><span>8 trazioni pronate pulite → inizia il lavoro esplosivo (trazioni al petto)</span></li>
+    <li><span>10 dips profondi</span></li>
+    <li><span>Tuck front lever 15 s → advanced tuck</span></li>
+    <li><span>12 trazioni + trazioni esplosive al petto → transizioni muscle-up con elastico</span></li>
+  </ol>
+</section>
+
+<section>
+  <h2>Regole che tengono in piedi tutto</h2>
+  <ul>
+    <li><b>Tecnica &gt; reps.</b> Una trazione con kipping non conta.</li>
+    <li><b>Dolore articolare ≠ dolore muscolare:</b> se compare a gomito o spalla, riduci il volume su quell'area — non ignorarlo.</li>
+    <li><b>Il surplus serve a questo:</b> senza le 2.900 kcal e le proteine della <a href="dieta-settembre.html">dieta</a>, il piano rende la metà. E il muscolo si costruisce anche dormendo 7–9 ore.</li>
+    <li><b>Da rivedere a settembre:</b> col trasferimento a Trento cambiano attrezzatura e orari — il piano si adatta, non si abbandona.</li>
+  </ul>
+</section>
+
+</main>
+<script>
+document.querySelector('.day[data-d="'+new Date().getDay()+'"]').classList.add('today');
+</script>
+</body>
+</html>

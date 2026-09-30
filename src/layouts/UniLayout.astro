@@ -1,0 +1,85 @@
+---
+import '@fontsource-variable/source-serif-4/opsz.css';
+import '@fontsource-variable/source-serif-4/opsz-italic.css';
+import '@fontsource-variable/archivo/wdth.css';
+import '@fontsource/jetbrains-mono/400.css';
+import 'katex/dist/katex.min.css';
+import '../styles/uni.css';
+
+interface Props {
+  title: string;
+  description: string;
+  materia?: string;
+}
+
+const { title, description, materia } = Astro.props;
+
+const materie = [
+  { slug: 'analisi-1', nome: 'Analisi 1' },
+  { slug: 'gal', nome: 'GAL' },
+  { slug: 'prog-1', nome: 'Prog 1' },
+];
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f3f5f7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1b1d22" media="(prefers-color-scheme: dark)" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/uni/favicon.svg" />
+    <script is:inline>
+      try {
+        const t = localStorage.getItem('uni:tema');
+        if (t === 'chiaro' || t === 'scuro') document.documentElement.dataset.tema = t;
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#contenuto">Vai al testo</a>
+    <header class="runhead">
+      <a class="runhead-home" href="/uni/">Note <span>Ingegneria Informatica · UniTN</span></a>
+      <nav class="runhead-nav" aria-label="Materie">
+        {materie.map((m) => (
+          <a href={`/uni/${m.slug}/`} aria-current={materia === m.slug ? 'page' : undefined}>{m.nome}</a>
+        ))}
+      </nav>
+      <button class="tema" type="button" aria-label="Cambia tema">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.5" /><path d="M10 3.5a6.5 6.5 0 0 1 0 13z" /></svg>
+        <span class="tema-label">auto</span>
+      </button>
+    </header>
+    <slot />
+    <footer class="colophon">
+      <p>Note di Pietro Marchesi, primo anno di Ingegneria Informatica all'Università di Trento, 2026-27. Scritte da slide e lezioni dei docenti: per definizioni ed enunciati fa fede il materiale ufficiale su Moodle. Errori? Scrivimi a <a href="mailto:march3sipietro@gmail.com">march3sipietro@gmail.com</a>.</p>
+      <p><a href="/" data-astro-reload>marchesipietro.xyz</a></p>
+    </footer>
+    <script>
+      const root = document.documentElement;
+      const button = document.querySelector<HTMLButtonElement>('.tema');
+      const label = document.querySelector('.tema-label');
+      const order = ['auto', 'chiaro', 'scuro'];
+      const current = () => root.dataset.tema ?? 'auto';
+      const paint = () => {
+        if (label) label.textContent = current();
+        button?.setAttribute('aria-label', `Tema: ${current()}. Cambia tema`);
+      };
+      paint();
+      button?.addEventListener('click', () => {
+        const next = order[(order.indexOf(current()) + 1) % order.length];
+        if (next === 'auto') delete root.dataset.tema;
+        else root.dataset.tema = next;
+        try {
+          if (next === 'auto') localStorage.removeItem('uni:tema');
+          else localStorage.setItem('uni:tema', next);
+        } catch {}
+        paint();
+      });
+    </script>
+  </body>
+</html>

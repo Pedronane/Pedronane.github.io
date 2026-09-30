@@ -152,3 +152,8 @@ body.nav-collide .nav-links {
     transition-duration: 0.01ms !important;
   }
 }
+
+.astro-code,
+.astro-code span {
+  color: var(--shiki-dark);
+}

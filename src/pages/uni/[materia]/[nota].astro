@@ -1,0 +1,183 @@
+---
+import { render } from 'astro:content';
+import UniLayout from '../../../layouts/UniLayout.astro';
+import { materie, slugOf, urlOf, TIPI, giorni, type Nota } from '../../../lib/uni';
+import { inlineTex, plainTex } from '../../../lib/tex';
+
+export async function getStaticPaths() {
+  const tutte = await materie();
+  return tutte.flatMap(({ hub, note }) =>
+    note.map((nota, i) => ({
+      params: { materia: hub.data.materia, nota: slugOf(nota) },
+      props: { nota, prima: note[i - 1], dopo: note[i + 1] },
+    })),
+  );
+}
+
+interface Props {
+  nota: Nota;
+  prima?: Nota;
+  dopo?: Nota;
+}
+
+const { nota, prima, dopo } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await render(nota);
+const toc: { depth: number; id: string; num: string; text: string }[] = remarkPluginFrontmatter.toc ?? [];
+const d = nota.data;
+const bandiera = '<svg viewBox="0 0 12 14" aria-hidden="true"><path d="M1 0h1.4v14H1zM3.2 1h7.8l-2.2 3.2L11 7.4H3.2z"/></svg>';
+---
+
+<UniLayout
+  title={`${plainTex(d.title)} · ${d.materiaBreve} · Note`}
+  description={`${d.materiaNome}: ${plainTex(d.title)}. Note per l'esame, UniTN.`}
+  materia={d.materia}
+>
+  <main class="sheet" id="contenuto" data-nota={Astro.url.pathname}>
+    <dl class="note-meta">
+      <div><a href={`/uni/${d.materia}/`}>{d.materiaNome}</a></div>
+      {d.tipo !== 'teoria' && <div><dd>{TIPI[d.tipo] ?? d.tipo}</dd></div>}
+      {d.lezioni.length > 0 && <div><dt>{d.lezioni.length > 1 ? 'Lezioni' : 'Lezione'}</dt><dd>{giorni(d.lezioni)}</dd></div>}
+      {d.stato && <div class="stato"><dd>{d.stato}</dd></div>}
+    </dl>
+    <h1 class="note-title" set:html={inlineTex(d.title)} />
+    <p class="riprendi" hidden>
+      <a href="#"><Fragment set:html={bandiera} /><span>Riprendi da</span></a>
+      <button type="button">Ricomincia dall'inizio</button>
+    </p>
+    {toc.length > 2 && (
+      <details class="toc-mobile">
+        <summary>Indice <span>{toc.filter((t) => t.depth === 2).length} sezioni</span></summary>
+        <ol>
+          {toc.map((t) => (
+            <li class={`d${t.depth}`}><a href={`#${t.id}`}><span class="num">{t.num}</span><span set:html={inlineTex(t.text)} /></a></li>
+          ))}
+        </ol>
+      </details>
+    )}
+    <article class="prose">
+      <Content />
+    </article>
+    <nav class="note-foot" aria-label="Note vicine">
+      {prima && <a class="prima" href={urlOf(prima)}><span>Precedente</span><strong set:html={inlineTex(prima.data.title)} /></a>}
+      {dopo && <a class="dopo" href={urlOf(dopo)}><span>Successiva</span><strong set:html={inlineTex(dopo.data.title)} /></a>}
+    </nav>
+    {toc.length > 0 && (
+      <nav class="toc" aria-label="Indice della nota">
+        <p class="toc-title">Indice</p>
+        <ol>
+          {toc.map((t) => (
+            <li class={`d${t.depth}`}>
+              <a href={`#${t.id}`} data-id={t.id}>
+                <span class="num">{t.num}</span>
+                <span set:html={inlineTex(t.text)} />
+                <span class="bandiera" title="Qui avevi smesso"><Fragment set:html={bandiera} /></span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    )}
+  </main>
+</UniLayout>
+
+<script>
+  const main = document.querySelector<HTMLElement>('[data-nota]');
+  const key = `uni:pos:${main?.dataset.nota}`;
+  const headings = [...document.querySelectorAll<HTMLElement>('.prose h2[id], .prose h3[id]')];
+  const tocLinks = new Map([...document.querySelectorAll<HTMLAnchorElement>('.toc a[data-id]')].map((a) => [a.dataset.id, a]));
+
+  type Pos = { id: string; num: string; text: string };
+  const read = (): Pos | null => {
+    try {
+      return JSON.parse(localStorage.getItem(key) ?? 'null');
+    } catch {
+      return null;
+    }
+  };
+  const write = (p: Pos | null) => {
+    try {
+      if (p) localStorage.setItem(key, JSON.stringify(p));
+      else localStorage.removeItem(key);
+    } catch {}
+  };
+
+  const describe = (h: HTMLElement): Pos => {
+    const num = h.querySelector('.sec-num')?.textContent ?? '';
+    const clone = h.cloneNode(true) as HTMLElement;
+    clone.querySelector('.sec-num')?.remove();
+    clone.querySelectorAll('.katex-mathml').forEach((n) => n.remove());
+    return { id: h.id, num, text: (clone.textContent ?? '').trim() };
+  };
+
+  const saved = read();
+  const bar = document.querySelector<HTMLElement>('.riprendi');
+  if (saved && !location.hash && document.getElementById(saved.id) && headings[0]?.id !== saved.id && bar) {
+    const link = bar.querySelector('a')!;
+    link.href = `#${saved.id}`;
+    link.querySelector('span')!.textContent = `Riprendi da §${saved.num} ${saved.text}`;
+    bar.hidden = false;
+    tocLinks.get(saved.id)?.setAttribute('data-bandiera', '');
+    link.addEventListener('click', () => (bar.hidden = true));
+    bar.querySelector('button')?.addEventListener('click', () => {
+      bar.hidden = true;
+      tocLinks.get(saved.id)?.removeAttribute('data-bandiera');
+      write(null);
+    });
+  }
+
+  let moved = false;
+  let current: HTMLElement | null = null;
+  const onScroll = () => {
+    if (!moved && window.scrollY > 400) moved = true;
+    let active: HTMLElement | null = null;
+    for (const h of headings) {
+      if (h.getBoundingClientRect().top < window.innerHeight * 0.3) active = h;
+      else break;
+    }
+    if (active === current) return;
+    if (current) tocLinks.get(current.id)?.removeAttribute('aria-current');
+    current = active;
+    if (current) {
+      const link = tocLinks.get(current.id);
+      link?.setAttribute('aria-current', 'true');
+      link?.scrollIntoView({ block: 'nearest' });
+      if (moved) {
+        write(describe(current));
+        if (bar) bar.hidden = true;
+      }
+    }
+  };
+  let ticking = false;
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        onScroll();
+        ticking = false;
+      });
+    },
+    { passive: true },
+  );
+  onScroll();
+
+  document.querySelectorAll<HTMLAnchorElement>('.sec-num').forEach((a) => {
+    a.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const url = new URL(a.getAttribute('href')!, location.href).href;
+      history.replaceState(null, '', url);
+      try {
+        await navigator.clipboard.writeText(url);
+        a.setAttribute('data-copiato', '');
+        setTimeout(() => a.removeAttribute('data-copiato'), 1600);
+      } catch {
+        a.closest('h2, h3')?.scrollIntoView();
+      }
+    });
+  });
+
+  window.addEventListener('beforeprint', () => {
+    document.querySelectorAll('details').forEach((d) => d.setAttribute('open', ''));
+  });
+</script>

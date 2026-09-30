@@ -1,0 +1,65 @@
+---
+import { render } from 'astro:content';
+import UniLayout from '../../../layouts/UniLayout.astro';
+import { materie, urlOf, TIPI, giorni } from '../../../lib/uni';
+import { inlineTex } from '../../../lib/tex';
+
+export async function getStaticPaths() {
+  const tutte = await materie();
+  return tutte.map((m) => ({ params: { materia: m.hub.data.materia }, props: m }));
+}
+
+const { hub, note, lezioni, materiale } = Astro.props;
+const { Content } = await render(hub);
+const d = hub.data;
+const ultima = [...lezioni].reverse().find((n) => n.data.lezioni.length)?.data.lezioni.at(-1);
+---
+
+<UniLayout title={`${d.materiaNome} · Note`} description={`Note di ${d.materiaNome}, UniTN 2026-27.`} materia={d.materia}>
+  <main class="sheet senza-indice" id="contenuto">
+    <header class="registro-head">
+      <dl class="note-meta">
+        <div><a href="/uni/">Tutte le materie</a></div>
+        <div><dt>CFU</dt><dd>{d.cfu}</dd></div>
+        <div><dt>Argomenti</dt><dd>{note.length}</dd></div>
+        {ultima && <div class="stato"><dt>Ultima lezione</dt><dd>{ultima}</dd></div>}
+      </dl>
+      <h1>{d.materiaNome}</h1>
+    </header>
+
+    <section aria-labelledby="registro">
+      <h2 id="registro" class="gruppo">In ordine di lezione</h2>
+      <ol class="voci">
+        {lezioni.map((n, i) => (
+          <li class="voce">
+            <a href={urlOf(n)}>
+              <span class="n">{i + 1}</span>
+              <span class="t" set:html={inlineTex(n.data.title)} />
+              <span class="d">{giorni(n.data.lezioni)}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+      {materiale.length > 0 && (
+        <>
+          <h2 class="gruppo">Formulari e ripasso</h2>
+          <ol class="voci">
+            {materiale.map((n, i) => (
+              <li class="voce">
+                <a href={urlOf(n)}>
+                  <span class="n">{String.fromCharCode(65 + i)}</span>
+                  <span class="t" set:html={inlineTex(n.data.title)} />
+                  <span class="d">{TIPI[n.data.tipo] ?? n.data.tipo}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </>
+      )}
+    </section>
+
+    <article class="prose hub-body">
+      <Content />
+    </article>
+  </main>
+</UniLayout>

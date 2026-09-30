@@ -1,0 +1,54 @@
+---
+import UniLayout from '../../layouts/UniLayout.astro';
+import { materie, urlOf, giorni } from '../../lib/uni';
+import { inlineTex } from '../../lib/tex';
+
+const tutte = await materie();
+const totale = tutte.reduce((s, m) => s + m.note.length, 0);
+---
+
+<UniLayout title="Note · Ingegneria Informatica UniTN" description="Note del primo anno di Ingegneria Informatica a Trento: Analisi 1, GAL, Programmazione 1.">
+  <main class="sheet senza-indice" id="contenuto">
+    <header class="registro-head">
+      <dl class="note-meta">
+        <div><dd>Università di Trento</dd></div>
+        <div><dd>Ingegneria Informatica, primo anno</dd></div>
+        <div class="stato"><dd>2026-27, primo semestre</dd></div>
+      </dl>
+      <h1>Note per l'esame</h1>
+      <p class="sotto">{totale} note in {tutte.length} materie, una per argomento, scritte dalle slide e dalle lezioni. Ogni nota ha definizioni, enunciati con dimostrazione, gli esempi fatti in aula ed esercizi tipo esame con soluzione da aprire dopo averci provato.</p>
+    </header>
+
+    <ol class="registro">
+      {tutte.map(({ hub, lezioni, materiale }) => (
+        <li class="materia">
+          <div class="materia-head">
+            <h2><a href={urlOf(hub)}>{hub.data.materiaNome}</a></h2>
+            <p>{hub.data.cfu} CFU · {lezioni.length + materiale.length} note</p>
+            <a class="apri" href={urlOf(hub)}>Esame e programma</a>
+          </div>
+          <ol class="voci">
+            {lezioni.map((n, i) => (
+              <li class="voce">
+                <a href={urlOf(n)}>
+                  <span class="n">{i + 1}</span>
+                  <span class="t" set:html={inlineTex(n.data.title)} />
+                  <span class="d">{giorni(n.data.lezioni)}</span>
+                </a>
+              </li>
+            ))}
+            {materiale.map((n, i) => (
+              <li class="voce">
+                <a href={urlOf(n)}>
+                  <span class="n">{String.fromCharCode(65 + i)}</span>
+                  <span class="t" set:html={inlineTex(n.data.title)} />
+                  <span class="d">ripasso</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </li>
+      ))}
+    </ol>
+  </main>
+</UniLayout>

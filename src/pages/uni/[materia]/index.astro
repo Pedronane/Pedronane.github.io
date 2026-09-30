@@ -35,7 +35,7 @@ const ultima = [...lezioni].reverse().find((n) => n.data.lezioni.length)?.data.l
             <a href={urlOf(n)}>
               <span class="n">{i + 1}</span>
               <span class="t" set:html={inlineTex(n.data.title)} />
-              <span class="d">{giorni(n.data.lezioni)}</span>
+              <span class="d">{giorni(n.data.lezioni) || 'da datare'}</span>
             </a>
           </li>
         ))}

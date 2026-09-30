@@ -201,6 +201,8 @@ function normDate(cell) {
   if (m) return `${+m[1]} ${MESI[+m[2] - 1]}`;
   m = c.match(/^(\d{1,2}) ([a-z]{3})/i);
   if (m) return `${+m[1]} ${m[2].toLowerCase()}`;
+  m = c.match(/^([a-z]{3})$/i);
+  if (m && MESI.includes(m[1].toLowerCase())) return `${m[1].toLowerCase()}, giorno?`;
   return null;
 }
 

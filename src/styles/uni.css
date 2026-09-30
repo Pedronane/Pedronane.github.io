@@ -43,9 +43,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-tema='chiaro']) {
-    --paper: oklch(0.195 0.011 262);
-    --paper-2: oklch(0.232 0.013 262);
-    --paper-3: oklch(0.27 0.014 262);
+    --paper: oklch(0.195 0.004 262);
+    --paper-2: oklch(0.232 0.005 262);
+    --paper-3: oklch(0.27 0.006 262);
     --ink: oklch(0.94 0.008 250);
     --ink-2: oklch(0.86 0.01 252);
     --muted: oklch(0.69 0.014 256);
@@ -63,9 +63,9 @@
 }
 
 :root[data-tema='scuro'] {
-  --paper: oklch(0.195 0.011 262);
-  --paper-2: oklch(0.232 0.013 262);
-  --paper-3: oklch(0.27 0.014 262);
+  --paper: oklch(0.195 0.004 262);
+  --paper-2: oklch(0.232 0.005 262);
+  --paper-3: oklch(0.27 0.006 262);
   --ink: oklch(0.94 0.008 250);
   --ink-2: oklch(0.86 0.01 252);
   --muted: oklch(0.69 0.014 256);
@@ -83,6 +83,7 @@
 
 html {
   background: var(--paper);
+  scrollbar-color: var(--rule) transparent;
   -webkit-text-size-adjust: 100%;
   scroll-padding-top: 5rem;
 }
@@ -153,9 +154,7 @@ a:hover {
   align-items: center;
   gap: 1.25rem;
   padding: 0.7rem var(--gutter);
-  background: color-mix(in oklch, var(--paper) 92%, transparent);
-  backdrop-filter: saturate(1.4) blur(10px);
-  -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  background: var(--paper);
   border-bottom: 1px solid var(--rule-strong);
   font-family: var(--grotesk);
   font-size: 0.9rem;
@@ -350,6 +349,12 @@ main {
   margin-left: auto;
 }
 
+@media (max-width: 719px) {
+  .note-meta > div:first-child {
+    flex-basis: 100%;
+  }
+}
+
 .note-title {
   font-family: var(--grotesk);
   font-weight: 700;
@@ -429,14 +434,14 @@ main {
   padding-bottom: 1.4rem;
 }
 
-.prose > p:first-child a {
-  color: var(--ink-2);
-  text-decoration-color: var(--rule);
-}
 
 .prose strong {
   font-weight: 650;
   color: var(--ink);
+}
+
+.prose strong.def {
+  color: var(--biro-ink);
 }
 
 .prose em {
@@ -645,13 +650,26 @@ main {
   font-family: var(--mono);
   font-size: 0.84rem;
   line-height: 1.6;
-  background: var(--paper-2) !important;
-  border: 1px solid var(--rule);
-  border-radius: 3px;
-  padding: 0.95rem 1.1rem;
+  background: none !important;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 0.9rem 0;
   overflow-x: auto;
   tab-size: 4;
   scrollbar-width: thin;
+}
+
+@media (min-width: 720px) {
+  .prose > pre {
+    margin-left: calc(-1 * var(--margin));
+    padding-left: var(--margin);
+  }
+}
+
+@media (min-width: 1120px) {
+  .prose > pre {
+    margin-right: -3rem;
+  }
 }
 
 .prose pre code {
@@ -764,17 +782,41 @@ main {
 }
 
 aside.callout-abstract {
-  background: var(--paper-2);
+  position: relative;
   border-top: 2px solid var(--rule-strong);
-  padding: 1.1rem 1.35rem 1.25rem;
-  font-size: 1rem;
-  line-height: 1.58;
+  border-bottom: 1px solid var(--rule);
+  padding: 1rem 0 1.3rem;
+  margin-top: 0.5rem;
 }
 
 aside.callout-abstract .callout-title {
-  color: var(--biro);
-  font-size: 1.05rem;
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.45rem);
+  font-weight: 700;
+  font-stretch: 106%;
+  letter-spacing: -0.012em;
   margin-bottom: 0.6rem;
+}
+
+.prose > aside.callout-abstract:first-of-type .callout-title::before {
+  content: '§0';
+  position: absolute;
+  right: calc(100% + 1.15rem);
+  top: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.95;
+  font-weight: 650;
+  font-stretch: 100%;
+  letter-spacing: 0;
+  color: var(--biro);
+}
+
+@media (max-width: 719px) {
+  .prose > aside.callout-abstract:first-of-type .callout-title::before {
+    position: static;
+    margin-right: 0.5rem;
+    font-size: inherit;
+    line-height: inherit;
+  }
 }
 
 aside.callout-warning,
@@ -959,7 +1001,6 @@ details.callout-question > summary {
 .toc .num {
   font-variant-numeric: tabular-nums;
   color: var(--muted);
-  opacity: 0.8;
 }
 
 .toc .d2 > a {
@@ -974,7 +1015,6 @@ details.callout-question > summary {
 
 .toc a[aria-current='true'] .num {
   color: var(--biro);
-  opacity: 1;
 }
 
 .toc .bandiera {

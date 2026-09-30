@@ -8,7 +8,8 @@ hub: false
 tipo: teoria
 stato: in corso
 data: 2026-09-27
-lezioni: []
+lezioni:
+  - set, giorno?
 ordine: 6
 ---
 

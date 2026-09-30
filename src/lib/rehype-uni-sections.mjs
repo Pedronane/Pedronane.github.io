@@ -38,6 +38,20 @@ export default function rehypeUniSections() {
         children: [{ type: 'text', value: num }],
       });
     }
+    const mark = (node) => {
+      for (const child of node.children ?? []) {
+        if (child.type !== 'element') continue;
+        if (child.tagName === 'p') {
+          const first = child.children?.[0];
+          if (first?.type === 'element' && first.tagName === 'strong') {
+            first.properties.className = [...(first.properties.className ?? []), 'def'];
+          }
+        } else if (!['pre', 'code', 'table'].includes(child.tagName)) {
+          mark(child);
+        }
+      }
+    };
+    mark(tree);
     file.data.astro ??= {};
     file.data.astro.frontmatter ??= {};
     file.data.astro.frontmatter.toc = toc;

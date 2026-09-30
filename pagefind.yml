@@ -1,0 +1,7 @@
+site: dist
+exclude_selectors:
+  - ".katex-html"
+  - "annotation"
+  - ".sec-num"
+  - "figure"
+  - "[data-pagefind-ignore]"

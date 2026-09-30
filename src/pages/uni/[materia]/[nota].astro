@@ -32,20 +32,20 @@ const bandiera = '<svg viewBox="0 0 12 14" aria-hidden="true"><path d="M1 0h1.4v
   description={`${d.materiaNome}: ${plainTex(d.title)}. Note per l'esame, UniTN.`}
   materia={d.materia}
 >
-  <main class="sheet" id="contenuto" data-nota={Astro.url.pathname}>
-    <dl class="note-meta">
+  <main class="sheet" id="contenuto" data-nota={Astro.url.pathname} data-pagefind-body data-pagefind-filter={`materia:${d.materiaBreve}`}>
+    <dl class="note-meta" data-pagefind-ignore>
       <div><a href={`/uni/${d.materia}/`}>{d.materiaNome}</a></div>
       {d.tipo !== 'teoria' && <div><dd>{TIPI[d.tipo] ?? d.tipo}</dd></div>}
       {d.lezioni.length > 0 && <div><dt>{d.lezioni.length > 1 ? 'Lezioni' : 'Lezione'}</dt><dd>{giorni(d.lezioni)}</dd></div>}
       {d.stato && <div class="stato"><dd>{d.stato}</dd></div>}
     </dl>
     <h1 class="note-title" set:html={inlineTex(d.title)} />
-    <p class="riprendi" hidden>
+    <p class="riprendi" hidden data-pagefind-ignore>
       <a href="#"><Fragment set:html={bandiera} /><span>Riprendi da</span></a>
       <button type="button">Ricomincia dall’inizio</button>
     </p>
     {toc.length > 2 && (
-      <details class="toc-mobile">
+      <details class="toc-mobile" data-pagefind-ignore>
         <summary>Indice <span>{toc.filter((t) => t.depth === 2).length} sezioni</span></summary>
         <ol>
           {toc.map((t) => (
@@ -57,12 +57,12 @@ const bandiera = '<svg viewBox="0 0 12 14" aria-hidden="true"><path d="M1 0h1.4v
     <article class="prose">
       <Content />
     </article>
-    <nav class="note-foot" aria-label="Note vicine">
+    <nav class="note-foot" aria-label="Note vicine" data-pagefind-ignore>
       {prima && <a class="prima" href={urlOf(prima)}><span>Precedente</span><strong set:html={inlineTex(prima.data.title)} /></a>}
       {dopo && <a class="dopo" href={urlOf(dopo)}><span>Successiva</span><strong set:html={inlineTex(dopo.data.title)} /></a>}
     </nav>
     {toc.length > 0 && (
-      <nav class="toc" aria-label="Indice della nota">
+      <nav class="toc" aria-label="Indice della nota" data-pagefind-ignore>
         <p class="toc-title">Indice</p>
         <ol>
           {toc.map((t) => (

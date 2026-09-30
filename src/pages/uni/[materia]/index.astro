@@ -16,9 +16,9 @@ const ultima = [...lezioni].reverse().find((n) => n.data.lezioni.length)?.data.l
 ---
 
 <UniLayout title={`${d.materiaNome} · Note`} description={`Note di ${d.materiaNome}, UniTN 2026-27.`} materia={d.materia}>
-  <main class="sheet senza-indice" id="contenuto">
+  <main class="sheet senza-indice" id="contenuto" data-pagefind-body data-pagefind-filter={`materia:${d.materiaBreve}`}>
     <header class="registro-head">
-      <dl class="note-meta">
+      <dl class="note-meta" data-pagefind-ignore>
         <div><a href="/uni/">Tutte le materie</a></div>
         <div><dt>CFU</dt><dd>{d.cfu}</dd></div>
         <div><dt>Argomenti</dt><dd>{note.length}</dd></div>
@@ -27,7 +27,7 @@ const ultima = [...lezioni].reverse().find((n) => n.data.lezioni.length)?.data.l
       <h1>{d.materiaNome}</h1>
     </header>
 
-    <section aria-labelledby="registro">
+    <section aria-labelledby="registro" data-pagefind-ignore>
       <h2 id="registro" class="gruppo">In ordine di lezione</h2>
       <ol class="voci">
         {lezioni.map((n, i) => (

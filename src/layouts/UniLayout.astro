@@ -49,10 +49,29 @@ const materie = [
           <a href={`/uni/${m.slug}/`} aria-current={materia === m.slug ? 'page' : undefined}>{m.nome}</a>
         ))}
       </nav>
+      <button class="cerca-apri" type="button" aria-expanded="false" aria-controls="cerca" aria-keyshortcuts="/">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" /><path d="M12.5 12.5 17 17" /></svg>
+        <span class="cerca-label">Cerca</span>
+        <kbd>/</kbd>
+      </button>
       <button class="tema" type="button" aria-label="Cambia tema">
         <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.5" /><path d="M10 3.5a6.5 6.5 0 0 1 0 13z" /></svg>
         <span class="tema-label">auto</span>
       </button>
+      <div class="cerca" id="cerca" role="search" hidden>
+        <div class="cerca-campo">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" /><path d="M12.5 12.5 17 17" /></svg>
+          <input type="search" placeholder="Cerca nelle note: sup, De Moivre, getchar…" aria-label="Cerca nelle note" autocomplete="off" spellcheck="false" enterkeyhint="search" />
+          <button class="cerca-chiudi" type="button">Chiudi</button>
+        </div>
+        <fieldset class="cerca-filtri">
+          <legend class="sr">Materia</legend>
+          <label><input type="radio" name="materia" value="" checked /><span>Tutte</span></label>
+          {materie.map((m) => <label><input type="radio" name="materia" value={m.nome} /><span>{m.nome}</span></label>)}
+        </fieldset>
+        <p class="cerca-stato" aria-live="polite"></p>
+        <ol class="cerca-risultati"></ol>
+      </div>
     </header>
     <slot />
     <footer class="colophon">
@@ -79,6 +98,141 @@ const materie = [
           else localStorage.setItem('uni:tema', next);
         } catch {}
         paint();
+      });
+    </script>
+    <script>
+      type Sub = { title: string; url: string; excerpt: string; plain_excerpt?: string; locations?: number[] };
+      type Data = { url: string; meta: { title?: string }; excerpt: string; sub_results: Sub[]; filters: { materia?: string[] } };
+      type Pagefind = {
+        init: () => Promise<void>;
+        debouncedSearch: (q: string, o?: object, ms?: number) => Promise<{ results: { data: () => Promise<Data> }[] } | null>;
+      };
+
+      const apri = document.querySelector<HTMLButtonElement>('.cerca-apri')!;
+      const panel = document.querySelector<HTMLElement>('#cerca')!;
+      const input = panel.querySelector<HTMLInputElement>('input[type=search]')!;
+      const lista = panel.querySelector<HTMLOListElement>('.cerca-risultati')!;
+      const stato = panel.querySelector<HTMLElement>('.cerca-stato')!;
+      let pagefind: Pagefind | null = null;
+      let turno = 0;
+
+      const carica = async () => {
+        if (pagefind) return pagefind;
+        try {
+          const url = '/pagefind/pagefind.js';
+          pagefind = (await import(/* @vite-ignore */ url)) as Pagefind;
+          await pagefind.init();
+        } catch {
+          stato.textContent = 'La ricerca non è disponibile in questa versione del sito.';
+        }
+        return pagefind;
+      };
+
+      const materia = () => panel.querySelector<HTMLInputElement>('input[name=materia]:checked')?.value ?? '';
+
+      const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+
+      const pulisci = (t: string) => t.replace(/^\s*[\d.]+\s*/, '').trim();
+
+      const cerca = async () => {
+        const q = input.value.trim();
+        const mio = ++turno;
+        if (q.length < 2) {
+          lista.innerHTML = '';
+          stato.textContent = '';
+          return;
+        }
+        const pf = await carica();
+        if (!pf || mio !== turno) return;
+        const m = materia();
+        const res = await pf.debouncedSearch(q, m ? { filters: { materia: m } } : {}, 180);
+        if (!res || mio !== turno) return;
+        const dati = await Promise.all(res.results.slice(0, 12).map((r) => r.data()));
+        if (mio !== turno) return;
+        stato.textContent = res.results.length
+          ? `${res.results.length} ${res.results.length === 1 ? 'nota' : 'note'}`
+          : `Nessuna nota contiene «${q}».`;
+        lista.innerHTML = dati
+          .map((d) => {
+            const parole = q.toLowerCase().split(/\s+/).filter(Boolean);
+            const frase = q.toLowerCase();
+            const punti = (s: Sub) => {
+              const testo = `${s.title} ${s.plain_excerpt ?? ''}`.toLowerCase();
+              return (testo.includes(frase) ? 1000 : 0) + parole.filter((w) => testo.includes(w)).length * 100 + (s.locations?.length ?? 0);
+            };
+            const subs = d.sub_results
+              .filter((s) => s.url !== d.url && s.url.includes('#') && s.excerpt.trim())
+              .map((s, i) => ({ s, i, p: punti(s) }))
+              .sort((x, y) => y.p - x.p || x.i - y.i)
+              .slice(0, 3)
+              .sort((x, y) => x.i - y.i)
+              .map((x) => x.s);
+            const righe = (subs.length ? subs : [{ title: '', url: d.url, excerpt: d.excerpt }])
+              .map(
+                (s) =>
+                  `<li><a href="${s.url}">${s.title ? `<span class="r-sez">${esc(pulisci(s.title))}</span>` : ''}<span class="r-est">${s.excerpt}</span></a></li>`,
+              )
+              .join('');
+            return `<li class="r-nota"><a class="r-titolo" href="${d.url}"><span>${esc(d.meta.title ?? d.url)}</span><span class="r-mat">${esc(d.filters.materia?.[0] ?? '')}</span></a><ol>${righe}</ol></li>`;
+          })
+          .join('')
+          .replace(/[⃐-⃿]/g, '');
+        const parole = q.toLowerCase().split(/\s+/).filter(Boolean);
+        lista.querySelectorAll('mark').forEach((mk) => {
+          const w = (mk.textContent ?? '').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+          const buono = parole.some((p) => w === p || (p.length >= 3 && w.startsWith(p)));
+          if (!buono) mk.replaceWith(document.createTextNode(mk.textContent ?? ''));
+        });
+      };
+
+      const apriPanel = () => {
+        panel.hidden = false;
+        apri.setAttribute('aria-expanded', 'true');
+        input.focus();
+        input.select();
+        carica();
+      };
+      const chiudi = () => {
+        panel.hidden = true;
+        apri.setAttribute('aria-expanded', 'false');
+        apri.focus();
+      };
+
+      apri.addEventListener('click', () => (panel.hidden ? apriPanel() : chiudi()));
+      panel.querySelector('.cerca-chiudi')?.addEventListener('click', chiudi);
+      input.addEventListener('input', cerca);
+      panel.querySelectorAll('input[name=materia]').forEach((r) => r.addEventListener('change', cerca));
+      lista.addEventListener('click', (e) => {
+        if ((e.target as HTMLElement).closest('a')) panel.hidden = true;
+      });
+
+      const links = () => [...lista.querySelectorAll<HTMLAnchorElement>('a')];
+      panel.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          chiudi();
+          return;
+        }
+        if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp' && !(e.key === 'Enter' && e.target === input)) return;
+        const all = links();
+        if (!all.length) return;
+        e.preventDefault();
+        if (e.key === 'Enter') {
+          all[0].click();
+          return;
+        }
+        const i = all.indexOf(document.activeElement as HTMLAnchorElement);
+        if (e.key === 'ArrowDown') all[Math.min(i + 1, all.length - 1)].focus();
+        else if (i <= 0) input.focus();
+        else all[i - 1].focus();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        const t = e.target as HTMLElement;
+        if (e.key === '/' && panel.hidden && !t.closest('input, textarea, [contenteditable]')) {
+          e.preventDefault();
+          apriPanel();
+        }
       });
     </script>
   </body>

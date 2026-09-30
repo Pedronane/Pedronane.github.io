@@ -7,7 +7,6 @@
 :root {
   --paper: oklch(0.972 0.004 245);
   --paper-2: oklch(0.945 0.007 250);
-  --paper-3: oklch(0.915 0.009 250);
   --ink: oklch(0.21 0.022 262);
   --ink-2: oklch(0.29 0.02 262);
   --muted: oklch(0.49 0.018 260);
@@ -45,7 +44,6 @@
   :root:not([data-tema='chiaro']) {
     --paper: oklch(0.195 0.004 262);
     --paper-2: oklch(0.232 0.005 262);
-    --paper-3: oklch(0.27 0.006 262);
     --ink: oklch(0.94 0.008 250);
     --ink-2: oklch(0.86 0.01 252);
     --muted: oklch(0.69 0.014 256);
@@ -65,7 +63,6 @@
 :root[data-tema='scuro'] {
   --paper: oklch(0.195 0.004 262);
   --paper-2: oklch(0.232 0.005 262);
-  --paper-3: oklch(0.27 0.006 262);
   --ink: oklch(0.94 0.008 250);
   --ink-2: oklch(0.86 0.01 252);
   --muted: oklch(0.69 0.014 256);
@@ -985,7 +982,7 @@ details.callout-question > summary {
   padding: 0.3rem 0;
   color: var(--muted);
   text-decoration: none;
-  transition: color 0.15s;
+  transition: color 0.15s var(--ease);
 }
 
 .toc a:hover {

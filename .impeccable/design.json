@@ -1,0 +1,697 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-30T17:58:25.788Z",
+  "title": "Design System: marchesipietro.xyz (two worlds)",
+  "worlds": {
+    "main": {
+      "scope": "site root, everything outside /uni",
+      "source": "DESIGN.md top sections",
+      "northStar": "Outer Wilds: campfire warmth inside cosmic cold",
+      "tokenPrefix": "main."
+    },
+    "uni": {
+      "scope": "/uni/**",
+      "source": "src/styles/uni.css via src/layouts/UniLayout.astro; DESIGN.md section \"/uni: Registro numerato (separate world)\"",
+      "northStar": "The Numbered Register",
+      "tokenPrefix": "uni.",
+      "themes": {
+        "light": ":root",
+        "dark": "@media (prefers-color-scheme: dark) :root:not([data-tema='chiaro']), :root[data-tema='scuro']"
+      }
+    }
+  },
+  "extensions": {
+    "colorMeta": {
+      "main.void": {
+        "role": "neutral",
+        "displayName": "Void",
+        "canonical": "oklch(0.13 0.035 275)",
+        "tonalRamp": [
+          "oklch(0.15 0.035 275)",
+          "oklch(0.26 0.035 275)",
+          "oklch(0.37 0.035 275)",
+          "oklch(0.48 0.035 275)",
+          "oklch(0.6 0.035 275)",
+          "oklch(0.72 0.035 275)",
+          "oklch(0.84 0.035 275)",
+          "oklch(0.95 0.035 275)"
+        ]
+      },
+      "main.surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "oklch(0.18 0.04 270)",
+        "tonalRamp": [
+          "oklch(0.15 0.04 270)",
+          "oklch(0.26 0.04 270)",
+          "oklch(0.37 0.04 270)",
+          "oklch(0.48 0.04 270)",
+          "oklch(0.6 0.04 270)",
+          "oklch(0.72 0.04 270)",
+          "oklch(0.84 0.04 270)",
+          "oklch(0.95 0.04 270)"
+        ]
+      },
+      "main.ink": {
+        "role": "neutral",
+        "displayName": "Starlight Ink",
+        "canonical": "oklch(0.90 0.02 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.02 250)",
+          "oklch(0.26 0.02 250)",
+          "oklch(0.37 0.02 250)",
+          "oklch(0.48 0.02 250)",
+          "oklch(0.6 0.02 250)",
+          "oklch(0.72 0.02 250)",
+          "oklch(0.84 0.02 250)",
+          "oklch(0.95 0.02 250)"
+        ]
+      },
+      "main.body": {
+        "role": "neutral",
+        "displayName": "Body",
+        "canonical": "oklch(0.80 0.025 255)",
+        "tonalRamp": [
+          "oklch(0.15 0.025 255)",
+          "oklch(0.26 0.025 255)",
+          "oklch(0.37 0.025 255)",
+          "oklch(0.48 0.025 255)",
+          "oklch(0.6 0.025 255)",
+          "oklch(0.72 0.025 255)",
+          "oklch(0.84 0.025 255)",
+          "oklch(0.95 0.025 255)"
+        ]
+      },
+      "main.faint": {
+        "role": "neutral",
+        "displayName": "Faint",
+        "canonical": "oklch(0.62 0.03 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.03 260)",
+          "oklch(0.26 0.03 260)",
+          "oklch(0.37 0.03 260)",
+          "oklch(0.48 0.03 260)",
+          "oklch(0.6 0.03 260)",
+          "oklch(0.72 0.03 260)",
+          "oklch(0.84 0.03 260)",
+          "oklch(0.95 0.03 260)"
+        ]
+      },
+      "main.cyan": {
+        "role": "primary",
+        "displayName": "Orbit Cyan",
+        "canonical": "oklch(0.83 0.13 215)",
+        "tonalRamp": [
+          "oklch(0.15 0.13 215)",
+          "oklch(0.26 0.13 215)",
+          "oklch(0.37 0.13 215)",
+          "oklch(0.48 0.13 215)",
+          "oklch(0.6 0.13 215)",
+          "oklch(0.72 0.13 215)",
+          "oklch(0.84 0.13 215)",
+          "oklch(0.95 0.13 215)"
+        ]
+      },
+      "main.amber": {
+        "role": "secondary",
+        "displayName": "Campfire Amber",
+        "canonical": "oklch(0.80 0.15 70)",
+        "tonalRamp": [
+          "oklch(0.15 0.15 70)",
+          "oklch(0.26 0.15 70)",
+          "oklch(0.37 0.15 70)",
+          "oklch(0.48 0.15 70)",
+          "oklch(0.6 0.15 70)",
+          "oklch(0.72 0.15 70)",
+          "oklch(0.84 0.15 70)",
+          "oklch(0.95 0.15 70)"
+        ]
+      },
+      "main.line": {
+        "role": "neutral",
+        "displayName": "Orbit Line",
+        "canonical": "oklch(0.35 0.04 265 / 0.5)",
+        "tonalRamp": [
+          "oklch(0.15 0.04 265)",
+          "oklch(0.26 0.04 265)",
+          "oklch(0.37 0.04 265)",
+          "oklch(0.48 0.04 265)",
+          "oklch(0.6 0.04 265)",
+          "oklch(0.72 0.04 265)",
+          "oklch(0.84 0.04 265)",
+          "oklch(0.95 0.04 265)"
+        ]
+      },
+      "uni.paper": {
+        "role": "neutral",
+        "displayName": "Photocopy Paper",
+        "canonical": "oklch(0.972 0.004 245)",
+        "tonalRamp": [
+          "oklch(0.15 0.004 245)",
+          "oklch(0.26 0.004 245)",
+          "oklch(0.37 0.004 245)",
+          "oklch(0.48 0.004 245)",
+          "oklch(0.6 0.004 245)",
+          "oklch(0.72 0.004 245)",
+          "oklch(0.84 0.004 245)",
+          "oklch(0.95 0.004 245)"
+        ],
+        "cssVar": "--paper",
+        "dark": "oklch(0.195 0.004 262)"
+      },
+      "uni.paper-2": {
+        "role": "neutral",
+        "displayName": "Paper Tint",
+        "canonical": "oklch(0.945 0.007 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.007 250)",
+          "oklch(0.26 0.007 250)",
+          "oklch(0.37 0.007 250)",
+          "oklch(0.48 0.007 250)",
+          "oklch(0.6 0.007 250)",
+          "oklch(0.72 0.007 250)",
+          "oklch(0.84 0.007 250)",
+          "oklch(0.95 0.007 250)"
+        ],
+        "cssVar": "--paper-2",
+        "dark": "oklch(0.232 0.005 262)"
+      },
+      "uni.ink": {
+        "role": "neutral",
+        "displayName": "Blue-Black Ink",
+        "canonical": "oklch(0.21 0.022 262)",
+        "tonalRamp": [
+          "oklch(0.15 0.022 262)",
+          "oklch(0.26 0.022 262)",
+          "oklch(0.37 0.022 262)",
+          "oklch(0.48 0.022 262)",
+          "oklch(0.6 0.022 262)",
+          "oklch(0.72 0.022 262)",
+          "oklch(0.84 0.022 262)",
+          "oklch(0.95 0.022 262)"
+        ],
+        "cssVar": "--ink",
+        "dark": "oklch(0.94 0.008 250)"
+      },
+      "uni.ink-2": {
+        "role": "neutral",
+        "displayName": "Body Ink",
+        "canonical": "oklch(0.29 0.02 262)",
+        "tonalRamp": [
+          "oklch(0.15 0.02 262)",
+          "oklch(0.26 0.02 262)",
+          "oklch(0.37 0.02 262)",
+          "oklch(0.48 0.02 262)",
+          "oklch(0.6 0.02 262)",
+          "oklch(0.72 0.02 262)",
+          "oklch(0.84 0.02 262)",
+          "oklch(0.95 0.02 262)"
+        ],
+        "cssVar": "--ink-2",
+        "dark": "oklch(0.86 0.01 252)"
+      },
+      "uni.muted": {
+        "role": "neutral",
+        "displayName": "Pencil Grey",
+        "canonical": "oklch(0.49 0.018 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.018 260)",
+          "oklch(0.26 0.018 260)",
+          "oklch(0.37 0.018 260)",
+          "oklch(0.48 0.018 260)",
+          "oklch(0.6 0.018 260)",
+          "oklch(0.72 0.018 260)",
+          "oklch(0.84 0.018 260)",
+          "oklch(0.95 0.018 260)"
+        ],
+        "cssVar": "--muted",
+        "dark": "oklch(0.69 0.014 256)"
+      },
+      "uni.rule": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "oklch(0.86 0.009 252)",
+        "tonalRamp": [
+          "oklch(0.15 0.009 252)",
+          "oklch(0.26 0.009 252)",
+          "oklch(0.37 0.009 252)",
+          "oklch(0.48 0.009 252)",
+          "oklch(0.6 0.009 252)",
+          "oklch(0.72 0.009 252)",
+          "oklch(0.84 0.009 252)",
+          "oklch(0.95 0.009 252)"
+        ],
+        "cssVar": "--rule",
+        "dark": "oklch(0.34 0.013 262)"
+      },
+      "uni.rule-strong": {
+        "role": "neutral",
+        "displayName": "Structural Rule",
+        "canonical": "oklch(0.23 0.022 262)",
+        "tonalRamp": [
+          "oklch(0.15 0.022 262)",
+          "oklch(0.26 0.022 262)",
+          "oklch(0.37 0.022 262)",
+          "oklch(0.48 0.022 262)",
+          "oklch(0.6 0.022 262)",
+          "oklch(0.72 0.022 262)",
+          "oklch(0.84 0.022 262)",
+          "oklch(0.95 0.022 262)"
+        ],
+        "cssVar": "--rule-strong",
+        "dark": "oklch(0.86 0.01 252)"
+      },
+      "uni.biro": {
+        "role": "primary",
+        "displayName": "Biro Blue",
+        "canonical": "oklch(0.45 0.19 266)",
+        "tonalRamp": [
+          "oklch(0.15 0.19 266)",
+          "oklch(0.26 0.19 266)",
+          "oklch(0.37 0.19 266)",
+          "oklch(0.48 0.19 266)",
+          "oklch(0.6 0.19 266)",
+          "oklch(0.72 0.19 266)",
+          "oklch(0.84 0.19 266)",
+          "oklch(0.95 0.19 266)"
+        ],
+        "cssVar": "--biro",
+        "dark": "oklch(0.76 0.12 266)"
+      },
+      "uni.biro-ink": {
+        "role": "primary",
+        "displayName": "Biro Ink",
+        "canonical": "oklch(0.38 0.17 266)",
+        "tonalRamp": [
+          "oklch(0.15 0.17 266)",
+          "oklch(0.26 0.17 266)",
+          "oklch(0.37 0.17 266)",
+          "oklch(0.48 0.17 266)",
+          "oklch(0.6 0.17 266)",
+          "oklch(0.72 0.17 266)",
+          "oklch(0.84 0.17 266)",
+          "oklch(0.95 0.17 266)"
+        ],
+        "cssVar": "--biro-ink",
+        "dark": "oklch(0.82 0.1 266)"
+      },
+      "uni.biro-wash": {
+        "role": "primary",
+        "displayName": "Biro Wash",
+        "canonical": "oklch(0.925 0.035 266)",
+        "tonalRamp": [
+          "oklch(0.15 0.035 266)",
+          "oklch(0.26 0.035 266)",
+          "oklch(0.37 0.035 266)",
+          "oklch(0.48 0.035 266)",
+          "oklch(0.6 0.035 266)",
+          "oklch(0.72 0.035 266)",
+          "oklch(0.84 0.035 266)",
+          "oklch(0.95 0.035 266)"
+        ],
+        "cssVar": "--biro-wash",
+        "dark": "oklch(0.3 0.06 266)"
+      },
+      "uni.mark": {
+        "role": "tertiary",
+        "displayName": "Highlighter",
+        "canonical": "oklch(0.93 0.07 95)",
+        "tonalRamp": [
+          "oklch(0.15 0.07 95)",
+          "oklch(0.26 0.07 95)",
+          "oklch(0.37 0.07 95)",
+          "oklch(0.48 0.07 95)",
+          "oklch(0.6 0.07 95)",
+          "oklch(0.72 0.07 95)",
+          "oklch(0.84 0.07 95)",
+          "oklch(0.95 0.07 95)"
+        ],
+        "cssVar": "--mark",
+        "dark": "oklch(0.42 0.07 95)"
+      },
+      "uni.fig-steel": {
+        "role": "tertiary",
+        "displayName": "Figure Terracotta",
+        "canonical": "oklch(0.56 0.13 35)",
+        "tonalRamp": [
+          "oklch(0.15 0.13 35)",
+          "oklch(0.26 0.13 35)",
+          "oklch(0.37 0.13 35)",
+          "oklch(0.48 0.13 35)",
+          "oklch(0.6 0.13 35)",
+          "oklch(0.72 0.13 35)",
+          "oklch(0.84 0.13 35)",
+          "oklch(0.95 0.13 35)"
+        ],
+        "cssVar": "--fig-steel",
+        "dark": "oklch(0.74 0.12 45)"
+      },
+      "uni.fig-faint": {
+        "role": "neutral",
+        "displayName": "Figure Ghost",
+        "canonical": "oklch(0.74 0.012 255)",
+        "tonalRamp": [
+          "oklch(0.15 0.012 255)",
+          "oklch(0.26 0.012 255)",
+          "oklch(0.37 0.012 255)",
+          "oklch(0.48 0.012 255)",
+          "oklch(0.6 0.012 255)",
+          "oklch(0.72 0.012 255)",
+          "oklch(0.84 0.012 255)",
+          "oklch(0.95 0.012 255)"
+        ],
+        "cssVar": "--fig-faint",
+        "dark": "oklch(0.45 0.012 260)"
+      },
+      "uni.fig-ink": {
+        "role": "figure",
+        "displayName": "Figure ink",
+        "canonical": "var(--ink-2)",
+        "cssVar": "--fig-ink",
+        "aliasOf": "--ink-2"
+      },
+      "uni.fig-axis": {
+        "role": "figure",
+        "displayName": "Figure axis",
+        "canonical": "var(--muted)",
+        "cssVar": "--fig-axis",
+        "aliasOf": "--muted"
+      },
+      "uni.fig-accent": {
+        "role": "figure",
+        "displayName": "Figure accent",
+        "canonical": "var(--biro)",
+        "cssVar": "--fig-accent",
+        "aliasOf": "--biro"
+      },
+      "uni.fig-accent-deep": {
+        "role": "figure",
+        "displayName": "Figure accent-deep",
+        "canonical": "var(--biro-ink)",
+        "cssVar": "--fig-accent-deep",
+        "aliasOf": "--biro-ink"
+      },
+      "uni.fig-paper": {
+        "role": "figure",
+        "displayName": "Figure paper",
+        "canonical": "var(--paper)",
+        "cssVar": "--fig-paper",
+        "aliasOf": "--paper"
+      }
+    },
+    "typographyMeta": {
+      "main.display": {
+        "displayName": "Unbounded",
+        "fontFamily": "Unbounded",
+        "purpose": "Main site display and headings, 500-700."
+      },
+      "main.body": {
+        "displayName": "Literata",
+        "fontFamily": "Literata",
+        "purpose": "Main site prose, 1.05-1.15rem, line-height 1.75, 70ch."
+      },
+      "main.label": {
+        "displayName": "JetBrains Mono",
+        "fontFamily": "JetBrains Mono",
+        "purpose": "Main site labels, metadata, terminal."
+      },
+      "uni.display": {
+        "displayName": "Register display",
+        "fontFamily": "'Archivo Variable', 'Archivo', 'Helvetica Neue', Arial, sans-serif",
+        "fontSize": "clamp(2.4rem, 1.4rem + 4.4vw, 4.4rem)",
+        "fontWeight": 700,
+        "fontStretch": "110%",
+        "lineHeight": 0.98,
+        "letterSpacing": "-0.03em",
+        "purpose": "h1 of the /uni index and subject hubs."
+      },
+      "uni.headline": {
+        "displayName": "Note title",
+        "fontFamily": "'Archivo Variable', 'Archivo', sans-serif",
+        "fontSize": "clamp(2.1rem, 1.3rem + 3.4vw, 3.5rem)",
+        "fontWeight": 700,
+        "fontStretch": "108%",
+        "lineHeight": 1.02,
+        "letterSpacing": "-0.025em",
+        "purpose": "Title of a note."
+      },
+      "uni.title": {
+        "displayName": "Clause heading",
+        "fontFamily": "'Archivo Variable', 'Archivo', sans-serif",
+        "fontSize": "clamp(1.55rem, 1.2rem + 1.2vw, 1.95rem)",
+        "fontWeight": 700,
+        "fontStretch": "106%",
+        "lineHeight": 1.12,
+        "letterSpacing": "-0.012em",
+        "purpose": "Numbered h2 clause, 1px rule-strong on top."
+      },
+      "uni.subtitle": {
+        "displayName": "Sub-clause",
+        "fontFamily": "'Archivo Variable', 'Archivo', sans-serif",
+        "fontSize": "1.22rem",
+        "fontWeight": 650,
+        "lineHeight": 1.25,
+        "purpose": "Numbered h3."
+      },
+      "uni.body": {
+        "displayName": "Reading serif",
+        "fontFamily": "'Source Serif 4 Variable', 'Source Serif 4', Charter, 'Iowan Old Style', Georgia, serif",
+        "fontSize": "1.125rem",
+        "fontWeight": 400,
+        "lineHeight": 1.62,
+        "fontVariation": "opsz auto",
+        "purpose": "Note body beside KaTeX, 40rem measure (46rem on register pages)."
+      },
+      "uni.label": {
+        "displayName": "Apparatus",
+        "fontFamily": "'Archivo Variable', 'Archivo', sans-serif",
+        "fontSize": "0.78rem-0.92rem",
+        "fontFeature": "tnum",
+        "purpose": "Meta row, lede, TOC, dates, tables, callout titles."
+      },
+      "uni.mono": {
+        "displayName": "Code",
+        "fontFamily": "'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace",
+        "fontSize": "0.84rem block / 0.82em inline",
+        "fontWeight": 400,
+        "lineHeight": 1.6,
+        "purpose": "C code, hairlines above and below, no background."
+      }
+    },
+    "rounded": {
+      "uni.inline": "2px",
+      "uni.control": "3px"
+    },
+    "spacing": {
+      "uni.measure": "40rem",
+      "uni.measure-register": "46rem",
+      "uni.margin": "4.25rem",
+      "uni.toc": "15.5rem",
+      "uni.toc-gap": "3.5rem",
+      "uni.gutter": "clamp(1rem, 4vw, 2.5rem)",
+      "uni.sheet-top": "clamp(2rem, 6vh, 3.75rem)",
+      "uni.h2-top": "3.4rem",
+      "uni.paragraph": "1.05em"
+    },
+    "rules": [
+      {
+        "name": "uni.hairline",
+        "value": "1px solid var(--rule)",
+        "purpose": "Rows, meta row, code, folds, tables."
+      },
+      {
+        "name": "uni.structural",
+        "value": "1px solid var(--rule-strong)",
+        "purpose": "Running head, h2 top, callout left edge, table head, prev/next."
+      },
+      {
+        "name": "uni.heavy",
+        "value": "2px solid var(--rule-strong)",
+        "purpose": "§0 block top and start of each subject in the register only."
+      }
+    ],
+    "shadows": [
+      {
+        "name": "uni.current-underline",
+        "value": "inset 0 -2px 0 var(--biro)",
+        "purpose": "Underline of the current subject in the running head. The only shadow in /uni; no depth shadows."
+      }
+    ],
+    "motion": [
+      {
+        "name": "uni.ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Single easing for /uni."
+      },
+      {
+        "name": "uni.link-underline",
+        "value": "text-decoration-color 0.2s var(--ease)",
+        "purpose": "Link hover."
+      },
+      {
+        "name": "uni.chevron",
+        "value": "transform 0.25s var(--ease)",
+        "purpose": "Fold chevron rotation."
+      },
+      {
+        "name": "uni.fold-open",
+        "value": "opacity 0 + translateY(-0.35rem) to rest, 0.35s var(--ease)",
+        "purpose": "Fold body entrance; only under prefers-reduced-motion: no-preference."
+      },
+      {
+        "name": "uni.row-hover",
+        "value": "background-color 0.2s var(--ease)",
+        "purpose": "Register row tint."
+      },
+      {
+        "name": "main.reveal",
+        "value": "fade + small rise, ease-out-expo, 600ms",
+        "purpose": "Main site hero text only (from DESIGN.md)."
+      },
+      {
+        "name": "main.hover-ring",
+        "value": "200ms ease-out-quart",
+        "purpose": "Main site orbit-ring hover (from DESIGN.md)."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "uni.narrow",
+        "value": "720px",
+        "purpose": "Below: margin column collapses, § numbers inline, register rows two-column, runhead subtitle and theme label hidden."
+      },
+      {
+        "name": "uni.index",
+        "value": "1120px",
+        "purpose": "From here: sticky index column; collapsible index hidden; code breaks out 3rem right."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Running head",
+      "kind": "nav",
+      "refersTo": "uni.runhead",
+      "description": "Sticky head of every /uni page: title, subject links with the current one underlined in biro, theme toggle.",
+      "html": "<header class=\"ds-uni-runhead\"><a class=\"ds-uni-home\" href=\"#\">Note <span>Ingegneria Informatica · UniTN</span></a><nav><a href=\"#\">Analisi 1</a><a href=\"#\" aria-current=\"page\">GAL</a><a href=\"#\">Prog 1</a></nav><button class=\"ds-uni-tema\" type=\"button\">auto</button></header>",
+      "css": ".ds-uni-runhead{--paper:oklch(0.972 0.004 245);--paper-2:oklch(0.945 0.007 250);--ink:oklch(0.21 0.022 262);--ink-2:oklch(0.29 0.02 262);--muted:oklch(0.49 0.018 260);--rule:oklch(0.86 0.009 252);--rule-strong:oklch(0.23 0.022 262);--biro:oklch(0.45 0.19 266);--biro-ink:oklch(0.38 0.17 266);--biro-wash:oklch(0.925 0.035 266);--serif:'Source Serif 4 Variable','Source Serif 4',Georgia,serif;--grotesk:'Archivo Variable','Archivo',Arial,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(0.16,1,0.3,1);background:var(--paper);color:var(--ink-2);font-family:var(--serif);}.ds-uni-runhead{display:flex;align-items:center;gap:1.25rem;padding:.7rem 1.5rem;border-bottom:1px solid var(--rule-strong);font-family:var(--grotesk);font-size:.9rem}.ds-uni-home{color:var(--ink);text-decoration:none;font-weight:700;font-stretch:112%}.ds-uni-home span{font-weight:400;font-stretch:100%;color:var(--muted);margin-left:.4rem}.ds-uni-runhead nav{display:flex;gap:.2rem;margin-left:auto}.ds-uni-runhead nav a{color:var(--ink-2);text-decoration:none;padding:.35rem .6rem;border-radius:3px}.ds-uni-runhead nav a:hover{background:var(--paper-2)}.ds-uni-runhead nav a[aria-current=page]{color:var(--biro);font-weight:600;box-shadow:inset 0 -2px 0 var(--biro);border-radius:0}.ds-uni-tema{min-height:2.25rem;padding:0 .65rem;background:none;border:1px solid var(--rule);border-radius:3px;color:var(--muted);font:inherit;font-size:.8rem;cursor:pointer}.ds-uni-tema:hover{color:var(--ink);border-color:var(--muted)}.ds-uni-runhead :focus-visible{outline:2px solid var(--biro);outline-offset:3px}"
+    },
+    {
+      "name": "Clause heading",
+      "kind": "custom",
+      "refersTo": "uni.sec-num",
+      "description": "h2 with its § number hung in the margin; the number copies a link to the section.",
+      "html": "<div class=\"ds-uni-sheet\"><h2 class=\"ds-uni-h2\"><a class=\"ds-uni-num\" href=\"#\">1</a>Definizioni</h2><p>Un vettore geometrico è la classe di equivalenza dei segmenti orientati.</p></div>",
+      "css": ".ds-uni-sheet{--paper:oklch(0.972 0.004 245);--paper-2:oklch(0.945 0.007 250);--ink:oklch(0.21 0.022 262);--ink-2:oklch(0.29 0.02 262);--muted:oklch(0.49 0.018 260);--rule:oklch(0.86 0.009 252);--rule-strong:oklch(0.23 0.022 262);--biro:oklch(0.45 0.19 266);--biro-ink:oklch(0.38 0.17 266);--biro-wash:oklch(0.925 0.035 266);--serif:'Source Serif 4 Variable','Source Serif 4',Georgia,serif;--grotesk:'Archivo Variable','Archivo',Arial,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(0.16,1,0.3,1);background:var(--paper);color:var(--ink-2);font-family:var(--serif);}.ds-uni-sheet{padding:1rem 1rem 1rem 5rem;font-size:1.125rem;line-height:1.62}.ds-uni-h2{position:relative;font-family:var(--grotesk);font-weight:700;font-stretch:106%;font-size:1.95rem;line-height:1.12;letter-spacing:-.012em;color:var(--ink);padding-top:1.1rem;border-top:1px solid var(--rule-strong);margin-bottom:.7em}.ds-uni-num{position:absolute;right:calc(100% + 1.15rem);top:1.1rem;font-size:1.05rem;line-height:1.95;font-weight:650;font-variant-numeric:tabular-nums;color:var(--biro);text-decoration:none}.ds-uni-num::before{content:'§';margin-right:.12em;opacity:.55}.ds-uni-num:hover{text-decoration:underline}.ds-uni-num:focus-visible{outline:2px solid var(--biro);outline-offset:3px}"
+    },
+    {
+      "name": "Note meta row",
+      "kind": "custom",
+      "refersTo": "uni.note-meta",
+      "description": "Subject, lecture dates and status above the note title, on a hairline.",
+      "html": "<dl class=\"ds-uni-meta\"><div><dd><a href=\"#\">Geometria e Algebra Lineare</a></dd></div><div><dt>Lezioni</dt><dd>15 set, 16 set</dd></div><div class=\"ds-uni-stato\"><dd>in corso</dd></div></dl>",
+      "css": ".ds-uni-meta{--paper:oklch(0.972 0.004 245);--paper-2:oklch(0.945 0.007 250);--ink:oklch(0.21 0.022 262);--ink-2:oklch(0.29 0.02 262);--muted:oklch(0.49 0.018 260);--rule:oklch(0.86 0.009 252);--rule-strong:oklch(0.23 0.022 262);--biro:oklch(0.45 0.19 266);--biro-ink:oklch(0.38 0.17 266);--biro-wash:oklch(0.925 0.035 266);--serif:'Source Serif 4 Variable','Source Serif 4',Georgia,serif;--grotesk:'Archivo Variable','Archivo',Arial,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(0.16,1,0.3,1);background:var(--paper);color:var(--ink-2);font-family:var(--serif);}.ds-uni-meta{display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;padding:1rem 0 .9rem;border-bottom:1px solid var(--rule);font-family:var(--grotesk);font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}.ds-uni-meta dt,.ds-uni-meta dd{display:inline;margin:0}.ds-uni-meta dt+dd{margin-left:.3rem;color:var(--ink-2)}.ds-uni-meta a{color:var(--ink);font-weight:600;text-decoration:none}.ds-uni-meta a:hover{color:var(--biro)}.ds-uni-stato{margin-left:auto}"
+    },
+    {
+      "name": "Folding callout",
+      "kind": "custom",
+      "refersTo": "uni.callout-fold",
+      "description": "Example or proof folded shut between hairlines, with a muted try-first hint while closed.",
+      "html": "<details class=\"ds-uni-fold\"><summary>Esercizio 1: proiezione ortogonale</summary><div>Si scompone v lungo u e lungo la direzione ortogonale.</div></details>",
+      "css": ".ds-uni-fold{--paper:oklch(0.972 0.004 245);--paper-2:oklch(0.945 0.007 250);--ink:oklch(0.21 0.022 262);--ink-2:oklch(0.29 0.02 262);--muted:oklch(0.49 0.018 260);--rule:oklch(0.86 0.009 252);--rule-strong:oklch(0.23 0.022 262);--biro:oklch(0.45 0.19 266);--biro-ink:oklch(0.38 0.17 266);--biro-wash:oklch(0.925 0.035 266);--serif:'Source Serif 4 Variable','Source Serif 4',Georgia,serif;--grotesk:'Archivo Variable','Archivo',Arial,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(0.16,1,0.3,1);background:var(--paper);color:var(--ink-2);font-family:var(--serif);}.ds-uni-fold{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}.ds-uni-fold>summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:.6rem;padding:.7rem 0;min-height:2.75rem;font-family:var(--grotesk);font-weight:650;font-size:.95rem;color:var(--ink)}.ds-uni-fold>summary::-webkit-details-marker{display:none}.ds-uni-fold>summary::before{content:'';flex:none;width:.5rem;height:.5rem;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:translateY(-.12rem) rotate(-45deg);transition:transform .25s var(--ease)}.ds-uni-fold[open]>summary::before{transform:translateY(-.28rem) rotate(45deg)}.ds-uni-fold>summary::after{content:'provaci prima';margin-left:auto;font-weight:400;font-size:.78rem;color:var(--muted)}.ds-uni-fold[open]>summary::after{content:none}.ds-uni-fold>summary:hover{color:var(--biro)}.ds-uni-fold>summary:hover::before{border-color:var(--biro)}.ds-uni-fold>summary:focus-visible{outline:2px solid var(--biro);outline-offset:3px}.ds-uni-fold>div{padding:.1rem 0 1.2rem 1.1rem}"
+    },
+    {
+      "name": "Static callout",
+      "kind": "custom",
+      "refersTo": "uni.callout-aside",
+      "description": "Note, tip or warning: a structural left rule and a grotesk title, no colour per type.",
+      "html": "<aside class=\"ds-uni-aside\"><p class=\"ds-uni-aside-t\">Attenzione</p><p>Il prodotto scalare non è associativo.</p></aside>",
+      "css": ".ds-uni-aside{--paper:oklch(0.972 0.004 245);--paper-2:oklch(0.945 0.007 250);--ink:oklch(0.21 0.022 262);--ink-2:oklch(0.29 0.02 262);--muted:oklch(0.49 0.018 260);--rule:oklch(0.86 0.009 252);--rule-strong:oklch(0.23 0.022 262);--biro:oklch(0.45 0.19 266);--biro-ink:oklch(0.38 0.17 266);--biro-wash:oklch(0.925 0.035 266);--serif:'Source Serif 4 Variable','Source Serif 4',Georgia,serif;--grotesk:'Archivo Variable','Archivo',Arial,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(0.16,1,0.3,1);background:var(--paper);color:var(--ink-2);font-family:var(--serif);}.ds-uni-aside{padding:.2rem 0 .2rem 1.1rem;border-left:1px solid var(--rule-strong);font-size:1.125rem;line-height:1.62}.ds-uni-aside-t{font-family:var(--grotesk);font-weight:650;font-size:.95rem;color:var(--ink);margin:0 0 .35rem}.ds-uni-aside-t::before{content:'';display:inline-block;width:.8em;height:.8em;margin-right:.45em;vertical-align:-.05em;background:currentColor;clip-path:polygon(50% 0,100% 100%,0 100%)}.ds-uni-aside p{margin:0}"
+    },
+    {
+      "name": "Index entry",
+      "kind": "nav",
+      "refersTo": "uni.toc",
+      "description": "Numbered index column; current section in biro, reading flag on the last clause read.",
+      "html": "<nav class=\"ds-uni-toc\"><p>Indice</p><ol><li><a href=\"#\"><span class=\"n\">1</span><span>Definizioni</span><span></span></a></li><li class=\"d3\"><a href=\"#\" aria-current=\"true\"><span class=\"n\">1.2</span><span>Segmenti orientati</span><span class=\"f\"><svg viewBox=\"0 0 12 14\"><path d=\"M1 0h1.4v14H1zM3.2 1h7.8l-2.2 3.2L11 7.4H3.2z\"/></svg></span></a></li><li class=\"d3\"><a href=\"#\"><span class=\"n\">1.3</span><span>Vettori geometrici</span><span></span></a></li></ol></nav>",
+      "css": ".ds-uni-toc{--paper:oklch(0.972 0.004 245);--paper-2:oklch(0.945 0.007 250);--ink:oklch(0.21 0.022 262);--ink-2:oklch(0.29 0.02 262);--muted:oklch(0.49 0.018 260);--rule:oklch(0.86 0.009 252);--rule-strong:oklch(0.23 0.022 262);--biro:oklch(0.45 0.19 266);--biro-ink:oklch(0.38 0.17 266);--biro-wash:oklch(0.925 0.035 266);--serif:'Source Serif 4 Variable','Source Serif 4',Georgia,serif;--grotesk:'Archivo Variable','Archivo',Arial,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(0.16,1,0.3,1);background:var(--paper);color:var(--ink-2);font-family:var(--serif);}.ds-uni-toc{width:15.5rem;font-family:var(--grotesk);font-size:.83rem;line-height:1.35}.ds-uni-toc p{font-weight:650;color:var(--ink);padding-bottom:.55rem;border-bottom:1px solid var(--rule-strong);margin:0 0 .4rem}.ds-uni-toc ol{list-style:none;margin:0;padding:0}.ds-uni-toc a{display:grid;grid-template-columns:2.4rem 1fr auto;gap:.25rem;padding:.3rem 0;color:var(--muted);text-decoration:none;transition:color .15s}.ds-uni-toc li:not(.d3)>a{color:var(--ink-2);font-weight:600}.ds-uni-toc .d3 a{padding-left:.9rem;font-size:.8rem}.ds-uni-toc a:hover{color:var(--ink)}.ds-uni-toc a[aria-current=true]{color:var(--biro)}.ds-uni-toc .n{font-variant-numeric:tabular-nums}.ds-uni-toc .f svg{width:.85rem;height:.95rem;fill:var(--biro)}"
+    },
+    {
+      "name": "Riprendi action",
+      "kind": "button",
+      "refersTo": "uni.riprendi",
+      "description": "The one filled control: resume from the last clause read, with a quiet reset.",
+      "html": "<p class=\"ds-uni-riprendi\"><a href=\"#\"><svg viewBox=\"0 0 12 14\"><path d=\"M1 0h1.4v14H1zM3.2 1h7.8l-2.2 3.2L11 7.4H3.2z\"/></svg><span>Riprendi da §2.3 Normalizzazione</span></a><button type=\"button\">Ricomincia dall’inizio</button></p>",
+      "css": ".ds-uni-riprendi{--paper:oklch(0.972 0.004 245);--paper-2:oklch(0.945 0.007 250);--ink:oklch(0.21 0.022 262);--ink-2:oklch(0.29 0.02 262);--muted:oklch(0.49 0.018 260);--rule:oklch(0.86 0.009 252);--rule-strong:oklch(0.23 0.022 262);--biro:oklch(0.45 0.19 266);--biro-ink:oklch(0.38 0.17 266);--biro-wash:oklch(0.925 0.035 266);--serif:'Source Serif 4 Variable','Source Serif 4',Georgia,serif;--grotesk:'Archivo Variable','Archivo',Arial,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(0.16,1,0.3,1);background:var(--paper);color:var(--ink-2);font-family:var(--serif);}.ds-uni-riprendi{display:flex;align-items:center;gap:.75rem;padding:1rem;font-family:var(--grotesk);font-size:.9rem}.ds-uni-riprendi a{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .85rem .5rem .7rem;background:var(--biro-wash);color:var(--biro-ink);text-decoration:none;border-radius:3px;font-weight:600}.ds-uni-riprendi a:hover{background:color-mix(in oklch,var(--biro-wash) 70%,var(--biro) 30%)}.ds-uni-riprendi svg{width:.85rem;height:.95rem;fill:currentColor}.ds-uni-riprendi button{background:none;border:0;color:var(--muted);font:inherit;cursor:pointer;padding:.5rem .25rem;text-decoration:underline;text-underline-offset:.18em;text-decoration-color:var(--rule)}.ds-uni-riprendi :focus-visible{outline:2px solid var(--biro);outline-offset:3px}"
+    },
+    {
+      "name": "Register row",
+      "kind": "custom",
+      "refersTo": "uni.voce",
+      "description": "Numbered, dated row of the subject register; hover lays a fading paper band and turns the title biro.",
+      "html": "<ol class=\"ds-uni-voci\"><li><a href=\"#\"><span class=\"n\">1</span><span class=\"t\">Vettori geometrici</span><span class=\"d\">15 set, 16 set</span></a></li><li><a href=\"#\"><span class=\"n\">2</span><span class=\"t\">Rette e piani nello spazio</span><span class=\"d\">22 set</span></a></li></ol>",
+      "css": ".ds-uni-voci{--paper:oklch(0.972 0.004 245);--paper-2:oklch(0.945 0.007 250);--ink:oklch(0.21 0.022 262);--ink-2:oklch(0.29 0.02 262);--muted:oklch(0.49 0.018 260);--rule:oklch(0.86 0.009 252);--rule-strong:oklch(0.23 0.022 262);--biro:oklch(0.45 0.19 266);--biro-ink:oklch(0.38 0.17 266);--biro-wash:oklch(0.925 0.035 266);--serif:'Source Serif 4 Variable','Source Serif 4',Georgia,serif;--grotesk:'Archivo Variable','Archivo',Arial,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(0.16,1,0.3,1);background:var(--paper);color:var(--ink-2);font-family:var(--serif);}.ds-uni-voci{list-style:none;margin:0;padding:1rem}.ds-uni-voci a{display:grid;grid-template-columns:2.4rem minmax(0,1fr) auto;align-items:baseline;gap:.2rem .6rem;padding:.62rem 0;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);transition:background-color .2s var(--ease)}.ds-uni-voci li:first-child a{border-top:1px solid var(--rule)}.ds-uni-voci .n{font-family:var(--grotesk);font-variant-numeric:tabular-nums;font-size:.85rem;color:var(--biro)}.ds-uni-voci .t{font-size:1.08rem;line-height:1.35}.ds-uni-voci .d{font-family:var(--grotesk);font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}.ds-uni-voci a:hover{background:linear-gradient(to right,transparent,var(--paper-2) 12%,var(--paper-2) 88%,transparent)}.ds-uni-voci a:hover .t{color:var(--biro)}.ds-uni-voci a:focus-visible{outline:2px solid var(--biro);outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Numbered Register",
+    "overview": "Each note is a document of numbered clauses in the manner of the Stacks Project and UNI standards: every section carries its number in the left margin, and that number is a permanent link. Cold white photocopy paper, near-black blue ink, one biro-blue accent. It rejects both the sidebar wiki and the cream-serif blog. Density is study density: a 40rem serif column beside KaTeX, an apparatus of grotesk numbers and metadata around it, blocks separated by hairlines and weight instead of boxes. The dark theme is graphite, with the same system and roles.",
+    "keyCharacteristics": [
+      "Margin clause numbers (`§1`, `§1.2`) that copy a link to the section.",
+      "A fixed §0 \"Per l'esame\" block as the first clause of every note.",
+      "Flat paper. Hierarchy comes from rule weight, type weight and number, never from panels or shadow.",
+      "Blue only where the reader acts or where a term is defined.",
+      "Proofs and exercise solutions fold shut until the reader has tried."
+    ],
+    "rules": [
+      {
+        "name": "The Biro Rule",
+        "body": "Blue marks where you act or what is being defined: links, § numbers, the current subject and TOC entry, the defined term that opens a paragraph, the reading flag, focus and selection. Headings, rules and decoration are never blue.",
+        "section": "colors",
+        "world": "uni"
+      },
+      {
+        "name": "The Figure Palette Rule",
+        "body": "Figures take colour only through `--fig-*`. `--fig-steel` is the one second hue in the world and it lives only inside figures. Never use it in UI.",
+        "section": "colors",
+        "world": "uni"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Serif is what you study; grotesk is the apparatus that locates it. Mono only for code. No uppercase, no tracked-out labels: the register has no `text-transform` anywhere.",
+        "section": "typography",
+        "world": "uni"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Every number that lines up (clause numbers, TOC numbers, dates, register indices, tables) uses `font-variant-numeric: tabular-nums`.",
+        "section": "typography",
+        "world": "uni"
+      },
+      {
+        "name": "The Rule Ladder Rule",
+        "body": "Depth is a ladder of rules: 1px `--rule` between rows and minor blocks, 1px `--rule-strong` for the running head, clause headings, callout left edges and table heads, 2px `--rule-strong` only for the §0 block top and the start of each subject in the register.",
+        "section": "elevation",
+        "world": "uni"
+      }
+    ],
+    "dos": [
+      "Do number every h2 and h3 in the margin and keep the number a link.",
+      "Do open every note with the provenance lede and then the §0 \"Per l'esame\" clause.",
+      "Do separate blocks with the rule ladder (1px rule, 1px rule-strong, 2px rule-strong) and type weight.",
+      "Do fold proofs and exercise solutions, with the muted \"try first\" hint visible while closed.",
+      "Do recolour every figure through `--fig-*`, and check it in both themes.",
+      "Do keep touch targets at 2.75rem or more on folds and the mobile index."
+    ],
+    "donts": [
+      "Don't import the main site's world into /uni: no void, no Unbounded, no Literata, no cyan or amber, no orbits. The reverse holds too.",
+      "Don't wrap content blocks in cards or tinted panels. Tints are for inline marks (code, `<mark>`, source refs) and the single Riprendi action.",
+      "Don't give callouts per-type colours or icon sets; they differ by title, rule and fold.",
+      "Don't put blue on text the reader can neither click nor is being taught as a definition.",
+      "Don't use uppercase tracked labels, eyebrows or kickers above headings.",
+      "Don't add shadows for depth, and don't put a background behind code blocks.",
+      "Don't use `--fig-steel` or `--mark` outside figures and highlighted prose.",
+      "Main site: No section eyebrows/kickers repeated as grammar. No card grids. No gradient text. No skill badges. No stock space photos."
+    ]
+  }
+}

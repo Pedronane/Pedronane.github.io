@@ -10,7 +10,7 @@ related_targets: ["src/layouts/UniLayout.astro","src/styles/uni.css"]
 Scope: `/uni/` (indice), `/uni/<materia>/` (hub di materia), `/uni/<materia>/<nota>/`. Visitor mode: **Read**.
 Pubblico: Pietro sull'iPad (studio, anche la sera), i compagni di corso UniTN da telefono e laptop. Job: studiare per l'esame solo dalla nota, ritrovare una definizione, mandare a un compagno il link a una sezione precisa.
 Contenuto: note Obsidian del vault (`~/Documents/notes`), sincronizzate con `npm run sync-uni`. Formule KaTeX, callout, figure SVG ricolorate, codice C. PDF dei prof non pubblicati (decisione di Pietro). `noindex`.
-Vincoli: stile separato dal resto del sito (niente void, Unbounded, orbite). Scelta non confermata dall'utente: il tiro assegnato è stato preso in sua assenza.
+Vincoli: stile separato dal resto del sito (niente void, Unbounded, orbite). Direzione scelta da Pietro sulla pagina di decisione (assigned, code-led).
 
 ## Direction contract
 

@@ -55,11 +55,13 @@ Formato scritto sulle slide 4-5 del 14/9, con le correzioni a mano del prof (<sp
 | 14/9 | 1-22 di 92 | presentazione ed esame; 1.1 insiemi e linguaggio matematico | <span class="src">Lezione 2026-09-14</span> | [Insiemi e logica](/uni/analisi-1/insiemi-e-logica/) |
 | 15/9 | 23-41 | 1.2 numeri reali, sup e inf, completezza, Archimede, densità | <span class="src">Lezione 2026-09-15</span> | [Numeri reali, sup e inf](/uni/analisi-1/numeri-reali-sup-e-inf/) |
 | 16/9 | 42-61 | assiomi di $\mathbb{R}$; 1.3 funzioni; 1.4 funzioni reali, limitate, simmetriche | <span class="src">Lezione 2026-09-16</span> | [Numeri reali, sup e inf](/uni/analisi-1/numeri-reali-sup-e-inf/), [Funzioni](/uni/analisi-1/funzioni/) |
-| 21/9 | 62-92 | monotone, grafico dell'inversa; 1.5 funzioni elementari; 1.6 trasformazioni | <span class="src">Slide cap 1 da 62 (non annotate)</span> + quaderno (niente PDF annotato per questa lezione) | [Funzioni](/uni/analisi-1/funzioni/), [Funzioni elementari](/uni/analisi-1/funzioni-elementari/), [Trasformazioni di grafici](/uni/analisi-1/trasformazioni-di-grafici/) |
+| 21/9 | 62-92 | monotone, grafico dell'inversa; 1.5 funzioni elementari; 1.6 trasformazioni | <span class="src">Esercitazione 1</span> (Moodle, "Esercitazione 1 - 21 set": slide annotate 60-92 tranne 62-63, numerate da 62 a 84 su un deck da 510) + quaderno; slide 62-63 in <span class="src">Slide cap 1 da 62 (non annotate)</span> | [Funzioni](/uni/analisi-1/funzioni/), [Funzioni elementari](/uni/analisi-1/funzioni-elementari/), [Trasformazioni di grafici](/uni/analisi-1/trasformazioni-di-grafici/) |
 | 22/9 | complessi 1-23 di 50 | 2.1 forma cartesiana; 2.2 coniugato, modulo, reciproco; equazioni | <span class="src">Lezione 2026-09-22</span> | [Numeri complessi](/uni/analisi-1/numeri-complessi/) |
 | 23/9 | complessi 21-39 | 2.3 forma trigonometrica ed esponenziale, De Moivre, equazioni; 2.4 radici fino alla formula | <span class="src">Lezione 2026-09-23</span> | [Numeri complessi](/uni/analisi-1/numeri-complessi/) |
+| 28/9 | complessi 40-50; limiti 1-12 di 68 | 2.4 teorema delle radici, radici dell'unità, teorema fondamentale dell'algebra; 2.5 luoghi nel piano; 3.1 successioni, fattoriale, binomiali, Newton, geometrica; definizione di $a_n \to 0$ | <span class="src">Lezione 2026-09-28</span> | [Numeri complessi](/uni/analisi-1/numeri-complessi/), [Limiti di successioni](/uni/analisi-1/limiti-di-successioni/) |
+| 30/9 | limiti 12-25 | 3.2 limiti $0$, $\pm\infty$, $\ell$, verifiche con la definizione, unicità, limitatezza delle convergenti; 3.3 sottosuccessioni (definizione ed esempi) | <span class="src">Lezione 2026-09-30</span> | [Limiti di successioni](/uni/analisi-1/limiti-di-successioni/) |
 
-Prossimo: complessi slide 40-50 (radici dell'unità, teorema fondamentale dell'algebra, luoghi nel piano), da <span class="src">Slide complessi da 40 (non annotate)</span>. Anteprima in fondo alla nota sui complessi.
+Prossimo: limiti slide 26 in poi (limiti delle sottosuccessioni e non esistenza del limite, successioni monotone, numero di Nepero, confronto e carabinieri, forme indeterminate), da <span class="src">Slide limiti da 26 (non annotate)</span>.
 
 ## Argomenti
 
@@ -72,7 +74,7 @@ Il programma dalla slide 7 del 14/9 (quello completo è nel Syllabus su Esse3/Mo
    - [Funzioni elementari](/uni/analisi-1/funzioni-elementari/)
    - [Trasformazioni di grafici](/uni/analisi-1/trasformazioni-di-grafici/)
 2. **Numeri complessi**: [Numeri complessi](/uni/analisi-1/numeri-complessi/)
-3. Limiti di successioni e funzioni
+3. **Limiti di successioni** e funzioni: [Limiti di successioni](/uni/analisi-1/limiti-di-successioni/)
 4. Funzioni continue
 5. Derivate di funzioni; studio del grafico di una funzione
 6. Formula di Taylor
@@ -88,12 +90,14 @@ Le voci senza link diventano note quando l'argomento parte a lezione.
 - <span class="src">Foglio 0 esercizi</span>: logica, insiemi, disequazioni ("per familiarizzare con il linguaggio").
 - <span class="src">Foglio 1 esercizi</span>: sup e inf di successioni e insiemi, grafici elementari, numeri complessi.
 - <span class="src">Esercizi svolti logica</span>: esercizi svolti di Pinamonti (a.a. 21/22) su quantificatori, insiemi, campo di esistenza.
+- <span class="src">Esercizi svolti complessi</span>: "Qualche esercizio risolto sui complessi" (Moodle, foglio di Ingegneria Industriale 22/23): forme, luoghi, equazioni, radici, crocette con risposte. Alcuni sono svolti per esteso negli esercizi della nota sui complessi.
+- <span class="src">Tutoraggio 2</span>: foglio del tutoraggio sui complessi (foglio 2 di Pinamonti, 25/9/2023), con soluzioni. Gli esercizi 1, 2.i e 4 coincidono con quelli del foglio 1 già svolti nella nota; gli altri restano da fare a te.
 - Temi d'esame degli anni passati: su Moodle.
 
 ## Risorse
 
 - Slide annotate dal prof, una per lezione: vedi [Programma svolto](#programma-svolto).
-- Deck non ancora coperti da un PDF annotato: <span class="src">Slide cap 1 da 62 (non annotate)</span> (slide 62-92, lezione del 21/9), <span class="src">Slide complessi da 40 (non annotate)</span> (complessi 40-50, non ancora fatte).
+- Deck non ancora coperti da un PDF annotato: <span class="src">Slide cap 1 da 62 (non annotate)</span> (slide 62-92 del 21/9; il PDF dell'esercitazione copre tutto tranne le slide 62-63 sulle monotone), <span class="src">Slide limiti da 26 (non annotate)</span> (limiti 26-68, non ancora fatte).
 - Testi consigliati per la teoria (slide 8, in alternativa fra loro):
   - Conti, Ferrario, Terracini, Verzini, *Analisi Matematica. Dal Calcolo all'Analisi*
   - Bertsch, Dal Passo, Giacomelli, *Analisi Matematica*, seconda edizione

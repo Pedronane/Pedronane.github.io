@@ -8,34 +8,33 @@ hub: false
 tipo: teoria
 stato: in corso
 data: 2026-09-21
-lezioni:
-  - 21 set
+lezioni: []
 ordine: 4
 ---
 
-Argomento di [Geometria e Algebra Lineare](/uni/gal/). Iniziato a lezione dopo la geometria nello spazio. Fonte: appunti del prof <span class="src">Sistemi lineari, p. 1-3</span>; dispensa Postinghel, <span class="src">sezioni 2.1.1-2.1.2</span>. Chiude il capitolo di geometria ([Posizioni reciproche nello spazio](/uni/gal/posizioni-reciproche-nello-spazio/), [Distanze nello spazio](/uni/gal/distanze-nello-spazio/)) e apre la parte algebrica del corso.
+Argomento di [Geometria e Algebra Lineare](/uni/gal/). Iniziato a lezione dopo la geometria nello spazio. Fonte: appunti della prof <span class="src">Sistemi lineari, p. 1-3</span>; dispensa Postinghel, <span class="src">sezioni 2.1.1-2.1.2</span>. Chiude il capitolo di geometria ([Posizioni reciproche nello spazio](/uni/gal/posizioni-reciproche-nello-spazio/), [Distanze nello spazio](/uni/gal/distanze-nello-spazio/)) e apre la parte algebrica del corso.
 
-> [!info] Fin dove è arrivato il prof
-> A lezione: $\mathbb{R}^n$ con le sue operazioni, sistema lineare, soluzione, compatibile e incompatibile, omogeneo, matrice $m \times n$, le tre matrici associate fino a $[A \mid \vec{b}]$. **Non ancora fatti**: operazioni elementari, metodo di Gauss, matrici come oggetto a sé. Le parti segnate "dalla dispensa" servono solo a leggere meglio quello che c'è, e vanno riviste quando il prof le fa.
+> [!info] Dove continua
+> Questa nota copre la notazione (L3, 21/9). Il metodo per risolvere, fatto in L4 il 28/9, sta in due note: [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/) (operazioni elementari, forma a scalini, riduzione all'indietro) e [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/) (quante soluzioni ha un sistema). Le matrici come oggetto a sé arrivano in L5 (5/10). Le parti segnate "dalla dispensa" servono a leggere meglio quello che c'è.
 
 > [!abstract] Per l'esame
 > - **Saper enunciare**: $\mathbb{R}^n$ e le operazioni componente per componente, sistema lineare di $m$ equazioni in $n$ incognite, soluzione, compatibile, incompatibile, omogeneo, matrice $m \times n$, matrice dei coefficienti, dei termini noti, completa.
 > - **Saper fare**: scrivere le tre matrici di un sistema e il loro ordine; ricostruire un sistema dalla matrice completa; verificare se un'ennupla è soluzione; riconoscere un'incompatibilità evidente.
-> - **Dove esce**: per ora solo come linguaggio. Ogni intersezione del capitolo di geometria (retta e piano, due rette, tre piani) è un sistema lineare. Il metodo per risolverli arriva con Gauss.
+> - **Dove esce**: per ora solo come linguaggio. Ogni intersezione del capitolo di geometria (retta e piano, due rette, tre piani) è un sistema lineare. Il metodo per risolverli è in [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/).
 
-**Da dove arriva.** Nel capitolo di geometria i sistemi lineari sono già comparsi ovunque: due rette sono incidenti se un sistema ha soluzione, una retta in cartesiane è un sistema di due equazioni, il punto d'intersezione fra retta e piano è la soluzione di un sistema. Qui si smette di risolverli a occhio e si costruisce la macchina generale: prima la notazione e le matrici associate, poi (non ancora fatto) l'algoritmo di Gauss.
+**Da dove arriva.** Nel capitolo di geometria i sistemi lineari sono già comparsi ovunque: due rette sono incidenti se un sistema ha soluzione, una retta in cartesiane è un sistema di due equazioni, il punto d'intersezione fra retta e piano è la soluzione di un sistema. Qui si smette di risolverli a occhio e si costruisce la macchina generale: prima la notazione e le matrici associate, poi l'algoritmo di Gauss-Jordan ([Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/)).
 
 ## Definizioni
 
 ### Lo spazio delle $n$-uple
 
-Il prof: spazio delle ennuple ($n$-uple) di numeri reali,
+La prof: spazio delle ennuple ($n$-uple) di numeri reali,
 
 $$
 \mathbb{R}^n = \{\, \vec{a} = (a_1, \ldots, a_n) \mid a_i \in \mathbb{R},\ i = 1, \ldots, n \,\}
 $$
 
-Un elemento di $\mathbb{R}^n$ è una **$n$-upla** (o ennupla) ordinata di numeri reali. Esempio del prof: $(1, 2, 3) \in \mathbb{R}^3$ è una terna, la stessa terna di coordinate che si usava in geometria.
+Un elemento di $\mathbb{R}^n$ è una **$n$-upla** (o ennupla) ordinata di numeri reali. Esempio della prof: $(1, 2, 3) \in \mathbb{R}^3$ è una terna, la stessa terna di coordinate che si usava in geometria.
 
 L'ordine conta: $(1, 2, 3)$ e $(3, 2, 1)$ sono ennuple diverse. È la differenza fra un'ennupla e un insieme.
 
@@ -45,11 +44,11 @@ $$
 \vec{a} + \vec{b} = (a_1 + b_1,\ \ldots,\ a_n + b_n) \qquad \lambda \vec{a} = (\lambda a_1,\ \ldots,\ \lambda a_n)
 $$
 
-Il prof: "questo generalizza quanto visto per vettori geometrici in coordinate" ([Vettori geometrici](/uni/gal/vettori-geometrici/)). Si lavora **componente per componente**, con un numero qualunque di componenti. La geometria smette di funzionare come disegno oltre $n = 3$, l'algebra no.
+La prof: "questo generalizza quanto visto per vettori geometrici in coordinate" ([Vettori geometrici](/uni/gal/vettori-geometrici/)). Si lavora **componente per componente**, con un numero qualunque di componenti. La geometria smette di funzionare come disegno oltre $n = 3$, l'algebra no.
 
 ### Equazione lineare (dalla dispensa)
 
-Il prof passa direttamente al sistema; la dispensa prima definisce la singola equazione, e serve a capire la parola "lineare". Date $n$ incognite reali $x_1, \ldots, x_n$, un'**equazione lineare** è un'equazione in cui ogni termine ha grado $1$:
+La prof passa direttamente al sistema; la dispensa prima definisce la singola equazione, e serve a capire la parola "lineare". Date $n$ incognite reali $x_1, \ldots, x_n$, un'**equazione lineare** è un'equazione in cui ogni termine ha grado $1$:
 
 $$
 a_1 x_1 + a_2 x_2 + \cdots + a_n x_n = b
@@ -61,7 +60,7 @@ I numeri $a_1, \ldots, a_n$ sono i **coefficienti**, $b$ è il **termine noto**.
 
 ### Sistema lineare
 
-**Sistema lineare.** Il prof: un sistema di equazioni lineari (o sistema lineare) di $m$ equazioni in $n$ incognite è
+**Sistema lineare.** La prof: un sistema di equazioni lineari (o sistema lineare) di $m$ equazioni in $n$ incognite è
 
 $$
 (\ast) \quad \begin{cases} a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n = b_1 \\ a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n = b_2 \\ \quad \vdots \\ a_{m1} x_1 + a_{m2} x_2 + \cdots + a_{mn} x_n = b_m \end{cases}
@@ -77,11 +76,11 @@ Nel doppio indice $a_{ij}$ il **primo** indice è l'equazione (la riga), il **se
 
 **Omogeneo.** $b_1 = b_2 = \cdots = b_m = 0$, cioè tutti i termini noti sono nulli.
 
-**Sistemi equivalenti (dalla dispensa, non ancora fatto a lezione).** Due sistemi nelle stesse incognite che ammettono **esattamente le stesse soluzioni**. È la nozione su cui si reggerà il metodo di Gauss: si trasforma un sistema in uno equivalente più semplice, e le soluzioni non cambiano.
+**Sistemi equivalenti (dalla dispensa).** Due sistemi nelle stesse incognite che ammettono **esattamente le stesse soluzioni**. È la nozione su cui si regge il metodo di Gauss: le operazioni elementari trasformano un sistema in uno equivalente più semplice, e le soluzioni non cambiano ([Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/)).
 
 ### Matrice
 
-**Matrice.** Il prof: dati $m, n \geq 1$ numeri naturali, una **matrice di ordine $m \times n$ a coefficienti reali** è una tabella della forma
+**Matrice.** La prof: dati $m, n \geq 1$ numeri naturali, una **matrice di ordine $m \times n$ a coefficienti reali** è una tabella della forma
 
 $$
 A = \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{bmatrix} = [a_{ij}]
@@ -91,7 +90,7 @@ $A$ ha $m$ righe e $n$ colonne, e $a_{ij}$ è l'elemento sulla **$i$-esima riga*
 
 ### Le tre matrici di un sistema lineare
 
-Il prof associa al sistema $(\ast)$ tre matrici.
+La prof associa al sistema $(\ast)$ tre matrici.
 
 **Matrice dei coefficienti** $A$, di ordine $m \times n$: contiene tutti e soli i coefficienti $a_{ij}$.
 
@@ -128,12 +127,12 @@ Sostituendo zero a ogni incognita, ogni membro sinistro diventa $0$, e i termini
 
 **Verificare una soluzione.** Sostituisci l'ennupla in **ogni** equazione. Basta un'equazione falsa per dire che non è soluzione.
 
-Il metodo per **risolvere** un sistema (operazioni elementari, Gauss) non è ancora stato fatto a lezione: si aggiunge qui quando arriva.
+Il metodo per **risolvere** un sistema (operazioni elementari, Gauss-Jordan) sta in [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/); per sapere prima quante soluzioni ha, [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/).
 
 ## Esempi svolti a lezione
 
 > [!example]- Prof, appunti sistemi p. 1: $(1, 2, 3) \in \mathbb{R}^3$
-> È una terna: $n = 3$, tre componenti reali in un ordine preciso. Con le operazioni del prof, per esempio, $(1,2,3) + (0,1,-1) = (1, 3, 2)$ e $2(1,2,3) = (2,4,6)$.
+> È una terna: $n = 3$, tre componenti reali in un ordine preciso. Con le operazioni della prof, per esempio, $(1,2,3) + (0,1,-1) = (1, 3, 2)$ e $2(1,2,3) = (2,4,6)$.
 
 > [!example]- Dispensa, Esempio 12-13: un sistema compatibile e uno incompatibile
 > $$
@@ -156,7 +155,7 @@ Il metodo per **risolvere** un sistema (operazioni elementari, Gauss) non è anc
 > $$
 > \begin{cases} z - 4 = 0 \\ x + y + 2 = 0 \\ 4x + 4y - z + 12 = 0 \end{cases} \quad\Longrightarrow\quad [A \mid \vec{b}] = \left[\begin{array}{ccc|c} 0 & 0 & 1 & 4 \\ 1 & 1 & 0 & -2 \\ 4 & 4 & -1 & -12 \end{array}\right]
 > $$
-> Tre equazioni in tre incognite ($m = n = 3$), non omogeneo. I termini noti passano a destra col segno cambiato, e gli zeri segnano le incognite che mancano. Il sistema è compatibile con infinite soluzioni (tutti i punti della retta $r$): la terza riga è $4$ volte la seconda meno la prima, e non aggiunge informazione. Capire questo guardando solo la matrice è esattamente quello che farà Gauss.
+> Tre equazioni in tre incognite ($m = n = 3$), non omogeneo. I termini noti passano a destra col segno cambiato, e gli zeri segnano le incognite che mancano. Il sistema è compatibile con infinite soluzioni (tutti i punti della retta $r$): la terza riga è $4$ volte la seconda meno la prima, e non aggiunge informazione. Capire questo guardando solo la matrice è esattamente quello che fa Gauss-Jordan: la terza riga diventa nulla e il rango è $2$ ([Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/)).
 
 ## Esercizi tipo esame
 
@@ -229,7 +228,7 @@ nelle incognite $x_1, x_2, x_3$, e mostra che è incompatibile.
 
 - Quando un sistema è omogeneo, e perché è sempre compatibile?
 
-- Cosa sono due sistemi equivalenti, e perché la nozione sarà utile?
+- Cosa sono due sistemi equivalenti, e perché la nozione serve per Gauss-Jordan?
 
 - Quali sono le tre matrici associate a un sistema lineare e che ordine hanno?
 

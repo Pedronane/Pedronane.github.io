@@ -12,7 +12,7 @@ lezioni: []
 ordine: 999
 ---
 
-Tutte le formule della geometria nello spazio fatte a lezione (appunti del prof, <span class="src">p. 2-27</span>, e capitolo 1 della dispensa Postinghel), quelle che servono per il foglio 1 del tutorato e per il primo parziale. Argomento di [Geometria e Algebra Lineare](/uni/gal/). La teoria sta in [Vettori geometrici](/uni/gal/vettori-geometrici/), [Rette e piani nello spazio](/uni/gal/rette-e-piani-nello-spazio/), [Posizioni reciproche nello spazio](/uni/gal/posizioni-reciproche-nello-spazio/), [Distanze nello spazio](/uni/gal/distanze-nello-spazio/). La strategia per gli esercizi sta in [Ripasso foglio 1](/uni/gal/ripasso-foglio-1/).
+Tutte le formule della geometria nello spazio fatte a lezione (appunti della prof, <span class="src">p. 2-27</span>, e capitolo 1 della dispensa Postinghel), quelle che servono per il foglio 1 del tutorato e per il primo parziale. Argomento di [Geometria e Algebra Lineare](/uni/gal/). La teoria sta in [Vettori geometrici](/uni/gal/vettori-geometrici/), [Rette e piani nello spazio](/uni/gal/rette-e-piani-nello-spazio/), [Posizioni reciproche nello spazio](/uni/gal/posizioni-reciproche-nello-spazio/), [Distanze nello spazio](/uni/gal/distanze-nello-spazio/). La strategia per gli esercizi sta in [Ripasso foglio 1](/uni/gal/ripasso-foglio-1/).
 
 Convenzione: $\vec{v} = (v_1, v_2, v_3)$, punti $A = (x_A, y_A, z_A)$, piani con normale $\vec{n} = (a,b,c)$.
 
@@ -46,7 +46,7 @@ $$
 | equazione cartesiana | $ax + by + cz + d = 0$, e $\vec{n} = (a,b,c)$ è normale al piano |
 | piano per $P$ con normale $\vec{n}$ | $a(x - x_P) + b(y - y_P) + c(z - z_P) = 0$ |
 | equazioni parametriche | $\begin{cases} x = x_A + t v_1 + s w_1 \\ y = y_A + t v_2 + s w_2 \\ z = z_A + t v_3 + s w_3\end{cases}$ con $\vec{v}, \vec{w}$ non paralleli |
-| piano per tre punti $A,B,C$ | parametriche da $A$ con direzioni $\overrightarrow{AB}$ e $\overrightarrow{AC}$, poi si eliminano $t$ e $s$ (metodo del prof); in alternativa la normale $\vec{n}=(a,b,c)$ risolve $\vec{n} \cdot \overrightarrow{AB} = 0$, $\vec{n} \cdot \overrightarrow{AC} = 0$ |
+| piano per tre punti $A,B,C$ | parametriche da $A$ con direzioni $\overrightarrow{AB}$ e $\overrightarrow{AC}$, poi si eliminano $t$ e $s$ (metodo della prof); in alternativa la normale $\vec{n}=(a,b,c)$ risolve $\vec{n} \cdot \overrightarrow{AB} = 0$, $\vec{n} \cdot \overrightarrow{AC} = 0$ |
 | proiezione di $P$ su un piano | retta per $P$ con direzionale $\vec{n}$, intersecata col piano: il punto è la proiezione $H$ |
 
 La lettura al volo: i coefficienti di $x,y,z$ **sono** le componenti di una normale. Il termine noto $d$ sposta il piano parallelamente a sé stesso.
@@ -70,7 +70,7 @@ $$
 \lambda(ax + by + cz + d) + \mu(a'x + b'y + c'z + d') = 0, \qquad (\lambda,\mu) \neq (0,0)
 $$
 
-Ogni piano che contiene $r$ si ottiene per una coppia $(\lambda,\mu)$. In pratica, come fa il prof, si impone la condizione (passaggio per un punto, parallelismo), si pone $\lambda = 1$ e si ricava $\mu$. Se la condizione dà $\lambda = 0$, si pone $\mu = 1$: il piano cercato è $\pi'$.
+Ogni piano che contiene $r$ si ottiene per una coppia $(\lambda,\mu)$. In pratica, come fa la prof, si impone la condizione (passaggio per un punto, parallelismo), si pone $\lambda = 1$ e si ricava $\mu$. Se la condizione dà $\lambda = 0$, si pone $\mu = 1$: il piano cercato è $\pi'$.
 
 ## Posizioni reciproche
 

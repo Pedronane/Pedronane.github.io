@@ -12,7 +12,7 @@ lezioni: []
 ordine: 999
 ---
 
-Ripasso operativo per il <span class="src">foglio 1 del tutorato</span>: otto domande di teoria e nove esercizi, tutti dentro la geometria nello spazio (appunti del prof p. 2-27, capitolo 1 della dispensa). Gli esercizi svolti dal tutor in <span class="src">esercitazione</span> sono lo stesso tipo, e stanno per esteso nelle note di teoria. Argomento di [Geometria e Algebra Lineare](/uni/gal/). Le formule stanno in [Formulario rette e piani](/uni/gal/formulario-rette-e-piani/).
+Ripasso operativo per il <span class="src">foglio 1 del tutorato</span>: otto domande di teoria e nove esercizi, tutti dentro la geometria nello spazio (appunti della prof p. 2-27, capitolo 1 della dispensa). Gli esercizi svolti dal tutor in <span class="src">esercitazione</span> sono lo stesso tipo, e stanno per esteso nelle note di teoria. Argomento di [Geometria e Algebra Lineare](/uni/gal/). Le formule stanno in [Formulario rette e piani](/uni/gal/formulario-rette-e-piani/).
 
 Il foglio non chiede niente oltre il capitolo 1: prodotto vettoriale, determinanti e matrici non servono. Ogni direzione ortogonale si trova risolvendo un sistema di prodotti scalari nulli.
 
@@ -60,7 +60,7 @@ Non sono da imparare a memoria, ma la risposta deve avere certi pezzi. Qui c'è 
 
 **1.7 Distributiva in coordinate.** Da fare per esteso. Scrivi i tre vettori in coordinate, sviluppa i due membri separatamente e mostra che sono la stessa cosa. Tutto si appoggia alla distributiva dei numeri reali.
 
-**1.8 Posizioni di due rette.** Le definizioni del prof, per due rette **distinte** con direzionali $\vec{v}$ e $\vec{w}$: tre casi, parallele (direzionali proporzionali), incidenti (un punto in comune), sghembe (altrimenti). Poi, a parte, perpendicolari se $\vec{v} \cdot \vec{w} = 0$, che si combina con incidenti o sghembe. Per stabilire il caso, l'albero: prima guardi se le direzioni sono proporzionali; se no risolvi il sistema con due parametri diversi. Se il testo non dice che sono distinte, nel ramo delle direzioni proporzionali controlli anche un punto: potrebbero coincidere.
+**1.8 Posizioni di due rette.** Le definizioni della prof, per due rette **distinte** con direzionali $\vec{v}$ e $\vec{w}$: tre casi, parallele (direzionali proporzionali), incidenti (un punto in comune), sghembe (altrimenti). Poi, a parte, perpendicolari se $\vec{v} \cdot \vec{w} = 0$, che si combina con incidenti o sghembe. Per stabilire il caso, l'albero: prima guardi se le direzioni sono proporzionali; se no risolvi il sistema con due parametri diversi. Se il testo non dice che sono distinte, nel ramo delle direzioni proporzionali controlli anche un punto: potrebbero coincidere.
 
 ## La parte pratica, esercizio per esercizio
 
@@ -80,7 +80,7 @@ Qui c'è solo l'attrezzo da usare, non i conti.
 
 Ordine consigliato: 1.10, 1.9, 1.12, 1.11, 1.15, 1.13, 1.16, 1.17, 1.14. I primi sono applicazione diretta di una formula, gli ultimi combinano tre passaggi e conviene affrontarli quando le mosse base sono automatiche.
 
-I modelli svolti a lezione, da rileggere prima di ogni esercizio: fascio per un punto (prof, in [Rette e piani nello spazio](/uni/gal/rette-e-piani-nello-spazio/)) per 1.9; tutor es. 5 per 1.12, stessa struttura; tutor es. 2 per 1.13 a e 1.15 b (in [Posizioni reciproche nello spazio](/uni/gal/posizioni-reciproche-nello-spazio/)); tutor es. 6 e l'esempio punto-retta del prof per 1.13 b e 1.16 a (in [Distanze nello spazio](/uni/gal/distanze-nello-spazio/)); rette sghembe del prof per 1.14 c.
+I modelli svolti a lezione, da rileggere prima di ogni esercizio: fascio per un punto (prof, in [Rette e piani nello spazio](/uni/gal/rette-e-piani-nello-spazio/)) per 1.9; tutor es. 5 per 1.12, stessa struttura; tutor es. 2 per 1.13 a e 1.15 b (in [Posizioni reciproche nello spazio](/uni/gal/posizioni-reciproche-nello-spazio/)); tutor es. 6 e l'esempio punto-retta della prof per 1.13 b e 1.16 a (in [Distanze nello spazio](/uni/gal/distanze-nello-spazio/)); rette sghembe della prof per 1.14 c.
 
 ### Le situazioni ricorrenti
 

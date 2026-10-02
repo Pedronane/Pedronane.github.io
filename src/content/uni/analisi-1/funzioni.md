@@ -14,7 +14,7 @@ lezioni:
 ordine: 2
 ---
 
-Argomento di [Analisi Matematica 1](/uni/analisi-1/), nozioni preliminari, sezioni 1.3 e 1.4. Fatto a lezione il 16/9, slide 45-61 (<span class="src">slide annotate del 16/9</span>); monotonia e grafico dell'inversa (slide 62-64) il 21/9 (niente PDF annotato): <span class="src">slide non annotate</span>. Prima: [Insiemi e logica](/uni/analisi-1/insiemi-e-logica/) (quantificatori) e [Numeri reali, sup e inf](/uni/analisi-1/numeri-reali-sup-e-inf/) (maggioranti, limitatezza). Il seguito è [Funzioni elementari](/uni/analisi-1/funzioni-elementari/).
+Argomento di [Analisi Matematica 1](/uni/analisi-1/), nozioni preliminari, sezioni 1.3 e 1.4. Fatto a lezione il 16/9, slide 45-61 (<span class="src">slide annotate del 16/9</span>); monotonia e grafico dell'inversa (slide 62-64) il 21/9: monotone su <span class="src">slide non annotate</span>, grafico dell'inversa annotato nel <span class="src">PDF dell'esercitazione del 21/9</span>, che ripassa anche le slide 60-61 su funzioni limitate e simmetriche. Prima: [Insiemi e logica](/uni/analisi-1/insiemi-e-logica/) (quantificatori) e [Numeri reali, sup e inf](/uni/analisi-1/numeri-reali-sup-e-inf/) (maggioranti, limitatezza). Il seguito è [Funzioni elementari](/uni/analisi-1/funzioni-elementari/).
 
 > [!abstract] Per l'esame
 > - **Saper enunciare**: definizione di funzione, dominio, codominio, immagine; iniettiva, suriettiva, biiettiva in simboli; composizione e sua condizione; inversa; restrizione; grafico; limitata, monotona, pari, dispari, periodica.
@@ -267,6 +267,8 @@ La seconda riga è la negazione della prima, fatta con le regole di [Insiemi e l
 
 > [!abstract] Grafico di $f^{-1}$
 > Sia $f : D \to f(D)$ invertibile. Allora il grafico di $f^{-1}$ si ricava dal grafico di $f$ per simmetria rispetto alla bisettrice $y = x$.
+
+Annotazione sul PDF del 21/9: "invertibile" vuol dire iniettiva e suriettiva, e qui la suriettività è gratis perché il codominio è proprio l'immagine $f(D)$. Nella relazione $y = f(x) \iff x = f^{-1}(y)$ la $y$ sta in $f(D)$ e la $x$ in $D$.
 
 > [!note]- Perché
 > $$

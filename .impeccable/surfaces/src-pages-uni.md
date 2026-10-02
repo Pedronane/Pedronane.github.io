@@ -20,7 +20,7 @@ OWN-WORLD: carta da fotocopia bianco-freddo, inchiostro quasi nero-blu, un solo 
 
 STORY: il lettore arriva da un link, vede materia, argomento, lezioni coperte e «Per l'esame»; scorre clausole numerate, apre dimostrazioni e soluzioni solo dopo averci provato, copia il link di una clausola per un compagno.
 
-FIRST VIEWPORT: testata a filetto con materia a sinistra e date lezioni a destra; titolo grande in Archivo; clausola §0 «Per l'esame» come primo blocco; colonna 68ch con numeri in margine sinistro; indice numerato a destra da 1100px, a scomparsa sotto.
+FIRST VIEWPORT: testata a filetto con materia a sinistra e date lezioni a destra; titolo grande in Archivo; clausola §0 «Per l'esame» come primo blocco; numeri in margine sinistro; da 1120px testo circa 3/4 e indice numerato sticky 1/4 (scelta di Pietro, ott 2026); sotto, indice a cassetto dal bottone «§n Indice» in basso a destra (pannello laterale su tablet, foglio dal basso su telefono).
 
 FORM: Registro numerato, candidato 7 della lista ordinata, seed fe236a88. Raise: bandierina di lettura persistita (cutting bench); indice di materia come serie datata di lezioni (ice press); niente riquadri, raggruppamento per peso (cathode gauze); blu solo dove si agisce o si definisce (monochrome canon).
 

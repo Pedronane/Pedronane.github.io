@@ -44,16 +44,6 @@ const bandiera = '<svg viewBox="0 0 12 14" aria-hidden="true"><path d="M1 0h1.4v
       <a href="#"><Fragment set:html={bandiera} /><span>Riprendi da</span></a>
       <button type="button">Ricomincia dall’inizio</button>
     </p>
-    {toc.length > 2 && (
-      <details class="toc-mobile" data-pagefind-ignore>
-        <summary>Indice <span>{toc.filter((t) => t.depth === 2).length} sezioni</span></summary>
-        <ol>
-          {toc.map((t) => (
-            <li class={`d${t.depth}`}><a href={`#${t.id}`}><span class="num">{t.num}</span><span set:html={inlineTex(t.text)} /></a></li>
-          ))}
-        </ol>
-      </details>
-    )}
     <article class="prose">
       <Content />
     </article>
@@ -62,8 +52,15 @@ const bandiera = '<svg viewBox="0 0 12 14" aria-hidden="true"><path d="M1 0h1.4v
       {dopo && <a class="dopo" href={urlOf(dopo)}><span>Successiva</span><strong set:html={inlineTex(dopo.data.title)} /></a>}
     </nav>
     {toc.length > 0 && (
-      <nav class="toc" aria-label="Indice della nota" data-pagefind-ignore>
-        <p class="toc-title">Indice</p>
+      <button class="toc-toggle" type="button" aria-controls="indice" aria-expanded="false" data-pagefind-ignore>
+        <span class="toc-toggle-num"></span>Indice
+      </button>
+      <div class="toc-backdrop" hidden></div>
+      <nav class="toc" id="indice" aria-label="Indice della nota" data-pagefind-ignore>
+        <div class="toc-title">
+          <span>Indice</span>
+          <button class="toc-close" type="button" aria-label="Chiudi l’indice">Chiudi</button>
+        </div>
         <ol>
           {toc.map((t) => (
             <li class={`d${t.depth}`}>
@@ -84,6 +81,11 @@ const bandiera = '<svg viewBox="0 0 12 14" aria-hidden="true"><path d="M1 0h1.4v
   const main = document.querySelector<HTMLElement>('[data-nota]');
   const key = `uni:pos:${main?.dataset.nota}`;
   const headings = [...document.querySelectorAll<HTMLElement>('.prose h2[id], .prose h3[id]')];
+  const toc = document.querySelector<HTMLElement>('.toc');
+  const toggle = document.querySelector<HTMLButtonElement>('.toc-toggle');
+  const toggleNum = toggle?.querySelector<HTMLElement>('.toc-toggle-num');
+  const backdrop = document.querySelector<HTMLElement>('.toc-backdrop');
+  const desktop = matchMedia('(min-width: 1120px)');
   const tocLinks = new Map([...document.querySelectorAll<HTMLAnchorElement>('.toc a[data-id]')].map((a) => [a.dataset.id, a]));
 
   type Pos = { id: string; num: string; text: string };
@@ -140,7 +142,8 @@ const bandiera = '<svg viewBox="0 0 12 14" aria-hidden="true"><path d="M1 0h1.4v
     if (current) {
       const link = tocLinks.get(current.id);
       link?.setAttribute('aria-current', 'true');
-      link?.scrollIntoView({ block: 'nearest' });
+      if (desktop.matches) link?.scrollIntoView({ block: 'nearest' });
+      if (toggleNum) toggleNum.textContent = `§${current.dataset.num ?? ''}`;
       if (moved) {
         write(describe(current));
         if (bar) bar.hidden = true;
@@ -161,6 +164,28 @@ const bandiera = '<svg viewBox="0 0 12 14" aria-hidden="true"><path d="M1 0h1.4v
     { passive: true },
   );
   onScroll();
+
+  const setOpen = (open: boolean) => {
+    if (!toc || !toggle || !backdrop) return;
+    toc.toggleAttribute('data-open', open);
+    backdrop.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    if (open) {
+      const active = toc.querySelector<HTMLElement>('a[aria-current="true"]');
+      active?.scrollIntoView({ block: 'center' });
+      (active ?? toc.querySelector<HTMLElement>('.toc-close'))?.focus({ preventScroll: true });
+    } else if (toc.contains(document.activeElement)) {
+      toggle.focus({ preventScroll: true });
+    }
+  };
+  toggle?.addEventListener('click', () => setOpen(!toc?.hasAttribute('data-open')));
+  backdrop?.addEventListener('click', () => setOpen(false));
+  toc?.querySelector('.toc-close')?.addEventListener('click', () => setOpen(false));
+  toc?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => !desktop.matches && setOpen(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && toc?.hasAttribute('data-open')) setOpen(false);
+  });
+  desktop.addEventListener('change', () => setOpen(false));
 
   document.querySelectorAll<HTMLAnchorElement>('.sec-num').forEach((a) => {
     a.addEventListener('click', async (e) => {

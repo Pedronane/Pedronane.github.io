@@ -131,11 +131,11 @@ Figure tokens. Vault SVGs are recolored at sync time (`scripts/sync-uni.mjs` map
 
 ### Layout
 
-The note is a four-column sheet grid: gutter, margin column (`--margin: 4.25rem`), text column (`--measure: 40rem`), gutter. Clause numbers hang in the margin column, right-aligned `1.15rem` off the text edge. At 1120px and up the sheet adds a `3.5rem` gap and a sticky index column (`--toc: 15.5rem`, top `4.6rem`). Register pages (`.senza-indice`) drop the index, widen the measure to 46rem and mirror the margin on the right. Gutter is `clamp(1rem, 4vw, 2.5rem)`; the sheet starts `clamp(2rem, 6vh, 3.75rem)` below the running head.
+The note is a four-column sheet grid: gutter, margin column (`--margin: 4.25rem`), text column (`--measure: 40rem`), gutter. Clause numbers hang in the margin column, right-aligned `1.15rem` off the text edge. At 1120px and up a note sheet becomes gutter, margin, text `3fr`, `3.5rem` gap, index `minmax(var(--toc), 1fr)`, gutter: text about three quarters, index one quarter (Pietro's choice, Oct 2026). The sheet is capped at `--sheet-max: 100rem` and centred so lines stay readable on wide monitors. Register pages (`.senza-indice`) drop the index, widen the measure to 46rem and mirror the margin on the right. Gutter is `clamp(1rem, 4vw, 2.5rem)`; the sheet starts `clamp(2rem, 6vh, 3.75rem)` below the running head.
 
 Code blocks break out of the column on the left by one margin width (from 720px) and `3rem` on the right (from 1120px), so code reads as full-width apparatus while its text still starts on the column edge.
 
-Breakpoints: **720px** (below: margin column collapses to 0, § numbers go inline before the heading text, register rows go two-column with the date under the title, the running-head subtitle and theme label hide, the index becomes a collapsible "Indice" block above the text); **1120px** (the index column appears and the collapsible one hides).
+Breakpoints: **720px** (below: margin column collapses to 0, § numbers go inline before the heading text, register rows go two-column with the date under the title, the running-head subtitle and theme label hide, the index drawer becomes a bottom sheet up to 78vh); **1120px** (below: the index leaves the grid and opens as a drawer from a fixed "§n Indice" button bottom right, right-side panel `min(24rem, 45vw)` from 720px; above: the sticky index column).
 
 Print hides running head, index, resume bar, colophon and prev/next, opens every fold and drops the grid.
 
@@ -161,7 +161,7 @@ Square by default. Radii are tiny and functional: 2px on inline tints (code, `<m
 
 **Callouts.** Obsidian callouts become `aside` (static) or `details` (folding). Static ones: 1px `--rule-strong` left edge, `1.1rem` inset, Archivo 650 title. No per-type colour. Folding ones sit between two 1px `--rule` lines (adjacent folds share a line), chevron plus title, 2.75rem minimum target; closed examples show a muted "provaci prima" hint, closed proofs "dimostrazione", and the hint disappears on open. Question callouts fold with a serif title.
 
-**Index.** Sticky column: "Indice" over a 1px `--rule-strong` line, entries as a `2.4rem | text | flag` grid, h2 entries 600 in `--ink-2`, h3 entries indented `0.9rem`. The current section (scroll-spy at 30% of the viewport) turns biro. Below 1120px: a folding "Indice" block with biro numbers.
+**Index.** Sticky column: "Indice" over a 1px `--rule-strong` line, entries as a `2.4rem | text | flag` grid, h2 entries 600 in `--ink-2`, h3 entries indented `0.9rem`. The current section (scroll-spy at 30% of the viewport) turns biro. Below 1120px the same element is a drawer over a 35% ink backdrop: the button shows the current § number, the drawer opens scrolled to it, and closes on Chiudi, Esc, backdrop or on choosing an entry. Bookmark flag and scroll-spy work the same in both forms.
 
 **Reading flag and Riprendi.** The last clause read is stored per note (`localStorage['uni:pos:<path>']`). On return a small biro flag SVG marks it in the index, and a "Riprendi da §n title" action appears under the title: `--biro-wash` background, `--biro-ink` text, 3px radius, with a muted underlined "Ricomincia dall’inizio" button that clears it.
 

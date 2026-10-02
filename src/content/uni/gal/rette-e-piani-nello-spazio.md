@@ -342,8 +342,9 @@ Due strade, entrambe viste nell'esercitazione del tutor.
 ## Esercizi tipo esame
 
 **Esercizio 1.** Siano $A = (2, -1, 0)$ e $B = (0, 1, 3)$.
-a) Scrivi equazioni parametriche e cartesiane della retta $r$ per $A$ e $B$.
-b) Stabilisci se $C = (4, -3, -3)$ e $D = (1, 0, 1)$ stanno su $r$.
+
+- a) Scrivi equazioni parametriche e cartesiane della retta $r$ per $A$ e $B$.
+- b) Stabilisci se $C = (4, -3, -3)$ e $D = (1, 0, 1)$ stanno su $r$.
 
 > [!example]- Soluzione
 > **a)** $\vec{v} = \overrightarrow{AB} = (0 - 2,\ 1 - (-1),\ 3 - 0) = (-2, 2, 3)$. Parametriche da $A$:
@@ -389,9 +390,10 @@ b) Stabilisci se $C = (4, -3, -3)$ e $D = (1, 0, 1)$ stanno su $r$.
 > **Verifica.** $P$: $1 - 3 + 1 + 1 = 0$. Due punti di $r$ (pongo $y = 0$ e $y = 1$): $(-1, 0, 0)$ dà $-1 + 1 = 0$; $(0, 1, 2)$ dà $0 - 3 + 2 + 1 = 0$.
 
 **Esercizio 4.** Siano $\pi : 2x - y + 3z - 5 = 0$ e $P = (1, 2, -1)$.
-a) Trova il piano per $P$ parallelo a $\pi$.
-b) Trova parametriche e cartesiane della retta per $P$ ortogonale a $\pi$.
-c) Trova la proiezione ortogonale di $P$ su $\pi$.
+
+- a) Trova il piano per $P$ parallelo a $\pi$.
+- b) Trova parametriche e cartesiane della retta per $P$ ortogonale a $\pi$.
+- c) Trova la proiezione ortogonale di $P$ su $\pi$.
 
 > [!example]- Soluzione
 > **$P \notin \pi$:** $2 - 2 - 3 - 5 = -8 \neq 0$.

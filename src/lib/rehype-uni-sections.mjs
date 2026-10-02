@@ -52,6 +52,33 @@ export default function rehypeUniSections() {
       }
     };
     mark(tree);
+    const firstText = (node) => {
+      const first = node.children?.find((c) => c.type !== 'text' || c.value.trim() !== '');
+      if (!first) return null;
+      if (first.type === 'text') return first;
+      if (first.type === 'element' && first.tagName === 'p') return firstText(first);
+      return null;
+    };
+    const options = (node) => {
+      for (const child of node.children ?? []) {
+        if (child.type !== 'element') continue;
+        if (child.tagName === 'ul') {
+          const items = child.children.filter((c) => c.type === 'element' && c.tagName === 'li');
+          const texts = items.map(firstText);
+          const ok =
+            items.length >= 2 &&
+            texts.every((t, i) => t && t.value.startsWith(`${String.fromCharCode(97 + i)}) `));
+          if (ok) {
+            child.tagName = 'ol';
+            child.properties.type = 'a';
+            child.properties.className = [...(child.properties.className ?? []), 'opzioni'];
+            texts.forEach((t) => (t.value = t.value.slice(3)));
+          }
+        }
+        options(child);
+      }
+    };
+    options(tree);
     file.data.astro ??= {};
     file.data.astro.frontmatter ??= {};
     file.data.astro.frontmatter.toc = toc;

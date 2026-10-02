@@ -388,9 +388,10 @@ Nel resto del capitolo la prof ha dato solo dimostrazioni, che stanno tutte in E
 ## Esercizi tipo esame
 
 **Esercizio 1.** Siano $A = (1, 0, 2)$, $B = (3, -1, 4)$, $C = (3, 2, 1)$.
-a) Calcola $\overrightarrow{AB}$, $\overrightarrow{AC}$, $\overrightarrow{BC}$ e i loro moduli.
-b) Il triangolo $ABC$ è rettangolo in $A$?
-c) Trova l'angolo del triangolo nel vertice $B$.
+
+- a) Calcola $\overrightarrow{AB}$, $\overrightarrow{AC}$, $\overrightarrow{BC}$ e i loro moduli.
+- b) Il triangolo $ABC$ è rettangolo in $A$?
+- c) Trova l'angolo del triangolo nel vertice $B$.
 
 > [!example]- Soluzione
 > **a)** Fine meno inizio:

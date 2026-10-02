@@ -593,6 +593,15 @@ main {
   font-variant-numeric: tabular-nums;
 }
 
+.prose ol.opzioni {
+  padding-left: 1.6em;
+}
+
+.prose ol.opzioni > li::marker {
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
 .prose blockquote:not(.callout) {
   padding-left: 1.1rem;
   border-left: 1px solid var(--rule-strong);

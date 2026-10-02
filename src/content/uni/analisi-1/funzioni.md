@@ -386,37 +386,41 @@ La costante $f(x) = 5$ funziona: per qualsiasi $T > 0$ vale $f(x + T) = 5 = f(x)
 ### Crocette (stile parte 1)
 
 **C1.** $f : \mathbb{R} \to \mathbb{R}$, $f(x) = x^2$ è:
-a) iniettiva ma non suriettiva
-b) suriettiva ma non iniettiva
-c) né iniettiva né suriettiva
-d) biiettiva
+
+- a) iniettiva ma non suriettiva
+- b) suriettiva ma non iniettiva
+- c) né iniettiva né suriettiva
+- d) biiettiva
 
 > [!example]- Soluzione
 > **c**. Non iniettiva: $f(-1) = f(1)$. Non suriettiva: $-1$ non ha controimmagine. Diventerebbe biiettiva solo restringendo il dominio a $[0, +\infty)$ e prendendo come codominio $[0, +\infty)$.
 
 **C2.** $f : \mathbb{R} \setminus \{0\} \to \mathbb{R}$, $f(x) = \frac3x$ è:
-a) iniettiva ma non suriettiva
-b) suriettiva ma non iniettiva
-c) né iniettiva né suriettiva
-d) biiettiva
+
+- a) iniettiva ma non suriettiva
+- b) suriettiva ma non iniettiva
+- c) né iniettiva né suriettiva
+- d) biiettiva
 
 > [!example]- Soluzione
 > **a**, l'ES1 del prof. Il valore $0$ non è mai assunto. Con codominio $\mathbb{R} \setminus \{0\}$ sarebbe biiettiva.
 
 **C3.** Siano $f(x) = x^2$ e $g(x) = \cos x$. Quanto vale $(g \circ f)(\sqrt\pi)$?
-a) $1$
-b) $-1$
-c) $\cos^2\sqrt\pi$
-d) $\pi$
+
+- a) $1$
+- b) $-1$
+- c) $\cos^2\sqrt\pi$
+- d) $\pi$
 
 > [!example]- Soluzione
 > **b**. $g \circ f$ applica prima $f$: $f(\sqrt\pi) = \pi$, poi $g(\pi) = \cos\pi = -1$. La c) è $(f \circ g)(\sqrt\pi)$, l'ordine sbagliato.
 
 **C4.** Quale funzione $\mathbb{R} \to \mathbb{R}$ è dispari?
-a) $x^2 + x$
-b) $x^3 - \sin x$
-c) $x^2\cos x$
-d) $x + 1$
+
+- a) $x^2 + x$
+- b) $x^3 - \sin x$
+- c) $x^2\cos x$
+- d) $x + 1$
 
 > [!example]- Soluzione
 > **b**. $(-x)^3 - \sin(-x) = -x^3 + \sin x = -(x^3 - \sin x)$. La c) è pari (prodotto di due pari), la a) e la d) non sono né pari né dispari: per esempio in $x = 1$ la a) vale $2$ e in $x = -1$ vale $0$.

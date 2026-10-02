@@ -381,37 +381,41 @@ con la variabile rinominata $x$ alla fine, come si fa per scrivere l'inversa com
 ### Crocette (stile parte 1)
 
 **C1.** Il campo di esistenza di $f(x) = \log(x^2 - 1)$ è:
-a) $(1, +\infty)$
-b) $(-\infty, -1) \cup (1, +\infty)$
-c) $\mathbb{R} \setminus \{-1, 1\}$
-d) $\mathbb{R}$
+
+- a) $(1, +\infty)$
+- b) $(-\infty, -1) \cup (1, +\infty)$
+- c) $\mathbb{R} \setminus \{-1, 1\}$
+- d) $\mathbb{R}$
 
 > [!example]- Soluzione
 > **b**. Serve $x^2 - 1 > 0$, cioè $|x| > 1$. La a) dimentica i negativi, la c) impone solo $\neq 0$ come se fosse un denominatore.
 
 **C2.** L'insieme delle soluzioni di $|x - 3| < 2$ è:
-a) $(1, 5)$
-b) $[1, 5]$
-c) $(-\infty, 1) \cup (5, +\infty)$
-d) $(-5, -1)$
+
+- a) $(1, 5)$
+- b) $[1, 5]$
+- c) $(-\infty, 1) \cup (5, +\infty)$
+- d) $(-5, -1)$
 
 > [!example]- Soluzione
 > **a**. Sono i punti a distanza minore di $2$ da $3$: $-2 < x - 3 < 2$, cioè $1 < x < 5$. Disuguaglianza stretta, quindi estremi esclusi.
 
 **C3.** $\arcsin\left(\sin\frac{3\pi}{4}\right)$ vale:
-a) $\frac{3\pi}{4}$
-b) $\frac{\pi}{4}$
-c) $-\frac{\pi}{4}$
-d) $\frac{\sqrt2}{2}$
+
+- a) $\frac{3\pi}{4}$
+- b) $\frac{\pi}{4}$
+- c) $-\frac{\pi}{4}$
+- d) $\frac{\sqrt2}{2}$
 
 > [!example]- Soluzione
 > **b**. $\sin\frac{3\pi}{4} = \frac{\sqrt2}{2}$, e $\arcsin$ restituisce l'angolo in $\left[-\frac\pi2, \frac\pi2\right]$ con quel seno, cioè $\frac\pi4$. La a) è la trappola: $\frac{3\pi}{4}$ sta fuori dall'intervallo della restrizione.
 
 **C4.** Per ogni $x \in \mathbb{R}$, $\sqrt{x^2}$ è uguale a:
-a) $x$
-b) $-x$
-c) $|x|$
-d) $\pm x$
+
+- a) $x$
+- b) $-x$
+- c) $|x|$
+- d) $\pm x$
 
 > [!example]- Soluzione
 > **c**. La radice quadrata è per definizione $\geq 0$. La a) vale solo per $x \geq 0$, la d) non è una funzione.

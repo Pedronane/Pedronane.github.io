@@ -336,9 +336,10 @@ Il sistema ha meno equazioni che incognite **di proposito**: ogni multiplo di $\
 $$
 r : \begin{cases} x = 1 + t \\ y = -t \\ z = 2t \end{cases} \qquad s : \begin{cases} x - 2 = 0 \\ y - z + 3 = 0 \end{cases}
 $$
-a) Determina la posizione reciproca di $r$ e $s$.
-b) Se sono complanari, trova un'equazione cartesiana del piano che le contiene.
-c) Trova le parametriche della retta per $O = (0,0,0)$ ortogonale a $r$ e a $s$.
+
+- a) Determina la posizione reciproca di $r$ e $s$.
+- b) Se sono complanari, trova un'equazione cartesiana del piano che le contiene.
+- c) Trova le parametriche della retta per $O = (0,0,0)$ ortogonale a $r$ e a $s$.
 
 > [!example]- Soluzione
 > **Direzionali.** $\vec{v} = (1, -1, 2)$. Per $s$ pongo $z = u$: $x = 2$, $y = u - 3$, quindi $s : (2,\ -3 + u,\ u)$ e $\vec{w} = (0, 1, 1)$. Non proporzionali (la prima coordinata di $\vec{w}$ è $0$, quella di $\vec{v}$ no): **non parallele**.
@@ -381,9 +382,10 @@ c) Trova le parametriche della retta per $O = (0,0,0)$ ortogonale a $r$ e a $s$.
 > Il parametro $k$ sposta il piano parallelamente a sé stesso, e c'è una sola posizione in cui ingoia la retta.
 
 **Esercizio 3.** Siano $\pi : 2x - y + z - 1 = 0$ e $\pi' : x + y - z + 4 = 0$.
-a) Determina la posizione reciproca.
-b) Trova le parametriche della retta $\pi \cap \pi'$.
-c) Trova il piano per l'origine ortogonale a entrambi.
+
+- a) Determina la posizione reciproca.
+- b) Trova le parametriche della retta $\pi \cap \pi'$.
+- c) Trova il piano per l'origine ortogonale a entrambi.
 
 > [!example]- Soluzione
 > **a)** $\vec{n} = (2, -1, 1)$ e $\vec{n}' = (1, 1, -1)$ non sono proporzionali (fattore $\frac{1}{2}$ dalla prima coordinata, $-1$ dalla seconda): **incidenti**. $\vec{n} \cdot \vec{n}' = 2 - 1 - 1 = 0$: anche **ortogonali**.

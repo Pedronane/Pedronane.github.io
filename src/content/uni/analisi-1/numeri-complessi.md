@@ -814,55 +814,61 @@ $$
 ### Crocette (stile parte 1)
 
 **C1.** Il modulo e l'argomento principale di $z = 1 - i\sqrt3$ sono:
-a) $2$ e $\frac\pi3$
-b) $2$ e $\frac{5\pi}{3}$
-c) $4$ e $\frac{5\pi}{3}$
-d) $2$ e $-\frac\pi3$
+
+- a) $2$ e $\frac\pi3$
+- b) $2$ e $\frac{5\pi}{3}$
+- c) $4$ e $\frac{5\pi}{3}$
+- d) $2$ e $-\frac\pi3$
 
 > [!example]- Soluzione
 > **b**. $|z| = \sqrt{1 + 3} = 2$. $\cos\theta = \frac12$, $\sin\theta = -\frac{\sqrt3}{2}$: quarto quadrante, $\theta = \frac{5\pi}{3}$. La d) è un argomento, ma non quello principale in $[0, 2\pi)$; la a) è l'errore dell'arccos senza guardare il segno di $b$.
 
 **C2.** $(1 + i)^8$ vale:
-a) $16$
-b) $-16$
-c) $16i$
-d) $8$
+
+- a) $16$
+- b) $-16$
+- c) $16i$
+- d) $8$
 
 > [!example]- Soluzione
 > **a**. $1 + i = \sqrt2 e^{i\pi/4}$, quindi $(1+i)^8 = (\sqrt2)^8 e^{i2\pi} = 16$. Controprova: $(1+i)^2 = 2i$, $(2i)^4 = 16 i^4 = 16$.
 
 **C3.** Quale uguaglianza è vera per ogni $z \in \mathbb{C}$?
-a) $|z|^2 = z^2$
-b) $z\bar z = |z|^2$
-c) $z + \bar z = 2i\,\mathrm{Im}(z)$
-d) $\overline{z \cdot w} = \bar z \cdot w$
+
+- a) $|z|^2 = z^2$
+- b) $z\bar z = |z|^2$
+- c) $z + \bar z = 2i\,\mathrm{Im}(z)$
+- d) $\overline{z \cdot w} = \bar z \cdot w$
 
 > [!example]- Soluzione
 > **b**, proprietà 4. La a) è falsa (con $z = i$: $1 \neq -1$), la c) scambia le formule (è $z - \bar z$), la d) dimentica di coniugare $w$.
 
 **C4.** Le radici quarte di $-4$ sono:
-a) $\pm 1 \pm i$ (quattro numeri)
-b) $\pm\sqrt2$ e $\pm\sqrt2\, i$
-c) $1 + i$ e $-1 - i$ soltanto
-d) non esistono, perché $-4 < 0$
+
+- a) $\pm 1 \pm i$ (quattro numeri)
+- b) $\pm\sqrt2$ e $\pm\sqrt2\, i$
+- c) $1 + i$ e $-1 - i$ soltanto
+- d) non esistono, perché $-4 < 0$
 
 > [!example]- Soluzione
 > **a**. $|-4| = 4$, $\mathrm{Arg}(-4) = \pi$: modulo $\sqrt[4]{4} = \sqrt2$, argomenti $\frac\pi4 + k\frac\pi2$, cioè $\frac\pi4, \frac{3\pi}4, \frac{5\pi}4, \frac{7\pi}4$: sono $1 + i$, $-1 + i$, $-1 - i$, $1 - i$. La b) ha il modulo giusto ma gli angoli delle radici quarte di $+4$. La c) ne dimentica due (il teorema dice esattamente $4$), la d) ragiona in $\mathbb{R}$. Controllo: $(1 + i)^4 = (2i)^2 = -4$.
 
 **C5.** L'insieme $\{z \in \mathbb{C} : |z + 1| = |z - 3|\}$ è:
-a) la circonferenza di centro $1$ e raggio $2$
-b) la retta $\mathrm{Re}(z) = 1$
-c) la retta $\mathrm{Im}(z) = 1$
-d) il semipiano $\mathrm{Re}(z) < 1$
+
+- a) la circonferenza di centro $1$ e raggio $2$
+- b) la retta $\mathrm{Re}(z) = 1$
+- c) la retta $\mathrm{Im}(z) = 1$
+- d) il semipiano $\mathrm{Re}(z) < 1$
 
 > [!example]- Soluzione
 > **b**. $|z + 1| = |z - (-1)|$: sono i punti equidistanti da $-1$ e da $3$, cioè l'asse del segmento fra i due, la retta verticale per il punto medio $1$. Col conto: $(x+1)^2 + y^2 = (x-3)^2 + y^2 \iff 8x = 8 \iff x = 1$. La d) sarebbe una disuguaglianza, la a) confonde l'asse con la circonferenza che ha il segmento come diametro.
 
 **C6** (sul modello degli esercizi svolti del docente). Se $z = 1 + i$, il numero $w = z^{202}$:
-a) è reale
-b) è immaginario puro
-c) ha $\mathrm{Re}(w) > 0$ e $\mathrm{Im}(w) < 0$
-d) ha $\mathrm{Re}(w) < 0$ e $\mathrm{Im}(w) > 0$
+
+- a) è reale
+- b) è immaginario puro
+- c) ha $\mathrm{Re}(w) > 0$ e $\mathrm{Im}(w) < 0$
+- d) ha $\mathrm{Re}(w) < 0$ e $\mathrm{Im}(w) > 0$
 
 > [!example]- Soluzione
 > **b**. $z = \sqrt2 e^{i\pi/4}$, quindi $\arg(w) = 202 \cdot \frac\pi4 = \frac{101\pi}{2} = 50\pi + \frac\pi2$, cioè $\frac\pi2$ a meno di multipli di $2\pi$: $w$ sta sul semiasse immaginario positivo. Più rapido: $z^2 = 2i$, quindi $w = (2i)^{101} = 2^{101} i^{101} = 2^{101} i$, perché $i^{100} = (i^4)^{25} = 1$.

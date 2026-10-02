@@ -311,8 +311,9 @@ Il secondo metodo funziona perché $r'$ è parallela a $\pi$, quindi tutti i suo
 > Verifica: $\frac{|1 + 8|}{3} = 3$ e $\frac{|1 - 10|}{3} = 3$. I due piani stanno da parti opposte di $A$ (valori $+9$ e $-9$).
 
 **Esercizio 3.** Siano $P = (2, 1, 0)$ e $r : \{x - y = 0,\ z - 1 = 0\}$.
-a) Calcola $d(P, r)$ con entrambi i metodi.
-b) Sia $r'$ la retta per $P$ parallela a $r$. Quanto vale $d(r, r')$?
+
+- a) Calcola $d(P, r)$ con entrambi i metodi.
+- b) Sia $r'$ la retta per $P$ parallela a $r$. Quanto vale $d(r, r')$?
 
 > [!example]- Soluzione
 > **Parametriche di $r$.** Pongo $x = t$: $y = t$, $z = 1$. $Q(t) = (t, t, 1)$, $\vec{v} = (1, 1, 0)$. $P \notin r$ perché $2 - 1 \neq 0$.

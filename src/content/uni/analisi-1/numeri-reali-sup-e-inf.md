@@ -474,37 +474,41 @@ L'elemento $\frac{2n+1}{n+1}$ sta in $C$ ed è più grande di $M$: $M$ non è un
 ### Crocette (stile parte 1)
 
 **C1.** Sia $A = \left\{\frac1n : n \in \mathbb{N},\ n \geq 1\right\}$. Quale affermazione è vera?
-a) $\min A = 0$
-b) $\inf A = 0$ e $A$ non ha minimo
-c) $\sup A = 1$ ma $A$ non ha massimo
-d) $A$ non è limitato inferiormente
+
+- a) $\min A = 0$
+- b) $\inf A = 0$ e $A$ non ha minimo
+- c) $\sup A = 1$ ma $A$ non ha massimo
+- d) $A$ non è limitato inferiormente
 
 > [!example]- Soluzione
 > **b**. $0$ è l'inf (esempio svolto sopra) ma $0 \notin A$, quindi non è un minimo: la a) è falsa. La c) è falsa perché $1 \in A$, quindi $1 = \max A$. La d) è falsa: $0$ è un minorante.
 
 **C2.** Sia $A = (0, 1] \cup \{2\}$. Allora:
-a) $\sup A = 1$
-b) $\max A = 2$ e $\inf A = 0$
-c) $\min A = 0$
-d) $A$ non ha massimo
+
+- a) $\sup A = 1$
+- b) $\max A = 2$ e $\inf A = 0$
+- c) $\min A = 0$
+- d) $A$ non ha massimo
 
 > [!example]- Soluzione
 > **b**. $2 \in A$ e ogni elemento è $\leq 2$, quindi $\max A = \sup A = 2$ (la a) e la d) sono false). $\inf A = 0$ ma $0 \notin A$, quindi niente minimo (la c) è falsa).
 
 **C3.** Sia $A \subset \mathbb{R}$ non vuoto e $M$ un maggiorante di $A$. $M = \sup A$ se e solo se:
-a) $M \in A$
-b) $\forall N < M,\ \exists x \in A : x > N$
-c) $\forall N > M,\ \exists x \in A : x > N$
-d) $\exists N < M : \forall x \in A,\ x > N$
+
+- a) $M \in A$
+- b) $\forall N < M,\ \exists x \in A : x > N$
+- c) $\forall N > M,\ \exists x \in A : x > N$
+- d) $\exists N < M : \forall x \in A,\ x > N$
 
 > [!example]- Soluzione
 > **b**, la condizione (2). La a) caratterizza il massimo, che è di più. La c) non può mai valere per un maggiorante: se $N > M$, nessun elemento supera $N$. La d) dice solo che $A$ è limitato inferiormente da qualcosa sotto $M$.
 
 **C4.** $\lfloor -7{,}312 \rfloor$ vale:
-a) $-7$
-b) $-8$
-c) $7$
-d) $-7{,}3$
+
+- a) $-7$
+- b) $-8$
+- c) $7$
+- d) $-7{,}3$
 
 > [!example]- Soluzione
 > **b**, esempio del prof. La parte intera è il più grande intero $\leq x$: $-7 > -7{,}312$ non va bene, $-8 \leq -7{,}312$ sì.

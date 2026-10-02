@@ -370,37 +370,41 @@ Due sottosuccessioni con limiti diversi ($1$ e $-1$): è l'idea che, nelle slide
 ### Crocette (stile parte 1)
 
 **C1.** Quale formula definisce $\lim_{n \to +\infty} a_n = -\infty$?
-a) $\forall \varepsilon > 0\ \exists \nu_\varepsilon : \forall n > \nu_\varepsilon,\ a_n < -\varepsilon$
-b) $\exists \nu\ \forall \varepsilon > 0 : \forall n > \nu,\ a_n < -\varepsilon$
-c) $\forall \varepsilon > 0\ \exists \nu_\varepsilon : \forall n > \nu_\varepsilon,\ |a_n| > \varepsilon$
-d) $\forall \varepsilon > 0\ \exists \nu_\varepsilon : \exists n > \nu_\varepsilon,\ a_n < -\varepsilon$
+
+- a) $\forall \varepsilon > 0\ \exists \nu_\varepsilon : \forall n > \nu_\varepsilon,\ a_n < -\varepsilon$
+- b) $\exists \nu\ \forall \varepsilon > 0 : \forall n > \nu,\ a_n < -\varepsilon$
+- c) $\forall \varepsilon > 0\ \exists \nu_\varepsilon : \forall n > \nu_\varepsilon,\ |a_n| > \varepsilon$
+- d) $\forall \varepsilon > 0\ \exists \nu_\varepsilon : \exists n > \nu_\varepsilon,\ a_n < -\varepsilon$
 
 > [!example]- Soluzione
 > **a**. La b) scambia i quantificatori: chiederebbe un'unica soglia che vada bene per ogni $\varepsilon$, impossibile per una successione reale ($a_n < -\varepsilon$ per ogni $\varepsilon$ non è soddisfatto da nessun numero). La c) è soddisfatta anche da $(-1)^n n$, che oscilla e non tende a $-\infty$: è la definizione di $|a_n| \to +\infty$. La d) chiede un solo termine oltre la soglia invece che tutti.
 
 **C2.** $\displaystyle\sum_{k=0}^{9} 2^k$ vale:
-a) $512$
-b) $1023$
-c) $1024$
-d) $2047$
+
+- a) $512$
+- b) $1023$
+- c) $1024$
+- d) $2047$
 
 > [!example]- Soluzione
 > **b**. Somma geometrica con $q = 2$ e $n = 9$: $\frac{2^{10} - 1}{2 - 1} = 1023$. La c) è $2^{10}$, l'errore di dimenticare il $-1$; la a) è l'ultimo termine $2^9$; la d) usa $n + 1 = 11$ all'esponente sbagliando di uno l'indice finale.
 
 **C3.** Nello sviluppo di $(a + b)^5$ il coefficiente di $a^2 b^3$ è:
-a) $5$
-b) $6$
-c) $10$
-d) $15$
+
+- a) $5$
+- b) $6$
+- c) $10$
+- d) $15$
 
 > [!example]- Soluzione
 > **c**. Il termine $a^{n-k}b^k$ con $n = 5$, $k = 3$ ha coefficiente $\binom53 = \frac{5 \cdot 4 \cdot 3}{3!} = 10$. Riga $5$ del triangolo: $1, 5, 10, 10, 5, 1$. La d) è $\binom62$.
 
 **C4.** Quale affermazione è vera per ogni successione reale $(a_n)$?
-a) se $(a_n)$ è limitata, allora è convergente
-b) se $(a_n)$ è convergente, allora è limitata
-c) se $(a_n)$ è limitata, allora ha limite finito o infinito
-d) se $|a_n| \to 1$, allora $a_n \to 1$ oppure $a_n \to -1$
+
+- a) se $(a_n)$ è limitata, allora è convergente
+- b) se $(a_n)$ è convergente, allora è limitata
+- c) se $(a_n)$ è limitata, allora ha limite finito o infinito
+- d) se $|a_n| \to 1$, allora $a_n \to 1$ oppure $a_n \to -1$
 
 > [!example]- Soluzione
 > **b**, il teorema della slide 22. La a) e la c) sono smentite da $(-1)^n$, limitata ma senza limite. La d) anche: $|(-1)^n| = 1 \to 1$, ma $(-1)^n$ non tende né a $1$ né a $-1$.

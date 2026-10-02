@@ -170,28 +170,31 @@ Le altre annotazioni del PDF sono esempi lampo, riportati nelle definizioni sopr
 ### Crocette (stile parte 1)
 
 **C1.** Il grafico di $y = f(x + 2) - 1$ si ottiene da quello di $f$ traslando:
-a) di $2$ a destra e di $1$ in basso
-b) di $2$ a sinistra e di $1$ in basso
-c) di $2$ a sinistra e di $1$ in alto
-d) di $2$ a destra e di $1$ in alto
+
+- a) di $2$ a destra e di $1$ in basso
+- b) di $2$ a sinistra e di $1$ in basso
+- c) di $2$ a sinistra e di $1$ in alto
+- d) di $2$ a destra e di $1$ in alto
 
 > [!example]- Soluzione
 > **b**. $f(x + a)$ con $a = 2 > 0$ sposta a sinistra; $-1$ sul risultato sposta in basso.
 
 **C2.** Quante soluzioni reali ha l'equazione $|x^2 - 1| = \frac12$?
-a) $0$
-b) $2$
-c) $3$
-d) $4$
+
+- a) $0$
+- b) $2$
+- c) $3$
+- d) $4$
 
 > [!example]- Soluzione
 > **d**. Il grafico di $|x^2 - 1|$ è la parabola $x^2 - 1$ con il tratto fra $-1$ e $1$ ribaltato in su: una "W" con minimi $0$ in $\pm1$ e un picco $1$ in $0$. La retta $y = \frac12$ sta fra $0$ e $1$, quindi taglia ciascuno dei quattro tratti una volta. Coi conti: $x^2 = \frac32$ oppure $x^2 = \frac12$, cioè $x = \pm\frac{\sqrt6}{2}, \pm\frac{\sqrt2}{2}$.
 
 **C3.** $f(x) = \sin(3x)$ ha periodo:
-a) $6\pi$
-b) $3\pi$
-c) $\frac{2\pi}{3}$
-d) $2\pi$
+
+- a) $6\pi$
+- b) $3\pi$
+- c) $\frac{2\pi}{3}$
+- d) $2\pi$
 
 > [!example]- Soluzione
 > **c**. $f(kx)$ con $k = 3 > 1$ comprime in orizzontale di un fattore $3$: il periodo $2\pi$ diventa $\frac{2\pi}{3}$.

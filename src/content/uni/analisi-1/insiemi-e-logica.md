@@ -224,37 +224,41 @@ risposta **b**. A parole: ogni elemento di $A$ coincide con qualche elemento di 
 ### Crocette (stile parte 1)
 
 **C1** (quiz 3 della slide 22, lasciato a casa). Supponendo vera l'implicazione "se piove allora si deve prendere l'ombrello", cosa deduce un matematico?
-a) se non piove, allora non si deve prendere l'ombrello
-b) se non si deve prendere l'ombrello vuol dire che non piove
-c) se si prende l'ombrello significa che piove
-d) niente, è troppo perso nel mondo dei numeri
+
+- a) se non piove, allora non si deve prendere l'ombrello
+- b) se non si deve prendere l'ombrello vuol dire che non piove
+- c) se si prende l'ombrello significa che piove
+- d) niente, è troppo perso nel mondo dei numeri
 
 > [!example]- Soluzione
 > **b**, la contronominale: $P \Rightarrow Q$ equivale a non $Q \Rightarrow$ non $P$. La c) è l'inversa $Q \Rightarrow P$, la a) è la contronominale dell'inversa: nessuna delle due segue.
 
 **C2** (quiz 4 della slide 22, lasciato a casa). La negazione logica dell'implicazione "se c'è il sole allora faccio una passeggiata" è:
-a) se c'è il sole allora non faccio una passeggiata
-b) c'è il sole e non faccio una passeggiata
-c) se non c'è il sole non faccio una passeggiata
-d) se non faccio una passeggiata allora non c'è il sole
+
+- a) se c'è il sole allora non faccio una passeggiata
+- b) c'è il sole e non faccio una passeggiata
+- c) se non c'è il sole non faccio una passeggiata
+- d) se non faccio una passeggiata allora non c'è il sole
 
 > [!example]- Soluzione
 > **b**: $\text{non}(P \Rightarrow Q) \iff P$ e non $Q$. La d) è la contronominale, cioè l'implicazione stessa, non la sua negazione. Neanche la a) va bene: quando non c'è il sole sono vere sia la frase originale sia la a) (premessa falsa), mentre una proposizione e la sua negazione hanno sempre valori opposti.
 
 **C3.** La negazione di $\forall x \in A,\ \exists y \in B : x < y$ è:
-a) $\exists x \in A : \forall y \in B,\ x \geq y$
-b) $\forall x \in A,\ \exists y \in B : x \geq y$
-c) $\exists x \in A,\ \exists y \in B : x \geq y$
-d) $\forall x \in A,\ \forall y \in B,\ x \geq y$
+
+- a) $\exists x \in A : \forall y \in B,\ x \geq y$
+- b) $\forall x \in A,\ \exists y \in B : x \geq y$
+- c) $\exists x \in A,\ \exists y \in B : x \geq y$
+- d) $\forall x \in A,\ \forall y \in B,\ x \geq y$
 
 > [!example]- Soluzione
 > **a**. $\forall$ diventa $\exists$, $\exists$ diventa $\forall$, e $x < y$ diventa $x \geq y$. La b) lascia i quantificatori come sono, la d) cambia solo il primo.
 
 **C4** (dal foglio 0 e dagli esercizi svolti di Pinamonti). Siano $A = [-2, 5)$ e $C = \{-1, 2\}$. Quale affermazione è **falsa**?
-a) $\{-1\} \subseteq C$
-b) $A \cap C = C$
-c) $4 \subseteq A$
-d) $(-2, 5) \subseteq A$
+
+- a) $\{-1\} \subseteq C$
+- b) $A \cap C = C$
+- c) $4 \subseteq A$
+- d) $(-2, 5) \subseteq A$
 
 > [!example]- Soluzione
 > **c**. È scritta male: $4$ è un numero, non un insieme, e le scritture scorrette contano come false. Corrette sono $4 \in A$ oppure $\{4\} \subseteq A$. Le altre sono vere: $-1$ e $2$ stanno in $[-2, 5)$, quindi $A \cap C = C$, e l'intervallo aperto sta dentro quello semiaperto.
@@ -307,10 +311,11 @@ d) $(-2, 5) \subseteq A$
 > L'ultima colonna è tutta V. L'unica riga in cui l'ipotesi $H$ è vera è l'ultima, e lì anche non $A$ è vera. È il ragionamento della contronominale: se $A \Rightarrow B$ e $B$ è falsa, $A$ non può essere vera.
 
 **Esercizio 4** (foglio 0, es. 4). Dire quali proposizioni sono vere e quali false, motivando (per esempio mostrando che la negazione è vera):
-a) $\forall x \in \mathbb{Z},\ \exists y \in \mathbb{N} : x - y \leq 0$
-b) $\forall x \in \mathbb{N},\ \exists y \in \mathbb{Z} : 2x - 4y = 0$
-c) $\forall x, y \in \mathbb{R},\ \big[(x \neq y) \Rightarrow (x^2 \neq y^2)\big]$
-d) $\exists x \in \mathbb{Q} : \forall y \in \mathbb{R},\ (2x + 1)y = 0$
+
+- a) $\forall x \in \mathbb{Z},\ \exists y \in \mathbb{N} : x - y \leq 0$
+- b) $\forall x \in \mathbb{N},\ \exists y \in \mathbb{Z} : 2x - 4y = 0$
+- c) $\forall x, y \in \mathbb{R},\ \big[(x \neq y) \Rightarrow (x^2 \neq y^2)\big]$
+- d) $\exists x \in \mathbb{Q} : \forall y \in \mathbb{R},\ (2x + 1)y = 0$
 
 > [!example]- Soluzione
 > **a) Vera.** Dato $x \in \mathbb{Z}$, prendo $y = |x| \in \mathbb{N}$: allora $x - |x| \leq 0$ perché $x \leq |x|$ sempre. La $y$ dipende da $x$, e va bene perché l'$\exists$ viene dopo il $\forall$.
@@ -330,8 +335,9 @@ d) $\exists x \in \mathbb{Q} : \forall y \in \mathbb{R},\ (2x + 1)y = 0$
 > Non sono equivalenti. La prima implica la seconda (se una rivista sta ovunque, ogni biblioteca ne ha almeno una), il viceversa no. In generale "$\exists y : \forall x$" dice che $y$ è lo stesso per tutti gli $x$, "$\forall x, \exists y$" dice che $y$ può dipendere da $x$.
 
 **Esercizio 6** (esercizi di Pinamonti, es. 3). Sia $A \subseteq \mathbb{R}$. Dire se sono vere qualunque sia $A$, e scriverne la negazione:
-a) $\exists y \in \mathbb{R} : \forall x \in A,\ x \leq y$
-b) $\forall x \in A,\ \exists y \in A : x < y$
+
+- a) $\exists y \in \mathbb{R} : \forall x \in A,\ x \leq y$
+- b) $\forall x \in A,\ \exists y \in A : x < y$
 
 > [!example]- Soluzione
 > **a)** Dice che $A$ ha un maggiorante, cioè è limitato superiormente. Non è sempre vera: $A = \mathbb{R}$ è un controesempio. Negazione: $\forall y \in \mathbb{R},\ \exists x \in A : x > y$, cioè $A$ non è limitato superiormente ($\sup A = +\infty$, vedi [Numeri reali, sup e inf](/uni/analisi-1/numeri-reali-sup-e-inf/)).

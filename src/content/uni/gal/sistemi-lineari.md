@@ -163,8 +163,9 @@ Il metodo per **risolvere** un sistema (operazioni elementari, Gauss-Jordan) sta
 $$
 \begin{cases} 2x_1 - x_2 + x_3 = 1 \\ x_1 + 3x_3 = 0 \end{cases}
 $$
-a) scrivi $A$, $\vec{b}$, $[A \mid \vec{b}]$ con il loro ordine;
-b) stabilisci se $(0, -1, 0)$ e $(1, 1, 0)$ sono soluzioni. Il sistema è compatibile?
+
+- a) scrivi $A$, $\vec{b}$, $[A \mid \vec{b}]$ con il loro ordine;
+- b) stabilisci se $(0, -1, 0)$ e $(1, 1, 0)$ sono soluzioni. Il sistema è compatibile?
 
 > [!example]- Soluzione
 > **a)** Due equazioni, tre incognite: $m = 2$, $n = 3$. Nella seconda equazione $x_2$ manca, quindi coefficiente $0$.

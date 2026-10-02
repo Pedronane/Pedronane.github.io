@@ -64,7 +64,7 @@ appelli              2 sessioni, 5 appelli: gennaio, febbraio | giugno, luglio, 
 
 ## Lezioni
 
-Le date delle lezioni dopo l'11 settembre non si ricavano dal materiale: il quaderno arriva alla slide 51 del deck 2.2. Il resto del 2.2, il 3.1 e il 3.2 sono stati fatti a lezione a settembre, il 3.3 fra settembre e ottobre. Il deck 2.2 è stato ricaricato a fine settembre con una slide in più (esercizio sull'assegnazione a catena, slide 64-65): le pagine dopo la 54 sono rinumerate.
+Le date delle lezioni dopo l'11 settembre non si ricavano dal materiale: il quaderno arriva alla slide 51 del deck 2.2. Il resto del 2.2, il 3.1 e il 3.2 sono stati fatti a lezione a settembre, il 3.3 fra settembre e ottobre, il 4.1 (tutto, matrici comprese) a ottobre. Il deck 2.2 è stato ricaricato a fine settembre con una slide in più (esercizio sull'assegnazione a catena, slide 64-65): le pagine dopo la 54 sono rinumerate.
 
 | #   | Data       | Argomento                              | Slide                                                    | Nota                                                            |
 | --- | ---------- | -------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------- |
@@ -79,8 +79,10 @@ Le date delle lezioni dopo l'11 settembre non si ricavano dal materiale: il quad
 |     | set        | moltiplicazione, scala a passi 1-2-3   | <span class="src">3.2</span> (slide 69-97) | [Ciclo while ed esempi](/uni/prog-1/ciclo-while-ed-esempi/)             |
 |     | set/ott    | for, do-while, break, continue, Böhm-Jacopini | <span class="src">3.3</span> (slide 3-15, 32-37) | [Cicli for e do-while](/uni/prog-1/cicli-for-e-do-while/) |
 |     | set/ott    | switch, fall-through, conteggio cifre  | <span class="src">3.3</span> (slide 16-31) | [Switch](/uni/prog-1/switch/) |
+|     | ott        | array: dichiarazione, accesso, inizializzazione, esempi, VLA | <span class="src">4.1</span> (slide 2-52, 74-92) | [Array](/uni/prog-1/array/) |
+|     | ott        | matrici: memoria per righe, simmetrica, trasposta, magiche | <span class="src">4.1</span> (slide 53-73, 93-100) | [Matrici e array multidimensionali](/uni/prog-1/matrici-e-array-multidimensionali/) |
 
-Prossimo: <span class="src">4.1 Array</span>, nel vault ma non si sa ancora se è stato fatto a lezione.
+Prossimo: 4.2 Stringhe, sul sito del prof ma non ancora nel vault. Si prende con `uvx --with playwright python tools/moodle.py prendi 4.2` quando è stato fatto a lezione.
 
 ## Argomenti
 
@@ -96,6 +98,8 @@ Nell'ordine del programma del prof:
 8. [Input e output di caratteri](/uni/prog-1/input-e-output-di-caratteri/): `getchar`, `putchar`, `EOF`
 9. [Cicli for e do-while](/uni/prog-1/cicli-for-e-do-while/): `for`, `do-while`, equivalenza con il `while`, `break` e `continue`, Böhm-Jacopini
 10. [Switch](/uni/prog-1/switch/): selezione multipla, `break` e fall-through, `case` raggruppati
+11. [Array](/uni/prog-1/array/): dichiarazione, indici da 0, fuori range, inizializzazione, cicli tipici, array di contatori, VLA
+12. [Matrici e array multidimensionali](/uni/prog-1/matrici-e-array-multidimensionali/): `a[i][j]`, memoria per righe, simmetrica, trasposta, matrici magiche
 
 ## Esercizi
 

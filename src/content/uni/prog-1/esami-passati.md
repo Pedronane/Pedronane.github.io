@@ -31,7 +31,7 @@ ESAME = prova teorica (carta) + prova al calcolatore (PC)       totale 33 punti
 
 - In entrambe «fa parte della valutazione la leggibilità del codice C/C++». Nel calcolatore **il codice commentato non viene corretto**: una funzione che non compila e che commenti per far girare il resto vale zero.
 - Appelli: gennaio, febbraio, giugno, luglio, fine agosto o inizio settembre (5 l'anno).
-- Nel 2024/25 ci sono state due **prove teoriche intermedie**: 22 ottobre e 20 dicembre, 50 minuti, 6 punti ciascuna. Presumibilmente sostituiscono la teorica dell'appello (6+6 = 12), ma i testi non lo dicono: da chiedere al docente. Negli zip del 2025/26 non ci sono intermedie, quindi non è detto che si ripetano.
+- Nel 2024/25 ci sono state due **prove teoriche intermedie**: 22 ottobre e 20 dicembre, 50 minuti, 6 punti ciascuna. Nel 2026/27 si ripetono: 5 novembre e 21 dicembre 2026, e chi le supera entrambe negli appelli del 2027 fa solo il calcolatore (regole in [Programmazione 1](/uni/prog-1/), sezione Esame).
 - Le soluzioni ufficiali sono progetti **Dev-C++** (`.dev`, `.layout`): il PC dell'esame con ogni probabilità ha quello, non onlinegdb.
 - Docenti (registro 2022/23): titolare Giuseppe Riccardi, laboratorio Pierluigi Roberti.
 

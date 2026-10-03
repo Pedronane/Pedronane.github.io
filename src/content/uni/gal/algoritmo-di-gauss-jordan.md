@@ -226,10 +226,16 @@ Una retta (due equazioni indipendenti in tre incognite) ha due pivot e **una** v
 > $$
 > Attenzione allo $0$ in colonna $z$: nell'equazione $z$ non compare, ed è proprio per questo che è libera senza vincoli. Il piano è parallelo all'asse $z$.
 
-> [!example]- Tutor, 29/9, <span class="src">es. 1, p. 2-3</span>: soluzione unica (con correzione)
-> Trovare la/le soluzioni di
+### Esercitazione 2 del tutor (29/9)
+
+**Es. 1** (<span class="src">p. 2-3</span>). Trovare la/le soluzioni di
+$$
+\begin{cases} 4x + 4y + 2z = 4 \\ x - z = -1 \\ x + 3y - z = 3 \end{cases}
+$$
+
+> [!example]- Soluzione
 > $$
-> \begin{cases} 4x + 4y + 2z = 4 \\ x - z = -1 \\ x + 3y - z = 3 \end{cases} \qquad \left[\begin{array}{ccc|c} 4 & 4 & 2 & 4 \\ 1 & 0 & -1 & -1 \\ 1 & 3 & -1 & 3 \end{array}\right]
+> \left[\begin{array}{ccc|c} 4 & 4 & 2 & 4 \\ 1 & 0 & -1 & -1 \\ 1 & 3 & -1 & 3 \end{array}\right]
 > $$
 > **A scalini.** $E_{21}(-\frac{1}{4})$: $R_2 - \frac{1}{4}R_1 = (0, -1, -\frac{3}{2} \mid -2)$. $E_{31}(-\frac{1}{4})$: $R_3 - \frac{1}{4}R_1 = (0, 2, -\frac{3}{2} \mid 2)$. Poi $E_{32}(2)$: $R_3 + 2R_2 = (0,\ 0,\ -\frac{3}{2} - 3 \mid 2 - 4) = (0, 0, -\frac{9}{2} \mid -2)$.
 > $$
@@ -248,10 +254,12 @@ Una retta (due equazioni indipendenti in tre incognite) ha due pivot e **una** v
 >
 > **Errore nella scansione del tutor**: al passo $E_{32}(2)$ scrive $-\frac{3}{2}$ al posto di $-\frac{9}{2}$ nella terza riga, e arriva a $\left(-\frac{5}{3}, \frac{4}{3}, \frac{4}{3}\right)$. Non è soluzione: nella prima equazione dà $-\frac{20}{3} + \frac{16}{3} + \frac{8}{3} = \frac{4}{3} \neq 4$. La verifica finale sul sistema di partenza l'avrebbe trovato subito.
 
-> [!example]- Tutor, 29/9, <span class="src">es. 2, p. 4-5</span>: sistema omogeneo con infinite soluzioni
-> $$
-> \begin{cases} 2x_2 + 10x_3 + x_4 = 0 \\ x_1 + 2x_2 + x_4 = 0 \\ 3x_1 + 5x_2 - 6x_3 + 4x_4 = 0 \\ 2x_1 + 5x_2 + 4x_3 + 4x_4 = 0 \end{cases}
-> $$
+**Es. 2** (<span class="src">p. 4-5</span>). Sistema lineare in quattro incognite: trovare le soluzioni.
+$$
+\begin{cases} 2x_2 + 10x_3 + x_4 = 0 \\ x_1 + 2x_2 + x_4 = 0 \\ 3x_1 + 5x_2 - 6x_3 + 4x_4 = 0 \\ 2x_1 + 5x_2 + 4x_3 + 4x_4 = 0 \end{cases}
+$$
+
+> [!example]- Soluzione
 > Il tutor osserva: è omogeneo ($\vec{b} = \vec{0}$), quindi basta la matrice dei coefficienti $A$. La colonna dei termini noti resterebbe di zeri per ogni operazione.
 >
 > **A scalini.** La prima colonna ha $0$ in alto: $S_{12}$ porta su la riga che inizia con $1$. Poi $E_{31}(-3)$ ed $E_{41}(-2)$:

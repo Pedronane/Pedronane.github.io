@@ -78,7 +78,7 @@ Le voci senza link non sono ancora state fatte a lezione: diventano note quando 
 - <span class="src">Foglio 1 del tutorato</span>: teoria 1.1-1.8 ed esercizi 1.9-1.17, geometria nello spazio.
 - <span class="src">Esercitazione 1 del tutor</span>: sei esercizi svolti, riportati per esteso nelle note di teoria.
 - <span class="src">Foglio 2 del tutorato</span>: teoria 2.1-2.10 ed esercizi 2.11-2.16, sistemi lineari, rango, Rouché-Capelli.
-- <span class="src">Esercitazione 2 del tutor</span>: quattro esercizi svolti sui sistemi, riportati per esteso in [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/) e [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/).
+- <span class="src">Esercitazione 2 del tutor</span>: quattro esercizi sui sistemi, con il testo in chiaro e la soluzione chiusa in [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/) e [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/).
 - [Ripasso foglio 1](/uni/gal/ripasso-foglio-1/): strategia per il foglio 1, attrezzo per ogni esercizio.
 - [Formulario rette e piani](/uni/gal/formulario-rette-e-piani/): tutte le formule della geometria nello spazio.
 - Ogni nota di teoria ha una sezione Esercizi tipo esame con soluzioni verificate.

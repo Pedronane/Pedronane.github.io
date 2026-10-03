@@ -154,12 +154,15 @@ Per $\operatorname{rg}(A)$ e $\operatorname{rg}([A \mid \vec{b}])$ insieme: ridu
 > $$
 > e per $k = 1$ ritrova $\left(-\frac{5}{2}, 1, \frac{1}{2}\right)$. Il denominatore $k + 1$ è lo stesso fattore del pivot: per $k = -1$ la formula perde senso esattamente dove il sistema diventa incompatibile.
 
-> [!example]- Tutor, 29/9, <span class="src">es. 3, p. 5-7</span>: compatibile per ogni $k$
-> $$
-> \begin{cases} 3x + 2ky + 2z = k \\ x + y + z = k \\ 2x + y + z = 0 \end{cases} \qquad (k \in \mathbb{R})
-> $$
-> i) Per quali $k$ il sistema è compatibile? ii) Trovare tutte le soluzioni per ogni $k$.
->
+### Esercitazione 2 del tutor (29/9)
+
+**Es. 3** (<span class="src">p. 5-7</span>). Dato il sistema
+$$
+\begin{cases} 3x + 2ky + 2z = k \\ x + y + z = k \\ 2x + y + z = 0 \end{cases} \qquad (k \in \mathbb{R})
+$$
+i) per quali $k$ è compatibile? ii) Trovare tutte le soluzioni per ogni $k$.
+
+> [!example]- Soluzione
 > **Riduzione.** $S_{13}$ porta in alto la riga senza parametro.
 > $$
 > \left[\begin{array}{ccc|c} 2 & 1 & 1 & 0 \\ 1 & 1 & 1 & k \\ 3 & 2k & 2 & k \end{array}\right] \xrightarrow[E_{31}(-\frac{3}{2})]{E_{21}(-\frac{1}{2})} \left[\begin{array}{ccc|c} 2 & 1 & 1 & 0 \\ 0 & \frac{1}{2} & \frac{1}{2} & k \\ 0 & \frac{4k-3}{2} & \frac{1}{2} & k \end{array}\right]
@@ -187,12 +190,13 @@ Per $\operatorname{rg}(A)$ e $\operatorname{rg}([A \mid \vec{b}])$ insieme: ridu
 > $$
 > Verifica: $-3k + 0 + 4k = k$; $-k + 0 + 2k = k$; $-2k + 0 + 2k = 0$.
 
-> [!example]- Tutor, 29/9, <span class="src">es. 4, p. 7-9</span>: incompatibile per un valore, infinite per un altro
-> $$
-> \begin{cases} x + (a-1)y + (2-a)z = a + 5 \\ x + ay + 2z = 4 \\ x + (a-2)y + (2-2a^2)z = 6 \end{cases} \qquad (a \in \mathbb{R})
-> $$
-> i) Per quali $a$ è compatibile? ii) Trovare tutte le soluzioni, ove possibile.
->
+**Es. 4** (<span class="src">p. 7-9</span>). Dato il sistema
+$$
+\begin{cases} x + (a-1)y + (2-a)z = a + 5 \\ x + ay + 2z = 4 \\ x + (a-2)y + (2-2a^2)z = 6 \end{cases} \qquad (a \in \mathbb{R})
+$$
+i) per quali $a$ è compatibile? ii) Trovare tutte le soluzioni, ove possibile.
+
+> [!example]- Soluzione
 > **Riduzione.** $S_{12}$ mette in alto la riga più semplice. Poi $E_{21}(-1)$ ed $E_{31}(-1)$:
 > $$
 > \left[\begin{array}{ccc|c} 1 & a & 2 & 4 \\ 1 & a-1 & 2-a & a+5 \\ 1 & a-2 & 2-2a^2 & 6 \end{array}\right] \to \left[\begin{array}{ccc|c} 1 & a & 2 & 4 \\ 0 & -1 & -a & a+1 \\ 0 & -2 & -2a^2 & 2 \end{array}\right]

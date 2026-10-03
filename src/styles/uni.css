@@ -1129,6 +1129,26 @@ details.callout > .callout-body {
   padding: 0.1rem 0 1.2rem 1.1rem;
 }
 
+details.callout-example > summary {
+  color: var(--biro-ink);
+}
+
+details.callout-example > summary::before {
+  border-color: var(--biro);
+}
+
+details.callout-example[open] > summary {
+  padding-left: 0.75rem;
+  background: var(--biro-wash);
+}
+
+details.callout-example > .callout-body {
+  padding-left: 1rem;
+  padding-right: 0.75rem;
+  border-left: 2px solid var(--biro);
+  background: color-mix(in oklch, var(--biro-wash) 45%, var(--paper));
+}
+
 details.callout-question > summary {
   font-family: var(--serif);
   font-weight: 400;

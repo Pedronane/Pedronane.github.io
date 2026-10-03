@@ -16,6 +16,10 @@
   --biro-ink: oklch(0.38 0.17 266);
   --biro-wash: oklch(0.925 0.035 266);
   --mark: oklch(0.93 0.07 95);
+  --giusto: oklch(0.47 0.13 150);
+  --giusto-wash: oklch(0.93 0.045 150);
+  --sbagliato: oklch(0.52 0.19 27);
+  --sbagliato-wash: oklch(0.94 0.035 27);
 
   --fig-ink: var(--ink-2);
   --fig-axis: var(--muted);
@@ -54,6 +58,10 @@
     --biro-ink: oklch(0.82 0.1 266);
     --biro-wash: oklch(0.3 0.06 266);
     --mark: oklch(0.42 0.07 95);
+    --giusto: oklch(0.78 0.13 150);
+    --giusto-wash: oklch(0.3 0.05 150);
+    --sbagliato: oklch(0.74 0.15 27);
+    --sbagliato-wash: oklch(0.3 0.06 27);
     --fig-steel: oklch(0.74 0.12 45);
     --fig-faint: oklch(0.45 0.012 260);
     --shiki: var(--shiki-dark);
@@ -73,6 +81,10 @@
   --biro-ink: oklch(0.82 0.1 266);
   --biro-wash: oklch(0.3 0.06 266);
   --mark: oklch(0.42 0.07 95);
+  --giusto: oklch(0.78 0.13 150);
+  --giusto-wash: oklch(0.3 0.05 150);
+  --sbagliato: oklch(0.74 0.15 27);
+  --sbagliato-wash: oklch(0.3 0.06 27);
   --fig-steel: oklch(0.74 0.12 45);
   --fig-faint: oklch(0.45 0.012 260);
   --shiki: var(--shiki-dark);
@@ -602,6 +614,185 @@ main {
   color: var(--ink-2);
 }
 
+.prose ol.quiz {
+  list-style: none;
+  padding-left: 0;
+}
+
+.prose ol.quiz > li + li {
+  margin-top: 0.3em;
+}
+
+.opz {
+  display: flex;
+  gap: 0.7em;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.45rem 0.6rem;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-left: 2px solid transparent;
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.opz::before {
+  content: attr(data-lettera) ')';
+  flex: none;
+  min-width: 1.4em;
+  font-family: var(--grotesk);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.opz:hover:not(:disabled) {
+  background: var(--biro-wash);
+  border-left-color: var(--biro);
+}
+
+.opz:focus-visible {
+  outline: 2px solid var(--biro);
+  outline-offset: 1px;
+}
+
+.opz:disabled {
+  cursor: default;
+}
+
+.quiz.risposto li:not(.giusta):not(.scelta) .opz {
+  color: var(--muted);
+}
+
+.quiz.risposto li.giusta .opz {
+  background: var(--giusto-wash);
+  border-left-color: var(--giusto);
+}
+
+.quiz.risposto li.scelta:not(.giusta) .opz {
+  background: var(--sbagliato-wash);
+  border-left-color: var(--sbagliato);
+}
+
+.quiz.risposto li.scelta:not(.giusta) .opz-testo {
+  text-decoration: line-through;
+  text-decoration-color: var(--sbagliato);
+}
+
+.quiz.risposto li.giusta .opz::after,
+.quiz.risposto li.scelta .opz::after {
+  margin-left: auto;
+  padding-left: 0.8em;
+  font-family: var(--grotesk);
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.quiz.risposto li.giusta .opz::after {
+  content: '✓ giusta';
+  color: var(--giusto);
+}
+
+.quiz.risposto li.scelta:not(.giusta) .opz::after {
+  content: '✗ la tua';
+  color: var(--sbagliato);
+}
+
+.quiz-esito {
+  margin-top: 0.7em;
+  font-family: var(--grotesk);
+  font-size: 0.92rem;
+}
+
+.quiz-esito strong {
+  font-weight: 650;
+}
+
+.quiz-esito.ok strong {
+  color: var(--giusto);
+}
+
+.quiz-esito.ko strong {
+  color: var(--sbagliato);
+}
+
+.quiz-esito button {
+  margin-left: 0.8rem;
+  font: inherit;
+  color: var(--biro);
+  background: none;
+  border: 0;
+  padding: 0.3rem 0;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  cursor: pointer;
+}
+
+.prose .esito {
+  display: flex;
+  gap: 0.7em;
+  align-items: baseline;
+  padding: 0.55rem 0.75rem;
+  background: var(--giusto-wash);
+  border-left: 2px solid var(--giusto);
+  border-radius: 0 3px 3px 0;
+}
+
+.esito::before {
+  content: 'Risposta';
+  flex: none;
+  font-family: var(--grotesk);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--giusto);
+}
+
+.esito-lettera {
+  flex: none;
+  font-family: var(--grotesk);
+  font-weight: 700;
+  color: var(--giusto);
+}
+
+.prose .rif {
+  font-family: var(--grotesk);
+  font-weight: 600;
+  font-size: 0.95em;
+  padding: 0 0.15em;
+  border-radius: 2px;
+}
+
+.prose .rif.evid {
+  color: var(--sbagliato);
+  background: var(--sbagliato-wash);
+}
+
+.prose strong.vf::before {
+  margin-right: 0.3em;
+}
+
+.prose strong.vf-vero {
+  color: var(--giusto);
+}
+
+.prose strong.vf-vero::before {
+  content: '✓';
+}
+
+.prose strong.vf-falso {
+  color: var(--sbagliato);
+}
+
+.prose strong.vf-falso::before {
+  content: '✗';
+}
+
 .prose blockquote:not(.callout) {
   padding-left: 1.1rem;
   border-left: 1px solid var(--rule-strong);
@@ -916,6 +1107,14 @@ details.callout > summary::after {
 
 details.callout-example > summary::after {
   content: 'provaci prima';
+}
+
+details.soluzione-quiz > summary::after {
+  content: 'scegli prima una risposta';
+}
+
+details.soluzione-quiz[data-scelta] > summary::after {
+  content: none;
 }
 
 details.callout-note > summary::after {

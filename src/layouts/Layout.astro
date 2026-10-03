@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import Aggiornamento from '../components/Aggiornamento.astro';
 import unbounded700 from '@fontsource/unbounded/files/unbounded-latin-700-normal.woff2?url';
 import literataItalic from '@fontsource/literata/files/literata-latin-400-italic.woff2?url';
 import jbMono from '@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2?url';
@@ -146,6 +147,7 @@ const galaxies = [
     </nav>
 
     <slot />
+    <Aggiornamento />
 
     <footer>
       <p class="mono-label">Pietro Marchesi · Vobarno, Italy · <a href="/colophon/">colophon</a></p>

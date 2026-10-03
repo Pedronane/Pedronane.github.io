@@ -1,0 +1,110 @@
+---
+import { BUILD } from '../lib/build';
+---
+
+<div class="aggiornamento" role="status" data-build={BUILD} hidden>
+  <span>Il sito è stato aggiornato.</span>
+  <button type="button" class="aggiornamento-ricarica">Ricarica</button>
+  <button type="button" class="aggiornamento-chiudi" aria-label="Chiudi">×</button>
+</div>
+
+<script>
+  const INTERVALLO = 2 * 60 * 1000;
+  let ultimo = 0;
+  let nuova = '';
+
+  const corrente = () => document.querySelector<HTMLElement>('.aggiornamento')?.dataset.build ?? '';
+
+  const mostra = () => {
+    const box = document.querySelector<HTMLElement>('.aggiornamento');
+    if (!box || box.dataset.chiuso === nuova) return;
+    box.hidden = false;
+    box.querySelector<HTMLButtonElement>('.aggiornamento-ricarica')!.onclick = () => location.reload();
+    box.querySelector<HTMLButtonElement>('.aggiornamento-chiudi')!.onclick = () => {
+      box.dataset.chiuso = nuova;
+      box.hidden = true;
+    };
+  };
+
+  const controlla = async () => {
+    if (document.hidden || Date.now() - ultimo < 30_000) return;
+    ultimo = Date.now();
+    try {
+      const r = await fetch(`/version.json?t=${Date.now()}`, { cache: 'no-store' });
+      if (!r.ok) return;
+      const { build } = (await r.json()) as { build?: string };
+      if (build && corrente() && build !== corrente()) {
+        nuova = build;
+        mostra();
+      }
+    } catch {}
+  };
+
+  setInterval(controlla, INTERVALLO);
+  document.addEventListener('visibilitychange', controlla);
+  window.addEventListener('focus', controlla);
+</script>
+
+<style>
+  .aggiornamento {
+    position: fixed;
+    z-index: 100;
+    top: calc(0.75rem + env(safe-area-inset-top));
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    width: max-content;
+    max-width: calc(100vw - 2rem);
+    padding: 0.55rem 0.6rem 0.55rem 1rem;
+    font-family: var(--grotesk, var(--font-mono, sans-serif));
+    font-size: 0.92rem;
+    color: var(--ink);
+    background: var(--paper, var(--surface));
+    border: 1px solid var(--rule-strong, var(--cyan-dim));
+    border-radius: 4px;
+    box-shadow: 0 0.4rem 1.6rem color-mix(in oklch, black 22%, transparent);
+  }
+
+  .aggiornamento[hidden] {
+    display: none;
+  }
+
+  .aggiornamento button {
+    font: inherit;
+    min-height: 2.25rem;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    color: inherit;
+  }
+
+  .aggiornamento-ricarica {
+    padding: 0.3rem 0.8rem;
+    font-weight: 600;
+    color: var(--paper, var(--void)) !important;
+    background: var(--biro, var(--cyan)) !important;
+    border-radius: 3px;
+  }
+
+  .aggiornamento-chiudi {
+    padding: 0 0.4rem;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--muted, var(--faint)) !important;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .aggiornamento:not([hidden]) {
+      animation: scendi 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  }
+
+  @keyframes scendi {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -0.6rem);
+    }
+  }
+</style>

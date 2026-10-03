@@ -5,6 +5,7 @@ import '@fontsource-variable/archivo/wdth.css';
 import '@fontsource/jetbrains-mono/400.css';
 import 'katex/dist/katex.min.css';
 import '../styles/uni.css';
+import Aggiornamento from '../components/Aggiornamento.astro';
 
 interface Props {
   title: string;
@@ -74,6 +75,7 @@ const materie = [
       </div>
     </header>
     <slot />
+    <Aggiornamento />
     <footer class="colophon">
       <p>Note di Pietro Marchesi, primo anno di Ingegneria Informatica all’Università di Trento, 2026-27. Scritte da slide e lezioni dei docenti: per definizioni ed enunciati fa fede il materiale ufficiale su Moodle. Errori? Scrivimi a <a href="mailto:march3sipietro@gmail.com">march3sipietro@gmail.com</a>.</p>
       <p><a href="/" data-astro-reload>marchesipietro.xyz</a></p>
@@ -234,6 +236,59 @@ const materie = [
           apriPanel();
         }
       });
+    </script>
+    <script>
+      for (const ol of document.querySelectorAll<HTMLOListElement>('ol.quiz')) {
+        const giusta = ol.dataset.giusta!;
+        let sol = ol.nextElementSibling;
+        while (sol && !sol.matches('details.soluzione-quiz')) sol = sol.nextElementSibling;
+        const details = sol as HTMLDetailsElement | null;
+        const summary = details?.querySelector('summary');
+        const bottoni = [...ol.querySelectorAll<HTMLButtonElement>('button.opz')];
+        const esito = document.createElement('p');
+        esito.className = 'quiz-esito';
+        esito.setAttribute('aria-live', 'polite');
+        ol.after(esito);
+
+        const rispondi = (scelta: string) => {
+          const ok = scelta === giusta;
+          ol.classList.add('risposto');
+          ol.querySelector(`li[data-opz="${giusta}"]`)?.classList.add('giusta');
+          ol.querySelector(`li[data-opz="${scelta}"]`)?.classList.add('scelta');
+          bottoni.forEach((b) => (b.disabled = true));
+          esito.className = `quiz-esito ${ok ? 'ok' : 'ko'}`;
+          esito.innerHTML = ok
+            ? `<strong>✓ Giusta.</strong>`
+            : `<strong>✗ Sbagliata:</strong> <span>la risposta giusta è la ${giusta}).</span>`;
+          const riprova = document.createElement('button');
+          riprova.type = 'button';
+          riprova.textContent = 'Riprova';
+          riprova.addEventListener('click', reset);
+          esito.append(riprova);
+          if (details && summary) {
+            details.dataset.scelta = scelta;
+            summary.textContent = ok ? `Perché la ${giusta}) è giusta` : `Perché la ${scelta}) è sbagliata`;
+            details.querySelectorAll<HTMLElement>('.rif').forEach((r) => r.classList.toggle('evid', !ok && r.dataset.opz === scelta));
+          }
+        };
+
+        const reset = () => {
+          ol.classList.remove('risposto');
+          ol.querySelectorAll('li').forEach((li) => li.classList.remove('giusta', 'scelta'));
+          bottoni.forEach((b) => (b.disabled = false));
+          esito.className = 'quiz-esito';
+          esito.textContent = '';
+          if (details && summary) {
+            delete details.dataset.scelta;
+            details.open = false;
+            summary.textContent = 'Risposta e spiegazione';
+            details.querySelectorAll('.rif.evid').forEach((r) => r.classList.remove('evid'));
+          }
+          bottoni[0]?.focus();
+        };
+
+        bottoni.forEach((b) => b.addEventListener('click', () => rispondi(b.dataset.lettera!)));
+      }
     </script>
   </body>
 </html>

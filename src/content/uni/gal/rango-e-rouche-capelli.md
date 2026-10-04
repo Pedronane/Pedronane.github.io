@@ -211,7 +211,7 @@ i) per quali $a$ è compatibile? ii) Trovare tutte le soluzioni, ove possibile.
 > - $a = 0$: terza riga $(0, 0, 0 \mid 0)$, $\operatorname{rg}(A) = 2 = \operatorname{rg}([A \mid \vec{b}])$, infinite soluzioni.
 > - $a = 1$: terza riga $(0, 0, 0 \mid -2)$, $\operatorname{rg}(A) = 2$ ma $\operatorname{rg}([A \mid \vec{b}]) = 3$: **incompatibile**.
 >
-> Compatibile se e solo se $a \neq 1$. (Nella scansione la terza riga della tabella di $\operatorname{rg}(A)$ sembra dire "$2$ se $a = 2$": è $a = 1$, come si vede dal fattore $1 - a$.)
+> Compatibile se e solo se $a \neq 1$. (Nella scansione la terza riga della tabella di $\operatorname{rg}(A)$ sembra dire “$2$ se $a = 2$": è $a = 1$, come si vede dal fattore $1 - a$.)
 >
 > **ii) $a = 0$.** La matrice diventa $\left[\begin{array}{ccc|c} 1 & 0 & 2 & 4 \\ 0 & -1 & 0 & 1 \end{array}\right]$ (riga nulla cancellata); $D_2(-1)$ dà $y = -1$. La colonna di $z$ è senza pivot:
 > $$
@@ -300,7 +300,7 @@ a) stabilire per quali $k$ è compatibile e per quali ha infinite soluzioni; b) 
 - Calcolare $\operatorname{rg}([A \mid \vec{b}])$ e dimenticare $\operatorname{rg}(A)$, o viceversa: servono tutti e due, e si leggono dalla stessa riduzione.
 - Dividere per un'espressione col parametro (es. $D_3\!\left(\frac{1}{2(1-k)}\right)$) senza aver escluso il valore che la annulla.
 - Trattare il caso critico usando la soluzione generale: per $k = 1$ la formula non vale, si risostituisce $k = 1$ nella matrice a scalini.
-- Fermarsi a "$\operatorname{rg}(A) = 2$ per $k = -1$" senza guardare l'ultima colonna: è lì che si decide fra infinite soluzioni e incompatibile.
+- Fermarsi a “$\operatorname{rg}(A) = 2$ per $k = -1$" senza guardare l'ultima colonna: è lì che si decide fra infinite soluzioni e incompatibile.
 - Dire "due soluzioni" o "un numero finito di soluzioni": per un sistema lineare sono $0$, $1$ o infinite.
 - Non fattorizzare: $-2a^2 + 2a$ va scritto $2a(1-a)$, altrimenti si perde uno dei due valori critici.
 

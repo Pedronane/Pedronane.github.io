@@ -163,7 +163,7 @@ Il nome viene dall'identità $\cosh^2 x - \sinh^2 x = 1$: il punto $(\cosh t, \s
 > |x| > c \iff x < -c \ \text{ oppure } \ x > c \iff x \in (-\infty, -c) \cup (c, +\infty)
 > $$
 
-Letto come distanza: "$\leq$" dà un intervallo attorno all'origine, "$\geq$" dà i due pezzi che restano fuori. Il verso della disuguaglianza decide se il risultato è **un** intervallo o **un'unione** di due.
+Letto come distanza: “$\leq$" dà un intervallo attorno all'origine, “$\geq$" dà i due pezzi che restano fuori. Il verso della disuguaglianza decide se il risultato è **un** intervallo o **un'unione** di due.
 
 Queste formule valgono solo quando il modulo è isolato da una parte e dall'altra c'è una costante. Se dall'altra parte c'è un'espressione in $x$, come in $|x + 2| \leq |2x - 3| + 1$, si passa dai casi (vedi Metodo).
 

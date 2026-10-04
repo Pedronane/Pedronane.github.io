@@ -67,11 +67,11 @@ La prima parentesi è l'inclusione, la seconda dice che in $B$ c'è almeno un el
 
 **Non sottoinsieme.** $A \not\subseteq B$ è la negazione di $A \subseteq B$: esiste un elemento di $A$ che non sta in $B$. Il prof annota: da non confondere con $A \subsetneq B$. Sono quasi opposti: $A \subsetneq B$ dice che $A$ sta dentro $B$ (ed è più piccolo), $A \not\subseteq B$ dice che $A$ esce da $B$. Da non confondere nemmeno con $\notin$, che lega un elemento a un insieme: $4 \in A$ e $\{4\} \subseteq A$ sono corretti, $4 \subseteq A$ è scritto male.
 
-**Proposizione.** Una frase che è vera (V) o falsa (F), senza terze possibilità. Esempio delle slide: $P =$ "3 è un numero pari" è falsa, $Q =$ "28 è divisibile per 4" è vera. Allora "$P$ e $Q$" è falsa (serve che valgano tutte e due), "$P$ o $Q$" è vera (ne basta una), "non $P$" è vera.
+**Proposizione.** Una frase che è vera (V) o falsa (F), senza terze possibilità. Esempio delle slide: $P =$ "3 è un numero pari" è falsa, $Q =$ "28 è divisibile per 4" è vera. Allora “$P$ e $Q$" è falsa (serve che valgano tutte e due), “$P$ o $Q$" è vera (ne basta una), "non $P$" è vera.
 
-**Predicato.** Una proposizione che contiene una variabile, quindi il suo valore di verità dipende dalla variabile: $P(x) =$ "$x$ è un numero pari". Da solo non è né vero né falso.
+**Predicato.** Una proposizione che contiene una variabile, quindi il suo valore di verità dipende dalla variabile: $P(x) =$ “$x$ è un numero pari". Da solo non è né vero né falso.
 
-**Connettivi logici.** `e`, `o`, `non` (sulla slide del 22 compare anche il simbolo $\neg$ per il non), più l'**implicazione** $\Rightarrow$ ("se $P$ allora $Q$", oppure "$P$ implica $Q$") e la **doppia implicazione** $\Leftrightarrow$ ("$P$ se e solo se $Q$", oppure "$P$ è equivalente a $Q$").
+**Connettivi logici.** `e`, `o`, `non` (sulla slide del 22 compare anche il simbolo $\neg$ per il non), più l'**implicazione** $\Rightarrow$ ("se $P$ allora $Q$", oppure “$P$ implica $Q$") e la **doppia implicazione** $\Leftrightarrow$ (“$P$ se e solo se $Q$", oppure “$P$ è equivalente a $Q$").
 
 **Quantificatori.** $\exists$ (**quantificatore esistenziale**, "esiste") e $\forall$ (**quantificatore universale**, "per ogni"). Specificano la validità di un predicato in relazione a un insieme:
 
@@ -100,7 +100,7 @@ L'ordine conta: $\exists\, \varepsilon \in E : \forall s \in S, \dots$ direbbe c
 | F   | V   | V                 | F                     |
 | F   | F   | V                 | V                     |
 
-$P \Rightarrow Q$ è falsa in un solo caso: premessa vera e conclusione falsa. In $P \Rightarrow Q$ la $P$ si chiama premessa, ipotesi o condizione sufficiente; la $Q$ conclusione, tesi o condizione necessaria. $P \Leftrightarrow Q$ equivale a "$(P \Rightarrow Q)$ e $(Q \Rightarrow P)$", e si usa per dire che due proposizioni sono equivalenti.
+$P \Rightarrow Q$ è falsa in un solo caso: premessa vera e conclusione falsa. In $P \Rightarrow Q$ la $P$ si chiama premessa, ipotesi o condizione sufficiente; la $Q$ conclusione, tesi o condizione necessaria. $P \Leftrightarrow Q$ equivale a “$(P \Rightarrow Q)$ e $(Q \Rightarrow P)$", e si usa per dire che due proposizioni sono equivalenti.
 
 **Esempio del prof (14/9, pagina dopo la slide 16).** $P$ = "oggi c'è il sole", $Q$ = "oggi vado al parco". L'implicazione $P \Rightarrow Q$ è la promessa "se c'è il sole vado al parco".
 
@@ -168,7 +168,7 @@ Esempi delle slide: la negazione di "ogni studente ha superato l'esame di analis
 **Negare una proposizione con quantificatori.**
 1. Se la frase è in italiano, scrivila prima in simboli: individua insieme, variabile, predicato.
 2. Scorri da sinistra a destra: ogni $\forall$ diventa $\exists$, ogni $\exists$ diventa $\forall$. L'ordine dei quantificatori non si tocca.
-3. Alla fine nega il predicato: $\leq$ diventa $>$, $=$ diventa $\neq$, "e" diventa "o", $P \Rightarrow Q$ diventa "$P$ e non $Q$".
+3. Alla fine nega il predicato: $\leq$ diventa $>$, $=$ diventa $\neq$, "e" diventa "o", $P \Rightarrow Q$ diventa “$P$ e non $Q$".
 4. Ritraduci in italiano e rileggi: la negazione deve essere vera esattamente quando l'originale è falsa.
 
 **Dimostrare che due insiemi sono uguali.** Si prova la doppia inclusione, cioè $A \subseteq B$ e $B \subseteq A$. Ognuna si prova prendendo un elemento generico del primo insieme e mostrando che sta nel secondo.
@@ -207,17 +207,17 @@ Negare "la matematica è inutile **ma** una laurea in ingegneria vale molto". Il
 
 La negazione di "ogni mela contiene almeno 4 semi" è: a) nessuna mela contiene almeno 4 semi; b) esiste una mela con almeno 4 semi; c) ogni mela contiene al massimo 3 semi; d) esiste una mela con meno di 4 semi.
 
-Il prof scrive $A$ = {mele} e $P(x)$ = "$x$ ha almeno 4 semi". La frase è $\forall x \in A, P(x)$, e la negazione è $\exists x \in A : \text{non } P(x)$, cioè "esiste una mela con meno di 4 semi". Risposta **d**. La a) sbaglia il quantificatore, la c) nega il predicato ma lascia il $\forall$.
+Il prof scrive $A$ = {mele} e $P(x)$ = “$x$ ha almeno 4 semi". La frase è $\forall x \in A, P(x)$, e la negazione è $\exists x \in A : \text{non } P(x)$, cioè "esiste una mela con meno di 4 semi". Risposta **d**. La a) sbaglia il quantificatore, la c) nega il predicato ma lascia il $\forall$.
 
 ### Quiz 2 (slide 22)
 
 La negazione di $\exists\, a \in A : \forall b \in B,\ a \neq b$ è: a) $B \subseteq A$; b) $\forall a \in A\ \exists\, b \in B : a = b$; c) $\forall a \in A, \forall b \in B,\ a = b$; d) $\exists\, a \in A, \exists\, b \in B : a = b$.
 
-Svolgimento del prof (<span class="src">pagina 26</span>): si chiama $P(a)$ il pezzo "$\forall b \in B, a \neq b$". La frase è $\exists a \in A : P(a)$, la negazione è $\forall a \in A, \text{non } P(a)$, e $\text{non } P(a)$ è $\exists b \in B : a = b$. In conclusione la negazione è
+Svolgimento del prof (<span class="src">pagina 26</span>): si chiama $P(a)$ il pezzo “$\forall b \in B, a \neq b$". La frase è $\exists a \in A : P(a)$, la negazione è $\forall a \in A, \text{non } P(a)$, e $\text{non } P(a)$ è $\exists b \in B : a = b$. In conclusione la negazione è
 $$
 \forall a \in A \ \ \exists b \in B : a = b
 $$
-risposta **b**. A parole: ogni elemento di $A$ coincide con qualche elemento di $B$, cioè $A \subseteq B$. La frase di partenza diceva quindi "$A$ non è sottoinsieme di $B$", $A \not\subseteq B$. La a) scrive l'inclusione al contrario.
+risposta **b**. A parole: ogni elemento di $A$ coincide con qualche elemento di $B$, cioè $A \subseteq B$. La frase di partenza diceva quindi “$A$ non è sottoinsieme di $B$", $A \not\subseteq B$. La a) scrive l'inclusione al contrario.
 
 ## Esercizi tipo esame
 
@@ -332,7 +332,7 @@ risposta **b**. A parole: ogni elemento di $A$ coincide con qualche elemento di 
 > - $\exists y : \forall x, P(x, y)$: esiste una rivista che si trova nella biblioteca di **ogni** dipartimento. La stessa rivista, per tutti.
 > - $\forall x, \exists y : P(x, y)$: nella biblioteca di ogni dipartimento c'è **almeno una** rivista, che può cambiare da dipartimento a dipartimento.
 >
-> Non sono equivalenti. La prima implica la seconda (se una rivista sta ovunque, ogni biblioteca ne ha almeno una), il viceversa no. In generale "$\exists y : \forall x$" dice che $y$ è lo stesso per tutti gli $x$, "$\forall x, \exists y$" dice che $y$ può dipendere da $x$.
+> Non sono equivalenti. La prima implica la seconda (se una rivista sta ovunque, ogni biblioteca ne ha almeno una), il viceversa no. In generale “$\exists y : \forall x$" dice che $y$ è lo stesso per tutti gli $x$, “$\forall x, \exists y$" dice che $y$ può dipendere da $x$.
 
 **Esercizio 6** (esercizi di Pinamonti, es. 3). Sia $A \subseteq \mathbb{R}$. Dire se sono vere qualunque sia $A$, e scriverne la negazione:
 
@@ -346,13 +346,13 @@ risposta **b**. A parole: ogni elemento di $A$ coincide con qualche elemento di 
 
 ## Errori tipici
 
-- **Negare un "se... allora" con un altro "se... allora".** La negazione di $P \Rightarrow Q$ è "$P$ e non $Q$" (quiz 4).
+- **Negare un "se... allora" con un altro "se... allora".** La negazione di $P \Rightarrow Q$ è “$P$ e non $Q$" (quiz 4).
 - **Confondere contronominale e inversa.** $P \Rightarrow Q$ equivale a non $Q \Rightarrow$ non $P$, non a $Q \Rightarrow P$ né a non $P \Rightarrow$ non $Q$. L'esercizio del 14/9 con $A$, $B$, $C$ è esattamente questa trappola.
 - **Negare il predicato e dimenticare il quantificatore**, o viceversa: "ogni mela ha al massimo 3 semi" non è la negazione di "ogni mela ha almeno 4 semi".
 - **Scambiare l'ordine dei quantificatori** quando si nega: l'ordine resta quello, cambiano solo i simboli.
 - **Leggere $\subset$ come inclusione stretta.** Nel corso $\subset$ è $\subseteq$; la stretta è $\subsetneq$.
 - **Confondere $\not\subseteq$ con $\subsetneq$**, o $\in$ con $\subseteq$ ($4 \subseteq A$ è scritto male).
-- **Pensare che l'"o" sia esclusivo.** "$P$ o $Q$" è vera anche quando valgono entrambe.
+- **Pensare che l'"o" sia esclusivo.** “$P$ o $Q$" è vera anche quando valgono entrambe.
 
 ## Domande
 

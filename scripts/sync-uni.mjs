@@ -141,7 +141,9 @@ function transformInline(line, self) {
     return `[${text}](${href})`;
   });
 
-  return line.replace(/==([^=\n]+)==/g, '<mark>$1</mark>');
+  return line
+    .replace(/==([^=\n]+)==/g, '<mark>$1</mark>')
+    .replace(/(^|[\s(>])"(?=\$)/g, '$1“');
 }
 
 function transformBody(body, note) {

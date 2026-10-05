@@ -69,7 +69,7 @@ Il programma dalla slide 7 del 14/9 (quello completo è nel Syllabus su Esse3/Mo
 
 1. **Preliminari** su linguaggio matematico, numeri reali, funzioni
    - [Insiemi e logica](/uni/analisi-1/insiemi-e-logica/)
-   - [Numeri reali, sup e inf](/uni/analisi-1/numeri-reali-sup-e-inf/)
+   - [Numeri reali, sup e inf](/uni/analisi-1/numeri-reali-sup-e-inf/) ([esercizi dell'esercitazione](/uni/analisi-1/esercizi-sup-e-inf/))
    - [Funzioni](/uni/analisi-1/funzioni/)
    - [Funzioni elementari](/uni/analisi-1/funzioni-elementari/)
    - [Trasformazioni di grafici](/uni/analisi-1/trasformazioni-di-grafici/)
@@ -89,6 +89,7 @@ Le voci senza link diventano note quando l'argomento parte a lezione.
 - Ogni nota ha la sezione **Esercizi tipo esame**: crocette stile parte 1 e esercizi stile parte 2 con soluzione in callout chiuso.
 - <span class="src">Foglio 0 esercizi</span>: logica, insiemi, disequazioni ("per familiarizzare con il linguaggio").
 - <span class="src">Foglio 1 esercizi</span>: sup e inf di successioni e insiemi, grafici elementari, numeri complessi.
+- [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/): i nove insiemi della lavagna dell'esercitazione, con indizio e soluzione chiusi.
 - <span class="src">Esercizi svolti logica</span>: esercizi svolti di Pinamonti (a.a. 21/22) su quantificatori, insiemi, campo di esistenza.
 - <span class="src">Esercizi svolti complessi</span>: "Qualche esercizio risolto sui complessi" (Moodle, foglio di Ingegneria Industriale 22/23): forme, luoghi, equazioni, radici, crocette con risposte. Alcuni sono svolti per esteso negli esercizi della nota sui complessi.
 - <span class="src">Tutoraggio 2</span>: foglio del tutoraggio sui complessi (foglio 2 di Pinamonti, 25/9/2023), con soluzioni. Gli esercizi 1, 2.i e 4 coincidono con quelli del foglio 1 già svolti nella nota; gli altri restano da fare a te.

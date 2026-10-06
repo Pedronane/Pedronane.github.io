@@ -297,6 +297,8 @@ $$
 >
 > **Il sistema è risolubile se e solo se $k \neq 1$.**
 >
+> Perché $k = 1$ si rompe, letto sulle equazioni. Con $k = 1$ la terza equazione meno la prima dà $x_3 + x_4 = b_3 - b_1 = 0 - 1 = -1$, mentre la quarta dice $x_3 + x_4 = 1$. La stessa quantità dovrebbe valere $-1$ e $1$: contraddizione. Con un altro $\vec{b}$ che soddisfa $b_3 - b_1 = b_4$ il sistema con $k = 1$ sarebbe compatibile, con infinite soluzioni. Quando $A$ non è invertibile la risolubilità dipende da $\vec{b}$, e va controllata ogni volta.
+>
 > Per completezza la soluzione, risalendo dal basso: $x_4 = \frac{-2k}{2 - 2k} = \frac{k}{k - 1}$, $x_3 = 1 - x_4 = -\frac{1}{k - 1}$, $x_2 = \frac{1 - x_3 + x_4}{2} = \frac{k}{k - 1}$, $x_1 = \frac{k^2}{2(k - 1)}$. Tutti con $k - 1$ al denominatore: per $k = 1$ non hanno senso, coerente con l'incompatibilità.
 >
 > **Verifica** con $k = 2$: la soluzione è $(2, 2, -1, 2)$. Nel sistema di partenza: $-4 + 4 - 1 + 2 = 1$; $4 - 1 - 2 = 1$; $-4 + 4 - 4 + 4 = 0$; $-1 + 2 = 1$. Torna con $\vec{b} = (1, 1, 0, 1)$.

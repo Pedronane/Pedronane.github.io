@@ -12,7 +12,7 @@ lezioni: []
 ordine: 999
 ---
 
-Tutte le formule della geometria nello spazio fatte a lezione (appunti della prof, <span class="src">p. 2-27</span>, e capitolo 1 della dispensa Postinghel), quelle che servono per il foglio 1 del tutorato e per il primo parziale. Argomento di [Geometria e Algebra Lineare](/uni/gal/). La teoria sta in [Vettori geometrici](/uni/gal/vettori-geometrici/), [Rette e piani nello spazio](/uni/gal/rette-e-piani-nello-spazio/), [Posizioni reciproche nello spazio](/uni/gal/posizioni-reciproche-nello-spazio/), [Distanze nello spazio](/uni/gal/distanze-nello-spazio/). La strategia per gli esercizi sta in [Ripasso foglio 1](/uni/gal/ripasso-foglio-1/).
+Tutte le formule della geometria nello spazio fatte a lezione (appunti della prof, <span class="src">p. 2-27</span>, e capitolo 1 della dispensa Postinghel), quelle che servono per il foglio 1 del tutorato e per il primo parziale. Argomento di [Geometria e Algebra Lineare](/uni/gal/). La teoria sta in [Vettori geometrici](/uni/gal/vettori-geometrici/), [Rette e piani nello spazio](/uni/gal/rette-e-piani-nello-spazio/), [Posizioni reciproche nello spazio](/uni/gal/posizioni-reciproche-nello-spazio/), [Distanze nello spazio](/uni/gal/distanze-nello-spazio/). Strategia ed esercizi svolti in [Foglio 1 svolto](/uni/gal/foglio-1-svolto/).
 
 Convenzione: $\vec{v} = (v_1, v_2, v_3)$, punti $A = (x_A, y_A, z_A)$, piani con normale $\vec{n} = (a,b,c)$.
 

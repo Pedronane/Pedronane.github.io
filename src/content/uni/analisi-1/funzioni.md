@@ -11,6 +11,7 @@ data: 2026-09-16
 lezioni:
   - 16 set
   - 21 set
+  - 29 set
 ordine: 2
 ---
 
@@ -381,6 +382,66 @@ $$
 $$
 La costante $f(x) = 5$ funziona: per qualsiasi $T > 0$ vale $f(x + T) = 5 = f(x)$, quindi l'insieme dei periodi è $(0, +\infty)$. Il suo inf è $0$, ma $0$ non è un periodo ammesso (si chiede $T > 0$), quindi il minimo non esiste. Poi il prof rilancia: esibirne una **non costante**. È l'esercizio 3 qui sotto.
 
+### Esercitazione del 29/9: composizioni (tutor)
+
+Dall'esercitazione del 29/9 (<span class="src">esercitazione 2, pagina 3</span>), sezione "Grafici e composizione". Il primo esercizio della sezione, con l'arcocoseno, sta in [Trasformazioni di grafici](/uni/analisi-1/trasformazioni-di-grafici/).
+
+**1.4** ("provetta"). $f(x) = \sqrt{x + 1}$, $g(x) = x^2 - 1$:
+$$
+f \circ g(x) = f(g(x)) = \sqrt{g(x) + 1} = \sqrt{x^2 - 1 + 1} = \sqrt{x^2} = |x|
+$$
+Il dominio: serve $g(x) + 1 = x^2 \geq 0$, vero per ogni $x$. Il passo finale è la regola $\sqrt{x^2} = |x|$, non $x$: per $x = -3$ si ottiene $3$.
+
+**1.5.** $f(x) = x - x^2$, $g(y) = y^2 - y$:
+$$
+g \circ f(x) = g(f(x)) = f^2(x) - f(x) = (x - x^2)^2 - (x - x^2) = x^2 + x^4 - 2x^3 - x + x^2 = x^4 - 2x^3 + 2x^2 - x
+$$
+Il nome della variabile di $g$ ($y$) non conta: $g$ prende quello che le si dà e lo eleva al quadrato meno sé stesso.
+
+**1.6.** Composizione di due funzioni a tratti:
+$$
+f(x) = \begin{cases} 2x + 1 & x \leq 1 \\ -x - 2 & x > 1 \end{cases} \qquad g(x) = \begin{cases} x^2 + 1 & x > 0 \\ -x^2 - 1 & x \leq 0 \end{cases}
+$$
+Calcolare $f \circ g$. Il metodo del tutor:
+1. si scrive $f$ con $g(x)$ al posto di $x$, **anche nelle condizioni**: $f(g(x)) = 2g(x) + 1$ se $g(x) \leq 1$, $-g(x) - 2$ se $g(x) > 1$;
+2. si traducono le condizioni su $g(x)$ in condizioni su $x$, guardando il grafico di $g$ (l'osservazione nel riquadro): $g(x) > 1 \iff x > 0$, perché per $x > 0$ vale $x^2 + 1 > 1$; e $g(x) \leq 1 \iff x \leq 0$, perché per $x \leq 0$ vale $-x^2 - 1 \leq -1$;
+3. in ciascun tratto si sostituisce la formula di $g$ giusta per quel tratto:
+$$
+f(g(x)) = \begin{cases} 2(-x^2 - 1) + 1 & x \leq 0 \\ -(x^2 + 1) - 2 & x > 0 \end{cases} = \begin{cases} -2x^2 - 1 & x \leq 0 \\ -x^2 - 3 & x > 0 \end{cases}
+$$
+Il tutor si ferma alla prima forma; la seconda è la semplificazione. Controllo: $x = 1$ dà $g(1) = 2$, $f(2) = -4$, e $-1 - 3 = -4$.
+
+Qui i tratti di $g$ e le condizioni di $f$ si incastrano bene ($g(x) \leq 1$ coincide con un tratto intero di $g$). In generale una condizione su $g(x)$ può tagliare un tratto di $g$ in più pezzi, e allora si risolvono le disequazioni tratto per tratto.
+
+### Esercitazione del 29/9: inverse (tutor)
+
+**2.1** (<span class="src">esercitazione 2, pagina 4</span>). Calcolare l'inversa (e disegnarne il grafico) di $f : \left[\frac12, +\infty\right) \to \mathbb{R}$, $f(x) = x^2 - x + 1$.
+
+Si risolve $y = x^2 - x + 1$ rispetto a $x$: $x^2 - x + 1 - y = 0$, e con la formula delle equazioni di secondo grado
+$$
+x_{1,2} = \frac{1 \pm \sqrt{1 - 4(1 - y)}}{2} = \frac{1 \pm \sqrt{4y - 3}}{2}
+$$
+Delle due soluzioni si accetta quella con $x \geq \frac12$, cioè col $+$; quella col $-$ dà $x \leq \frac12$ e non sta nel dominio (il tutor: "non accettabile"). Quindi
+$$
+f^{-1}(x) = \frac{1 + \sqrt{4x - 3}}{2}
+$$
+Il dominio dell'inversa è l'immagine di $f$: il vertice della parabola è in $x = \frac12$, dove $f\left(\frac12\right) = \frac34$, e da lì $f$ sale. Quindi $f^{-1} : \left[\frac34, +\infty\right) \to \left[\frac12, +\infty\right)$, e infatti la radice chiede $4x - 3 \geq 0$. Il tutor non scrive questi domini, ma servono: "l'inversa di $f$" è una funzione con dominio e codominio.
+
+Il grafico di $f^{-1}$ è il simmetrico di quello di $f$ rispetto alla bisettrice $y = x$. Il tutor cerca dove si incontrano risolvendo $f(x) = x$: $x^2 - x + 1 = x \iff (x - 1)^2 = 0 \iff x = 1$, punto $(1, 1)$, dove le due curve sono tangenti alla bisettrice. Cercare le intersezioni di $f$ e $f^{-1}$ sulla bisettrice funziona qui perché $f$ è crescente; per una $f$ decrescente le due curve possono incontrarsi anche fuori da $y = x$.
+
+**2.3** (<span class="src">esercitazione 2, pagina 5</span>). Inversa della funzione a tratti
+$$
+f(x) = \begin{cases} 2x + 1 & x \leq 0 \\ \sqrt{x + 1} & x > 0 \end{cases}
+$$
+Si inverte un tratto alla volta, e si traduce la condizione su $x$ in una condizione su $y$:
+- $y = 2x + 1 \Rightarrow x = \frac{y - 1}{2}$; la condizione $x \leq 0$ diventa $y - 1 \leq 0$, cioè $y \leq 1$;
+- $y = \sqrt{x + 1} \Rightarrow y^2 = x + 1 \Rightarrow x = y^2 - 1$ (con $y \geq 0$, perché una radice non è negativa); la condizione $x > 0$ diventa $y^2 - 1 > 0$, cioè $y < -1$ oppure $y > 1$, che insieme a $y \geq 0$ dà $y > 1$.
+
+$$
+f^{-1}(x) = \begin{cases} \dfrac{x - 1}{2} & x \leq 1 \\ x^2 - 1 & x > 1 \end{cases}
+$$
+Le condizioni dell'inversa ($x \leq 1$ e $x > 1$) coprono tutto $\mathbb{R}$ senza sovrapporsi: è il segno che $f$ è biiettiva su $\mathbb{R}$ (entrambi i tratti sono crescenti, e il primo arriva a $1$ dove il secondo riparte da sopra $1$).
+
 ## Esercizi tipo esame
 
 ### Crocette (stile parte 1)
@@ -480,6 +541,21 @@ La costante $f(x) = 5$ funziona: per qualsiasi $T > 0$ vale $f(x + T) = 5 = f(x)
 > f^{-1}(y) = \begin{cases} \sqrt{y} & y \geq 0 \\ -\sqrt{-y} & y < 0 \end{cases}
 > $$
 > Anch'essa dispari, come deve essere l'inversa di una dispari.
+
+**Esercizio 5** (esercitazione del 29/9, esercizio 2.2, non svolto a lezione). Calcolare l'inversa di $f : \mathbb{R} \to (0, +\infty)$, $f(x) = e^{2x} + e^x$.
+
+> [!example]- Soluzione
+> La soluzione del tutor (<span class="src">esercitazione 2, pagina 4</span>). Si pone $y = e^{2x} + e^x$, e si osserva che $y > 0$ (somma di esponenziali). Con la sostituzione $t = e^x$ l'equazione $e^{2x} + e^x - y = 0$ diventa di secondo grado:
+> $$
+> t^2 + t - y = 0 \implies t_{1,2} = \frac{-1 \pm \sqrt{1 + 4y}}{2}
+> $$
+> - $t = \frac{-1 - \sqrt{1 + 4y}}{2} < 0$: non accettabile, perché $t = e^x > 0$;
+> - $t = \frac{-1 + \sqrt{1 + 4y}}{2}$: positiva per $y > 0$ (perché $\sqrt{1 + 4y} > 1$). Allora $e^x = t$ e $x = \log t$.
+>
+> $$
+> f^{-1}(x) = \log\left(\frac{-1 + \sqrt{1 + 4x}}{2}\right), \qquad x > 0
+> $$
+> $f$ è biiettiva da $\mathbb{R}$ a $(0, +\infty)$: strettamente crescente (somma di crescenti) e ogni $y > 0$ ha la sua soluzione. Verifica con $x = 0$: $f(0) = 2$ e $f^{-1}(2) = \log\frac{-1 + 3}{2} = \log 1 = 0$.
 
 ## Errori tipici
 

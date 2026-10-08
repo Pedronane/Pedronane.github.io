@@ -12,6 +12,7 @@ lezioni:
   - 22 set
   - 23 set
   - 28 set
+  - 29 set
 ordine: 5
 ---
 
@@ -809,6 +810,57 @@ $$
 >
 > Controllo: $z = 0{,}81 - 0{,}54i$ sta a distanza $0{,}5$ dal centro, ha $|\mathrm{Re}| \leq 1$ e $-0{,}54 > -0{,}81$: dentro. $z = 0{,}5 - i$ è nel disco e nella striscia, ma $-1 > -0{,}5$ è falso: fuori.
 
+### Esercitazione del 29/9 (tutor)
+
+La terza parte dell'esercitazione del 29/9, "Numeri complessi" (<span class="src">esercitazione 2, pagine 6-12</span>). Il tutor ripassa le tre forme: $z = a + ib = \rho(\cos\theta + i\sin\theta) = \rho e^{i\theta}$, con $\rho = \sqrt{a^2 + b^2}$, $\mathrm{Re}(z) = a$, $\mathrm{Im}(z) = b$.
+
+**3.1 a) Forme di $\frac{1 + 2i}{1 - 2i}$.** Si moltiplica per il coniugato del denominatore:
+$$
+\frac{1 + 2i}{1 - 2i} \cdot \frac{1 + 2i}{1 + 2i} = \frac{1 + 4i + 4i^2}{1 - 4i^2} = \frac{-3 + 4i}{5} = -\frac35 + \frac45 i
+$$
+$\mathrm{Re} = -\frac35$, $\mathrm{Im} = \frac45$, $|z| = \sqrt{\frac{9}{25} + \frac{16}{25}} = 1$. L'argomento risolve $\cos\theta = -\frac35$, $\sin\theta = \frac45$: con il seno positivo l'angolo sta nel secondo quadrante, dove l'arcocoseno è già giusto, quindi $\theta = \arccos\left(-\frac35\right) \approx 2{,}21$. Forme: $z = \cos\theta + i\sin\theta = e^{i\theta}$. (Che $|z| = 1$ era prevedibile: numeratore e denominatore sono coniugati, quindi hanno lo stesso modulo.)
+
+**3.1 b) Forma algebrica di $z^{-1}$ con $z = 5e^{-i\pi/3}$.** Il tutor la fa in due modi.
+- **Modo 1** ("giusto, ma non consigliato in questo caso"): si passa in forma algebrica, $z = 5\left(\cos\left(-\frac\pi3\right) + i\sin\left(-\frac\pi3\right)\right) = \frac{5 - 5\sqrt3\,i}{2}$, e poi si calcola il reciproco col coniugato: $z^{-1} = \frac{2}{5 - 5\sqrt3\,i} \cdot \frac{5 + 5\sqrt3\,i}{5 + 5\sqrt3\,i} = \frac{10(1 + \sqrt3\,i)}{25 + 75} = \frac{1}{10} + \frac{\sqrt3}{10}i$.
+- **Modo 2**: in forma esponenziale il reciproco è immediato, si inverte il modulo e si cambia segno all'argomento: $z^{-1} = \frac15 e^{i\pi/3} = \frac15\left(\frac12 + \frac{\sqrt3}{2}i\right) = \frac{1}{10} + \frac{\sqrt3}{10}i$.
+
+**3.1 c) Forme di $z = \mathrm{Im}\left(\frac{1}{2\pi i} \cdot \frac{1}{i - 2}\right) e^{\frac23\pi i}$.** Prima il numero reale davanti. $2\pi i(i - 2) = 2\pi i^2 - 4\pi i = -2\pi - 4\pi i$, quindi
+$$
+\frac{1}{-2\pi - 4\pi i} = -\frac{1}{2\pi} \cdot \frac{1}{1 + 2i} = -\frac{1}{2\pi} \cdot \frac{1 - 2i}{5} = -\frac{1}{10\pi} + \frac{1}{5\pi}i
+$$
+La parte immaginaria è $\frac{1}{5\pi}$, un numero reale positivo: è il modulo. Quindi
+$$
+z = \frac{1}{5\pi}e^{\frac23\pi i} = \frac{1}{5\pi}\left(\cos\tfrac23\pi + i\sin\tfrac23\pi\right) = \frac{1}{5\pi}\left(-\frac12 + \frac{\sqrt3}{2}i\right) = -\frac{1}{10\pi} + \frac{\sqrt3}{10\pi}i
+$$
+La trappola: $\mathrm{Im}(\dots)$ è un numero **reale**, non $i$ per qualcosa.
+
+**3.1 d) Trovare $z$ con $\frac{\mathrm{Re}(z)}{z} = \frac12 - \frac12 i$.** Serve $z \neq 0$. Moltiplicando per $2z$: $2\,\mathrm{Re}(z) = (1 - i)z$. Con $z = x + iy$:
+$$
+2x = (1 - i)(x + iy) = x + iy - ix + y \iff (x - y) + i(x - y) = 0 \iff x = y
+$$
+Le soluzioni sono i punti della **bisettrice** $y = x$, **tolta l'origine** ($z \neq 0$): sul disegno del tutor la retta con l'origine vuota. Verifica: $z = x(1 + i)$ dà $\frac{x}{x(1 + i)} = \frac{1}{1 + i} = \frac{1 - i}{2}$.
+
+**3.2 Potenze** (<span class="src">esercitazione 2, pagina 8</span>). Il tutor ricorda De Moivre: $\left[\rho(\cos\theta + i\sin\theta)\right]^n = \rho^n(\cos n\theta + i\sin n\theta)$, cioè $(\rho e^{i\theta})^n = \rho^n e^{in\theta}$. Per una potenza alta di un binomio $a + ib$ conviene sempre passare da lì.
+- **a)** $z = \sqrt2 \cdot \frac{1 + i}{2} = \frac{\sqrt2}{2} + \frac{\sqrt2}{2}i$: modulo $1$, argomento $\frac\pi4$. Allora $z^7 = \cos\frac74\pi + i\sin\frac74\pi = \frac{\sqrt2}{2} - \frac{\sqrt2}{2}i$. Sul cerchio unitario $z^7$ è il simmetrico di $z$ rispetto all'asse reale (perché $\frac74\pi = -\frac\pi4 + 2\pi$).
+- **b)** (esercizio 7 del foglio) $(1 + i)^5$: $|1 + i| = \sqrt2$, argomento $\frac\pi4$, quindi $(1 + i)^5 = \sqrt2^5\left(\cos\frac{5\pi}{4} + i\sin\frac{5\pi}{4}\right) = 4\sqrt2\left(-\frac{\sqrt2}{2} - \frac{\sqrt2}{2}i\right) = -4 - 4i$.
+
+**3.3 Radici** (<span class="src">esercitazione 2, pagina 9</span>). Il ripasso del tutor: per risolvere $z^n = w$ si scrivono $w = \rho_w e^{i\theta_w}$ e $z = \rho_z e^{i\theta_z}$; l'equazione $\rho_z^n e^{in\theta_z} = \rho_w e^{i\theta_w}$ dà $\rho_z^n = \rho_w$ e $n\theta_z = \theta_w + 2k\pi$, quindi
+$$
+z = \sqrt[n]{\rho_w}\, e^{i\frac{\theta_w + 2k\pi}{n}}, \qquad k = 0, \dots, n - 1
+$$
+
+**a) Radici cubiche di $w = 2(i - 1) = -2 + 2i$.** $\rho_w = \sqrt{4 + 4} = 2\sqrt2 = \sqrt8$, e $w = 2\sqrt2\left(-\frac{\sqrt2}{2} + \frac{\sqrt2}{2}i\right)$ ha argomento $\frac34\pi$. Le radici hanno modulo $\sqrt[3]{\sqrt8} = \sqrt[6]{8} = \sqrt2$ e argomenti $\frac{\frac34\pi + 2k\pi}{3} = \frac\pi4 + \frac{2k\pi}{3}$:
+$$
+z_0 = \sqrt2\, e^{i\pi/4} = 1 + i, \qquad z_1 = \sqrt2\, e^{i\frac{11}{12}\pi}, \qquad z_2 = \sqrt2\, e^{i\frac{19}{12}\pi}
+$$
+Il tutor lascia il modulo come $\sqrt[6]{8}$, che è $\sqrt2$. Verifica su $z_0$: $(1 + i)^3 = (1 + i)(2i) = -2 + 2i$. Le tre radici sono i vertici di un triangolo equilatero sulla circonferenza di raggio $\sqrt2$.
+
+**3.4 Equazioni** (<span class="src">esercitazione 2, pagine 11-12</span>).
+- **a)** $2z^2 + \bar z = -1$: è l'esercizio 7 qui sotto, risolto dal tutor nello stesso modo (parte reale e parte immaginaria). Soluzioni $z = \frac14 \pm \frac{\sqrt{11}}{4}i$.
+- **b)** $z^5 = -16\bar z$: è l'esercizio 12. Il tutor trova prima il modulo prendendo il modulo dei due membri, $|z|^5 = 16|z|$, quindi $\rho = 0$ ($z = 0$) oppure $\rho = 2$ ($\rho = -2$ non accettabile). Con $z = 2e^{i\theta}$: $32e^{5i\theta} = -32e^{-i\theta}$, cioè $e^{6i\theta} = -1$: $6\theta = \pi + 2k\pi$, $z = 2e^{i\frac{\pi + 2k\pi}{6}}$, $k = 0, \dots, 5$. In più $z = 0$.
+
+**Il modo 2 del tutor per la b)**, più rapido: si moltiplicano i due membri per $z$. Siccome $z\bar z = |z|^2$ e $|z| = 2$, l'equazione diventa $z^6 = -16|z|^2 = -64 = 2^6 e^{i(\pi + 2k\pi)}$: sono le radici seste di $-64$, le stesse sei di prima. Moltiplicare per $z$ fa comparire la soluzione $z = 0$, che va controllata a parte (e qui è davvero soluzione).
+
 ## Esercizi tipo esame
 
 ### Crocette (stile parte 1)
@@ -1060,6 +1112,35 @@ $$
 > **Intersezione.** Il semidisco superiore: i punti del disco con $y > 1$. L'arco di circonferenza sopra è compreso, il diametro orizzontale da $(-2, 1)$ a $(2, 1)$ è **escluso** (lì $y = 1$ e la disuguaglianza è stretta). Si disegna l'arco pieno e il diametro tratteggiato.
 >
 > Controllo: $z = 2i$ ha $|i| = 1 \leq 2$ e $\mathrm{Im} = 2 > 1$: dentro. $z = 1 + i$ ha $|1| \leq 2$ ma $\mathrm{Im} = 1$: fuori, sta sul diametro.
+
+**Esercizio 15** (esercitazione del 29/9, 3.3 b, non svolto a lezione). Calcolare le radici quarte di $w = \frac{1}{5\pi}\left(\cos\frac23\pi + i\sin\frac23\pi\right)$.
+
+> [!example]- Soluzione
+> La soluzione del tutor (<span class="src">esercitazione 2, pagina 10</span>). $w$ è già in forma trigonometrica: $|w| = \frac{1}{5\pi}$, argomento $\frac23\pi$. Le radici sono
+> $$
+> z_k = \sqrt[4]{\tfrac{1}{5\pi}}\left(\cos\frac{\frac23\pi + 2k\pi}{4} + i\sin\frac{\frac23\pi + 2k\pi}{4}\right), \qquad k = 0, 1, 2, 3
+> $$
+> Gli argomenti sono $\frac\pi6 + k\frac\pi2$: $\frac\pi6, \frac23\pi, \frac76\pi, \frac53\pi$. Con $r = \sqrt[4]{\frac{1}{5\pi}}$:
+> $$
+> z_0 = r\left(\tfrac{\sqrt3}{2} + \tfrac12 i\right), \quad z_1 = r\left(-\tfrac12 + \tfrac{\sqrt3}{2}i\right), \quad z_2 = r\left(-\tfrac{\sqrt3}{2} - \tfrac12 i\right), \quad z_3 = r\left(\tfrac12 - \tfrac{\sqrt3}{2}i\right)
+> $$
+> Sono i vertici di un quadrato: ogni radice è la precedente ruotata di $\frac\pi2$, cioè moltiplicata per $i$.
+
+**Esercizio 16** (esercitazione del 29/9, 3.4 c, non svolto a lezione). Risolvere $\dfrac{z^4}{z^4 + 1} = 1 - \dfrac{i}{\sqrt3}$.
+
+> [!example]- Soluzione
+> La soluzione del tutor (<span class="src">esercitazione 2, pagina 12</span>). Serve $z^4 \neq -1$. Moltiplicando per $\sqrt3(z^4 + 1)$:
+> $$
+> \sqrt3 z^4 = (\sqrt3 - i)(z^4 + 1) = \sqrt3 z^4 + \sqrt3 - iz^4 - i \iff iz^4 = \sqrt3 - i \iff z^4 = \frac{\sqrt3 - i}{i} = -1 - \sqrt3\,i
+> $$
+> Dividere per $i$ è moltiplicare per $-i$: $(\sqrt3 - i)(-i) = -\sqrt3 i + i^2 = -1 - \sqrt3 i$. Il numero $w = -1 - \sqrt3 i$ ha $|w| = \sqrt{1 + 3} = 2$ e $w = 2\left(-\frac12 - \frac{\sqrt3}{2}i\right) = 2e^{i\frac43\pi}$ (terzo quadrante). Le radici quarte:
+> $$
+> z_k = \sqrt[4]{2}\, e^{i\frac{\frac43\pi + 2k\pi}{4}} = \sqrt[4]{2}\, e^{i\left(\frac\pi3 + k\frac\pi2\right)}, \qquad k = 0, 1, 2, 3
+> $$
+> $$
+> z_0 = \sqrt[4]{2}\left(\tfrac12 + \tfrac{\sqrt3}{2}i\right), \quad z_1 = \sqrt[4]{2}\left(-\tfrac{\sqrt3}{2} + \tfrac12 i\right), \quad z_2 = \sqrt[4]{2}\left(-\tfrac12 - \tfrac{\sqrt3}{2}i\right), \quad z_3 = \sqrt[4]{2}\left(\tfrac{\sqrt3}{2} - \tfrac12 i\right)
+> $$
+> Nessuna ha $z^4 = -1$ (tutte hanno $z^4 = -1 - \sqrt3 i$), quindi sono tutte accettabili. Verifica: $\frac{w}{w + 1} = \frac{-1 - \sqrt3 i}{-\sqrt3 i} = \frac{1 + \sqrt3 i}{\sqrt3 i} = \frac{(1 + \sqrt3 i)(-i)}{\sqrt3} = \frac{\sqrt3 - i}{\sqrt3} = 1 - \frac{i}{\sqrt3}$.
 
 ## Errori tipici
 

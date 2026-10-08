@@ -56,6 +56,8 @@ Date e titoli dal <span class="src">piano delle lezioni</span> della prof.
 | esercitazione 1 (tutor Lejdi Lusha) | mar 22/9 | retta per due punti, rette complanari col fascio, retta e piano, retta ortogonale e incidente, tre piani, distanza punto-retta | <span class="src">es. 1-6</span> | esempi dentro le note di geometria |
 | L4 (3 ore) | lun 28/9 | operazioni elementari, matrice a scalini, pivot, algoritmo di Gauss-Jordan, forma ridotta per righe, riduzione all'indietro; rango; teorema di Rouché-Capelli; sistema con parametro; da cartesiane a parametriche | <span class="src">p. 3-14</span> | [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/), [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/) |
 | esercitazione 2 (tutor Lejdi Lusha) | mar 29/9 | sistemi lineari: soluzione unica, omogeneo con infinite soluzioni, due sistemi con parametro | <span class="src">es. 1-4</span> | esempi dentro le note di Gauss-Jordan e rango |
+| L5 (3 ore) | lun 5/10 | matrici: casi particolari, trasposta, simmetrica; somma, prodotto per scalare, prodotto righe per colonne e proprietà; sistema in forma $A\vec{x} = \vec{b}$, nucleo, nullità, soluzioni $\vec{x}_0 + N(A)$; matrici delle operazioni elementari, $\operatorname{rref}(A) = PA$; matrici invertibili, $(AB)^{-1} = B^{-1}A^{-1}$ | non ancora su Moodle; quaderno p. 48-63, <span class="src">dispensa p. 63-73, 76-79</span> | [Matrici e operazioni](/uni/gal/matrici-e-operazioni/), [Nucleo e struttura delle soluzioni](/uni/gal/nucleo-e-struttura-delle-soluzioni/), [Matrici invertibili](/uni/gal/matrici-invertibili/) |
+| L6 | mar 6/10 | teorema: $A$ invertibile se e solo se $\operatorname{rg}(A) = n$ (★★★); calcolo dell'inversa con Gauss-Jordan su $[A \vert I_n]$; non-esempio; $\vec{x} = A^{-1}\vec{b}$; esercizio con parametro | non ancora su Moodle; quaderno p. 64-67, <span class="src">dispensa p. 73-76, 80</span> | [Matrici invertibili](/uni/gal/matrici-invertibili/) |
 
 ## Argomenti
 
@@ -67,7 +69,7 @@ Il programma della prof (<span class="src">appunti p. 1</span>):
 
 **Algebra lineare**
 - Sistemi lineari: [Sistemi lineari](/uni/gal/sistemi-lineari/), [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/), [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/)
-- Matrici
+- Matrici: [Matrici e operazioni](/uni/gal/matrici-e-operazioni/), [Nucleo e struttura delle soluzioni](/uni/gal/nucleo-e-struttura-delle-soluzioni/), [Matrici invertibili](/uni/gal/matrici-invertibili/)
 - Spazi vettoriali
 - Funzioni lineari
 
@@ -96,5 +98,5 @@ Altro:
 - Appunti della prof: <span class="src">1, Geometria nello spazio</span> (27 pagine) e <span class="src">2, Sistemi lineari</span> (14 pagine).
 - <span class="src">Esercitazione 1</span> ed <span class="src">esercitazione 2</span> del tutor Lejdi Lusha.
 - <span class="src">Piano delle lezioni</span>: date e argomenti di tutte le lezioni ed esercitazioni fino al 15/12.
-- <span class="src">Dispensa Postinghel</span>: capitolo 1 geometria nello spazio, capitolo 2 sistemi lineari. Contiene le dimostrazioni a cui la prof rimanda.
+- <span class="src">Dispensa Postinghel</span>: capitolo 1 geometria nello spazio, capitolo 2 sistemi lineari, capitolo 3 matrici (fonte delle note di L5-L6 finché gli appunti della prof non sono su Moodle). Contiene le dimostrazioni a cui la prof rimanda.
 - Linguaggio matematico: definizione, enunciato, teorema, dimostrazione.

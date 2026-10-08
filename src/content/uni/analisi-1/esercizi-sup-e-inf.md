@@ -12,7 +12,7 @@ lezioni: []
 ordine: 999
 ---
 
-Nove esercizi dalla lavagna dell'esercitazione, con la consegna del tutor: «Determinare estremo superiore e inferiore dei seguenti insiemi, specificando se coincidono con, rispettivamente, il massimo e il minimo. Giustificare ogni affermazione!». La teoria sta in [Numeri reali, sup e inf](/uni/analisi-1/numeri-reali-sup-e-inf/), qui c'è solo quello che serve per svolgerli. Ogni esercizio ha un **indizio** e una **soluzione**, entrambi chiusi: prova prima da solo, apri l'indizio se ti blocchi, la soluzione solo alla fine.
+Nove esercizi dalla lavagna dell'esercitazione, gli stessi del foglio "Estremo superiore e inferiore con massimi e minimi" del III tutoraggio (<span class="src">Tutoraggio 3 complementi</span>, Barbon, Favari, Bellomo), con la consegna: «Determinare estremo superiore e inferiore dei seguenti insiemi, specificando se coincidono con, rispettivamente, il massimo e il minimo. Giustificare ogni affermazione!». La teoria sta in [Numeri reali, sup e inf](/uni/analisi-1/numeri-reali-sup-e-inf/), qui c'è solo quello che serve per svolgerli. In fondo ci sono anche un esercizio in più (10) e l'esercizio 1 del III tutoraggio sulle successioni (11). Ogni esercizio ha un **indizio** e una **soluzione**, entrambi chiusi: prova prima da solo, apri l'indizio se ti blocchi, la soluzione solo alla fine.
 
 > [!abstract] Per l'esame
 > - **Saper fare**: per un insieme dato come intervallo, come successione $\{x_n : n \in \mathbb{N}\}$ o come immagine di una funzione, trovare sup e inf e **dimostrarli** con le due condizioni; dire se sono massimo e minimo.
@@ -226,10 +226,33 @@ Tre trucchi che tornano in questi nove esercizi:
 >
 > Nota: $\frac1x$ diventa enorme anche per $x \to 0^+$, quindi da quel lato si poteva ugualmente mostrare che non c'è maggiorante.
 
-### 9) $A = \left\{\sqrt{n+1} - \sqrt{n} : n \in \mathbb{N}\right\}$ [*]
+### 9) $A = \left\{\sqrt{n} - \lfloor\sqrt{n}\rfloor : n \in \mathbb{N}\right\}$ [*]
 
-> [!warning] Testo da controllare
-> Nella foto il centro dell'esercizio 9 è coperto: si leggono solo $\sqrt{n}$ all'inizio e $n \in \mathbb{N}$ alla fine. Questa è la versione classica con l'asterisco, ma va verificata sul quaderno.
+Il testo giusto viene dal foglio del tutoraggio: nella foto della lavagna il centro era coperto, e qui prima c'era un'altra versione ($\sqrt{n+1} - \sqrt n$), che resta sotto come esercizio 10. $\lfloor x \rfloor$ è la **parte intera** di $x$, il più grande intero $\leq x$: $\lfloor 2{,}7 \rfloor = 2$, $\lfloor 3 \rfloor = 3$. Quindi $\sqrt n - \lfloor \sqrt n \rfloor$ è la **parte frazionaria** di $\sqrt n$, "quello che c'è dopo la virgola".
+
+> [!tip]- Indizio
+> Scrivi qualche elemento: $n = 0, 1, 2, 3, 4, 8, 9, 15$. Quando vale $0$? Si avvicina a $1$ subito prima di quali $n$? Per la (2) prova $n = k^2 + 2k = (k+1)^2 - 1$ e razionalizza $\sqrt{k^2 + 2k} - k$.
+
+> [!example]- Soluzione
+> Qualche elemento: $n = 0, 1, 4, 9$ (quadrati perfetti) danno $0$; $n = 2$: $\sqrt2 - 1 \approx 0{,}41$; $n = 3$: $\sqrt3 - 1 \approx 0{,}73$; $n = 8$: $\sqrt8 - 2 \approx 0{,}83$; $n = 15$: $\sqrt{15} - 3 \approx 0{,}87$. Subito prima di ogni quadrato la parte frazionaria sale verso $1$, poi sul quadrato crolla a $0$.
+>
+> **$\min A = \inf A = 0$.** Per definizione di parte intera $\lfloor\sqrt n\rfloor \leq \sqrt n$, quindi ogni elemento è $\geq 0$. E $0 \in A$ (con $n = 0$, o qualunque quadrato perfetto).
+>
+> **$\sup A = 1$.**
+> - (1): $\lfloor x \rfloor > x - 1$ per ogni $x$ (altrimenti $\lfloor x \rfloor + 1 \leq x$ sarebbe un intero più grande, ancora $\leq x$). Quindi $\sqrt n - \lfloor\sqrt n\rfloor < 1$.
+> - (2): sia $N < 1$. Per $k \geq 1$ prendo $n = k^2 + 2k$. Siccome $k^2 \leq k^2 + 2k < (k+1)^2$, vale $k \leq \sqrt n < k + 1$, cioè $\lfloor\sqrt n\rfloor = k$. Razionalizzando:
+> $$
+> \sqrt{k^2 + 2k} - k = \frac{(k^2 + 2k) - k^2}{\sqrt{k^2 + 2k} + k} = \frac{2k}{\sqrt{k^2 + 2k} + k} > \frac{2k}{(k + 1) + k} = 1 - \frac{1}{2k + 1}
+> $$
+> dove ho usato $\sqrt{k^2 + 2k} < k + 1$. Mi basta $1 - \frac{1}{2k+1} \geq N$, cioè $2k + 1 \geq \frac{1}{1 - N}$: un $k$ così esiste per Archimede. Per quell'$n$ l'elemento è $> N$.
+>
+> **Max?** Ogni elemento è $< 1$ strettamente, quindi $1 \notin A$: niente massimo.
+>
+> Perché ha l'asterisco: bisogna maneggiare la parte intera e indovinare quali $n$ avvicinano l'elemento a $1$ (quelli subito prima di un quadrato).
+
+### 10) $A = \left\{\sqrt{n+1} - \sqrt{n} : n \in \mathbb{N}\right\}$ (esercizio in più)
+
+Non è del foglio: era la versione ricostruita dalla foto, prima che arrivasse il testo del tutoraggio. Resta perché allena la razionalizzazione, che serve nei limiti ([Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/), slide 59).
 
 > [!tip]- Indizio
 > La differenza di due radici si gestisce male. Moltiplica e dividi per $\sqrt{n+1} + \sqrt{n}$ (razionalizzazione): diventa una frazione con $1$ al numeratore. Poi è un esercizio 3 travestito.
@@ -249,7 +272,27 @@ Tre trucchi che tornano in questi nove esercizi:
 >
 > **Min?** $x_n = 0$ vorrebbe $1 = 0$: $0 \notin A$, niente minimo.
 >
-> Perché ha l'asterisco: senza razionalizzare, $\sqrt{n+1} - \sqrt n$ sembra una forma "infinito meno infinito" e non si vede né che è positiva né che va a zero.
+> Il punto: senza razionalizzare, $\sqrt{n+1} - \sqrt n$ sembra una forma "infinito meno infinito" e non si vede né che è positiva né che va a zero.
+
+### 11) $A = \left\{\ln\left(1 + (-1)^n \frac{n}{n+1}\right) : n \in \mathbb{N}\right\}$ (III tutoraggio, es. 1)
+
+Dal foglio "Successioni e loro limiti" (<span class="src">Tutoraggio 3</span>): «Determinare l'estremo superiore e inferiore del seguente insieme, specificando se coincidono, rispettivamente, con il massimo e il minimo. Ogni affermazione deve essere giustificata.»
+
+> [!tip]- Indizio
+> Separa $n$ pari e dispari e semplifica l'argomento del logaritmo in ciascun caso. Il logaritmo è crescente: sup e inf dell'argomento diventano sup e inf del logaritmo.
+
+> [!example]- Soluzione
+> **Pari**, $n = 2k$: l'argomento è $1 + \frac{n}{n+1} = \frac{2n + 1}{n + 1} = 2 - \frac{1}{n+1}$. Per $n = 0$ vale $1$ (elemento $\ln 1 = 0$), poi cresce verso $2$ senza raggiungerlo.
+>
+> **Dispari**, $n = 2k + 1$: l'argomento è $1 - \frac{n}{n+1} = \frac{1}{n+1}$, che va a $0^+$. L'elemento è $\ln\frac{1}{n+1} = -\ln(n+1)$: $-\ln 2, -\ln 4, -\ln 6, \dots$
+>
+> **$\sup A = \ln 2$.**
+> - (1): sui pari l'argomento è $< 2$, quindi l'elemento è $< \ln 2$ ($\ln$ crescente). Sui dispari l'elemento è $< 0 < \ln 2$.
+> - (2): sia $N < \ln 2$, cioè $e^N < 2$. Cerco $n$ pari con $\ln\left(2 - \frac{1}{n+1}\right) > N$, cioè $2 - \frac{1}{n+1} > e^N$, cioè $\frac{1}{n+1} < 2 - e^N$, cioè $n + 1 > \frac{1}{2 - e^N}$ (il denominatore è positivo). Per Archimede esiste un $n$ pari così.
+>
+> **Max?** $\ln 2$ richiederebbe argomento $2$, cioè $\frac{1}{n+1} = 0$: impossibile. Niente massimo.
+>
+> **$\inf A = -\infty$.** Dato $M \in \mathbb{R}$, cerco $n$ dispari con $-\ln(n+1) < M$, cioè $n + 1 > e^{-M}$: esiste per Archimede. L'insieme non è limitato inferiormente, niente minimo.
 
 ## Riepilogo
 
@@ -263,12 +306,14 @@ Tre trucchi che tornano in questi nove esercizi:
 | 6 | $+\infty$ | no | $\frac72$ | sì ($n=1$) |
 | 7 | $+\infty$ | no | $\frac{4006}{45}$ | sì ($n=44$) |
 | 8 | $+\infty$ | no | $2$ | sì ($x=1$) |
-| 9 | $1$ | sì ($n=0$) | $0$ | no |
+| 9 | $1$ | no | $0$ | sì ($n=0$, quadrati) |
+| 10 | $1$ | sì ($n=0$) | $0$ | no |
+| 11 | $\ln 2$ | no | $-\infty$ | no |
 
 ## Errori tipici
 
 - **Fermarsi alla (1).** Dire “$x_n < 1$ per ogni $n$" prova solo che $1$ è un maggiorante. Anche $7$ lo è. Senza la (2) il sup non è dimostrato.
-- **Dimenticare $n = 0$.** Nel 3, 5 e 9 il massimo sta proprio in $n = 0$: partendo da $n = 1$ lo perdi e sbagli la risposta.
+- **Dimenticare $n = 0$.** Nel 3, 5 e 10 il massimo sta proprio in $n = 0$: partendo da $n = 1$ lo perdi e sbagli la risposta.
 - **Prendere il primo termine per il minimo.** Nel 4 $x_0 = 0$ non è né sup né inf; nel 6 e 7 la successione prima scende.
 - **Indovinare il minimo del 7 dai primi termini.** Con $2026$ la discesa dura 44 passi: serve $x_{n+1} - x_n$.
 - **Moltiplicare per una quantità senza guardarne il segno.** Nel 6 e nell'8 si moltiplica per $2(n+1)$ e si divide per $x$: va bene perché sono positivi, e va scritto.

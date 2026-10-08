@@ -59,9 +59,12 @@ Formato scritto sulle slide 4-5 del 14/9, con le correzioni a mano del prof (<sp
 | 22/9 | complessi 1-23 di 50 | 2.1 forma cartesiana; 2.2 coniugato, modulo, reciproco; equazioni | <span class="src">Lezione 2026-09-22</span> | [Numeri complessi](/uni/analisi-1/numeri-complessi/) |
 | 23/9 | complessi 21-39 | 2.3 forma trigonometrica ed esponenziale, De Moivre, equazioni; 2.4 radici fino alla formula | <span class="src">Lezione 2026-09-23</span> | [Numeri complessi](/uni/analisi-1/numeri-complessi/) |
 | 28/9 | complessi 40-50; limiti 1-12 di 68 | 2.4 teorema delle radici, radici dell'unità, teorema fondamentale dell'algebra; 2.5 luoghi nel piano; 3.1 successioni, fattoriale, binomiali, Newton, geometrica; definizione di $a_n \to 0$ | <span class="src">Lezione 2026-09-28</span> | [Numeri complessi](/uni/analisi-1/numeri-complessi/), [Limiti di successioni](/uni/analisi-1/limiti-di-successioni/) |
+| 29/9 | esercitazione 2 | tutor: composizioni e grafici con $\arccos$ e $\sin$, inverse, complessi (forme, potenze, radici, equazioni) | <span class="src">Esercitazione 2</span> (Moodle, "Esercitazione 2 - 29 set") | [Funzioni](/uni/analisi-1/funzioni/), [Trasformazioni di grafici](/uni/analisi-1/trasformazioni-di-grafici/), [Numeri complessi](/uni/analisi-1/numeri-complessi/) |
 | 30/9 | limiti 12-25 | 3.2 limiti $0$, $\pm\infty$, $\ell$, verifiche con la definizione, unicità, limitatezza delle convergenti; 3.3 sottosuccessioni (definizione ed esempi) | <span class="src">Lezione 2026-09-30</span> | [Limiti di successioni](/uni/analisi-1/limiti-di-successioni/) |
+| 6/10 | limiti 25-47 | 3.3 limiti delle sottosuccessioni, non esistenza del limite; 3.4 successioni monotone, teorema sul limite, numero di Nepero, Nepero generalizzato; 3.5 permanenza del segno, confronto, carabinieri, limitata per infinitesima; 3.6 limiti fondamentali, algebra dei limiti finiti | <span class="src">Lezione 2026-10-06</span> | [Limiti di successioni](/uni/analisi-1/limiti-di-successioni/), [Successioni monotone e numero di Nepero](/uni/analisi-1/successioni-monotone-e-numero-di-nepero/), [Permanenza del segno e confronto](/uni/analisi-1/permanenza-del-segno-e-confronto/), [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/) |
+| 7/10 | limiti 48-65 | potenza dei limiti, forme determinate; "definitivamente" e "frequentemente"; 3.7 forme indeterminate e tecniche algebriche; 3.8 criterio del rapporto, confronto fra infiniti, gerarchia degli infiniti (enunciato) | <span class="src">Lezione 2026-10-07</span> | [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/), [Permanenza del segno e confronto](/uni/analisi-1/permanenza-del-segno-e-confronto/) |
 
-Prossimo: limiti slide 26 in poi (limiti delle sottosuccessioni e non esistenza del limite, successioni monotone, numero di Nepero, confronto e carabinieri, forme indeterminate), da <span class="src">Slide limiti da 26 (non annotate)</span>.
+Prossimo: limiti slide 66-68 (dimostrazione della gerarchia, "attenti a come la si usa", esercizi sul criterio del rapporto), da <span class="src">Slide limiti da 66 (non annotate)</span>; poi il capitolo 4, limiti di funzioni, da <span class="src">Slide limiti di funzioni (non annotate)</span>.
 
 ## Argomenti
 
@@ -74,7 +77,13 @@ Il programma dalla slide 7 del 14/9 (quello completo è nel Syllabus su Esse3/Mo
    - [Funzioni elementari](/uni/analisi-1/funzioni-elementari/)
    - [Trasformazioni di grafici](/uni/analisi-1/trasformazioni-di-grafici/)
 2. **Numeri complessi**: [Numeri complessi](/uni/analisi-1/numeri-complessi/)
-3. **Limiti di successioni** e funzioni: [Limiti di successioni](/uni/analisi-1/limiti-di-successioni/)
+3. **Limiti di successioni** e funzioni
+   - [Limiti di successioni](/uni/analisi-1/limiti-di-successioni/) (definizioni, unicità, sottosuccessioni)
+   - [Successioni monotone e numero di Nepero](/uni/analisi-1/successioni-monotone-e-numero-di-nepero/)
+   - [Permanenza del segno e confronto](/uni/analisi-1/permanenza-del-segno-e-confronto/) (carabinieri)
+   - [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/) (forme indeterminate, criterio del rapporto, gerarchia)
+   - [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/) (III tutoraggio)
+   - limiti di funzioni: non ancora fatti
 4. Funzioni continue
 5. Derivate di funzioni; studio del grafico di una funzione
 6. Formula di Taylor
@@ -89,7 +98,9 @@ Le voci senza link diventano note quando l'argomento parte a lezione.
 - Ogni nota ha la sezione **Esercizi tipo esame**: crocette stile parte 1 e esercizi stile parte 2 con soluzione in callout chiuso.
 - <span class="src">Foglio 0 esercizi</span>: logica, insiemi, disequazioni ("per familiarizzare con il linguaggio").
 - <span class="src">Foglio 1 esercizi</span>: sup e inf di successioni e insiemi, grafici elementari, numeri complessi.
-- [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/): i nove insiemi della lavagna dell'esercitazione, con indizio e soluzione chiusi.
+- [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/): i nove insiemi della lavagna dell'esercitazione (gli stessi di <span class="src">Tutoraggio 3 complementi</span>) più l'esercizio 1 del III tutoraggio, con indizio e soluzione chiusi.
+- <span class="src">Tutoraggio 3</span>: III tutoraggio, "Successioni e loro limiti" (Barbon, Favari, Bellomo), senza soluzioni. Svolto in [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/), tranne tre limiti che richiedono la continuità del logaritmo (capitolo 4).
+- <span class="src">Esercitazione 2</span>: esercitazione del 29/9 (tutor), svolta negli esempi delle note su funzioni, trasformazioni e complessi; gli esercizi segnati "non svolto a lezione" sono fra gli esercizi tipo esame.
 - <span class="src">Esercizi svolti logica</span>: esercizi svolti di Pinamonti (a.a. 21/22) su quantificatori, insiemi, campo di esistenza.
 - <span class="src">Esercizi svolti complessi</span>: "Qualche esercizio risolto sui complessi" (Moodle, foglio di Ingegneria Industriale 22/23): forme, luoghi, equazioni, radici, crocette con risposte. Alcuni sono svolti per esteso negli esercizi della nota sui complessi.
 - <span class="src">Tutoraggio 2</span>: foglio del tutoraggio sui complessi (foglio 2 di Pinamonti, 25/9/2023), con soluzioni. Gli esercizi 1, 2.i e 4 coincidono con quelli del foglio 1 già svolti nella nota; gli altri restano da fare a te.
@@ -98,7 +109,7 @@ Le voci senza link diventano note quando l'argomento parte a lezione.
 ## Risorse
 
 - Slide annotate dal prof, una per lezione: vedi [Programma svolto](#programma-svolto).
-- Deck non ancora coperti da un PDF annotato: <span class="src">Slide cap 1 da 62 (non annotate)</span> (slide 62-92 del 21/9; il PDF dell'esercitazione copre tutto tranne le slide 62-63 sulle monotone), <span class="src">Slide limiti da 26 (non annotate)</span> (limiti 26-68, non ancora fatte).
+- Deck non ancora coperti da un PDF annotato: <span class="src">Slide cap 1 da 62 (non annotate)</span> (slide 62-92 del 21/9; il PDF dell'esercitazione copre tutto tranne le slide 62-63 sulle monotone), <span class="src">Slide limiti da 66 (non annotate)</span> (limiti 66-68, non ancora fatte), <span class="src">Slide limiti di funzioni (non annotate)</span> (capitolo 4).
 - Testi consigliati per la teoria (slide 8, in alternativa fra loro):
   - Conti, Ferrario, Terracini, Verzini, *Analisi Matematica. Dal Calcolo all'Analisi*
   - Bertsch, Dal Passo, Giacomelli, *Analisi Matematica*, seconda edizione

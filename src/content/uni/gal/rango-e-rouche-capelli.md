@@ -12,7 +12,7 @@ lezioni: []
 ordine: 6
 ---
 
-Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L4, lun 28/9 (3 ore). Fonte: appunti della prof <span class="src">p. 7</span> (rango), <span class="src">p. 11</span> (teorema di Rouché-Capelli), <span class="src">p. 9-12</span> (esempio 4 con parametro); esercitazione 2 del tutor, mar 29/9, <span class="src">p. 3</span> (memo Rouché-Capelli), <span class="src">es. 3 e 4, p. 5-9</span>. Prima: [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/), da cui si prendono forma a scalini e pivot. Il rango torna nella L6 (6/10, "rango e invertibilità"), con le matrici.
+Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L4, lun 28/9 (3 ore). Fonte: appunti della prof <span class="src">p. 7</span> (rango), <span class="src">p. 11</span> (teorema di Rouché-Capelli), <span class="src">p. 9-12</span> (esempio 4 con parametro); esercitazione 2 del tutor, mar 29/9, <span class="src">p. 3</span> (memo Rouché-Capelli), <span class="src">es. 3 e 4, p. 5-9</span>. Prima: [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/), da cui si prendono forma a scalini e pivot. Il rango torna nella L6 (6/10, "rango e invertibilità"): una matrice quadrata è invertibile se e solo se ha rango massimo, in [Matrici invertibili](/uni/gal/matrici-invertibili/); la relazione $\operatorname{null}(A) + \operatorname{rg}(A) = n$ è in [Nucleo e struttura delle soluzioni](/uni/gal/nucleo-e-struttura-delle-soluzioni/).
 
 > [!abstract] Per l'esame
 > - **Saper enunciare**: definizione di rango con il numero di pivot; teorema di Rouché-Capelli completo, con i due casi della soluzione unica e delle infinite soluzioni (domande 2.6 e 2.7 del foglio 2).

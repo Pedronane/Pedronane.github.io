@@ -11,14 +11,16 @@ data: 2026-09-28
 lezioni:
   - 28 set
   - 30 set
+  - 6 ott
 ordine: 6
 ---
 
-Argomento di [Analisi Matematica 1](/uni/analisi-1/), capitolo 3 ("L'operazione di limite: limiti di successioni", deck da 68 slide). Fatto a lezione il 28/9, slide 1-12 (<span class="src">slide annotate del 28/9</span>), e il 30/9, slide 12-25 (<span class="src">slide annotate del 30/9</span>). Il prof si è fermato agli esempi di sottosuccessioni (slide 25): da lì riparte il <span class="src">deck non annotato</span>, con i limiti delle sottosuccessioni e la non esistenza del limite. Serve [Numeri reali, sup e inf](/uni/analisi-1/numeri-reali-sup-e-inf/) (proprietà di Archimede) e, per i logaritmi, [Funzioni elementari](/uni/analisi-1/funzioni-elementari/).
+Argomento di [Analisi Matematica 1](/uni/analisi-1/), capitolo 3 ("L'operazione di limite: limiti di successioni", deck da 68 slide). Fatto a lezione il 28/9, slide 1-12 (<span class="src">slide annotate del 28/9</span>), e il 30/9, slide 12-25 (<span class="src">slide annotate del 30/9</span>). Il 6/10 il prof ha chiuso la sezione 3.3 con il teorema sui limiti delle sottosuccessioni e la non esistenza del limite, slide 25-27 (<span class="src">slide annotate del 6/10</span>). Il capitolo continua in [Successioni monotone e numero di Nepero](/uni/analisi-1/successioni-monotone-e-numero-di-nepero/), [Permanenza del segno e confronto](/uni/analisi-1/permanenza-del-segno-e-confronto/) e [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/). Serve [Numeri reali, sup e inf](/uni/analisi-1/numeri-reali-sup-e-inf/) (proprietà di Archimede) e, per i logaritmi, [Funzioni elementari](/uni/analisi-1/funzioni-elementari/).
 
 > [!abstract] Per l'esame
-> - **Saper enunciare**: definizione di successione; fattoriale e coefficiente binomiale con le loro proprietà; binomio di Newton; somma della progressione geometrica; le quattro definizioni di limite ($0$, $\ell$, $+\infty$, $-\infty$) con i quantificatori giusti; teorema di unicità del limite e teorema di limitatezza delle successioni convergenti, con dimostrazione; definizione di sottosuccessione.
-> - **Saper fare**: verificare un limite con la definizione (fissato $\varepsilon$, trovare $\nu_\varepsilon$); calcolare una somma geometrica; sviluppare $(a+b)^n$ col triangolo di Tartaglia; estrarre una sottosuccessione.
+> - **Saper enunciare**: definizione di successione; fattoriale e coefficiente binomiale con le loro proprietà; binomio di Newton; somma della progressione geometrica; le quattro definizioni di limite ($0$, $\ell$, $+\infty$, $-\infty$) con i quantificatori giusti; teorema di unicità del limite e teorema di limitatezza delle successioni convergenti, con dimostrazione; definizione di sottosuccessione; teorema sui limiti delle sottosuccessioni e corollario di non esistenza del limite.
+> - **Saper fare**: verificare un limite con la definizione (fissato $\varepsilon$, trovare $\nu_\varepsilon$); calcolare una somma geometrica; sviluppare $(a+b)^n$ col triangolo di Tartaglia; estrarre una sottosuccessione; **dimostrare che un limite non esiste** trovando due sottosuccessioni con limiti diversi.
+> - **Segnati con ★ sul quaderno**: il coefficiente binomiale (slide 8) e la proprietà caratteristica della geometrica, $\frac{a_{n+1}}{a_n} = q$ (slide 10), entrambi anche con il tuo ?; il teorema sui limiti delle sottosuccessioni con il suo corollario (slide 26, 6/10). Il corollario è lo strumento standard per dire "il limite non esiste": esce sia in crocetta sia come passo di un esercizio.
 > - **Dove esce**: crocette sulle definizioni (quale formula definisce $a_n \to -\infty$? una successione limitata è convergente?) e su somme geometriche e binomiali; nella parte 2 i limiti di successioni arriveranno soprattutto come calcolo (forme indeterminate, slide successive), ma una verifica con la definizione o una dimostrazione dei due teoremi sono domande d'esame naturali. Il primo parziale (6 novembre) probabilmente li comprende: il programma esatto va controllato su Moodle.
 
 Il filo dell'argomento:
@@ -36,11 +38,12 @@ a_n -> ℓ, +∞, -∞             cambia solo la relazione finale
         v
 unicità del limite           convergente  =>  limitata
         |
-        v  3.3 sottosuccessioni (30/9, fino alla slide 25)
+        v  3.3 sottosuccessioni (30/9 e 6/10)
 b_k = a_(n_k)                n_1 < n_2 < ...: si prende un pezzo della successione
+a_n -> ℓ  =>  a_(n_k) -> ℓ   due sottosuccessioni con limiti diversi: il limite non esiste
         |
-        v  da qui in poi non ancora fatto
-limiti delle sottosuccessioni, non esistenza del limite, monotone, Nepero, confronto
+        v  il capitolo continua
+monotone e Nepero (3.4)  ->  permanenza, confronto, carabinieri (3.5)  ->  calcolo dei limiti (3.6-3.8)
 ```
 
 ## Definizioni
@@ -162,6 +165,12 @@ $$
 $$
 È lo stesso $6$ della figura delle coppie fra $A, B, C, D$, e si ottiene anche come $3 + 3$ dalla riga sopra. La simmetria si vede a colpo d'occhio: ogni riga si legge uguale da sinistra e da destra.
 
+**Un esempio in più, contando a mano** (sul quaderno la definizione ha il tuo ★?). Quanti gruppi di $3$ persone si formano con $5$ persone $A, B, C, D, E$? La formula dà $\binom53 = \frac{5 \cdot 4 \cdot 3}{3!} = \frac{60}{6} = 10$. Elencandoli in ordine alfabetico, senza ripetere lo stesso gruppo scritto in un altro ordine:
+$$
+ABC,\ ABD,\ ABE,\ ACD,\ ACE,\ ADE,\ BCD,\ BCE,\ BDE,\ CDE
+$$
+Sono $10$. Il $60$ al numeratore conta le terne **ordinate** ($ABC$ e $CBA$ distinte), e ogni gruppo compare in $3! = 6$ ordini diversi: da qui la divisione per $6$. Per la simmetria $\binom53 = \binom52$: scegliere i $3$ che entrano è come scegliere i $2$ che restano fuori, e infatti accanto a $ABC$ restano fuori $D, E$, accanto ad $ABD$ restano fuori $C, E$, e così via.
+
 ### Successione geometrica (slide 10)
 
 > [!abstract] Definizione (successione geometrica)
@@ -174,6 +183,15 @@ La proprietà che la caratterizza: il rapporto fra un termine e il precedente è
 
 Esempio del prof con $q = \frac12$: $a_0 = 1$, $a_1 = \frac12$, $a_2 = \frac14$, $a_3 = \frac18$, ognuno metà del precedente.
 
+**Cosa vuol dire "rapporto costante"** (sul quaderno qui c'è il tuo ★?). Per passare da un termine al successivo si moltiplica **sempre per lo stesso numero** $q$: la ragione è quel moltiplicatore fisso. Il conto $\frac{q^{n+1}}{q^n} = q$ è solo la regola delle potenze, $q^{n+1} = q^n \cdot q$, e si può dividere perché $q \neq 0$ (per questo la definizione esclude $q = 0$). Due esempi in più:
+
+| $n$ | $0$ | $1$ | $2$ | $3$ | $4$ | rapporto |
+|---|---|---|---|---|---|---|
+| $3^n$ | $1$ | $3$ | $9$ | $27$ | $81$ | $\frac93 = \frac{27}{9} = 3$ |
+| $(-2)^n$ | $1$ | $-2$ | $4$ | $-8$ | $16$ | $\frac{4}{-2} = \frac{-8}{4} = -2$ |
+
+Con $q$ negativo i segni si alternano, perché a ogni passo si moltiplica per un negativo. Il contrario serve per riconoscerle: $2, 6, 18, 54$ è geometrica ($\frac62 = \frac{18}{6} = 3$, quindi $a_n = 2 \cdot 3^n$); $1, 2, 4, 7$ no, perché $\frac21 = 2$ ma $\frac42 = 2$ e $\frac74 \neq 2$. Il rapporto $\frac{a_{n+1}}{a_n}$ torna nel criterio del rapporto, in [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/): lì non è costante ma tende a un numero $L$, e la successione si comporta "come una geometrica di ragione $L$".
+
 ### Limite di una successione (slide 12, 28/9 e 30/9)
 
 Il problema: capire come si comporta $a_n$ quando $n$ diventa sempre più grande. Con $a_n = \frac1n$ i termini sono positivi e sempre più piccoli: si dice che “$a_n$ tende a $0$", che "il limite di $a_n$ per $n$ che tende all'infinito è $0$", e si scrive
@@ -185,6 +203,8 @@ $$
 > Diciamo che $a_n \to 0$ se per ogni numero reale $\varepsilon > 0$ è possibile determinare un numero reale $\nu_\varepsilon$ tale che, per ogni $n > \nu_\varepsilon$, si abbia $-\varepsilon < a_n < \varepsilon$.
 >
 > Con i quantificatori: $\ a_n \to 0 \iff \forall \varepsilon > 0\ \exists\, \nu_\varepsilon \ \text{t.c.}\ |a_n - 0| < \varepsilon \quad \forall n > \nu_\varepsilon$.
+
+**Come si legge $-\varepsilon < a_n < \varepsilon$** (sul quaderno qui c'è il tuo ?). È una doppia disuguaglianza: dice che $a_n$ sta **fra** $-\varepsilon$ ed $\varepsilon$, cioè che la distanza di $a_n$ da $0$ è minore di $\varepsilon$. Per questo si scrive anche $|a_n| < \varepsilon$, o $|a_n - 0| < \varepsilon$ per far vedere il limite $0$. Con un numero: se $\varepsilon = \frac{1}{10}$, la condizione chiede $-0{,}1 < a_n < 0{,}1$. Per $a_n = \frac1n$ vale da $n = 11$ in poi ($\frac1{11} \approx 0{,}09$), non per $n = 10$ ($\frac{1}{10}$ non è minore di $\frac{1}{10}$): qui $\nu_\varepsilon = 10$ va bene, e la definizione chiede che una soglia così esista **per ogni** $\varepsilon$, non solo per $\frac1{10}$. La scritta “$\nu_\varepsilon$" è solo un nome per l'indice di partenza: sul quaderno l'hai annotata anche come $n_0$ o $n(\varepsilon)$, e sono la stessa cosa.
 
 La stessa definizione detta a parole dal prof (30/9): $a_n \to 0$ se, fissata una qualunque **soglia di tolleranza** $\varepsilon$, possiamo affermare che a partire da un certo indice $\nu_\varepsilon$ tutti i successivi elementi di $(a_n)$, ovvero quelli relativi agli indici $n > \nu_\varepsilon$, distano da $0$ (il limite della successione) meno della soglia di tolleranza, ovvero $|a_n - 0| < \varepsilon$.
 
@@ -221,7 +241,7 @@ $$
 Il prefisso è lo stesso in tutti e quattro: si impara una volta e si cambia solo la relazione finale.
 
 > [!info] Vocabolario
-> Una successione con limite finito $\ell$ si dice **convergente** (a $\ell$): è la definizione che il prof sottolinea nella slide 22. Una con limite $\pm\infty$ si dice **divergente**. Ci sono successioni che non hanno limite, come $(-1)^n$: lo si mostra con le sottosuccessioni, nelle slide subito dopo la 25.
+> Una successione con limite finito $\ell$ si dice **convergente** (a $\ell$): è la definizione che il prof sottolinea nella slide 22. Una con limite $\pm\infty$ si dice **divergente**. Ci sono successioni che non hanno limite, come $(-1)^n$: lo si mostra con le sottosuccessioni (slide 26-27, più sotto).
 
 ### Sottosuccessione (slide 24, 30/9)
 
@@ -244,6 +264,8 @@ Si considera un nuovo indice indipendente $k$ e si ottiene una nuova successione
 > S_n := \sum_{k=0}^{n} q^k = 1 + q + q^2 + \dots + q^n = \frac{q^{n+1} - 1}{q - 1}
 > $$
 > Per $q = 1$ ogni termine vale $1$ e $\ \sum_{k=0}^{n} 1^k = n + 1$.
+
+**Perché $n + 1$ e non $n$** (sul quaderno il tuo ?). $1^k = 1$ per ogni $k$, quindi la somma è $1 + 1 + \dots + 1$, tante volte quanti sono gli indici fra $0$ e $n$. Da $0$ a $n$ compresi gli indici sono $n + 1$, non $n$: con $n = 3$ sono $k = 0, 1, 2, 3$, quattro termini, e $\sum_{k=0}^{3} 1^k = 1 + 1 + 1 + 1 = 4$. La formula $\frac{q^{n+1}-1}{q-1}$ con $q = 1$ darebbe $\frac00$: per questo il caso $q = 1$ si scrive a parte.
 
 > [!note]- Dimostrazione (svolta a lezione)
 > Si moltiplica $S_n$ per $q$:
@@ -322,6 +344,28 @@ Il prof: brevemente si dice “$a_n$ è **limitata**" (pensare a "delimitata": t
 
 Il punto chiave è che "da un certo punto in poi" lascia fuori solo un numero finito di termini, e un insieme finito di numeri ha sempre un massimo. Il viceversa è falso: $(-1)^n$ è limitata ($|(-1)^n| = 1$) ma non converge.
 
+### Limiti delle sottosuccessioni (slide 26, 6/10)
+
+> [!abstract] Teorema (limiti delle sottosuccessioni)
+> Se $\displaystyle\lim_{n \to +\infty} a_n = \ell$, allora per ogni sottosuccessione $a_{n_k}$ vale $\displaystyle\lim_{k \to +\infty} a_{n_k} = \ell$.
+
+Annotazione del prof: $\ell \in \mathbb{R} \cup \{\pm\infty\}$, cioè vale per limiti finiti e infiniti. Il prof lo chiama "Fatto 1" e lo scrive così (<span class="src">6/10, pagina 2</span>): se una successione $a_n$ ammette limite $\ell$, allora ogni sottosuccessione $(a_{n_k})_{k \geq 1}$ ammette limite $\ell$.
+
+**Perché è vero.** Una sottosuccessione prende termini sempre più avanti nella successione originale: gli indici $n_k$ sono strettamente crescenti, quindi vanno all'infinito anche loro. Se da $\nu_\varepsilon$ in poi **tutti** i termini $a_n$ stanno nella striscia attorno a $\ell$, ci stanno anche quelli che la sottosuccessione ha scelto.
+
+> [!note]- Dimostrazione (non fatta a lezione, per il caso $\ell \in \mathbb{R}$)
+> Prima un fatto sugli indici: $n_k \geq k - 1$ per ogni $k \geq 1$. Per induzione: $n_1 \geq 0$ perché è un naturale; se $n_k \geq k - 1$, allora $n_{k+1} > n_k \geq k - 1$, e siccome sono interi $n_{k+1} \geq k$. In parole: gli indici scelti crescono almeno di uno alla volta, quindi non restano indietro.
+>
+> Fissiamo $\varepsilon > 0$. Per $a_n \to \ell$ esiste $\nu_\varepsilon$ tale che $|a_n - \ell| < \varepsilon$ per ogni $n > \nu_\varepsilon$. Se $k > \nu_\varepsilon + 1$, allora $n_k \geq k - 1 > \nu_\varepsilon$, quindi $|a_{n_k} - \ell| < \varepsilon$. La soglia $\nu_\varepsilon + 1$ funziona per la sottosuccessione: $a_{n_k} \to \ell$. Per $\ell = \pm\infty$ si cambia solo la relazione finale. $\blacksquare$
+
+> [!abstract] Corollario (non esistenza del limite)
+> Supponiamo che la successione $a_n$ ammetta due sottosuccessioni distinte, $a_{n_k}$ e $a_{r_k}$, le quali hanno due limiti distinti. Allora $a_n$ non ha limite.
+
+**Da dove viene.** Sul quaderno l'hai annotato come "contronominale" del teorema, ed è giusto: il teorema dice "se $a_n$ ha limite $\ell$, **ogni** sottosuccessione tende a $\ell$". Se ci sono due sottosuccessioni che tendono a valori diversi, non possono tendere entrambe allo stesso $\ell$, quindi la premessa è falsa: nessun $\ell$ è il limite di $a_n$. Le parole del prof (pagina 4): se esistesse $\lim a_n = \ell$, per il Fatto 1 dovrebbe essere $\ell = \lim a_{n_j}$ per ogni sottosuccessione; con $(-1)^n$ dovrebbe valere contemporaneamente $\ell = 1$ e $\ell = -1$.
+
+> [!warning] Il corollario va in una direzione sola
+> Due sottosuccessioni con lo **stesso** limite non bastano a dire che il limite esiste: servono **tutte**. Il corollario serve solo a dimostrare che un limite **non** esiste. (Se però le sottosuccessioni dei pari e dei dispari tendono entrambe a $\ell$, allora $a_n \to \ell$: insieme coprono tutti gli indici. Non è sulle slide, ma è il motivo per cui il trucco pari/dispari funziona.)
+
 ## Metodo
 
 ### Verificare un limite con la definizione
@@ -337,6 +381,15 @@ Gli strumenti per il passo 3:
 - **Archimede**: per ogni $x \in \mathbb{R}$ esiste un naturale $n > x$. Ogni volta che basta "un naturale abbastanza grande", è lui.
 - **Monotonia**: si applica a entrambi i membri una funzione strettamente crescente ($\log_a$ con $a > 1$, $t \mapsto t^{1/b}$ su $(0, +\infty)$) e il verso della disuguaglianza resta. Con una funzione decrescente ($\log_a$ con $0 < a < 1$) il verso si gira.
 - **Maggiorare**: non serve la $\nu_\varepsilon$ più piccola possibile, ne basta una. Se $a_n > b_n$ e $b_n > \varepsilon$ per $n > \nu$, anche $a_n > \varepsilon$ per $n > \nu$.
+
+### Dimostrare che un limite non esiste (6/10)
+
+1. Scrivi i primi termini e cerca **due comportamenti**: di solito pari e dispari, quando c'è $(-1)^n$ o $\cos(n\pi)$.
+2. Scegli le due sottosuccessioni con gli indici espliciti: $n_k = 2k$ e $n_k = 2k + 1$.
+3. Calcola il limite di ciascuna, che ora è una successione senza oscillazioni.
+4. Se i due limiti sono diversi, concludi con il corollario della slide 26: “$a_n$ non ammette limite".
+
+Se i due limiti vengono uguali non hai dimostrato niente con il corollario: cambia strada (il limite potrebbe esistere).
 
 ## Esempi svolti a lezione
 
@@ -406,7 +459,32 @@ Quindi il grafico di $\log_{a^{-1}}$ è il riflesso di quello di $\log_a$ rispet
 - La sottosuccessione dei termini di indice pari è $p_k = a_{2k} = (-1)^{2k} = 1$: costante.
 - La sottosuccessione dei termini di indice dispari è $d_k = a_{2k+1} = (-1)^{2k+1} = -1$: costante.
 
-Due sottosuccessioni con limiti diversi ($1$ e $-1$): è l'idea che, nelle slide successive, mostra che $(-1)^n$ non ha limite.
+Due sottosuccessioni con limiti diversi ($1$ e $-1$): per il corollario della slide 26, $(-1)^n$ non ha limite (esempio sotto).
+
+### $(-1)^n$ non ammette limite (6/10, pagine 2-5)
+
+L'esercizio del prof (<span class="src">6/10, pagine 2-5</span>): mostrare che la successione $a_n = (-1)^n$ non ammette limite.
+- La sottosuccessione $(a_{n_k})_{k \geq 1}$ con $n_k = 2k + 1$ è la successione $\big((-1)^{2k+1}\big)_{k \geq 1} = (-1, -1, -1, \dots)$, costante. Quindi $\displaystyle\lim_{k \to +\infty} a_{n_k} = -1$.
+- La sottosuccessione con $n_k = 2k$ è $\big((-1)^{2k}\big)_{k \geq 1} = (1, 1, 1, \dots)$. Quindi $\displaystyle\lim_{k \to +\infty} a_{n_k} = +1$.
+- Conseguenza: la successione originale $(a_n)_{n \geq 1}$ **non ammette limite**. Infatti se esistesse $\lim a_n = \ell$, per il Fatto 1 dovrebbe essere $\ell = \lim a_{n_j}$ per ogni sottosuccessione, cioè contemporaneamente $\ell = 1$ e $\ell = -1$.
+
+### $\cos(n\pi)$ non ha limite (slide 27)
+
+La slide (<span class="src">6/10, slide 27</span>):
+$$
+\cos(n\pi) = (-1)^n = \begin{cases} 1 & \text{se } n \text{ è pari} \\ -1 & \text{se } n \text{ è dispari} \end{cases}
+$$
+non ammette limite in quanto le due sottosuccessioni dei termini di indice pari e dispari hanno limiti diversi (rispettivamente $1$ e $-1$).
+
+**Perché $\cos(n\pi) = (-1)^n$** (sul quaderno qui c'è il tuo ?). Sulla circonferenza goniometrica l'angolo $n\pi$ è $n$ mezzi giri. Un numero pari di mezzi giri è un numero intero di giri completi: si torna al punto $(1, 0)$, e il coseno (l'ascissa) vale $1$. Un numero dispari di mezzi giri lascia dall'altra parte, nel punto $(-1, 0)$, e il coseno vale $-1$:
+
+| $n$ | $0$ | $1$ | $2$ | $3$ | $4$ |
+|---|---|---|---|---|---|
+| angolo $n\pi$ | $0$ | $\pi$ | $2\pi$ | $3\pi$ | $4\pi$ |
+| punto sulla circonferenza | $(1, 0)$ | $(-1, 0)$ | $(1, 0)$ | $(-1, 0)$ | $(1, 0)$ |
+| $\cos(n\pi)$ | $1$ | $-1$ | $1$ | $-1$ | $1$ |
+
+Sono esattamente i valori di $(-1)^n$, quindi le due successioni coincidono: la slide non dice niente di nuovo rispetto all'esempio precedente, solo che $(-1)^n$ si può incontrare travestita da coseno. Un esempio in più dello stesso tipo: $\sin\left(\frac{n\pi}{2}\right)$ vale $0, 1, 0, -1, 0, 1, \dots$; la sottosuccessione $n_k = 4k + 1$ è costante $1$, quella $n_k = 2k$ è costante $0$. Limiti diversi, quindi nessun limite.
 
 ## Esercizi tipo esame
 
@@ -451,6 +529,16 @@ Due sottosuccessioni con limiti diversi ($1$ e $-1$): è l'idea che, nelle slide
 
 > [!example]- Soluzione
 > **b**, il teorema della slide 22. La a) e la c) sono smentite da $(-1)^n$, limitata ma senza limite. La d) anche: $|(-1)^n| = 1 \to 1$, ma $(-1)^n$ non tende né a $1$ né a $-1$.
+
+**C5.** Quale di queste successioni **non** ammette limite?
+
+- a) $\dfrac{(-1)^n}{n}$
+- b) $\sin(n\pi)$
+- c) $(-1)^{2n}$
+- d) $(-1)^n + \dfrac1n$
+
+> [!example]- Soluzione
+> **d**. Sui pari vale $1 + \frac{1}{2k} \to 1$, sui dispari $-1 + \frac{1}{2k+1} \to -1$: due sottosuccessioni con limiti diversi, quindi per il corollario della slide 26 il limite non esiste. La a) tende a $0$ (oscilla, ma con ampiezza $\frac1n$ che si schiaccia); la b) vale $0$ per ogni $n$, perché $n\pi$ è sempre un multiplo di $\pi$; la c) vale $1$ per ogni $n$, perché $2n$ è pari.
 
 ### Esercizi (stile parte 2)
 
@@ -529,6 +617,26 @@ Due sottosuccessioni con limiti diversi ($1$ e $-1$): è l'idea che, nelle slide
 >
 > In generale $S_n = 2\left(1 - \frac{1}{2^{n+1}}\right) = 2 - \frac{1}{2^n}$. Siccome $0 < \frac{1}{2^n} \leq 1$, vale $1 \leq S_n < 2$ per ogni $n$: la successione è limitata, con $M = 2$. (Converge a $2$, perché $\frac{1}{2^n} \to 0$ per l'esercizio 2; ma la limitatezza qui si vede direttamente.)
 
+**Esercizio 6** (sul modello dell'esercizio del 6/10). Dimostrare che $a_n = (-1)^n \dfrac{n}{n+1}$ non ammette limite.
+
+> [!example]- Soluzione
+> Si separano pari e dispari.
+>
+> **Pari**, $n_k = 2k$: $\ a_{2k} = \frac{2k}{2k+1}$. Tende a $1$: fissato $\varepsilon > 0$,
+> $$
+> \left|\frac{2k}{2k+1} - 1\right| = \frac{1}{2k+1} < \varepsilon \iff k > \frac12\left(\frac1\varepsilon - 1\right)
+> $$
+> quindi basta $\nu_\varepsilon = \frac12\left(\frac1\varepsilon - 1\right)$.
+>
+> **Dispari**, $n_k = 2k+1$: $\ a_{2k+1} = -\frac{2k+1}{2k+2}$. Tende a $-1$:
+> $$
+> \left|-\frac{2k+1}{2k+2} + 1\right| = \frac{1}{2k+2} < \varepsilon \iff k > \frac12\left(\frac1\varepsilon - 2\right)
+> $$
+>
+> Le due sottosuccessioni hanno limiti $1$ e $-1$, diversi: per il corollario della slide 26, $a_n$ non ammette limite. $\blacksquare$
+>
+> Con l'algebra dei limiti ([Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/)) i due limiti si leggono subito ($\frac{2k}{2k+1} = 1 - \frac{1}{2k+1} \to 1$); qui si è usata solo la definizione, che basta. Nota che $a_n$ è limitata ($|a_n| < 1$): un altro esempio di limitata non convergente.
+
 ## Errori tipici
 
 - **Scegliere un numero per $\varepsilon$.** Nella verifica $\varepsilon$ resta una lettera: provare con $\varepsilon = 0{,}1$ è un controllo, non una dimostrazione.
@@ -539,6 +647,9 @@ Due sottosuccessioni con limiti diversi ($1$ e $-1$): è l'idea che, nelle slide
 - **Sbagliare l'indice nella somma geometrica.** $\sum_{k=0}^{n} q^k$ ha $n + 1$ termini, e all'esponente compare $n + 1$. Se la somma parte da $k = 1$ si toglie il termine $q^0 = 1$.
 - **$\binom nk$ con l'ordine.** $\frac{n!}{(n-k)!}$ conta le scelte ordinate; per le non ordinate si divide ancora per $k!$.
 - **Sottosuccessione con indici che si ripetono o tornano indietro.** Gli $n_k$ devono essere strettamente crescenti: $a_1, a_1, a_2, \dots$ o $a_3, a_1, \dots$ non sono sottosuccessioni.
+
+- **Usare il corollario al contrario.** Trovare due sottosuccessioni con lo stesso limite non dimostra che il limite esiste.
+- **Scrivere “$\lim (-1)^n = \pm 1$".** Il limite, se esiste, è uno solo (unicità): $(-1)^n$ un limite non ce l'ha.
 
 ## Domande
 
@@ -569,3 +680,11 @@ Due sottosuccessioni con limiti diversi ($1$ e $-1$): è l'idea che, nelle slide
 - Definisci una sottosuccessione. Che condizione devono soddisfare gli indici $n_k$?
 
 - Quali sono la sottosuccessione dei pari e quella dei dispari di $(-1)^n$?
+
+- Enuncia il teorema sui limiti delle sottosuccessioni. Vale anche per limiti infiniti?
+
+- Enuncia il corollario di non esistenza del limite e spiega perché è il "contronominale" del teorema.
+
+- Perché $\cos(n\pi) = (-1)^n$? Come dimostri che non ha limite?
+
+- Perché nella somma geometrica il caso $q = 1$ si scrive a parte, e perché vale $n + 1$?

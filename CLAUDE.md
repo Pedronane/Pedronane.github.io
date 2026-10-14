@@ -7,10 +7,6 @@ Sito Astro su GitHub Pages (dominio `marchesipietro.xyz`), deploy a ogni push su
 - `/` e il resto: tema spaziale scuro, `DESIGN.md` e `src/styles/global.css`, layout `Layout.astro`.
 - `/uni/`: note universitarie, stile «Registro numerato» (carta chiara, blu biro, numeri § in margine). Layout `UniLayout.astro`, CSS `src/styles/uni.css`, contratto in `.impeccable/surfaces/src-pages-uni.md`. `noindex`, fuori dalla sitemap. Non mescolare i due stili.
 
-## Risposte in chat
-
-Qui vale sopra la regola globale «terse, fine turno in 1-2 frasi» (sua decisione, 14 ott 2026). Quando spieghi un concetto o riformuli un appunto, la lunghezza la decide quanto serve a capirlo bene, non la brevità: ogni passaggio esplicitato, il perché oltre al come, un esempio concreto quando aiuta, i termini definiti prima di usarli. Resta la prosa pulita (humanizer a memoria, niente LaTeX in chat). Le operazioni pratiche (sync, build, commit) restano terse.
-
 ## Note uni
 
 Le note si scrivono nel vault (`~/Documents/notes`), mai qui. Per pubblicarle:

@@ -12,13 +12,13 @@ lezioni: []
 ordine: 9
 ---
 
-Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L5, lun 5/10, ultima parte (matrici delle operazioni elementari, definizione di invertibile, quaderno p. 60-63) e in L6, mar 6/10 (rango e invertibilità, calcolo dell'inversa, quaderno p. 64-67). Gli appunti scritti della prof sul capitolo 3 non sono ancora su Moodle: la fonte è il quaderno di Pietro, con definizioni ed enunciati dalla dispensa Postinghel, <span class="src">p. 69-71</span> (invertibilità), <span class="src">p. 71-73</span> (matrici delle operazioni elementari), <span class="src">p. 73-74</span> (rango e invertibilità, algoritmo), <span class="src">p. 75-76</span> (es. 40-42), <span class="src">p. 80</span> (sistemi con $A$ invertibile). Il confine fra L5 e L6 nel quaderno non è segnato: qui è messo dove inizia il teorema, che è il titolo della L6 nel <span class="src">piano</span>. Si appoggia su [Matrici e operazioni](/uni/gal/matrici-e-operazioni/), [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/) e [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/).
+Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L6, mar 6/10 (quaderno p. 60-67), con gli esercizi dell'esercitazione 3 di lun 12/10, tenuta dalla prof. Fonte: appunti della prof, capitolo 3: <span class="src">6/10, p. 13-14</span> (matrici delle operazioni elementari, $\operatorname{rref}(A) = PA$, definizione di invertibile), <span class="src">p. 14-16</span> (esempi e non-esempi, osservazioni 1 e 2), <span class="src">p. 16-17</span> (teorema rango-invertibilità), <span class="src">p. 17-19</span> (calcolo dell'inversa, esempio e non-esempio), <span class="src">p. 19-20</span> (sistemi con $A$ invertibile, esercizio con parametro); esercitazione del 12/10, <span class="src">p. 1-9</span>, con il foglio [esercizi extra](/uni/gal/esercizi-extra-matrici-svolti/). Negli appunti la L6 inizia a p. 13 con le matrici delle operazioni elementari: anche le p. 60-63 del quaderno, prima attribuite alla L5, sono della L6. Esempi in più dalla dispensa Postinghel (<span class="src">p. 69-80</span>). Si appoggia su [Matrici e operazioni](/uni/gal/matrici-e-operazioni/), [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/) e [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/).
 
 > [!abstract] Per l'esame
 > - **Saper enunciare**: le matrici $S_{ij}$, $D_i(\lambda)$, $E_{ij}(\mu)$ e le loro inverse; $\operatorname{rref}(A) = PA$; matrice invertibile e inversa; $(AB)^{-1} = B^{-1}A^{-1}$; **il teorema “$A$ invertibile se e solo se $\operatorname{rg}(A) = n$"**, che a lezione è segnato con tre stelle (★★★). Sono le domande 3.2-3.4 del [foglio 3](/uni/gal/foglio-3-svolto/).
 > - **Saper dimostrare**: il teorema rango-invertibilità, nelle due direzioni (★); $(AB)^{-1} = B^{-1}A^{-1}$; perché l'algoritmo su $[A \mid I_n]$ dà $A^{-1}$; perché una matrice con una riga nulla non è invertibile.
 > - **Saper fare**: decidere se una matrice è invertibile dal rango, anche con un parametro; calcolare l'inversa con Gauss-Jordan su $[A \mid I_n]$ e verificarla con $AA^{-1} = I_n$; risolvere $A\vec{x} = \vec{b}$ come $\vec{x} = A^{-1}\vec{b}$.
-> - **Dove esce**: esercizi 3.8, 3.9, 3.10 del foglio 3 ("per quali $k$ è invertibile, e calcolare l'inversa"), probabilmente l'esercitazione 3 del 12/10. Il teorema ★★★ è il candidato naturale per la domanda di teoria con dimostrazione.
+> - **Dove esce**: esercizi 3.8, 3.9, 3.10 del foglio 3 ("per quali $k$ è invertibile, e calcolare l'inversa"); tutta l'esercitazione 3 del 12/10 è stata su questo ([Esercizi extra matrici svolti](/uni/gal/esercizi-extra-matrici-svolti/)). Il teorema ★★★ è il candidato naturale per la domanda di teoria con dimostrazione.
 
 **L'idea.** Con i numeri, $ax = b$ si risolve dividendo per $a$ se $a \neq 0$. Con le matrici non si divide, ma si può moltiplicare per una matrice $A^{-1}$ che "disfa" $A$. Non tutte le matrici quadrate ce l'hanno, e il rango dice esattamente quali. Il calcolo passa di nuovo da Gauss-Jordan, perché ogni operazione elementare è una moltiplicazione a sinistra per una matrice.
 
@@ -33,10 +33,12 @@ Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L5, lu
 
 ### Matrici delle operazioni elementari
 
-La prof (quaderno p. 60; dispensa <span class="src">p. 71</span>): le operazioni elementari viste nel capitolo 2 possono essere realizzate tramite la **moltiplicazione a sinistra** per delle matrici quadrate. Le matrici si ottengono applicando l'operazione all'identità $I_m$ ($m$ = numero di righe di $A$):
-- **$S_{ij}$**: la matrice ottenuta da $I_m$ scambiandone la $i$-esima riga con la $j$-esima;
-- **$D_i(\lambda)$**, $\lambda \neq 0$: la matrice ottenuta da $I_m$ moltiplicandone la $i$-esima riga per $\lambda$;
-- **$E_{ij}(\mu)$**, $\mu \neq 0$: la matrice ottenuta da $I_m$ sommando alla riga $i$-esima la riga $j$-esima moltiplicata per $\mu$. Risultato: $I_m$ con un $\mu$ in più al posto $(i, j)$.
+La prof (<span class="src">p. 13</span>): le operazioni elementari (viste nel capitolo 2) possono essere realizzate tramite la **moltiplicazione a sinistra** per delle matrici quadrate:
+- **$S_{ij}$** = matrice ottenuta da $I_m$ (identità $m \times m$) scambiandone la $i$-esima con la $j$-esima riga: $I_m \xrightarrow{S_{ij}} S_{ij}$;
+- **$D_i(\lambda)$** la matrice ottenuta come segue: $I_m \xrightarrow{D_i(\lambda)} D_i(\lambda)$, cioè moltiplicando la $i$-esima riga di $I_m$ per $\lambda \neq 0$;
+- **$E_{ij}(\mu)$** la matrice ottenuta come segue: $I_m \xrightarrow{E_{ij}(\mu)} E_{ij}(\mu)$, cioè sommando alla riga $i$-esima di $I_m$ la riga $j$-esima moltiplicata per $\mu$. Risultato: $I_m$ con un $\mu$ in più al posto $(i, j)$.
+
+In parole: **si fa l'operazione sull'identità**, e la matrice che viene fuori, moltiplicata a sinistra, fa la stessa operazione su qualunque $A$ con $m$ righe.
 
 Allora $S_{ij}A$, $D_i(\lambda)A$, $E_{ij}(\mu)A$ sono $A$ con l'operazione già fatta.
 
@@ -49,25 +51,25 @@ $$
 
 ### Matrice invertibile e inversa
 
-La prof (quaderno p. 61; dispensa <span class="src">Def. 35</span>): una matrice quadrata $A \in M_n(\mathbb{R})$ è **invertibile** se esiste $B \in M_n(\mathbb{R})$ tale che
+La prof (<span class="src">p. 14</span>): $A \in M_n(\mathbb{R})$ quadrata è **invertibile** se $\exists\, B \in M_n(\mathbb{R})$ tale che
 $$
-BA = AB = I_n
+AB = BA = I_n
 $$
-In tal caso $B$ si dice l'**inversa** di $A$ e la si denota $A^{-1}$.
+In tal caso, $B$ è detta l'**inversa** di $A$ e la denotiamo $A^-1$.
 
-NB della prof: non è detto in partenza che $AB$ e $BA$ coincidano (il prodotto non è commutativo, [Matrici e operazioni](/uni/gal/matrici-e-operazioni/)), ma per l'inversa **devono** venire entrambi $I_n$.
+NB della prof: in generale non è detto che $AB$ e $BA$ coincidano (il prodotto non è commutativo, [Matrici e operazioni](/uni/gal/matrici-e-operazioni/)), ma per l'inversa **devono** venire entrambi $I_n$.
 
 **Perché "la" inversa.** Se ce n'è una, è unica (dispensa, <span class="src">Oss. 9</span>): se $B$ e $B'$ sono due inverse, $B = BI_n = B(AB') = (BA)B' = I_nB' = B'$.
 
 **Solo matrici quadrate.** La definizione è data in $M_n(\mathbb{R})$: per una $A$ $m \times n$ con $m \neq n$, $AB$ e $BA$ avrebbero ordini diversi e non potrebbero essere tutte e due $I$ dello stesso ordine.
 
-Esempi: $I_n$ è invertibile con $I_n^{-1} = I_n$ (quaderno p. 61). $\begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}^{-1} = \begin{pmatrix} 1 & 0 \\ 0 & \frac{1}{2} \end{pmatrix}$ (dispensa, es. 36). La dispensa lì scrive "ogni matrice diagonale è invertibile": vale solo se **tutti gli elementi della diagonale sono non nulli** ($O_n$ è diagonale e non è invertibile).
+Esempi: (1) $I_n$ è invertibile e $I_n^{-1} = I_n$ (la prof, <span class="src">p. 14</span>, "esempi / non-esempi"). $\begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}^{-1} = \begin{pmatrix} 1 & 0 \\ 0 & \frac{1}{2} \end{pmatrix}$ (dispensa, es. 36). La dispensa lì scrive "ogni matrice diagonale è invertibile": vale solo se **tutti gli elementi della diagonale sono non nulli** ($O_n$ è diagonale e non è invertibile).
 
 ## Enunciati
 
 ### Le matrici delle operazioni elementari sono invertibili
 
-La prof (quaderno p. 61; dispensa <span class="src">Prop. 7</span>):
+La prof (<span class="src">p. 14</span>, esempio (2)): le matrici delle operazioni elementari sono invertibili:
 $$
 S_{ij}^{-1} = S_{ij} \qquad D_i(\lambda)^{-1} = D_i\!\left(\tfrac{1}{\lambda}\right)\ (\lambda \neq 0) \qquad E_{ij}(\mu)^{-1} = E_{ij}(-\mu)
 $$
@@ -75,7 +77,7 @@ $$
 
 ### Gauss-Jordan come prodotto: $\operatorname{rref}(A) = PA$
 
-La prof (quaderno p. 61; dispensa <span class="src">Prop. 6</span>): data $A \in M_{m \times n}(\mathbb{R})$, $\operatorname{rref}(A)$ può essere ottenuta moltiplicando $A$ a sinistra per un'opportuna matrice quadrata $P$ di ordine $m$, prodotto di matrici di operazioni elementari:
+La prof (<span class="src">p. 14</span>, proposizione): data $A \in M_{m,n}(\mathbb{R})$, $\operatorname{rref}(A)$ può essere ottenuta moltiplicando $A$ a sinistra per una matrice $m \times m$ opportuna, ottenuta dal prodotto di matrici di operazioni elementari:
 $$
 \operatorname{rref}(A) = PA
 $$
@@ -83,7 +85,7 @@ $$
 
 ### Osservazione 1: righe o colonne nulle
 
-La prof (quaderno p. 63; dispensa <span class="src">Oss. 10</span>): tutte le matrici quadrate che hanno una riga o una colonna di zeri **non sono invertibili**.
+La prof (<span class="src">p. 16</span>): tutte le matrici quadrate che hanno una riga (o una colonna) di zeri **non** sono invertibili.
 
 > [!note]- Perché
 > **Riga $i$ nulla in $A$.** Per ogni $B$, la riga $i$ di $AB$ è "riga $i$ di $A$ per le colonne di $B$", quindi tutta nulla. Ma la riga $i$ di $I_n$ ha un $1$ al posto $i$. Nessuna $B$ dà $AB = I_n$.
@@ -92,17 +94,17 @@ La prof (quaderno p. 63; dispensa <span class="src">Oss. 10</span>): tutte le ma
 
 ### Osservazione 2: il prodotto di invertibili è invertibile
 
-La prof (quaderno p. 63; dispensa <span class="src">Oss. 11</span>): se $A, B \in M_n(\mathbb{R})$ sono invertibili, anche il loro prodotto è invertibile, e l'inversa è il prodotto della seconda inversa per la prima:
+La prof (<span class="src">p. 16</span>): siano $A, B \in M_n(\mathbb{R})$ invertibili, con inverse $A^{-1}$, $B^{-1}$. Allora anche $AB$ è invertibile, e l'inversa è
 $$
 (AB)^{-1} = B^{-1}A^{-1}
 $$
 
 > [!note]- Dimostrazione
-> La prof (quaderno p. 63) fa un lato:
+> La prof (p. 16) fa un lato, con le giustificazioni sotto ogni uguale:
 > $$
 > (AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = AI_nA^{-1} = AA^{-1} = I_n
 > $$
-> Per la definizione serve anche l'altro (dispensa):
+> il primo uguale per la proprietà associativa, il secondo perché $B$ è invertibile ($BB^{-1} = I_n$), il terzo perché $AI_n = A$, l'ultimo perché $A$ è invertibile. Poi "analogamente $(B^{-1}A^{-1})(AB) = I_n$": per esteso,
 > $$
 > (B^{-1}A^{-1})(AB) = B^{-1}(A^{-1}A)B = B^{-1}I_nB = B^{-1}B = I_n
 > $$
@@ -114,7 +116,7 @@ Per ricordare l'ordine: si toglie prima l'ultima cosa messa, come le scarpe dopo
 
 ### ★★★ Teorema: rango e invertibilità
 
-La prof (quaderno p. 64, con tre stelle; dispensa <span class="src">Teorema 3.2.3.1</span>):
+La prof (<span class="src">p. 16-17</span>; nel quaderno, p. 64, con tre stelle):
 
 > [!abstract] Teorema
 > Sia $A \in M_n(\mathbb{R})$. Allora
@@ -139,7 +141,7 @@ Ipotesi: $A$ quadrata di ordine $n$. Tesi: le due condizioni si implicano a vice
 > $$
 > PA = I_n
 > $$
-> Nel quaderno qui c'è "quindi $P = A^{-1}$". Manca un passo, perché $PA = I_n$ è solo **metà** della definizione: serve anche $AP = I_n$. Si chiude usando che $P$ è invertibile. Moltiplicando $PA = I_n$ a sinistra per $P^{-1}$:
+> Negli appunti della prof (p. 17) qui c'è “$\Rightarrow P$ è l'inversa di $A$ (e $A^{-1} = P$) $\Rightarrow A$ è invertibile", e così nel quaderno. Manca un passo, perché $PA = I_n$ è solo **metà** della definizione: serve anche $AP = I_n$. Si chiude usando che $P$ è invertibile, che la prof ha appena ricordato. Moltiplicando $PA = I_n$ a sinistra per $P^{-1}$:
 > $$
 > P^{-1}(PA) = P^{-1}I_n \implies A = P^{-1}
 > $$
@@ -147,13 +149,13 @@ Ipotesi: $A$ quadrata di ordine $n$. Tesi: le due condizioni si implicano a vice
 
 ### Calcolo dell'inversa: perché $[A \mid I_n]$ funziona
 
-La prof (quaderno p. 65; dispensa <span class="src">p. 74</span>): sia $A \in M_n(\mathbb{R})$ e sia $B = [A \mid I_n]$, matrice $n \times 2n$. Allora
+La prof (<span class="src">p. 17-18</span>, "come si calcola la matrice inversa"): sia $A \in M_n(\mathbb{R})$. Consideriamo $B = [A \mid I_n]$, matrice $n \times 2n$ ottenuta affiancando $I_n$ ad $A$, e calcoliamo $\operatorname{rref}(B)$. Osservazione:
 $$
 A \text{ invertibile} \iff \operatorname{rref}(B) = [I_n \mid P], \quad \text{e in tal caso } P = A^{-1}
 $$
 
 > [!note]- Dimostrazione (della prof)
-> Sia $P$ il prodotto delle matrici delle operazioni che portano $B$ alla forma ridotta. Per la definizione di prodotto righe per colonne, moltiplicare a sinistra una matrice affiancata vuol dire moltiplicare ciascun blocco:
+> Sia $P$ il prodotto delle matrici delle operazioni che portano $B$ alla forma ridotta. Segue dalla definizione di prodotto (la prof, in verde): per ogni $A, B, C \in M_n(\mathbb{R})$, $A[B \mid C] = [AB \mid AC]$. Quindi:
 > $$
 > \operatorname{rref}(B) = PB = P[A \mid I_n] = [PA \mid PI_n] = [PA \mid P]
 > $$
@@ -163,16 +165,16 @@ $$
 
 ### Osservazione: sistemi con $A$ invertibile
 
-La prof (quaderno p. 67; dispensa <span class="src">Prop. 11</span>): se $A \in M_n(\mathbb{R})$ è invertibile e $A\vec{x} = \vec{b}$ è un sistema lineare, le soluzioni si trovano con $A^{-1}$:
+La prof (<span class="src">p. 19-20</span>): sia $A \in M_n(\mathbb{R})$ invertibile, sia $A\vec{x} = \vec{b}$ un sistema lineare. Posso trovare le soluzioni del sistema utilizzando l'inversa di $A$:
 $$
 \vec{x} = A^{-1}\vec{b}
 $$
 ed è l'**unica** soluzione.
 
 > [!note]- Dimostrazione
-> **Se $\vec{x}$ è una soluzione, allora $\vec{x} = A^{-1}\vec{b}$** (la prof): da $A\vec{x} = \vec{b}$, moltiplicando a sinistra per $A^{-1}$, $A^{-1}(A\vec{x}) = A^{-1}\vec{b}$, e $A^{-1}(A\vec{x}) = (A^{-1}A)\vec{x} = I_n\vec{x} = \vec{x}$.
+> **Se $\vec{x}$ è una soluzione, allora $\vec{x} = A^{-1}\vec{b}$** (la prof: "infatti $A^{-1}(A\vec{x}) = A^{-1}\vec{b} \Rightarrow \vec{x} = A^{-1}\vec{b}$"): da $A\vec{x} = \vec{b}$, moltiplicando a sinistra per $A^{-1}$, $A^{-1}(A\vec{x}) = A^{-1}\vec{b}$, e $A^{-1}(A\vec{x}) = (A^{-1}A)\vec{x} = I_n\vec{x} = \vec{x}$.
 >
-> **$A^{-1}\vec{b}$ è davvero una soluzione** (questa metà manca nel quaderno e nella dispensa): $A(A^{-1}\vec{b}) = (AA^{-1})\vec{b} = I_n\vec{b} = \vec{b}$. Qui serve l'altra metà della definizione, $AA^{-1} = I_n$.
+> **$A^{-1}\vec{b}$ è davvero una soluzione** (questa metà manca negli appunti, nel quaderno e nella dispensa): $A(A^{-1}\vec{b}) = (AA^{-1})\vec{b} = I_n\vec{b} = \vec{b}$. Qui serve l'altra metà della definizione, $AA^{-1} = I_n$.
 >
 > Insieme: esiste una soluzione ed è una sola. $\square$
 
@@ -201,7 +203,7 @@ Conviene quando $A^{-1}$ è già stata calcolata (spesso è il punto prima dell'
 
 ## Esempi svolti a lezione
 
-> [!example]- Prof, 5/10, quaderno p. 60: $S_{12}$ su una $2 \times 4$
+> [!example]- Prof, 6/10, <span class="src">appunti p. 13</span>: $S_{12}$ su una $2 \times 4$
 > $m = 2$, quindi le matrici elementari sono $2 \times 2$. $S_{12} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$ (righe di $I_2$ scambiate).
 > $$
 > A = \begin{pmatrix} 0 & 2 & 1 & 0 \\ 1 & 3 & -1 & 0 \end{pmatrix} \xrightarrow{S_{12}} \begin{pmatrix} 1 & 3 & -1 & 0 \\ 0 & 2 & 1 & 0 \end{pmatrix} = B
@@ -210,7 +212,7 @@ Conviene quando $A^{-1}$ è già stata calcolata (spesso è il punto prima dell'
 >
 > $S_{12}$ è $2 \times 2$ anche se $A$ ha 4 colonne: l'ordine della matrice elementare è il numero di **righe** di $A$.
 
-> [!example]- Prof, 5/10, quaderno p. 62: le inverse delle matrici elementari
+> [!example]- Prof, 6/10, <span class="src">appunti p. 14-15</span>: le inverse delle matrici elementari
 > **$3 \times 3$, $S_{12}$.** $S_{12}^{-1} = S_{12}$: infatti $S_{12}S_{12}$ scambia due volte le prime due righe di $I_3$, e torna $I_3$. Riga per colonna: la riga $(0, 1, 0)$ per le colonne di $S_{12}$, $(0, 1, 0)$, $(1, 0, 0)$, $(0, 0, 1)$, dà $(1, 0, 0)$, la prima riga di $I_3$.
 >
 > **$2 \times 2$, $D_2(2)$.** $D_2(2) = \begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}$, e applicando $D_2\!\left(\frac{1}{2}\right)$ si torna a $I_2$. Quindi $D_2(2)^{-1} = D_2\!\left(\frac{1}{2}\right) = \begin{pmatrix} 1 & 0 \\ 0 & \frac{1}{2} \end{pmatrix}$.
@@ -221,7 +223,7 @@ Conviene quando $A^{-1}$ è già stata calcolata (spesso è il punto prima dell'
 > $$
 > Controllo: la terza riga di $E_{31}(-1)E_{31}(1)$ è $(-1, 0, 1)$ per le colonne $(1, 0, 1)$, $(0, 1, 0)$, $(0, 0, 1)$, cioè $(-1 + 1, 0, 1) = (0, 0, 1)$. Le altre righe restano quelle di $I_3$.
 
-> [!example]- Prof, 5/10, quaderno p. 63: una matrice che non si può invertire
+> [!example]- Prof, 6/10, <span class="src">appunti p. 15-16</span>: una matrice che non si può invertire
 > $$
 > A = \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}
 > $$
@@ -231,7 +233,7 @@ Conviene quando $A^{-1}$ è già stata calcolata (spesso è il punto prima dell'
 > $$
 > ha la seconda riga nulla qualunque sia $B$, mentre $I_2$ ha seconda riga $(0, 1)$. **Non si può invertire.** Da qui la prof generalizza nell'osservazione 1: una riga (o colonna) di zeri basta a impedire l'inversa. Torna anche col teorema: $\operatorname{rg}(A) = 1 < 2$.
 
-> [!example]- Prof, 6/10, quaderno p. 65: l'inversa di una $2 \times 2$
+> [!example]- Prof, 6/10, <span class="src">appunti p. 18</span>: l'inversa di una $2 \times 2$
 > $$
 > A = \begin{pmatrix} 1 & 2 \\ 1 & -1 \end{pmatrix}, \qquad A^{-1} = \,?
 > $$
@@ -248,9 +250,9 @@ Conviene quando $A^{-1}$ è già stata calcolata (spesso è il punto prima dell'
 >
 > Curiosità di questo esempio: $A^{-1} = \frac{1}{3}A$, cioè $A^2 = 3I_2$.
 >
-> **L'errore del quaderno.** A p. 65 l'elemento $(1, 2)$ di $A^{-1}$ è scritto $-\frac{2}{3}$. È $+\frac{2}{3}$: $0 - 2 \cdot \left(-\frac{1}{3}\right) = \frac{2}{3}$. Con $-\frac{2}{3}$ la verifica fallisce subito: riga $(1, 2)$ di $A$ per la colonna $\left(-\frac{2}{3}, -\frac{1}{3}\right)$ dà $-\frac{4}{3} \neq 0$.
+> **L'errore del quaderno.** Negli appunti della prof il risultato è giusto, $\frac{2}{3}$. Nel quaderno, a p. 65, l'elemento $(1, 2)$ di $A^{-1}$ è scritto $-\frac{2}{3}$. È $+\frac{2}{3}$: $0 - 2 \cdot \left(-\frac{1}{3}\right) = \frac{2}{3}$. Con $-\frac{2}{3}$ la verifica fallisce subito: riga $(1, 2)$ di $A$ per la colonna $\left(-\frac{2}{3}, -\frac{1}{3}\right)$ dà $-\frac{4}{3} \neq 0$.
 
-> [!example]- Prof, 6/10, quaderno p. 66: un non-esempio $3 \times 3$
+> [!example]- Prof, 6/10, <span class="src">appunti p. 19</span>: un non-esempio $3 \times 3$
 > $$
 > A = \begin{pmatrix} 2 & 1 & 0 \\ 1 & 1 & -1 \\ 1 & 0 & 1 \end{pmatrix}
 > $$
@@ -262,17 +264,17 @@ Conviene quando $A^{-1}$ è già stata calcolata (spesso è il punto prima dell'
 > $$
 > \left[\begin{array}{ccc|ccc} 2 & 1 & 0 & 1 & 0 & 0 \\ 0 & \frac{1}{2} & -1 & -\frac{1}{2} & 1 & 0 \\ 0 & 0 & 0 & -1 & 1 & 1 \end{array}\right]
 > $$
-> A sinistra solo due pivot: **$\operatorname{rg}(A) = 2 < 3$, $A$ non è invertibile**. Ci si ferma qui, la riduzione all'indietro non può far comparire $I_3$. Il blocco destro non è nullo, ma non importa: conta solo il sinistro.
+> A sinistra solo due pivot (la prof: "non c'è pivot nella terza colonna"): **$\operatorname{rg}(A) = 2 < 3$, $A$ non è invertibile**. Ci si ferma qui, la riduzione all'indietro non può far comparire $I_3$. Il blocco destro non è nullo, ma non importa: conta solo il sinistro.
 >
 > Nel quaderno il procedimento è scritto “$[A \mid I_3]P = \operatorname{rref}(A)$": la forma giusta è $P[A \mid I_3] = \operatorname{rref}([A \mid I_3])$, con $P$ **a sinistra**.
 >
 > Si vede anche a occhio: $R_1 = R_2 + R_3$, $(2, 1, 0) = (1, 1, -1) + (1, 0, 1)$. Una riga è combinazione delle altre e il rango scende.
 
-**Prof, 6/10, quaderno p. 67: esercizio con parametro.** Sia
+**Prof, 6/10, <span class="src">appunti p. 20</span>: esercizio con parametro.** Sia
 $$
 A_k = \begin{pmatrix} 1 & 2 & -3 \\ -1 & -2k & 3 \\ \frac{1}{4} & \frac{1}{2} & k \end{pmatrix}, \qquad k \in \mathbb{R}
 $$
-Calcolare $\operatorname{rg}(A_k)$ al variare di $k$ e discutere l'invertibilità; calcolare $A_0^{-1}$; risolvere $A_0\vec{x} = \vec{b}$ con $\vec{b} = (1, 1, 1)$. A lezione è stata fatta solo la prima parte; le altre due sono l'esercizio 1 qui sotto.
+Calcolare $\operatorname{rg}(A_k)$ al variare di $k$ e dunque l'invertibilità di $A_k$; calcolare $A_0^{-1}$; risolvere il sistema lineare $A_0\vec{x} = \vec{b}$, ove $\vec{b} = (1, 1, 1)$. A lezione il 6/10 è stata fatta la prima parte; le altre due la prof le ha svolte all'esercitazione del 12/10 (<span class="src">p. 1-3</span>, "esercizio assegnato a lezione") e ne ha scritto i risultati negli appunti (p. 20).
 
 > [!example]- Svolgimento della prima parte (prof)
 > $E_{21}(1)$: $R_2 + R_1 = (0,\ 2 - 2k,\ 0)$. $E_{31}(-\frac{1}{4})$: $R_3 - \frac{1}{4}R_1 = \left(0,\ 0,\ k + \frac{3}{4}\right)$.
@@ -286,14 +288,9 @@ Calcolare $\operatorname{rg}(A_k)$ al variare di $k$ e discutere l'invertibilit�
 >
 > Per il teorema ★★★: **$A_k$ è invertibile se e solo se $\operatorname{rg}(A_k) = 3$, cioè $k \neq 1, -\frac{3}{4}$.** In particolare $A_0$ è invertibile.
 
-## Esercizi tipo esame
-
-**Esercizio 1** (il resto dell'esercizio della prof, 6/10). Con $A_k$ come sopra:
-
-- a) calcolare $A_0^{-1}$ e verificare il risultato;
-- b) risolvere $A_0\vec{x} = \vec{b}$ con $\vec{b} = (1, 1, 1)$.
-
-> [!example]- Soluzione
+> [!example]- Prof, esercitazione 3, 12/10, <span class="src">p. 2-3</span>: $A_0^{-1}$ e il sistema $A_0\vec{x} = \vec{b}$
+> **Come si riconosce**: "calcolare $A_0^{-1}$" dopo aver discusso l'invertibilità: $k = 0$ non è un valore critico, quindi l'inversa esiste e si calcola con $[A_0 \mid I_3]$. Il sistema con la stessa matrice si risolve poi con un prodotto.
+>
 > **a)** $A_0 = \begin{pmatrix} 1 & 2 & -3 \\ -1 & 0 & 3 \\ \frac{1}{4} & \frac{1}{2} & 0 \end{pmatrix}$.
 > $$
 > [A_0 \mid I_3] = \left[\begin{array}{ccc|ccc} 1 & 2 & -3 & 1 & 0 & 0 \\ -1 & 0 & 3 & 0 & 1 & 0 \\ \frac{1}{4} & \frac{1}{2} & 0 & 0 & 0 & 1 \end{array}\right]
@@ -318,8 +315,30 @@ Calcolare $\operatorname{rg}(A_k)$ al variare di $k$ e discutere l'invertibilit�
 > \vec{x} = \begin{pmatrix} -1 - 1 + 4 \\ \frac{1}{2} + \frac{1}{2} + 0 \\ -\frac{1}{3} + 0 + \frac{4}{3} \end{pmatrix} = \begin{pmatrix} 2 \\ 1 \\ 1 \end{pmatrix}
 > $$
 > Verifica nel sistema: $2 + 2 - 3 = 1$; $-2 + 0 + 3 = 1$; $\frac{1}{2} + \frac{1}{2} + 0 = 1$. Ed è l'unica soluzione.
+>
+> **Esercizio della prof: verificare per esempio che $A_0^{-1}A_0 = I_3$** (l'altro ordine). Righe di $A_0^{-1}$ per le colonne di $A_0$, $\left(1, -1, \frac{1}{4}\right)$, $\left(2, 0, \frac{1}{2}\right)$, $(-3, 3, 0)$:
+> - riga $(-1, -1, 4)$: $-1 + 1 + 1 = 1$; $\ -2 + 0 + 2 = 0$; $\ 3 - 3 + 0 = 0$
+> - riga $\left(\frac{1}{2}, \frac{1}{2}, 0\right)$: $\frac{1}{2} - \frac{1}{2} = 0$; $\ 1 + 0 = 1$; $\ -\frac{3}{2} + \frac{3}{2} = 0$
+> - riga $\left(-\frac{1}{3}, 0, \frac{4}{3}\right)$: $-\frac{1}{3} + \frac{1}{3} = 0$; $\ -\frac{2}{3} + \frac{2}{3} = 0$; $\ 1 + 0 = 1$
+>
+> Per il punto b) la prof scrive: "sappiamo che ammette un'unica soluzione, grazie a Rouché-Capelli" ($\operatorname{rg}(A_0) = 3 = \operatorname{rg}([A_0 \mid \vec{b}])$, uguale al numero di incognite), "possiamo calcolarla così": $\vec{x} = A_0^{-1}\vec{b}$.
 
-**Esercizio 2.** Sia
+> [!example]- Prof, esercitazione 3, 12/10, <span class="src">p. 4-9</span>: gli altri esercizi svolti in classe
+> Sono gli esercizi 1, 2, 3 e 6 del foglio della prof, scritti per intero con ogni passaggio in [Esercizi extra matrici svolti](/uni/gal/esercizi-extra-matrici-svolti/). Qui il testo, come si riconosce il tipo e il risultato, per ripassarli a colpo d'occhio.
+>
+> **Es. 1.** È invertibile $A = \begin{pmatrix} -1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & -3 & 1 \end{pmatrix}$? Tipo: inversa con $[A \mid I_3]$. Con $E_{21}(1)$, $E_{32}(3)$, $D_1(-1)$ si arriva a $A^{-1} = \begin{pmatrix} -1 & 0 & 0 \\ 1 & 1 & 0 \\ 3 & 3 & 1 \end{pmatrix}$. La seconda matrice del foglio, $B$, ha rango $2$ ("esercizio: matrice $B$", per casa).
+>
+> **Es. 2.** Calcolare $AB^{-1}C$ con $A$ $2 \times 4$, $B$ $4 \times 4$, $C = I_4$. Tipo: prodotto con inversa. Prima gli ordini ($2 \times 4$ per $4 \times 4$ per $4 \times 4$ dà $2 \times 4$), poi $C = I_4$ si toglie, poi $B^{-1}$ con $[B \mid I_4]$. Risultato $\begin{pmatrix} 1 & -1 & 1 & 2 \\ 1 & -1 & 0 & -\frac{1}{2} \end{pmatrix}$.
+>
+> **Es. 3.1.** Per quali $k$ è invertibile $A_k = \begin{pmatrix} 3 & 2 & -1 \\ 1 & 2 & k \\ 1 & 3k & 2 \end{pmatrix}$? Tipo: rango con parametro. Il terzo pivot è $-\frac{9k^2 + k - 10}{4} = -\frac{(k - 1)(9k + 10)}{4}$: **invertibile se e solo se $k \neq 1$ e $k \neq -\frac{10}{9}$**. Diversamente dall'esercizio del 6/10, il parametro compare in un pivot di secondo grado: va fattorizzato.
+>
+> **Es. 3.3.** Per quali $k$ le soluzioni di $A_k\vec{x} = (k, 0, k)$ sono chiuse per somma e prodotto per scalare? Solo $k = 0$, quando il sistema è omogeneo: è in [Nucleo e struttura delle soluzioni](/uni/gal/nucleo-e-struttura-delle-soluzioni/).
+>
+> **Es. 6.** Dimostrare che $\begin{cases} 4x + 4y + 2z = 4 \\ x - z = -1 \\ x + 3y - z = 3 \end{cases}$ ha un'unica soluzione e trovarla invertendo $A$. Tipo: Rouché-Capelli più inversa. "Unica soluzione" vuol dire $\operatorname{rg}(A) = 3$, cioè $A$ invertibile; la riduzione di $[A \mid I_3]$ fa le due cose insieme. $\vec{x} = A^{-1}\vec{b} = \left(-\frac{5}{9}, \frac{4}{3}, \frac{4}{9}\right)$.
+
+## Esercizi tipo esame
+
+**Esercizio 1.** Sia
 $$
 A(k) = \begin{pmatrix} 1 & -1 & 1 \\ 1 & k & 1 \\ k & 0 & 1 \end{pmatrix}, \qquad k \in \mathbb{R}
 $$
@@ -358,7 +377,7 @@ $$
 > $$
 > Verifica con $t = 1$, cioè $(0, 0, 1)$: $1 = 1$ su tutte e tre le righe. Una $A$ non invertibile non vuol dire "sistema impossibile": dipende da $\vec{b}$.
 
-**Esercizio 3** (★, teoria). 
+**Esercizio 2** (★, teoria).
 
 - a) Enunciare e dimostrare il teorema che lega invertibilità e rango di una matrice quadrata.
 - b) Senza calcolare inverse, dire se $M = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \\ 0 & 1 & 1 \end{pmatrix}$ è invertibile.
@@ -375,7 +394,7 @@ $$
 >
 > **c)** $\vec{x} = A^{-1}\vec{0} = \vec{0}$: **solo la soluzione nulla**. Quindi $N(A) = \{\vec{0}\}$ e $\operatorname{null}(A) = 0$, coerente con $\operatorname{null}(A) + \operatorname{rg}(A) = 0 + 3 = 3$.
 
-**Esercizio 4.** Siano
+**Esercizio 3.** Siano
 $$
 A = \begin{pmatrix} 1 & 2 \\ 3 & 5 \end{pmatrix}, \qquad B = \begin{pmatrix} 1 & 0 & 2 \\ 0 & 1 & 1 \end{pmatrix}
 $$
@@ -399,6 +418,35 @@ Trovare la matrice $X$ tale che $AX = B$. Si può risolvere anche $XA = B$?
 >
 > **$XA = B$** non ha soluzione: $X$ dovrebbe essere $p \times 2$ e $XA$ sarebbe $p \times 2$, mai $2 \times 3$ come $B$. Anche formalmente “$X = BA^{-1}$" non esiste, perché $B$ ($2 \times 3$) non è conformabile a sinistra ad $A^{-1}$ ($2 \times 2$). L'inversa si mette dalla parte dove sta $A$.
 
+**Esercizio 4** (livello del 30). Sia $A \in M_n(\mathbb{R})$ con $A^2 = A$.
+
+- a) Dimostrare che se $A$ è invertibile, allora $A = I_n$.
+- b) Trovare una $A \in M_2(\mathbb{R})$ con $A^2 = A$, diversa da $O_2$ e da $I_2$, e dire se è invertibile.
+- c) Sia $A$ come in b). Dimostrare che $I_2 - A$ soddisfa anch'essa $(I_2 - A)^2 = I_2 - A$.
+
+> [!example]- Soluzione
+> **Tipo**: teoria con la sola definizione di inversa. Il trucco è moltiplicare per $A^{-1}$ **dalla parte giusta**, e solo dopo aver supposto che esista.
+>
+> **a)** $A$ invertibile: esiste $A^{-1}$ con $A^{-1}A = I_n$. Moltiplico $A^2 = A$ a sinistra per $A^{-1}$:
+> $$
+> A^{-1}(AA) = A^{-1}A \qquad \text{stessa operazione sui due membri}
+> $$
+> $$
+> (A^{-1}A)A = I_n \qquad \text{associativa a sinistra, definizione di inversa a destra}
+> $$
+> $$
+> I_nA = I_n \implies A = I_n \qquad \text{identità}
+> $$
+> $\square$
+>
+> **b)** $A = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$. $A^2$: riga $(1, 0)$ per le colonne $(1, 0)$ e $(0, 0)$ dà $1$ e $0$; riga $(0, 0)$ dà zeri. $A^2 = A$. **Non è invertibile**: ha una riga nulla (osservazione 1), e infatti se lo fosse, per a), sarebbe $I_2$. Il punto a) dice proprio questo: le matrici con $A^2 = A$ diverse da $I_n$ non sono mai invertibili.
+>
+> **c)** Per una $A$ qualunque con $A^2 = A$, con la distributiva:
+> $$
+> (I_n - A)^2 = (I_n - A)(I_n - A) = I_n - A - A + A^2 = I_n - 2A + A = I_n - A
+> $$
+> Con l'esempio di b): $I_2 - A = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}$, e il suo quadrato è di nuovo $\begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}$.
+
 ## Errori tipici
 
 - Dimenticare metà della definizione: l'inversa deve dare $AB = I_n$ **e** $BA = I_n$. Nella dimostrazione del teorema è il passo da $PA = I_n$ ad $A^{-1} = P$, che richiede $A = P^{-1}$.
@@ -406,10 +454,14 @@ Trovare la matrice $X$ tale che $AX = B$. Si può risolvere anche $XA = B$?
 - Fare le operazioni solo sul blocco sinistro di $[A \mid I_n]$: il destro diventa $A^{-1}$ solo se subisce le stesse operazioni.
 - Sbagliare un segno nella riduzione all'indietro e non accorgersene: è l'errore del quaderno a p. 65 ($-\frac{2}{3}$ invece di $\frac{2}{3}$). La verifica $AA^{-1} = I$ lo trova in un minuto.
 - Concludere "invertibile" con rango $n - 1$, o contare i pivot del blocco destro: conta solo il sinistro, e servono $n$ pivot.
-- Dividere per un pivot con il parametro prima di aver escluso i valori che lo annullano.
+- Dividere per un pivot con il parametro prima di aver escluso i valori che lo annullano. Nel quaderno degli esercizi, al 3.10 del foglio 3, $E_{32}(\frac{1}{k})$ divide per $k$ senza aver escluso $k = 0$; bastava non scambiare le righe e usare come pivot l'$1$ della riga $(0, 1, k - 4)$.
+- Dichiarare la verifica senza farla. Al 3.8 (quaderno degli esercizi) l'elemento $(1, 3)$ di $A^{-1}$ è $-\frac{1}{4}$ invece di $-\frac{5}{4}$, e sotto c'è scritto “$4AA^{-1} = 4I_3$"; il prodotto vero, riga $(1, -1, 3)$ per la colonna $(-1, 1, 2)$, dà $4$ e non $0$.
+- Dare a una $3 \times 3$ rango $4$ (quaderno, 3.10): il rango non supera mai il numero di righe né quello di colonne. Per una $n \times n$, "invertibile" vuol dire rango $n$.
+- Calcolare l'inversa partendo dalla matrice già ridotta con $I$ affiancata in quel momento (quaderno, 3.10): il blocco destro parte da $I_n$ accanto ad $A$ **originale** e subisce tutte le operazioni, comprese quelle già fatte.
+- Scrivere le condizioni sul parametro con $\cup$: “$k \neq 1 \cup k \neq -\frac{10}{9}$" (quaderno, esercitazione del 12/10). Devono valere insieme: $k \neq 1$ **e** $k \neq -\frac{10}{9}$.
 - Mettere $A^{-1}$ dalla parte sbagliata: da $AX = B$ viene $X = A^{-1}B$, non $BA^{-1}$.
 - Parlare di inversa di una matrice non quadrata.
-- Credere che $A$ non invertibile renda $A\vec{x} = \vec{b}$ impossibile: può avere infinite soluzioni (esercizio 2c).
+- Credere che $A$ non invertibile renda $A\vec{x} = \vec{b}$ impossibile: può avere infinite soluzioni (esercizio 1c).
 
 ## Domande
 

@@ -12,7 +12,7 @@ lezioni: []
 ordine: 8
 ---
 
-Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L5, lun 5/10 (3 ore), parte centrale. Fonte: quaderno di Pietro p. 56-59 (gli appunti scritti della prof sul capitolo 3 non sono ancora su Moodle); dispensa Postinghel, sezione 3.3: <span class="src">p. 76-77</span> (forma matriciale, sistemi omogenei), <span class="src">p. 78</span> (nucleo, nullità, Prop. 10), <span class="src">p. 79</span> (es. 43). Si appoggia su [Matrici e operazioni](/uni/gal/matrici-e-operazioni/) (prodotto righe per colonne) e [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/). Il caso con $A$ quadrata invertibile, $\vec{x} = A^{-1}\vec{b}$, è in [Matrici invertibili](/uni/gal/matrici-invertibili/).
+Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L5, lun 5/10 (3 ore), ultima parte. Fonte: appunti della prof, capitolo 3: <span class="src">5/10, p. 9</span> (matrici e sistemi lineari, forma matriciale), <span class="src">p. 10</span> (osservazione 1, nucleo e nullità), <span class="src">p. 11-12</span> (nullità più rango, teorema, esempio); quaderno di Pietro p. 56-59. Esempio dell'esercitazione del 12/10: <span class="src">appunti dell'esercitazione, p. 6-7</span>. Esempi in più dalla dispensa Postinghel, sezione 3.3 (<span class="src">p. 76-79</span>). Si appoggia su [Matrici e operazioni](/uni/gal/matrici-e-operazioni/) (prodotto righe per colonne) e [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/). Il caso con $A$ quadrata invertibile, $\vec{x} = A^{-1}\vec{b}$, è in [Matrici invertibili](/uni/gal/matrici-invertibili/).
 
 > [!abstract] Per l'esame
 > - **Saper enunciare**: forma matriciale $A\vec{x} = \vec{b}$ con l'ordine di ogni matrice; sistema omogeneo associato; nucleo $N(A)$ e nullità $\operatorname{null}(A)$; $\operatorname{null}(A) + \operatorname{rg}(A) = n$; il teorema sulla struttura delle soluzioni, nei due casi $\vec{b} = \vec{0}$ e $\vec{b} \neq \vec{0}$.
@@ -33,7 +33,7 @@ Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L5, lu
 
 ### Il sistema in forma matriciale
 
-La prof (quaderno p. 56; dispensa <span class="src">p. 76-77</span>): il sistema
+La prof (<span class="src">p. 9</span>): il sistema
 $$
 (\ast) \quad \begin{cases} a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = b_1 \\ \quad \vdots \\ a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = b_m \end{cases}
 $$
@@ -54,9 +54,13 @@ Esempio: $\begin{cases} x + 2y = 1 \\ y - z = 2 \end{cases}$ si scrive $\begin{p
 
 ### Nucleo e nullità
 
-La prof (quaderno p. 58; dispensa <span class="src">Def. 36</span>): dato $A \in M_{m \times n}(\mathbb{R})$, il **nucleo** di $A$ è l'insieme delle soluzioni del sistema lineare omogeneo $A\vec{x} = \vec{0}$, la cui matrice dei coefficienti è $A$. Si indica con $N(A)$.
+La prof (<span class="src">p. 10</span>): data $A \in M_{m \times n}(\mathbb{R})$, il **nucleo** di $A$ è l'insieme delle soluzioni del sistema lineare omogeneo $A\vec{x} = \vec{0}$.
 
-Si chiama **nullità** di $A$, $\operatorname{null}(A)$, il numero delle colonne di $\operatorname{rref}(A)$ che **non** contengono pivot, cioè il numero di variabili libere da cui dipendono le soluzioni.
+Chiamiamo **nullità** di $A$ il numero di colonne di $\operatorname{rref}(A)$ che **non** contengono pivot, ossia il numero di variabili libere da cui dipendono le soluzioni.
+
+Notazione: $N(A)$ nucleo di $A$, $\operatorname{null}(A)$ nullità di $A$.
+
+Dal capitolo 4 ([Spazi vettoriali](/uni/gal/spazi-vettoriali/), esempio (3)): $N(A)$ è un **sottospazio vettoriale** di $\mathbb{R}^n$.
 
 **Perché.** $N(A)$ è un insieme di colonne $n \times 1$, mai vuoto: contiene sempre $\vec{0}$. La nullità misura "quanto è grande": $\operatorname{null}(A) = 0$ vuol dire che l'omogeneo ha solo la soluzione nulla; $\operatorname{null}(A) = 2$ vuol dire che le soluzioni dipendono da due parametri liberi.
 
@@ -66,12 +70,12 @@ Esempio: $A = \begin{pmatrix} 1 & 1 & 1 \end{pmatrix}$ ($1 \times 3$). $N(A)$ so
 
 ### Osservazione 1: le soluzioni di un omogeneo sono chiuse
 
-La prof (quaderno p. 57; dispensa <span class="src">Prop. 8</span>): sia $A\vec{x} = \vec{0}$ un sistema lineare omogeneo e siano $\vec{v}$, $\vec{w}$ due sue soluzioni, $A\vec{v} = \vec{0}$ e $A\vec{w} = \vec{0}$. Presi $\lambda, \mu \in \mathbb{R}$, anche la **combinazione lineare** $\lambda\vec{v} + \mu\vec{w}$ è soluzione di $A\vec{x} = \vec{0}$.
+La prof (<span class="src">p. 9-10</span>): sia $A\vec{x} = \vec{0}$ un sistema lineare omogeneo. Siano $\vec{v}$ e $\vec{w}$ vettori colonna soluzioni del sistema, ossia $A\vec{v} = \vec{0}$, $A\vec{w} = \vec{0}$. Se $\lambda, \mu \in \mathbb{R}$, allora anche la **combinazione lineare** $\lambda\vec{v} + \mu\vec{w}$ è soluzione del sistema lineare $A\vec{x} = \vec{0}$.
 
 In particolare ($\lambda = \mu = 1$, oppure $\mu = 0$) l'insieme delle soluzioni è **chiuso rispetto alla somma e al prodotto per uno scalare**.
 
 > [!note]- Dimostrazione (della prof)
-> Per le proprietà delle operazioni ([Matrici e operazioni](/uni/gal/matrici-e-operazioni/): distributiva e scalari),
+> Per le proprietà delle operazioni ([Matrici e operazioni](/uni/gal/matrici-e-operazioni/): distributiva e scalari; la prof scrive "proprietà delle operazioni" sotto il primo uguale e "per ipotesi ($\vec{v}$, $\vec{w}$ sono soluzioni)" sotto gli zeri),
 > $$
 > A(\lambda\vec{v} + \mu\vec{w}) = A(\lambda\vec{v}) + A(\mu\vec{w}) = \lambda(A\vec{v}) + \mu(A\vec{w}) = \lambda\vec{0} + \mu\vec{0} = \vec{0}
 > $$
@@ -81,7 +85,7 @@ In particolare ($\lambda = \mu = 1$, oppure $\mu = 0$) l'insieme delle soluzioni
 
 ### Nullità più rango
 
-La prof (quaderno p. 58, osservazione; dispensa <span class="src">Prop. 9</span>): per $A \in M_{m \times n}(\mathbb{R})$
+La prof (<span class="src">p. 11</span>, osservazione, "segue dalle definizioni di rango e di nullità"): per $A \in M_{m \times n}(\mathbb{R})$
 $$
 \operatorname{null}(A) + \operatorname{rg}(A) = n \qquad (n = \text{numero di colonne})
 $$
@@ -90,7 +94,7 @@ $$
 
 ### Teorema: struttura dell'insieme delle soluzioni
 
-La prof (quaderno p. 58; dispensa <span class="src">Prop. 10</span>):
+La prof (<span class="src">p. 11</span>):
 
 > [!abstract] Teorema
 > Sia $A\vec{x} = \vec{b}$ un sistema lineare **compatibile** (cioè che ammette soluzioni).
@@ -104,7 +108,7 @@ $$
 "Tutte e sole": ogni $\vec{x}_0 + \vec{v}$ è soluzione, e ogni soluzione si scrive così.
 
 > [!note]- Dimostrazione del punto 2 (le due inclusioni)
-> **$\vec{x}_0 + \vec{v}$ è soluzione** (è la parte scritta a lezione, quaderno p. 59). Se $A\vec{v} = \vec{0}$:
+> **$\vec{x}_0 + \vec{v}$ è soluzione** (è la parte dimostrata a lezione: negli appunti "Dimostrazione (del secondo punto)", con "proprietà" sotto il primo uguale). Se $A\vec{v} = \vec{0}$:
 > $$
 > A(\vec{x}_0 + \vec{v}) = A\vec{x}_0 + A\vec{v} = \vec{b} + \vec{0} = \vec{b}
 > $$
@@ -125,7 +129,7 @@ $$
 
 ### Scrivere le soluzioni come $\vec{x}_0 + N(A)$
 
-È il procedimento dell'esempio della prof (quaderno p. 59).
+È il procedimento dell'esempio della prof (<span class="src">appunti p. 11-12</span>).
 
 1. Riduci $[A \mid \vec{b}]$ fino a $\operatorname{rref}$. Controlla con Rouché-Capelli che sia compatibile.
 2. Individua le colonne senza pivot: sono le variabili libere, e il loro numero è $\operatorname{null}(A) = n - \operatorname{rg}(A)$.
@@ -139,7 +143,7 @@ Se conosci $\vec{x}_0$ e il nucleo, $\vec{w}$ è soluzione se e solo se $\vec{w}
 
 ## Esempi svolti a lezione
 
-> [!example]- Prof, 5/10, quaderno p. 59: soluzioni come $\vec{x}_0 + N(A)$
+> [!example]- Prof, 5/10, <span class="src">appunti p. 11-12</span>: soluzioni come $\vec{x}_0 + N(A)$
 > $$
 > [A \mid \vec{b}] = \left[\begin{array}{cccc|c} 1 & 0 & 0 & 2 & 1 \\ 1 & 1 & 3 & 2 & 1 \\ 2 & 1 & 3 & 4 & 2 \end{array}\right]
 > $$
@@ -160,6 +164,21 @@ Se conosci $\vec{x}_0$ e il nucleo, $\vec{w}$ è soluzione se e solo se $\vec{w}
 > Nel quaderno la prof colora: in viola i numeri senza parametro (diventano $\vec{x}_0$), in arancione i termini con $z$, in verde quelli con $w$. Le due colonne di $z$ e $w$ sono soluzioni di $A\vec{x} = \vec{0}$.
 >
 > **Verifica.** $\vec{x}_0 = (1, 0, 0, 0)$: $1 = 1$, $1 = 1$, $2 = 2$. $(0, -3, 1, 0)$ nell'omogeneo: $0$; $-3 + 3 = 0$; $-3 + 3 = 0$. $(-2, 0, 0, 1)$: $-2 + 2 = 0$; $-2 + 2 = 0$; $-4 + 4 = 0$.
+
+> [!example]- Prof, esercitazione 3, 12/10, <span class="src">p. 7</span>: per quali $k$ le soluzioni sono chiuse?
+> Esercizio 3, punto 3, del foglio [esercizi extra](/uni/gal/esercizi-extra-matrici-svolti/):
+> $$
+> A_k = \begin{pmatrix} 3 & 2 & -1 \\ 1 & 2 & k \\ 1 & 3k & 2 \end{pmatrix}, \qquad \vec{b} = (k, 0, k)
+> $$
+> Per quali $k$ l'insieme delle soluzioni di $A_k\vec{x} = \vec{b}$ è chiuso rispetto alla somma e al prodotto per uno scalare?
+>
+> **Come si riconosce**: "chiuso rispetto alla somma e al prodotto" è il linguaggio del teorema qui sopra (punto 1) e dell'osservazione 1. La risposta dipende da $\vec{b}$, non da $A_k$.
+>
+> **La risposta della prof**: l'insieme delle soluzioni di $A_k\vec{x} = \vec{b}$ è chiuso rispetto alle due operazioni se e solo se il sistema è omogeneo, cioè $\vec{b} = \vec{0}$, cioè $k = 0$ (le componenti di $\vec{b}$ sono $k$, $0$, $k$: tutte nulle solo per $k = 0$).
+>
+> **Perché "solo se"**: se $\vec{b} \neq \vec{0}$ e $\vec{x}_1$ è una soluzione, $A(2\vec{x}_1) = 2\vec{b} \neq \vec{b}$, quindi $2\vec{x}_1$ non è soluzione: non chiuso per il prodotto (osservazione "il non omogeneo non è chiuso").
+>
+> **Il caso che la prof non tratta**: per $k = 1$ e $k = -\frac{10}{9}$ la matrice ha rango $2$ e il sistema risulta **incompatibile**: l'insieme delle soluzioni è vuoto, e il ragionamento sopra non parte (non c'è un $\vec{x}_1$). Il vuoto non è un sottospazio ([Spazi vettoriali](/uni/gal/spazi-vettoriali/)), quindi la risposta resta $k = 0$, ma va detto. I conti sono nella [nota degli esercizi extra](/uni/gal/esercizi-extra-matrici-svolti/), esercizio 3.
 
 Un altro esempio dello stesso tipo, dalla dispensa (<span class="src">es. 43</span>), è svolto nella domanda 3.5 del [foglio 3](/uni/gal/foglio-3-svolto/); l'esercizio 3.11 dello stesso foglio è identico nella forma.
 
@@ -251,6 +270,7 @@ Calcolare $\operatorname{rg}(A_k)$ e $\operatorname{null}(A_k)$ al variare di $k
 - Dire che le soluzioni di un sistema non omogeneo sono chiuse per somma: $A(\vec{x}_1 + \vec{x}_2) = 2\vec{b}$.
 - Contare la nullità sulle righe nulle invece che sulle colonne senza pivot: in una $3 \times 4$ di rango 2 c'è una riga nulla ma la nullità è $2$.
 - Prendere come $\vec{x}_0$ una colonna del nucleo, o viceversa: $\vec{x}_0$ si verifica nel sistema con $\vec{b}$, le colonne del nucleo nel sistema con $\vec{0}$.
+- Applicare il teorema a un sistema senza controllare che sia compatibile: l'ipotesi "compatibile" c'è apposta. Con un parametro, i valori che rendono il sistema impossibile vanno trattati a parte (esercitazione del 12/10).
 
 ## Domande
 

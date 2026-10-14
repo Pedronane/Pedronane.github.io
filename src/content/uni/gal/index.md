@@ -39,6 +39,7 @@ Dall'avviso Moodle della prof del 28/9 e dal <span class="src">piano delle lezio
 - **Teoria del tipo 1.1-1.8 del foglio 1, enunciata e dimostrata.** Definizione con le parole della prof, poi la dimostrazione quando c'è: proiezione nei casi acuto e ottuso, prodotto scalare in coordinate, modulo con Pitagora, distributiva in coordinate, fascio che contiene $r$, formula punto-piano. Le domande di ogni nota servono a questo.
 - **Ogni esercizio chiuso con una verifica.** Il punto trovato si sostituisce in tutte le equazioni; il piano deve contenere i punti che deve contenere; la direzione ortogonale rifà i due prodotti scalari. Costa trenta secondi e trova quasi tutti gli errori di segno.
 - **Le trappole ricorrenti, a memoria.** Distanze: valore assoluto e radice al denominatore; "piani a distanza data" ha due soluzioni. Retta e piano: $\vec{n} \cdot \vec{v} = 0$ vuol dire parallela **o contenuta**. Due rette: parametri diversi, e ortogonalità separata da incidenza.
+- **Matrici e spazi vettoriali, le domande fisse.** Inversa sempre verificata con $AA^{-1} = I$ (nel quaderno degli esercizi due inverse su cinque avevano un errore che la verifica avrebbe trovato). Parametro: si divide solo per pivot senza $k$, i valori critici si studiano a parte. Sottospazio: primo controllo $\vec{0} \in U$, poi la (C) con vettori generici per dire sì, oppure un controesempio con numeri per dire no. Generatori di $\mathbb{R}^n$: vettori come colonne, rango uguale a $n$.
 - **Metodo della prof, non scorciatoie.** Fascio per i piani che contengono una retta, punto generico o piano ausiliario per le distanze, parametriche ponendo una variabile uguale a $t$. Il prodotto vettoriale non è ancora nel programma: usarlo senza saperlo giustificare è un rischio.
 - **Allenamento a tempo.** Prima prova completa in 90 minuti con il foglio 1 e gli esercizi tipo esame delle note, senza guardare le soluzioni. Chi arriva al parziale senza aver mai fatto un'ora e mezza di fila sbaglia i conti finali per stanchezza.
 - **Orale solo se conviene.** È facoltativo e richiede almeno 18 allo scritto: ha senso per alzare un voto, non per recuperarlo.
@@ -56,8 +57,10 @@ Date e titoli dal <span class="src">piano delle lezioni</span> della prof.
 | esercitazione 1 (tutor Lejdi Lusha) | mar 22/9 | retta per due punti, rette complanari col fascio, retta e piano, retta ortogonale e incidente, tre piani, distanza punto-retta | <span class="src">es. 1-6</span> | esempi dentro le note di geometria |
 | L4 (3 ore) | lun 28/9 | operazioni elementari, matrice a scalini, pivot, algoritmo di Gauss-Jordan, forma ridotta per righe, riduzione all'indietro; rango; teorema di Rouché-Capelli; sistema con parametro; da cartesiane a parametriche | <span class="src">p. 3-14</span> | [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/), [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/) |
 | esercitazione 2 (tutor Lejdi Lusha) | mar 29/9 | sistemi lineari: soluzione unica, omogeneo con infinite soluzioni, due sistemi con parametro | <span class="src">es. 1-4</span> | esempi dentro le note di Gauss-Jordan e rango |
-| L5 (3 ore) | lun 5/10 | matrici: casi particolari, trasposta, simmetrica; somma, prodotto per scalare, prodotto righe per colonne e proprietà; sistema in forma $A\vec{x} = \vec{b}$, nucleo, nullità, soluzioni $\vec{x}_0 + N(A)$; matrici delle operazioni elementari, $\operatorname{rref}(A) = PA$; matrici invertibili, $(AB)^{-1} = B^{-1}A^{-1}$ | non ancora su Moodle; quaderno p. 48-63, <span class="src">dispensa p. 63-73, 76-79</span> | [Matrici e operazioni](/uni/gal/matrici-e-operazioni/), [Nucleo e struttura delle soluzioni](/uni/gal/nucleo-e-struttura-delle-soluzioni/), [Matrici invertibili](/uni/gal/matrici-invertibili/) |
-| L6 | mar 6/10 | teorema: $A$ invertibile se e solo se $\operatorname{rg}(A) = n$ (★★★); calcolo dell'inversa con Gauss-Jordan su $[A \vert I_n]$; non-esempio; $\vec{x} = A^{-1}\vec{b}$; esercizio con parametro | non ancora su Moodle; quaderno p. 64-67, <span class="src">dispensa p. 73-76, 80</span> | [Matrici invertibili](/uni/gal/matrici-invertibili/) |
+| L5 (3 ore) | lun 5/10 | matrici: casi particolari, trasposta, simmetrica, nulla, identità; somma, prodotto per scalare, combinazione lineare, prodotto righe per colonne e proprietà, $AB \neq BA$; sistema in forma $A\vec{x} = \vec{b}$, nucleo, nullità, $\operatorname{null}(A) + \operatorname{rg}(A) = n$, soluzioni $\vec{x}_0 + N(A)$ | <span class="src">p. 1-12</span>; quaderno p. 48-59 | [Matrici e operazioni](/uni/gal/matrici-e-operazioni/), [Nucleo e struttura delle soluzioni](/uni/gal/nucleo-e-struttura-delle-soluzioni/) |
+| L6 | mar 6/10 | matrici delle operazioni elementari, $\operatorname{rref}(A) = PA$; matrici invertibili, $(AB)^{-1} = B^{-1}A^{-1}$; teorema: $A$ invertibile se e solo se $\operatorname{rg}(A) = n$ (★★★); calcolo dell'inversa con Gauss-Jordan su $[A \vert I_n]$; non-esempio; $\vec{x} = A^{-1}\vec{b}$; esercizio con parametro | <span class="src">p. 13-20</span>; quaderno p. 60-67 | [Matrici invertibili](/uni/gal/matrici-invertibili/) |
+| esercitazione 3 (la prof) | lun 12/10 | riepilogo matrici; fine dell'esercizio con parametro della L6 ($A_0^{-1}$, $A_0\vec{x} = \vec{b}$); esercizi 1, 2, 3 e 6 del foglio extra: inversa, $AB^{-1}C$, invertibilità con parametro, chiusura delle soluzioni, sistema con l'inversa | <span class="src">p. 1-9</span>, <span class="src">foglio extra</span>; quaderno p. 68 | [Matrici invertibili](/uni/gal/matrici-invertibili/), [Nucleo e struttura delle soluzioni](/uni/gal/nucleo-e-struttura-delle-soluzioni/), [Esercizi extra matrici svolti](/uni/gal/esercizi-extra-matrici-svolti/) |
+| L7 | mar 13/10 | capitolo 4: spazio vettoriale reale, $\mathbb{R}^n$, combinazioni lineari in forma matriciale; sottospazi, esempi e non-esempi; sottospazio generato $\mathrm{Span}$, spazio finitamente generato, sistema di generatori, criterio col rango; spazio delle righe e delle colonne | <span class="src">p. 1-9</span>; quaderno p. 69-71 (arriva al titolo "Generatori") | [Spazi vettoriali](/uni/gal/spazi-vettoriali/), [Generatori](/uni/gal/generatori/) |
 
 ## Argomenti
 
@@ -70,7 +73,7 @@ Il programma della prof (<span class="src">appunti p. 1</span>):
 **Algebra lineare**
 - Sistemi lineari: [Sistemi lineari](/uni/gal/sistemi-lineari/), [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/), [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/)
 - Matrici: [Matrici e operazioni](/uni/gal/matrici-e-operazioni/), [Nucleo e struttura delle soluzioni](/uni/gal/nucleo-e-struttura-delle-soluzioni/), [Matrici invertibili](/uni/gal/matrici-invertibili/)
-- Spazi vettoriali
+- Spazi vettoriali: [Spazi vettoriali](/uni/gal/spazi-vettoriali/), [Generatori](/uni/gal/generatori/)
 - Funzioni lineari
 
 Le voci senza link non sono ancora state fatte a lezione: diventano note quando partono.
@@ -82,11 +85,13 @@ Fogli del tutorato svolti per intero: teoria ed esercizi col testo in chiaro, in
 - [Foglio 1 svolto](/uni/gal/foglio-1-svolto/): teoria 1.1-1.8 ed esercizi 1.9-1.17, geometria nello spazio (<span class="src">PDF</span>).
 - [Foglio 2 svolto](/uni/gal/foglio-2-svolto/): teoria 2.1-2.10 ed esercizi 2.11-2.16, sistemi lineari, rango, Rouché-Capelli (<span class="src">PDF</span>).
 - [Foglio 3 svolto](/uni/gal/foglio-3-svolto/): teoria 3.1-3.6 ed esercizi 3.7-3.12, matrici, inversa, struttura delle soluzioni (<span class="src">PDF</span>).
+- [Esercizi extra matrici svolti](/uni/gal/esercizi-extra-matrici-svolti/): i sei esercizi del foglio "Esercizi - Matrici" della prof, quattro dei quali svolti all'esercitazione 3 (<span class="src">PDF</span>).
 
 Esercitazioni del tutor:
 
 - <span class="src">Esercitazione 1</span>: sei esercizi svolti, riportati per esteso nelle note di teoria.
 - <span class="src">Esercitazione 2</span>: quattro esercizi sui sistemi, con il testo in chiaro e la soluzione chiusa in [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/) e [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/).
+- <span class="src">Esercitazione 3</span> (12/10, tenuta dalla prof, non dal tutor: lo annuncia lei negli appunti della L6, p. 13, "lunedì prossimo: esercitazioni (con me)", e la grafia è la sua): matrici, svolta per intero in [Esercizi extra matrici svolti](/uni/gal/esercizi-extra-matrici-svolti/) e negli esempi di [Matrici invertibili](/uni/gal/matrici-invertibili/).
 
 Altro:
 
@@ -95,8 +100,8 @@ Altro:
 
 ## Risorse
 
-- Appunti della prof: <span class="src">1, Geometria nello spazio</span> (27 pagine) e <span class="src">2, Sistemi lineari</span> (14 pagine).
-- <span class="src">Esercitazione 1</span> ed <span class="src">esercitazione 2</span> del tutor Lejdi Lusha.
+- Appunti della prof: <span class="src">1, Geometria nello spazio</span> (27 pagine), <span class="src">2, Sistemi lineari</span> (14 pagine), <span class="src">3, Matrici</span> (20 pagine, L5 e L6), <span class="src">4, Spazi vettoriali</span> (9 pagine finora, L7).
+- <span class="src">Esercitazione 1</span> ed <span class="src">esercitazione 2</span> del tutor Lejdi Lusha; <span class="src">esercitazione 3</span> della prof, con il foglio <span class="src">Esercizi - Matrici</span>.
 - <span class="src">Piano delle lezioni</span>: date e argomenti di tutte le lezioni ed esercitazioni fino al 15/12.
-- <span class="src">Dispensa Postinghel</span>: capitolo 1 geometria nello spazio, capitolo 2 sistemi lineari, capitolo 3 matrici (fonte delle note di L5-L6 finché gli appunti della prof non sono su Moodle). Contiene le dimostrazioni a cui la prof rimanda.
+- <span class="src">Dispensa Postinghel</span>: capitolo 1 geometria nello spazio, capitolo 2 sistemi lineari, capitolo 3 matrici (esempi in più per le note di L5-L6, che ora seguono gli appunti della prof). Contiene le dimostrazioni a cui la prof rimanda.
 - Linguaggio matematico: definizione, enunciato, teorema, dimostrazione.

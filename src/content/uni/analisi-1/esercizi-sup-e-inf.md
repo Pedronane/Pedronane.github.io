@@ -8,11 +8,12 @@ hub: false
 tipo: esercizi
 stato: in corso
 data: 2026-10-05
-lezioni: []
-ordine: 999
+lezioni:
+  - 13 ott
+ordine: 10
 ---
 
-Nove esercizi dalla lavagna dell'esercitazione, gli stessi del foglio "Estremo superiore e inferiore con massimi e minimi" del III tutoraggio (<span class="src">Tutoraggio 3 complementi</span>, Barbon, Favari, Bellomo), con la consegna: «Determinare estremo superiore e inferiore dei seguenti insiemi, specificando se coincidono con, rispettivamente, il massimo e il minimo. Giustificare ogni affermazione!». La teoria sta in [Numeri reali, sup e inf](/uni/analisi-1/numeri-reali-sup-e-inf/), qui c'è solo quello che serve per svolgerli. In fondo ci sono anche un esercizio in più (10) e l'esercizio 1 del III tutoraggio sulle successioni (11). Ogni esercizio ha un **indizio** e una **soluzione**, entrambi chiusi: prova prima da solo, apri l'indizio se ti blocchi, la soluzione solo alla fine.
+Nove esercizi dalla lavagna dell'esercitazione, gli stessi del foglio "Estremo superiore e inferiore con massimi e minimi" del III tutoraggio (<span class="src">Tutoraggio 3 complementi</span>, Barbon, Favari, Bellomo), con la consegna: «Determinare estremo superiore e inferiore dei seguenti insiemi, specificando se coincidono con, rispettivamente, il massimo e il minimo. Giustificare ogni affermazione!». La teoria sta in [Numeri reali, sup e inf](/uni/analisi-1/numeri-reali-sup-e-inf/), qui c'è solo quello che serve per svolgerli. In fondo ci sono anche un esercizio in più (10), l'esercizio 1 del III tutoraggio sulle successioni (11), l'esercizio 4.1 dell'esercitazione 3 del tutor (12) e i due del tutoraggio del 13/10 (13 e 14, testi dal tuo quaderno). Ogni esercizio ha un **indizio** e una **soluzione**, entrambi chiusi: prova prima da solo, apri l'indizio se ti blocchi, la soluzione solo alla fine.
 
 > [!abstract] Per l'esame
 > - **Saper fare**: per un insieme dato come intervallo, come successione $\{x_n : n \in \mathbb{N}\}$ o come immagine di una funzione, trovare sup e inf e **dimostrarli** con le due condizioni; dire se sono massimo e minimo.
@@ -294,6 +295,81 @@ Dal foglio "Successioni e loro limiti" (<span class="src">Tutoraggio 3</span>): 
 >
 > **$\inf A = -\infty$.** Dato $M \in \mathbb{R}$, cerco $n$ dispari con $-\ln(n+1) < M$, cioè $n + 1 > e^{-M}$: esiste per Archimede. L'insieme non è limitato inferiormente, niente minimo.
 
+### 12) $A = \left\{\frac{5n - 2}{2n + 1} : n \in \mathbb{N}\right\}$ (esercitazione 3, es. 4.1)
+
+Dall'esercitazione 3 del tutor, "Esercizi sulle successioni" (<span class="src">esercitazione 3, pagina 11</span>). Il tutor apre con il ripasso delle caratterizzazioni: $s = \sup A$ se e solo se (i) $s \geq a$ per ogni $a \in A$ ($s$ è un maggiorante) e (ii) per ogni $\varepsilon > 0$ esiste $a \in A$ con $s - \varepsilon < a$ ($s$ è il più piccolo dei maggioranti); allo stesso modo l'inf; e la proprietà di Archimede nella forma “$\forall x, y > 0\ \exists n \in \mathbb{N} : nx > y$".
+
+> [!tip]- Indizio
+> È una funzione omografica in $n$ (rapporto di due polinomi di primo grado): fai la divisione e scrivi $x_n = \frac52 - \frac{\text{qualcosa}}{2n+1}$. Si vede subito che cresce verso $\frac52$.
+
+> [!example]- Soluzione
+> **Primi elementi** (come il tutor): $x_0 = -2$, $x_1 = \frac33 = 1$, $x_2 = \frac85$, $x_3 = \frac{13}{7}$. Crescono.
+>
+> **Riscrittura** (la divisione del tutor): $5n - 2 = \frac52(2n + 1) - \frac92$, quindi
+> $$
+> x_n = \frac{\frac52(2n + 1) - \frac92}{2n + 1} = \frac52 - \frac{9}{2(2n + 1)} = \frac52 - \frac{9}{4n + 2}
+> $$
+> Al crescere di $n$ si toglie da $\frac52$ una quantità positiva sempre più piccola: la successione cresce e si avvicina a $\frac52$ senza raggiungerlo.
+>
+> **$\min A = -2$** (claim 1 del tutor). $-2 = x_0 \in A$. È un minorante: per ogni $n$, moltiplicando per $2n + 1 > 0$,
+> $$
+> -2 \leq \frac{5n - 2}{2n + 1} \iff -2(2n + 1) \leq 5n - 2 \iff -4n - 2 \leq 5n - 2 \iff 9n \geq 0
+> $$
+> vero per ogni $n \in \mathbb{N}$. Un minorante che sta in $A$ è il minimo, quindi anche l'inf.
+>
+> **$\sup A = \frac52$** (claim 2).
+> - (i) Maggiorante: $\frac52 \geq \frac{5n - 2}{2n + 1} \iff 5(2n + 1) \geq 2(5n - 2) \iff 10n + 5 \geq 10n - 4 \iff 5 \geq -4$, sempre vero. Oppure dalla riscrittura: $x_n = \frac52 - \frac{9}{4n+2} < \frac52$.
+> - (ii) Dato $\varepsilon > 0$, cerco $\bar n$ con $x_{\bar n} > \frac52 - \varepsilon$:
+> $$
+> \frac52 - \frac{9}{4\bar n + 2} > \frac52 - \varepsilon \iff \frac{9}{4\bar n + 2} < \varepsilon \iff \varepsilon(4\bar n + 2) > 9
+> $$
+> Il tutor lo chiude con Archimede: esiste $k \in \mathbb{N}$ con $k\varepsilon > 9$; allora con $\bar n = k$ si ha $\varepsilon(4k + 2) > k\varepsilon > 9$. (Esplicitamente basta $\bar n > \frac{9/\varepsilon - 2}{4}$.)
+>
+> **Non è un massimo**: $x_n = \frac52$ richiederebbe $\frac{9}{4n + 2} = 0$, impossibile.
+
+### 13) $B = \left\{\frac{2n}{n^2 + 1} : n \in \mathbb{Z}\right\}$ (tutoraggio del 13/10, es. 1.1)
+
+Dal quaderno degli esercizi, 13/10. Attenzione: $n \in \mathbb{Z}$, anche negativo.
+
+> [!tip]- Indizio
+> Guarda cosa succede cambiando $n$ in $-n$. Poi prova a dimostrare direttamente $\frac{2n}{n^2+1} \leq 1$: portando tutto da una parte esce un quadrato.
+
+> [!example]- Soluzione
+> **Simmetria.** $b_{-n} = \frac{2(-n)}{(-n)^2 + 1} = -\frac{2n}{n^2 + 1} = -b_n$: gli elementi con $n$ negativo sono gli opposti di quelli con $n$ positivo. Basta studiare $n \geq 0$ e ribaltare.
+>
+> **Primi elementi**: $b_0 = 0$, $b_1 = 1$, $b_2 = \frac45$, $b_3 = \frac35$, $b_4 = \frac{8}{17}$. Ipotesi: $\max B = 1$, e per simmetria $\min B = -1$.
+>
+> **$\max B = 1$.** $1 = b_1 \in B$. È un maggiorante: moltiplicando per $n^2 + 1 > 0$,
+> $$
+> \frac{2n}{n^2 + 1} \leq 1 \iff 2n \leq n^2 + 1 \iff 0 \leq n^2 - 2n + 1 = (n - 1)^2
+> $$
+> vero per ogni $n \in \mathbb{Z}$. Quindi $\sup B = \max B = 1$.
+>
+> **$\min B = -1$.** $-1 = b_{-1} \in B$, e $\frac{2n}{n^2 + 1} \geq -1 \iff 2n \geq -n^2 - 1 \iff (n + 1)^2 \geq 0$. Quindi $\inf B = \min B = -1$.
+>
+> Sul quaderno hai fatto un'altra strada, giusta anche lei: limitatezza con $|b_n| = \frac{2|n|}{n^2 + 1} < \frac{2}{|n|} \leq 2$ (lì il secondo segno è $\leq$, non $<$: per $|n| = 1$ vale $2$), poi la monotonia per $n \geq 1$. Con il quadrato è più corto, e dà subito max e min.
+
+### 14) $A = \left\{\frac{3n\cos(n\pi) - 1}{2n} : n \geq 1\right\}$ (tutoraggio del 13/10, es. 1.3)
+
+Dal quaderno degli esercizi, 13/10 (lì c'è solo il testo).
+
+> [!tip]- Indizio
+> $\cos(n\pi)$ vale $1$ per $n$ pari e $-1$ per $n$ dispari. Separa i due casi e riscrivi ciascuno come "costante meno qualcosa".
+
+> [!example]- Soluzione
+> **$\cos(n\pi) = (-1)^n$**: sul cerchio, $n\pi$ è il punto $(1, 0)$ per $n$ pari e $(-1, 0)$ per $n$ dispari.
+>
+> **Pari**: $x_n = \frac{3n - 1}{2n} = \frac32 - \frac{1}{2n}$. Vale $\frac54$ per $n = 2$, poi cresce verso $\frac32$ senza raggiungerlo.
+>
+> **Dispari**: $x_n = \frac{-3n - 1}{2n} = -\frac32 - \frac{1}{2n}$. Vale $-2$ per $n = 1$, poi cresce verso $-\frac32$ ($-\frac53$, $-\frac85$, ...).
+>
+> **$\sup A = \frac32$, non è un massimo.**
+> - (1) Pari: $x_n = \frac32 - \frac{1}{2n} < \frac32$. Dispari: $x_n < 0 < \frac32$.
+> - (2) Dato $\varepsilon > 0$, cerco $n$ pari con $\frac32 - \frac{1}{2n} > \frac32 - \varepsilon$, cioè $\frac{1}{2n} < \varepsilon$, cioè $n > \frac{1}{2\varepsilon}$: per Archimede esiste, e fra due naturali consecutivi uno è pari.
+> - $\frac32 = x_n$ chiederebbe $\frac{1}{2n} = 0$: mai. Niente massimo.
+>
+> **$\inf A = \min A = -2$.** $x_1 = -2 \in A$. Minorante: per $n$ dispari $\frac{1}{2n} \leq \frac12$, quindi $x_n = -\frac32 - \frac{1}{2n} \geq -\frac32 - \frac12 = -2$; per $n$ pari $x_n > 0 > -2$.
+
 ## Riepilogo
 
 | | sup | max? | inf | min? |
@@ -309,6 +385,9 @@ Dal foglio "Successioni e loro limiti" (<span class="src">Tutoraggio 3</span>): 
 | 9 | $1$ | no | $0$ | sì ($n=0$, quadrati) |
 | 10 | $1$ | sì ($n=0$) | $0$ | no |
 | 11 | $\ln 2$ | no | $-\infty$ | no |
+| 12 | $\frac52$ | no | $-2$ | sì ($n=0$) |
+| 13 | $1$ | sì ($n=1$) | $-1$ | sì ($n=-1$) |
+| 14 | $\frac32$ | no | $-2$ | sì ($n=1$) |
 
 ## Errori tipici
 
@@ -317,6 +396,7 @@ Dal foglio "Successioni e loro limiti" (<span class="src">Tutoraggio 3</span>): 
 - **Prendere il primo termine per il minimo.** Nel 4 $x_0 = 0$ non è né sup né inf; nel 6 e 7 la successione prima scende.
 - **Indovinare il minimo del 7 dai primi termini.** Con $2026$ la discesa dura 44 passi: serve $x_{n+1} - x_n$.
 - **Moltiplicare per una quantità senza guardarne il segno.** Nel 6 e nell'8 si moltiplica per $2(n+1)$ e si divide per $x$: va bene perché sono positivi, e va scritto.
+- **Scrivere la (2) al contrario.** Nell'11, sul quaderno, hai impostato $\ln 2 - \varepsilon > \ln\left(1 + \frac{n}{n+1}\right)$ e hai provato a dimostrarla per un $n$: è il verso opposto. La (2) chiede un elemento **sopra** $M - \varepsilon$, cioè $\ln\left(\frac{2n+1}{n+1}\right) > \ln 2 - \varepsilon$; con il verso sbagliato i conti si allungano e arrivano a $-\varepsilon > \ln(\dots) > 0$, impossibile. Prima di fare conti, scrivi a parole cosa stai cercando.
 - **Usare Archimede senza dire quale $n$.** "Per Archimede esiste $n$" non basta: scrivi la disuguaglianza che $n$ deve soddisfare ($n > \frac1\varepsilon$, $n > \frac{1}{\eta^2}$, ...).
 
 ## Domande

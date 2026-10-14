@@ -63,8 +63,12 @@ Formato scritto sulle slide 4-5 del 14/9, con le correzioni a mano del prof (<sp
 | 30/9 | limiti 12-25 | 3.2 limiti $0$, $\pm\infty$, $\ell$, verifiche con la definizione, unicità, limitatezza delle convergenti; 3.3 sottosuccessioni (definizione ed esempi) | <span class="src">Lezione 2026-09-30</span> | [Limiti di successioni](/uni/analisi-1/limiti-di-successioni/) |
 | 6/10 | limiti 25-47 | 3.3 limiti delle sottosuccessioni, non esistenza del limite; 3.4 successioni monotone, teorema sul limite, numero di Nepero, Nepero generalizzato; 3.5 permanenza del segno, confronto, carabinieri, limitata per infinitesima; 3.6 limiti fondamentali, algebra dei limiti finiti | <span class="src">Lezione 2026-10-06</span> | [Limiti di successioni](/uni/analisi-1/limiti-di-successioni/), [Successioni monotone e numero di Nepero](/uni/analisi-1/successioni-monotone-e-numero-di-nepero/), [Permanenza del segno e confronto](/uni/analisi-1/permanenza-del-segno-e-confronto/), [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/) |
 | 7/10 | limiti 48-65 | potenza dei limiti, forme determinate; "definitivamente" e "frequentemente"; 3.7 forme indeterminate e tecniche algebriche; 3.8 criterio del rapporto, confronto fra infiniti, gerarchia degli infiniti (enunciato) | <span class="src">Lezione 2026-10-07</span> | [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/), [Permanenza del segno e confronto](/uni/analisi-1/permanenza-del-segno-e-confronto/) |
+| entro il 12/10 | esercitazione 3 | tutor: equazioni in $\mathbb{C}$ ($\vert z\vert^2 = z^2$, biquadratica, $z^2 = -2i\vert z\vert^2\log\vert z\vert$), sistemi e luoghi (circonferenza e retta, ellisse, parabola, iperbole, semidischi), controimmagini; sup e inf di $\frac{5n-2}{2n+1}$ | <span class="src">Esercitazione 3</span> (PDF del 12/10; la data della lezione non è scritta) | [Numeri complessi](/uni/analisi-1/numeri-complessi/), [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/) |
+| 12/10 | limiti 65-68; funzioni 1-9 di 80 | 3.8 dimostrazione della gerarchia con il criterio del rapporto, "attenti a come la si usa", esercizi sul criterio del rapporto; 4.1 intorni, punti di accumulazione, limite finito in un punto, $x\sin\frac1x$ | <span class="src">Lezione 2026-10-12</span> | [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/), [Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/) |
+| 13/10 | tutoraggio | sup e inf con $n \in \mathbb{Z}$ e con $\cos(n\pi)$; limiti della slide 60; $\sqrt{n^2+2n} - n$; $(1 + \frac{1}{n!})^n$, $n^{\sqrt n} - 2^n$, $\sqrt[n]{n!}$ | quaderno degli esercizi (il foglio non è nel vault) | [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/), [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/) |
+| 14/10 (dedotta) | funzioni 9-28 | 4.1 continuità, limite destro e sinistro, continuità da destra e da sinistra; 4.2 limite infinito in un punto, limite all'infinito, asintoti; 4.3 legame con i limiti di successioni (★), criterio di non esistenza | quaderno, pagine 150-169 ("inizio" sulla slide 10), e <span class="src">Slide limiti di funzioni da 10 (non annotate)</span>; il PDF annotato non è ancora arrivato | [Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/) |
 
-Prossimo: limiti slide 66-68 (dimostrazione della gerarchia, "attenti a come la si usa", esercizi sul criterio del rapporto), da <span class="src">Slide limiti da 66 (non annotate)</span>; poi il capitolo 4, limiti di funzioni, da <span class="src">Slide limiti di funzioni (non annotate)</span>.
+Prossimo: limiti di funzioni dalla slide 29 (teoremi di unicità, permanenza del segno, confronto e algebra dei limiti; 4.4 limiti delle funzioni elementari e gerarchia), da <span class="src">slide non annotate, pagina 20 = slide 29</span>. Quando arriva il PDF annotato della lezione sulle slide 9-28, va confrontato con [Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/) e la data in tabella va corretta se serve.
 
 ## Argomenti
 
@@ -83,8 +87,8 @@ Il programma dalla slide 7 del 14/9 (quello completo è nel Syllabus su Esse3/Mo
    - [Permanenza del segno e confronto](/uni/analisi-1/permanenza-del-segno-e-confronto/) (carabinieri)
    - [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/) (forme indeterminate, criterio del rapporto, gerarchia)
    - [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/) (III tutoraggio)
-   - limiti di funzioni: non ancora fatti
-4. Funzioni continue
+   - [Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/) (intorni, punti di accumulazione, definizioni di limite, limite destro e sinistro, legame con le successioni)
+4. Funzioni continue (definizione di continuità e continuità da destra e sinistra in [Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/); il resto del capitolo non ancora fatto)
 5. Derivate di funzioni; studio del grafico di una funzione
 6. Formula di Taylor
 7. Integrali
@@ -104,12 +108,15 @@ Le voci senza link diventano note quando l'argomento parte a lezione.
 - <span class="src">Esercizi svolti logica</span>: esercizi svolti di Pinamonti (a.a. 21/22) su quantificatori, insiemi, campo di esistenza.
 - <span class="src">Esercizi svolti complessi</span>: "Qualche esercizio risolto sui complessi" (Moodle, foglio di Ingegneria Industriale 22/23): forme, luoghi, equazioni, radici, crocette con risposte. Alcuni sono svolti per esteso negli esercizi della nota sui complessi.
 - <span class="src">Tutoraggio 2</span>: foglio del tutoraggio sui complessi (foglio 2 di Pinamonti, 25/9/2023), con soluzioni. Gli esercizi 1, 2.i e 4 coincidono con quelli del foglio 1 già svolti nella nota; gli altri restano da fare a te.
+- <span class="src">Esercitazione 3</span>: esercitazione 3 del tutor (complessi e un sup), svolta per intero in [Numeri complessi](/uni/analisi-1/numeri-complessi/) (sezione "Esercitazione 3") e in [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/) (esercizio 12), con due errori del tutor corretti.
+- <span class="src">Esercizi limiti di successioni 2020</span>: foglio 2 di Ingegneria Industriale 2020, con risultati. Gli esercizi 1, 3, 4, 5 sono gli stessi limiti del III tutoraggio, già svolti; le crocette dell'esercizio 6 sono in [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/) (la risposta 4 del foglio è sbagliata). Gli esercizi 7 e 8 sono "difficili": il 7 è il 3.28.
+- <span class="src">Esercizi limiti di successioni e funzioni 2022</span>: foglio 4 di Ingegneria Industriale 2022, con risultati. Usati per ora l'esercizio 1 (i)-(iii) (criterio del rapporto, in [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/)) e alcuni limiti di funzioni che non chiedono il calcolo (esercizi 3 (x) e 7.5-7.6, in [Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/)). Il resto chiede limiti notevoli e continuità: si fa quando il prof ci arriva.
 - Temi d'esame degli anni passati: su Moodle.
 
 ## Risorse
 
 - Slide annotate dal prof, una per lezione: vedi [Programma svolto](#programma-svolto).
-- Deck non ancora coperti da un PDF annotato: <span class="src">Slide cap 1 da 62 (non annotate)</span> (slide 62-92 del 21/9; il PDF dell'esercitazione copre tutto tranne le slide 62-63 sulle monotone), <span class="src">Slide limiti da 66 (non annotate)</span> (limiti 66-68, non ancora fatte), <span class="src">Slide limiti di funzioni (non annotate)</span> (capitolo 4).
+- Deck non ancora coperti da un PDF annotato: <span class="src">Slide cap 1 da 62 (non annotate)</span> (slide 62-92 del 21/9; il PDF dell'esercitazione copre tutto tranne le slide 62-63 sulle monotone), <span class="src">Slide limiti di funzioni da 10 (non annotate)</span> (capitolo 4 dalla slide 10; le slide 1-9 sono nel PDF annotato del 12/10, le 66-68 dei limiti di successioni anche).
 - Testi consigliati per la teoria (slide 8, in alternativa fra loro):
   - Conti, Ferrario, Terracini, Verzini, *Analisi Matematica. Dal Calcolo all'Analisi*
   - Bertsch, Dal Passo, Giacomelli, *Analisi Matematica*, seconda edizione

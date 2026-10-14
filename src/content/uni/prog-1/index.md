@@ -64,7 +64,7 @@ appelli              2 sessioni, 5 appelli: gennaio, febbraio | giugno, luglio, 
 
 ## Lezioni
 
-Le date delle lezioni dopo l'11 settembre non si ricavano dal materiale: il quaderno arriva alla slide 51 del deck 2.2. Il resto del 2.2, il 3.1 e il 3.2 sono stati fatti a lezione a settembre, il 3.3 fra settembre e ottobre, il 4.1 (tutto, matrici comprese) a ottobre. Il deck 2.2 è stato ricaricato a fine settembre con una slide in più (esercizio sull'assegnazione a catena, slide 64-65): le pagine dopo la 54 sono rinumerate.
+Le date delle lezioni dopo l'11 settembre non si ricavano dal materiale: il quaderno arriva alla slide 51 del deck 2.2. Il resto del 2.2, il 3.1 e il 3.2 sono stati fatti a lezione a settembre, il 3.3 fra settembre e ottobre, il 4.1 (tutto, matrici comprese) a ottobre, poi 4.2, 4.3, 4.4, 5.1 e 6.1 (tutti, interi) sempre a ottobre. Il deck 2.2 è stato ricaricato a fine settembre con una slide in più (esercizio sull'assegnazione a catena, slide 64-65): le pagine dopo la 54 sono rinumerate.
 
 | #   | Data       | Argomento                              | Slide                                                    | Nota                                                            |
 | --- | ---------- | -------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------- |
@@ -81,8 +81,14 @@ Le date delle lezioni dopo l'11 settembre non si ricavano dal materiale: il quad
 |     | set/ott    | switch, fall-through, conteggio cifre  | <span class="src">3.3</span> (slide 16-31) | [Switch](/uni/prog-1/switch/) |
 |     | ott        | array: dichiarazione, accesso, inizializzazione, esempi, VLA | <span class="src">4.1</span> (slide 2-52, 74-92) | [Array](/uni/prog-1/array/) |
 |     | ott        | matrici: memoria per righe, simmetrica, trasposta, magiche | <span class="src">4.1</span> (slide 53-73, 93-100) | [Matrici e array multidimensionali](/uni/prog-1/matrici-e-array-multidimensionali/) |
+|     | ott        | stringhe: array di char, '\0', %s, scanf | <span class="src">4.2</span> (tutto) | [Stringhe](/uni/prog-1/stringhe/) |
+|     | ott        | informazione e dati, interi, CA2, virgola mobile, ASCII | <span class="src">4.3</span> (tutto) | [Rappresentazione dell'informazione](/uni/prog-1/rappresentazione-dell-informazione/) |
+|     | ott        | basi 2, 8, 16: conversioni e aritmetica binaria | <span class="src">4.4</span> (tutto) | [Rappresentazione dell'informazione](/uni/prog-1/rappresentazione-dell-informazione/) |
+|     | ott        | tipi predefiniti, sizeof, conversioni, cast, Leibniz | <span class="src">5.1</span> (slide 3-33, 77-102) | [Tipi di dati e conversioni](/uni/prog-1/tipi-di-dati-e-conversioni/) |
+|     | ott        | struct, typedef, enum | <span class="src">5.1</span> (slide 34-76) | [Struct, typedef ed enum](/uni/prog-1/struct-typedef-ed-enum/) |
+|     | ott        | puntatori: & e *, aliasing, ->, aritmetica, const | <span class="src">6.1</span> (tutto) | [Puntatori](/uni/prog-1/puntatori/) |
 
-Prossimo: 4.2 Stringhe, sul sito del prof ma non ancora nel vault. Si prende con `uvx --with playwright python tools/moodle.py prendi 4.2` quando è stato fatto a lezione.
+Prossimo: 6.2 Funzioni, non ancora nel vault. Si prende con `uvx --with playwright python tools/moodle.py prendi 6.2` quando è stato fatto a lezione.
 
 ## Argomenti
 
@@ -100,6 +106,11 @@ Nell'ordine del programma del prof:
 10. [Switch](/uni/prog-1/switch/): selezione multipla, `break` e fall-through, `case` raggruppati
 11. [Array](/uni/prog-1/array/): dichiarazione, indici da 0, fuori range, inizializzazione, cicli tipici, array di contatori, VLA
 12. [Matrici e array multidimensionali](/uni/prog-1/matrici-e-array-multidimensionali/): `a[i][j]`, memoria per righe, simmetrica, trasposta, matrici magiche
+13. [Stringhe](/uni/prog-1/stringhe/): array di `char` con `'\0'`, inizializzazione, `%s`, `scanf` senza `&`, lunghezza, copia, confronto
+14. [Rappresentazione dell'informazione](/uni/prog-1/rappresentazione-dell-informazione/): basi 2, 8, 16 e conversioni, complemento a 2, virgola fissa e mobile, ASCII, somma e shift
+15. [Tipi di dati e conversioni](/uni/prog-1/tipi-di-dati-e-conversioni/): tipi predefiniti e qualificatori, `sizeof`, `float` e confronti, conversioni implicite, cast
+16. [Struct, typedef ed enum](/uni/prog-1/struct-typedef-ed-enum/): `struct` e dot notation, memoria allocata, `typedef`, `enum`
+17. [Puntatori](/uni/prog-1/puntatori/): `&` e `*`, `P = Q` e aliasing, `->`, array e aritmetica dei puntatori, `const`, array di puntatori
 
 ## Esercizi
 
@@ -116,6 +127,11 @@ Nell'ordine del programma del prof:
   - <span class="src">3.2 Codifica di semplici algoritmi in C: condizionali e iterative</span>
   - <span class="src">3.3 Strutture di controllo: for, do-while, switch</span>
   - <span class="src">4.1 Array</span>
+  - <span class="src">4.2 Stringhe</span>
+  - <span class="src">4.3 Rappresentazione di informazioni</span>
+  - <span class="src">4.4 Operazioni e conversioni tra basi</span>
+  - <span class="src">5.1 Tipi di dato</span>
+  - <span class="src">6.1 Puntatori</span>
 - Figure delle note: `tools/figure_uni/prog1.py`
 - Compilatore online usato a lezione: [onlinegdb.com](https://www.onlinegdb.com)
 - Base utile già nel vault: CS50 Introduction to programming with Python, Python - Sintassi base

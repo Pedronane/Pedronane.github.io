@@ -8,8 +8,9 @@ hub: false
 tipo: esercizi
 stato: in corso
 data: 2026-10-08
-lezioni: []
-ordine: 999
+lezioni:
+  - 13 ott
+ordine: 12
 ---
 
 Gli esercizi 2 e 3 del III tutoraggio, "Successioni e loro limiti" (Barbon, Favari, Bellomo: <span class="src">Tutoraggio 3</span>), con la consegna: «Studiare la monotonia delle seguenti successioni» e «Calcolare i seguenti limiti, se esistono; altrimenti dimostrare che non esistono». L'esercizio 1 del foglio (sup e inf di un insieme con il logaritmo) sta in [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/). La teoria è in [Successioni monotone e numero di Nepero](/uni/analisi-1/successioni-monotone-e-numero-di-nepero/), [Permanenza del segno e confronto](/uni/analisi-1/permanenza-del-segno-e-confronto/) e [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/). Il foglio non ha soluzioni: queste sono scritte e verificate qui. Ogni esercizio ha un **indizio** e una **soluzione**, entrambi chiusi.
@@ -485,6 +486,113 @@ $$
 >
 > Due sottosuccessioni con limiti diversi: per il corollario della slide 26 il limite **non esiste**.
 
+## Tutoraggio del 13/10
+
+Gli esercizi del tutoraggio del 13/10, dai testi sul tuo quaderno degli esercizi (il foglio non è nel vault: quando arriva da Moodle, va in `20 - Source Materials/` e linkato qui). I numeri sono quelli del quaderno. Gli esercizi 1.1 e 1.3 (sup e inf) sono in [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/), esercizi 13 e 14. Gli esercizi 2.1, 2.2, 2.3 e 2.5 sono quelli della slide 60 del prof, svolti in [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/) (esercizi 2 e 3).
+
+#### Esempio istruttivo: $\displaystyle\lim \left(\sqrt{n^2 + 2n} - n\right)$
+
+> [!tip]- Indizio
+> Forma $[+\infty - \infty]$ con una radice quadrata: razionalizza. Perché “$\sqrt{n^2 + 2n} \approx n$, quindi fa $0$" è sbagliato?
+
+> [!example]- Soluzione
+> **La trappola** (sul quaderno: "come fare giusto"). "Sotto la radice comanda $n^2$, quindi $\sqrt{n^2 + 2n} \approx n$ e la differenza fa $n - n = 0$": sbagliato. Che due infiniti siano dello stesso ordine non dice niente sulla loro **differenza**, che è una forma indeterminata.
+>
+> **Razionalizzo**, moltiplicando e dividendo per la somma:
+> $$
+> \sqrt{n^2 + 2n} - n = \frac{\left(\sqrt{n^2 + 2n} - n\right)\left(\sqrt{n^2 + 2n} + n\right)}{\sqrt{n^2 + 2n} + n} = \frac{n^2 + 2n - n^2}{\sqrt{n^2 + 2n} + n} = \frac{2n}{\sqrt{n^2 + 2n} + n}
+> $$
+> Raccolgo $n$ sotto la radice ($n > 0$): $\sqrt{n^2 + 2n} = n\sqrt{1 + \frac2n}$. Quindi
+> $$
+> \frac{2n}{n\left(\sqrt{1 + \frac2n} + 1\right)} = \frac{2}{\sqrt{1 + \frac2n} + 1} \to \frac{2}{1 + 1} = 1
+> $$
+> Controllo: $n = 100$ dà $\sqrt{10200} - 100 \approx 0{,}995$.
+
+#### 3.1) $\displaystyle\lim \left(1 + \frac{1}{n!}\right)^n$
+
+> [!tip]- Indizio
+> Forma $[1^\infty]$: moltiplica e dividi l'esponente per $n!$.
+
+> [!example]- Soluzione
+> Base $\to 1$, esponente $\to +\infty$: $[1^\infty]$. Nepero generalizzato con $a_n = n! \to +\infty$:
+> $$
+> \left(1 + \frac{1}{n!}\right)^n = \left[\left(1 + \frac{1}{n!}\right)^{n!}\right]^{\frac{n}{n!}}
+> $$
+> La base fra quadre tende a $e$; l'esponente $\frac{n}{n!} = \frac{1}{(n-1)!} \to 0$. Per la potenza dei limiti (base $\to e > 0$): il limite è $e^0 = 1$. Sul quaderno l'hai fatto così, giusto.
+
+#### 3.2) $\displaystyle\lim\ (-1)^n \frac{n!}{n^n}$
+
+> [!tip]- Indizio
+> Guarda il valore assoluto.
+
+> [!example]- Soluzione
+> $\left|(-1)^n\frac{n!}{n^n}\right| = \frac{n!}{n^n} \to 0$ per la gerarchia ($n! \ll n^n$). E $|a_n| \to 0$ equivale ad $a_n \to 0$ (la definizione di limite $0$ guarda solo $|a_n - 0|$). Il limite è $0$. Sul quaderno hai scritto solo “$n^n$ più grande": va completato con il passaggio al modulo, altrimenti il $(-1)^n$ resta senza giustificazione.
+
+#### 3.3) $\displaystyle\lim\ \left[1 + (-1)^n\right]$
+
+> [!example]- Soluzione
+> Sottosuccessione dei pari, $n = 2k$: $1 + 1 = 2 \to 2$. Dei dispari, $n = 2k + 1$: $1 - 1 = 0 \to 0$. Due sottosuccessioni con limiti diversi: il limite **non esiste** (slide 26 di [Limiti di successioni](/uni/analisi-1/limiti-di-successioni/)). Come sul quaderno.
+
+#### 3.4) $\displaystyle\lim \left(n^{\sqrt n} - 2^n\right)$
+
+> [!tip]- Indizio
+> $[\infty - \infty]$ fra due esponenziali "travestiti". Scrivili con $e$: $a^b = e^{b\log a}$. Poi raccogli quello che comanda.
+
+> [!example]- Soluzione
+> Con l'identità della slide 54, $a^b = e^{b\log a}$:
+> $$
+> n^{\sqrt n} = e^{\sqrt n\log n}, \qquad 2^n = e^{n\log 2}
+> $$
+> Chi comanda? Confronto gli esponenti: $\sqrt n\log n$ contro $n\log 2$. Il loro rapporto $\frac{\sqrt n\log n}{n\log 2} = \frac{1}{\log 2} \cdot \frac{\log n}{\sqrt n} \to 0$ (gerarchia, $\log n \ll n^{1/2}$): comanda $2^n$. Raccolgo:
+> $$
+> n^{\sqrt n} - 2^n = 2^n\left(\frac{n^{\sqrt n}}{2^n} - 1\right) = e^{n\log 2}\left(e^{\sqrt n\log n - n\log 2} - 1\right)
+> $$
+> L'esponente $\sqrt n\log n - n\log 2 = n\left(\frac{\log n}{\sqrt n} - \log 2\right) \to [+\infty \cdot (0 - \log 2)] = -\infty$, quindi $e^{\sqrt n\log n - n\log 2} \to 0$ (forma determinata $[e^{-\infty}] = 0$, base $e > 1$). Allora
+> $$
+> e^{n\log 2}\left(e^{\dots} - 1\right) \to [+\infty \cdot (0 - 1)] = -\infty
+> $$
+> Il limite è $-\infty$, come sul quaderno. Controllo: per $n = 100$, $n^{\sqrt n} = 100^{10} = 10^{20}$, mentre $2^{100} \approx 1{,}3 \cdot 10^{30}$.
+
+#### 3.5) $\displaystyle\lim \sqrt[n]{n!}$ e $\displaystyle\lim \frac{\sqrt[n]{n!}}{n}$ (difficile)
+
+> [!example]- Soluzione
+> **Primo.** È il 3.28 sopra: $\sqrt[n]{n!} \to +\infty$ (per ogni $M$, $n! > M^n$ definitivamente, perché $\frac{M^n}{n!} \to 0$).
+>
+> **Secondo.** Qui $\sqrt[n]{n!}$ e $n$ sono infiniti dello stesso ordine e il limite vale $\frac1e$. Con quello che si è fatto a lezione si arriva vicino ma non in fondo: il criterio del rapporto applicato ad $a_n = \frac{n!}{n^n}$ dà
+> $$
+> \frac{a_{n+1}}{a_n} = \frac{(n+1)!}{(n+1)^{n+1}} \cdot \frac{n^n}{n!} = \frac{n^n}{(n+1)^n} = \left(1 + \frac1n\right)^{-n} \to \frac1e
+> $$
+> (lo stesso conto di $\frac{n!\,a^n}{n^n}$ della slide 68 con $a = 1$), e $\frac{\sqrt[n]{n!}}{n} = \sqrt[n]{a_n}$. Per concludere serve un teorema **non fatto a lezione**: se $\frac{a_{n+1}}{a_n} \to L$ allora anche $\sqrt[n]{a_n} \to L$. Con quello, il limite è $\frac1e$. Se all'esame serve, si cita come teorema.
+
+### Crocette sulle successioni limitate (foglio 2 del 2020, esercizio 6)
+
+Dal foglio di Ingegneria Industriale del 2020 (<span class="src">pagine 3-4</span>). Le quattro domande hanno le stesse opzioni:
+
+- A) diverge sicuramente a $+\infty$
+- B) è illimitata, ma può non valere $\lim b_n = +\infty$
+- C) converge sicuramente
+- D) è limitata, ma può non convergere
+
+**1.** $|a_n| \leq 10^{10}$ per ogni $n$, $b_n := \dfrac{\sqrt[3]{n}\,a_n}{\sqrt{n+1}}$.
+
+> [!example]- Soluzione
+> **C**. $\frac{\sqrt[3]n}{\sqrt{n+1}} = \frac{n^{1/3}}{n^{1/2}\sqrt{1 + \frac1n}} = \frac{1}{n^{1/6}\sqrt{1 + \frac1n}} \to 0$, e $a_n$ è limitata: limitata per infinitesima, $b_n \to 0$. Qualunque sia $a_n$.
+
+**2.** $|a_n| \leq 10^{10}$ per ogni $n$, $b_n := \sin\left(\frac n2\pi\right)a_n$.
+
+> [!example]- Soluzione
+> **D**. $|b_n| \leq 1 \cdot 10^{10}$: limitata. Può non convergere: con $a_n = 1$, $b_n = \sin\frac{n\pi}{2}$ vale $0, 1, 0, -1, 0, 1, \dots$, senza limite. Può anche convergere (con $a_n = 0$), quindi C è falsa.
+
+**3.** $|a_n| \leq 10^{10n}$ per ogni $n$, $b_n := \dfrac{n\,a_n}{(n+1)! - n!}$.
+
+> [!example]- Soluzione
+> **C**. $(n+1)! - n! = n!\,(n + 1 - 1) = n \cdot n!$, quindi $b_n = \frac{a_n}{n!}$ e $|b_n| \leq \frac{\left(10^{10}\right)^n}{n!} \to 0$ per la gerarchia ($a^n \ll n!$ con $a = 10^{10}$). Per i carabinieri $|b_n| \to 0$, quindi $b_n \to 0$.
+
+**4.** $|a_n| \geq n^2$ per ogni $n$, $b_n := a_n + n\sin\left(\frac n2\pi\right)$.
+
+> [!example]- Soluzione
+> Il foglio dà **A**, ma la risposta giusta è **B**. Da $|a_n| \geq n^2$ e $\left|n\sin\frac{n\pi}{2}\right| \leq n$ segue $|b_n| \geq n^2 - n \to +\infty$: $b_n$ è illimitata. Ma $|a_n| \geq n^2$ non dice che $a_n$ sia positiva: con $a_n = -n^2$ si ha $b_n \leq -n^2 + n \to -\infty$, e con $a_n = (-1)^n n^2$ il limite non esiste. Quindi "diverge sicuramente a $+\infty$" è falso: è la B. La A sarebbe giusta con l'ipotesi $a_n \geq n^2$ (senza modulo); probabilmente è un refuso del testo.
+
 ## Riepilogo
 
 | es. | limite | tecnica |
@@ -533,6 +641,9 @@ $$
 - **Dimenticare che con base fra $0$ e $1$ l'esponente $+\infty$ dà $0$** (3.5, 3.36), non $+\infty$.
 - **Spezzare $\log(a + b)$ come $\log a + \log b$.** Non è una proprietà del logaritmo: si stringe l'argomento fra due potenze (3.3, 3.11, 3.16).
 - **Fermarsi a "comanda $n^4$"** senza scrivere il raccoglimento e i limiti dei pezzi che restano.
+- **Dimenticare che la base tende a $1$.** Sul quaderno, nel 3.4, hai raccolto $n$ sopra e sotto in $\left(\frac{n+3}{n+1}\right)^n$ e concluso “$= \infty$": la base tende a $1$ e l'esponente a $+\infty$, è la forma $[1^\infty]$, non $\infty$. Il risultato è $e^2$ (correzione in rosso già sul quaderno).
+- **Sbagliare il verso nel prodotto in croce.** Sul quaderno, per $\frac{n}{n^2+1}$ (2.2), hai scritto $(n+1)(n^2+1) > n(n^2 + 2n + 2)$ per dimostrare $a_{n+1} < a_n$: il verso giusto è $<$, che porta a $1 < n^2 + n$, vero per $n \geq 1$. Il tuo “$n^2 + n > 1$" finale è giusto, ma non segue dalla riga prima. Il modo sicuro è la differenza $a_n - a_{n+1}$ con un denominatore comune, come nella soluzione del 2.2.
+- **Dire “$\sqrt{n^2 + 2n} \approx n$, quindi la differenza fa $0$".** Stesso ordine non vuol dire differenza nulla: si razionalizza (esempio istruttivo del 13/10).
 - **Dire che il 3.33 vale $\pm 1$.** Il limite non esiste: lo dimostrano le due sottosuccessioni.
 
 ## Domande
@@ -546,3 +657,7 @@ $$
 - Perché $\sqrt[n]{2^n + 3^n} \to 3$?
 
 - Come si dimostra che $\sqrt[n]{n!} \to +\infty$?
+
+- Perché $\sqrt{n^2 + 2n} - n$ non tende a $0$? Quanto vale il limite?
+
+- Come si confrontano $n^{\sqrt n}$ e $2^n$?

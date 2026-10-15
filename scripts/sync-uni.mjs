@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, rmSync, existsSync, copyFileSync } from 'node:fs';
 import { join, extname, basename } from 'node:path';
+import { createHash } from 'node:crypto';
 import { homedir } from 'node:os';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 import GithubSlugger from 'github-slugger';
@@ -78,7 +79,7 @@ const figures = new Map();
 function inlineSvg(name) {
   const path = join(MEDIA, name);
   if (!existsSync(path)) return null;
-  const idPrefix = `f${figures.size}-`;
+  const idPrefix = `f${createHash('sha1').update(name).digest('hex').slice(0, 6)}-`;
   let svg = readFileSync(path, 'utf8')
     .replace(/<\?xml[^>]*>/, '')
     .replace(/<!DOCTYPE[^>]*>/, '')

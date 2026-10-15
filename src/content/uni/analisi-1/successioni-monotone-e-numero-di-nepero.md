@@ -823,7 +823,7 @@ Dal più facile al livello del 30. Prima di aprire la soluzione, prova almeno a 
 
 - Come si definisce il numero $e$? Quale teorema garantisce che il limite esiste?
 
-- Come si dimostra che $\left(1 + \frac1n\right)^n < 4$? Quali due strumenti usa la dimostrazione?
+- Perché $\left(1 + \frac1n\right)^n$ ha limite? Quali due proprietà della successione servono, e quale teorema le usa?
 
 - Enuncia il limite di Nepero generalizzato. Serve che $a_n$ abbia limite?
 
@@ -832,8 +832,6 @@ Dal più facile al livello del 30. Prima di aprire la soluzione, prova almeno a 
 - Come si studia la monotonia di $\frac{n}{n^2+1}$? Perché si parte da $n = 1$?
 
 - Nel problema del prestito, perché conviene la banca A anche se ha il TAN più alto?
-
-- Nella dimostrazione del teorema delle monotone, dove si usa che il sup è il minimo dei maggioranti, e dove la monotonia?
 
 - Perché per dimostrare che una successione è crescente basta confrontare termini consecutivi?
 

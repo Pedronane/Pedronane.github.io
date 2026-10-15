@@ -1283,12 +1283,12 @@ Dal più facile al livello del 30. Prima di aprire la soluzione, scrivi almeno l
 
 - Come si confrontano $n^{\sqrt n}$ e $2^n$?
 
-- Come si ricava $\frac{1}{n+1} < \log\left(1 + \frac1n\right) < \frac1n$, e come si usa per calcolare $\lim n\log\left(1 + \frac1n\right)$?
+- Quale stima lega $\log\left(1 + \frac1n\right)$ a $\frac1n$ e $\frac1{n+1}$, e come si usa per calcolare $\lim n\log\left(1 + \frac1n\right)$?
 
-- Come si dimostra $\log y \leq y - 1$ per $y \geq 1$ con Bernoulli e Nepero? Perché dà $\log(1 + e^{-n}) \to 0$?
+- Che disuguaglianza lega $\log y$ e $y - 1$ per $y \geq 1$, e perché dà $\log(1 + e^{-n}) \to 0$?
 
 - In una forma $[1^\infty]$, come si prevede il risultato guardando $(\text{base} - 1) \cdot \text{esponente}$?
 
 - Perché $\left(1 + \frac{(-1)^n}{n}\right)^n$ non ha limite?
 
-- Perché nel 3.19 non si può dire “$\frac{\log(\log n)}{\log n} \to 0$ per la gerarchia", e come lo si dimostra?
+- Perché nel 3.19 non si può dire “$\frac{\log(\log n)}{\log n} \to 0$ per la gerarchia"? Quale stima si usa al suo posto?

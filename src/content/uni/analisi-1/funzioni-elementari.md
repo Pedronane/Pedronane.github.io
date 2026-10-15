@@ -528,7 +528,7 @@ con la variabile rinominata $x$ alla fine, come si fa per scrivere l'inversa com
 
 - Scrivi le definizioni di $\sinh x$ e $\cosh x$ e di' quale delle due è pari.
 
-- Dimostra che $\sinh(-x) = -\sinh x$.
+- $\sinh$ è pari o dispari? Controllalo dalla definizione.
 
 - Qual è l'identità che lega $\cosh^2 x$ e $\sinh^2 x$, e da dove viene il nome "iperboliche"?
 

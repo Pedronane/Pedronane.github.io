@@ -1270,7 +1270,7 @@ $$
 
 - Come è definito $\mathbb{C}$ come insieme, e come si ritrova $\mathbb{R}$ dentro di esso?
 
-- Partendo da $z = (x,y)$ e dalle due operazioni di base, ricava la scrittura $z = x + iy$.
+- Come si scrive $z = (x,y)$ in forma algebrica? Chi sono $\mathrm{Re}\,z$ e $\mathrm{Im}\,z$?
 
 - Perché $i^2 = -1$ non è una convenzione ma un conto? Fallo.
 
@@ -1278,17 +1278,17 @@ $$
 
 - Definisci coniugato e modulo, e dì cosa sono geometricamente.
 
-- Dimostra che $z\bar z = |z|^2$ e spiega a cosa serve questa proprietà nei conti.
+- Quanto vale $z\bar z$? A cosa serve nei conti, per esempio in una divisione?
 
-- Dimostra la disuguaglianza triangolare $|z+w| \leq |z| + |w|$. Dove entra $\mathrm{Re}(u) \leq |u|$?
+- Enuncia la disuguaglianza triangolare in $\mathbb{C}$. Cosa dice sul triangolo di lati $z$, $w$, $z + w$?
 
-- Cosa sono $\rho$ e $\theta$ nella forma trigonometrica? Ricava $x = \rho\cos\theta$, $y = \rho\sin\theta$ e spiega perché davanti alla parentesi serve $\rho \geq 0$.
+- Cosa sono $\rho$ e $\theta$ nella forma trigonometrica? Come si passa da $(x, y)$ a $(\rho, \theta)$ e viceversa, e perché davanti alla parentesi serve $\rho \geq 0$?
 
 - Qual è la differenza fra $\mathrm{Arg}(z)$ e $\arg(z)$, e perché nelle formule sul prodotto si usa il secondo?
 
 - Cosa succede a modulo e argomento quando si moltiplicano due complessi? E quando si dividono?
 
-- Enuncia la formula di De Moivre e dimostrala per induzione.
+- Enuncia la formula di De Moivre.
 
 - Quante radici $n$-esime ha un complesso $w \neq 0$, e come sono disposte nel piano?
 
@@ -1296,7 +1296,7 @@ $$
 
 - Perché “$z^2 + a = 0$ ha sempre due soluzioni" va letto "contate con molteplicità"? Che succede per $a = 0$?
 
-- Nella dimostrazione del teorema delle radici, perché si fa variare $k$ solo da $0$ a $n-1$?
+- Nella formula delle radici $n$-esime, perché $k$ varia solo da $0$ a $n-1$?
 
 - Enuncia il teorema fondamentale dell'algebra nelle sue due formulazioni.
 

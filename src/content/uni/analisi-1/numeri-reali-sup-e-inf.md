@@ -991,10 +991,6 @@ Dal più facile al livello del 30. Prima di aprire la soluzione, prova almeno a 
 > (1) $\forall x \in A,\ x \leq M$; (2) $\forall \varepsilon > 0,\ \exists x \in A : x > M - \varepsilon$. $M - \varepsilon$ non deve stare in $A$: basta che qualche elemento di $A$ lo superi.
 
 
-> [!question]- Nella dimostrazione che $\sqrt{2} \notin \mathbb{Q}$, perché da $m^2$ pari segue $m$ pari?
-> Per contronominale: se $m = 2k + 1$ è dispari, $m^2 = 4k^2 + 4k + 1$ è dispari. Quindi $m^2$ pari implica $m$ pari.
-
-
 > [!question]- Scrivi in simboli che $A$ è illimitato superiormente.
 > $\forall M \in \mathbb{R},\ \exists x \in A : x > M$. Da non confondere con "per ogni $x \in A$ ce n'è uno più grande", che dice solo che non c'è massimo.
 
@@ -1003,16 +999,8 @@ Dal più facile al livello del 30. Prima di aprire la soluzione, prova almeno a 
 > $\mathbb{N}$ non è limitato superiormente ($\sup \mathbb{N} = +\infty$); equivalente: $\forall x \in \mathbb{R}\ \exists n \in \mathbb{N} : n > x$.
 
 
-> [!question]- In quale passo la dimostrazione di Archimede usa l'assioma di completezza?
-> Per assurdo $\mathbb{N}$ è limitato: per la completezza esiste $s = \sup \mathbb{N} \in \mathbb{R}$. Poi $s - 1$ non è maggiorante, quindi $\exists n > s - 1$, e $n + 1 > s$ con $n + 1 \in \mathbb{N}$: assurdo.
-
-
 > [!question]- Enuncia la densità di $\mathbb{Q}$ in $\mathbb{R}$.
 > $\forall a, b \in \mathbb{R}$ con $a < b$, $\exists q \in \mathbb{Q} : a < q < b$.
-
-
-> [!question]- Nella dimostrazione della densità, a cosa serve la proprietà di Archimede?
-> A trovare $n$ con $\frac1n < b - a$: la griglia di passo $\frac1n$ ha passi più corti dell'intervallo, quindi qualche $\frac{m}{n}$ cade dentro $(a, b)$.
 
 
 > [!question]- Quanto vale $\lfloor -2{,}5 \rfloor$, e perché non è $-2$?
@@ -1035,17 +1023,7 @@ Dal più facile al livello del 30. Prima di aprire la soluzione, prova almeno a 
 > (1) $\forall x \in A,\ x \leq M$; (2) $\forall N < M,\ \exists x \in A : x > N$. Cioè $M$ è maggiorante e nessun numero più piccolo lo è. “$M \in A$" è il massimo, non il sup.
 
 
-> [!question]- Perché nella dimostrazione di $\sqrt2 \notin \mathbb{Q}$ si può supporre $m$ e $n$ coprimi?
-> Se avessero un fattore comune si dividerebbero sopra e sotto senza cambiare il valore; i fattori sono finiti, quindi si arriva sempre alla frazione ai minimi termini.
-
-
-> [!question]- Dimostra per assurdo che il massimo di un insieme, se esiste, è unico.
-> Siano $M_1 \neq M_2$ due massimi. $M_1 \in A$ e $M_2$ è maggiorante, quindi $M_1 \leq M_2$; scambiando, $M_2 \leq M_1$. Per antisimmetria $M_1 = M_2$: assurdo.
-
-
 - Nell'assioma di completezza, qual è l'ipotesi e qual è la tesi? Perché "ogni insieme limitato superiormente ha un maggiorante" non può essere l'assioma?
-
-- Nell'insieme $\{q \in \mathbb{Q} : q \geq 0,\ q^2 < 2\}$ le ipotesi della completezza valgono anche in $\mathbb{Q}$. Cosa manca allora? Spiegalo con la mappa $q \mapsto \frac{2q + 2}{q + 2}$.
 
 - Disegna la striscia della condizione (2) per $M = \sup A$. Cosa succede nella figura se $M$ è un maggiorante ma non il sup?
 
@@ -1053,12 +1031,6 @@ Dal più facile al livello del 30. Prima di aprire la soluzione, prova almeno a 
 
 - Come si dimostra che un numero $M$ **non** è il sup di $A$? Quali sono i due casi?
 
-- Dimostra la proprietà di Archimede dicendo, a ogni passo, quale fatto usi.
-
-- Nella dimostrazione di Archimede si usa la (2) con $\varepsilon = 1$. Funzionerebbe con $\varepsilon = \frac12$? E con $\varepsilon = 2$? Perché non si può scrivere direttamente "prendo $n > s$"?
-
 - Dato $\varepsilon > 0$, come trovi un $n$ con $\frac{1}{n} < \varepsilon$? E con $\frac{c}{n} < \varepsilon$? Fai l'esempio con $\varepsilon = 0{,}003$.
-
-- Perché la parte intera $\lfloor x \rfloor$, definita come un sup, è in realtà un massimo?
 
 - Se $A \subset B$, che relazione c'è fra $\sup A$ e $\sup B$? Può essere $A \neq B$ e $\sup A = \sup B$?

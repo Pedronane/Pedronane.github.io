@@ -1210,11 +1210,11 @@ Dal più facile al livello del 30. Prima di aprire la soluzione, prova almeno a 
 
 - Definisci $n!$ e spiega perché conta le permutazioni di $n$ oggetti.
 
-- Che cosa conta $\binom nk$, e come si ricava $\frac{n!}{k!(n-k)!}$ dal conto delle scelte ordinate?
+- Che cosa conta $\binom nk$, e quanto vale in termini di fattoriali?
 
 - Enuncia il binomio di Newton. Dove si legge il coefficiente di $a^{n-k}b^k$ nel triangolo di Tartaglia?
 
-- Ricava la formula della somma $1 + q + \dots + q^n$ per $q \neq 1$. Quanto vale per $q = 1$?
+- Scrivi la formula della somma $1 + q + \dots + q^n$ per $q \neq 1$. Quanto vale per $q = 1$?
 
 - Scrivi con i quantificatori le definizioni di $a_n \to \ell$, $a_n \to +\infty$, $a_n \to -\infty$. Cosa cambia fra una e l'altra?
 
@@ -1224,9 +1224,9 @@ Dal più facile al livello del 30. Prima di aprire la soluzione, prova almeno a 
 
 - Verifica con la definizione che $\frac1n \to 0$. Dove entra la proprietà di Archimede?
 
-- Enuncia e dimostra il teorema di unicità del limite. Come si sceglie $\varepsilon$?
+- Enuncia il teorema di unicità del limite.
 
-- Enuncia e dimostra il teorema di limitatezza delle successioni convergenti. Perché i primi termini non creano problemi?
+- Enuncia il teorema di limitatezza delle successioni convergenti: ipotesi e tesi.
 
 - Vale il viceversa del teorema di limitatezza? Dai un controesempio.
 
@@ -1248,4 +1248,4 @@ Dal più facile al livello del 30. Prima di aprire la soluzione, prova almeno a 
 
 - Nella verifica di un limite con la definizione, quando conviene maggiorare $|a_n - \ell|$ invece di risolvere la disequazione? Fai un esempio.
 
-- Come si ricava dal binomio di Newton che $(1 + h)^n \geq 1 + nh$ per $h > 0$?
+- Per $h > 0$, che disuguaglianza lega $(1 + h)^n$ e $1 + nh$?

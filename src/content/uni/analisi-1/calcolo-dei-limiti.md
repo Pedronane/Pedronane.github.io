@@ -1258,7 +1258,7 @@ $$
 
 - Quali sono le quattro tecniche algebriche delle slide 56-59, e per quale forma indeterminata si usa ciascuna?
 
-- Enuncia e dimostra il criterio del rapporto. Dove entrano la permanenza del segno e il teorema delle monotone?
+- Enuncia il criterio del rapporto: ipotesi, tesi, e cosa conclude con $L < 1$, $L > 1$ e $L = 1$.
 
 - Perché con $L = 1$ il criterio del rapporto non conclude? Dai due esempi.
 

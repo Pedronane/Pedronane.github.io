@@ -743,19 +743,15 @@ non converge.
 
 - Che cosa vuol dire che una proprietà vale definitivamente? E frequentemente? Qual è la negazione di "definitivamente"?
 
-- Enuncia il corollario del confronto e dimostralo a partire dalla permanenza del segno.
+- Enuncia il corollario del confronto.
 
 - Enuncia il teorema dei carabinieri. Perché se $\ell = +\infty$ basta un carabiniere?
 
-- Enuncia e dimostra "limitata per infinitesima è infinitesima". Dove entrano i carabinieri?
+- Enuncia il teorema "limitata per infinitesima è infinitesima" e fai un esempio in cui si usa.
 
 - Perché $x_n \to 0$ se e solo se $|x_n| \to 0$? Vale anche con un limite diverso da $0$?
 
 - Calcola $\lim \frac{\sin n}{n}$ e spiega perché il fatto che $\sin n$ non abbia limite non conta.
-
-- Nella dimostrazione del punto 1 della permanenza del segno, perché si sceglie $\varepsilon = \frac\ell2$? Quali altri valori di $\varepsilon$ andrebbero bene?
-
-- Come si dimostra il punto 2 della permanenza del segno a partire dal punto 1?
 
 - Nel teorema dei carabinieri, perché i due carabinieri devono avere lo stesso limite? Dai un controesempio.
 

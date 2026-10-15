@@ -509,7 +509,7 @@ Le frazioni $\frac{1}{n}$ scendono sotto qualsiasi soglia positiva. Questo fatto
 
 Esempi, dal più facile:
 - $\varepsilon = 0{,}01$: serve $n > \frac{1}{0{,}01} = 100$, quindi $n = 101$ va bene. Controllo: $\frac{1}{101} \approx 0{,}0099 < 0{,}01$;
-- $\varepsilon = 0{,}003$: serve $n > \frac{1}{0{,}003} = 333{,}\overline{3}$, il primo naturale buono è $n = 334$. In generale va bene $n = \left\lfloor \frac1\varepsilon \right\rfloor + 1$, perché $\lfloor y \rfloor + 1 > y$ per ogni $y$;
+- $\varepsilon = 0{,}003$: serve $n > \frac{1}{0{,}003} = 333{,}\overline{3}$, il primo naturale buono è $n = 334$. In generale non serve scrivere quale: basta "per Archimede $\exists n \in \mathbb{N} : n > \frac1\varepsilon$", dopo aver scritto che è quella la disuguaglianza da soddisfare;
 - $\frac{5}{n} < 0{,}02$: equivale a $n > \frac{5}{0{,}02} = 250$, quindi $n = 251$. È la stessa idea con $\frac{c}{n}$: basta $n > \frac{c}{\varepsilon}$.
 
 **Controesempio.** $\left\{\frac1n : n \geq 1\right\}$ si avvicina a $0$ ma non lo raggiunge: Archimede dà $\frac1n < \varepsilon$, mai $\frac1n = 0$. Per questo $0$ è l'inf di quell'insieme ma non il minimo.
@@ -1031,6 +1031,6 @@ Dal più facile al livello del 30. Prima di aprire la soluzione, prova almeno a 
 
 - Come si dimostra che un numero $M$ **non** è il sup di $A$? Quali sono i due casi?
 
-- Dato $\varepsilon > 0$, come trovi un $n$ con $\frac{1}{n} < \varepsilon$? E con $\frac{c}{n} < \varepsilon$? Fai l'esempio con $\varepsilon = 0{,}003$.
+- Dato $\varepsilon > 0$, a quale disuguaglianza in $n$ si riduce $\frac{1}{n} < \varepsilon$, e perché un $n$ così esiste? E con $\frac{c}{n} < \varepsilon$?
 
 - Se $A \subset B$, che relazione c'è fra $\sup A$ e $\sup B$? Può essere $A \neq B$ e $\sup A = \sup B$?

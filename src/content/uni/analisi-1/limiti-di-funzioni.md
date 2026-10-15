@@ -554,7 +554,7 @@ $$
 $$
 M = \left\lfloor \frac1\delta \right\rfloor + 10
 $$
-Allora $M > \frac1\delta$ (la parte intera di $\frac1\delta$ è maggiore di $\frac1\delta - 1$, e si aggiunge $10$), quindi $0 < \frac1M < \delta$: l'elemento $\frac1M$ di $B$ sta in $(-\delta, \delta) \cap B \setminus \{0\}$. Il $+10$ è un margine generoso: basterebbe $+1$. È Archimede, come per $\frac1n \to 0$.
+Allora $M > \frac1\delta$ (la parte intera di $\frac1\delta$ è maggiore di $\frac1\delta - 1$, e si aggiunge $10$), quindi $0 < \frac1M < \delta$: l'elemento $\frac1M$ di $B$ sta in $(-\delta, \delta) \cap B \setminus \{0\}$. Il $+10$ è un margine generoso: basterebbe $+1$. Negli esercizi lo stesso passo si chiude con Archimede, come per $\frac1n \to 0$: $\exists M \in \mathbb{N} : M > \frac1\delta$, e il resto non cambia.
 - **Gli elementi $\frac1n$ non sono di accumulazione** (il disegno rosso del prof): per $n > 2$ i vicini di $\frac1n$ sono $\frac{1}{n+1} < \frac1n < \frac{1}{n-1}$, e fra loro non ci sono altri elementi di $B$. Basta un $\delta$ più piccolo della distanza dal vicino più prossimo, per esempio $\delta = \frac1n - \frac{1}{n+1} = \frac{1}{n(n+1)}$: l'intorno $\left(\frac1n - \delta, \frac1n + \delta\right)$ contiene solo $\frac1n$. (Per $n = 1$ e $n = 2$ lo stesso ragionamento con un solo vicino.) Sono tutti punti isolati.
 - **Gli altri punti non sono di accumulazione**: un $x_0 < 0$ o $x_0 > 1$ ha un intorno che non tocca $[0, 1]$; un $x_0 \in (0, 1)$ che non è della forma $\frac1n$ sta fra due elementi consecutivi $\frac{1}{n+1} < x_0 < \frac1n$, e un intorno più piccolo di entrambe le distanze non contiene elementi di $B$.
 

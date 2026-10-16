@@ -17,8 +17,8 @@ Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L5, lu
 > [!abstract] Per l'esame
 > - **Saper enunciare**: forma matriciale $A\vec{x} = \vec{b}$ con l'ordine di ogni matrice; sistema omogeneo associato; nucleo $N(A)$ e nullità $\operatorname{null}(A)$; $\operatorname{null}(A) + \operatorname{rg}(A) = n$; il teorema sulla struttura delle soluzioni, nei due casi $\vec{b} = \vec{0}$ e $\vec{b} \neq \vec{0}$.
 > - **Saper dimostrare**: che le soluzioni di un omogeneo sono chiuse per combinazioni lineari; che le soluzioni di $A\vec{x} = \vec{b}$ sono **tutte e sole** le $\vec{x}_0 + \vec{v}$ (le due direzioni).
-> - **Saper fare**: scrivere le soluzioni di un sistema come soluzione particolare più combinazione di soluzioni dell'omogeneo; calcolare la nullità dal rango.
-> - **Dove esce**: domande 3.5 e 3.6, esercizi 3.11 e 3.12 del [foglio 3](/uni/gal/foglio-3-svolto/). Il nucleo torna nella seconda parte del corso (funzioni lineari, teorema nullità più rango).
+> - **Saper fare**: scrivere le soluzioni di un sistema come soluzione particolare più combinazione di soluzioni dell'omogeneo; calcolare la nullità dal rango; riconoscere se un vettore è soluzione conoscendo $\vec{x}_0$ e $N(A)$, senza risolvere di nuovo; dire per quali valori di un parametro l'insieme delle soluzioni è chiuso; costruire un sistema con un insieme di soluzioni assegnato.
+> - **Dove esce**: domande 3.5 e 3.6, esercizi 3.11 e 3.12 del [foglio 3](/uni/gal/foglio-3-svolto/); esercizio 3, punto 3, del [foglio extra](/uni/gal/esercizi-extra-matrici-svolti/) (fatto dalla prof il 12/10). Il nucleo torna nella seconda parte del corso (funzioni lineari, teorema nullità più rango).
 
 **L'idea.** Finora un sistema con infinite soluzioni si scriveva “$x = 1 - 2w$, $y = -3z$". Qui si guarda **com'è fatto** quell'insieme: è una soluzione qualunque, spostata di tutte le soluzioni del sistema omogeneo. In geometria è la stessa cosa di una retta che non passa per l'origine: un punto della retta più tutti i multipli del vettore direzionale.
 
@@ -29,9 +29,29 @@ Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L5, lu
                                        (n - rg(A) parametri liberi)
 ```
 
+Il filo della nota:
+
+```
+sistema (*)  --scrivo-->  A x = b          forma matriciale
+                 |
+                 v  metto b = 0
+             A x = 0                       omogeneo associato, sempre compatibile
+                 |
+                 v  le sue soluzioni
+             N(A), null(A) parametri       null(A) + rg(A) = n
+                 |
+                 v  osservazione 1
+             N(A) chiuso per combinazioni lineari
+                 |
+                 v  teorema
+             soluzioni di A x = b  =  x0 + N(A)     (se il sistema è compatibile)
+```
+
 ## Definizioni
 
 ### Il sistema in forma matriciale
+
+**L'idea.** Un sistema lineare è fatto di tre ingredienti: i coefficienti, le incognite, i termini noti. Il prodotto righe per colonne ([Matrici e operazioni](/uni/gal/matrici-e-operazioni/)) fa esattamente "coefficiente per incognita, poi somma", cioè il primo membro di un'equazione. Quindi tutto il sistema si scrive come una sola uguaglianza fra matrici, e i teoremi sulle matrici diventano teoremi sui sistemi.
 
 La prof (<span class="src">p. 9</span>): il sistema
 $$
@@ -48,11 +68,51 @@ A\vec{x} = \vec{b}
 $$
 **Perché funziona.** $A$ è $m \times n$ e $\vec{x}$ è $n \times 1$: il prodotto esiste ed è $m \times 1$, come $\vec{b}$. La sua riga $i$ è "riga $i$ di $A$ per la colonna $\vec{x}$", cioè $a_{i1}x_1 + \cdots + a_{in}x_n$: il primo membro dell'equazione $i$. Nel quaderno la prof lo mostra cerchiando in verde la prima riga di $A$ con $x_1$ e il primo termine noto in azzurro. Uguagliare due matrici colonna vuol dire uguagliare riga per riga, cioè scrivere tutte le $m$ equazioni.
 
-Una **soluzione** è una colonna $\vec{v} \in M_{n \times 1}(\mathbb{R})$ con $A\vec{v} = \vec{b}$. Un sistema è **omogeneo** se $\vec{b} = \vec{0}$, cioè se è della forma $A\vec{x} = \vec{0}$. Il **sistema omogeneo associato** ad $A\vec{x} = \vec{b}$ è $A\vec{x} = \vec{0}$: stessa $A$, termini noti a zero.
+```
+   A          x          b
+ m x n  .   n x 1   =  m x 1
+     \_____/
+   n = n: il prodotto esiste, e ha m righe come b
+```
 
-Esempio: $\begin{cases} x + 2y = 1 \\ y - z = 2 \end{cases}$ si scrive $\begin{pmatrix} 1 & 2 & 0 \\ 0 & 1 & -1 \end{pmatrix}\begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}$, con $A$ $2 \times 3$, $\vec{x}$ $3 \times 1$, $\vec{b}$ $2 \times 1$. Il coefficiente $0$ di $z$ nella prima equazione va scritto.
+Una **soluzione** è una colonna $\vec{v} \in M_{n \times 1}(\mathbb{R})$ con $A\vec{v} = \vec{b}$. In forma matriciale "verificare una soluzione" è un prodotto: si calcola $A\vec{v}$ e si confronta con $\vec{b}$.
+
+**Esempi, dal più facile.**
+
+1. $\begin{cases} x + 2y = 1 \\ y - z = 2 \end{cases}$ si scrive $\begin{pmatrix} 1 & 2 & 0 \\ 0 & 1 & -1 \end{pmatrix}\begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}$, con $A$ $2 \times 3$, $\vec{x}$ $3 \times 1$, $\vec{b}$ $2 \times 1$. Il coefficiente $0$ di $z$ nella prima equazione va scritto, e così lo $0$ di $x$ nella seconda.
+2. Tre equazioni in due incognite, $\begin{cases} x - y = 1 \\ 2x + y = 5 \\ x + 3y = 5 \end{cases}$: $A = \begin{pmatrix} 1 & -1 \\ 2 & 1 \\ 1 & 3 \end{pmatrix}$ è $3 \times 2$, $\vec{x} = \begin{pmatrix} x \\ y \end{pmatrix}$ è $2 \times 1$, $\vec{b} = \begin{pmatrix} 1 \\ 5 \\ 5 \end{pmatrix}$ è $3 \times 1$. Verifico che $(2, 1)$ è soluzione con il prodotto:
+   - riga 1 per la colonna: $1 \cdot 2 + (-1) \cdot 1 = 1$;
+   - riga 2 per la colonna: $2 \cdot 2 + 1 \cdot 1 = 5$;
+   - riga 3 per la colonna: $1 \cdot 2 + 3 \cdot 1 = 5$;
+   - $A\begin{pmatrix} 2 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 \\ 5 \\ 5 \end{pmatrix} = \vec{b}$: è soluzione.
+3. Al contrario, dalla forma matriciale al sistema: $\begin{pmatrix} 2 & 0 & -1 \\ 1 & 1 & 1 \end{pmatrix}\begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 3 \\ 0 \end{pmatrix}$ è il sistema $\begin{cases} 2x - z = 3 \\ x + y + z = 0 \end{cases}$ (la $y$ manca nella prima perché il suo coefficiente è $0$).
+
+**Controesempio.** Per il sistema dell'esempio 1, scrivere $A = \begin{pmatrix} 1 & 2 \\ 1 & -1 \end{pmatrix}$ (dimenticando gli zeri e "compattando" i coefficienti) dà una matrice $2 \times 2$: il prodotto con $\vec{x}$, che è $3 \times 1$, non esiste nemmeno. E anche se esistesse, la seconda riga direbbe $x - y$, mentre l'equazione è $y - z$. Ogni colonna di $A$ appartiene a **una** incognita, sempre la stessa.
+
+> [!tip] Un altro modo di leggere $A\vec{x}$ (si vede nella L7, 13/10)
+> Il prodotto $A\vec{x}$ è anche la combinazione lineare delle colonne di $A$ con pesi $x_1, \dots, x_n$: $A\vec{x} = x_1 A^{(1)} + \cdots + x_n A^{(n)}$, dove $A^{(j)}$ è la colonna $j$. Nell'esempio 2: $2\begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix} + 1\begin{pmatrix} -1 \\ 1 \\ 3 \end{pmatrix} = \begin{pmatrix} 1 \\ 5 \\ 5 \end{pmatrix}$. Risolvere $A\vec{x} = \vec{b}$ vuol dire cercare i pesi che danno $\vec{b}$ ([Spazi vettoriali](/uni/gal/spazi-vettoriali/), [Generatori](/uni/gal/generatori/)).
+
+### Sistema omogeneo e sistema omogeneo associato
+
+**L'idea.** Se si azzerano tutti i termini noti, il sistema diventa più semplice e ha una soluzione garantita: tutte le incognite a $0$. Questo sistema "scheletro" ha la stessa matrice $A$, quindi gli stessi pivot e le stesse variabili libere, e il teorema della nota dice che contiene tutta l'informazione sulla **forma** delle soluzioni del sistema di partenza.
+
+Un sistema è **omogeneo** se $\vec{b} = \vec{0}$, cioè se è della forma $A\vec{x} = \vec{0}$ (la prof, <span class="src">p. 9</span>: “$A\vec{x} = \vec{0}$ è un sistema lineare omogeneo, ove $\vec{0} = 0_{m,1}$ matrice nulla"). Il **sistema omogeneo associato** ad $A\vec{x} = \vec{b}$ è $A\vec{x} = \vec{0}$: stessa $A$, termini noti a zero.
+
+**Perché un omogeneo è sempre compatibile.** Due modi di vederlo:
+- $A\vec{0} = \vec{0}$: ogni riga di $A$ per la colonna nulla dà $0$. Quindi $\vec{x} = \vec{0}$ è sempre una soluzione (la **soluzione banale**).
+- Con Rouché-Capelli: l'ultima colonna di $[A \mid \vec{0}]$ è nulla, e resta nulla a ogni operazione elementare, quindi non contiene mai un pivot. $\operatorname{rg}(A) = \operatorname{rg}([A \mid \vec{0}])$.
+
+La domanda giusta per un omogeneo non è "ha soluzioni?" ma "ha **solo** quella nulla, o infinite?".
+
+**Esempi.**
+1. Il sistema omogeneo associato a $\begin{cases} x + 2y = 1 \\ y - z = 2 \end{cases}$ è $\begin{cases} x + 2y = 0 \\ y - z = 0 \end{cases}$. Cambia solo la colonna dei termini noti.
+2. $\begin{cases} x + y = 0 \\ 2x + 2y = 0 \end{cases}$ è omogeneo. $R_2 \to R_2 - 2R_1$ dà la riga $(0, 0)$: resta $x + y = 0$, con $y = t$ libera e $x = -t$. Infinite soluzioni $t(-1, 1)$, fra cui la banale ($t = 0$).
+
+**Controesempio.** $\begin{cases} x + y = 0 \\ x - y = 3 \end{cases}$ **non** è omogeneo: basta un termine noto diverso da $0$. Il suo omogeneo associato è $\begin{cases} x + y = 0 \\ x - y = 0 \end{cases}$. E $(0, 0)$ non è soluzione del sistema di partenza: $0 - 0 = 0 \neq 3$.
 
 ### Nucleo e nullità
+
+**L'idea.** Il nucleo raccoglie tutti i vettori che la matrice "manda a zero". Per un sistema sono le soluzioni dell'omogeneo associato: le direzioni lungo cui ci si può muovere senza cambiare $A\vec{x}$. La nullità conta quanti parametri liberi servono per descriverle.
 
 La prof (<span class="src">p. 10</span>): data $A \in M_{m \times n}(\mathbb{R})$, il **nucleo** di $A$ è l'insieme delle soluzioni del sistema lineare omogeneo $A\vec{x} = \vec{0}$.
 
@@ -60,19 +120,44 @@ Chiamiamo **nullità** di $A$ il numero di colonne di $\operatorname{rref}(A)$ c
 
 Notazione: $N(A)$ nucleo di $A$, $\operatorname{null}(A)$ nullità di $A$.
 
-Dal capitolo 4 ([Spazi vettoriali](/uni/gal/spazi-vettoriali/), esempio (3)): $N(A)$ è un **sottospazio vettoriale** di $\mathbb{R}^n$.
+Dal capitolo 4 ([Spazi vettoriali](/uni/gal/spazi-vettoriali/), esempio (3), L7 del 13/10): $N(A)$ è un **sottospazio vettoriale** di $\mathbb{R}^n$.
 
 **Perché.** $N(A)$ è un insieme di colonne $n \times 1$, mai vuoto: contiene sempre $\vec{0}$. La nullità misura "quanto è grande": $\operatorname{null}(A) = 0$ vuol dire che l'omogeneo ha solo la soluzione nulla; $\operatorname{null}(A) = 2$ vuol dire che le soluzioni dipendono da due parametri liberi.
 
-Esempio: $A = \begin{pmatrix} 1 & 1 & 1 \end{pmatrix}$ ($1 \times 3$). $N(A)$ sono le $(x, y, z)$ con $x + y + z = 0$: un piano per l'origine. Una colonna con pivot, due senza: $\operatorname{null}(A) = 2$.
+**Dove vive.** Se $A$ è $m \times n$, i vettori di $N(A)$ hanno $n$ componenti, una per incognita: $N(A) \subseteq \mathbb{R}^n$, non $\mathbb{R}^m$. Il numero di righe non c'entra.
+
+**Esempi, dal più facile.**
+
+1. $A = \begin{pmatrix} 1 & 1 & 1 \end{pmatrix}$ ($1 \times 3$). $N(A)$ sono le $(x, y, z)$ con $x + y + z = 0$: un piano per l'origine. Una colonna con pivot, due senza: $\operatorname{null}(A) = 2$. Con $y = s$, $z = t$: $x = -s - t$, quindi
+$$
+N(A) = \left\{ s\begin{pmatrix} -1 \\ 1 \\ 0 \end{pmatrix} + t\begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix} : s, t \in \mathbb{R} \right\}
+$$
+2. $A = \begin{pmatrix} 1 & 2 & 0 \\ 0 & 1 & -1 \end{pmatrix}$ ($2 \times 3$, la matrice dell'esempio 1 della forma matriciale).
+   - È già a scalini. $R_1 \to R_1 - 2R_2$: $(1 - 0,\ 2 - 2,\ 0 - 2(-1)) = (1, 0, 2)$.
+   - $\operatorname{rref}(A) = \begin{pmatrix} 1 & 0 & 2 \\ 0 & 1 & -1 \end{pmatrix}$: pivot nelle colonne di $x$ e $y$, la colonna di $z$ è senza pivot. $\operatorname{null}(A) = 1$.
+   - Le equazioni sono $x + 2z = 0$ e $y - z = 0$. Con $z = t$: $y = t$, $x = -2t$.
+   - $N(A) = \{ t(-2, 1, 1) : t \in \mathbb{R} \}$, una retta per l'origine in $\mathbb{R}^3$.
+   - Verifica: $A(-2, 1, 1)$ dà $-2 + 2 + 0 = 0$ e $0 + 1 - 1 = 0$.
+3. $A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$.
+   - $R_2 \to R_2 - 3R_1$: $(3 - 3,\ 4 - 6) = (0, -2)$.
+   - Due pivot ($1$ e $-2$) su due colonne: nessuna colonna libera, $\operatorname{null}(A) = 0$ e $N(A) = \{\vec{0}\}$.
+   - Dall'ultima riga $-2y = 0$, quindi $y = 0$; dalla prima $x + 2 \cdot 0 = 0$, quindi $x = 0$. Solo la soluzione banale.
+
+**Controesempio: la nullità non si conta sulle righe.** $A = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \end{pmatrix}$. $R_2 \to R_2 - 2R_1$ dà $\begin{pmatrix} 1 & 2 & 3 \\ 0 & 0 & 0 \end{pmatrix}$: **una** riga nulla, ma le colonne senza pivot sono **due** (quelle di $y$ e $z$). $\operatorname{null}(A) = 2$, e infatti $N(A) = \{ s(-2, 1, 0) + t(-3, 0, 1) \}$ dipende da due parametri.
+
+**Secondo controesempio: il nucleo è di $A$, non di $[A \mid \vec{b}]$.** Il nucleo si calcola sempre con termini noti a zero. Le colonne si contano in $A$ ($n$ colonne), non nella completa ($n + 1$).
 
 ## Enunciati
 
 ### Osservazione 1: le soluzioni di un omogeneo sono chiuse
 
+**L'idea.** Se due vettori vengono "mandati a zero" da $A$, anche una loro combinazione ci va: $A$ si distribuisce sulla somma e fa uscire gli scalari, e combinare due zeri dà zero. Per questo l'insieme delle soluzioni di un omogeneo è un insieme "senza bordi" rispetto alle combinazioni: si somma, si moltiplica, e si resta dentro.
+
 La prof (<span class="src">p. 9-10</span>): sia $A\vec{x} = \vec{0}$ un sistema lineare omogeneo. Siano $\vec{v}$ e $\vec{w}$ vettori colonna soluzioni del sistema, ossia $A\vec{v} = \vec{0}$, $A\vec{w} = \vec{0}$. Se $\lambda, \mu \in \mathbb{R}$, allora anche la **combinazione lineare** $\lambda\vec{v} + \mu\vec{w}$ è soluzione del sistema lineare $A\vec{x} = \vec{0}$.
 
 In particolare ($\lambda = \mu = 1$, oppure $\mu = 0$) l'insieme delle soluzioni è **chiuso rispetto alla somma e al prodotto per uno scalare**.
+
+Ipotesi: $\vec{v}$ e $\vec{w}$ risolvono l'omogeneo, $\lambda, \mu \in \mathbb{R}$ qualunque. Tesi: $A(\lambda\vec{v} + \mu\vec{w}) = \vec{0}$.
 
 > [!note]- Dimostrazione (della prof)
 > Per le proprietà delle operazioni ([Matrici e operazioni](/uni/gal/matrici-e-operazioni/): distributiva e scalari; la prof scrive "proprietà delle operazioni" sotto il primo uguale e "per ipotesi ($\vec{v}$, $\vec{w}$ sono soluzioni)" sotto gli zeri),
@@ -80,10 +165,29 @@ In particolare ($\lambda = \mu = 1$, oppure $\mu = 0$) l'insieme delle soluzioni
 > A(\lambda\vec{v} + \mu\vec{w}) = A(\lambda\vec{v}) + A(\mu\vec{w}) = \lambda(A\vec{v}) + \mu(A\vec{w}) = \lambda\vec{0} + \mu\vec{0} = \vec{0}
 > $$
 > Nel quaderno $A\vec{v}$ e $A\vec{w}$ sono incorniciati con “$= 0$" sopra: è lì che si usa l'ipotesi. $\square$
+>
+> Come si scrive allo scritto, un passaggio per riga con la sua giustificazione:
+> 1. Ipotesi: $A\vec{v} = \vec{0}$, $A\vec{w} = \vec{0}$; $\lambda, \mu \in \mathbb{R}$. Tesi: $A(\lambda\vec{v} + \mu\vec{w}) = \vec{0}$.
+> 2. $A(\lambda\vec{v} + \mu\vec{w}) = A(\lambda\vec{v}) + A(\mu\vec{w})$: distributiva del prodotto rispetto alla somma, $A(B + C) = AB + AC$.
+> 3. $A(\lambda\vec{v}) + A(\mu\vec{w}) = \lambda(A\vec{v}) + \mu(A\vec{w})$: lo scalare esce dal prodotto, $A(\lambda B) = \lambda(AB)$.
+> 4. $\lambda(A\vec{v}) + \mu(A\vec{w}) = \lambda\vec{0} + \mu\vec{0}$: ipotesi.
+> 5. $\lambda\vec{0} + \mu\vec{0} = \vec{0}$: uno scalare per la colonna nulla è la colonna nulla, e $\vec{0} + \vec{0} = \vec{0}$.
+> 6. Quindi $\lambda\vec{v} + \mu\vec{w}$ è soluzione di $A\vec{x} = \vec{0}$. Con $\lambda = \mu = 1$ si ha la chiusura per somma, con $\mu = 0$ quella per prodotto per scalare. $\square$
+
+**Esempi.**
+1. Con $A = \begin{pmatrix} 1 & 1 & 1 \end{pmatrix}$: $\vec{v} = (-1, 1, 0)$ e $\vec{w} = (-1, 0, 1)$ sono in $N(A)$ ($-1 + 1 + 0 = 0$, $-1 + 0 + 1 = 0$). Prendo $\lambda = 2$, $\mu = -3$:
+   - $2\vec{v} = (-2, 2, 0)$, $-3\vec{w} = (3, 0, -3)$;
+   - $2\vec{v} - 3\vec{w} = (1, 2, -3)$;
+   - verifica nell'omogeneo: $1 + 2 - 3 = 0$. È soluzione, come dice l'osservazione.
+2. Con $A = \begin{pmatrix} 1 & 2 & 0 \\ 0 & 1 & -1 \end{pmatrix}$, $N(A) = \{t(-2, 1, 1)\}$. Qui ogni combinazione di soluzioni è un multiplo di $(-2, 1, 1)$: per esempio $5(-2, 1, 1) = (-10, 5, 5)$, e $A(-10, 5, 5)$ dà $-10 + 10 + 0 = 0$ e $5 - 5 = 0$.
 
 **Il non omogeneo non è chiuso** (dispensa, <span class="src">Oss. 12</span>). Se $A\vec{x}_1 = A\vec{x}_2 = \vec{b} \neq \vec{0}$, allora $A(\vec{x}_1 + \vec{x}_2) = 2\vec{b} \neq \vec{b}$, e $A(0 \cdot \vec{x}_1) = \vec{0} \neq \vec{b}$. Già il vettore nullo non è soluzione.
 
+**Controesempio con i numeri.** $x + y + z = 1$: $(1, 0, 0)$ e $(0, 1, 0)$ sono soluzioni, la loro somma $(1, 1, 0)$ dà $1 + 1 + 0 = 2 \neq 1$. E $\vec{0}$ dà $0 \neq 1$. Nella figura del teorema, a destra, lo stesso fatto nel piano.
+
 ### Nullità più rango
+
+**L'idea.** Le colonne di $A$ sono le incognite. Dopo la riduzione ogni incognita è di uno di due tipi: o è "comandata" da un pivot (si ricava dalle altre), o è libera. Contare le une e le altre dà il numero totale di incognite.
 
 La prof (<span class="src">p. 11</span>, osservazione, "segue dalle definizioni di rango e di nullità"): per $A \in M_{m \times n}(\mathbb{R})$
 $$
@@ -92,7 +196,20 @@ $$
 
 **Perché.** Ogni colonna di $\operatorname{rref}(A)$ o contiene un pivot o non lo contiene. Le prime sono $\operatorname{rg}(A)$ (definizione di rango, [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/)), le seconde $\operatorname{null}(A)$. Insieme fanno tutte le $n$ colonne. È la stessa cosa del “$n - \operatorname{rg}(A)$ parametri liberi" di Rouché-Capelli, detta per l'omogeneo. Nella seconda parte del corso tornerà come **teorema nullità più rango**.
 
+**Esempi.**
+1. L'esempio della prof (sotto): $A$ è $3 \times 4$ con $\operatorname{rg}(A) = 2$, quindi $\operatorname{null}(A) = 4 - 2 = 2$.
+2. $A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$: $\operatorname{rg}(A) = 2$, $n = 2$, quindi $\operatorname{null}(A) = 0$. Torna con il conto fatto sopra.
+3. Senza conti: se $A$ è $3 \times 5$, il rango è al più $3$ (un pivot per riga al massimo), quindi $\operatorname{null}(A) = 5 - \operatorname{rg}(A) \geq 5 - 3 = 2$. Un omogeneo con 3 equazioni e 5 incognite ha **sempre** infinite soluzioni, con almeno due parametri.
+
+**Controesempio: non è il numero di righe.** “$\operatorname{null}(A) + \operatorname{rg}(A) = m$" è falso: per $A = \begin{pmatrix} 1 & 1 & 1 \end{pmatrix}$ si ha $m = 1$, ma $\operatorname{null}(A) + \operatorname{rg}(A) = 2 + 1 = 3 = n$.
+
 ### Teorema: struttura dell'insieme delle soluzioni
+
+**L'idea.** Due soluzioni dello stesso sistema danno lo stesso $\vec{b}$, quindi la loro differenza dà $\vec{0}$: sta nel nucleo. Al contrario, a una soluzione si può aggiungere qualunque elemento del nucleo senza cambiare $A\vec{x}$. Quindi, trovata **una** soluzione, tutte le altre si ottengono spostandola di tutti i vettori del nucleo. Nel piano: le soluzioni di $x + 2y = 4$ sono la retta parallela a quella delle soluzioni di $x + 2y = 0$, passante per una soluzione qualunque (figura, a sinistra).
+
+<figure class="fig"><svg role="img" aria-label="soluzioni come nucleo traslato" xmlns:xlink="http://www.w3.org/1999/xlink" width="658.8pt" height="220.855006pt" viewBox="0 0 658.8 220.855006" xmlns="http://www.w3.org/2000/svg" version="1.1"> <defs> <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style> </defs> <g id="f3c0d18-figure_1"> <g id="f3c0d18-patch_1"> <path d="M 0 220.855006 L 658.8 220.855006 L 658.8 -0 L 0 -0 L 0 220.855006 z " style="fill: none"/> </g> <g id="f3c0d18-axes_1"> <g id="f3c0d18-patch_2"> <path d="M 5.76 214.041714 L 313.988571 214.041714 L 313.988571 22.94 L 5.76 22.94 L 5.76 214.041714 z " style="fill: none"/> </g> <g id="f3c0d18-matplotlib.axis_1"/> <g id="f3c0d18-matplotlib.axis_2"/> <g id="f3c0d18-line2d_1"> <path d="M 11.924571 81.503429 L 25.551519 88.316902 L 39.178466 95.130376 L 52.805414 101.94385 L 66.432361 108.757323 L 80.059308 115.570797 L 93.686256 122.384271 L 107.313203 129.197744 L 120.94015 136.011218 L 134.567098 142.824692 L 148.194045 149.638165 L 161.820992 156.451639 L 175.44794 163.265113 L 189.074887 170.078586 L 202.701835 176.89206 L 216.328782 183.705534 L 229.955729 190.519008 L 243.582677 197.332481 L 257.209624 204.145955 L 270.836571 210.959429 " clip-path="url(#f3c0d18-p5562c9935d)" style="fill: none; stroke: var(--fig-steel); stroke-opacity: 0.9; stroke-width: 2.6; stroke-linecap: square"/> </g> <g id="f3c0d18-line2d_2"> <path d="M 24.253714 26.022286 L 39.178466 33.484662 L 54.103218 40.947038 L 69.02797 48.409414 L 83.952722 55.871789 L 98.877474 63.334165 L 113.802226 70.796541 L 128.726977 78.258917 L 143.651729 85.721293 L 158.576481 93.183669 L 173.501233 100.646045 L 188.425985 108.108421 L 203.350737 115.570797 L 218.275489 123.033173 L 233.200241 130.495549 L 248.124992 137.957925 L 263.049744 145.420301 L 277.974496 152.882677 L 292.899248 160.345053 L 307.824 167.807429 " clip-path="url(#f3c0d18-p5562c9935d)" style="fill: none; stroke: var(--fig-accent); stroke-opacity: 0.9; stroke-width: 2.6; stroke-linecap: square"/> </g> <g id="f3c0d18-patch_3"> <path d="M 116.722286 214.041714 L 116.722286 22.94 " style="fill: none; stroke: var(--fig-axis); stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/> </g> <g id="f3c0d18-patch_4"> <path d="M 5.76 133.902286 L 313.988571 133.902286 " style="fill: none; stroke: var(--fig-axis); stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/> </g> <g id="f3c0d18-text_1"> <!-- $x$ --> <g style="fill: var(--fig-axis)" transform="translate(306.578571 149.94381) scale(0.13 -0.13)"> <defs> <path id="f3c0d18-DejaVuSerif-Italic-5b" d="M 409 0 L 19 0 L 1484 1594 L 747 2988 L 338 2988 L 400 3322 L 1244 3322 L 1934 2028 L 3125 3322 L 3516 3322 L 2078 1759 L 2838 331 L 3272 331 L 3209 0 L 2338 0 L 1631 1325 L 409 0 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5b" transform="translate(0 0.09375)"/> </g> </g> <g id="f3c0d18-text_2"> <!-- $y$ --> <g style="fill: var(--fig-axis)" transform="translate(121.345714 32.816953) scale(0.13 -0.13)"> <defs> <path id="f3c0d18-DejaVuSerif-Italic-5c" d="M 3681 3294 Q 3372 1506 2828 563 Q 2031 -822 1391 -1238 Q 1106 -1422 356 -1422 Q 209 -1422 60 -1397 Q -88 -1372 -238 -1325 L -113 -691 L 181 -691 Q 175 -741 175 -788 Q 175 -919 231 -994 Q 309 -1100 513 -1100 Q 1063 -1100 1541 -622 L 756 2988 L 378 2988 L 444 3322 L 1303 3322 L 2041 25 Q 2544 778 2666 1088 Q 3059 2059 3138 2959 L 2759 2959 L 2825 3294 L 3681 3294 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5c" transform="translate(0 0.09375)"/> </g> </g> <g id="f3c0d18-text_3"> <!-- $N(A)$: $x + 2y = 0$ --> <g style="fill: var(--fig-steel)" transform="translate(17.103429 183.255165) scale(0.12 -0.12)"> <defs> <path id="f3c0d18-DejaVuSerif-Italic-31" d="M -128 0 L -66 331 L 562 331 L 1341 4331 L 712 4331 L 778 4666 L 1975 4666 L 4056 984 L 4706 4331 L 4081 4331 L 4147 4666 L 5784 4666 L 5719 4331 L 5091 4331 L 4231 -91 L 3853 -91 L 1631 3841 L 947 331 L 1575 331 L 1512 0 L -128 0 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-b" d="M 2041 -997 Q 1281 -656 893 83 Q 506 822 506 1931 Q 506 3044 893 3783 Q 1281 4522 2041 4863 L 2041 4556 Q 1559 4225 1350 3623 Q 1141 3022 1141 1931 Q 1141 844 1350 242 Q 1559 -359 2041 -691 L 2041 -997 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-Italic-24" d="M 1159 1691 L 2872 1691 L 2447 3909 L 1159 1691 z M -488 0 L -425 331 L -16 331 L 2491 4666 L 3016 4666 L 3841 331 L 4297 331 L 4234 0 L 2537 0 L 2600 331 L 3119 331 L 2928 1356 L 966 1356 L 375 331 L 887 331 L 825 0 L -488 0 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-c" d="M 453 -997 L 453 -691 Q 934 -359 1145 242 Q 1356 844 1356 1931 Q 1356 3022 1145 3623 Q 934 4225 453 4556 L 453 4863 Q 1216 4522 1603 3783 Q 1991 3044 1991 1931 Q 1991 822 1603 83 Q 1216 -656 453 -997 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-1d" d="M 666 325 Q 666 500 786 622 Q 906 744 1081 744 Q 1256 744 1376 622 Q 1497 500 1497 325 Q 1497 150 1378 29 Q 1259 -91 1081 -91 Q 903 -91 784 29 Q 666 150 666 325 z M 666 2363 Q 666 2538 786 2658 Q 906 2778 1081 2778 Q 1259 2778 1378 2659 Q 1497 2541 1497 2363 Q 1497 2184 1378 2065 Q 1259 1947 1081 1947 Q 906 1947 786 2067 Q 666 2188 666 2363 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-3" transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-e" d="M 2931 4013 L 2931 2259 L 4684 2259 L 4684 1753 L 2931 1753 L 2931 0 L 2431 0 L 2431 1753 L 678 1753 L 678 2259 L 2431 2259 L 2431 4013 L 2931 4013 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-15" d="M 819 3553 L 469 3553 L 469 4384 Q 803 4563 1142 4656 Q 1481 4750 1806 4750 Q 2534 4750 2956 4397 Q 3378 4044 3378 3438 Q 3378 2753 2422 1800 Q 2347 1728 2309 1691 L 1131 513 L 3078 513 L 3078 1088 L 3444 1088 L 3444 0 L 434 0 L 434 341 L 1850 1753 Q 2319 2222 2519 2614 Q 2719 3006 2719 3438 Q 2719 3909 2473 4175 Q 2228 4441 1797 4441 Q 1350 4441 1106 4219 Q 863 3997 819 3553 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-20" d="M 678 2894 L 4684 2894 L 4684 2394 L 678 2394 L 678 2894 z M 678 1619 L 4684 1619 L 4684 1119 L 678 1119 L 678 1619 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-13" d="M 2034 219 Q 2513 219 2750 744 Q 2988 1269 2988 2328 Q 2988 3391 2750 3916 Q 2513 4441 2034 4441 Q 1556 4441 1318 3916 Q 1081 3391 1081 2328 Q 1081 1269 1318 744 Q 1556 219 2034 219 z M 2034 -91 Q 1275 -91 848 546 Q 422 1184 422 2328 Q 422 3475 848 4112 Q 1275 4750 2034 4750 Q 2797 4750 3222 4112 Q 3647 3475 3647 2328 Q 3647 1184 3222 546 Q 2797 -91 2034 -91 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-31" transform="translate(0 0.015625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-b" transform="translate(87.5 0.015625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-24" transform="translate(126.513672 0.015625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-c" transform="translate(198.730469 0.015625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-1d" transform="translate(237.744141 0.015625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-3" transform="translate(271.435547 0.015625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5b" transform="translate(303.222656 0.015625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-e" transform="translate(378.583984 0.015625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-15" transform="translate(481.337891 0.015625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5c" transform="translate(544.960938 0.015625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-20" transform="translate(620.419922 0.015625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-13" transform="translate(723.173828 0.015625)"/> </g> </g> <g id="f3c0d18-text_4"> <!-- $x + 2y = 4$ --> <g style="fill: var(--fig-accent)" transform="translate(229.467429 186.336045) scale(0.12 -0.12)"> <defs> <path id="f3c0d18-DejaVuSerif-17" d="M 2234 1581 L 2234 4063 L 641 1581 L 2234 1581 z M 3609 0 L 1484 0 L 1484 331 L 2234 331 L 2234 1247 L 197 1247 L 197 1588 L 2241 4750 L 2859 4750 L 2859 1581 L 3750 1581 L 3750 1247 L 2859 1247 L 2859 331 L 3609 331 L 3609 0 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5b" transform="translate(0 0.78125)"/> <use xlink:href="#f3c0d18-DejaVuSerif-e" transform="translate(75.361328 0.78125)"/> <use xlink:href="#f3c0d18-DejaVuSerif-15" transform="translate(178.115234 0.78125)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5c" transform="translate(241.738281 0.78125)"/> <use xlink:href="#f3c0d18-DejaVuSerif-20" transform="translate(317.197266 0.78125)"/> <use xlink:href="#f3c0d18-DejaVuSerif-17" transform="translate(419.951172 0.78125)"/> </g> </g> <g id="f3c0d18-patch_5"> <path d="M 116.722286 133.902286 Q 178.368 133.902286 237.106826 133.902286 " style="fill: none; stroke: var(--fig-ink); stroke-width: 2.6; stroke-linecap: round"/> <path d="M 231.506826 131.102286 L 237.106826 133.902286 L 231.506826 136.702286 z " style="fill: var(--fig-ink); stroke: var(--fig-ink); stroke-width: 2.6; stroke-linecap: round"/> </g> <g id="f3c0d18-patch_6"> <path d="M 116.722286 133.902286 Q 85.899429 118.490857 57.676571 104.379429 " style="fill: none; stroke: var(--fig-steel); stroke-width: 2.6; stroke-linecap: round"/> <path d="M 61.433166 109.388221 L 57.676571 104.379429 L 63.937562 104.379429 z " style="fill: var(--fig-steel); stroke: var(--fig-steel); stroke-width: 2.6; stroke-linecap: round"/> </g> <g id="f3c0d18-patch_7"> <path d="M 178.368 164.725143 Q 240.013714 164.725143 300.205984 164.725143 " style="fill: none; stroke-dasharray: 5.2,3.9; stroke-dashoffset: 0; stroke: var(--fig-axis); stroke-width: 1.3; stroke-linecap: round"/> <path d="M 296.205984 162.725143 L 300.205984 164.725143 L 296.205984 166.725143 z " style="fill: var(--fig-axis); stroke-dasharray: 5.2,3.9; stroke-dashoffset: 0; stroke: var(--fig-axis); stroke-width: 1.3; stroke-linecap: round"/> </g> <g id="f3c0d18-patch_8"> <path d="M 55.076571 103.079429 Q 116.722286 103.079429 176.914556 103.079429 " style="fill: none; stroke-dasharray: 5.2,3.9; stroke-dashoffset: 0; stroke: var(--fig-axis); stroke-width: 1.3; stroke-linecap: round"/> <path d="M 172.914556 101.079429 L 176.914556 103.079429 L 172.914556 105.079429 z " style="fill: var(--fig-axis); stroke-dasharray: 5.2,3.9; stroke-dashoffset: 0; stroke: var(--fig-axis); stroke-width: 1.3; stroke-linecap: round"/> </g> <g id="f3c0d18-patch_9"> <path d="M -6.569143 72.256571 Q 55.076571 72.256571 115.268842 72.256571 " style="fill: none; stroke-dasharray: 5.2,3.9; stroke-dashoffset: 0; stroke: var(--fig-axis); stroke-width: 1.3; stroke-linecap: round"/> <path d="M 111.268842 70.256571 L 115.268842 72.256571 L 111.268842 74.256571 z " style="fill: var(--fig-axis); stroke-dasharray: 5.2,3.9; stroke-dashoffset: 0; stroke: var(--fig-axis); stroke-width: 1.3; stroke-linecap: round"/> </g> <g id="f3c0d18-text_5"> <!-- $\vec{x}_0 = (4, 0)$ --> <g style="fill: var(--fig-ink)" transform="translate(227.986286 125.908194) scale(0.12 -0.12)"> <defs> <path id="f3c0d18-STIXGeneral-Regular-350" d="M -109 4186 L -954 3507 L -1069 3558 Q -755 3821 -755 3917 Q -755 4013 -1069 4013 L -2899 4013 L -2899 4358 L -1069 4358 Q -755 4358 -755 4454 Q -755 4474 -768 4496 Q -781 4518 -816 4553 Q -851 4589 -880 4621 Q -909 4653 -973 4713 Q -1037 4774 -1075 4813 L -960 4864 L -109 4186 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-f" d="M 231 -622 Q 525 -406 662 -114 Q 800 178 800 594 L 800 709 L 1416 709 Q 1391 175 1164 -208 Q 938 -591 481 -872 L 231 -622 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f3c0d18-STIXGeneral-Regular-350" transform="translate(58.395996 10)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5b" transform="translate(0 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-13" transform="translate(57.30481 -14.609326) scale(0.7)"/> <use xlink:href="#f3c0d18-DejaVuSerif-20" transform="translate(123.401001 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-b" transform="translate(226.154907 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-17" transform="translate(265.168579 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-f" transform="translate(328.791626 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-13" transform="translate(379.543579 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-c" transform="translate(443.166626 0.390625)"/> </g> </g> <g id="f3c0d18-text_6"> <!-- $\vec{v}$ --> <g style="fill: var(--fig-steel)" transform="translate(49.830429 95.395219) scale(0.13 -0.13)"> <defs> <path id="f3c0d18-DejaVuSerif-Italic-59" d="M 1681 0 L 1259 0 L 619 2988 L 241 2988 L 303 3322 L 1163 3322 L 1725 703 Q 2084 1016 2325 1413 Q 2825 2238 3003 2988 L 2622 2988 L 2688 3322 L 3547 3322 Q 3206 2034 2775 1313 Q 2400 688 1681 0 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f3c0d18-STIXGeneral-Regular-350" transform="translate(58.42041 10)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-59" transform="translate(0 0.390625)"/> </g> </g> <g id="f3c0d18-text_7"> <!-- $\vec{x}_0 + \vec{v}$ --> <g style="fill: var(--fig-accent)" transform="translate(178.340571 93.852422) scale(0.12 -0.12)"> <use xlink:href="#f3c0d18-STIXGeneral-Regular-350" transform="translate(58.395996 10)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5b" transform="translate(0 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-13" transform="translate(57.30481 -14.609326) scale(0.7)"/> <use xlink:href="#f3c0d18-DejaVuSerif-e" transform="translate(123.401001 0.390625)"/> <use xlink:href="#f3c0d18-STIXGeneral-Regular-350" transform="translate(284.575317 10)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-59" transform="translate(226.154907 0.390625)"/> </g> </g> <g id="f3c0d18-text_8"> <!-- $(0, 2)$ --> <g style="fill: var(--fig-accent)" transform="translate(118.254857 65.511851) scale(0.12 -0.12)"> <use xlink:href="#f3c0d18-DejaVuSerif-b" transform="translate(0 0.015625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-13" transform="translate(39.013672 0.015625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-f" transform="translate(102.636719 0.015625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-15" transform="translate(153.388672 0.015625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-c" transform="translate(217.011719 0.015625)"/> </g> </g> <g id="f3c0d18-text_9"> <!-- $O$ --> <g style="fill: var(--fig-axis)" transform="translate(102.145429 146.526096) scale(0.13 -0.13)"> <defs> <path id="f3c0d18-DejaVuSerif-Italic-32" d="M 2219 244 Q 2984 244 3478 770 Q 3972 1297 4172 2328 Q 4372 3363 4084 3889 Q 3797 4416 3031 4416 Q 2263 4416 1769 3889 Q 1275 3363 1075 2328 Q 875 1297 1162 770 Q 1450 244 2219 244 z M 2153 -91 Q 1678 -91 1311 65 Q 944 222 700 525 Q 419 875 334 1319 Q 250 1763 359 2328 Q 469 2894 725 3339 Q 981 3784 1400 4134 Q 1766 4441 2191 4595 Q 2616 4750 3097 4750 Q 4113 4750 4608 4084 Q 5103 3419 4891 2328 Q 4781 1769 4522 1320 Q 4263 872 3847 525 Q 3481 219 3056 64 Q 2631 -91 2153 -91 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-32" transform="translate(0 0.78125)"/> </g> </g> <g id="f3c0d18-text_10"> <!-- soluzioni $= \vec{x}_0 + N(A)$ --> <g style="fill: var(--fig-ink)" transform="translate(90.519286 16.94) scale(0.13 -0.13)"> <defs> <path id="f3c0d18-DejaVuSerif-56" d="M 359 184 L 359 959 L 691 959 Q 703 588 923 403 Q 1144 219 1575 219 Q 1963 219 2166 364 Q 2369 509 2369 788 Q 2369 1006 2220 1140 Q 2072 1275 1594 1428 L 1178 1569 Q 750 1706 558 1912 Q 366 2119 366 2438 Q 366 2894 700 3153 Q 1034 3413 1625 3413 Q 1888 3413 2178 3344 Q 2469 3275 2778 3144 L 2778 2419 L 2447 2419 Q 2434 2741 2221 2922 Q 2009 3103 1644 3103 Q 1281 3103 1095 2975 Q 909 2847 909 2591 Q 909 2381 1050 2254 Q 1191 2128 1613 1997 L 2069 1856 Q 2541 1709 2748 1489 Q 2956 1269 2956 922 Q 2956 450 2595 179 Q 2234 -91 1600 -91 Q 1278 -91 972 -22 Q 666 47 359 184 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-52" d="M 1925 219 Q 2388 219 2623 584 Q 2859 950 2859 1663 Q 2859 2375 2623 2739 Q 2388 3103 1925 3103 Q 1463 3103 1227 2739 Q 991 2375 991 1663 Q 991 950 1228 584 Q 1466 219 1925 219 z M 1925 -91 Q 1200 -91 759 389 Q 319 869 319 1663 Q 319 2456 758 2934 Q 1197 3413 1925 3413 Q 2653 3413 3092 2934 Q 3531 2456 3531 1663 Q 3531 869 3092 389 Q 2653 -91 1925 -91 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-4f" d="M 1313 331 L 1856 331 L 1856 0 L 184 0 L 184 331 L 738 331 L 738 4531 L 184 4531 L 184 4863 L 1313 4863 L 1313 331 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-58" d="M 2266 3322 L 3341 3322 L 3341 331 L 3884 331 L 3884 0 L 2766 0 L 2766 588 Q 2606 256 2353 82 Q 2100 -91 1766 -91 Q 1213 -91 952 223 Q 691 538 691 1209 L 691 2988 L 172 2988 L 172 3322 L 1269 3322 L 1269 1388 Q 1269 781 1417 556 Q 1566 331 1947 331 Q 2347 331 2556 625 Q 2766 919 2766 1478 L 2766 2988 L 2266 2988 L 2266 3322 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-5d" d="M 256 0 L 256 269 L 2338 2988 L 691 2988 L 691 2413 L 359 2413 L 359 3322 L 3078 3322 L 3078 3053 L 997 331 L 2803 331 L 2803 934 L 3138 934 L 3138 0 L 256 0 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-4c" d="M 622 4353 Q 622 4497 726 4603 Q 831 4709 978 4709 Q 1122 4709 1226 4603 Q 1331 4497 1331 4353 Q 1331 4206 1228 4103 Q 1125 4000 978 4000 Q 831 4000 726 4103 Q 622 4206 622 4353 z M 1356 331 L 1900 331 L 1900 0 L 231 0 L 231 331 L 781 331 L 781 2988 L 231 2988 L 231 3322 L 1356 3322 L 1356 331 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-51" d="M 263 0 L 263 331 L 781 331 L 781 2988 L 231 2988 L 231 3322 L 1356 3322 L 1356 2731 Q 1516 3069 1770 3241 Q 2025 3413 2363 3413 Q 2913 3413 3172 3097 Q 3431 2781 3431 2113 L 3431 331 L 3944 331 L 3944 0 L 2356 0 L 2356 331 L 2853 331 L 2853 1931 Q 2853 2541 2703 2767 Q 2553 2994 2175 2994 Q 1775 2994 1565 2701 Q 1356 2409 1356 1850 L 1356 331 L 1856 331 L 1856 0 L 263 0 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f3c0d18-DejaVuSerif-56" transform="translate(0 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-52" transform="translate(51.318359 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-4f" transform="translate(111.523438 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-58" transform="translate(143.505859 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-5d" transform="translate(207.910156 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-4c" transform="translate(260.595703 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-52" transform="translate(292.578125 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-51" transform="translate(352.783203 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-4c" transform="translate(417.1875 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-3" transform="translate(449.169922 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-20" transform="translate(499.921875 0.390625)"/> <use xlink:href="#f3c0d18-STIXGeneral-Regular-350" transform="translate(661.071777 10)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5b" transform="translate(602.675781 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-13" transform="translate(659.980591 -14.609326) scale(0.7)"/> <use xlink:href="#f3c0d18-DejaVuSerif-e" transform="translate(726.076782 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-31" transform="translate(828.830688 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-b" transform="translate(916.330688 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-24" transform="translate(955.34436 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-c" transform="translate(1027.561157 0.390625)"/> </g> </g> <g id="f3c0d18-line2d_3"> <defs> <path id="f3c0d18-m4247f8bdb5" d="M 0 2.5 C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 C 2.236584 1.29895 2.5 0.663008 2.5 0 C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 C -1.29895 2.236584 -0.663008 2.5 0 2.5 z " style="stroke: var(--fig-accent)"/> </defs> <g clip-path="url(#f3c0d18-p5562c9935d)"> <use xlink:href="#f3c0d18-m4247f8bdb5" x="240.013714" y="133.902286" style="fill: var(--fig-accent); stroke: var(--fig-accent)"/> </g> </g> <g id="f3c0d18-line2d_4"> <g clip-path="url(#f3c0d18-p5562c9935d)"> <use xlink:href="#f3c0d18-m4247f8bdb5" x="301.659429" y="164.725143" style="fill: var(--fig-accent); stroke: var(--fig-accent)"/> </g> </g> <g id="f3c0d18-line2d_5"> <g clip-path="url(#f3c0d18-p5562c9935d)"> <use xlink:href="#f3c0d18-m4247f8bdb5" x="178.368" y="103.079429" style="fill: var(--fig-accent); stroke: var(--fig-accent)"/> </g> </g> <g id="f3c0d18-line2d_6"> <g clip-path="url(#f3c0d18-p5562c9935d)"> <use xlink:href="#f3c0d18-m4247f8bdb5" x="116.722286" y="72.256571" style="fill: var(--fig-accent); stroke: var(--fig-accent)"/> </g> </g> <g id="f3c0d18-line2d_7"> <defs> <path id="f3c0d18-m2447aaa304" d="M 0 2.5 C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 C 2.236584 1.29895 2.5 0.663008 2.5 0 C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 C -1.29895 2.236584 -0.663008 2.5 0 2.5 z " style="stroke: var(--fig-ink)"/> </defs> <g clip-path="url(#f3c0d18-p5562c9935d)"> <use xlink:href="#f3c0d18-m2447aaa304" x="116.722286" y="133.902286" style="fill: var(--fig-ink); stroke: var(--fig-ink)"/> </g> </g> </g> <g id="f3c0d18-axes_2"> <g id="f3c0d18-patch_10"> <path d="M 344.811429 214.041714 L 653.04 214.041714 L 653.04 22.94 L 344.811429 22.94 L 344.811429 214.041714 z " style="fill: none"/> </g> <g id="f3c0d18-matplotlib.axis_3"/> <g id="f3c0d18-matplotlib.axis_4"/> <g id="f3c0d18-line2d_8"> <path d="M 350.976 81.503429 L 364.602947 88.316902 L 378.229895 95.130376 L 391.856842 101.94385 L 405.483789 108.757323 L 419.110737 115.570797 L 432.737684 122.384271 L 446.364632 129.197744 L 459.991579 136.011218 L 473.618526 142.824692 L 487.245474 149.638165 L 500.872421 156.451639 L 514.499368 163.265113 L 528.126316 170.078586 L 541.753263 176.89206 L 555.380211 183.705534 L 569.007158 190.519008 L 582.634105 197.332481 L 596.261053 204.145955 L 609.888 210.959429 " clip-path="url(#f3c0d18-pfc9f68b849)" style="fill: none; stroke: var(--fig-steel); stroke-opacity: 0.9; stroke-width: 2.6; stroke-linecap: square"/> </g> <g id="f3c0d18-line2d_9"> <path d="M 363.305143 26.022286 L 378.229895 33.484662 L 393.154647 40.947038 L 408.079398 48.409414 L 423.00415 55.871789 L 437.928902 63.334165 L 452.853654 70.796541 L 467.778406 78.258917 L 482.703158 85.721293 L 497.62791 93.183669 L 512.552662 100.646045 L 527.477414 108.108421 L 542.402165 115.570797 L 557.326917 123.033173 L 572.251669 130.495549 L 587.176421 137.957925 L 602.101173 145.420301 L 617.025925 152.882677 L 631.950677 160.345053 L 646.875429 167.807429 " clip-path="url(#f3c0d18-pfc9f68b849)" style="fill: none; stroke: var(--fig-accent); stroke-opacity: 0.9; stroke-width: 2.6; stroke-linecap: square"/> </g> <g id="f3c0d18-line2d_10"> <path d="M 505.090286 35.269143 L 512.552662 39.000331 L 520.015038 42.731519 L 527.477414 46.462707 L 534.939789 50.193895 L 542.402165 53.925083 L 549.864541 57.656271 L 557.326917 61.387459 L 564.789293 65.118647 L 572.251669 68.849835 L 579.714045 72.581023 L 587.176421 76.312211 L 594.638797 80.043398 L 602.101173 83.774586 L 609.563549 87.505774 L 617.025925 91.236962 L 624.488301 94.96815 L 631.950677 98.699338 L 639.413053 102.430526 L 646.875429 106.161714 " clip-path="url(#f3c0d18-pfc9f68b849)" style="fill: none; stroke-dasharray: 6.4,4.8; stroke-dashoffset: 0; stroke: var(--fig-axis); stroke-opacity: 0.9; stroke-width: 1.6"/> </g> <g id="f3c0d18-patch_11"> <path d="M 455.773714 214.041714 L 455.773714 22.94 " style="fill: none; stroke: var(--fig-axis); stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/> </g> <g id="f3c0d18-patch_12"> <path d="M 344.811429 133.902286 L 653.04 133.902286 " style="fill: none; stroke: var(--fig-axis); stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/> </g> <g id="f3c0d18-text_11"> <!-- $x$ --> <g style="fill: var(--fig-axis)" transform="translate(645.63 149.94381) scale(0.13 -0.13)"> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5b" transform="translate(0 0.09375)"/> </g> </g> <g id="f3c0d18-text_12"> <!-- $y$ --> <g style="fill: var(--fig-axis)" transform="translate(460.397143 32.816953) scale(0.13 -0.13)"> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5c" transform="translate(0 0.09375)"/> </g> </g> <g id="f3c0d18-patch_13"> <path d="M 455.773714 133.902286 Q 517.419429 133.902286 576.158254 133.902286 " style="fill: none; stroke: var(--fig-accent); stroke-width: 2.6; stroke-linecap: round"/> <path d="M 570.558254 131.102286 L 576.158254 133.902286 L 570.558254 136.702286 z " style="fill: var(--fig-accent); stroke: var(--fig-accent); stroke-width: 2.6; stroke-linecap: round"/> </g> <g id="f3c0d18-patch_14"> <path d="M 455.773714 133.902286 Q 455.773714 103.079429 455.773714 75.16346 " style="fill: none; stroke: var(--fig-accent); stroke-width: 2.6; stroke-linecap: round"/> <path d="M 452.973714 80.76346 L 455.773714 75.16346 L 458.573714 80.76346 z " style="fill: var(--fig-accent); stroke: var(--fig-accent); stroke-width: 2.6; stroke-linecap: round"/> </g> <g id="f3c0d18-patch_15"> <path d="M 579.065143 133.902286 Q 579.065143 103.079429 579.065143 73.710016 " style="fill: none; stroke-dasharray: 5.2,3.9; stroke-dashoffset: 0; stroke: var(--fig-faint); stroke-width: 1.3; stroke-linecap: round"/> <path d="M 577.065143 77.710016 L 579.065143 73.710016 L 581.065143 77.710016 z " style="fill: var(--fig-faint); stroke-dasharray: 5.2,3.9; stroke-dashoffset: 0; stroke: var(--fig-faint); stroke-width: 1.3; stroke-linecap: round"/> </g> <g id="f3c0d18-patch_16"> <path d="M 455.773714 133.902286 Q 517.419429 103.079429 576.865143 73.356571 " style="fill: none; stroke: var(--fig-ink); stroke-width: 2.2; stroke-linecap: round"/> <path d="M 570.604153 73.356571 L 576.865143 73.356571 L 573.108549 78.365364 z " style="fill: var(--fig-ink); stroke: var(--fig-ink); stroke-width: 2.2; stroke-linecap: round"/> </g> <g id="f3c0d18-patch_17"> <path d="M 455.773714 133.902286 Q 517.419429 164.725143 576.865143 194.448 " style="fill: none; stroke: var(--fig-steel); stroke-width: 2.2; stroke-linecap: round"/> <path d="M 573.108549 189.439208 L 576.865143 194.448 L 570.604153 194.448 z " style="fill: var(--fig-steel); stroke: var(--fig-steel); stroke-width: 2.2; stroke-linecap: round"/> </g> <g id="f3c0d18-text_13"> <!-- $\vec{x}_1$ --> <g style="fill: var(--fig-accent)" transform="translate(573.781286 150.259905) scale(0.13 -0.13)"> <defs> <path id="f3c0d18-DejaVuSerif-14" d="M 909 0 L 909 331 L 1722 331 L 1722 4213 L 781 3603 L 781 4013 L 1919 4750 L 2350 4750 L 2350 331 L 3163 331 L 3163 0 L 909 0 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f3c0d18-STIXGeneral-Regular-350" transform="translate(58.395996 10)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5b" transform="translate(0 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-14" transform="translate(57.30481 -14.609326) scale(0.7)"/> </g> </g> <g id="f3c0d18-text_14"> <!-- $\vec{x}_2$ --> <g style="fill: var(--fig-accent)" transform="translate(436.619571 70.120477) scale(0.13 -0.13)"> <use xlink:href="#f3c0d18-STIXGeneral-Regular-350" transform="translate(58.395996 10)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5b" transform="translate(0 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-15" transform="translate(57.30481 -14.609326) scale(0.7)"/> </g> </g> <g id="f3c0d18-text_15"> <!-- $\vec{x}_1 + \vec{x}_2$ --> <g style="fill: var(--fig-ink)" transform="translate(553.040571 63.029565) scale(0.12 -0.12)"> <use xlink:href="#f3c0d18-STIXGeneral-Regular-350" transform="translate(58.395996 10)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5b" transform="translate(0 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-14" transform="translate(57.30481 -14.609326) scale(0.7)"/> <use xlink:href="#f3c0d18-DejaVuSerif-e" transform="translate(123.401001 0.390625)"/> <use xlink:href="#f3c0d18-STIXGeneral-Regular-350" transform="translate(284.550903 10)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5b" transform="translate(226.154907 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-15" transform="translate(283.459717 -14.609326) scale(0.7)"/> </g> </g> <g id="f3c0d18-text_16"> <!-- $\vec{x}_1 - \vec{x}_2 \in N(A)$ --> <g style="fill: var(--fig-steel)" transform="translate(541.287429 212.212194) scale(0.12 -0.12)"> <defs> <path id="f3c0d18-DejaVuSerif-8cf" d="M 678 2259 L 4684 2259 L 4684 1753 L 678 1753 L 678 2259 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-8c8" d="M 2684 500 L 4059 500 L 4059 0 L 2684 0 Q 2141 0 1678 269 Q 1216 538 947 1000 Q 678 1463 678 2006 Q 678 2550 947 3012 Q 1216 3475 1678 3744 Q 2141 4013 2684 4013 L 4059 4013 L 4059 3513 L 2684 3513 Q 2278 3513 1931 3309 Q 1584 3106 1381 2759 Q 1244 2522 1200 2259 L 4059 2259 L 4059 1753 L 1200 1753 Q 1244 1491 1381 1253 Q 1584 906 1931 703 Q 2278 500 2684 500 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f3c0d18-STIXGeneral-Regular-350" transform="translate(58.395996 10)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5b" transform="translate(0 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-14" transform="translate(57.30481 -14.609326) scale(0.7)"/> <use xlink:href="#f3c0d18-DejaVuSerif-8cf" transform="translate(123.401001 0.390625)"/> <use xlink:href="#f3c0d18-STIXGeneral-Regular-350" transform="translate(284.550903 10)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5b" transform="translate(226.154907 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-15" transform="translate(283.459717 -14.609326) scale(0.7)"/> <use xlink:href="#f3c0d18-DejaVuSerif-8c8" transform="translate(349.555908 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-31" transform="translate(442.544189 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-b" transform="translate(530.044189 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-24" transform="translate(569.057861 0.390625)"/> <use xlink:href="#f3c0d18-DejaVuSerif-c" transform="translate(641.274658 0.390625)"/> </g> </g> <g id="f3c0d18-text_17"> <!-- $x + 2y = 8$ --> <g style="fill: var(--fig-axis)" transform="translate(587.012571 52.256616) scale(0.12 -0.12)"> <defs> <path id="f3c0d18-DejaVuSerif-1b" d="M 2981 1275 Q 2981 1775 2732 2051 Q 2484 2328 2034 2328 Q 1584 2328 1336 2051 Q 1088 1775 1088 1275 Q 1088 772 1336 495 Q 1584 219 2034 219 Q 2484 219 2732 495 Q 2981 772 2981 1275 z M 2853 3541 Q 2853 3966 2637 4203 Q 2422 4441 2034 4441 Q 1650 4441 1433 4203 Q 1216 3966 1216 3541 Q 1216 3113 1433 2875 Q 1650 2638 2034 2638 Q 2422 2638 2637 2875 Q 2853 3113 2853 3541 z M 2516 2484 Q 3047 2413 3344 2092 Q 3641 1772 3641 1275 Q 3641 619 3225 264 Q 2809 -91 2034 -91 Q 1263 -91 845 264 Q 428 619 428 1275 Q 428 1772 725 2092 Q 1022 2413 1556 2484 Q 1084 2569 832 2842 Q 581 3116 581 3541 Q 581 4103 968 4426 Q 1356 4750 2034 4750 Q 2713 4750 3100 4426 Q 3488 4103 3488 3541 Q 3488 3116 3236 2842 Q 2984 2569 2516 2484 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5b" transform="translate(0 0.78125)"/> <use xlink:href="#f3c0d18-DejaVuSerif-e" transform="translate(75.361328 0.78125)"/> <use xlink:href="#f3c0d18-DejaVuSerif-15" transform="translate(178.115234 0.78125)"/> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-5c" transform="translate(241.738281 0.78125)"/> <use xlink:href="#f3c0d18-DejaVuSerif-20" transform="translate(317.197266 0.78125)"/> <use xlink:href="#f3c0d18-DejaVuSerif-1b" transform="translate(419.951172 0.78125)"/> </g> </g> <g id="f3c0d18-text_18"> <!-- $O$ --> <g style="fill: var(--fig-axis)" transform="translate(441.196857 146.526096) scale(0.13 -0.13)"> <use xlink:href="#f3c0d18-DejaVuSerif-Italic-32" transform="translate(0 0.78125)"/> </g> </g> <g id="f3c0d18-text_19"> <!-- somma e differenza di due soluzioni --> <g style="fill: var(--fig-ink)" transform="translate(380.521105 16.94) scale(0.13 -0.13)"> <defs> <path id="f3c0d18-DejaVuSerif-50" d="M 3316 2675 Q 3481 3041 3739 3227 Q 3997 3413 4341 3413 Q 4863 3413 5119 3089 Q 5375 2766 5375 2113 L 5375 331 L 5894 331 L 5894 0 L 4300 0 L 4300 331 L 4800 331 L 4800 2047 Q 4800 2556 4650 2772 Q 4500 2988 4153 2988 Q 3769 2988 3567 2697 Q 3366 2406 3366 1850 L 3366 331 L 3866 331 L 3866 0 L 2291 0 L 2291 331 L 2791 331 L 2791 2069 Q 2791 2566 2641 2777 Q 2491 2988 2144 2988 Q 1759 2988 1557 2697 Q 1356 2406 1356 1850 L 1356 331 L 1856 331 L 1856 0 L 263 0 L 263 331 L 781 331 L 781 2994 L 231 2994 L 231 3322 L 1356 3322 L 1356 2731 Q 1516 3063 1762 3238 Q 2009 3413 2322 3413 Q 2709 3413 2968 3220 Q 3228 3028 3316 2675 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-44" d="M 2547 1044 L 2547 1747 L 1806 1747 Q 1378 1747 1168 1562 Q 959 1378 959 997 Q 959 650 1171 447 Q 1384 244 1747 244 Q 2106 244 2326 466 Q 2547 688 2547 1044 z M 3122 2075 L 3122 331 L 3634 331 L 3634 0 L 2547 0 L 2547 359 Q 2356 128 2106 18 Q 1856 -91 1522 -91 Q 969 -91 644 203 Q 319 497 319 997 Q 319 1513 691 1797 Q 1063 2081 1741 2081 L 2547 2081 L 2547 2309 Q 2547 2688 2317 2895 Q 2088 3103 1672 3103 Q 1328 3103 1125 2947 Q 922 2791 872 2484 L 575 2484 L 575 3156 Q 875 3284 1158 3348 Q 1441 3413 1709 3413 Q 2400 3413 2761 3070 Q 3122 2728 3122 2075 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-48" d="M 3469 1600 L 991 1600 L 991 1575 Q 991 903 1244 561 Q 1497 219 1991 219 Q 2369 219 2611 417 Q 2853 616 2950 1006 L 3413 1006 Q 3275 459 2904 184 Q 2534 -91 1931 -91 Q 1203 -91 761 389 Q 319 869 319 1663 Q 319 2450 753 2931 Q 1188 3413 1894 3413 Q 2647 3413 3050 2948 Q 3453 2484 3469 1600 z M 2791 1931 Q 2772 2513 2545 2808 Q 2319 3103 1894 3103 Q 1497 3103 1269 2806 Q 1041 2509 991 1931 L 2791 1931 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-47" d="M 3359 331 L 3909 331 L 3909 0 L 2784 0 L 2784 519 Q 2616 206 2355 57 Q 2094 -91 1709 -91 Q 1097 -91 708 395 Q 319 881 319 1663 Q 319 2444 706 2928 Q 1094 3413 1709 3413 Q 2094 3413 2355 3264 Q 2616 3116 2784 2803 L 2784 4531 L 2241 4531 L 2241 4863 L 3359 4863 L 3359 331 z M 2784 1497 L 2784 1825 Q 2784 2422 2554 2737 Q 2325 3053 1888 3053 Q 1444 3053 1217 2703 Q 991 2353 991 1663 Q 991 975 1217 622 Q 1444 269 1888 269 Q 2325 269 2554 583 Q 2784 897 2784 1497 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-cef" d="M 2963 2984 L 1356 2988 L 1356 331 L 2094 331 L 2094 0 L 231 0 L 231 331 L 781 331 L 781 2988 L 231 2988 L 231 3322 L 781 3322 L 781 3738 Q 781 4294 1068 4578 Q 1356 4863 1919 4863 Q 2125 4863 2334 4825 Q 2544 4788 2750 4709 L 2750 4078 L 2450 4078 Q 2444 4313 2316 4434 Q 2188 4556 1938 4556 Q 1619 4556 1487 4379 Q 1356 4203 1356 3750 L 1356 3322 L 2963 3322 L 2963 3734 Q 2963 4291 3250 4575 Q 3538 4859 4100 4859 Q 4306 4859 4515 4821 Q 4725 4784 4931 4706 L 4931 4075 L 4631 4075 Q 4625 4309 4497 4431 Q 4369 4553 4119 4553 Q 3800 4553 3669 4376 Q 3538 4200 3538 3747 L 3538 3319 L 4463 3319 L 4463 2984 L 3538 2984 L 3538 328 L 4275 328 L 4275 -3 L 2413 -3 L 2413 328 L 2963 328 L 2963 2984 z " transform="scale(0.015625)"/> <path id="f3c0d18-DejaVuSerif-55" d="M 3059 3328 L 3059 2497 L 2728 2497 Q 2713 2744 2591 2866 Q 2469 2988 2234 2988 Q 1809 2988 1582 2694 Q 1356 2400 1356 1850 L 1356 331 L 2022 331 L 2022 0 L 263 0 L 263 331 L 781 331 L 781 2994 L 231 2994 L 231 3322 L 1356 3322 L 1356 2731 Q 1525 3078 1790 3245 Q 2056 3413 2438 3413 Q 2578 3413 2733 3391 Q 2888 3369 3059 3328 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f3c0d18-DejaVuSerif-56"/> <use xlink:href="#f3c0d18-DejaVuSerif-52" transform="translate(51.3125 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-50" transform="translate(111.515625 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-50" transform="translate(206.34375 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-44" transform="translate(301.171875 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-3" transform="translate(360.796875 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-48" transform="translate(392.578125 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-3" transform="translate(451.765625 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-47" transform="translate(483.546875 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-4c" transform="translate(547.5625 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-cef" transform="translate(579.546875 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-48" transform="translate(650.59375 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-55" transform="translate(709.78125 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-48" transform="translate(757.578125 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-51" transform="translate(816.765625 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-5d" transform="translate(881.171875 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-44" transform="translate(933.859375 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-3" transform="translate(993.484375 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-47" transform="translate(1025.265625 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-4c" transform="translate(1089.28125 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-3" transform="translate(1121.265625 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-47" transform="translate(1153.046875 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-58" transform="translate(1217.0625 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-48" transform="translate(1281.46875 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-3" transform="translate(1340.65625 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-56" transform="translate(1372.4375 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-52" transform="translate(1423.75 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-4f" transform="translate(1483.953125 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-58" transform="translate(1515.9375 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-5d" transform="translate(1580.34375 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-4c" transform="translate(1633.03125 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-52" transform="translate(1665.015625 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-51" transform="translate(1725.21875 0)"/> <use xlink:href="#f3c0d18-DejaVuSerif-4c" transform="translate(1789.625 0)"/> </g> </g> <g id="f3c0d18-line2d_11"> <g clip-path="url(#f3c0d18-pfc9f68b849)"> <use xlink:href="#f3c0d18-m2447aaa304" x="579.065143" y="72.256571" style="fill: var(--fig-ink); stroke: var(--fig-ink)"/> </g> </g> <g id="f3c0d18-line2d_12"> <defs> <path id="f3c0d18-m78ebd1c4a9" d="M 0 2.5 C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 C 2.236584 1.29895 2.5 0.663008 2.5 0 C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 C -1.29895 2.236584 -0.663008 2.5 0 2.5 z " style="stroke: var(--fig-steel)"/> </defs> <g clip-path="url(#f3c0d18-pfc9f68b849)"> <use xlink:href="#f3c0d18-m78ebd1c4a9" x="579.065143" y="195.548" style="fill: var(--fig-steel); stroke: var(--fig-steel)"/> </g> </g> <g id="f3c0d18-line2d_13"> <g clip-path="url(#f3c0d18-pfc9f68b849)"> <use xlink:href="#f3c0d18-m2447aaa304" x="455.773714" y="133.902286" style="fill: var(--fig-ink); stroke: var(--fig-ink)"/> </g> </g> </g> </g> <defs> <clipPath id="f3c0d18-p5562c9935d"> <rect x="5.76" y="22.94" width="308.228571" height="191.101714"/> </clipPath> <clipPath id="f3c0d18-pfc9f68b849"> <rect x="344.811429" y="22.94" width="308.228571" height="191.101714"/> </clipPath> </defs> </svg></figure>
+
+A sinistra $A = \begin{pmatrix} 1 & 2 \end{pmatrix}$: in azzurro $N(A)$, la retta $x + 2y = 0$ per l'origine; in rosso le soluzioni di $x + 2y = 4$. Le frecce tratteggiate spostano punti del nucleo di $\vec{x}_0 = (4, 0)$, e li portano su punti della retta rossa. A destra il motivo per cui un non omogeneo non è chiuso: la somma di due soluzioni finisce sulla retta $x + 2y = 8$, la differenza finisce nel nucleo.
 
 La prof (<span class="src">p. 11</span>):
 
@@ -118,12 +235,62 @@ $$
 > $$
 > quindi $\vec{v} \in N(A)$ e $\vec{w} = \vec{x}_0 + \vec{v}$. La differenza di due soluzioni risolve l'omogeneo. $\square$
 >
-> La dimostrazione non usa mai $\vec{b} \neq \vec{0}$: il punto 2 vale anche per gli omogenei, con $\vec{x}_0 = \vec{0}$, e dice solo $N(A) = N(A)$.
+> **Come si scrive allo scritto**, un passaggio per riga.
+>
+> Ipotesi: $A\vec{x}_0 = \vec{b}$. Tesi: $\{\vec{w} : A\vec{w} = \vec{b}\} = \{\vec{x}_0 + \vec{v} : A\vec{v} = \vec{0}\}$. Un'uguaglianza fra insiemi si dimostra con due inclusioni.
+>
+> *Inclusione $\supseteq$: ogni $\vec{x}_0 + \vec{v}$ con $\vec{v} \in N(A)$ è soluzione.*
+> 1. Sia $\vec{v}$ con $A\vec{v} = \vec{0}$.
+> 2. $A(\vec{x}_0 + \vec{v}) = A\vec{x}_0 + A\vec{v}$: distributiva.
+> 3. $A\vec{x}_0 + A\vec{v} = \vec{b} + \vec{0}$: ipotesi su $\vec{x}_0$ e scelta di $\vec{v}$.
+> 4. $\vec{b} + \vec{0} = \vec{b}$. Quindi $\vec{x}_0 + \vec{v}$ è soluzione.
+>
+> *Inclusione $\subseteq$: ogni soluzione è della forma $\vec{x}_0 + \vec{v}$.*
+> 1. Sia $\vec{w}$ una soluzione qualunque: $A\vec{w} = \vec{b}$.
+> 2. Definisco $\vec{v} := \vec{w} - \vec{x}_0$. Allora $\vec{w} = \vec{x}_0 + \vec{v}$ (sommo $\vec{x}_0$ ai due membri).
+> 3. $A\vec{v} = A(\vec{w} - \vec{x}_0) = A\vec{w} - A\vec{x}_0$: distributiva e scalare $-1$ che esce dal prodotto.
+> 4. $A\vec{w} - A\vec{x}_0 = \vec{b} - \vec{b} = \vec{0}$: $\vec{w}$ e $\vec{x}_0$ sono soluzioni.
+> 5. Quindi $\vec{v} \in N(A)$, e $\vec{w} = \vec{x}_0 + \vec{v}$ è della forma voluta. $\square$
+>
+> La dimostrazione non usa mai $\vec{b} \neq \vec{0}$: il punto 2 vale anche per gli omogenei, con $\vec{x}_0 = \vec{0}$, e dice solo $N(A) = N(A)$. Il punto 1 è l'osservazione 1, dimostrata sopra.
+>
+> Nota sull'enunciato della prof: il punto 2 dice "**tutte** le soluzioni sono della forma $\vec{x}_0 + \vec{v}$", che è proprio l'inclusione $\subseteq$; la dimostrazione fatta a lezione prova invece l'inclusione $\supseteq$ ("ogni $\vec{x}_0 + \vec{v}$ è soluzione"). Allo scritto servono tutte e due.
+
+**Perché serve l'ipotesi "compatibile".** $\begin{cases} x + y = 1 \\ x + y = 2 \end{cases}$: $R_2 \to R_2 - R_1$ dà $(0, 0 \mid 1)$, cioè $0 = 1$, incompatibile. Eppure $N(A) = \{t(-1, 1)\}$ non è vuoto. Senza una soluzione $\vec{x}_0$ da cui partire, il nucleo da solo non produce niente: due rette parallele distinte, nessun punto in comune.
+
+**Perché $\vec{x}_0$ deve essere una soluzione.** Per $x + 2y = 4$, prendere $\vec{x}_0 = (0, 0)$ dà $(0, 0) + N(A) = N(A)$: la retta azzurra, non quella rossa. Nessuno dei suoi punti risolve $x + 2y = 4$.
+
+**Esempi, dal più facile.**
+
+1. **Una equazione in $\mathbb{R}^2$**: $x + 2y = 4$ (figura a sinistra).
+   - $A = \begin{pmatrix} 1 & 2 \end{pmatrix}$, $n = 2$, $\operatorname{rg}(A) = 1$, quindi $\operatorname{null}(A) = 1$.
+   - Nucleo: $x + 2y = 0$, con $y = t$: $x = -2t$, cioè $N(A) = \{t(-2, 1)\}$.
+   - Soluzione particolare: pongo la variabile libera $y = 0$, resta $x = 4$: $\vec{x}_0 = (4, 0)$.
+   - Soluzioni: $(4, 0) + t(-2, 1) = (4 - 2t,\ t)$, $t \in \mathbb{R}$.
+   - Un'altra soluzione particolare, $(0, 2)$, dà lo stesso insieme: $(0, 2) = (4, 0) + 2(-2, 1)$, cioè è il punto con $t = 2$.
+2. **Due equazioni in $\mathbb{R}^3$**: $\begin{cases} x + y - z = 3 \\ x - y + z = -1 \end{cases}$ (figura sotto).
+   - $[A \mid \vec{b}] = \left[\begin{array}{ccc|c} 1 & 1 & -1 & 3 \\ 1 & -1 & 1 & -1 \end{array}\right]$.
+   - $R_2 \to R_2 - R_1$: $(0,\ -2,\ 2 \mid -4)$.
+   - $R_2 \to -\frac{1}{2}R_2$: $(0,\ 1,\ -1 \mid 2)$.
+   - $R_1 \to R_1 - R_2$: $(1,\ 0,\ 0 \mid 1)$.
+   - Pivot nelle colonne di $x$ e $y$: $\operatorname{rg}(A) = \operatorname{rg}([A \mid \vec{b}]) = 2$, compatibile; $\operatorname{null}(A) = 3 - 2 = 1$, variabile libera $z = t$.
+   - $x = 1$, $y = 2 + t$: $\begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \\ 0 \end{pmatrix} + t\begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}$.
+   - Verifica: $(1, 2, 0)$ dà $1 + 2 - 0 = 3$ e $1 - 2 + 0 = -1$; $(0, 1, 1)$ nell'omogeneo dà $0 + 1 - 1 = 0$ e $0 - 1 + 1 = 0$.
+
+<figure class="fig"><svg role="img" aria-label="nucleo e soluzioni in R3" xmlns:xlink="http://www.w3.org/1999/xlink" width="327.0704pt" height="326.772953pt" viewBox="0 0 327.0704 326.772953" xmlns="http://www.w3.org/2000/svg" version="1.1"> <defs> <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style> </defs> <g id="f98780a-figure_1"> <g id="f98780a-patch_1"> <path d="M 0 326.772953 L 327.0704 326.772953 L 327.0704 0 L 0 0 L 0 326.772953 z " style="fill: none"/> </g> <g id="f98780a-axes_1"> <g id="f98780a-line2d_1"> <path d="M 35.132344 276.197265 L 206.471016 104.858594 " clip-path="url(#f98780a-p1e7a3fd6fc)" style="fill: none; stroke: var(--fig-steel); stroke-width: 2.6; stroke-linecap: square"/> </g> <g id="f98780a-line2d_2"> <path d="M 110.984775 291.640609 L 282.323447 120.301938 " clip-path="url(#f98780a-p1e7a3fd6fc)" style="fill: none; stroke: var(--fig-accent); stroke-width: 2.6; stroke-linecap: square"/> </g> <g id="f98780a-patch_2"> <path d="M 113.458594 197.871016 Q 80.375522 221.036031 48.391459 243.431514 " style="fill: none; stroke: var(--fig-axis); stroke-width: 1.2; stroke-linecap: round"/> <path d="M 52.81522 242.775512 L 48.391459 243.431514 L 50.520914 239.498904 z " style="fill: var(--fig-axis); stroke: var(--fig-axis); stroke-width: 1.2; stroke-linecap: round"/> </g> <g id="f98780a-text_1"> <!-- $x$ --> <g style="fill: var(--fig-axis)" transform="translate(33.562278 254.597702) scale(0.13 -0.13)"> <defs> <path id="f98780a-DejaVuSerif-Italic-5b" d="M 409 0 L 19 0 L 1484 1594 L 747 2988 L 338 2988 L 400 3322 L 1244 3322 L 1934 2028 L 3125 3322 L 3516 3322 L 2078 1759 L 2838 331 L 3272 331 L 3209 0 L 2338 0 L 1631 1325 L 409 0 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f98780a-DejaVuSerif-Italic-5b" transform="translate(0 0.09375)"/> </g> </g> <g id="f98780a-patch_3"> <path d="M 113.458594 197.871016 Q 186.889453 197.871016 258.978672 197.871016 " style="fill: none; stroke: var(--fig-axis); stroke-width: 1.2; stroke-linecap: round"/> <path d="M 254.978672 195.871016 L 258.978672 197.871016 L 254.978672 199.871016 z " style="fill: var(--fig-axis); stroke: var(--fig-axis); stroke-width: 1.2; stroke-linecap: round"/> </g> <g id="f98780a-text_2"> <!-- $y$ --> <g style="fill: var(--fig-axis)" transform="translate(268.853789 201.247969) scale(0.13 -0.13)"> <defs> <path id="f98780a-DejaVuSerif-Italic-5c" d="M 3681 3294 Q 3372 1506 2828 563 Q 2031 -822 1391 -1238 Q 1106 -1422 356 -1422 Q 209 -1422 60 -1397 Q -88 -1372 -238 -1325 L -113 -691 L 181 -691 Q 175 -741 175 -788 Q 175 -919 231 -994 Q 309 -1100 513 -1100 Q 1063 -1100 1541 -622 L 756 2988 L 378 2988 L 444 3322 L 1303 3322 L 2041 25 Q 2544 778 2666 1088 Q 3059 2059 3138 2959 L 2759 2959 L 2825 3294 L 3681 3294 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f98780a-DejaVuSerif-Italic-5c" transform="translate(0 0.09375)"/> </g> </g> <g id="f98780a-patch_4"> <path d="M 113.458594 197.871016 Q 113.458594 124.440156 113.458594 52.350938 " style="fill: none; stroke: var(--fig-axis); stroke-width: 1.2; stroke-linecap: round"/> <path d="M 111.458594 56.350938 L 113.458594 52.350938 L 115.458594 56.350938 z " style="fill: var(--fig-axis); stroke: var(--fig-axis); stroke-width: 1.2; stroke-linecap: round"/> </g> <g id="f98780a-text_3"> <!-- $z$ --> <g style="fill: var(--fig-axis)" transform="translate(110.013594 42.147773) scale(0.13 -0.13)"> <defs> <path id="f98780a-DejaVuSerif-Italic-5d" d="M 2550 3047 Q 2887 3047 3216 3322 L 3403 3322 L 3353 3053 L 1081 684 Q 1112 675 1203 647 Q 1309 613 1416 544 L 1569 450 Q 1862 272 2075 272 Q 2484 272 2966 741 L 2891 363 Q 2356 -163 1950 -163 Q 1703 -156 1356 59 Q 1009 275 791 275 Q 453 275 125 0 L -63 0 L -13 269 L 2262 2634 Q 2228 2647 2137 2675 Q 2031 2709 1925 2778 L 1772 2872 Q 1478 3050 1266 3050 Q 856 3050 375 2581 L 450 2959 Q 984 3484 1391 3484 Q 1637 3478 1984 3262 Q 2331 3047 2550 3047 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f98780a-DejaVuSerif-Italic-5d" transform="translate(0 0.5625)"/> </g> </g> <g id="f98780a-patch_5"> <path d="M 113.458594 197.871016 Q 151.38481 205.592687 186.462574 212.734423 " style="fill: none; stroke: var(--fig-ink); stroke-width: 2.6; stroke-linecap: round"/> <path d="M 181.533763 208.873487 L 186.462574 212.734423 L 180.416539 214.36091 z " style="fill: var(--fig-ink); stroke: var(--fig-ink); stroke-width: 2.6; stroke-linecap: round"/> </g> <g id="f98780a-patch_6"> <path d="M 113.458594 197.871016 Q 137.935547 173.394062 160.357019 150.97259 " style="fill: none; stroke: var(--fig-steel); stroke-width: 2.6; stroke-linecap: round"/> <path d="M 154.417322 152.952489 L 160.357019 150.97259 L 158.37712 156.912287 z " style="fill: var(--fig-steel); stroke: var(--fig-steel); stroke-width: 2.6; stroke-linecap: round"/> </g> <g id="f98780a-patch_7"> <path d="M 64.504687 246.824922 Q 102.430903 254.546594 138.932894 261.978297 " style="fill: none; stroke-dasharray: 5.2,3.9; stroke-dashoffset: 0; stroke: var(--fig-axis); stroke-width: 1.3; stroke-linecap: round"/> <path d="M 135.412314 259.220486 L 138.932894 261.978297 L 134.614297 263.140074 z " style="fill: var(--fig-axis); stroke-dasharray: 5.2,3.9; stroke-dashoffset: 0; stroke: var(--fig-axis); stroke-width: 1.3; stroke-linecap: round"/> </g> <g id="f98780a-patch_8"> <path d="M 162.4125 148.917109 Q 200.338716 156.638781 236.840706 164.070485 " style="fill: none; stroke-dasharray: 5.2,3.9; stroke-dashoffset: 0; stroke: var(--fig-axis); stroke-width: 1.3; stroke-linecap: round"/> <path d="M 233.320127 161.312674 L 236.840706 164.070485 L 232.52211 165.232262 z " style="fill: var(--fig-axis); stroke-dasharray: 5.2,3.9; stroke-dashoffset: 0; stroke: var(--fig-axis); stroke-width: 1.3; stroke-linecap: round"/> </g> <g id="f98780a-text_4"> <!-- $\vec{x}_0 = (1, 2, 0)$ --> <g style="fill: var(--fig-ink)" transform="translate(163.281807 235.635438) scale(0.12 -0.12)"> <defs> <path id="f98780a-STIXGeneral-Regular-350" d="M -109 4186 L -954 3507 L -1069 3558 Q -755 3821 -755 3917 Q -755 4013 -1069 4013 L -2899 4013 L -2899 4358 L -1069 4358 Q -755 4358 -755 4454 Q -755 4474 -768 4496 Q -781 4518 -816 4553 Q -851 4589 -880 4621 Q -909 4653 -973 4713 Q -1037 4774 -1075 4813 L -960 4864 L -109 4186 z " transform="scale(0.015625)"/> <path id="f98780a-DejaVuSerif-13" d="M 2034 219 Q 2513 219 2750 744 Q 2988 1269 2988 2328 Q 2988 3391 2750 3916 Q 2513 4441 2034 4441 Q 1556 4441 1318 3916 Q 1081 3391 1081 2328 Q 1081 1269 1318 744 Q 1556 219 2034 219 z M 2034 -91 Q 1275 -91 848 546 Q 422 1184 422 2328 Q 422 3475 848 4112 Q 1275 4750 2034 4750 Q 2797 4750 3222 4112 Q 3647 3475 3647 2328 Q 3647 1184 3222 546 Q 2797 -91 2034 -91 z " transform="scale(0.015625)"/> <path id="f98780a-DejaVuSerif-20" d="M 678 2894 L 4684 2894 L 4684 2394 L 678 2394 L 678 2894 z M 678 1619 L 4684 1619 L 4684 1119 L 678 1119 L 678 1619 z " transform="scale(0.015625)"/> <path id="f98780a-DejaVuSerif-b" d="M 2041 -997 Q 1281 -656 893 83 Q 506 822 506 1931 Q 506 3044 893 3783 Q 1281 4522 2041 4863 L 2041 4556 Q 1559 4225 1350 3623 Q 1141 3022 1141 1931 Q 1141 844 1350 242 Q 1559 -359 2041 -691 L 2041 -997 z " transform="scale(0.015625)"/> <path id="f98780a-DejaVuSerif-14" d="M 909 0 L 909 331 L 1722 331 L 1722 4213 L 781 3603 L 781 4013 L 1919 4750 L 2350 4750 L 2350 331 L 3163 331 L 3163 0 L 909 0 z " transform="scale(0.015625)"/> <path id="f98780a-DejaVuSerif-f" d="M 231 -622 Q 525 -406 662 -114 Q 800 178 800 594 L 800 709 L 1416 709 Q 1391 175 1164 -208 Q 938 -591 481 -872 L 231 -622 z " transform="scale(0.015625)"/> <path id="f98780a-DejaVuSerif-15" d="M 819 3553 L 469 3553 L 469 4384 Q 803 4563 1142 4656 Q 1481 4750 1806 4750 Q 2534 4750 2956 4397 Q 3378 4044 3378 3438 Q 3378 2753 2422 1800 Q 2347 1728 2309 1691 L 1131 513 L 3078 513 L 3078 1088 L 3444 1088 L 3444 0 L 434 0 L 434 341 L 1850 1753 Q 2319 2222 2519 2614 Q 2719 3006 2719 3438 Q 2719 3909 2473 4175 Q 2228 4441 1797 4441 Q 1350 4441 1106 4219 Q 863 3997 819 3553 z " transform="scale(0.015625)"/> <path id="f98780a-DejaVuSerif-c" d="M 453 -997 L 453 -691 Q 934 -359 1145 242 Q 1356 844 1356 1931 Q 1356 3022 1145 3623 Q 934 4225 453 4556 L 453 4863 Q 1216 4522 1603 3783 Q 1991 3044 1991 1931 Q 1991 822 1603 83 Q 1216 -656 453 -997 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f98780a-STIXGeneral-Regular-350" transform="translate(58.395996 10)"/> <use xlink:href="#f98780a-DejaVuSerif-Italic-5b" transform="translate(0 0.390625)"/> <use xlink:href="#f98780a-DejaVuSerif-13" transform="translate(57.30481 -14.609326) scale(0.7)"/> <use xlink:href="#f98780a-DejaVuSerif-20" transform="translate(123.401001 0.390625)"/> <use xlink:href="#f98780a-DejaVuSerif-b" transform="translate(226.154907 0.390625)"/> <use xlink:href="#f98780a-DejaVuSerif-14" transform="translate(265.168579 0.390625)"/> <use xlink:href="#f98780a-DejaVuSerif-f" transform="translate(328.791626 0.390625)"/> <use xlink:href="#f98780a-DejaVuSerif-15" transform="translate(379.543579 0.390625)"/> <use xlink:href="#f98780a-DejaVuSerif-f" transform="translate(443.166626 0.390625)"/> <use xlink:href="#f98780a-DejaVuSerif-13" transform="translate(493.918579 0.390625)"/> <use xlink:href="#f98780a-DejaVuSerif-c" transform="translate(557.541626 0.390625)"/> </g> </g> <g id="f98780a-text_5"> <!-- $(0, 1, 1)$ --> <g style="fill: var(--fig-steel)" transform="translate(110.780156 144.692617) scale(0.12 -0.12)"> <use xlink:href="#f98780a-DejaVuSerif-b" transform="translate(0 0.015625)"/> <use xlink:href="#f98780a-DejaVuSerif-13" transform="translate(39.013672 0.015625)"/> <use xlink:href="#f98780a-DejaVuSerif-f" transform="translate(102.636719 0.015625)"/> <use xlink:href="#f98780a-DejaVuSerif-14" transform="translate(153.388672 0.015625)"/> <use xlink:href="#f98780a-DejaVuSerif-f" transform="translate(217.011719 0.015625)"/> <use xlink:href="#f98780a-DejaVuSerif-14" transform="translate(267.763672 0.015625)"/> <use xlink:href="#f98780a-DejaVuSerif-c" transform="translate(331.386719 0.015625)"/> </g> </g> <g id="f98780a-text_6"> <!-- $(1, 3, 1)$ --> <g style="fill: var(--fig-accent)" transform="translate(250.272666 172.374438) scale(0.12 -0.12)"> <defs> <path id="f98780a-DejaVuSerif-16" d="M 622 4469 Q 988 4606 1323 4678 Q 1659 4750 1953 4750 Q 2638 4750 3022 4454 Q 3406 4159 3406 3634 Q 3406 3213 3140 2930 Q 2875 2647 2388 2547 Q 2963 2466 3280 2130 Q 3597 1794 3597 1259 Q 3597 606 3158 257 Q 2719 -91 1894 -91 Q 1528 -91 1179 -12 Q 831 66 488 225 L 488 1131 L 838 1131 Q 869 681 1141 450 Q 1413 219 1906 219 Q 2384 219 2661 495 Q 2938 772 2938 1253 Q 2938 1803 2653 2086 Q 2369 2369 1819 2369 L 1522 2369 L 1522 2688 L 1678 2688 Q 2225 2688 2498 2914 Q 2772 3141 2772 3597 Q 2772 4006 2547 4223 Q 2322 4441 1900 4441 Q 1478 4441 1245 4241 Q 1013 4041 972 3647 L 622 3647 L 622 4469 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f98780a-DejaVuSerif-b" transform="translate(0 0.015625)"/> <use xlink:href="#f98780a-DejaVuSerif-14" transform="translate(39.013672 0.015625)"/> <use xlink:href="#f98780a-DejaVuSerif-f" transform="translate(102.636719 0.015625)"/> <use xlink:href="#f98780a-DejaVuSerif-16" transform="translate(153.388672 0.015625)"/> <use xlink:href="#f98780a-DejaVuSerif-f" transform="translate(217.011719 0.015625)"/> <use xlink:href="#f98780a-DejaVuSerif-14" transform="translate(267.763672 0.015625)"/> <use xlink:href="#f98780a-DejaVuSerif-c" transform="translate(331.386719 0.015625)"/> </g> </g> <g id="f98780a-text_7"> <!-- $N(A)$ --> <g style="fill: var(--fig-steel)" transform="translate(186.105625 92.57182) scale(0.13 -0.13)"> <defs> <path id="f98780a-DejaVuSerif-Italic-31" d="M -128 0 L -66 331 L 562 331 L 1341 4331 L 712 4331 L 778 4666 L 1975 4666 L 4056 984 L 4706 4331 L 4081 4331 L 4147 4666 L 5784 4666 L 5719 4331 L 5091 4331 L 4231 -91 L 3853 -91 L 1631 3841 L 947 331 L 1575 331 L 1512 0 L -128 0 z " transform="scale(0.015625)"/> <path id="f98780a-DejaVuSerif-Italic-24" d="M 1159 1691 L 2872 1691 L 2447 3909 L 1159 1691 z M -488 0 L -425 331 L -16 331 L 2491 4666 L 3016 4666 L 3841 331 L 4297 331 L 4234 0 L 2537 0 L 2600 331 L 3119 331 L 2928 1356 L 966 1356 L 375 331 L 887 331 L 825 0 L -488 0 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f98780a-DejaVuSerif-Italic-31" transform="translate(0 0.015625)"/> <use xlink:href="#f98780a-DejaVuSerif-b" transform="translate(87.5 0.015625)"/> <use xlink:href="#f98780a-DejaVuSerif-Italic-24" transform="translate(126.513672 0.015625)"/> <use xlink:href="#f98780a-DejaVuSerif-c" transform="translate(198.730469 0.015625)"/> </g> </g> <g id="f98780a-text_8"> <!-- soluzioni --> <g style="fill: var(--fig-accent)" transform="translate(262.918057 108.014149) scale(0.13 -0.13)"> <defs> <path id="f98780a-DejaVuSerif-56" d="M 359 184 L 359 959 L 691 959 Q 703 588 923 403 Q 1144 219 1575 219 Q 1963 219 2166 364 Q 2369 509 2369 788 Q 2369 1006 2220 1140 Q 2072 1275 1594 1428 L 1178 1569 Q 750 1706 558 1912 Q 366 2119 366 2438 Q 366 2894 700 3153 Q 1034 3413 1625 3413 Q 1888 3413 2178 3344 Q 2469 3275 2778 3144 L 2778 2419 L 2447 2419 Q 2434 2741 2221 2922 Q 2009 3103 1644 3103 Q 1281 3103 1095 2975 Q 909 2847 909 2591 Q 909 2381 1050 2254 Q 1191 2128 1613 1997 L 2069 1856 Q 2541 1709 2748 1489 Q 2956 1269 2956 922 Q 2956 450 2595 179 Q 2234 -91 1600 -91 Q 1278 -91 972 -22 Q 666 47 359 184 z " transform="scale(0.015625)"/> <path id="f98780a-DejaVuSerif-52" d="M 1925 219 Q 2388 219 2623 584 Q 2859 950 2859 1663 Q 2859 2375 2623 2739 Q 2388 3103 1925 3103 Q 1463 3103 1227 2739 Q 991 2375 991 1663 Q 991 950 1228 584 Q 1466 219 1925 219 z M 1925 -91 Q 1200 -91 759 389 Q 319 869 319 1663 Q 319 2456 758 2934 Q 1197 3413 1925 3413 Q 2653 3413 3092 2934 Q 3531 2456 3531 1663 Q 3531 869 3092 389 Q 2653 -91 1925 -91 z " transform="scale(0.015625)"/> <path id="f98780a-DejaVuSerif-4f" d="M 1313 331 L 1856 331 L 1856 0 L 184 0 L 184 331 L 738 331 L 738 4531 L 184 4531 L 184 4863 L 1313 4863 L 1313 331 z " transform="scale(0.015625)"/> <path id="f98780a-DejaVuSerif-58" d="M 2266 3322 L 3341 3322 L 3341 331 L 3884 331 L 3884 0 L 2766 0 L 2766 588 Q 2606 256 2353 82 Q 2100 -91 1766 -91 Q 1213 -91 952 223 Q 691 538 691 1209 L 691 2988 L 172 2988 L 172 3322 L 1269 3322 L 1269 1388 Q 1269 781 1417 556 Q 1566 331 1947 331 Q 2347 331 2556 625 Q 2766 919 2766 1478 L 2766 2988 L 2266 2988 L 2266 3322 z " transform="scale(0.015625)"/> <path id="f98780a-DejaVuSerif-5d" d="M 256 0 L 256 269 L 2338 2988 L 691 2988 L 691 2413 L 359 2413 L 359 3322 L 3078 3322 L 3078 3053 L 997 331 L 2803 331 L 2803 934 L 3138 934 L 3138 0 L 256 0 z " transform="scale(0.015625)"/> <path id="f98780a-DejaVuSerif-4c" d="M 622 4353 Q 622 4497 726 4603 Q 831 4709 978 4709 Q 1122 4709 1226 4603 Q 1331 4497 1331 4353 Q 1331 4206 1228 4103 Q 1125 4000 978 4000 Q 831 4000 726 4103 Q 622 4206 622 4353 z M 1356 331 L 1900 331 L 1900 0 L 231 0 L 231 331 L 781 331 L 781 2988 L 231 2988 L 231 3322 L 1356 3322 L 1356 331 z " transform="scale(0.015625)"/> <path id="f98780a-DejaVuSerif-51" d="M 263 0 L 263 331 L 781 331 L 781 2988 L 231 2988 L 231 3322 L 1356 3322 L 1356 2731 Q 1516 3069 1770 3241 Q 2025 3413 2363 3413 Q 2913 3413 3172 3097 Q 3431 2781 3431 2113 L 3431 331 L 3944 331 L 3944 0 L 2356 0 L 2356 331 L 2853 331 L 2853 1931 Q 2853 2541 2703 2767 Q 2553 2994 2175 2994 Q 1775 2994 1565 2701 Q 1356 2409 1356 1850 L 1356 331 L 1856 331 L 1856 0 L 263 0 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f98780a-DejaVuSerif-56"/> <use xlink:href="#f98780a-DejaVuSerif-52" transform="translate(51.3125 0)"/> <use xlink:href="#f98780a-DejaVuSerif-4f" transform="translate(111.515625 0)"/> <use xlink:href="#f98780a-DejaVuSerif-58" transform="translate(143.5 0)"/> <use xlink:href="#f98780a-DejaVuSerif-5d" transform="translate(207.90625 0)"/> <use xlink:href="#f98780a-DejaVuSerif-4c" transform="translate(260.59375 0)"/> <use xlink:href="#f98780a-DejaVuSerif-52" transform="translate(292.578125 0)"/> <use xlink:href="#f98780a-DejaVuSerif-51" transform="translate(352.78125 0)"/> <use xlink:href="#f98780a-DejaVuSerif-4c" transform="translate(417.1875 0)"/> </g> </g> <g id="f98780a-text_9"> <!-- $O$ --> <g style="fill: var(--fig-axis)" transform="translate(122.814766 213.486445) scale(0.13 -0.13)"> <defs> <path id="f98780a-DejaVuSerif-Italic-32" d="M 2219 244 Q 2984 244 3478 770 Q 3972 1297 4172 2328 Q 4372 3363 4084 3889 Q 3797 4416 3031 4416 Q 2263 4416 1769 3889 Q 1275 3363 1075 2328 Q 875 1297 1162 770 Q 1450 244 2219 244 z M 2153 -91 Q 1678 -91 1311 65 Q 944 222 700 525 Q 419 875 334 1319 Q 250 1763 359 2328 Q 469 2894 725 3339 Q 981 3784 1400 4134 Q 1766 4441 2191 4595 Q 2616 4750 3097 4750 Q 4113 4750 4608 4084 Q 5103 3419 4891 2328 Q 4781 1769 4522 1320 Q 4263 872 3847 525 Q 3481 219 3056 64 Q 2631 -91 2153 -91 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f98780a-DejaVuSerif-Italic-32" transform="translate(0 0.78125)"/> </g> </g> <g id="f98780a-text_10"> <!-- $x + y - z = 3$, $x - y + z = -1$ --> <g style="fill: var(--fig-ink)" transform="translate(71.822895 15.636953) scale(0.13 -0.13)"> <defs> <path id="f98780a-DejaVuSerif-e" d="M 2931 4013 L 2931 2259 L 4684 2259 L 4684 1753 L 2931 1753 L 2931 0 L 2431 0 L 2431 1753 L 678 1753 L 678 2259 L 2431 2259 L 2431 4013 L 2931 4013 z " transform="scale(0.015625)"/> <path id="f98780a-DejaVuSerif-8cf" d="M 678 2259 L 4684 2259 L 4684 1753 L 678 1753 L 678 2259 z " transform="scale(0.015625)"/> <path id="f98780a-DejaVuSerif-3" transform="scale(0.015625)"/> </defs> <use xlink:href="#f98780a-DejaVuSerif-Italic-5b" transform="translate(0 0.78125)"/> <use xlink:href="#f98780a-DejaVuSerif-e" transform="translate(75.361328 0.78125)"/> <use xlink:href="#f98780a-DejaVuSerif-Italic-5c" transform="translate(178.115234 0.78125)"/> <use xlink:href="#f98780a-DejaVuSerif-8cf" transform="translate(253.574219 0.78125)"/> <use xlink:href="#f98780a-DejaVuSerif-Italic-5d" transform="translate(356.328125 0.78125)"/> <use xlink:href="#f98780a-DejaVuSerif-20" transform="translate(427.978516 0.78125)"/> <use xlink:href="#f98780a-DejaVuSerif-16" transform="translate(530.732422 0.78125)"/> <use xlink:href="#f98780a-DejaVuSerif-f" transform="translate(594.355469 0.78125)"/> <use xlink:href="#f98780a-DejaVuSerif-3" transform="translate(626.142578 0.78125)"/> <use xlink:href="#f98780a-DejaVuSerif-Italic-5b" transform="translate(657.929688 0.78125)"/> <use xlink:href="#f98780a-DejaVuSerif-8cf" transform="translate(733.291016 0.78125)"/> <use xlink:href="#f98780a-DejaVuSerif-Italic-5c" transform="translate(836.044922 0.78125)"/> <use xlink:href="#f98780a-DejaVuSerif-e" transform="translate(911.503906 0.78125)"/> <use xlink:href="#f98780a-DejaVuSerif-Italic-5d" transform="translate(1014.257812 0.78125)"/> <use xlink:href="#f98780a-DejaVuSerif-20" transform="translate(1085.908203 0.78125)"/> <use xlink:href="#f98780a-DejaVuSerif-8cf" transform="translate(1188.662109 0.78125)"/> <use xlink:href="#f98780a-DejaVuSerif-14" transform="translate(1272.451172 0.78125)"/> </g> </g> <g id="f98780a-line2d_3"> <defs> <path id="f98780a-m1aed8d99e9" d="M 0 2.5 C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 C 2.236584 1.29895 2.5 0.663008 2.5 0 C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 C -1.29895 2.236584 -0.663008 2.5 0 2.5 z " style="stroke: var(--fig-accent)"/> </defs> <g clip-path="url(#f98780a-p1e7a3fd6fc)"> <use xlink:href="#f98780a-m1aed8d99e9" x="189.311025" y="213.314359" style="fill: var(--fig-accent); stroke: var(--fig-accent)"/> </g> </g> <g id="f98780a-line2d_4"> <g clip-path="url(#f98780a-p1e7a3fd6fc)"> <use xlink:href="#f98780a-m1aed8d99e9" x="238.264932" y="164.360453" style="fill: var(--fig-accent); stroke: var(--fig-accent)"/> </g> </g> </g> </g> <defs> <clipPath id="f98780a-p1e7a3fd6fc"> <rect x="5.76" y="21.636953" width="305.935791" height="299.376"/> </clipPath> </defs> </svg></figure>
+
+Ogni equazione in tre incognite è un piano ([Rette e piani nello spazio](/uni/gal/rette-e-piani-nello-spazio/)); due piani non paralleli si tagliano in una retta. In azzurro $N(A)$, la retta per $O$ di direzione $(0, 1, 1)$, intersezione dei due piani "spostati nell'origine"; in rosso le soluzioni, la retta parallela che passa per $\vec{x}_0 = (1, 2, 0)$. È la retta in forma parametrica: punto più $t$ volte la direzione.
 
 **Conseguenze.**
 - Quale soluzione particolare $\vec{x}_0$ si sceglie non conta: un'altra scelta dà lo stesso insieme scritto in un altro modo.
 - Un sistema compatibile ha **soluzione unica** se e solo se $N(A) = \{\vec{0}\}$, cioè $\operatorname{null}(A) = 0$, cioè $\operatorname{rg}(A) = n$. È il caso 1 di Rouché-Capelli visto da un'altra parte.
 - Le soluzioni di $A\vec{x} = \vec{b}$ dipendono da $\operatorname{null}(A)$ parametri, gli stessi del nucleo.
+- Il numero di soluzioni non dipende da $\vec{b}$, purché il sistema sia compatibile: con la stessa $A$, ogni $\vec{b}$ dà o nessuna soluzione, o un insieme "grande quanto $N(A)$".
+
+**Esempio della soluzione unica.** $\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}\vec{x} = \begin{pmatrix} 5 \\ 6 \end{pmatrix}$. Sopra si è visto $\operatorname{null}(A) = 0$, quindi se c'è una soluzione è l'unica.
+- $R_2 \to R_2 - 3R_1$: $(0,\ -2 \mid 6 - 15) = (0,\ -2 \mid -9)$, quindi $y = \frac{9}{2}$.
+- Prima riga: $x + 2 \cdot \frac{9}{2} = 5$, quindi $x = 5 - 9 = -4$.
+- Verifica: $-4 + 9 = 5$; $-12 + 18 = 6$.
 
 ## Metodo
 
@@ -137,9 +304,48 @@ $$
 4. Spezza la colonna: la parte senza parametri è $\vec{x}_0$ (la soluzione con le variabili libere a $0$); ogni parametro raccoglie una colonna, che è una soluzione dell'omogeneo.
 5. Verifica: $\vec{x}_0$ nel sistema, ogni colonna del nucleo nell'omogeneo (termini noti a zero).
 
+```
+[A | b]  --Gauss-Jordan-->  rref
+            |
+            +-- pivot nell'ultima colonna?  sì: incompatibile, fine
+            |
+            no
+            v
+   colonne senza pivot = variabili libere (null(A) di loro)
+            |
+            v
+   colonna delle incognite = parte senza parametri  +  t1 (colonna) + t2 (colonna) + ...
+                                    x0                     soluzioni di A x = 0
+            |
+            v
+   verifica: A x0 = b,  A (ogni colonna) = 0
+```
+
 ### Riconoscere una soluzione
 
-Se conosci $\vec{x}_0$ e il nucleo, $\vec{w}$ è soluzione se e solo se $\vec{w} - \vec{x}_0 \in N(A)$. Non serve risolvere di nuovo.
+Se conosci $\vec{x}_0$ e il nucleo, $\vec{w}$ è soluzione se e solo se $\vec{w} - \vec{x}_0 \in N(A)$. Non serve risolvere di nuovo. Se di $A$ si conosce la matrice, il controllo più rapido resta il prodotto $A\vec{w}$.
+
+### Combinazioni di soluzioni
+
+Se $\vec{x}_1, \vec{x}_2$ risolvono $A\vec{x} = \vec{b}$, per la distributiva $A(\alpha\vec{x}_1 + \beta\vec{x}_2) = (\alpha + \beta)\vec{b}$. Conta la somma dei coefficienti:
+- $\alpha + \beta = 1$: soluzione di $A\vec{x} = \vec{b}$;
+- $\alpha + \beta = 0$: soluzione dell'omogeneo;
+- altrimenti (con $\vec{b} \neq \vec{0}$): né l'una né l'altra.
+
+### "Per quali $k$ l'insieme delle soluzioni è chiuso?"
+
+È il tipo dell'esercitazione del 12/10.
+1. Per il teorema e l'osservazione 1: chiuso se il sistema è omogeneo. Se $\vec{b} \neq \vec{0}$ e c'è una soluzione $\vec{x}_1$, allora $2\vec{x}_1$ non è soluzione: non chiuso.
+2. Quindi si cercano i $k$ con $\vec{b}_k = \vec{0}$: **tutte** le componenti nulle insieme.
+3. Si controlla a parte che cosa succede nei valori in cui il sistema è incompatibile (insieme vuoto): non va contato fra i "chiusi" ([Spazi vettoriali](/uni/gal/spazi-vettoriali/): un sottospazio contiene $\vec{0}$).
+
+### Costruire un sistema con soluzioni date
+
+Dati $\vec{x}_0$ e il nucleo, si cerca $A$ con le colonne del nucleo che vanno a zero, poi si pone $\vec{b} = A\vec{x}_0$.
+1. Il numero di equazioni indipendenti è $\operatorname{rg}(A) = n - \operatorname{null}(A)$.
+2. Ogni riga $\vec{r}$ di $A$ deve dare $\vec{r} \cdot \vec{v} = 0$ con ogni vettore $\vec{v}$ del nucleo (riga per colonna è un prodotto scalare in coordinate, [Vettori geometrici](/uni/gal/vettori-geometrici/)).
+3. Le righe scelte non devono essere proporzionali (altrimenti il rango cala).
+4. $\vec{b} = A\vec{x}_0$, poi si risolve il sistema trovato e si controlla che dia proprio quell'insieme.
 
 ## Esempi svolti a lezione
 
@@ -149,11 +355,16 @@ Se conosci $\vec{x}_0$ e il nucleo, $\vec{w}$ è soluzione se e solo se $\vec{w}
 > $$
 > Incognite $x, y, z, w$.
 >
-> **Riduzione.** $E_{21}(-1)$: $R_2 - R_1 = (0, 1, 3, 0 \mid 0)$. $E_{31}(-2)$: $R_3 - 2R_1 = (0, 1, 3, 0 \mid 0)$. $E_{32}(-1)$: la terza riga si annulla.
+> *Tipo*: sistema con più incognite che equazioni indipendenti, da scrivere nella forma del teorema. *Metodo*: Gauss-Jordan sulla completa, poi la colonna delle incognite spezzata per parametri.
+>
+> **Riduzione.**
+> - $E_{21}(-1)$, cioè $R_2 \to R_2 - R_1$: $(1 - 1,\ 1 - 0,\ 3 - 0,\ 2 - 2 \mid 1 - 1) = (0, 1, 3, 0 \mid 0)$.
+> - $E_{31}(-2)$, cioè $R_3 \to R_3 - 2R_1$: $(2 - 2,\ 1 - 0,\ 3 - 0,\ 4 - 4 \mid 2 - 2) = (0, 1, 3, 0 \mid 0)$.
+> - $E_{32}(-1)$, cioè $R_3 \to R_3 - R_2$: la terza riga si annulla.
 > $$
 > \left[\begin{array}{cccc|c} 1 & 0 & 0 & 2 & 1 \\ 0 & 1 & 3 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 \end{array}\right]
 > $$
-> È già ridotta per righe. Pivot nelle colonne di $x$ e $y$.
+> È già ridotta per righe: i pivot valgono $1$ e sopra il secondo pivot c'è già $0$. Pivot nelle colonne di $x$ e $y$.
 >
 > **Ranghi.** $\operatorname{rg}(A) = 2 = \operatorname{rg}([A \mid \vec{b}])$, compatibile. $\operatorname{null}(A) = 2$ (colonne di $z$ e $w$), e infatti $2 + 2 = 4$ colonne.
 >
@@ -162,6 +373,8 @@ Se conosci $\vec{x}_0$ e il nucleo, $\vec{w}$ è soluzione se e solo se $\vec{w}
 > \begin{pmatrix} x \\ y \\ z \\ w \end{pmatrix} = \begin{pmatrix} 1 - 2w \\ -3z \\ z \\ w \end{pmatrix} = \underbrace{\begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix}}_{\vec{x}_0} + z\begin{pmatrix} 0 \\ -3 \\ 1 \\ 0 \end{pmatrix} + w\begin{pmatrix} -2 \\ 0 \\ 0 \\ 1 \end{pmatrix}, \qquad z, w \in \mathbb{R}
 > $$
 > Nel quaderno la prof colora: in viola i numeri senza parametro (diventano $\vec{x}_0$), in arancione i termini con $z$, in verde quelli con $w$. Le due colonne di $z$ e $w$ sono soluzioni di $A\vec{x} = \vec{0}$.
+>
+> Come si spezza, riga per riga: la prima componente $1 - 2w$ dà $1$ a $\vec{x}_0$, $0$ alla colonna di $z$, $-2$ a quella di $w$; la seconda $-3z$ dà $0$, $-3$, $0$; la terza $z$ dà $0$, $1$, $0$; la quarta $w$ dà $0$, $0$, $1$.
 >
 > **Verifica.** $\vec{x}_0 = (1, 0, 0, 0)$: $1 = 1$, $1 = 1$, $2 = 2$. $(0, -3, 1, 0)$ nell'omogeneo: $0$; $-3 + 3 = 0$; $-3 + 3 = 0$. $(-2, 0, 0, 1)$: $-2 + 2 = 0$; $-2 + 2 = 0$; $-4 + 4 = 0$.
 
@@ -179,25 +392,65 @@ Se conosci $\vec{x}_0$ e il nucleo, $\vec{w}$ è soluzione se e solo se $\vec{w}
 > **Perché "solo se"**: se $\vec{b} \neq \vec{0}$ e $\vec{x}_1$ è una soluzione, $A(2\vec{x}_1) = 2\vec{b} \neq \vec{b}$, quindi $2\vec{x}_1$ non è soluzione: non chiuso per il prodotto (osservazione "il non omogeneo non è chiuso").
 >
 > **Il caso che la prof non tratta**: per $k = 1$ e $k = -\frac{10}{9}$ la matrice ha rango $2$ e il sistema risulta **incompatibile**: l'insieme delle soluzioni è vuoto, e il ragionamento sopra non parte (non c'è un $\vec{x}_1$). Il vuoto non è un sottospazio ([Spazi vettoriali](/uni/gal/spazi-vettoriali/)), quindi la risposta resta $k = 0$, ma va detto. I conti sono nella [nota degli esercizi extra](/uni/gal/esercizi-extra-matrici-svolti/), esercizio 3.
+>
+> **Verifica di buon senso**: per $k = 0$ il rango di $A_0$ è $3$ (i $k$ critici sono solo $1$ e $-\frac{10}{9}$), quindi l'omogeneo $A_0\vec{x} = \vec{0}$ ha solo la soluzione banale: l'insieme è $\{\vec{0}\}$, chiuso in modo banale ($\vec{0} + \vec{0} = \vec{0}$, $\lambda\vec{0} = \vec{0}$).
 
 Un altro esempio dello stesso tipo, dalla dispensa (<span class="src">es. 43</span>), è svolto nella domanda 3.5 del [foglio 3](/uni/gal/foglio-3-svolto/); l'esercizio 3.11 dello stesso foglio è identico nella forma.
 
 ## Esercizi tipo esame
 
-**Esercizio 1.** Risolvere il sistema
+Dal più facile al livello del 30. Prima di aprire la soluzione, prova almeno a scrivere il tipo e il metodo.
+
+**Esercizio 1** (facile). Dato il sistema
+$$
+\begin{cases} 2x - y + z = 1 \\ x + 3z = 4 \end{cases}
+$$
+
+- a) Scriverlo in forma matriciale, con l'ordine di $A$, $\vec{x}$, $\vec{b}$, e scrivere il sistema omogeneo associato.
+- b) Verificare con il prodotto righe per colonne che $(1, 1, 0)$ non è soluzione, che $(1, 2, 1)$ lo è e che $(-3, -5, 1)$ risolve l'omogeneo.
+- c) Senza risolvere il sistema, trovare un'altra soluzione.
+- d) Calcolare $\operatorname{rg}(A)$ e $\operatorname{null}(A)$ e scrivere tutte le soluzioni.
+
+> [!tip]- Indizio
+> Per la c) usa il teorema: soluzione più elemento del nucleo. Per la d) le due righe di $A$ sono proporzionali?
+
+> [!example]- Soluzione
+> *Tipo*: lettura di un sistema in forma matriciale e uso diretto del teorema. *Come lo riconosco*: dà vettori già pronti da controllare. *Perché questo metodo*: verificare è un prodotto, e il teorema dice come produrre soluzioni nuove senza Gauss-Jordan.
+>
+> **a)** $A = \begin{pmatrix} 2 & -1 & 1 \\ 1 & 0 & 3 \end{pmatrix}$ ($2 \times 3$: 2 equazioni, 3 incognite), $\vec{x} = \begin{pmatrix} x \\ y \\ z \end{pmatrix}$ ($3 \times 1$), $\vec{b} = \begin{pmatrix} 1 \\ 4 \end{pmatrix}$ ($2 \times 1$). Nella seconda riga lo $0$ è il coefficiente di $y$, che manca. Omogeneo associato: $2x - y + z = 0$, $x + 3z = 0$.
+>
+> **b)**
+> - $(1, 1, 0)$: riga 1 per la colonna, $2 - 1 + 0 = 1$; riga 2, $1 + 0 + 0 = 1 \neq 4$. Non è soluzione.
+> - $(1, 2, 1)$: riga 1, $2 - 2 + 1 = 1$; riga 2, $1 + 0 + 3 = 4$. È soluzione.
+> - $(-3, -5, 1)$ con termini noti a zero: riga 1, $-6 + 5 + 1 = 0$; riga 2, $-3 + 0 + 3 = 0$. È in $N(A)$.
+>
+> **c)** Per il teorema (inclusione $\supseteq$) $\vec{x}_0 + \vec{v}$ è soluzione: $(1, 2, 1) + (-3, -5, 1) = (-2, -3, 2)$. Controllo: $-4 + 3 + 2 = 1$; $-2 + 0 + 6 = 4$.
+>
+> **d)** Riduco $A$: $R_1 \leftrightarrow R_2$ dà $\begin{pmatrix} 1 & 0 & 3 \\ 2 & -1 & 1 \end{pmatrix}$; poi $R_2 \to R_2 - 2R_1$: $(2 - 2,\ -1 - 0,\ 1 - 6) = (0, -1, -5)$. Due pivot, $\operatorname{rg}(A) = 2$, $\operatorname{null}(A) = 3 - 2 = 1$. Dall'omogeneo ridotto: $z = t$ libera, $-y - 5t = 0$ quindi $y = -5t$, $x + 3t = 0$ quindi $x = -3t$. $N(A) = \{t(-3, -5, 1)\}$, e
+> $$
+> \text{soluzioni} = \{(1, 2, 1) + t(-3, -5, 1) : t \in \mathbb{R}\}
+> $$
+> *Verifica*: la soluzione della c) è il caso $t = 1$.
+
+**Esercizio 2.** Risolvere il sistema
 $$
 \begin{cases} x + 2y + z + w = 2 \\ 2x + 4y + 3z + w = 5 \\ -x - 2y + z - 3w = 0 \end{cases}
 $$
 scrivendo l'insieme delle soluzioni come somma di una soluzione particolare e delle soluzioni del sistema omogeneo associato. Quanto valgono $\operatorname{rg}(A)$ e $\operatorname{null}(A)$?
 
 > [!example]- Soluzione
+> *Tipo*: lo stesso dell'esempio della prof. *Metodo*: Gauss-Jordan sulla completa, poi la colonna delle incognite spezzata per parametri.
 > $$
 > \left[\begin{array}{cccc|c} 1 & 2 & 1 & 1 & 2 \\ 2 & 4 & 3 & 1 & 5 \\ -1 & -2 & 1 & -3 & 0 \end{array}\right]
 > $$
-> $E_{21}(-2)$: $(0, 0, 1, -1 \mid 1)$. $E_{31}(1)$: $(0, 0, 2, -2 \mid 2)$. $E_{32}(-2)$: la terza riga si annulla.
+> - $E_{21}(-2)$, cioè $R_2 \to R_2 - 2R_1$: $(2 - 2,\ 4 - 4,\ 3 - 2,\ 1 - 2 \mid 5 - 4) = (0, 0, 1, -1 \mid 1)$.
+> - $E_{31}(1)$, cioè $R_3 \to R_3 + R_1$: $(-1 + 1,\ -2 + 2,\ 1 + 1,\ -3 + 1 \mid 0 + 2) = (0, 0, 2, -2 \mid 2)$.
+> - $E_{32}(-2)$, cioè $R_3 \to R_3 - 2R_2$: la terza riga si annulla.
 > $$
 > \left[\begin{array}{cccc|c} 1 & 2 & 1 & 1 & 2 \\ 0 & 0 & 1 & -1 & 1 \\ 0 & 0 & 0 & 0 & 0 \end{array}\right] \xrightarrow{E_{12}(-1)} \left[\begin{array}{cccc|c} 1 & 2 & 0 & 2 & 1 \\ 0 & 0 & 1 & -1 & 1 \\ 0 & 0 & 0 & 0 & 0 \end{array}\right]
 > $$
+> ($E_{12}(-1)$ è $R_1 \to R_1 - R_2$: $(1,\ 2,\ 1 - 1,\ 1 + 1 \mid 2 - 1) = (1, 2, 0, 2 \mid 1)$.)
+>
 > Pivot nelle colonne di $x$ e $z$: $\operatorname{rg}(A) = \operatorname{rg}([A \mid \vec{b}]) = 2$, compatibile; $\operatorname{null}(A) = 4 - 2 = 2$, variabili libere $y$ e $w$. La colonna di $y$ è senza pivot anche se $y$ compare nella prima equazione: dopo $E_{21}(-2)$ il $4$ diventa $0$.
 >
 > $x = 1 - 2y - 2w$, $z = 1 + w$:
@@ -206,7 +459,26 @@ scrivendo l'insieme delle soluzioni come somma di una soluzione particolare e de
 > $$
 > **Verifica.** $(1, 0, 1, 0)$: $1 + 1 = 2$; $2 + 3 = 5$; $-1 + 1 = 0$. $(-2, 1, 0, 0)$ nell'omogeneo: $-2 + 2 = 0$; $-4 + 4 = 0$; $2 - 2 = 0$. $(-2, 0, 1, 1)$: $-2 + 1 + 1 = 0$; $-4 + 3 + 1 = 0$; $2 + 1 - 3 = 0$.
 
-**Esercizio 2.** Siano $\vec{x}_1$ e $\vec{x}_2$ due soluzioni distinte di $A\vec{x} = \vec{b}$, con $\vec{b} \neq \vec{0}$. Quali fra le seguenti sono soluzioni di $A\vec{x} = \vec{b}$, quali di $A\vec{x} = \vec{0}$, quali di nessuno dei due?
+**Esercizio 3.** Di un sistema $A\vec{x} = \vec{b}$ in tre incognite si sa che $\vec{x}_0 = (1, 0, 1)$ è una soluzione e che $N(A) = \{t(1, -1, 0) : t \in \mathbb{R}\}$.
+
+- a) Scrivere tutte le soluzioni.
+- b) $(3, -2, 1)$ è soluzione? E $(0, 1, 0)$?
+- c) Quanto vale $\operatorname{rg}(A)$?
+
+> [!example]- Soluzione
+> *Tipo*: il sistema non c'è, ci sono solo $\vec{x}_0$ e il nucleo. *Perché il teorema*: dice che bastano quei due dati per conoscere tutte le soluzioni, e dà il criterio “$\vec{w} - \vec{x}_0 \in N(A)$".
+>
+> **a)** Per il teorema, le soluzioni sono $\vec{x}_0 + \vec{v}$ con $\vec{v} \in N(A)$:
+> $$
+> \{(1 + t,\ -t,\ 1) : t \in \mathbb{R}\}
+> $$
+> **b)** $(3, -2, 1) - (1, 0, 1) = (2, -2, 0) = 2(1, -1, 0) \in N(A)$: **sì**, con $t = 2$. Invece $(0, 1, 0) - (1, 0, 1) = (-1, 1, -1)$ non è un multiplo di $(1, -1, 0)$ (la terza componente è $-1$, non $0$): **no**.
+>
+> **c)** Il nucleo dipende da un parametro, quindi $\operatorname{null}(A) = 1$ e $\operatorname{rg}(A) = 3 - 1 = 2$.
+>
+> *Verifica*: $(3, -2, 1)$ è $(1 + t, -t, 1)$ con $t = 2$: $1 + 2 = 3$, $-2$, $1$. Torna.
+
+**Esercizio 4.** Siano $\vec{x}_1$ e $\vec{x}_2$ due soluzioni distinte di $A\vec{x} = \vec{b}$, con $\vec{b} \neq \vec{0}$. Quali fra le seguenti sono soluzioni di $A\vec{x} = \vec{b}$, quali di $A\vec{x} = \vec{0}$, quali di nessuno dei due?
 
 - a) $\vec{x}_1 + \vec{x}_2$
 - b) $\vec{x}_1 - \vec{x}_2$
@@ -214,6 +486,8 @@ scrivendo l'insieme delle soluzioni come somma di una soluzione particolare e de
 - d) $\frac{1}{2}(\vec{x}_1 + \vec{x}_2)$
 
 > [!example]- Soluzione
+> *Tipo*: combinazioni di soluzioni senza conoscere $A$. *Metodo*: la distributiva, e si guarda la somma dei coefficienti.
+>
 > Per la distributiva, $A(\alpha\vec{x}_1 + \beta\vec{x}_2) = \alpha A\vec{x}_1 + \beta A\vec{x}_2 = (\alpha + \beta)\vec{b}$. Conta solo la somma dei coefficienti: se vale $1$ si ottiene $\vec{b}$, se vale $0$ si ottiene $\vec{0}$, altrimenti né l'uno né l'altro (perché $\vec{b} \neq \vec{0}$).
 > - a) $1 + 1 = 2$: dà $2\vec{b}$, **nessuno dei due**.
 > - b) $1 - 1 = 0$: soluzione dell'**omogeneo**. È la "differenza di due soluzioni" della dimostrazione del teorema.
@@ -221,17 +495,26 @@ scrivendo l'insieme delle soluzioni come somma di una soluzione particolare e de
 > - d) $\frac{1}{2} + \frac{1}{2} = 1$: soluzione di **$A\vec{x} = \vec{b}$**, il punto medio fra le due.
 >
 > Il c) letto col teorema: $3\vec{x}_1 - 2\vec{x}_2 = \vec{x}_1 + 2(\vec{x}_1 - \vec{x}_2)$, cioè una soluzione più un elemento del nucleo.
+>
+> *Verifica su un caso concreto*: con $x + 2y = 4$, $\vec{x}_1 = (4, 0)$, $\vec{x}_2 = (0, 2)$ (figura del teorema, a destra). a) $(4, 2)$: $4 + 4 = 8$. b) $(4, -2)$: $4 - 4 = 0$. c) $(12, -4)$: $12 - 8 = 4$. d) $(2, 1)$: $2 + 2 = 4$.
 
-**Esercizio 3.** Sia
+**Esercizio 5.** Sia
 $$
 A_k = \begin{pmatrix} 1 & k & 1 \\ 1 & 1 & k \\ k & 1 & 1 \end{pmatrix}, \qquad k \in \mathbb{R}
 $$
 Calcolare $\operatorname{rg}(A_k)$ e $\operatorname{null}(A_k)$ al variare di $k$, e descrivere $N(A_k)$ nei casi in cui non è $\{\vec{0}\}$.
 
+> [!tip]- Indizio
+> Riduci tenendo $k$ e scegli moltiplicatori che non richiedono di dividere per espressioni in $k$. Poi fattorizza l'ultimo pivot.
+
 > [!example]- Soluzione
-> $E_{21}(-1)$: $R_2 - R_1 = (0,\ 1 - k,\ k - 1)$. $E_{31}(-k)$: $R_3 - kR_1 = (0,\ 1 - k^2,\ 1 - k)$.
+> *Tipo*: matrice con parametro, domanda sul nucleo. *Come lo riconosco*: chiede la nullità "al variare di $k$". *Perché questo metodo*: $\operatorname{null} = 3 - \operatorname{rg}$, e il rango con parametro si calcola riducendo una volta sola e guardando dove i pivot si annullano ([Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/)).
 >
-> $E_{32}(-(1 + k))$: $R_3 - (1 + k)R_2$. Secondo elemento $1 - k^2 - (1 + k)(1 - k) = 0$; terzo $1 - k - (1 + k)(k - 1) = (1 - k) + (1 + k)(1 - k) = (1 - k)(2 + k)$. (Se $k = 0$ il passo $E_{31}$ non serve, se $k = -1$ non serve $E_{32}$: il coefficiente è $0$ e la riga è già quella della formula.)
+> - $E_{21}(-1)$, cioè $R_2 \to R_2 - R_1$: $(1 - 1,\ 1 - k,\ k - 1) = (0,\ 1 - k,\ k - 1)$.
+> - $E_{31}(-k)$, cioè $R_3 \to R_3 - kR_1$: $(k - k,\ 1 - k^2,\ 1 - k) = (0,\ 1 - k^2,\ 1 - k)$.
+> - $E_{32}(-(1 + k))$, cioè $R_3 \to R_3 - (1 + k)R_2$. Secondo elemento: $1 - k^2 - (1 + k)(1 - k) = 1 - k^2 - (1 - k^2) = 0$. Terzo: $1 - k - (1 + k)(k - 1) = (1 - k) + (1 + k)(1 - k) = (1 - k)(1 + 1 + k) = (1 - k)(2 + k)$ (raccolgo $1 - k$).
+>
+> (Se $k = 0$ il passo $E_{31}$ non serve, se $k = -1$ non serve $E_{32}$: il coefficiente è $0$ e la riga è già quella della formula.)
 > $$
 > \begin{pmatrix} 1 & k & 1 \\ 0 & 1 - k & k - 1 \\ 0 & 0 & (1 - k)(2 + k) \end{pmatrix}
 > $$
@@ -240,37 +523,112 @@ Calcolare $\operatorname{rg}(A_k)$ e $\operatorname{null}(A_k)$ al variare di $k
 > $$
 > N(A_1) = \left\{ s\begin{pmatrix} -1 \\ 1 \\ 0 \end{pmatrix} + t\begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix} : s, t \in \mathbb{R} \right\}
 > $$
-> - $k = -2$: la matrice è $\begin{pmatrix} 1 & -2 & 1 \\ 0 & 3 & -3 \\ 0 & 0 & 0 \end{pmatrix}$. $\operatorname{rg} = 2$, $\operatorname{null} = 1$. Dalla seconda $y = z$, dalla prima $x = 2y - z = z$:
+> - $k = -2$: la matrice è $\begin{pmatrix} 1 & -2 & 1 \\ 0 & 3 & -3 \\ 0 & 0 & 0 \end{pmatrix}$. $\operatorname{rg} = 2$, $\operatorname{null} = 1$. Dalla seconda $3y - 3z = 0$, quindi $y = z$; dalla prima $x = 2y - z = 2z - z = z$:
 > $$
 > N(A_{-2}) = \left\{ t\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} : t \in \mathbb{R} \right\}
 > $$
 >
 > In ogni caso $\operatorname{rg} + \operatorname{null} = 3$. Verifica: $(1, 1, 1)$ in $A_{-2}$ dà $1 - 2 + 1 = 0$ su ogni riga; $(-1, 1, 0)$ e $(-1, 0, 1)$ in $A_1$ danno $0$ perché ogni riga di $A_1$ è $(1, 1, 1)$.
 
-**Esercizio 4.** Di un sistema $A\vec{x} = \vec{b}$ in tre incognite si sa che $\vec{x}_0 = (1, 0, 1)$ è una soluzione e che $N(A) = \{t(1, -1, 0) : t \in \mathbb{R}\}$.
+**Esercizio 6** (sul modello del 3.12 del foglio 3). Si consideri il sistema, con $k \in \mathbb{R}$,
+$$
+\begin{cases} x + y + 2z = 1 \\ x + 2y + z = 1 \\ 2x + 3y + (k^2 + 2)z = k + 1 \end{cases}
+$$
 
-- a) Scrivere tutte le soluzioni.
-- b) $(3, -2, 1)$ è soluzione? E $(0, 1, 0)$?
-- c) Quanto vale $\operatorname{rg}(A)$?
+- a) Per quali $k$ il sistema è compatibile? Quante soluzioni ha?
+- b) Nei casi con infinite soluzioni, scriverle nella forma $\vec{x}_0 + N(A_k)$.
+- c) Per quali $k$ il nucleo $N(A_k)$ non è $\{\vec{0}\}$? Confrontare con la a).
+- d) Per quali $k$ l'insieme delle soluzioni è chiuso rispetto alla somma e al prodotto per uno scalare?
+
+> [!tip]- Indizio
+> Dopo tre operazioni la terza riga è $(0, 0, k^2 - 1 \mid k - 1)$. Per la d) guarda la prima componente di $\vec{b}$.
 
 > [!example]- Soluzione
-> **a)** Per il teorema, le soluzioni sono $\vec{x}_0 + \vec{v}$ con $\vec{v} \in N(A)$:
-> $$
-> \{(1 + t,\ -t,\ 1) : t \in \mathbb{R}\}
-> $$
-> **b)** $(3, -2, 1) - (1, 0, 1) = (2, -2, 0) = 2(1, -1, 0) \in N(A)$: **sì**, con $t = 2$. Invece $(0, 1, 0) - (1, 0, 1) = (-1, 1, -1)$ non è un multiplo di $(1, -1, 0)$ (la terza componente è $-1$, non $0$): **no**.
+> *Tipo*: sistema con parametro, con domande sul nucleo e sulla chiusura. *Come lo riconosco*: "per quali $k$" più "forma $\vec{x}_0 + N(A)$". *Perché questo metodo*: Rouché-Capelli sulla completa ridotta una volta sola con $k$ dentro; poi il teorema per i casi infiniti; per la chiusura, il metodo "chiuso se e solo se omogeneo".
 >
-> **c)** Il nucleo dipende da un parametro, quindi $\operatorname{null}(A) = 1$ e $\operatorname{rg}(A) = 3 - 1 = 2$.
+> **Riduzione.**
+> - $R_2 \to R_2 - R_1$: $(1 - 1,\ 2 - 1,\ 1 - 2 \mid 1 - 1) = (0, 1, -1 \mid 0)$.
+> - $R_3 \to R_3 - 2R_1$: $(2 - 2,\ 3 - 2,\ k^2 + 2 - 4 \mid k + 1 - 2) = (0,\ 1,\ k^2 - 2 \mid k - 1)$.
+> - $R_3 \to R_3 - R_2$: $(0,\ 0,\ k^2 - 2 + 1 \mid k - 1 - 0) = (0,\ 0,\ k^2 - 1 \mid k - 1)$.
+> $$
+> \left[\begin{array}{ccc|c} 1 & 1 & 2 & 1 \\ 0 & 1 & -1 & 0 \\ 0 & 0 & (k - 1)(k + 1) & k - 1 \end{array}\right]
+> $$
+> Nessuna divisione per espressioni in $k$: i moltiplicatori sono $1$ e $2$.
+>
+> **a)** Il terzo pivot è $(k - 1)(k + 1)$.
+> - $k \neq \pm 1$: $\operatorname{rg}(A_k) = \operatorname{rg}([A_k \mid \vec{b}]) = 3 = n$, una sola soluzione. Risalendo: $z = \frac{k - 1}{(k - 1)(k + 1)} = \frac{1}{k + 1}$ (semplifico $k - 1 \neq 0$); dalla seconda $y = z = \frac{1}{k + 1}$; dalla prima $x = 1 - y - 2z = 1 - \frac{3}{k + 1} = \frac{k - 2}{k + 1}$.
+> - $k = 1$: terza riga $(0, 0, 0 \mid 0)$, $\operatorname{rg}(A_1) = \operatorname{rg}([A_1 \mid \vec{b}]) = 2 < 3$: infinite soluzioni, $3 - 2 = 1$ parametro.
+> - $k = -1$: terza riga $(0, 0, 0 \mid -2)$, cioè $0 = -2$: $\operatorname{rg}(A_{-1}) = 2 < 3 = \operatorname{rg}([A_{-1} \mid \vec{b}])$, incompatibile.
+>
+> **b)** $k = 1$. Restano $x + y + 2z = 1$ e $y - z = 0$. Con $z = t$: $y = t$, $x = 1 - t - 2t = 1 - 3t$.
+> $$
+> \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} + t\begin{pmatrix} -3 \\ 1 \\ 1 \end{pmatrix}, \qquad t \in \mathbb{R}
+> $$
+>
+> **c)** $N(A_k) \neq \{\vec{0}\}$ se e solo se $\operatorname{rg}(A_k) < 3$, cioè per $k = 1$ e per $k = -1$. Anzi la matrice dipende solo da $k^2$, quindi $A_1 = A_{-1}$ e il nucleo è lo stesso: $\{t(-3, 1, 1)\}$. Per $k = -1$ però il sistema è incompatibile. È l'ipotesi "compatibile" del teorema vista in un esercizio: stessa $A$, stesso nucleo, ma con un $\vec{b}$ c'è una retta di soluzioni e con l'altro nessuna.
+>
+> **d)** Chiuso se e solo se il sistema è omogeneo. Ma $\vec{b} = (1, 1, k + 1)$ ha la prima componente uguale a $1$ per ogni $k$: il sistema **non è mai** omogeneo. Quindi l'insieme delle soluzioni **non è chiuso per nessun $k$** (per $k \neq \pm 1$ è un solo punto diverso da $\vec{0}$, per $k = 1$ una retta che non passa per l'origine, per $k = -1$ è vuoto).
+>
+> *Verifica*. Per $k = 1$: $(1, 0, 0)$ dà $1$, $1$, $2 = k + 1$; $(-3, 1, 1)$ nell'omogeneo dà $-3 + 1 + 2 = 0$, $-3 + 2 + 1 = 0$, $-6 + 3 + 3 = 0$. Per $k = 2$ la formula dà $(0, \frac13, \frac13)$: $0 + \frac13 + \frac23 = 1$; $0 + \frac23 + \frac13 = 1$; $0 + 1 + 6 \cdot \frac13 = 3 = k + 1$.
+
+**Esercizio 7** (livello 30). Scrivere un sistema lineare in $x, y, z$ il cui insieme delle soluzioni sia
+$$
+\left\{ \begin{pmatrix} 1 \\ 2 \\ 0 \end{pmatrix} + t\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} : t \in \mathbb{R} \right\}
+$$
+Quante equazioni servono almeno? Basta una?
+
+> [!tip]- Indizio
+> Prima il nucleo: ogni riga $\vec{r}$ di $A$ deve dare $\vec{r} \cdot (1, 1, 1) = 0$. Poi $\vec{b} = A\vec{x}_0$.
+
+> [!example]- Soluzione
+> *Tipo*: il problema al contrario, dalle soluzioni al sistema. *Come lo riconosco*: dà l'insieme delle soluzioni nella forma del teorema e chiede $A$ e $\vec{b}$. *Perché questo metodo*: il teorema dice che servono due cose, $N(A) = \{t(1, 1, 1)\}$ e $A\vec{x}_0 = \vec{b}$.
+>
+> 1. **Quante equazioni.** Il nucleo dipende da un parametro, quindi $\operatorname{null}(A) = 1$ e $\operatorname{rg}(A) = 3 - 1 = 2$: servono almeno **due** equazioni indipendenti. Una sola equazione (rango $1$) darebbe $\operatorname{null} = 2$, un piano di soluzioni, troppo.
+> 2. **Le righe.** Cerco righe $(a, b, c)$ con $a + b + c = 0$ (prodotto con $(1, 1, 1)$). Due non proporzionali: $(1, -1, 0)$ e $(0, 1, -1)$.
+> 3. **I termini noti.** $\vec{b} = A\vec{x}_0$: riga 1 per $(1, 2, 0)$, $1 - 2 + 0 = -1$; riga 2, $0 + 2 - 0 = 2$.
+> 4. **Il sistema.**
+> $$
+> \begin{cases} x - y = -1 \\ y - z = 2 \end{cases}
+> $$
+>
+> *Verifica risolvendo*: è già a scalini, pivot su $x$ e $y$, $z = t$ libera. Dalla seconda $y = 2 + t$, dalla prima $x = y - 1 = 1 + t$. Soluzioni $(1 + t,\ 2 + t,\ t) = (1, 2, 0) + t(1, 1, 1)$. Proprio l'insieme richiesto.
+>
+> Geometricamente: le soluzioni sono una retta, e ogni equazione è un piano che la contiene. Le risposte possibili sono infinite (due piani qualunque del fascio di piani per quella retta, [Rette e piani nello spazio](/uni/gal/rette-e-piani-nello-spazio/)); aggiungere una terza equazione che sia combinazione delle prime due non cambia nulla.
+
+**Esercizio 8** (livello 30, teoria). Vero o falso? Giustificare ogni risposta con il teorema o con un controesempio.
+
+- a) Se $A \in M_{3 \times 5}(\mathbb{R})$, il sistema $A\vec{x} = \vec{b}$ non può avere un'unica soluzione.
+- b) Se $A \in M_{5 \times 3}(\mathbb{R})$, il sistema $A\vec{x} = \vec{b}$ ha al più una soluzione.
+- c) Se $A\vec{x} = \vec{b}$ ha esattamente una soluzione, allora $A\vec{x} = \vec{0}$ ha solo la soluzione nulla.
+- d) Se $A\vec{x} = \vec{0}$ ha solo la soluzione nulla, allora $A\vec{x} = \vec{b}$ ha esattamente una soluzione per ogni $\vec{b}$.
+- e) Se $\vec{b} \neq \vec{0}$, l'insieme delle soluzioni di $A\vec{x} = \vec{b}$ non contiene $\vec{0}$.
+
+> [!example]- Soluzione
+> *Tipo*: domande di teoria del tipo 3.5-3.6 del foglio 3. *Metodo*: per "vero" una catena di fatti già enunciati (teorema, nullità più rango); per "falso" un controesempio con i numeri, il più piccolo possibile.
+> - a) **Vero**. $\operatorname{rg}(A) \leq 3$ (al più un pivot per riga), quindi $\operatorname{null}(A) = 5 - \operatorname{rg}(A) \geq 2$. Se il sistema è compatibile, le soluzioni sono $\vec{x}_0 + N(A)$ e dipendono da almeno due parametri; se è incompatibile non ne ha. Mai una sola.
+> - b) **Falso**. Con $A$ la matrice nulla $5 \times 3$ e $\vec{b} = \vec{0}$ ogni $\vec{x} \in \mathbb{R}^3$ è soluzione. Più righe che colonne non impedisce di avere variabili libere.
+> - c) **Vero**. Per il teorema, l'insieme delle soluzioni è $\{\vec{x}_0 + \vec{v} : \vec{v} \in N(A)\}$. Se $N(A)$ contenesse un $\vec{v} \neq \vec{0}$, $\vec{x}_0$ e $\vec{x}_0 + \vec{v}$ sarebbero due soluzioni distinte. Quindi $N(A) = \{\vec{0}\}$.
+> - d) **Falso**. $A = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$ ($2 \times 1$): $A\vec{x} = \vec{0}$ è $x = 0$, $x = 0$, solo la nulla. Con $\vec{b} = (1, 2)$ il sistema è $x = 1$, $x = 2$: incompatibile. Il nucleo banale dà "**al più** una soluzione", non "almeno una". (Con $A$ quadrata invece è vero: $\operatorname{rg}(A) = n$ vuol dire $A$ invertibile, [Matrici invertibili](/uni/gal/matrici-invertibili/), L6.)
+> - e) **Vero**. $A\vec{0} = \vec{0} \neq \vec{b}$. È il motivo più rapido per dire che l'insieme non è chiuso: un insieme chiuso per il prodotto per scalare contiene $0 \cdot \vec{x} = \vec{0}$.
+>
+> *Verifica dei controesempi*: in b) $\operatorname{rg} = 0$, $\operatorname{null} = 3 - 0 = 3$; in d) $\operatorname{rg}(A) = 1 = n$ ma $\operatorname{rg}([A \mid \vec{b}]) = 2$.
 
 ## Errori tipici
 
 - Sbagliare gli ordini nella forma matriciale: $\vec{x}$ ha tante righe quante **incognite** ($n$), $\vec{b}$ tante quante **equazioni** ($m$).
 - Dimenticare i coefficienti nulli scrivendo $A$: un'incognita che manca in un'equazione ha coefficiente $0$ in quella riga.
 - Dimostrare solo metà del teorema: “$\vec{x}_0 + \vec{v}$ è soluzione" non basta per dire che sono **tutte**. Serve anche "la differenza di due soluzioni sta nel nucleo".
+- Partire dalla tesi in una dimostrazione: scrivere “$A(\vec{x}_0 + \vec{v}) = \vec{b} = A\vec{x}_0 + A\vec{v} = \vec{b}$" (così nel quaderno, p. 59) mette $\vec{b}$ al secondo posto prima di averlo ottenuto. La catena giusta parte da $A(\vec{x}_0 + \vec{v})$ e arriva a $\vec{b}$: $A(\vec{x}_0 + \vec{v}) = A\vec{x}_0 + A\vec{v} = \vec{b} + \vec{0} = \vec{b}$.
 - Dire che le soluzioni di un sistema non omogeneo sono chiuse per somma: $A(\vec{x}_1 + \vec{x}_2) = 2\vec{b}$.
 - Contare la nullità sulle righe nulle invece che sulle colonne senza pivot: in una $3 \times 4$ di rango 2 c'è una riga nulla ma la nullità è $2$.
+- Calcolare il nucleo della matrice completa, o contare la colonna dei termini noti fra le $n$: il nucleo è di $A$, con termini noti a zero.
+- Scrivere $\operatorname{null}(A) + \operatorname{rg}(A) = m$ (righe) invece di $n$ (colonne).
 - Prendere come $\vec{x}_0$ una colonna del nucleo, o viceversa: $\vec{x}_0$ si verifica nel sistema con $\vec{b}$, le colonne del nucleo nel sistema con $\vec{0}$.
-- Applicare il teorema a un sistema senza controllare che sia compatibile: l'ipotesi "compatibile" c'è apposta. Con un parametro, i valori che rendono il sistema impossibile vanno trattati a parte (esercitazione del 12/10).
+- Applicare il teorema a un sistema senza controllare che sia compatibile: l'ipotesi "compatibile" c'è apposta. Con un parametro, i valori che rendono il sistema impossibile vanno trattati a parte (esercitazione del 12/10, esercizio 6).
+- Credere che un nucleo non banale garantisca soluzioni: $N(A) \neq \{\vec{0}\}$ dice "se ci sono soluzioni, sono infinite", non che ci siano.
+- Credere che un nucleo banale garantisca una soluzione: $N(A) = \{\vec{0}\}$ dice "al più una", non "esattamente una" (esercizio 8 d).
+- Per "chiuso se e solo se omogeneo", annullare **una** componente di $\vec{b}$ invece di **tutte** insieme.
+- Scrivere il vettore nullo come $\varnothing$: $\varnothing$ è l'insieme vuoto, $\vec{0}$ è la colonna di zeri. Nel quaderno lo zero barrato sottolineato si legge come vettore nullo, ma allo scritto conviene $\vec{0}$ o $\underline{0}$ come la prof: “$A\vec{x} = \varnothing$" direbbe una cosa senza senso.
 
 ## Domande
 
@@ -278,12 +636,38 @@ Calcolare $\operatorname{rg}(A_k)$ e $\operatorname{null}(A_k)$ al variare di $k
 
 - Cos'è il sistema omogeneo associato ad $A\vec{x} = \vec{b}$?
 
+- Perché un sistema omogeneo è sempre compatibile? Dillo in due modi, con la soluzione banale e con Rouché-Capelli.
+
 - Definisci nucleo e nullità di una matrice. Che relazione c'è con il rango?
+
+- Se $A$ è $m \times n$, in quale $\mathbb{R}^?$ sta $N(A)$? Perché?
+
+- Una matrice $2 \times 3$ ha una riga nulla nella forma ridotta. Quanto vale la nullità? Su cosa si conta?
+
+- Enuncia la relazione fra nullità e rango e spiega perché vale. Perché compare $n$ e non $m$?
 
 - Dimostra che una combinazione lineare di soluzioni di un sistema omogeneo è ancora soluzione.
 
 - Enuncia e dimostra il teorema sulla struttura delle soluzioni di un sistema compatibile $A\vec{x} = \vec{b}$.
 
+- Nella tesi del punto 2 del teorema, che cosa vuol dire "tutte e sole"? Quale delle due inclusioni è stata dimostrata a lezione?
+
+- A cosa serve l'ipotesi "compatibile" nel teorema? Dai un sistema con nucleo non banale e senza soluzioni.
+
 - Perché le soluzioni di un sistema non omogeneo non sono chiuse rispetto alla somma?
 
 - Quando un sistema compatibile ha soluzione unica, detto con il nucleo?
+
+- Se $N(A) = \{\vec{0}\}$, il sistema $A\vec{x} = \vec{b}$ ha sempre esattamente una soluzione? Controesempio.
+
+- Se $\vec{x}_1$ e $\vec{x}_2$ risolvono $A\vec{x} = \vec{b}$, quando $\alpha\vec{x}_1 + \beta\vec{x}_2$ è soluzione di $A\vec{x} = \vec{b}$ e quando dell'omogeneo?
+
+- Come si passa dalla rref di $[A \mid \vec{b}]$ alla scrittura $\vec{x}_0 + t_1\vec{v}_1 + t_2\vec{v}_2$? Da dove escono $\vec{x}_0$ e le colonne $\vec{v}_i$, e come si verificano?
+
+- Conoscendo una soluzione $\vec{x}_0$ e il nucleo, come si decide se un vettore $\vec{w}$ è soluzione senza risolvere il sistema?
+
+- Come si imposta un esercizio "per quali $k$ l'insieme delle soluzioni è chiuso rispetto alla somma e al prodotto per scalare"? Che cosa va detto dei valori di $k$ che rendono il sistema incompatibile?
+
+- Interpreta geometricamente il teorema per $x + 2y = 4$ in $\mathbb{R}^2$ e per due equazioni indipendenti in $\mathbb{R}^3$.
+
+- Come si costruisce un sistema che ha come soluzioni $\vec{x}_0 + t\vec{v}$ assegnati? Quante equazioni servono in $\mathbb{R}^3$, e perché una non basta?

@@ -12,31 +12,46 @@ lezioni: []
 ordine: 4
 ---
 
-Argomento di [Geometria e Algebra Lineare](/uni/gal/). Iniziato a lezione dopo la geometria nello spazio. Fonte: appunti della prof <span class="src">Sistemi lineari, p. 1-3</span>; dispensa Postinghel, <span class="src">sezioni 2.1.1-2.1.2</span>. Chiude il capitolo di geometria ([Posizioni reciproche nello spazio](/uni/gal/posizioni-reciproche-nello-spazio/), [Distanze nello spazio](/uni/gal/distanze-nello-spazio/)) e apre la parte algebrica del corso.
+Argomento di [Geometria e Algebra Lineare](/uni/gal/). Iniziato a lezione dopo la geometria nello spazio, nell'ultima parte della L3 (lun 21/9; quaderno p. 28-29). Fonte: appunti della prof <span class="src">Sistemi lineari, p. 1-3</span> ($\mathbb{R}^n$ e sistema a <span class="src">p. 1</span>, compatibile, omogeneo, matrice e matrici associate a <span class="src">p. 2</span>, matrice completa a <span class="src">p. 3</span>); dispensa Postinghel, <span class="src">sezioni 2.1.1-2.1.2</span>. Chiude il capitolo di geometria ([Posizioni reciproche nello spazio](/uni/gal/posizioni-reciproche-nello-spazio/), [Distanze nello spazio](/uni/gal/distanze-nello-spazio/)) e apre la parte algebrica del corso.
 
 > [!info] Dove continua
 > Questa nota copre la notazione (L3, 21/9). Il metodo per risolvere, fatto in L4 il 28/9, sta in due note: [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/) (operazioni elementari, forma a scalini, riduzione all'indietro) e [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/) (quante soluzioni ha un sistema). Le matrici come oggetto a sé arrivano in L5 (5/10): [Matrici e operazioni](/uni/gal/matrici-e-operazioni/), e la forma $A\vec{x} = \vec{b}$ con la struttura delle soluzioni in [Nucleo e struttura delle soluzioni](/uni/gal/nucleo-e-struttura-delle-soluzioni/). Le parti segnate "dalla dispensa" servono a leggere meglio quello che c'è.
 
 > [!abstract] Per l'esame
-> - **Saper enunciare**: $\mathbb{R}^n$ e le operazioni componente per componente, sistema lineare di $m$ equazioni in $n$ incognite, soluzione, compatibile, incompatibile, omogeneo, matrice $m \times n$, matrice dei coefficienti, dei termini noti, completa.
-> - **Saper fare**: scrivere le tre matrici di un sistema e il loro ordine; ricostruire un sistema dalla matrice completa; verificare se un'ennupla è soluzione; riconoscere un'incompatibilità evidente.
-> - **Dove esce**: per ora solo come linguaggio. Ogni intersezione del capitolo di geometria (retta e piano, due rette, tre piani) è un sistema lineare. Il metodo per risolverli è in [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/).
+> - **Saper enunciare**: $\mathbb{R}^n$ e le operazioni componente per componente, equazione lineare, sistema lineare di $m$ equazioni in $n$ incognite, soluzione, compatibile, incompatibile, omogeneo, sistemi equivalenti, matrice $m \times n$ e significato di $a_{ij}$, matrice dei coefficienti, dei termini noti, completa. Sono le parole delle domande 2.8 e 2.9 del [foglio 2](/uni/gal/foglio-2-svolto/).
+> - **Saper fare**: portare un sistema in forma standard e scrivere le tre matrici col loro ordine; ricostruire un sistema dalla matrice completa; verificare se un'ennupla è soluzione; riconoscere un'incompatibilità evidente (due primi membri uguali con termini noti diversi, una combinazione di equazioni che contraddice un'altra); leggere un sistema in 2 o 3 incognite come rette o piani; costruire esempi di sistemi compatibili e incompatibili con un numero dato di equazioni e incognite.
+> - **Dove esce**: come linguaggio in tutto il resto del corso. Ogni esercizio sui sistemi del foglio 2 parte dalla matrice completa, e ogni intersezione del capitolo di geometria (retta e piano, due rette, tre piani) è un sistema lineare. Il metodo per risolverli è in [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/).
 
 **Da dove arriva.** Nel capitolo di geometria i sistemi lineari sono già comparsi ovunque: due rette sono incidenti se un sistema ha soluzione, una retta in cartesiane è un sistema di due equazioni, il punto d'intersezione fra retta e piano è la soluzione di un sistema. Qui si smette di risolverli a occhio e si costruisce la macchina generale: prima la notazione e le matrici associate, poi l'algoritmo di Gauss-Jordan ([Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/)).
+
+Il filo della nota:
+
+```
+R^n                  le soluzioni sono ennuple (t_1, ..., t_n)
+  |
+equazione lineare    a_1 x_1 + ... + a_n x_n = b      (in R^2 una retta, in R^3 un piano)
+  |
+sistema lineare      m equazioni insieme: soluzione = ennupla che le soddisfa TUTTE
+  |                  compatibile / incompatibile / omogeneo
+  v
+[A | b]              la tabella dei numeri: da qui lavora Gauss-Jordan (L4)
+```
 
 ## Definizioni
 
 ### Lo spazio delle $n$-uple
 
-La prof: spazio delle ennuple ($n$-uple) di numeri reali,
+**L'idea.** In geometria un punto dello spazio era una terna di coordinate $(x, y, z)$. Un sistema lineare può avere $4$, $5$, $100$ incognite, e una soluzione è allora una lista ordinata di $4$, $5$, $100$ numeri. $\mathbb{R}^n$ è il nome dell'insieme di tutte queste liste. Con $n = 2$ e $n = 3$ si possono disegnare (punti del piano e dello spazio), oltre no, ma i conti si fanno allo stesso modo.
+
+La prof (<span class="src">21/9, p. 1</span>): spazio delle ennuple ($n$-uple) di numeri reali,
 
 $$
 \mathbb{R}^n = \{\, \vec{a} = (a_1, \ldots, a_n) \mid a_i \in \mathbb{R},\ i = 1, \ldots, n \,\}
 $$
 
-Un elemento di $\mathbb{R}^n$ è una **$n$-upla** (o ennupla) ordinata di numeri reali. Esempio della prof: $(1, 2, 3) \in \mathbb{R}^3$ è una terna, la stessa terna di coordinate che si usava in geometria.
+Un elemento di $\mathbb{R}^n$ è una **$n$-upla** (o ennupla) ordinata di numeri reali; $a_i$ è la sua **$i$-esima componente**. Esempio della prof: $(1, 2, 3) \in \mathbb{R}^3$ è una terna, la stessa terna di coordinate che si usava in geometria.
 
-L'ordine conta: $(1, 2, 3)$ e $(3, 2, 1)$ sono ennuple diverse. È la differenza fra un'ennupla e un insieme.
+L'ordine conta: $(1, 2, 3)$ e $(3, 2, 1)$ sono ennuple diverse. È la differenza fra un'ennupla e un insieme: come insiemi $\{1, 2, 3\} = \{3, 2, 1\}$, come terne no. Due ennuple sono **uguali** quando hanno lo stesso numero di componenti e sono uguali componente per componente: $(a_1, \ldots, a_n) = (b_1, \ldots, b_n)$ vuol dire $a_1 = b_1$, ..., $a_n = b_n$, cioè $n$ uguaglianze fra numeri.
 
 **Operazioni.** Per ogni $\vec{a}, \vec{b} \in \mathbb{R}^n$ e ogni $\lambda \in \mathbb{R}$:
 
@@ -46,21 +61,61 @@ $$
 
 La prof: "questo generalizza quanto visto per vettori geometrici in coordinate" ([Vettori geometrici](/uni/gal/vettori-geometrici/)). Si lavora **componente per componente**, con un numero qualunque di componenti. La geometria smette di funzionare come disegno oltre $n = 3$, l'algebra no.
 
+**Perché serve.** Le soluzioni di un sistema in $n$ incognite sono elementi di $\mathbb{R}^n$. Con le due operazioni si possono sommare soluzioni e moltiplicarle per numeri: in [Nucleo e struttura delle soluzioni](/uni/gal/nucleo-e-struttura-delle-soluzioni/) si vedrà che è proprio così che si descrivono tutte le soluzioni di un sistema.
+
+**Esempi, dal più facile.**
+1. In $\mathbb{R}^2$: $(1, -2) + (3, 5)$. Sommo prima componente con prima, seconda con seconda: $(1 + 3,\ -2 + 5) = (4, 3)$.
+2. In $\mathbb{R}^4$, con $\vec{a} = (1, 0, -2, 3)$: $-3\vec{a} = (-3 \cdot 1,\ -3 \cdot 0,\ -3 \cdot (-2),\ -3 \cdot 3) = (-3, 0, 6, -9)$. Nessun disegno, stesso conto.
+3. Un'uguaglianza fra ennuple è un sistema. Trovare $t \in \mathbb{R}$ con $(t, 2t, 3) = (1, 2, 3)$:
+   - prima componente: $t = 1$;
+   - seconda: $2t = 2$, cioè $t = 1$;
+   - terza: $3 = 3$, sempre vera.
+
+   Tutte e tre valgono con $t = 1$. Con $(t, 2t, 3) = (1, 3, 3)$ invece la prima dà $t = 1$ e la seconda $t = \frac{3}{2}$: nessun $t$ va bene.
+
+**Controesempi.**
+- $(1, 2) + (1, 2, 3)$ **non è definita**: la somma è fra due elementi dello **stesso** $\mathbb{R}^n$, e qui uno sta in $\mathbb{R}^2$ e l'altro in $\mathbb{R}^3$. Non si "completa con uno zero".
+- $(1, 2, 3)$ non è uguale a $(3, 2, 1)$, anche se contiene gli stessi numeri.
+
 ### Equazione lineare (dalla dispensa)
 
-La prof passa direttamente al sistema; la dispensa prima definisce la singola equazione, e serve a capire la parola "lineare". Date $n$ incognite reali $x_1, \ldots, x_n$, un'**equazione lineare** è un'equazione in cui ogni termine ha grado $1$:
+La prof passa direttamente al sistema; la dispensa (<span class="src">Definizione 15</span>) prima definisce la singola equazione, e serve a capire la parola "lineare".
+
+**L'idea.** "Lineare" vuol dire che le incognite compaiono nel modo più semplice possibile: ognuna moltiplicata per un numero fisso, e poi tutto sommato. Nessun quadrato, nessun prodotto fra incognite, nessuna funzione applicata a un'incognita. In geometria sono le equazioni delle rette nel piano e dei piani nello spazio, cioè degli oggetti "dritti".
+
+Date $n$ incognite reali $x_1, \ldots, x_n$, un'**equazione lineare** è un'equazione in cui ogni termine ha grado $1$:
 
 $$
 a_1 x_1 + a_2 x_2 + \cdots + a_n x_n = b
 $$
 
-I numeri $a_1, \ldots, a_n$ sono i **coefficienti**, $b$ è il **termine noto**.
+I numeri $a_1, \ldots, a_n$ sono i **coefficienti**, $b$ è il **termine noto**. Se $b = 0$ l'equazione è **omogenea**. Una **soluzione** è un'ennupla $(t_1, \ldots, t_n)$ che sostituita alle incognite rende vera l'uguaglianza: $a_1 t_1 + \cdots + a_n t_n = b$.
 
-"Grado $1$" esclude $x_1^2$, $x_1 x_2$, $\sqrt{x_1}$, $\sin x_1$: le incognite compaiono solo moltiplicate per una costante e sommate fra loro. L'equazione cartesiana di un piano, $ax + by + cz + d = 0$, è un'equazione lineare in tre incognite con termine noto $-d$.
+"Grado $1$" esclude $x_1^2$, $x_1 x_2$, $\sqrt{x_1}$, $\sin x_1$, $\frac{1}{x_1}$: le incognite compaiono solo moltiplicate per una costante e sommate fra loro. L'equazione cartesiana di un piano, $ax + by + cz + d = 0$, è un'equazione lineare in tre incognite con termine noto $-d$.
+
+**Esempi, dal più facile.** Per decidere se un'equazione è lineare si porta tutto nella forma "incognite a sinistra, numero a destra" e si guarda ogni termine.
+
+| equazione | lineare? | perché |
+| --- | --- | --- |
+| $2x_1 - x_2 + 3x_3 = 4$ | sì | già in forma: coefficienti $2, -1, 3$, termine noto $4$ |
+| $y = 3x - 1$ | sì | porto $3x$ a sinistra: $-3x + y = -1$ |
+| $\frac{x}{2} + \sqrt{2}\, y = \pi$ | sì | $\sqrt{2}$ e $\pi$ sono numeri: i coefficienti possono essere irrazionali |
+| $(x + 1)^2 - x^2 = 3$ | sì | sviluppo: $x^2 + 2x + 1 - x^2 = 3$, cioè $2x = 2$ |
+| $x_1 x_2 = 1$ | no | prodotto di due incognite, grado $2$ |
+| $\sqrt{x} + y = 2$ | no | radice di un'incognita |
+| $\sin x_1 + x_2 = 0$ | no | funzione applicata a un'incognita |
+
+La quarta riga è la trappola: sembra di secondo grado, ma i quadrati si cancellano. Si decide **dopo** aver semplificato.
+
+**Una soluzione, controllata.** $(1, 1, 1)$ è soluzione di $2x_1 - x_2 + 3x_3 = 4$: sostituisco, $2 \cdot 1 - 1 + 3 \cdot 1 = 4$, vero. $(0, 0, 1)$ no: $0 - 0 + 3 = 3 \neq 4$. Un'equazione lineare in più di un'incognita ha infinite soluzioni: qui ogni punto del piano $2x - y + 3z = 4$.
+
+**Controesempio, per vedere cosa vuol dire "dritto".** Per un'equazione lineare il punto medio di due soluzioni è ancora una soluzione: se $a_1 t_1 + \cdots + a_n t_n = b$ e $a_1 s_1 + \cdots + a_n s_n = b$, sommando e dividendo per $2$ si ottiene $a_1 \frac{t_1 + s_1}{2} + \cdots + a_n \frac{t_n + s_n}{2} = b$. Per $x_1 x_2 = 1$ (un'iperbole) no: $(1, 1)$ e $(2, \frac{1}{2})$ sono soluzioni, il loro punto medio $(\frac{3}{2}, \frac{3}{4})$ dà $\frac{3}{2} \cdot \frac{3}{4} = \frac{9}{8} \neq 1$.
 
 ### Sistema lineare
 
-**Sistema lineare.** La prof: un sistema di equazioni lineari (o sistema lineare) di $m$ equazioni in $n$ incognite è
+**L'idea.** Una sola equazione lineare ha in genere infinite soluzioni (tutta una retta, tutto un piano). Mettendone insieme più d'una si chiedono **tutte le condizioni contemporaneamente**: le soluzioni del sistema sono i punti comuni a tutte le rette, o a tutti i piani. In geometria era esattamente l'intersezione.
+
+**Sistema lineare.** La prof (<span class="src">21/9, p. 1</span>): un sistema di equazioni lineari (o sistema lineare) di $m$ equazioni in $n$ incognite è
 
 $$
 (\ast) \quad \begin{cases} a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n = b_1 \\ a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n = b_2 \\ \quad \vdots \\ a_{m1} x_1 + a_{m2} x_2 + \cdots + a_{mn} x_n = b_m \end{cases}
@@ -68,7 +123,16 @@ $$
 
 Nel doppio indice $a_{ij}$ il **primo** indice è l'equazione (la riga), il **secondo** è l'incognita (la colonna). $m$ ed $n$ sono indipendenti: le equazioni possono essere più o meno delle incognite.
 
-**Soluzione.** Un'ennupla di numeri reali $(t_1, \ldots, t_n)$ che sia soluzione di **tutte** le $m$ equazioni. Una che ne soddisfi solo alcune non conta.
+Come si legge il doppio indice, su un esempio. Nel sistema
+$$
+\begin{cases} 2x_1 - x_2 + x_3 = 1 \\ x_1 + 3x_3 = 0 \end{cases}
+$$
+- $a_{13}$: equazione $1$, incognita $x_3$, quindi $a_{13} = 1$;
+- $a_{21}$: equazione $2$, incognita $x_1$, quindi $a_{21} = 1$;
+- $a_{22}$: equazione $2$, incognita $x_2$, che nella seconda equazione non compare, quindi $a_{22} = 0$;
+- $b_2 = 0$: termine noto della seconda equazione.
+
+**Soluzione.** La prof: un'ennupla di numeri reali $(t_1, \ldots, t_n)$ che sia soluzione di **tutte** le $m$ equazioni. Una che ne soddisfi solo alcune non conta.
 
 **Compatibile.** Il sistema ammette soluzioni.
 
@@ -76,23 +140,68 @@ Nel doppio indice $a_{ij}$ il **primo** indice è l'equazione (la riga), il **se
 
 **Omogeneo.** $b_1 = b_2 = \cdots = b_m = 0$, cioè tutti i termini noti sono nulli.
 
-**Sistemi equivalenti (dalla dispensa).** Due sistemi nelle stesse incognite che ammettono **esattamente le stesse soluzioni**. È la nozione su cui si regge il metodo di Gauss: le operazioni elementari trasformano un sistema in uno equivalente più semplice, e le soluzioni non cambiano ([Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/)).
+**Perché queste parole.** Davanti a un sistema la prima domanda è "ha soluzioni?" (compatibile o incompatibile), la seconda "quante?" (una o infinite: è il lavoro di [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/)). "Omogeneo" isola una famiglia per cui la prima domanda ha sempre risposta sì (sezione Enunciati).
+
+**L'interpretazione geometrica.** Con $2$ incognite ogni equazione è una retta del piano, e le soluzioni del sistema sono i punti comuni a tutte le rette. Con due equazioni si vedono i tre casi possibili:
+
+<figure class="fig"><svg role="img" aria-label="sistema in due incognite tre casi" xmlns:xlink="http://www.w3.org/1999/xlink" width="714.6pt" height="247.110469pt" viewBox="0 0 714.6 247.110469" xmlns="http://www.w3.org/2000/svg" version="1.1"> <defs> <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style> </defs> <g id="f6bcee9-figure_1"> <g id="f6bcee9-patch_1"> <path d="M 0 247.110469 L 714.6 247.110469 L 714.6 -0 L 0 -0 L 0 247.110469 z " style="fill: none"/> </g> <g id="f6bcee9-axes_1"> <g id="f6bcee9-patch_2"> <path d="M 5.76 241.350469 L 225.4725 241.350469 L 225.4725 21.637969 L 5.76 21.637969 L 5.76 241.350469 z " style="fill: none"/> </g> <g id="f6bcee9-matplotlib.axis_1"/> <g id="f6bcee9-matplotlib.axis_2"/> <g id="f6bcee9-line2d_1"> <path d="M 51.782188 -1 L 55.083214 2.301027 L 59.567143 6.784955 L 64.051071 11.268884 L 68.535 15.752812 L 73.018929 20.236741 L 77.502857 24.72067 L 81.986786 29.204598 L 86.470714 33.688527 L 90.954643 38.172455 L 95.438571 42.656384 L 99.9225 47.140312 L 104.406429 51.624241 L 108.890357 56.10817 L 113.374286 60.592098 L 117.858214 65.076027 L 122.342143 69.559955 L 126.826071 74.043884 L 131.31 78.527812 L 135.793929 83.011741 L 140.277857 87.49567 L 144.761786 91.979598 L 149.245714 96.463527 L 153.729643 100.947455 L 158.213571 105.431384 L 162.6975 109.915312 L 167.181429 114.399241 L 171.665357 118.88317 L 176.149286 123.367098 L 180.633214 127.851027 L 185.117143 132.334955 L 189.601071 136.818884 L 194.085 141.302812 L 198.568929 145.786741 L 203.052857 150.27067 L 207.536786 154.754598 L 212.020714 159.238527 L 216.504643 163.722455 L 220.988571 168.206384 L 225.4725 172.690312 " clip-path="url(#f6bcee9-p5325cbcd9c)" style="fill: none; stroke: var(--fig-steel); stroke-width: 2.6; stroke-linecap: square"/> </g> <g id="f6bcee9-line2d_2"> <path d="M 5.76 241.350469 L 10.243929 236.86654 L 14.727857 232.382612 L 19.211786 227.898683 L 23.695714 223.414754 L 28.179643 218.930826 L 32.663571 214.446897 L 37.1475 209.962969 L 41.631429 205.47904 L 46.115357 200.995112 L 50.599286 196.511183 L 55.083214 192.027254 L 59.567143 187.543326 L 64.051071 183.059397 L 68.535 178.575469 L 73.018929 174.09154 L 77.502857 169.607612 L 81.986786 165.123683 L 86.470714 160.639754 L 90.954643 156.155826 L 95.438571 151.671897 L 99.9225 147.187969 L 104.406429 142.70404 L 108.890357 138.220112 L 113.374286 133.736183 L 117.858214 129.252254 L 122.342143 124.768326 L 126.826071 120.284397 L 131.31 115.800469 L 135.793929 111.31654 L 140.277857 106.832612 L 144.761786 102.348683 L 149.245714 97.864754 L 153.729643 93.380826 L 158.213571 88.896897 L 162.6975 84.412969 L 167.181429 79.92904 L 171.665357 75.445112 L 176.149286 70.961183 L 180.633214 66.477254 L 185.117143 61.993326 L 189.601071 57.509397 L 194.085 53.025469 L 198.568929 48.54154 L 203.052857 44.057612 L 207.536786 39.573683 L 212.020714 35.089754 L 216.504643 30.605826 L 220.988571 26.121897 L 225.4725 21.637969 " clip-path="url(#f6bcee9-p5325cbcd9c)" style="fill: none; stroke: var(--fig-ink); stroke-width: 2.6; stroke-linecap: square"/> </g> <g id="f6bcee9-patch_3"> <path d="M 115.61625 241.350469 L 115.61625 21.637969 " style="fill: none; stroke: var(--fig-axis); stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/> </g> <g id="f6bcee9-patch_4"> <path d="M 5.76 131.494219 L 225.4725 131.494219 " style="fill: none; stroke: var(--fig-axis); stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/> </g> <g id="f6bcee9-text_1"> <!-- $x_1$ --> <g style="fill: var(--fig-axis)" transform="translate(211.9525 148.237187) scale(0.13 -0.13)"> <defs> <path id="f6bcee9-DejaVuSerif-Italic-5b" d="M 409 0 L 19 0 L 1484 1594 L 747 2988 L 338 2988 L 400 3322 L 1244 3322 L 1934 2028 L 3125 3322 L 3516 3322 L 2078 1759 L 2838 331 L 3272 331 L 3209 0 L 2338 0 L 1631 1325 L 409 0 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-14" d="M 909 0 L 909 331 L 1722 331 L 1722 4213 L 781 3603 L 781 4013 L 1919 4750 L 2350 4750 L 2350 331 L 3163 331 L 3163 0 L 909 0 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(0 0.09375)"/> <use xlink:href="#f6bcee9-DejaVuSerif-14" transform="translate(56.396484 -14.906201) scale(0.7)"/> </g> </g> <g id="f6bcee9-text_2"> <!-- $x_2$ --> <g style="fill: var(--fig-axis)" transform="translate(96.946738 31.514922) scale(0.13 -0.13)"> <defs> <path id="f6bcee9-DejaVuSerif-15" d="M 819 3553 L 469 3553 L 469 4384 Q 803 4563 1142 4656 Q 1481 4750 1806 4750 Q 2534 4750 2956 4397 Q 3378 4044 3378 3438 Q 3378 2753 2422 1800 Q 2347 1728 2309 1691 L 1131 513 L 3078 513 L 3078 1088 L 3444 1088 L 3444 0 L 434 0 L 434 341 L 1850 1753 Q 2319 2222 2519 2614 Q 2719 3006 2719 3438 Q 2719 3909 2473 4175 Q 2228 4441 1797 4441 Q 1350 4441 1106 4219 Q 863 3997 819 3553 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(0 0.09375)"/> <use xlink:href="#f6bcee9-DejaVuSerif-15" transform="translate(56.396484 -14.906201) scale(0.7)"/> </g> </g> <g id="f6bcee9-text_3"> <!-- $(1, 1)$ --> <g style="fill: var(--fig-accent)" transform="translate(160.273887 98.56623) scale(0.12 -0.12)"> <defs> <path id="f6bcee9-DejaVuSerif-b" d="M 2041 -997 Q 1281 -656 893 83 Q 506 822 506 1931 Q 506 3044 893 3783 Q 1281 4522 2041 4863 L 2041 4556 Q 1559 4225 1350 3623 Q 1141 3022 1141 1931 Q 1141 844 1350 242 Q 1559 -359 2041 -691 L 2041 -997 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-f" d="M 231 -622 Q 525 -406 662 -114 Q 800 178 800 594 L 800 709 L 1416 709 Q 1391 175 1164 -208 Q 938 -591 481 -872 L 231 -622 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-c" d="M 453 -997 L 453 -691 Q 934 -359 1145 242 Q 1356 844 1356 1931 Q 1356 3022 1145 3623 Q 934 4225 453 4556 L 453 4863 Q 1216 4522 1603 3783 Q 1991 3044 1991 1931 Q 1991 822 1603 83 Q 1216 -656 453 -997 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f6bcee9-DejaVuSerif-b" transform="translate(0 0.015625)"/> <use xlink:href="#f6bcee9-DejaVuSerif-14" transform="translate(39.013672 0.015625)"/> <use xlink:href="#f6bcee9-DejaVuSerif-f" transform="translate(102.636719 0.015625)"/> <use xlink:href="#f6bcee9-DejaVuSerif-14" transform="translate(153.388672 0.015625)"/> <use xlink:href="#f6bcee9-DejaVuSerif-c" transform="translate(217.011719 0.015625)"/> </g> </g> <g id="f6bcee9-text_4"> <!-- $x_1 + x_2 = 2$ --> <g style="fill: var(--fig-steel)" transform="translate(155.951406 223.609844) scale(0.11 -0.11)"> <defs> <path id="f6bcee9-DejaVuSerif-e" d="M 2931 4013 L 2931 2259 L 4684 2259 L 4684 1753 L 2931 1753 L 2931 0 L 2431 0 L 2431 1753 L 678 1753 L 678 2259 L 2431 2259 L 2431 4013 L 2931 4013 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-20" d="M 678 2894 L 4684 2894 L 4684 2394 L 678 2394 L 678 2894 z M 678 1619 L 4684 1619 L 4684 1119 L 678 1119 L 678 1619 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(0 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-14" transform="translate(56.396484 -14.218701) scale(0.7)"/> <use xlink:href="#f6bcee9-DejaVuSerif-e" transform="translate(122.492676 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(225.246582 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-15" transform="translate(281.643066 -14.218701) scale(0.7)"/> <use xlink:href="#f6bcee9-DejaVuSerif-20" transform="translate(347.739258 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-15" transform="translate(450.493164 0.78125)"/> </g> </g> <g id="f6bcee9-text_5"> <!-- $x_1 - x_2 = 0$ --> <g style="fill: var(--fig-ink)" transform="translate(22.064102 233.908867) scale(0.11 -0.11)"> <defs> <path id="f6bcee9-DejaVuSerif-8cf" d="M 678 2259 L 4684 2259 L 4684 1753 L 678 1753 L 678 2259 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-13" d="M 2034 219 Q 2513 219 2750 744 Q 2988 1269 2988 2328 Q 2988 3391 2750 3916 Q 2513 4441 2034 4441 Q 1556 4441 1318 3916 Q 1081 3391 1081 2328 Q 1081 1269 1318 744 Q 1556 219 2034 219 z M 2034 -91 Q 1275 -91 848 546 Q 422 1184 422 2328 Q 422 3475 848 4112 Q 1275 4750 2034 4750 Q 2797 4750 3222 4112 Q 3647 3475 3647 2328 Q 3647 1184 3222 546 Q 2797 -91 2034 -91 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(0 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-14" transform="translate(56.396484 -14.218701) scale(0.7)"/> <use xlink:href="#f6bcee9-DejaVuSerif-8cf" transform="translate(122.492676 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(225.246582 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-15" transform="translate(281.643066 -14.218701) scale(0.7)"/> <use xlink:href="#f6bcee9-DejaVuSerif-20" transform="translate(347.739258 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-13" transform="translate(450.493164 0.78125)"/> </g> </g> <g id="f6bcee9-text_6"> <!-- incidenti: una soluzione --> <g style="fill: var(--fig-ink)" transform="translate(37.212031 15.637969) scale(0.13 -0.13)"> <defs> <path id="f6bcee9-DejaVuSerif-4c" d="M 622 4353 Q 622 4497 726 4603 Q 831 4709 978 4709 Q 1122 4709 1226 4603 Q 1331 4497 1331 4353 Q 1331 4206 1228 4103 Q 1125 4000 978 4000 Q 831 4000 726 4103 Q 622 4206 622 4353 z M 1356 331 L 1900 331 L 1900 0 L 231 0 L 231 331 L 781 331 L 781 2988 L 231 2988 L 231 3322 L 1356 3322 L 1356 331 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-51" d="M 263 0 L 263 331 L 781 331 L 781 2988 L 231 2988 L 231 3322 L 1356 3322 L 1356 2731 Q 1516 3069 1770 3241 Q 2025 3413 2363 3413 Q 2913 3413 3172 3097 Q 3431 2781 3431 2113 L 3431 331 L 3944 331 L 3944 0 L 2356 0 L 2356 331 L 2853 331 L 2853 1931 Q 2853 2541 2703 2767 Q 2553 2994 2175 2994 Q 1775 2994 1565 2701 Q 1356 2409 1356 1850 L 1356 331 L 1856 331 L 1856 0 L 263 0 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-46" d="M 3291 997 Q 3169 466 2822 187 Q 2475 -91 1925 -91 Q 1200 -91 759 389 Q 319 869 319 1663 Q 319 2459 759 2936 Q 1200 3413 1925 3413 Q 2241 3413 2553 3339 Q 2866 3266 3181 3116 L 3181 2266 L 2847 2266 Q 2781 2703 2561 2903 Q 2341 3103 1931 3103 Q 1466 3103 1228 2742 Q 991 2381 991 1663 Q 991 944 1227 581 Q 1463 219 1931 219 Q 2303 219 2525 412 Q 2747 606 2828 997 L 3291 997 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-47" d="M 3359 331 L 3909 331 L 3909 0 L 2784 0 L 2784 519 Q 2616 206 2355 57 Q 2094 -91 1709 -91 Q 1097 -91 708 395 Q 319 881 319 1663 Q 319 2444 706 2928 Q 1094 3413 1709 3413 Q 2094 3413 2355 3264 Q 2616 3116 2784 2803 L 2784 4531 L 2241 4531 L 2241 4863 L 3359 4863 L 3359 331 z M 2784 1497 L 2784 1825 Q 2784 2422 2554 2737 Q 2325 3053 1888 3053 Q 1444 3053 1217 2703 Q 991 2353 991 1663 Q 991 975 1217 622 Q 1444 269 1888 269 Q 2325 269 2554 583 Q 2784 897 2784 1497 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-48" d="M 3469 1600 L 991 1600 L 991 1575 Q 991 903 1244 561 Q 1497 219 1991 219 Q 2369 219 2611 417 Q 2853 616 2950 1006 L 3413 1006 Q 3275 459 2904 184 Q 2534 -91 1931 -91 Q 1203 -91 761 389 Q 319 869 319 1663 Q 319 2450 753 2931 Q 1188 3413 1894 3413 Q 2647 3413 3050 2948 Q 3453 2484 3469 1600 z M 2791 1931 Q 2772 2513 2545 2808 Q 2319 3103 1894 3103 Q 1497 3103 1269 2806 Q 1041 2509 991 1931 L 2791 1931 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-57" d="M 691 2988 L 184 2988 L 184 3322 L 691 3322 L 691 4353 L 1269 4353 L 1269 3322 L 2350 3322 L 2350 2988 L 1269 2988 L 1269 878 Q 1269 456 1350 337 Q 1431 219 1650 219 Q 1875 219 1978 351 Q 2081 484 2088 781 L 2522 781 Q 2497 328 2275 118 Q 2053 -91 1600 -91 Q 1103 -91 897 129 Q 691 350 691 878 L 691 2988 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-1d" d="M 666 325 Q 666 500 786 622 Q 906 744 1081 744 Q 1256 744 1376 622 Q 1497 500 1497 325 Q 1497 150 1378 29 Q 1259 -91 1081 -91 Q 903 -91 784 29 Q 666 150 666 325 z M 666 2363 Q 666 2538 786 2658 Q 906 2778 1081 2778 Q 1259 2778 1378 2659 Q 1497 2541 1497 2363 Q 1497 2184 1378 2065 Q 1259 1947 1081 1947 Q 906 1947 786 2067 Q 666 2188 666 2363 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-3" transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-58" d="M 2266 3322 L 3341 3322 L 3341 331 L 3884 331 L 3884 0 L 2766 0 L 2766 588 Q 2606 256 2353 82 Q 2100 -91 1766 -91 Q 1213 -91 952 223 Q 691 538 691 1209 L 691 2988 L 172 2988 L 172 3322 L 1269 3322 L 1269 1388 Q 1269 781 1417 556 Q 1566 331 1947 331 Q 2347 331 2556 625 Q 2766 919 2766 1478 L 2766 2988 L 2266 2988 L 2266 3322 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-44" d="M 2547 1044 L 2547 1747 L 1806 1747 Q 1378 1747 1168 1562 Q 959 1378 959 997 Q 959 650 1171 447 Q 1384 244 1747 244 Q 2106 244 2326 466 Q 2547 688 2547 1044 z M 3122 2075 L 3122 331 L 3634 331 L 3634 0 L 2547 0 L 2547 359 Q 2356 128 2106 18 Q 1856 -91 1522 -91 Q 969 -91 644 203 Q 319 497 319 997 Q 319 1513 691 1797 Q 1063 2081 1741 2081 L 2547 2081 L 2547 2309 Q 2547 2688 2317 2895 Q 2088 3103 1672 3103 Q 1328 3103 1125 2947 Q 922 2791 872 2484 L 575 2484 L 575 3156 Q 875 3284 1158 3348 Q 1441 3413 1709 3413 Q 2400 3413 2761 3070 Q 3122 2728 3122 2075 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-56" d="M 359 184 L 359 959 L 691 959 Q 703 588 923 403 Q 1144 219 1575 219 Q 1963 219 2166 364 Q 2369 509 2369 788 Q 2369 1006 2220 1140 Q 2072 1275 1594 1428 L 1178 1569 Q 750 1706 558 1912 Q 366 2119 366 2438 Q 366 2894 700 3153 Q 1034 3413 1625 3413 Q 1888 3413 2178 3344 Q 2469 3275 2778 3144 L 2778 2419 L 2447 2419 Q 2434 2741 2221 2922 Q 2009 3103 1644 3103 Q 1281 3103 1095 2975 Q 909 2847 909 2591 Q 909 2381 1050 2254 Q 1191 2128 1613 1997 L 2069 1856 Q 2541 1709 2748 1489 Q 2956 1269 2956 922 Q 2956 450 2595 179 Q 2234 -91 1600 -91 Q 1278 -91 972 -22 Q 666 47 359 184 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-52" d="M 1925 219 Q 2388 219 2623 584 Q 2859 950 2859 1663 Q 2859 2375 2623 2739 Q 2388 3103 1925 3103 Q 1463 3103 1227 2739 Q 991 2375 991 1663 Q 991 950 1228 584 Q 1466 219 1925 219 z M 1925 -91 Q 1200 -91 759 389 Q 319 869 319 1663 Q 319 2456 758 2934 Q 1197 3413 1925 3413 Q 2653 3413 3092 2934 Q 3531 2456 3531 1663 Q 3531 869 3092 389 Q 2653 -91 1925 -91 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-4f" d="M 1313 331 L 1856 331 L 1856 0 L 184 0 L 184 331 L 738 331 L 738 4531 L 184 4531 L 184 4863 L 1313 4863 L 1313 331 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-5d" d="M 256 0 L 256 269 L 2338 2988 L 691 2988 L 691 2413 L 359 2413 L 359 3322 L 3078 3322 L 3078 3053 L 997 331 L 2803 331 L 2803 934 L 3138 934 L 3138 0 L 256 0 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f6bcee9-DejaVuSerif-4c"/> <use xlink:href="#f6bcee9-DejaVuSerif-51" transform="translate(31.984375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-46" transform="translate(96.390625 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4c" transform="translate(152.390625 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-47" transform="translate(184.375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-48" transform="translate(248.390625 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-51" transform="translate(307.578125 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-57" transform="translate(371.984375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4c" transform="translate(412.171875 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-1d" transform="translate(444.15625 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-3" transform="translate(477.84375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-58" transform="translate(509.625 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-51" transform="translate(574.03125 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-44" transform="translate(638.4375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-3" transform="translate(698.0625 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-56" transform="translate(729.84375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-52" transform="translate(781.15625 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4f" transform="translate(841.359375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-58" transform="translate(873.34375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-5d" transform="translate(937.75 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4c" transform="translate(990.4375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-52" transform="translate(1022.421875 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-51" transform="translate(1082.625 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-48" transform="translate(1147.03125 0)"/> </g> </g> <g id="f6bcee9-line2d_3"> <defs> <path id="f6bcee9-me1239583db" d="M 0 2.5 C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 C 2.236584 1.29895 2.5 0.663008 2.5 0 C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 C -1.29895 2.236584 -0.663008 2.5 0 2.5 z " style="stroke: var(--fig-accent)"/> </defs> <g clip-path="url(#f6bcee9-p5325cbcd9c)"> <use xlink:href="#f6bcee9-me1239583db" x="149.946328" y="97.164141" style="fill: var(--fig-accent); stroke: var(--fig-accent)"/> </g> </g> </g> <g id="f6bcee9-axes_2"> <g id="f6bcee9-patch_5"> <path d="M 247.44375 241.350469 L 467.15625 241.350469 L 467.15625 21.637969 L 247.44375 21.637969 L 247.44375 241.350469 z " style="fill: none"/> </g> <g id="f6bcee9-matplotlib.axis_3"/> <g id="f6bcee9-matplotlib.axis_4"/> <g id="f6bcee9-line2d_4"> <path d="M 293.465938 -1 L 296.766964 2.301027 L 301.250893 6.784955 L 305.734821 11.268884 L 310.21875 15.752812 L 314.702679 20.236741 L 319.186607 24.72067 L 323.670536 29.204598 L 328.154464 33.688527 L 332.638393 38.172455 L 337.122321 42.656384 L 341.60625 47.140312 L 346.090179 51.624241 L 350.574107 56.10817 L 355.058036 60.592098 L 359.541964 65.076027 L 364.025893 69.559955 L 368.509821 74.043884 L 372.99375 78.527812 L 377.477679 83.011741 L 381.961607 87.49567 L 386.445536 91.979598 L 390.929464 96.463527 L 395.413393 100.947455 L 399.897321 105.431384 L 404.38125 109.915312 L 408.865179 114.399241 L 413.349107 118.88317 L 417.833036 123.367098 L 422.316964 127.851027 L 426.800893 132.334955 L 431.284821 136.818884 L 435.76875 141.302812 L 440.252679 145.786741 L 444.736607 150.27067 L 449.220536 154.754598 L 453.704464 159.238527 L 458.188393 163.722455 L 462.672321 168.206384 L 467.15625 172.690312 " clip-path="url(#f6bcee9-p0552b4a1ab)" style="fill: none; stroke: var(--fig-steel); stroke-width: 2.6; stroke-linecap: square"/> </g> <g id="f6bcee9-line2d_5"> <path d="M 247.44375 21.637969 L 251.927679 26.121897 L 256.411607 30.605826 L 260.895536 35.089754 L 265.379464 39.573683 L 269.863393 44.057612 L 274.347321 48.54154 L 278.83125 53.025469 L 283.315179 57.509397 L 287.799107 61.993326 L 292.283036 66.477254 L 296.766964 70.961183 L 301.250893 75.445112 L 305.734821 79.92904 L 310.21875 84.412969 L 314.702679 88.896897 L 319.186607 93.380826 L 323.670536 97.864754 L 328.154464 102.348683 L 332.638393 106.832612 L 337.122321 111.31654 L 341.60625 115.800469 L 346.090179 120.284397 L 350.574107 124.768326 L 355.058036 129.252254 L 359.541964 133.736183 L 364.025893 138.220112 L 368.509821 142.70404 L 372.99375 147.187969 L 377.477679 151.671897 L 381.961607 156.155826 L 386.445536 160.639754 L 390.929464 165.123683 L 395.413393 169.607612 L 399.897321 174.09154 L 404.38125 178.575469 L 408.865179 183.059397 L 413.349107 187.543326 L 417.833036 192.027254 L 422.316964 196.511183 L 426.800893 200.995112 L 431.284821 205.47904 L 435.76875 209.962969 L 440.252679 214.446897 L 444.736607 218.930826 L 449.220536 223.414754 L 453.704464 227.898683 L 458.188393 232.382612 L 462.672321 236.86654 L 467.15625 241.350469 " clip-path="url(#f6bcee9-p0552b4a1ab)" style="fill: none; stroke: var(--fig-ink); stroke-width: 2.6; stroke-linecap: square"/> </g> <g id="f6bcee9-patch_6"> <path d="M 357.3 241.350469 L 357.3 21.637969 " style="fill: none; stroke: var(--fig-axis); stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/> </g> <g id="f6bcee9-patch_7"> <path d="M 247.44375 131.494219 L 467.15625 131.494219 " style="fill: none; stroke: var(--fig-axis); stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/> </g> <g id="f6bcee9-text_7"> <!-- $x_1$ --> <g style="fill: var(--fig-axis)" transform="translate(453.63625 148.237187) scale(0.13 -0.13)"> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(0 0.09375)"/> <use xlink:href="#f6bcee9-DejaVuSerif-14" transform="translate(56.396484 -14.906201) scale(0.7)"/> </g> </g> <g id="f6bcee9-text_8"> <!-- $x_2$ --> <g style="fill: var(--fig-axis)" transform="translate(338.630488 31.514922) scale(0.13 -0.13)"> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(0 0.09375)"/> <use xlink:href="#f6bcee9-DejaVuSerif-15" transform="translate(56.396484 -14.906201) scale(0.7)"/> </g> </g> <g id="f6bcee9-text_9"> <!-- $x_1 + x_2 = 2$ --> <g style="fill: var(--fig-steel)" transform="translate(397.635156 79.423516) scale(0.11 -0.11)"> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(0 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-14" transform="translate(56.396484 -14.218701) scale(0.7)"/> <use xlink:href="#f6bcee9-DejaVuSerif-e" transform="translate(122.492676 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(225.246582 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-15" transform="translate(281.643066 -14.218701) scale(0.7)"/> <use xlink:href="#f6bcee9-DejaVuSerif-20" transform="translate(347.739258 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-15" transform="translate(450.493164 0.78125)"/> </g> </g> <g id="f6bcee9-text_10"> <!-- $x_1 + x_2 = 0$ --> <g style="fill: var(--fig-ink)" transform="translate(274.046875 154.949687) scale(0.11 -0.11)"> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(0 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-14" transform="translate(56.396484 -14.218701) scale(0.7)"/> <use xlink:href="#f6bcee9-DejaVuSerif-e" transform="translate(122.492676 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(225.246582 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-15" transform="translate(281.643066 -14.218701) scale(0.7)"/> <use xlink:href="#f6bcee9-DejaVuSerif-20" transform="translate(347.739258 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-13" transform="translate(450.493164 0.78125)"/> </g> </g> <g id="f6bcee9-text_11"> <!-- parallele: incompatibile --> <g style="fill: var(--fig-ink)" transform="translate(279.217734 15.637969) scale(0.13 -0.13)"> <defs> <path id="f6bcee9-DejaVuSerif-53" d="M 1313 1825 L 1313 1497 Q 1313 897 1542 583 Q 1772 269 2209 269 Q 2650 269 2876 622 Q 3103 975 3103 1663 Q 3103 2353 2876 2703 Q 2650 3053 2209 3053 Q 1772 3053 1542 2737 Q 1313 2422 1313 1825 z M 738 2988 L 184 2988 L 184 3322 L 1313 3322 L 1313 2803 Q 1481 3116 1742 3264 Q 2003 3413 2388 3413 Q 3000 3413 3387 2928 Q 3775 2444 3775 1663 Q 3775 881 3387 395 Q 3000 -91 2388 -91 Q 2003 -91 1742 57 Q 1481 206 1313 519 L 1313 -997 L 1856 -997 L 1856 -1331 L 184 -1331 L 184 -997 L 738 -997 L 738 2988 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-55" d="M 3059 3328 L 3059 2497 L 2728 2497 Q 2713 2744 2591 2866 Q 2469 2988 2234 2988 Q 1809 2988 1582 2694 Q 1356 2400 1356 1850 L 1356 331 L 2022 331 L 2022 0 L 263 0 L 263 331 L 781 331 L 781 2994 L 231 2994 L 231 3322 L 1356 3322 L 1356 2731 Q 1525 3078 1790 3245 Q 2056 3413 2438 3413 Q 2578 3413 2733 3391 Q 2888 3369 3059 3328 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-50" d="M 3316 2675 Q 3481 3041 3739 3227 Q 3997 3413 4341 3413 Q 4863 3413 5119 3089 Q 5375 2766 5375 2113 L 5375 331 L 5894 331 L 5894 0 L 4300 0 L 4300 331 L 4800 331 L 4800 2047 Q 4800 2556 4650 2772 Q 4500 2988 4153 2988 Q 3769 2988 3567 2697 Q 3366 2406 3366 1850 L 3366 331 L 3866 331 L 3866 0 L 2291 0 L 2291 331 L 2791 331 L 2791 2069 Q 2791 2566 2641 2777 Q 2491 2988 2144 2988 Q 1759 2988 1557 2697 Q 1356 2406 1356 1850 L 1356 331 L 1856 331 L 1856 0 L 263 0 L 263 331 L 781 331 L 781 2994 L 231 2994 L 231 3322 L 1356 3322 L 1356 2731 Q 1516 3063 1762 3238 Q 2009 3413 2322 3413 Q 2709 3413 2968 3220 Q 3228 3028 3316 2675 z " transform="scale(0.015625)"/> <path id="f6bcee9-DejaVuSerif-45" d="M 738 331 L 738 4531 L 184 4531 L 184 4863 L 1313 4863 L 1313 2803 Q 1481 3116 1742 3264 Q 2003 3413 2388 3413 Q 3000 3413 3387 2928 Q 3775 2444 3775 1663 Q 3775 881 3387 395 Q 3000 -91 2388 -91 Q 2003 -91 1742 57 Q 1481 206 1313 519 L 1313 0 L 184 0 L 184 331 L 738 331 z M 1313 1497 Q 1313 897 1542 583 Q 1772 269 2209 269 Q 2650 269 2876 622 Q 3103 975 3103 1663 Q 3103 2353 2876 2703 Q 2650 3053 2209 3053 Q 1772 3053 1542 2737 Q 1313 2422 1313 1825 L 1313 1497 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f6bcee9-DejaVuSerif-53"/> <use xlink:href="#f6bcee9-DejaVuSerif-44" transform="translate(64.015625 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-55" transform="translate(123.640625 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-44" transform="translate(171.4375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4f" transform="translate(231.0625 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4f" transform="translate(263.046875 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-48" transform="translate(295.03125 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4f" transform="translate(354.21875 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-48" transform="translate(386.203125 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-1d" transform="translate(445.390625 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-3" transform="translate(479.078125 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4c" transform="translate(510.859375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-51" transform="translate(542.84375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-46" transform="translate(607.25 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-52" transform="translate(663.25 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-50" transform="translate(723.453125 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-53" transform="translate(818.28125 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-44" transform="translate(882.296875 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-57" transform="translate(941.921875 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4c" transform="translate(982.109375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-45" transform="translate(1014.09375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4c" transform="translate(1078.109375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4f" transform="translate(1110.09375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-48" transform="translate(1142.078125 0)"/> </g> </g> </g> <g id="f6bcee9-axes_3"> <g id="f6bcee9-patch_8"> <path d="M 489.1275 241.350469 L 708.84 241.350469 L 708.84 21.637969 L 489.1275 21.637969 L 489.1275 241.350469 z " style="fill: none"/> </g> <g id="f6bcee9-matplotlib.axis_5"/> <g id="f6bcee9-matplotlib.axis_6"/> <g id="f6bcee9-line2d_6"> <path d="M 535.149688 -1 L 538.450714 2.301027 L 542.934643 6.784955 L 547.418571 11.268884 L 551.9025 15.752812 L 556.386429 20.236741 L 560.870357 24.72067 L 565.354286 29.204598 L 569.838214 33.688527 L 574.322143 38.172455 L 578.806071 42.656384 L 583.29 47.140312 L 587.773929 51.624241 L 592.257857 56.10817 L 596.741786 60.592098 L 601.225714 65.076027 L 605.709643 69.559955 L 610.193571 74.043884 L 614.6775 78.527812 L 619.161429 83.011741 L 623.645357 87.49567 L 628.129286 91.979598 L 632.613214 96.463527 L 637.097143 100.947455 L 641.581071 105.431384 L 646.065 109.915312 L 650.548929 114.399241 L 655.032857 118.88317 L 659.516786 123.367098 L 664.000714 127.851027 L 668.484643 132.334955 L 672.968571 136.818884 L 677.4525 141.302812 L 681.936429 145.786741 L 686.420357 150.27067 L 690.904286 154.754598 L 695.388214 159.238527 L 699.872143 163.722455 L 704.356071 168.206384 L 708.84 172.690312 " clip-path="url(#f6bcee9-p7cd6dd82bd)" style="fill: none; stroke: var(--fig-steel); stroke-opacity: 0.55; stroke-width: 5; stroke-linecap: square"/> </g> <g id="f6bcee9-line2d_7"> <path d="M 535.149688 -1 L 538.450714 2.301027 L 542.934643 6.784955 L 547.418571 11.268884 L 551.9025 15.752812 L 556.386429 20.236741 L 560.870357 24.72067 L 565.354286 29.204598 L 569.838214 33.688527 L 574.322143 38.172455 L 578.806071 42.656384 L 583.29 47.140312 L 587.773929 51.624241 L 592.257857 56.10817 L 596.741786 60.592098 L 601.225714 65.076027 L 605.709643 69.559955 L 610.193571 74.043884 L 614.6775 78.527812 L 619.161429 83.011741 L 623.645357 87.49567 L 628.129286 91.979598 L 632.613214 96.463527 L 637.097143 100.947455 L 641.581071 105.431384 L 646.065 109.915312 L 650.548929 114.399241 L 655.032857 118.88317 L 659.516786 123.367098 L 664.000714 127.851027 L 668.484643 132.334955 L 672.968571 136.818884 L 677.4525 141.302812 L 681.936429 145.786741 L 686.420357 150.27067 L 690.904286 154.754598 L 695.388214 159.238527 L 699.872143 163.722455 L 704.356071 168.206384 L 708.84 172.690312 " clip-path="url(#f6bcee9-p7cd6dd82bd)" style="fill: none; stroke-dasharray: 8,6.4; stroke-dashoffset: 0; stroke: var(--fig-ink); stroke-width: 1.6"/> </g> <g id="f6bcee9-patch_9"> <path d="M 598.98375 241.350469 L 598.98375 21.637969 " style="fill: none; stroke: var(--fig-axis); stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/> </g> <g id="f6bcee9-patch_10"> <path d="M 489.1275 131.494219 L 708.84 131.494219 " style="fill: none; stroke: var(--fig-axis); stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/> </g> <g id="f6bcee9-text_12"> <!-- $x_1$ --> <g style="fill: var(--fig-axis)" transform="translate(695.32 148.237187) scale(0.13 -0.13)"> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(0 0.09375)"/> <use xlink:href="#f6bcee9-DejaVuSerif-14" transform="translate(56.396484 -14.906201) scale(0.7)"/> </g> </g> <g id="f6bcee9-text_13"> <!-- $x_2$ --> <g style="fill: var(--fig-axis)" transform="translate(580.314238 31.514922) scale(0.13 -0.13)"> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(0 0.09375)"/> <use xlink:href="#f6bcee9-DejaVuSerif-15" transform="translate(56.396484 -14.906201) scale(0.7)"/> </g> </g> <g id="f6bcee9-text_14"> <!-- $x_1 + x_2 = 2$ --> <g style="fill: var(--fig-steel)" transform="translate(639.318906 65.691484) scale(0.11 -0.11)"> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(0 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-14" transform="translate(56.396484 -14.218701) scale(0.7)"/> <use xlink:href="#f6bcee9-DejaVuSerif-e" transform="translate(122.492676 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(225.246582 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-15" transform="translate(281.643066 -14.218701) scale(0.7)"/> <use xlink:href="#f6bcee9-DejaVuSerif-20" transform="translate(347.739258 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-15" transform="translate(450.493164 0.78125)"/> </g> </g> <g id="f6bcee9-text_15"> <!-- $2x_1 + 2x_2 = 4$ --> <g style="fill: var(--fig-ink)" transform="translate(505.312617 168.681719) scale(0.11 -0.11)"> <defs> <path id="f6bcee9-DejaVuSerif-17" d="M 2234 1581 L 2234 4063 L 641 1581 L 2234 1581 z M 3609 0 L 1484 0 L 1484 331 L 2234 331 L 2234 1247 L 197 1247 L 197 1588 L 2241 4750 L 2859 4750 L 2859 1581 L 3750 1581 L 3750 1247 L 2859 1247 L 2859 331 L 3609 331 L 3609 0 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f6bcee9-DejaVuSerif-15" transform="translate(0 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(63.623047 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-14" transform="translate(120.019531 -14.218701) scale(0.7)"/> <use xlink:href="#f6bcee9-DejaVuSerif-e" transform="translate(186.115723 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-15" transform="translate(288.869629 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-Italic-5b" transform="translate(352.492676 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-15" transform="translate(408.88916 -14.218701) scale(0.7)"/> <use xlink:href="#f6bcee9-DejaVuSerif-20" transform="translate(474.985352 0.78125)"/> <use xlink:href="#f6bcee9-DejaVuSerif-17" transform="translate(577.739258 0.78125)"/> </g> </g> <g id="f6bcee9-text_16"> <!-- coincidenti: infinite soluzioni --> <g style="fill: var(--fig-ink)" transform="translate(503.717109 15.637969) scale(0.13 -0.13)"> <defs> <path id="f6bcee9-DejaVuSerif-cf0" d="M 3347 4019 L 3053 4022 Q 3044 4291 2853 4423 Q 2663 4556 2278 4556 Q 1800 4556 1578 4334 Q 1356 4113 1356 3634 L 1356 3322 L 3578 3322 L 3578 331 L 4122 331 L 4122 0 L 2450 0 L 2450 331 L 3003 331 L 3003 2988 L 1356 2988 L 1356 331 L 1900 331 L 1900 0 L 231 0 L 231 331 L 781 331 L 781 2988 L 231 2988 L 231 3322 L 781 3322 L 781 3622 Q 781 4238 1147 4550 Q 1513 4863 2228 4863 Q 2500 4863 2784 4822 Q 3069 4781 3347 4697 L 3347 4019 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f6bcee9-DejaVuSerif-46"/> <use xlink:href="#f6bcee9-DejaVuSerif-52" transform="translate(56 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4c" transform="translate(116.203125 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-51" transform="translate(148.1875 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-46" transform="translate(212.59375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4c" transform="translate(268.59375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-47" transform="translate(300.578125 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-48" transform="translate(364.59375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-51" transform="translate(423.78125 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-57" transform="translate(488.1875 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4c" transform="translate(528.375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-1d" transform="translate(560.359375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-3" transform="translate(594.046875 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4c" transform="translate(625.828125 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-51" transform="translate(657.8125 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-cf0" transform="translate(722.21875 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-51" transform="translate(788.921875 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4c" transform="translate(853.328125 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-57" transform="translate(885.3125 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-48" transform="translate(925.5 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-3" transform="translate(984.6875 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-56" transform="translate(1016.46875 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-52" transform="translate(1067.78125 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4f" transform="translate(1127.984375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-58" transform="translate(1159.96875 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-5d" transform="translate(1224.375 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4c" transform="translate(1277.0625 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-52" transform="translate(1309.046875 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-51" transform="translate(1369.25 0)"/> <use xlink:href="#f6bcee9-DejaVuSerif-4c" transform="translate(1433.65625 0)"/> </g> </g> </g> </g> <defs> <clipPath id="f6bcee9-p5325cbcd9c"> <rect x="5.76" y="21.637969" width="219.7125" height="219.7125"/> </clipPath> <clipPath id="f6bcee9-p0552b4a1ab"> <rect x="247.44375" y="21.637969" width="219.7125" height="219.7125"/> </clipPath> <clipPath id="f6bcee9-p7cd6dd82bd"> <rect x="489.1275" y="21.637969" width="219.7125" height="219.7125"/> </clipPath> </defs> </svg></figure>
+
+A sinistra le rette $x_1 + x_2 = 2$ e $x_1 - x_2 = 0$ si incontrano in $(1, 1)$: una soluzione. Al centro $x_1 + x_2 = 2$ e $x_1 + x_2 = 0$ sono parallele: nessun punto comune, incompatibile. A destra $x_1 + x_2 = 2$ e $2x_1 + 2x_2 = 4$ sono la stessa retta scritta due volte: infinite soluzioni. Che non ci siano altre possibilità (per esempio "esattamente due soluzioni") per un sistema qualunque si dimostra in L4: [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/). Per ora si vede nel disegno: due rette distinte hanno al più un punto comune.
+
+Con $3$ incognite ogni equazione è un piano, e con tre equazioni ci sono, fra gli altri, questi casi:
+
+<figure class="fig"><svg role="img" aria-label="tre piani e soluzioni del sistema" xmlns:xlink="http://www.w3.org/1999/xlink" width="714.6pt" height="223.957969pt" viewBox="0 0 714.6 223.957969" xmlns="http://www.w3.org/2000/svg" version="1.1"> <defs> <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style> </defs> <g id="f4a24b5-figure_1"> <g id="f4a24b5-patch_1"> <path d="M 0 223.957969 L 714.6 223.957969 L 714.6 0 L 0 0 L 0 223.957969 z " style="fill: none"/> </g> <g id="f4a24b5-axes_1"> <g id="f4a24b5-patch_2"> <path d="M 88.92 108.577969 L 37.829487 144.351931 L 143.669487 144.351931 L 194.76 108.577969 z " clip-path="url(#f4a24b5-pb5684ae2d3)" style="fill: var(--fig-steel); opacity: 0.13"/> </g> <g id="f4a24b5-patch_3"> <path d="M 141.84 161.497969 L 90.749487 197.271931 L 90.749487 91.431931 L 141.84 55.657969 z " clip-path="url(#f4a24b5-pb5684ae2d3)" style="fill: var(--fig-axis); opacity: 0.13"/> </g> <g id="f4a24b5-patch_4"> <path d="M 63.374743 179.38495 L 169.214743 179.38495 L 169.214743 73.54495 L 63.374743 73.54495 z " clip-path="url(#f4a24b5-pb5684ae2d3)" style="fill: var(--fig-ink); opacity: 0.1"/> </g> <g id="f4a24b5-line2d_1"> <path d="M 88.92 108.577969 L 37.829487 144.351931 L 143.669487 144.351931 L 194.76 108.577969 L 88.92 108.577969 " clip-path="url(#f4a24b5-pb5684ae2d3)" style="fill: none; stroke: var(--fig-steel); stroke-width: 1.2; stroke-linecap: square"/> </g> <g id="f4a24b5-line2d_2"> <path d="M 141.84 161.497969 L 90.749487 197.271931 L 90.749487 91.431931 L 141.84 55.657969 L 141.84 161.497969 " clip-path="url(#f4a24b5-pb5684ae2d3)" style="fill: none; stroke: var(--fig-axis); stroke-width: 1.2; stroke-linecap: square"/> </g> <g id="f4a24b5-line2d_3"> <path d="M 63.374743 179.38495 L 169.214743 179.38495 L 169.214743 73.54495 L 63.374743 73.54495 L 63.374743 179.38495 " clip-path="url(#f4a24b5-pb5684ae2d3)" style="fill: none; stroke: var(--fig-ink); stroke-width: 1.2; stroke-linecap: square"/> </g> <g id="f4a24b5-text_1"> <!-- $P$ --> <g style="fill: var(--fig-accent)" transform="translate(121.324743 120.391903) scale(0.13 -0.13)"> <defs> <path id="f4a24b5-DejaVuSerif-Italic-33" d="M 1594 2375 L 2419 2375 Q 2884 2375 3176 2626 Q 3469 2878 3559 3353 Q 3653 3831 3457 4081 Q 3262 4331 2797 4331 L 1972 4331 L 1594 2375 z M -97 0 L -35 331 L 559 331 L 1337 4331 L 744 4331 L 809 4666 L 3016 4666 Q 3716 4666 4056 4311 Q 4397 3956 4278 3353 Q 4162 2753 3684 2397 Q 3206 2041 2506 2041 L 1528 2041 L 1194 331 L 1916 331 L 1853 0 L -97 0 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f4a24b5-DejaVuSerif-Italic-33" transform="translate(0 0.09375)"/> </g> </g> <g id="f4a24b5-text_2"> <!-- un punto: soluzione unica --> <g style="fill: var(--fig-ink)" transform="translate(34.409141 15.637969) scale(0.13 -0.13)"> <defs> <path id="f4a24b5-DejaVuSerif-58" d="M 2266 3322 L 3341 3322 L 3341 331 L 3884 331 L 3884 0 L 2766 0 L 2766 588 Q 2606 256 2353 82 Q 2100 -91 1766 -91 Q 1213 -91 952 223 Q 691 538 691 1209 L 691 2988 L 172 2988 L 172 3322 L 1269 3322 L 1269 1388 Q 1269 781 1417 556 Q 1566 331 1947 331 Q 2347 331 2556 625 Q 2766 919 2766 1478 L 2766 2988 L 2266 2988 L 2266 3322 z " transform="scale(0.015625)"/> <path id="f4a24b5-DejaVuSerif-51" d="M 263 0 L 263 331 L 781 331 L 781 2988 L 231 2988 L 231 3322 L 1356 3322 L 1356 2731 Q 1516 3069 1770 3241 Q 2025 3413 2363 3413 Q 2913 3413 3172 3097 Q 3431 2781 3431 2113 L 3431 331 L 3944 331 L 3944 0 L 2356 0 L 2356 331 L 2853 331 L 2853 1931 Q 2853 2541 2703 2767 Q 2553 2994 2175 2994 Q 1775 2994 1565 2701 Q 1356 2409 1356 1850 L 1356 331 L 1856 331 L 1856 0 L 263 0 z " transform="scale(0.015625)"/> <path id="f4a24b5-DejaVuSerif-3" transform="scale(0.015625)"/> <path id="f4a24b5-DejaVuSerif-53" d="M 1313 1825 L 1313 1497 Q 1313 897 1542 583 Q 1772 269 2209 269 Q 2650 269 2876 622 Q 3103 975 3103 1663 Q 3103 2353 2876 2703 Q 2650 3053 2209 3053 Q 1772 3053 1542 2737 Q 1313 2422 1313 1825 z M 738 2988 L 184 2988 L 184 3322 L 1313 3322 L 1313 2803 Q 1481 3116 1742 3264 Q 2003 3413 2388 3413 Q 3000 3413 3387 2928 Q 3775 2444 3775 1663 Q 3775 881 3387 395 Q 3000 -91 2388 -91 Q 2003 -91 1742 57 Q 1481 206 1313 519 L 1313 -997 L 1856 -997 L 1856 -1331 L 184 -1331 L 184 -997 L 738 -997 L 738 2988 z " transform="scale(0.015625)"/> <path id="f4a24b5-DejaVuSerif-57" d="M 691 2988 L 184 2988 L 184 3322 L 691 3322 L 691 4353 L 1269 4353 L 1269 3322 L 2350 3322 L 2350 2988 L 1269 2988 L 1269 878 Q 1269 456 1350 337 Q 1431 219 1650 219 Q 1875 219 1978 351 Q 2081 484 2088 781 L 2522 781 Q 2497 328 2275 118 Q 2053 -91 1600 -91 Q 1103 -91 897 129 Q 691 350 691 878 L 691 2988 z " transform="scale(0.015625)"/> <path id="f4a24b5-DejaVuSerif-52" d="M 1925 219 Q 2388 219 2623 584 Q 2859 950 2859 1663 Q 2859 2375 2623 2739 Q 2388 3103 1925 3103 Q 1463 3103 1227 2739 Q 991 2375 991 1663 Q 991 950 1228 584 Q 1466 219 1925 219 z M 1925 -91 Q 1200 -91 759 389 Q 319 869 319 1663 Q 319 2456 758 2934 Q 1197 3413 1925 3413 Q 2653 3413 3092 2934 Q 3531 2456 3531 1663 Q 3531 869 3092 389 Q 2653 -91 1925 -91 z " transform="scale(0.015625)"/> <path id="f4a24b5-DejaVuSerif-1d" d="M 666 325 Q 666 500 786 622 Q 906 744 1081 744 Q 1256 744 1376 622 Q 1497 500 1497 325 Q 1497 150 1378 29 Q 1259 -91 1081 -91 Q 903 -91 784 29 Q 666 150 666 325 z M 666 2363 Q 666 2538 786 2658 Q 906 2778 1081 2778 Q 1259 2778 1378 2659 Q 1497 2541 1497 2363 Q 1497 2184 1378 2065 Q 1259 1947 1081 1947 Q 906 1947 786 2067 Q 666 2188 666 2363 z " transform="scale(0.015625)"/> <path id="f4a24b5-DejaVuSerif-56" d="M 359 184 L 359 959 L 691 959 Q 703 588 923 403 Q 1144 219 1575 219 Q 1963 219 2166 364 Q 2369 509 2369 788 Q 2369 1006 2220 1140 Q 2072 1275 1594 1428 L 1178 1569 Q 750 1706 558 1912 Q 366 2119 366 2438 Q 366 2894 700 3153 Q 1034 3413 1625 3413 Q 1888 3413 2178 3344 Q 2469 3275 2778 3144 L 2778 2419 L 2447 2419 Q 2434 2741 2221 2922 Q 2009 3103 1644 3103 Q 1281 3103 1095 2975 Q 909 2847 909 2591 Q 909 2381 1050 2254 Q 1191 2128 1613 1997 L 2069 1856 Q 2541 1709 2748 1489 Q 2956 1269 2956 922 Q 2956 450 2595 179 Q 2234 -91 1600 -91 Q 1278 -91 972 -22 Q 666 47 359 184 z " transform="scale(0.015625)"/> <path id="f4a24b5-DejaVuSerif-4f" d="M 1313 331 L 1856 331 L 1856 0 L 184 0 L 184 331 L 738 331 L 738 4531 L 184 4531 L 184 4863 L 1313 4863 L 1313 331 z " transform="scale(0.015625)"/> <path id="f4a24b5-DejaVuSerif-5d" d="M 256 0 L 256 269 L 2338 2988 L 691 2988 L 691 2413 L 359 2413 L 359 3322 L 3078 3322 L 3078 3053 L 997 331 L 2803 331 L 2803 934 L 3138 934 L 3138 0 L 256 0 z " transform="scale(0.015625)"/> <path id="f4a24b5-DejaVuSerif-4c" d="M 622 4353 Q 622 4497 726 4603 Q 831 4709 978 4709 Q 1122 4709 1226 4603 Q 1331 4497 1331 4353 Q 1331 4206 1228 4103 Q 1125 4000 978 4000 Q 831 4000 726 4103 Q 622 4206 622 4353 z M 1356 331 L 1900 331 L 1900 0 L 231 0 L 231 331 L 781 331 L 781 2988 L 231 2988 L 231 3322 L 1356 3322 L 1356 331 z " transform="scale(0.015625)"/> <path id="f4a24b5-DejaVuSerif-48" d="M 3469 1600 L 991 1600 L 991 1575 Q 991 903 1244 561 Q 1497 219 1991 219 Q 2369 219 2611 417 Q 2853 616 2950 1006 L 3413 1006 Q 3275 459 2904 184 Q 2534 -91 1931 -91 Q 1203 -91 761 389 Q 319 869 319 1663 Q 319 2450 753 2931 Q 1188 3413 1894 3413 Q 2647 3413 3050 2948 Q 3453 2484 3469 1600 z M 2791 1931 Q 2772 2513 2545 2808 Q 2319 3103 1894 3103 Q 1497 3103 1269 2806 Q 1041 2509 991 1931 L 2791 1931 z " transform="scale(0.015625)"/> <path id="f4a24b5-DejaVuSerif-46" d="M 3291 997 Q 3169 466 2822 187 Q 2475 -91 1925 -91 Q 1200 -91 759 389 Q 319 869 319 1663 Q 319 2459 759 2936 Q 1200 3413 1925 3413 Q 2241 3413 2553 3339 Q 2866 3266 3181 3116 L 3181 2266 L 2847 2266 Q 2781 2703 2561 2903 Q 2341 3103 1931 3103 Q 1466 3103 1228 2742 Q 991 2381 991 1663 Q 991 944 1227 581 Q 1463 219 1931 219 Q 2303 219 2525 412 Q 2747 606 2828 997 L 3291 997 z " transform="scale(0.015625)"/> <path id="f4a24b5-DejaVuSerif-44" d="M 2547 1044 L 2547 1747 L 1806 1747 Q 1378 1747 1168 1562 Q 959 1378 959 997 Q 959 650 1171 447 Q 1384 244 1747 244 Q 2106 244 2326 466 Q 2547 688 2547 1044 z M 3122 2075 L 3122 331 L 3634 331 L 3634 0 L 2547 0 L 2547 359 Q 2356 128 2106 18 Q 1856 -91 1522 -91 Q 969 -91 644 203 Q 319 497 319 997 Q 319 1513 691 1797 Q 1063 2081 1741 2081 L 2547 2081 L 2547 2309 Q 2547 2688 2317 2895 Q 2088 3103 1672 3103 Q 1328 3103 1125 2947 Q 922 2791 872 2484 L 575 2484 L 575 3156 Q 875 3284 1158 3348 Q 1441 3413 1709 3413 Q 2400 3413 2761 3070 Q 3122 2728 3122 2075 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f4a24b5-DejaVuSerif-58"/> <use xlink:href="#f4a24b5-DejaVuSerif-51" transform="translate(64.40625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-3" transform="translate(128.8125 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-53" transform="translate(160.59375 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-58" transform="translate(224.609375 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-51" transform="translate(289.015625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-57" transform="translate(353.421875 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-52" transform="translate(393.609375 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-1d" transform="translate(453.8125 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-3" transform="translate(487.5 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-56" transform="translate(519.28125 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-52" transform="translate(570.59375 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-4f" transform="translate(630.796875 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-58" transform="translate(662.78125 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-5d" transform="translate(727.1875 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-4c" transform="translate(779.875 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-52" transform="translate(811.859375 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-51" transform="translate(872.0625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-48" transform="translate(936.46875 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-3" transform="translate(995.65625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-58" transform="translate(1027.4375 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-51" transform="translate(1091.84375 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-4c" transform="translate(1156.25 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-46" transform="translate(1188.234375 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-44" transform="translate(1244.234375 0)"/> </g> </g> <g id="f4a24b5-line2d_4"> <defs> <path id="f4a24b5-md880149c07" d="M 0 2.5 C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 C 2.236584 1.29895 2.5 0.663008 2.5 0 C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 C -1.29895 2.236584 -0.663008 2.5 0 2.5 z " style="stroke: var(--fig-accent)"/> </defs> <g clip-path="url(#f4a24b5-pb5684ae2d3)"> <use xlink:href="#f4a24b5-md880149c07" x="116.294743" y="126.46495" style="fill: var(--fig-accent); stroke: var(--fig-accent)"/> </g> </g> </g> <g id="f4a24b5-axes_2"> <g id="f4a24b5-patch_5"> <path d="M 327.06 108.577969 L 432.9 108.577969 L 374.997419 149.121793 L 269.157419 149.121793 z " clip-path="url(#f4a24b5-p295a6e6f58)" style="fill: var(--fig-steel); opacity: 0.13"/> </g> <g id="f4a24b5-patch_6"> <path d="M 353.52 154.408033 L 406.44 62.747904 L 348.537419 103.291728 L 295.617419 194.951857 z " clip-path="url(#f4a24b5-p295a6e6f58)" style="fill: var(--fig-axis); opacity: 0.13"/> </g> <g id="f4a24b5-patch_7"> <path d="M 406.44 154.408033 L 353.52 62.747904 L 295.617419 103.291728 L 348.537419 194.951857 z " clip-path="url(#f4a24b5-p295a6e6f58)" style="fill: var(--fig-ink); opacity: 0.13"/> </g> <g id="f4a24b5-line2d_5"> <path d="M 327.06 108.577969 L 432.9 108.577969 L 374.997419 149.121793 L 269.157419 149.121793 L 327.06 108.577969 " clip-path="url(#f4a24b5-p295a6e6f58)" style="fill: none; stroke: var(--fig-steel); stroke-width: 1.2; stroke-linecap: square"/> </g> <g id="f4a24b5-line2d_6"> <path d="M 353.52 154.408033 L 406.44 62.747904 L 348.537419 103.291728 L 295.617419 194.951857 L 353.52 154.408033 " clip-path="url(#f4a24b5-p295a6e6f58)" style="fill: none; stroke: var(--fig-axis); stroke-width: 1.2; stroke-linecap: square"/> </g> <g id="f4a24b5-line2d_7"> <path d="M 406.44 154.408033 L 353.52 62.747904 L 295.617419 103.291728 L 348.537419 194.951857 L 406.44 154.408033 " clip-path="url(#f4a24b5-p295a6e6f58)" style="fill: none; stroke: var(--fig-ink); stroke-width: 1.2; stroke-linecap: square"/> </g> <g id="f4a24b5-line2d_8"> <path d="M 379.98 108.577969 L 322.077419 149.121793 " clip-path="url(#f4a24b5-p295a6e6f58)" style="fill: none; stroke: var(--fig-accent); stroke-width: 2.8; stroke-linecap: square"/> </g> <g id="f4a24b5-text_3"> <!-- $r$ --> <g style="fill: var(--fig-accent)" transform="translate(315.177419 165.728746) scale(0.13 -0.13)"> <defs> <path id="f4a24b5-DejaVuSerif-Italic-55" d="M 3375 3328 L 3213 2497 L 2881 2497 Q 2891 2559 2891 2613 Q 2891 2775 2816 2866 Q 2719 2988 2484 2988 Q 2059 2988 1775 2694 Q 1491 2400 1384 1850 L 1025 0 L 450 0 L 1031 2994 L 481 2994 L 544 3322 L 1669 3322 L 1556 2731 Q 1791 3078 2089 3245 Q 2388 3413 2769 3413 Q 2909 3413 3059 3391 Q 3209 3369 3375 3328 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f4a24b5-DejaVuSerif-Italic-55" transform="translate(0 0.671875)"/> </g> </g> <g id="f4a24b5-text_4"> <!-- una retta: infinite soluzioni --> <g style="fill: var(--fig-ink)" transform="translate(268.088516 15.637969) scale(0.13 -0.13)"> <defs> <path id="f4a24b5-DejaVuSerif-55" d="M 3059 3328 L 3059 2497 L 2728 2497 Q 2713 2744 2591 2866 Q 2469 2988 2234 2988 Q 1809 2988 1582 2694 Q 1356 2400 1356 1850 L 1356 331 L 2022 331 L 2022 0 L 263 0 L 263 331 L 781 331 L 781 2994 L 231 2994 L 231 3322 L 1356 3322 L 1356 2731 Q 1525 3078 1790 3245 Q 2056 3413 2438 3413 Q 2578 3413 2733 3391 Q 2888 3369 3059 3328 z " transform="scale(0.015625)"/> <path id="f4a24b5-DejaVuSerif-cf0" d="M 3347 4019 L 3053 4022 Q 3044 4291 2853 4423 Q 2663 4556 2278 4556 Q 1800 4556 1578 4334 Q 1356 4113 1356 3634 L 1356 3322 L 3578 3322 L 3578 331 L 4122 331 L 4122 0 L 2450 0 L 2450 331 L 3003 331 L 3003 2988 L 1356 2988 L 1356 331 L 1900 331 L 1900 0 L 231 0 L 231 331 L 781 331 L 781 2988 L 231 2988 L 231 3322 L 781 3322 L 781 3622 Q 781 4238 1147 4550 Q 1513 4863 2228 4863 Q 2500 4863 2784 4822 Q 3069 4781 3347 4697 L 3347 4019 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f4a24b5-DejaVuSerif-58"/> <use xlink:href="#f4a24b5-DejaVuSerif-51" transform="translate(64.40625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-44" transform="translate(128.8125 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-3" transform="translate(188.4375 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-55" transform="translate(220.21875 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-48" transform="translate(268.015625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-57" transform="translate(327.203125 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-57" transform="translate(367.390625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-44" transform="translate(407.578125 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-1d" transform="translate(467.203125 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-3" transform="translate(500.890625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-4c" transform="translate(532.671875 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-51" transform="translate(564.65625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-cf0" transform="translate(629.0625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-51" transform="translate(695.765625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-4c" transform="translate(760.171875 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-57" transform="translate(792.15625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-48" transform="translate(832.34375 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-3" transform="translate(891.53125 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-56" transform="translate(923.3125 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-52" transform="translate(974.625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-4f" transform="translate(1034.828125 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-58" transform="translate(1066.8125 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-5d" transform="translate(1131.21875 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-4c" transform="translate(1183.90625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-52" transform="translate(1215.890625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-51" transform="translate(1276.09375 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-4c" transform="translate(1340.5 0)"/> </g> </g> </g> <g id="f4a24b5-axes_3"> <g id="f4a24b5-patch_8"> <path d="M 541.008 150.157969 L 695.232 150.157969 L 637.329419 190.701793 L 483.105419 190.701793 z " clip-path="url(#f4a24b5-pa8f131b39e)" style="fill: var(--fig-steel); opacity: 0.12"/> </g> <g id="f4a24b5-patch_9"> <path d="M 679.356 177.940969 L 602.244 42.994969 L 544.341419 83.538793 L 621.453419 218.484793 z " clip-path="url(#f4a24b5-pa8f131b39e)" style="fill: var(--fig-axis); opacity: 0.12"/> </g> <g id="f4a24b5-patch_10"> <path d="M 633.996 42.994969 L 556.884 177.940969 L 498.981419 218.484793 L 576.093419 83.538793 z " clip-path="url(#f4a24b5-pa8f131b39e)" style="fill: var(--fig-ink); opacity: 0.12"/> </g> <g id="f4a24b5-line2d_9"> <path d="M 541.008 150.157969 L 695.232 150.157969 L 637.329419 190.701793 L 483.105419 190.701793 L 541.008 150.157969 " clip-path="url(#f4a24b5-pa8f131b39e)" style="fill: none; stroke: var(--fig-steel); stroke-width: 1.2; stroke-linecap: square"/> </g> <g id="f4a24b5-line2d_10"> <path d="M 679.356 177.940969 L 602.244 42.994969 L 544.341419 83.538793 L 621.453419 218.484793 L 679.356 177.940969 " clip-path="url(#f4a24b5-pa8f131b39e)" style="fill: none; stroke: var(--fig-axis); stroke-width: 1.2; stroke-linecap: square"/> </g> <g id="f4a24b5-line2d_11"> <path d="M 633.996 42.994969 L 556.884 177.940969 L 498.981419 218.484793 L 576.093419 83.538793 L 633.996 42.994969 " clip-path="url(#f4a24b5-pa8f131b39e)" style="fill: none; stroke: var(--fig-ink); stroke-width: 1.2; stroke-linecap: square"/> </g> <g id="f4a24b5-line2d_12"> <path d="M 572.76 150.157969 L 514.857419 190.701793 " clip-path="url(#f4a24b5-pa8f131b39e)" style="fill: none; stroke: var(--fig-accent); stroke-width: 2.2; stroke-linecap: square"/> </g> <g id="f4a24b5-line2d_13"> <path d="M 663.48 150.157969 L 605.577419 190.701793 " clip-path="url(#f4a24b5-pa8f131b39e)" style="fill: none; stroke: var(--fig-accent); stroke-width: 2.2; stroke-linecap: square"/> </g> <g id="f4a24b5-line2d_14"> <path d="M 618.12 70.777969 L 560.217419 111.321793 " clip-path="url(#f4a24b5-pa8f131b39e)" style="fill: none; stroke: var(--fig-accent); stroke-width: 2.2; stroke-linecap: square"/> </g> <g id="f4a24b5-text_5"> <!-- prisma: incompatibile --> <g style="fill: var(--fig-ink)" transform="translate(523.586562 15.637969) scale(0.13 -0.13)"> <defs> <path id="f4a24b5-DejaVuSerif-50" d="M 3316 2675 Q 3481 3041 3739 3227 Q 3997 3413 4341 3413 Q 4863 3413 5119 3089 Q 5375 2766 5375 2113 L 5375 331 L 5894 331 L 5894 0 L 4300 0 L 4300 331 L 4800 331 L 4800 2047 Q 4800 2556 4650 2772 Q 4500 2988 4153 2988 Q 3769 2988 3567 2697 Q 3366 2406 3366 1850 L 3366 331 L 3866 331 L 3866 0 L 2291 0 L 2291 331 L 2791 331 L 2791 2069 Q 2791 2566 2641 2777 Q 2491 2988 2144 2988 Q 1759 2988 1557 2697 Q 1356 2406 1356 1850 L 1356 331 L 1856 331 L 1856 0 L 263 0 L 263 331 L 781 331 L 781 2994 L 231 2994 L 231 3322 L 1356 3322 L 1356 2731 Q 1516 3063 1762 3238 Q 2009 3413 2322 3413 Q 2709 3413 2968 3220 Q 3228 3028 3316 2675 z " transform="scale(0.015625)"/> <path id="f4a24b5-DejaVuSerif-45" d="M 738 331 L 738 4531 L 184 4531 L 184 4863 L 1313 4863 L 1313 2803 Q 1481 3116 1742 3264 Q 2003 3413 2388 3413 Q 3000 3413 3387 2928 Q 3775 2444 3775 1663 Q 3775 881 3387 395 Q 3000 -91 2388 -91 Q 2003 -91 1742 57 Q 1481 206 1313 519 L 1313 0 L 184 0 L 184 331 L 738 331 z M 1313 1497 Q 1313 897 1542 583 Q 1772 269 2209 269 Q 2650 269 2876 622 Q 3103 975 3103 1663 Q 3103 2353 2876 2703 Q 2650 3053 2209 3053 Q 1772 3053 1542 2737 Q 1313 2422 1313 1825 L 1313 1497 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f4a24b5-DejaVuSerif-53"/> <use xlink:href="#f4a24b5-DejaVuSerif-55" transform="translate(64.015625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-4c" transform="translate(111.8125 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-56" transform="translate(143.796875 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-50" transform="translate(195.109375 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-44" transform="translate(289.9375 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-1d" transform="translate(349.5625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-3" transform="translate(383.25 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-4c" transform="translate(415.03125 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-51" transform="translate(447.015625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-46" transform="translate(511.421875 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-52" transform="translate(567.421875 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-50" transform="translate(627.625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-53" transform="translate(722.453125 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-44" transform="translate(786.46875 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-57" transform="translate(846.09375 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-4c" transform="translate(886.28125 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-45" transform="translate(918.265625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-4c" transform="translate(982.28125 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-4f" transform="translate(1014.265625 0)"/> <use xlink:href="#f4a24b5-DejaVuSerif-48" transform="translate(1046.25 0)"/> </g> </g> </g> </g> <defs> <clipPath id="f4a24b5-pb5684ae2d3"> <rect x="5.76" y="21.637969" width="226.8" height="196.56"/> </clipPath> <clipPath id="f4a24b5-p295a6e6f58"> <rect x="243.9" y="21.637969" width="226.8" height="196.56"/> </clipPath> <clipPath id="f4a24b5-pa8f131b39e"> <rect x="482.04" y="21.637969" width="226.8" height="196.56"/> </clipPath> </defs> </svg></figure>
+
+A sinistra tre piani con un solo punto comune: soluzione unica (esercizio 5). Al centro tre piani dello stesso fascio, che contengono tutti una retta $r$: infinite soluzioni (l'esempio del tutor, sotto). A destra tre piani che si tagliano a due a due in tre rette parallele, come le facce di un prisma: nessun punto è su tutti e tre, incompatibile (esercizi 4 e 10). Il prisma è il caso che a occhio sfugge: nessuna coppia di piani è parallela, eppure il sistema non ha soluzioni.
+
+**Esempi, dal più facile.**
+1. $\begin{cases} x_1 + x_2 = 2 \\ x_1 - x_2 = 0 \end{cases}$ ($m = n = 2$). $(1, 1)$: prima $1 + 1 = 2$ vera, seconda $1 - 1 = 0$ vera. Soluzione, quindi **compatibile**.
+2. $\begin{cases} x + y + z = 3 \\ x - y = 0 \end{cases}$ ($m = 2$, $n = 3$, meno equazioni che incognite). $(1, 1, 1)$: $3 = 3$ e $0 = 0$, soluzione. Anche $(0, 0, 3)$: $0 + 0 + 3 = 3$, $0 - 0 = 0$. Due soluzioni diverse: geometricamente due piani incidenti, la cui retta comune contiene entrambi i punti.
+3. $\begin{cases} x_1 = 1 \\ x_2 = 2 \\ x_1 + x_2 = 4 \end{cases}$ ($m = 3$, $n = 2$). Le prime due fissano $x_1 = 1$, $x_2 = 2$, l'unico candidato. Nella terza: $1 + 2 = 3 \neq 4$. **Incompatibile**: tre rette che a due a due si incontrano, ma non tutte nello stesso punto.
+
+**Controesempi.**
+- $\begin{cases} x^2 + y = 1 \\ x - y = 0 \end{cases}$ **non** è un sistema lineare: la prima equazione ha grado $2$. La macchina di Gauss-Jordan non si applica.
+- $(1, 1, 1)$ **non** è soluzione di $\begin{cases} x + y + z = 3 \\ x - y = 1 \end{cases}$: soddisfa la prima ($3 = 3$) ma non la seconda ($0 \neq 1$).
+- $\begin{cases} x_1 + x_2 = 0 \\ x_1 - x_2 = 1 \end{cases}$ **non** è omogeneo: basta un termine noto non nullo. E infatti $(0, 0)$ non è soluzione ($0 \neq 1$ nella seconda).
+
+### Sistemi equivalenti (dalla dispensa)
+
+**Sistemi equivalenti** (<span class="src">dispensa, Definizione 17</span>). Due sistemi nelle stesse incognite che ammettono **esattamente le stesse soluzioni**: ogni soluzione dell'uno è soluzione dell'altro, e viceversa.
+
+**Perché serve.** È la nozione su cui si regge il metodo di Gauss: le operazioni elementari trasformano un sistema in uno equivalente più semplice, e le soluzioni non cambiano ([Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/)). Risolvere un sistema vuol dire sostituirlo con sistemi equivalenti sempre più semplici, fino a uno in cui le soluzioni si leggono.
+
+**Esempi.**
+1. Scambiare l'ordine delle equazioni dà un sistema equivalente: "valgono la prima e la seconda" è la stessa richiesta di "valgono la seconda e la prima".
+2. $\begin{cases} x_1 + x_2 = 2 \\ x_1 - x_2 = 0 \end{cases}$ e $\begin{cases} 2x_1 + 2x_2 = 4 \\ x_1 - x_2 = 0 \end{cases}$ sono equivalenti: ho moltiplicato la prima per $2$, e $2(x_1 + x_2) = 4 \iff x_1 + x_2 = 2$ (divido per $2 \neq 0$). Entrambi hanno la sola soluzione $(1, 1)$.
+
+**Controesempio.** Togliere un'equazione **non** dà, in genere, un sistema equivalente. $\begin{cases} x_1 + x_2 = 2 \\ x_1 - x_2 = 0 \end{cases}$ ha solo $(1, 1)$; il sistema con la sola $x_1 + x_2 = 2$ ha anche $(2, 0)$, che nel primo non va ($2 - 0 \neq 0$). Le soluzioni sono aumentate. Allo stesso modo moltiplicare un'equazione per $0$ la trasforma in $0 = 0$ e la cancella: per questo nelle operazioni elementari si moltiplica solo per $\lambda \neq 0$.
 
 ### Matrice
 
-**Matrice.** La prof: dati $m, n \geq 1$ numeri naturali, una **matrice di ordine $m \times n$ a coefficienti reali** è una tabella della forma
+**L'idea.** Una matrice è una tabella rettangolare di numeri, con le posizioni numerate: ogni numero ha un indirizzo (riga, colonna). Serve a scrivere un sistema senza ricopiare ogni volta le $x$.
+
+**Matrice.** La prof (<span class="src">21/9, p. 2</span>): dati $m, n \geq 1$ numeri naturali, una **matrice di ordine $m \times n$ a coefficienti reali** è una tabella della forma
 
 $$
 A = \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{bmatrix} = [a_{ij}]
 $$
 
-$A$ ha $m$ righe e $n$ colonne, e $a_{ij}$ è l'elemento sulla **$i$-esima riga** e sulla **$j$-esima colonna**. Nell'ordine $m \times n$ le righe vengono sempre prima: una matrice $2 \times 3$ ha due righe e tre colonne.
+$A$ ha $m$ righe e $n$ colonne, e $a_{ij}$ è l'elemento sulla **$i$-esima riga** e sulla **$j$-esima colonna**. Nell'ordine $m \times n$ le righe vengono sempre prima: una matrice $2 \times 3$ ha due righe e tre colonne. Gli elementi si scrivono con la lettera minuscola, $a_{ij}$; la maiuscola $A$ è la matrice intera.
+
+**Esempi, dal più facile.**
+1. Dalla dispensa: $\begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix}$ è $2 \times 3$. Leggo gli indirizzi: $a_{12}$ è riga $1$, colonna $2$, cioè $2$; $a_{21}$ è riga $2$, colonna $1$, cioè $4$; $a_{23} = 6$.
+2. $\begin{bmatrix} 5 \\ -1 \\ 0 \end{bmatrix}$ è $3 \times 1$ (una sola colonna), $\begin{bmatrix} 5 & -1 & 0 \end{bmatrix}$ è $1 \times 3$ (una sola riga). Contengono gli stessi numeri, ma hanno ordine diverso: sono matrici diverse.
+3. Costruire una matrice da una regola: $B = [b_{ij}]$ di ordine $2 \times 2$ con $b_{ij} = i - j$. Elemento per elemento: $b_{11} = 1 - 1 = 0$, $b_{12} = 1 - 2 = -1$, $b_{21} = 2 - 1 = 1$, $b_{22} = 2 - 2 = 0$, quindi $B = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$.
+
+**Controesempi.**
+- Una tabella con una casella vuota, o con righe di lunghezza diversa, non è una matrice: ogni riga ha esattamente $n$ elementi. In un sistema, il buco di un'incognita mancante si riempie con $0$.
+- $a_{12}$ e $a_{21}$ non sono lo stesso elemento: nell'esempio 1 valgono $2$ e $4$.
 
 ### Le tre matrici di un sistema lineare
 
-La prof associa al sistema $(\ast)$ tre matrici.
+La prof (<span class="src">21/9, p. 2-3</span>) associa al sistema $(\ast)$ tre matrici.
 
-**Matrice dei coefficienti** $A$, di ordine $m \times n$: contiene tutti e soli i coefficienti $a_{ij}$.
+**Matrice dei coefficienti** $A$, di ordine $m \times n$: contiene tutti e soli i coefficienti $a_{ij}$. La riga $i$ è l'equazione $i$, la colonna $j$ raccoglie i coefficienti di $x_j$.
 
 **Matrice dei termini noti** $\vec{b}$, con $m$ righe e $1$ colonna:
 
@@ -108,6 +217,19 @@ $$
 
 Il punto di tutta la costruzione: nel sistema i nomi delle incognite non servono a niente, servono solo i numeri e la loro posizione. La matrice completa contiene tutta l'informazione del sistema, e da lì in poi si lavora su di essa. Un'incognita che manca in un'equazione ha coefficiente $0$, e lo $0$ va scritto nella sua colonna.
 
+<figure class="fig"><svg role="img" aria-label="dal sistema alla matrice completa" xmlns:xlink="http://www.w3.org/1999/xlink" width="546.4995pt" height="200.016pt" viewBox="0 0 546.4995 200.016" xmlns="http://www.w3.org/2000/svg" version="1.1"> <defs> <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style> </defs> <g id="f9b79a7-figure_1"> <g id="f9b79a7-patch_1"> <path d="M 0 200.016 L 546.4995 200.016 L 546.4995 0 L 0 0 L 0 200.016 z " style="fill: none"/> </g> <g id="f9b79a7-axes_1"> <g id="f9b79a7-line2d_1"> <path d="M 339.1535 39.794 L 331.2995 39.794 L 331.2995 154.986 L 339.1535 154.986 " clip-path="url(#f9b79a7-pd495165941)" style="fill: none; stroke: var(--fig-axis); stroke-width: 1.6; stroke-linecap: square"/> </g> <g id="f9b79a7-line2d_2"> <path d="M 501.4695 39.794 L 509.3235 39.794 L 509.3235 154.986 L 501.4695 154.986 " clip-path="url(#f9b79a7-pd495165941)" style="fill: none; stroke: var(--fig-axis); stroke-width: 1.6; stroke-linecap: square"/> </g> <g id="f9b79a7-line2d_3"> <path d="M 462.1995 149.75 L 462.1995 45.03 " clip-path="url(#f9b79a7-pd495165941)" style="fill: none; stroke: var(--fig-axis); stroke-width: 1.2; stroke-linecap: square"/> </g> <g id="f9b79a7-text_1"> <!-- $2x_1$ --> <g style="fill: var(--fig-ink)" transform="translate(35.1155 72.74825) scale(0.16 -0.16)"> <defs> <path id="f9b79a7-DejaVuSerif-15" d="M 819 3553 L 469 3553 L 469 4384 Q 803 4563 1142 4656 Q 1481 4750 1806 4750 Q 2534 4750 2956 4397 Q 3378 4044 3378 3438 Q 3378 2753 2422 1800 Q 2347 1728 2309 1691 L 1131 513 L 3078 513 L 3078 1088 L 3444 1088 L 3444 0 L 434 0 L 434 341 L 1850 1753 Q 2319 2222 2519 2614 Q 2719 3006 2719 3438 Q 2719 3909 2473 4175 Q 2228 4441 1797 4441 Q 1350 4441 1106 4219 Q 863 3997 819 3553 z " transform="scale(0.015625)"/> <path id="f9b79a7-DejaVuSerif-Italic-5b" d="M 409 0 L 19 0 L 1484 1594 L 747 2988 L 338 2988 L 400 3322 L 1244 3322 L 1934 2028 L 3125 3322 L 3516 3322 L 2078 1759 L 2838 331 L 3272 331 L 3209 0 L 2338 0 L 1631 1325 L 409 0 z " transform="scale(0.015625)"/> <path id="f9b79a7-DejaVuSerif-14" d="M 909 0 L 909 331 L 1722 331 L 1722 4213 L 781 3603 L 781 4013 L 1919 4750 L 2350 4750 L 2350 331 L 3163 331 L 3163 0 L 909 0 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f9b79a7-DejaVuSerif-15" transform="translate(0 0.78125)"/> <use xlink:href="#f9b79a7-DejaVuSerif-Italic-5b" transform="translate(63.623047 0.78125)"/> <use xlink:href="#f9b79a7-DejaVuSerif-14" transform="translate(120.019531 -14.218701) scale(0.7)"/> </g> </g> <g id="f9b79a7-text_2"> <!-- $-\ x_2$ --> <g style="fill: var(--fig-ink)" transform="translate(83.3955 72.74825) scale(0.16 -0.16)"> <defs> <path id="f9b79a7-DejaVuSerif-8cf" d="M 678 2259 L 4684 2259 L 4684 1753 L 678 1753 L 678 2259 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f9b79a7-DejaVuSerif-8cf" transform="translate(0 0.09375)"/> <use xlink:href="#f9b79a7-DejaVuSerif-Italic-5b" transform="translate(115.396819 0.09375)"/> <use xlink:href="#f9b79a7-DejaVuSerif-15" transform="translate(171.793304 -14.906201) scale(0.7)"/> </g> </g> <g id="f9b79a7-text_3"> <!-- $+\ x_3$ --> <g style="fill: var(--fig-ink)" transform="translate(135.7555 72.74825) scale(0.16 -0.16)"> <defs> <path id="f9b79a7-DejaVuSerif-e" d="M 2931 4013 L 2931 2259 L 4684 2259 L 4684 1753 L 2931 1753 L 2931 0 L 2431 0 L 2431 1753 L 678 1753 L 678 2259 L 2431 2259 L 2431 4013 L 2931 4013 z " transform="scale(0.015625)"/> <path id="f9b79a7-DejaVuSerif-16" d="M 622 4469 Q 988 4606 1323 4678 Q 1659 4750 1953 4750 Q 2638 4750 3022 4454 Q 3406 4159 3406 3634 Q 3406 3213 3140 2930 Q 2875 2647 2388 2547 Q 2963 2466 3280 2130 Q 3597 1794 3597 1259 Q 3597 606 3158 257 Q 2719 -91 1894 -91 Q 1528 -91 1179 -12 Q 831 66 488 225 L 488 1131 L 838 1131 Q 869 681 1141 450 Q 1413 219 1906 219 Q 2384 219 2661 495 Q 2938 772 2938 1253 Q 2938 1803 2653 2086 Q 2369 2369 1819 2369 L 1522 2369 L 1522 2688 L 1678 2688 Q 2225 2688 2498 2914 Q 2772 3141 2772 3597 Q 2772 4006 2547 4223 Q 2322 4441 1900 4441 Q 1478 4441 1245 4241 Q 1013 4041 972 3647 L 622 3647 L 622 4469 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f9b79a7-DejaVuSerif-e" transform="translate(0 0.296875)"/> <use xlink:href="#f9b79a7-DejaVuSerif-Italic-5b" transform="translate(115.396819 0.296875)"/> <use xlink:href="#f9b79a7-DejaVuSerif-16" transform="translate(171.793304 -14.703076) scale(0.7)"/> </g> </g> <g id="f9b79a7-text_4"> <!-- $= 1$ --> <g style="fill: var(--fig-ink)" transform="translate(195.9915 72.74825) scale(0.16 -0.16)"> <defs> <path id="f9b79a7-DejaVuSerif-20" d="M 678 2894 L 4684 2894 L 4684 2394 L 678 2394 L 678 2894 z M 678 1619 L 4684 1619 L 4684 1119 L 678 1119 L 678 1619 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f9b79a7-DejaVuSerif-20" transform="translate(18.964844 0.78125)"/> <use xlink:href="#f9b79a7-DejaVuSerif-14" transform="translate(121.71875 0.78125)"/> </g> </g> <g id="f9b79a7-text_5"> <!-- $x_1$ --> <g style="fill: var(--fig-ink)" transform="translate(40.2355 130.34425) scale(0.16 -0.16)"> <use xlink:href="#f9b79a7-DejaVuSerif-Italic-5b" transform="translate(0 0.09375)"/> <use xlink:href="#f9b79a7-DejaVuSerif-14" transform="translate(56.396484 -14.906201) scale(0.7)"/> </g> </g> <g id="f9b79a7-text_6"> <!-- $+\ 3x_3$ --> <g style="fill: var(--fig-ink)" transform="translate(130.6355 130.34425) scale(0.16 -0.16)"> <use xlink:href="#f9b79a7-DejaVuSerif-e" transform="translate(0 0.78125)"/> <use xlink:href="#f9b79a7-DejaVuSerif-16" transform="translate(115.396819 0.78125)"/> <use xlink:href="#f9b79a7-DejaVuSerif-Italic-5b" transform="translate(179.019866 0.78125)"/> <use xlink:href="#f9b79a7-DejaVuSerif-16" transform="translate(235.416351 -14.218701) scale(0.7)"/> </g> </g> <g id="f9b79a7-text_7"> <!-- $= 0$ --> <g style="fill: var(--fig-ink)" transform="translate(195.9915 130.34425) scale(0.16 -0.16)"> <defs> <path id="f9b79a7-DejaVuSerif-13" d="M 2034 219 Q 2513 219 2750 744 Q 2988 1269 2988 2328 Q 2988 3391 2750 3916 Q 2513 4441 2034 4441 Q 1556 4441 1318 3916 Q 1081 3391 1081 2328 Q 1081 1269 1318 744 Q 1556 219 2034 219 z M 2034 -91 Q 1275 -91 848 546 Q 422 1184 422 2328 Q 422 3475 848 4112 Q 1275 4750 2034 4750 Q 2797 4750 3222 4112 Q 3647 3475 3647 2328 Q 3647 1184 3222 546 Q 2797 -91 2034 -91 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f9b79a7-DejaVuSerif-20" transform="translate(18.964844 0.78125)"/> <use xlink:href="#f9b79a7-DejaVuSerif-13" transform="translate(121.71875 0.78125)"/> </g> </g> <g id="f9b79a7-text_8"> <!-- { --> <g style="fill: var(--fig-axis)" transform="translate(5.76 108.821406) scale(0.44 -0.44)"> <defs> <path id="f9b79a7-DejaVuSerif-5e" d="M 3272 -716 L 3272 -1044 L 3078 -1044 Q 2300 -1044 2036 -812 Q 1772 -581 1772 109 L 1772 916 Q 1772 1384 1603 1565 Q 1434 1747 991 1747 L 800 1747 L 800 2075 L 991 2075 Q 1434 2075 1603 2256 Q 1772 2438 1772 2906 L 1772 3713 Q 1772 4403 2036 4633 Q 2300 4863 3078 4863 L 3272 4863 L 3272 4538 L 3059 4538 Q 2619 4538 2484 4400 Q 2350 4263 2350 3822 L 2350 2925 Q 2350 2431 2194 2218 Q 2038 2006 1631 1913 Q 2044 1806 2197 1597 Q 2350 1388 2350 897 L 2350 0 Q 2350 -441 2484 -578 Q 2619 -716 3059 -716 L 3272 -716 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f9b79a7-DejaVuSerif-5e"/> </g> </g> <g id="f9b79a7-text_9"> <!-- $2$ --> <g style="fill: var(--fig-ink)" transform="translate(347.1235 72.74825) scale(0.16 -0.16)"> <use xlink:href="#f9b79a7-DejaVuSerif-15" transform="translate(0 0.78125)"/> </g> </g> <g id="f9b79a7-text_10"> <!-- $-1$ --> <g style="fill: var(--fig-ink)" transform="translate(382.2915 72.74825) scale(0.16 -0.16)"> <use xlink:href="#f9b79a7-DejaVuSerif-8cf" transform="translate(0 0.78125)"/> <use xlink:href="#f9b79a7-DejaVuSerif-14" transform="translate(83.789062 0.78125)"/> </g> </g> <g id="f9b79a7-text_11"> <!-- $1$ --> <g style="fill: var(--fig-ink)" transform="translate(430.8995 72.74825) scale(0.16 -0.16)"> <use xlink:href="#f9b79a7-DejaVuSerif-14" transform="translate(0 0.78125)"/> </g> </g> <g id="f9b79a7-text_12"> <!-- $1$ --> <g style="fill: var(--fig-steel)" transform="translate(483.2595 72.74825) scale(0.16 -0.16)"> <use xlink:href="#f9b79a7-DejaVuSerif-14" transform="translate(0 0.78125)"/> </g> </g> <g id="f9b79a7-text_13"> <!-- $1$ --> <g style="fill: var(--fig-ink)" transform="translate(347.1235 130.34425) scale(0.16 -0.16)"> <use xlink:href="#f9b79a7-DejaVuSerif-14" transform="translate(0 0.78125)"/> </g> </g> <g id="f9b79a7-text_14"> <!-- $0$ --> <g style="fill: var(--fig-accent)" transform="translate(389.0115 130.34425) scale(0.16 -0.16)"> <use xlink:href="#f9b79a7-DejaVuSerif-13" transform="translate(0 0.78125)"/> </g> </g> <g id="f9b79a7-text_15"> <!-- $3$ --> <g style="fill: var(--fig-ink)" transform="translate(430.8995 130.34425) scale(0.16 -0.16)"> <use xlink:href="#f9b79a7-DejaVuSerif-16" transform="translate(0 0.78125)"/> </g> </g> <g id="f9b79a7-text_16"> <!-- $0$ --> <g style="fill: var(--fig-steel)" transform="translate(483.2595 130.34425) scale(0.16 -0.16)"> <use xlink:href="#f9b79a7-DejaVuSerif-13" transform="translate(0 0.78125)"/> </g> </g> <g id="f9b79a7-patch_2"> <path d="M 249.521515 97.39 Q 278.937851 97.39 306.565332 97.39 " style="fill: none; stroke: var(--fig-axis); stroke-width: 1.6; stroke-linecap: round"/> <path d="M 300.965332 94.59 L 306.565332 97.39 L 300.965332 100.19 z " style="fill: var(--fig-axis); stroke: var(--fig-axis); stroke-width: 1.6; stroke-linecap: round"/> </g> <g id="f9b79a7-text_17"> <!-- $x_1$ --> <g style="fill: var(--fig-axis)" transform="translate(346.0035 24.585187) scale(0.12 -0.12)"> <use xlink:href="#f9b79a7-DejaVuSerif-Italic-5b" transform="translate(0 0.09375)"/> <use xlink:href="#f9b79a7-DejaVuSerif-14" transform="translate(56.396484 -14.906201) scale(0.7)"/> </g> </g> <g id="f9b79a7-text_18"> <!-- $x_2$ --> <g style="fill: var(--fig-axis)" transform="translate(387.8915 24.585187) scale(0.12 -0.12)"> <use xlink:href="#f9b79a7-DejaVuSerif-Italic-5b" transform="translate(0 0.09375)"/> <use xlink:href="#f9b79a7-DejaVuSerif-15" transform="translate(56.396484 -14.906201) scale(0.7)"/> </g> </g> <g id="f9b79a7-text_19"> <!-- $x_3$ --> <g style="fill: var(--fig-axis)" transform="translate(429.7795 24.585187) scale(0.12 -0.12)"> <use xlink:href="#f9b79a7-DejaVuSerif-Italic-5b" transform="translate(0 0.09375)"/> <use xlink:href="#f9b79a7-DejaVuSerif-16" transform="translate(56.396484 -14.906201) scale(0.7)"/> </g> </g> <g id="f9b79a7-text_20"> <!-- $\vec{b}$ --> <g style="fill: var(--fig-axis)" transform="translate(484.4795 26.626594) scale(0.12 -0.12)"> <defs> <path id="f9b79a7-STIXGeneral-Regular-350" d="M -109 4186 L -954 3507 L -1069 3558 Q -755 3821 -755 3917 Q -755 4013 -1069 4013 L -2899 4013 L -2899 4358 L -1069 4358 Q -755 4358 -755 4454 Q -755 4474 -768 4496 Q -781 4518 -816 4553 Q -851 4589 -880 4621 Q -909 4653 -973 4713 Q -1037 4774 -1075 4813 L -960 4864 L -109 4186 z " transform="scale(0.015625)"/> <path id="f9b79a7-DejaVuSerif-Italic-45" d="M 1153 4531 L 600 4531 L 666 4863 L 1794 4863 L 1394 2803 Q 1622 3116 1912 3264 Q 2203 3413 2588 3413 Q 3200 3413 3494 2928 Q 3688 2609 3688 2163 Q 3688 1928 3634 1663 Q 3481 881 3000 395 Q 2519 -91 1906 -91 Q 1522 -91 1289 57 Q 1056 206 950 519 L 850 0 L 275 0 L 1153 4531 z M 1141 1497 Q 1091 1250 1091 1053 Q 1091 769 1191 581 Q 1359 269 1797 269 Q 2238 269 2533 622 Q 2828 975 2963 1663 Q 3025 1978 3025 2225 Q 3025 2513 2938 2703 Q 2781 3053 2338 3053 Q 1900 3053 1609 2737 Q 1319 2422 1203 1825 L 1141 1497 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f9b79a7-STIXGeneral-Regular-350" transform="translate(63.300293 34)"/> <use xlink:href="#f9b79a7-DejaVuSerif-Italic-45" transform="translate(0 0.3125)"/> </g> </g> <g id="f9b79a7-text_21"> <!-- $x_2$ manca: 0 --> <g style="fill: var(--fig-accent)" transform="translate(361.1865 178.787422) scale(0.11 -0.11)"> <defs> <path id="f9b79a7-DejaVuSerif-3" transform="scale(0.015625)"/> <path id="f9b79a7-DejaVuSerif-50" d="M 3316 2675 Q 3481 3041 3739 3227 Q 3997 3413 4341 3413 Q 4863 3413 5119 3089 Q 5375 2766 5375 2113 L 5375 331 L 5894 331 L 5894 0 L 4300 0 L 4300 331 L 4800 331 L 4800 2047 Q 4800 2556 4650 2772 Q 4500 2988 4153 2988 Q 3769 2988 3567 2697 Q 3366 2406 3366 1850 L 3366 331 L 3866 331 L 3866 0 L 2291 0 L 2291 331 L 2791 331 L 2791 2069 Q 2791 2566 2641 2777 Q 2491 2988 2144 2988 Q 1759 2988 1557 2697 Q 1356 2406 1356 1850 L 1356 331 L 1856 331 L 1856 0 L 263 0 L 263 331 L 781 331 L 781 2994 L 231 2994 L 231 3322 L 1356 3322 L 1356 2731 Q 1516 3063 1762 3238 Q 2009 3413 2322 3413 Q 2709 3413 2968 3220 Q 3228 3028 3316 2675 z " transform="scale(0.015625)"/> <path id="f9b79a7-DejaVuSerif-44" d="M 2547 1044 L 2547 1747 L 1806 1747 Q 1378 1747 1168 1562 Q 959 1378 959 997 Q 959 650 1171 447 Q 1384 244 1747 244 Q 2106 244 2326 466 Q 2547 688 2547 1044 z M 3122 2075 L 3122 331 L 3634 331 L 3634 0 L 2547 0 L 2547 359 Q 2356 128 2106 18 Q 1856 -91 1522 -91 Q 969 -91 644 203 Q 319 497 319 997 Q 319 1513 691 1797 Q 1063 2081 1741 2081 L 2547 2081 L 2547 2309 Q 2547 2688 2317 2895 Q 2088 3103 1672 3103 Q 1328 3103 1125 2947 Q 922 2791 872 2484 L 575 2484 L 575 3156 Q 875 3284 1158 3348 Q 1441 3413 1709 3413 Q 2400 3413 2761 3070 Q 3122 2728 3122 2075 z " transform="scale(0.015625)"/> <path id="f9b79a7-DejaVuSerif-51" d="M 263 0 L 263 331 L 781 331 L 781 2988 L 231 2988 L 231 3322 L 1356 3322 L 1356 2731 Q 1516 3069 1770 3241 Q 2025 3413 2363 3413 Q 2913 3413 3172 3097 Q 3431 2781 3431 2113 L 3431 331 L 3944 331 L 3944 0 L 2356 0 L 2356 331 L 2853 331 L 2853 1931 Q 2853 2541 2703 2767 Q 2553 2994 2175 2994 Q 1775 2994 1565 2701 Q 1356 2409 1356 1850 L 1356 331 L 1856 331 L 1856 0 L 263 0 z " transform="scale(0.015625)"/> <path id="f9b79a7-DejaVuSerif-46" d="M 3291 997 Q 3169 466 2822 187 Q 2475 -91 1925 -91 Q 1200 -91 759 389 Q 319 869 319 1663 Q 319 2459 759 2936 Q 1200 3413 1925 3413 Q 2241 3413 2553 3339 Q 2866 3266 3181 3116 L 3181 2266 L 2847 2266 Q 2781 2703 2561 2903 Q 2341 3103 1931 3103 Q 1466 3103 1228 2742 Q 991 2381 991 1663 Q 991 944 1227 581 Q 1463 219 1931 219 Q 2303 219 2525 412 Q 2747 606 2828 997 L 3291 997 z " transform="scale(0.015625)"/> <path id="f9b79a7-DejaVuSerif-1d" d="M 666 325 Q 666 500 786 622 Q 906 744 1081 744 Q 1256 744 1376 622 Q 1497 500 1497 325 Q 1497 150 1378 29 Q 1259 -91 1081 -91 Q 903 -91 784 29 Q 666 150 666 325 z M 666 2363 Q 666 2538 786 2658 Q 906 2778 1081 2778 Q 1259 2778 1378 2659 Q 1497 2541 1497 2363 Q 1497 2184 1378 2065 Q 1259 1947 1081 1947 Q 906 1947 786 2067 Q 666 2188 666 2363 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f9b79a7-DejaVuSerif-Italic-5b" transform="translate(0 0.78125)"/> <use xlink:href="#f9b79a7-DejaVuSerif-15" transform="translate(56.396484 -14.218701) scale(0.7)"/> <use xlink:href="#f9b79a7-DejaVuSerif-3" transform="translate(103.527832 0.78125)"/> <use xlink:href="#f9b79a7-DejaVuSerif-50" transform="translate(135.314941 0.78125)"/> <use xlink:href="#f9b79a7-DejaVuSerif-44" transform="translate(230.13916 0.78125)"/> <use xlink:href="#f9b79a7-DejaVuSerif-51" transform="translate(289.758301 0.78125)"/> <use xlink:href="#f9b79a7-DejaVuSerif-46" transform="translate(354.162598 0.78125)"/> <use xlink:href="#f9b79a7-DejaVuSerif-44" transform="translate(410.168457 0.78125)"/> <use xlink:href="#f9b79a7-DejaVuSerif-1d" transform="translate(469.787598 0.78125)"/> <use xlink:href="#f9b79a7-DejaVuSerif-3" transform="translate(503.479004 0.78125)"/> <use xlink:href="#f9b79a7-DejaVuSerif-13" transform="translate(535.266113 0.78125)"/> </g> </g> <g id="f9b79a7-text_22"> <!-- una riga per equazione --> <g style="fill: var(--fig-axis)" transform="translate(67.766656 178.787422) scale(0.11 -0.11)"> <defs> <path id="f9b79a7-DejaVuSerif-58" d="M 2266 3322 L 3341 3322 L 3341 331 L 3884 331 L 3884 0 L 2766 0 L 2766 588 Q 2606 256 2353 82 Q 2100 -91 1766 -91 Q 1213 -91 952 223 Q 691 538 691 1209 L 691 2988 L 172 2988 L 172 3322 L 1269 3322 L 1269 1388 Q 1269 781 1417 556 Q 1566 331 1947 331 Q 2347 331 2556 625 Q 2766 919 2766 1478 L 2766 2988 L 2266 2988 L 2266 3322 z " transform="scale(0.015625)"/> <path id="f9b79a7-DejaVuSerif-55" d="M 3059 3328 L 3059 2497 L 2728 2497 Q 2713 2744 2591 2866 Q 2469 2988 2234 2988 Q 1809 2988 1582 2694 Q 1356 2400 1356 1850 L 1356 331 L 2022 331 L 2022 0 L 263 0 L 263 331 L 781 331 L 781 2994 L 231 2994 L 231 3322 L 1356 3322 L 1356 2731 Q 1525 3078 1790 3245 Q 2056 3413 2438 3413 Q 2578 3413 2733 3391 Q 2888 3369 3059 3328 z " transform="scale(0.015625)"/> <path id="f9b79a7-DejaVuSerif-4c" d="M 622 4353 Q 622 4497 726 4603 Q 831 4709 978 4709 Q 1122 4709 1226 4603 Q 1331 4497 1331 4353 Q 1331 4206 1228 4103 Q 1125 4000 978 4000 Q 831 4000 726 4103 Q 622 4206 622 4353 z M 1356 331 L 1900 331 L 1900 0 L 231 0 L 231 331 L 781 331 L 781 2988 L 231 2988 L 231 3322 L 1356 3322 L 1356 331 z " transform="scale(0.015625)"/> <path id="f9b79a7-DejaVuSerif-4a" d="M 3359 2988 L 3359 72 Q 3359 -644 2965 -1033 Q 2572 -1422 1844 -1422 Q 1516 -1422 1216 -1362 Q 916 -1303 641 -1184 L 641 -488 L 941 -488 Q 997 -813 1206 -963 Q 1416 -1113 1806 -1113 Q 2313 -1113 2548 -827 Q 2784 -541 2784 72 L 2784 519 Q 2616 206 2355 57 Q 2094 -91 1709 -91 Q 1097 -91 708 395 Q 319 881 319 1663 Q 319 2444 706 2928 Q 1094 3413 1709 3413 Q 2094 3413 2355 3264 Q 2616 3116 2784 2803 L 2784 3322 L 3909 3322 L 3909 2988 L 3359 2988 z M 2784 1825 Q 2784 2422 2554 2737 Q 2325 3053 1888 3053 Q 1444 3053 1217 2703 Q 991 2353 991 1663 Q 991 975 1217 622 Q 1444 269 1888 269 Q 2325 269 2554 583 Q 2784 897 2784 1497 L 2784 1825 z " transform="scale(0.015625)"/> <path id="f9b79a7-DejaVuSerif-53" d="M 1313 1825 L 1313 1497 Q 1313 897 1542 583 Q 1772 269 2209 269 Q 2650 269 2876 622 Q 3103 975 3103 1663 Q 3103 2353 2876 2703 Q 2650 3053 2209 3053 Q 1772 3053 1542 2737 Q 1313 2422 1313 1825 z M 738 2988 L 184 2988 L 184 3322 L 1313 3322 L 1313 2803 Q 1481 3116 1742 3264 Q 2003 3413 2388 3413 Q 3000 3413 3387 2928 Q 3775 2444 3775 1663 Q 3775 881 3387 395 Q 3000 -91 2388 -91 Q 2003 -91 1742 57 Q 1481 206 1313 519 L 1313 -997 L 1856 -997 L 1856 -1331 L 184 -1331 L 184 -997 L 738 -997 L 738 2988 z " transform="scale(0.015625)"/> <path id="f9b79a7-DejaVuSerif-48" d="M 3469 1600 L 991 1600 L 991 1575 Q 991 903 1244 561 Q 1497 219 1991 219 Q 2369 219 2611 417 Q 2853 616 2950 1006 L 3413 1006 Q 3275 459 2904 184 Q 2534 -91 1931 -91 Q 1203 -91 761 389 Q 319 869 319 1663 Q 319 2450 753 2931 Q 1188 3413 1894 3413 Q 2647 3413 3050 2948 Q 3453 2484 3469 1600 z M 2791 1931 Q 2772 2513 2545 2808 Q 2319 3103 1894 3103 Q 1497 3103 1269 2806 Q 1041 2509 991 1931 L 2791 1931 z " transform="scale(0.015625)"/> <path id="f9b79a7-DejaVuSerif-54" d="M 3359 2988 L 3359 -997 L 3909 -997 L 3909 -1331 L 2241 -1331 L 2241 -997 L 2784 -997 L 2784 519 Q 2616 206 2355 57 Q 2094 -91 1709 -91 Q 1097 -91 708 395 Q 319 881 319 1663 Q 319 2444 706 2928 Q 1094 3413 1709 3413 Q 2094 3413 2355 3264 Q 2616 3116 2784 2803 L 2784 3322 L 3909 3322 L 3909 2988 L 3359 2988 z M 2784 1825 Q 2784 2422 2554 2737 Q 2325 3053 1888 3053 Q 1444 3053 1217 2703 Q 991 2353 991 1663 Q 991 975 1217 622 Q 1444 269 1888 269 Q 2325 269 2554 583 Q 2784 897 2784 1497 L 2784 1825 z " transform="scale(0.015625)"/> <path id="f9b79a7-DejaVuSerif-5d" d="M 256 0 L 256 269 L 2338 2988 L 691 2988 L 691 2413 L 359 2413 L 359 3322 L 3078 3322 L 3078 3053 L 997 331 L 2803 331 L 2803 934 L 3138 934 L 3138 0 L 256 0 z " transform="scale(0.015625)"/> <path id="f9b79a7-DejaVuSerif-52" d="M 1925 219 Q 2388 219 2623 584 Q 2859 950 2859 1663 Q 2859 2375 2623 2739 Q 2388 3103 1925 3103 Q 1463 3103 1227 2739 Q 991 2375 991 1663 Q 991 950 1228 584 Q 1466 219 1925 219 z M 1925 -91 Q 1200 -91 759 389 Q 319 869 319 1663 Q 319 2456 758 2934 Q 1197 3413 1925 3413 Q 2653 3413 3092 2934 Q 3531 2456 3531 1663 Q 3531 869 3092 389 Q 2653 -91 1925 -91 z " transform="scale(0.015625)"/> </defs> <use xlink:href="#f9b79a7-DejaVuSerif-58"/> <use xlink:href="#f9b79a7-DejaVuSerif-51" transform="translate(64.40625 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-44" transform="translate(128.8125 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-3" transform="translate(188.4375 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-55" transform="translate(220.21875 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-4c" transform="translate(268.015625 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-4a" transform="translate(300 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-44" transform="translate(364.015625 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-3" transform="translate(423.640625 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-53" transform="translate(455.421875 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-48" transform="translate(519.4375 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-55" transform="translate(578.625 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-3" transform="translate(626.421875 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-48" transform="translate(658.203125 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-54" transform="translate(717.390625 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-58" transform="translate(781.40625 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-44" transform="translate(845.8125 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-5d" transform="translate(905.4375 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-4c" transform="translate(958.125 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-52" transform="translate(990.109375 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-51" transform="translate(1050.3125 0)"/> <use xlink:href="#f9b79a7-DejaVuSerif-48" transform="translate(1114.71875 0)"/> </g> </g> </g> </g> <defs> <clipPath id="f9b79a7-pd495165941"> <rect x="17.1395" y="5.76" width="523.6" height="188.496"/> </clipPath> </defs> </svg></figure>
+
+Ogni equazione diventa una riga, ogni incognita una colonna, i termini noti l'ultima colonna dopo la barra. La barra verticale non è un segno matematico: ricorda dove finiscono i coefficienti e dove stava il simbolo $=$.
+
+**Esempi, dal più facile.**
+1. $\begin{cases} x - y = 3 \\ 2x + y = 0 \end{cases}$, incognite $(x, y)$: $A = \begin{bmatrix} 1 & -1 \\ 2 & 1 \end{bmatrix}$ ($2 \times 2$), $\vec{b} = \begin{bmatrix} 3 \\ 0 \end{bmatrix}$ ($2 \times 1$), $[A \mid \vec{b}] = \left[\begin{array}{cc|c} 1 & -1 & 3 \\ 2 & 1 & 0 \end{array}\right]$ ($2 \times 3$). Il coefficiente di $y$ nella prima è $-1$, non $1$: il segno fa parte del coefficiente.
+2. Un sistema scritto in disordine. $\begin{cases} z = 2x - 1 \\ y + 4 = 0 \end{cases}$, incognite $(x, y, z)$:
+   - prima: porto $2x$ a sinistra, $-2x + z = -1$, cioè $-2x + 0y + 1z = -1$;
+   - seconda: porto $4$ a destra, $y = -4$, cioè $0x + 1y + 0z = -4$;
+   - $[A \mid \vec{b}] = \left[\begin{array}{ccc|c} -2 & 0 & 1 & -1 \\ 0 & 1 & 0 & -4 \end{array}\right]$, ordine $2 \times 4$.
+
+**Controesempio.** Se nella seconda riga dell'esempio 2 si dimenticano gli zeri e si scrive $\left[\, 1 \mid -4 \,\right]$, la riga ha $2$ elementi invece di $4$: non è più una matrice, e quell'$1$ potrebbe essere il coefficiente di $x$, di $y$ o di $z$. Ogni colonna deve corrispondere a una sola incognita, la stessa in tutte le righe.
+
 ## Enunciati
 
 ### I sistemi omogenei sono sempre compatibili (dalla dispensa)
@@ -115,51 +237,148 @@ Il punto di tutta la costruzione: nel sistema i nomi delle incognite non servono
 > [!abstract] Osservazione (dispensa, Osservazione 4)
 > Ogni sistema lineare omogeneo è compatibile, perché l'ennupla nulla $(0, \ldots, 0)$ è sempre una soluzione.
 
-Sostituendo zero a ogni incognita, ogni membro sinistro diventa $0$, e i termini noti sono già tutti $0$. Si chiama **soluzione banale**; la domanda interessante su un sistema omogeneo non è se abbia soluzioni, ma se ne abbia altre oltre a quella. In geometria l'hai già incontrato: il sistema $\vec{n} \cdot \vec{v} = 0$, $\vec{n} \cdot \vec{w} = 0$ per trovare una normale è omogeneo, e la soluzione banale $\vec{n} = \vec{0}$ è quella che non serve.
+**Ipotesi**: il sistema è lineare e omogeneo ($b_1 = \cdots = b_m = 0$). **Tesi**: è compatibile.
+
+La prof non la enuncia né la dimostra a lezione (sta nella dispensa); il motivo è una riga e serve a capire, non a essere ripetuto allo scritto.
+
+> [!note]- Perché, passo per passo
+> Sostituisco $(0, \ldots, 0)$ nell'equazione $i$:
+> 1. il primo membro diventa $a_{i1} \cdot 0 + a_{i2} \cdot 0 + \cdots + a_{in} \cdot 0$;
+> 2. ogni prodotto per $0$ vale $0$, quindi il primo membro vale $0$;
+> 3. il secondo membro è $b_i = 0$ per ipotesi;
+> 4. l'equazione diventa $0 = 0$, vera. Vale per ogni $i = 1, \ldots, m$, quindi $(0, \ldots, 0)$ è soluzione di tutte. $\blacksquare$
+
+Si chiama **soluzione banale**; la domanda interessante su un sistema omogeneo non è se abbia soluzioni, ma se ne abbia altre oltre a quella. In geometria l'hai già incontrato: il sistema $\vec{n} \cdot \vec{v} = 0$, $\vec{n} \cdot \vec{w} = 0$ per trovare una normale è omogeneo, e la soluzione banale $\vec{n} = \vec{0}$ è quella che non serve. Geometricamente: in un sistema omogeneo ogni retta (o piano) passa per l'origine, che quindi è sempre un punto comune.
+
+**A cosa serve ogni ipotesi.**
+- **Lineare.** $\cos x + y = 0$ ha termine noto $0$ ma non è lineare, e $(0, 0)$ non la soddisfa: $\cos 0 + 0 = 1 \neq 0$. Senza linearità, sostituire zeri non dà zero.
+- **Omogeneo.** $\begin{cases} x_1 + x_2 = 2 \\ x_1 + x_2 = 0 \end{cases}$ ha un termine noto non nullo ed è incompatibile.
+
+**Esempi.**
+1. $\begin{cases} 3x - y = 0 \\ x + 2y = 0 \end{cases}$: $(0, 0)$ è soluzione ($0 = 0$ due volte). Ce ne sono altre? Dalla prima $y = 3x$, nella seconda $x + 6x = 7x = 0$, quindi $x = 0$ e $y = 0$. Solo la banale: due rette per l'origine, incidenti.
+2. $\begin{cases} x + 2y - z = 0 \\ 2x - y + 3z = 0 \end{cases}$: oltre a $(0, 0, 0)$ c'è $(-1, 1, 1)$ ($-1 + 2 - 1 = 0$ e $-2 - 1 + 3 = 0$), e ce ne sono infinite (esercizio 7). Due piani per l'origine si tagliano in una retta per l'origine.
+
+**Il viceversa è falso**: "compatibile" non implica "omogeneo". $\begin{cases} x_1 + x_2 = 2 \\ x_1 - x_2 = 0 \end{cases}$ è compatibile e non omogeneo.
 
 ## Metodo
 
-**Scrivere le matrici di un sistema.**
-1. Porta ogni equazione nella forma "incognite a sinistra, nello stesso ordine; numero a destra".
-2. Una riga per equazione, una colonna per incognita: dove un'incognita manca scrivi $0$.
-3. $\vec{b}$ è la colonna dei numeri a destra; $[A \mid \vec{b}]$ le affianca.
-4. Controlla l'ordine: $A$ è $m \times n$, $[A \mid \vec{b}]$ è $m \times (n+1)$.
+### Scrivere le matrici di un sistema
 
-**Verificare una soluzione.** Sostituisci l'ennupla in **ogni** equazione. Basta un'equazione falsa per dire che non è soluzione.
+1. Fissa l'ordine delle incognite ($x, y, z$ oppure $x_1, \ldots, x_n$) e tienilo uguale in tutte le righe.
+2. Porta ogni equazione nella forma "incognite a sinistra, nello stesso ordine; numero a destra". Un termine che passa dall'altra parte cambia segno.
+3. Una riga per equazione, una colonna per incognita: dove un'incognita manca scrivi $0$.
+4. $\vec{b}$ è la colonna dei numeri a destra; $[A \mid \vec{b}]$ le affianca.
+5. Controlla l'ordine: $A$ è $m \times n$, $[A \mid \vec{b}]$ è $m \times (n+1)$.
+6. Controllo finale: rileggi una riga della matrice come equazione e confrontala con quella di partenza.
 
-Il metodo per **risolvere** un sistema (operazioni elementari, Gauss-Jordan) sta in [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/); per sapere prima quante soluzioni ha, [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/).
+**Dalla matrice al sistema** è il percorso al contrario: la riga $\left[\, a_{i1}\ \cdots\ a_{in} \mid b_i \,\right]$ è l'equazione $a_{i1} x_1 + \cdots + a_{in} x_n = b_i$. Una riga di soli zeri a sinistra della barra, $\left[\, 0\ \cdots\ 0 \mid c \,\right]$, è l'equazione $0 = c$.
+
+### Verificare una soluzione
+
+Sostituisci l'ennupla in **ogni** equazione, scrivendo il conto. Basta un'equazione falsa per dire che non è soluzione; per dire che lo è servono tutte vere. Per dire che un sistema è **compatibile** basta esibire una soluzione e verificarla.
+
+### Riconoscere un'incompatibilità evidente
+
+Per dire che un sistema è **incompatibile** non basta non trovare soluzioni: bisogna mostrare che nessuna ennupla può andare bene. Senza Gauss-Jordan (L4) si fa così:
+1. **Una riga $0 = c$ con $c \neq 0$.** Nessuna ennupla la soddisfa, quindi il sistema è incompatibile. È la forma a cui Gauss-Jordan riduce ogni sistema incompatibile.
+2. **Primi membri proporzionali, termini noti no.** $x + y + z = 1$ e $2x + 2y + 2z = 5$: dalla prima $2x + 2y + 2z = 2$, che contraddice $5$. Geometricamente due piani (o rette) paralleli distinti.
+3. **Una combinazione di equazioni che contraddice un'altra.** Se sommando (o sottraendo, o moltiplicando per numeri e sommando) alcune equazioni si ottiene lo stesso primo membro di un'altra equazione con un termine noto diverso, il sistema è incompatibile. Esempio: esercizio 4.
+
+Il ragionamento si scrive sempre per assurdo: "se $(t_1, \ldots, t_n)$ fosse una soluzione, allora... quindi $1 = 3$, assurdo".
+
+### Risolvere un sistema piccolo a mano
+
+Con due o tre equazioni, come in geometria: ricava un'incognita da un'equazione semplice e sostituiscila nelle altre, finché resta un'equazione in una sola incognita. Quando compare un coefficiente con un parametro ($k$, $a$), **prima di dividere** controlla per quali valori quel coefficiente si annulla, e studia quei valori a parte (esercizio 9). Per sistemi più grandi il metodo è Gauss-Jordan: [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/).
+
+```
+sistema dato
+   |
+forma standard, [A | b]            incognite ordinate, zeri, segni
+   |
+c'è 0 = c con c != 0,
+o una contraddizione visibile? --- sì --> incompatibile (scrivi il "se fosse...")
+   |
+   no
+   |
+2-3 equazioni semplici?  --------- sì --> sostituzione, poi verifica in TUTTE
+   |
+   no --> Gauss-Jordan (L4)
+```
+
+Per sapere **prima** quante soluzioni ha un sistema: [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/).
 
 ## Esempi svolti a lezione
 
 > [!example]- Prof, appunti sistemi p. 1: $(1, 2, 3) \in \mathbb{R}^3$
-> È una terna: $n = 3$, tre componenti reali in un ordine preciso. Con le operazioni della prof, per esempio, $(1,2,3) + (0,1,-1) = (1, 3, 2)$ e $2(1,2,3) = (2,4,6)$.
+> È una terna: $n = 3$, tre componenti reali in un ordine preciso (<span class="src">21/9, p. 1</span>). Con le operazioni della prof, per esempio:
+> - $(1,2,3) + (0,1,-1) = (1 + 0,\ 2 + 1,\ 3 + (-1)) = (1, 3, 2)$;
+> - $2(1,2,3) = (2 \cdot 1,\ 2 \cdot 2,\ 2 \cdot 3) = (2,4,6)$.
+>
+> Si scrive $(1, 2, 3) \in \mathbb{R}^3$ ("appartiene"), non $(1, 2, 3) = \mathbb{R}^3$: una terna è un elemento dell'insieme, non l'insieme.
 
 > [!example]- Dispensa, Esempio 12-13: un sistema compatibile e uno incompatibile
+> (<span class="src">dispensa, p. 43-44</span>.)
 > $$
 > \begin{cases} x_1 + x_2 = 2 \\ x_1 - x_2 = 0 \end{cases}
 > $$
-> La coppia $(1, 1)$ è soluzione: $1 + 1 = 2$ e $1 - 1 = 0$. Il sistema è **compatibile**; per dirlo basta esibire una soluzione.
+> La coppia $(1, 1)$ è soluzione: $1 + 1 = 2$ e $1 - 1 = 0$. Il sistema è **compatibile**; per dirlo basta esibire una soluzione. La dispensa aggiunge che è l'unica: sommando le due equazioni $2x_1 = 2$, quindi $x_1 = 1$, e dalla seconda $x_2 = x_1 = 1$.
 > $$
 > \begin{cases} x_1 + x_2 = 2 \\ x_1 + x_2 = 0 \end{cases}
 > $$
-> La stessa quantità $x_1 + x_2$ dovrebbe valere $2$ e $0$ insieme: **incompatibile**.
+> La stessa quantità $x_1 + x_2$ dovrebbe valere $2$ e $0$ insieme: **incompatibile**. Per assurdo: se $(t_1, t_2)$ fosse soluzione, $t_1 + t_2 = 2$ e $t_1 + t_2 = 0$, quindi $2 = 0$.
 >
 > Le matrici del primo sistema:
 > $$
 > A = \begin{bmatrix} 1 & 1 \\ 1 & -1 \end{bmatrix} \qquad \vec{b} = \begin{bmatrix} 2 \\ 0 \end{bmatrix} \qquad [A \mid \vec{b}] = \begin{bmatrix} 1 & 1 & 2 \\ 1 & -1 & 0 \end{bmatrix}
 > $$
-> I due sistemi hanno la **stessa** matrice dei coefficienti e differiscono solo nei termini noti: uno è compatibile e l'altro no. La compatibilità non si legge su $A$ da sola.
+> I due sistemi hanno la **stessa** matrice dei coefficienti e differiscono solo nei termini noti: uno è compatibile e l'altro no. La compatibilità non si legge su $A$ da sola. Sono i primi due pannelli della figura delle rette.
 
 > [!example]- Tutor, esercitazione 1, es. 5.1, riletto come sistema lineare
-> Nell'esercizio sui tre piani il tutor "studia se il sistema lineare ammette soluzione" (svolto in [Rette e piani nello spazio](/uni/gal/rette-e-piani-nello-spazio/)):
+> Nell'esercizio sui tre piani il tutor "studia se il sistema lineare ammette soluzione" (<span class="src">22/9, es. 5</span>, svolto in [Rette e piani nello spazio](/uni/gal/rette-e-piani-nello-spazio/)):
 > $$
 > \begin{cases} z - 4 = 0 \\ x + y + 2 = 0 \\ 4x + 4y - z + 12 = 0 \end{cases} \quad\Longrightarrow\quad [A \mid \vec{b}] = \left[\begin{array}{ccc|c} 0 & 0 & 1 & 4 \\ 1 & 1 & 0 & -2 \\ 4 & 4 & -1 & -12 \end{array}\right]
 > $$
-> Tre equazioni in tre incognite ($m = n = 3$), non omogeneo. I termini noti passano a destra col segno cambiato, e gli zeri segnano le incognite che mancano. Il sistema è compatibile con infinite soluzioni (tutti i punti della retta $r$): la terza riga è $4$ volte la seconda meno la prima, e non aggiunge informazione. Capire questo guardando solo la matrice è esattamente quello che fa Gauss-Jordan: la terza riga diventa nulla e il rango è $2$ ([Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/)).
+> Tre equazioni in tre incognite ($m = n = 3$), non omogeneo. I termini noti passano a destra col segno cambiato ($z - 4 = 0$ diventa $z = 4$), e gli zeri segnano le incognite che mancano ($x$ e $y$ nella prima, $z$ nella seconda).
+>
+> **La terza riga non aggiunge informazione.** Riga per riga: $4 \cdot (\text{riga } 2) - (\text{riga } 1) = 4 \cdot (1, 1, 0, -2) - (0, 0, 1, 4) = (4, 4, 0, -8) - (0, 0, 1, 4) = (4, 4, -1, -12)$, che è proprio la riga $3$. Quindi chi soddisfa le prime due soddisfa anche la terza.
+>
+> **Le soluzioni, per sostituzione.** Dalla prima $z = 4$; dalla seconda $y = -2 - x$. Pongo $x = t$:
+> $$
+> (x, y, z) = (t,\ -2 - t,\ 4), \quad t \in \mathbb{R}
+> $$
+> *Verifica* nella terza: $4t + 4(-2 - t) - 4 + 12 = 4t - 8 - 4t + 8 = 0$, vera per ogni $t$. Il sistema è compatibile con infinite soluzioni: tutti i punti della retta $r$, il pannello centrale della figura dei tre piani. Capire questo guardando solo la matrice è esattamente quello che fa Gauss-Jordan: la terza riga diventa nulla e il rango è $2$ ([Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/)).
 
 ## Esercizi tipo esame
 
-**Esercizio 1.** Dato il sistema
+Dal più facile al livello del 30. Gli strumenti sono quelli della L3: definizioni, sostituzione, ragionamento per assurdo, geometria di rette e piani. Prima di aprire la soluzione prova a dire che tipo di esercizio è e con che metodo lo fai.
+
+**Esercizio 1.** In $\mathbb{R}^4$ siano $\vec{a} = (1, -2, 0, 3)$, $\vec{b} = (2, 1, -1, 0)$, $\vec{c} = (0, 4, 2, -5)$.
+
+- a) calcola $2\vec{a} - 3\vec{b} + \vec{c}$;
+- b) trova $\vec{v} \in \mathbb{R}^3$ tale che $2\vec{v} + (1, -1, 0) = (3, 1, 4)$.
+
+> [!example]- Soluzione
+> *Tipo*: conti in $\mathbb{R}^n$. *Come lo riconosco*: ennuple e operazioni, nessun sistema dichiarato. *Metodo*: componente per componente, un'operazione alla volta.
+>
+> **a)**
+> 1. $2\vec{a} = (2, -4, 0, 6)$;
+> 2. $3\vec{b} = (6, 3, -3, 0)$;
+> 3. $2\vec{a} - 3\vec{b} = (2 - 6,\ -4 - 3,\ 0 - (-3),\ 6 - 0) = (-4, -7, 3, 6)$;
+> 4. $+\, \vec{c}$: $(-4 + 0,\ -7 + 4,\ 3 + 2,\ 6 - 5) = (-4, -3, 5, 1)$.
+>
+> *Verifica* su una componente sola, la terza, con la formula intera: $2 \cdot 0 - 3 \cdot (-1) + 2 = 5$. Torna.
+>
+> **b)** Scrivo $\vec{v} = (v_1, v_2, v_3)$. L'uguaglianza fra ennuple vale componente per componente, quindi è un sistema di tre equazioni:
+> $$
+> \begin{cases} 2v_1 + 1 = 3 \\ 2v_2 - 1 = 1 \\ 2v_3 + 0 = 4 \end{cases}
+> $$
+> 1. prima: $2v_1 = 2$, $v_1 = 1$;
+> 2. seconda: $2v_2 = 2$, $v_2 = 1$;
+> 3. terza: $2v_3 = 4$, $v_3 = 2$.
+>
+> $\vec{v} = (1, 1, 2)$. *Verifica*: $2(1, 1, 2) + (1, -1, 0) = (2 + 1,\ 2 - 1,\ 4 + 0) = (3, 1, 4)$.
+
+**Esercizio 2.** Dato il sistema
 $$
 \begin{cases} 2x_1 - x_2 + x_3 = 1 \\ x_1 + 3x_3 = 0 \end{cases}
 $$
@@ -168,50 +387,272 @@ $$
 - b) stabilisci se $(0, -1, 0)$ e $(1, 1, 0)$ sono soluzioni. Il sistema è compatibile?
 
 > [!example]- Soluzione
-> **a)** Due equazioni, tre incognite: $m = 2$, $n = 3$. Nella seconda equazione $x_2$ manca, quindi coefficiente $0$.
+> *Tipo*: notazione e verifica. *Metodo*: le matrici con le regole del Metodo; la verifica sostituendo in **ogni** equazione.
+>
+> **a)** Due equazioni, tre incognite: $m = 2$, $n = 3$. Nella seconda equazione $x_2$ manca, quindi coefficiente $0$ (è la figura del sistema e della matrice).
 > $$
 > A = \begin{bmatrix} 2 & -1 & 1 \\ 1 & 0 & 3 \end{bmatrix} \ (2 \times 3) \qquad \vec{b} = \begin{bmatrix} 1 \\ 0 \end{bmatrix} \ (2 \times 1) \qquad [A \mid \vec{b}] = \left[\begin{array}{ccc|c} 2 & -1 & 1 & 1 \\ 1 & 0 & 3 & 0 \end{array}\right] \ (2 \times 4)
 > $$
 >
-> **b)** $(0, -1, 0)$: prima equazione $0 + 1 + 0 = 1$, vera; seconda $0 + 0 = 0$, vera. **È soluzione.**
+> **b)** $(0, -1, 0)$: prima equazione $2 \cdot 0 - (-1) + 0 = 1$, vera; seconda $0 + 3 \cdot 0 = 0$, vera. **È soluzione.**
 > $(1, 1, 0)$: prima $2 - 1 + 0 = 1$, vera; seconda $1 + 0 = 1 \neq 0$, falsa. **Non è soluzione**: soddisfa una sola equazione.
 >
 > Il sistema ha almeno la soluzione $(0, -1, 0)$, quindi è **compatibile**.
+>
+> *Controllo di buon senso*: due piani non paralleli (le normali $(2, -1, 1)$ e $(1, 0, 3)$ non sono proporzionali) si tagliano in una retta, quindi le soluzioni devono essere infinite. $(0, -1, 0)$ è uno dei punti di quella retta.
 
-**Esercizio 2.** Scrivi il sistema che ha matrice completa
+**Esercizio 3.** Nelle incognite $(x, y, z)$ considera
+$$
+\begin{cases} 3x - z = 2y + 1 \\ y = 4 - x \\ z + 2 = 0 \end{cases}
+$$
+
+- a) porta il sistema in forma standard e scrivi $[A \mid \vec{b}]$;
+- b) stabilisci se $(1, 3, -2)$ è soluzione;
+- c) risolvi il sistema per sostituzione.
+
+> [!tip]- Indizio
+> Nella prima equazione c'è un'incognita anche a destra: va portata a sinistra col segno cambiato.
+
+> [!example]- Soluzione
+> *Tipo*: sistema scritto in disordine. *Come lo riconosco*: incognite a destra dell'uguale, numeri a sinistra. *Metodo*: forma standard riga per riga, poi matrice; per risolvere, la terza equazione dà subito $z$.
+>
+> **a)**
+> 1. $3x - z = 2y + 1$: sottraggo $2y$ ai due membri, $3x - 2y - z = 1$;
+> 2. $y = 4 - x$: sommo $x$ ai due membri, $x + y = 4$ (manca $z$: coefficiente $0$);
+> 3. $z + 2 = 0$: sottraggo $2$, $z = -2$ (mancano $x$ e $y$).
+> $$
+> [A \mid \vec{b}] = \left[\begin{array}{ccc|c} 3 & -2 & -1 & 1 \\ 1 & 1 & 0 & 4 \\ 0 & 0 & 1 & -2 \end{array}\right] \quad (3 \times 4)
+> $$
+>
+> **b)** $(1, 3, -2)$: prima $3 \cdot 1 - 2 \cdot 3 - (-2) = 3 - 6 + 2 = -1 \neq 1$, falsa. Non è soluzione (la seconda, $1 + 3 = 4$, e la terza, $z = -2$, sono vere: due su tre non bastano).
+>
+> **c)**
+> 1. dalla terza: $z = -2$;
+> 2. dalla seconda: $y = 4 - x$;
+> 3. nella prima: $3x - 2(4 - x) - (-2) = 1$;
+> 4. sviluppo: $3x - 8 + 2x + 2 = 1$, cioè $5x - 6 = 1$;
+> 5. $5x = 7$, $x = \frac{7}{5}$;
+> 6. $y = 4 - \frac{7}{5} = \frac{13}{5}$.
+>
+> Soluzione unica $\left(\frac{7}{5}, \frac{13}{5}, -2\right)$.
+>
+> *Verifica* nel sistema **di partenza**: prima, $3 \cdot \frac{7}{5} - (-2) = \frac{21}{5} + \frac{10}{5} = \frac{31}{5}$ e $2 \cdot \frac{13}{5} + 1 = \frac{26}{5} + \frac{5}{5} = \frac{31}{5}$, uguali; seconda, $4 - \frac{7}{5} = \frac{13}{5}$, vera; terza, $-2 + 2 = 0$, vera.
+
+**Esercizio 4.** Scrivi il sistema che ha matrice completa
 $$
 \left[\begin{array}{ccc|c} 1 & 0 & -1 & 2 \\ 0 & 1 & 1 & -1 \\ 1 & 1 & 0 & 3 \end{array}\right]
 $$
 nelle incognite $x_1, x_2, x_3$, e mostra che è incompatibile.
 
+> [!tip]- Indizio
+> Somma le prime due equazioni e confronta con la terza.
+
 > [!example]- Soluzione
+> *Tipo*: dalla matrice al sistema, poi incompatibilità. *Come lo riconosco*: "mostra che è incompatibile" chiede un ragionamento per assurdo, non un tentativo fallito. *Metodo*: cercare una combinazione delle equazioni che dia lo stesso primo membro di un'altra.
+>
 > Ogni riga è un'equazione, l'ultima colonna il termine noto:
 > $$
 > \begin{cases} x_1 - x_3 = 2 \\ x_2 + x_3 = -1 \\ x_1 + x_2 = 3 \end{cases}
 > $$
-> Se $(t_1, t_2, t_3)$ fosse una soluzione, sommando le prime due uguaglianze varrebbe $t_1 + t_2 = 2 + (-1) = 1$. La terza chiede $t_1 + t_2 = 3$. Non si può avere $1 = 3$, quindi nessuna terna soddisfa tutte e tre: **incompatibile**.
+> 1. Se $(t_1, t_2, t_3)$ fosse una soluzione, varrebbero $t_1 - t_3 = 2$ e $t_2 + t_3 = -1$.
+> 2. Sommo membro a membro: $(t_1 - t_3) + (t_2 + t_3) = 2 + (-1)$, cioè $t_1 + t_2 = 1$ ($-t_3$ e $+t_3$ si cancellano).
+> 3. La terza chiede $t_1 + t_2 = 3$.
+> 4. Dai passi 2 e 3: $1 = 3$, assurdo. Nessuna terna soddisfa tutte e tre: **incompatibile**.
 >
-> In geometria: sono tre piani senza un punto comune a tutti e tre.
+> In geometria: tre piani senza un punto comune a tutti e tre. Nessuna coppia è parallela (le normali $(1, 0, -1)$, $(0, 1, 1)$, $(1, 1, 0)$ non sono a due a due proporzionali), quindi è il prisma della figura. La normale del terzo è la somma delle altre due, $(1, 0, -1) + (0, 1, 1) = (1, 1, 0)$: è quello che fa funzionare la somma del passo 2.
+>
+> *Controllo*: cambiando il termine noto della terza in $1$ il ragionamento non trova più contraddizioni, e infatti $(2, -1, 0)$ soddisfa $2 - 0 = 2$, $-1 + 0 = -1$, $2 - 1 = 1$.
 
-**Esercizio 3.** Trova il punto comune ai piani $x + y + z = 1$, $x - y = 0$, $z = 2$: scrivi prima la matrice completa del sistema, poi risolvilo per sostituzione.
+**Esercizio 5.** Trova il punto comune ai piani $x + y + z = 1$, $x - y = 0$, $z = 2$: scrivi prima la matrice completa del sistema, poi risolvilo per sostituzione.
 
 > [!example]- Soluzione
+> *Tipo*: intersezione di tre piani. *Metodo*: un'equazione dà subito un'incognita ($z = 2$), un'altra lega due incognite ($y = x$): sostituzione.
 > $$
 > \begin{cases} x + y + z = 1 \\ x - y = 0 \\ z = 2 \end{cases} \qquad [A \mid \vec{b}] = \left[\begin{array}{ccc|c} 1 & 1 & 1 & 1 \\ 1 & -1 & 0 & 0 \\ 0 & 0 & 1 & 2 \end{array}\right]
 > $$
-> Dalla terza $z = 2$, dalla seconda $y = x$. Nella prima: $2x + 2 = 1$, quindi $x = -\frac{1}{2}$.
+> 1. dalla terza: $z = 2$;
+> 2. dalla seconda: $y = x$;
+> 3. nella prima: $x + x + 2 = 1$, cioè $2x = -1$, $x = -\frac{1}{2}$;
+> 4. $y = x = -\frac{1}{2}$.
 > $$
 > \left(-\frac{1}{2}, -\frac{1}{2}, 2\right)
 > $$
-> Verifica: $-\frac{1}{2} - \frac{1}{2} + 2 = 1$, $-\frac{1}{2} + \frac{1}{2} = 0$, $z = 2$. Soluzione unica: i tre piani si incontrano in un punto.
+> *Verifica*: $-\frac{1}{2} - \frac{1}{2} + 2 = 1$, $-\frac{1}{2} + \frac{1}{2} = 0$, $z = 2$. Soluzione unica: i tre piani si incontrano in un punto, il primo pannello della figura.
+
+**Esercizio 6** (sul modello delle domande 2.8 e 2.9 del foglio 2).
+
+- a) Dai un esempio di sistema incompatibile di due equazioni in tre incognite, e spiega perché lo è.
+- b) Dai un esempio di sistema compatibile di tre equazioni in due incognite, con la verifica.
+- c) Modifica un solo numero del sistema in b) per renderlo incompatibile.
+
+> [!example]- Soluzione
+> *Tipo*: costruire esempi. *Come lo riconosco*: "dai un esempio" non chiede di risolvere, chiede un sistema e una giustificazione. *Metodo*: partire dalla geometria. Per a) due piani paralleli distinti; per b) tre rette per uno stesso punto. Il punto delle due domande: il confronto fra $m$ e $n$ **non** decide la compatibilità.
+>
+> **a)**
+> $$
+> \begin{cases} x + 2y - z = 1 \\ 2x + 4y - 2z = 5 \end{cases}
+> $$
+> Se $(t_1, t_2, t_3)$ fosse soluzione, moltiplicando la prima per $2$ si avrebbe $2t_1 + 4t_2 - 2t_3 = 2$, e la seconda chiede che la stessa quantità valga $5$: $2 = 5$, assurdo. Due piani con normali proporzionali, $(2, 4, -2) = 2(1, 2, -1)$, e termini noti non nello stesso rapporto: paralleli distinti. Meno equazioni che incognite, eppure incompatibile.
+>
+> **b)** Scelgo la soluzione prima del sistema: $(2, 1)$. Tre rette per $(2, 1)$:
+> $$
+> \begin{cases} x + y = 3 \\ x - y = 1 \\ 3x + y = 7 \end{cases}
+> $$
+> *Verifica*: $2 + 1 = 3$, $2 - 1 = 1$, $6 + 1 = 7$. **Compatibile**. Più equazioni che incognite, eppure compatibile.
+>
+> È anche l'unica soluzione: dalle prime due, sommando, $2x = 4$, $x = 2$, e $y = 3 - x = 1$. Le prime due fissano già il punto, la terza passa di lì.
+>
+> **c)** Cambio il $7$ in $8$. Le prime due equazioni hanno come unica soluzione $(2, 1)$ (appena visto), e nella terza $3 \cdot 2 + 1 = 7 \neq 8$: incompatibile. La terza retta è stata spostata parallelamente e non passa più per il punto comune alle altre due.
+>
+> Le versioni con Gauss-Jordan e Rouché-Capelli sono in [Foglio 2 svolto](/uni/gal/foglio-2-svolto/).
+
+**Esercizio 7.** Considera il sistema omogeneo
+$$
+\begin{cases} x + 2y - z = 0 \\ 2x - y + 3z = 0 \end{cases}
+$$
+
+- a) verifica che $(-1, 1, 1)$ è una soluzione non banale;
+- b) mostra che $(-t, t, t)$ è soluzione per ogni $t \in \mathbb{R}$;
+- c) mostra che ogni soluzione è di questa forma.
+
+> [!example]- Soluzione
+> *Tipo*: sistema omogeneo, soluzioni oltre la banale. *Come lo riconosco*: termini noti tutti nulli. *Metodo*: per a) e b) sostituzione; per c) risolvere per sostituzione esprimendo tutto in funzione di un'incognita.
+>
+> **a)** Prima: $-1 + 2 \cdot 1 - 1 = 0$. Seconda: $2 \cdot (-1) - 1 + 3 \cdot 1 = -2 - 1 + 3 = 0$. Soluzione, ed è diversa da $(0, 0, 0)$.
+>
+> **b)** Prima: $-t + 2t - t = (-1 + 2 - 1)t = 0 \cdot t = 0$. Seconda: $-2t - t + 3t = (-2 - 1 + 3)t = 0$. Vere per ogni $t$. In parole: il primo membro di un'equazione lineare, calcolato su $t\vec{v}$, è $t$ volte quello calcolato su $\vec{v}$; se quello vale $0$, anche questo. Funziona perché i termini noti sono $0$.
+>
+> **c)**
+> 1. dalla prima: $x = z - 2y$;
+> 2. nella seconda: $2(z - 2y) - y + 3z = 0$;
+> 3. sviluppo: $2z - 4y - y + 3z = 5z - 5y = 0$, quindi $y = z$;
+> 4. torno al passo 1: $x = z - 2z = -z$;
+> 5. pongo $z = t$: $(x, y, z) = (-t, t, t)$.
+>
+> Tutte e sole le soluzioni sono $t(-1, 1, 1)$, $t \in \mathbb{R}$: la retta per l'origine con direzione $(-1, 1, 1)$, intersezione di due piani per l'origine. *Controllo geometrico*: la direzione della retta comune deve essere ortogonale a entrambe le normali, $(-1, 1, 1) \cdot (1, 2, -1) = -1 + 2 - 1 = 0$ e $(-1, 1, 1) \cdot (2, -1, 3) = -2 - 1 + 3 = 0$.
+
+**Esercizio 8** (livello 30). Trova un'equazione cartesiana del piano per $A = (1, 1, 0)$, $B = (0, 1, 1)$, $C = (1, 0, 1)$ impostando un sistema lineare nei coefficienti $a, b, c, d$ di $ax + by + cz = d$. Che ruolo ha la soluzione banale?
+
+> [!tip]- Indizio
+> "Il piano passa per $A$" vuol dire che le coordinate di $A$ soddisfano l'equazione: è un'equazione lineare in $a, b, c, d$.
+
+> [!example]- Soluzione
+> *Tipo*: un problema di geometria in cui le **incognite sono i coefficienti**. *Come lo riconosco*: si cerca un'equazione, non un punto. *Metodo*: una condizione lineare per ogni punto, poi sostituzione.
+>
+> Le condizioni di passaggio, sostituendo le coordinate in $ax + by + cz = d$:
+> 1. $A = (1, 1, 0)$: $a + b = d$;
+> 2. $B = (0, 1, 1)$: $b + c = d$;
+> 3. $C = (1, 0, 1)$: $a + c = d$.
+>
+> Portando $d$ a sinistra è un sistema **omogeneo** di $3$ equazioni in $4$ incognite $(a, b, c, d)$:
+> $$
+> \left[\begin{array}{cccc|c} 1 & 1 & 0 & -1 & 0 \\ 0 & 1 & 1 & -1 & 0 \\ 1 & 0 & 1 & -1 & 0 \end{array}\right]
+> $$
+> Risolvo:
+> 1. sottraggo la seconda dalla prima: $a - c = 0$, quindi $a = c$;
+> 2. sottraggo la terza dalla prima: $b - c = 0$, quindi $b = c$;
+> 3. nella terza: $c + c = d$, quindi $d = 2c$;
+> 4. pongo $c = s$: $(a, b, c, d) = (s, s, s, 2s)$, $s \in \mathbb{R}$.
+>
+> **Il ruolo della banale.** Con $s = 0$ viene $0x + 0y + 0z = 0$, vera per ogni punto: non è un piano. È la soluzione banale, che c'è sempre perché il sistema è omogeneo, e qui non serve (come $\vec{n} = \vec{0}$ per la normale). Ogni $s \neq 0$ dà lo stesso piano; con $s = 1$:
+> $$
+> x + y + z = 2
+> $$
+> *Verifica*: $A$: $1 + 1 + 0 = 2$; $B$: $0 + 1 + 1 = 2$; $C$: $1 + 0 + 1 = 2$. Con il metodo della geometria ([Rette e piani nello spazio](/uni/gal/rette-e-piani-nello-spazio/)) si troverebbe lo stesso piano: la normale $(1, 1, 1)$ è ortogonale a $\overrightarrow{AB} = (-1, 0, 1)$ e $\overrightarrow{AC} = (0, -1, 1)$, perché $-1 + 0 + 1 = 0$ e $0 - 1 + 1 = 0$.
+
+**Esercizio 9** (livello 30). Al variare di $k \in \mathbb{R}$ studia il sistema
+$$
+\begin{cases} x + ky = 1 \\ kx + y = 1 \end{cases}
+$$
+dicendo per quali $k$ è compatibile, e trovando le soluzioni.
+
+> [!tip]- Indizio
+> Ricava $x$ dalla prima e sostituisci. Prima di dividere per un'espressione con $k$, chiediti quando vale $0$.
+
+> [!example]- Soluzione
+> *Tipo*: sistema con parametro. *Come lo riconosco*: un coefficiente dipende da $k$. *Metodo*: sostituzione, fermandosi **prima** di ogni divisione per un'espressione in $k$ e studiando a parte i valori che la annullano. È la stessa regola della discussione con Gauss-Jordan ([Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/)).
+>
+> 1. dalla prima: $x = 1 - ky$;
+> 2. nella seconda: $k(1 - ky) + y = 1$;
+> 3. sviluppo: $k - k^2 y + y = 1$;
+> 4. raccolgo $y$ e porto $k$ a destra: $(1 - k^2)\, y = 1 - k$;
+> 5. scompongo: $(1 - k)(1 + k)\, y = 1 - k$.
+>
+> Per dividere serve $1 - k^2 \neq 0$, cioè $k \neq 1$ e $k \neq -1$. Tre casi.
+>
+> **Caso $k \neq \pm 1$.** Divido per $(1 - k)(1 + k) \neq 0$: $y = \frac{1 - k}{(1 - k)(1 + k)} = \frac{1}{1 + k}$. Poi $x = 1 - \frac{k}{1 + k} = \frac{1 + k - k}{1 + k} = \frac{1}{1 + k}$. Soluzione unica $\left(\frac{1}{1 + k}, \frac{1}{1 + k}\right)$.
+>
+> **Caso $k = 1$.** Il passo 5 diventa $0 \cdot y = 0$, vera per ogni $y$. Il sistema è $x + y = 1$ scritto due volte: compatibile, infinite soluzioni $(1 - t, t)$, $t \in \mathbb{R}$.
+>
+> **Caso $k = -1$.** Il passo 5 diventa $0 \cdot y = 2$, mai vera: incompatibile. Il sistema è $x - y = 1$, $-x + y = 1$; sommando, $0 = 2$.
+>
+> Riassunto: compatibile per $k \neq -1$ (soluzione unica se $k \neq \pm 1$, infinite se $k = 1$), incompatibile per $k = -1$. Sono i tre pannelli della figura delle rette: incidenti, coincidenti, parallele.
+>
+> *Verifica* con $k = 2$: la formula dà $\left(\frac{1}{3}, \frac{1}{3}\right)$, e $\frac{1}{3} + \frac{2}{3} = 1$, $\frac{2}{3} + \frac{1}{3} = 1$. L'errore tipico è dividere subito per $1 - k^2$ e dire "soluzione unica per ogni $k$": con $k = -1$ la formula darebbe $\frac{1}{0}$.
+
+**Esercizio 10** (livello 30). Siano $\pi_1 : x + y + z = 1$, $\pi_2 : x - y + z = 3$, $\pi_3 : 2x + 2z = k$. Per quali $k \in \mathbb{R}$ i tre piani hanno almeno un punto in comune? In quel caso, quali sono i punti comuni?
+
+> [!tip]- Indizio
+> Somma le equazioni di $\pi_1$ e $\pi_2$ e confronta con $\pi_3$.
+
+> [!example]- Soluzione
+> *Tipo*: posizione di tre piani con un parametro, cioè compatibilità di un sistema $3 \times 3$ con parametro. *Come lo riconosco*: "punto comune" vuol dire soluzione del sistema delle tre equazioni. *Metodo*: le prime due non contengono $k$, si usano per vincolare $x + z$; poi si confronta con la terza.
+>
+> 1. Sottraggo $\pi_2$ da $\pi_1$: $(x + y + z) - (x - y + z) = 1 - 3$, cioè $2y = -2$, $y = -1$.
+> 2. Sommo $\pi_1$ e $\pi_2$: $2x + 2z = 4$.
+> 3. Ogni punto comune a $\pi_1$ e $\pi_2$ ha quindi $2x + 2z = 4$; $\pi_3$ chiede $2x + 2z = k$.
+>
+> **Caso $k \neq 4$.** Un punto comune ai tre darebbe $4 = k$: assurdo. **Nessun punto comune**: il sistema è incompatibile. Nessuna coppia di piani è parallela (le normali $(1, 1, 1)$, $(1, -1, 1)$, $(2, 0, 2)$ non sono a due a due proporzionali): è il prisma della figura, con $(2, 0, 2) = (1, 1, 1) + (1, -1, 1)$.
+>
+> **Caso $k = 4$.** $\pi_3$ coincide con l'equazione del passo 2, che chi sta su $\pi_1$ e $\pi_2$ soddisfa già. Restano $y = -1$ e $x + z = 2$; pongo $z = t$:
+> $$
+> (x, y, z) = (2 - t,\ -1,\ t), \quad t \in \mathbb{R}
+> $$
+> Infiniti punti: la retta $\pi_1 \cap \pi_2$, contenuta anche in $\pi_3$. I tre piani sono nello stesso fascio, il pannello centrale della figura.
+>
+> *Verifica* con $k = 4$ e $t = 0$, punto $(2, -1, 0)$: $2 - 1 + 0 = 1$, $2 + 1 + 0 = 3$, $4 + 0 = 4$. Con $t = 1$, punto $(1, -1, 1)$: $1 - 1 + 1 = 1$, $1 + 1 + 1 = 3$, $2 + 2 = 4$.
 
 ## Errori tipici
 
-- Scambiare l'ordine: $m \times n$ è righe per colonne, equazioni per incognite.
-- Dimenticare lo $0$ di un'incognita che manca, e far scivolare i coefficienti nella colonna sbagliata.
-- Lasciare il termine noto a sinistra col suo segno: in $x + y + 2 = 0$ il termine noto è $-2$.
-- Dire che un'ennupla è soluzione perché soddisfa una delle equazioni: deve soddisfarle tutte.
-- Dedurre la compatibilità da $A$ soltanto: dipende anche da $\vec{b}$.
+**Scambiare l'ordine.**
+- Sbagliato: il sistema di $2$ equazioni in $3$ incognite ha $A$ di ordine $3 \times 2$.
+- Giusto: $m \times n$ è righe per colonne, equazioni per incognite: $2 \times 3$.
+
+**Dimenticare lo $0$ di un'incognita che manca.**
+- Sbagliato: $x_1 + 3x_3 = 0$ diventa la riga $\left[\, 1\ \ 3 \mid 0 \,\right]$.
+- Giusto: $\left[\, 1\ \ 0\ \ 3 \mid 0 \,\right]$, altrimenti il $3$ scivola nella colonna di $x_2$.
+
+**Lasciare il termine noto a sinistra col suo segno.**
+- Sbagliato: in $x + y + 2 = 0$ il termine noto è $2$.
+- Giusto: è $-2$, perché la forma standard è $x + y = -2$.
+
+**Soluzione di una sola equazione.**
+- Sbagliato: “$(1, 1, 0)$ soddisfa la prima equazione, quindi è soluzione".
+- Giusto: deve soddisfarle tutte (esercizio 2).
+
+**Dedurre la compatibilità da $A$ soltanto.**
+- Sbagliato: "il sistema con $A = \begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix}$ è incompatibile".
+- Giusto: dipende anche da $\vec{b}$: con termini noti $2$ e $2$ è compatibile ($x + y = 2$ scritta due volte), con $2$ e $0$ no.
+
+**Contare equazioni e incognite per decidere.**
+- Sbagliato: "più incognite che equazioni, quindi ha soluzioni" oppure "più equazioni che incognite, quindi è incompatibile".
+- Giusto: l'esercizio 6 dà un controesempio per ciascuna.
+
+**Omogeneo vuol dire solo la soluzione banale.**
+- Sbagliato: "il sistema è omogeneo, quindi la soluzione è $(0, 0, 0)$".
+- Giusto: la banale c'è sempre, ma possono essercene infinite altre (esercizio 7).
+
+**Ennupla come insieme.**
+- Sbagliato: $(1, 2, 3) = \mathbb{R}^3$, oppure $(1, 2, 3) = (3, 2, 1)$.
+- Giusto: $(1, 2, 3) \in \mathbb{R}^3$, e l'ordine delle componenti conta.
+
+**Dividere per un'espressione con il parametro.**
+- Sbagliato: da $(1 - k^2) y = 1 - k$ scrivere subito $y = \frac{1}{1 + k}$ per ogni $k$.
+- Giusto: prima si escludono i $k$ che annullano il coefficiente, e si studiano a parte (esercizio 9).
+
+**Decidere la linearità prima di semplificare.**
+- Sbagliato: “$(x + 1)^2 - x^2 = 3$ non è lineare perché c'è un quadrato".
+- Giusto: sviluppando resta $2x = 2$, lineare.
 
 ## Domande
 
@@ -219,7 +660,11 @@ nelle incognite $x_1, x_2, x_3$, e mostra che è incompatibile.
 
 - Come si definiscono somma e prodotto per scalare in $\mathbb{R}^n$?
 
+- Quando due ennuple sono uguali? Perché $(1, 2, 3) \neq (3, 2, 1)$, mentre $\{1, 2, 3\} = \{3, 2, 1\}$?
+
 - Cosa rende lineare un'equazione? Fai un esempio di equazione non lineare.
+
+- Cosa rappresenta geometricamente un'equazione lineare in $2$ incognite? E in $3$?
 
 - Nel coefficiente $a_{ij}$, cosa indica $i$ e cosa indica $j$?
 
@@ -229,8 +674,26 @@ nelle incognite $x_1, x_2, x_3$, e mostra che è incompatibile.
 
 - Quando un sistema è omogeneo, e perché è sempre compatibile?
 
+- Un sistema omogeneo ha sempre e solo la soluzione banale? Dai un esempio.
+
 - Cosa sono due sistemi equivalenti, e perché la nozione serve per Gauss-Jordan?
+
+- Togliere un'equazione da un sistema dà un sistema equivalente? E moltiplicarla per $0$?
 
 - Quali sono le tre matrici associate a un sistema lineare e che ordine hanno?
 
 - Perché la matrice completa basta a descrivere tutto il sistema?
+
+- Come si porta un sistema in forma standard prima di scriverne la matrice? Cosa si fa con un'incognita che manca in un'equazione?
+
+- Due sistemi con la stessa matrice dei coefficienti possono essere uno compatibile e l'altro no? Esempio.
+
+- Un sistema con più incognite che equazioni è sempre compatibile? Uno con più equazioni che incognite è sempre incompatibile? Un controesempio per ciascuno.
+
+- In due incognite, quali posizioni di due rette corrispondono a un sistema con una soluzione, nessuna, infinite?
+
+- Tre piani a due a due non paralleli hanno sempre un punto in comune? Cosa succede nel caso del prisma?
+
+- Come si mostra che un sistema è incompatibile senza Gauss-Jordan? Che forma ha la contraddizione?
+
+- In un sistema con parametro risolto per sostituzione, cosa va controllato prima di dividere per un'espressione in $k$?

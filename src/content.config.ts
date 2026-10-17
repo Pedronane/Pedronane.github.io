@@ -28,6 +28,7 @@ const uni = defineCollection({
     data: z.coerce.date().nullable(),
     lezioni: z.array(z.string()),
     ordine: z.number(),
+    durata: z.number().nullable().default(null),
   }),
 });
 

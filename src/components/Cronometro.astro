@@ -1,0 +1,105 @@
+---
+interface Props {
+  minuti: number;
+  chiave: string;
+}
+
+const { minuti, chiave } = Astro.props;
+const pieno = `${String(minuti).padStart(2, '0')}:00`;
+---
+
+<section class="crono" data-minuti={minuti} data-chiave={`uni:crono:${chiave}`} data-stato="fermo" aria-label="Cronometro della simulazione" data-pagefind-ignore>
+  <p class="crono-tempo" role="timer" aria-live="off">{pieno}</p>
+  <p class="crono-nota">Tempo della prova. Le soluzioni sono chiuse: aprile solo a cronometro finito.</p>
+  <div class="crono-tasti">
+    <button type="button" class="crono-via">Avvia</button>
+    <button type="button" class="crono-azzera">Azzera</button>
+  </div>
+</section>
+<button type="button" class="crono-mini" hidden aria-label="Torna al cronometro">{pieno}</button>
+
+<script>
+  const box = document.querySelector<HTMLElement>('.crono');
+  const mini = document.querySelector<HTMLButtonElement>('.crono-mini');
+  if (box && mini) {
+    const totale = Number(box.dataset.minuti) * 60_000;
+    const chiave = box.dataset.chiave!;
+    const tempo = box.querySelector<HTMLElement>('.crono-tempo')!;
+    const nota = box.querySelector<HTMLElement>('.crono-nota')!;
+    const via = box.querySelector<HTMLButtonElement>('.crono-via')!;
+    const azzera = box.querySelector<HTMLButtonElement>('.crono-azzera')!;
+    const notaIniziale = nota.textContent;
+
+    type Stato = { fine?: number; resto: number };
+    let stato: Stato = { resto: totale };
+    try {
+      const letto = JSON.parse(localStorage.getItem(chiave) ?? 'null');
+      if (letto && typeof letto.resto === 'number') stato = letto;
+    } catch {}
+    const salva = () => {
+      try {
+        if (!stato.fine && stato.resto === totale) localStorage.removeItem(chiave);
+        else localStorage.setItem(chiave, JSON.stringify(stato));
+      } catch {}
+    };
+
+    const resto = () => (stato.fine ? Math.max(0, stato.fine - Date.now()) : stato.resto);
+    const formato = (ms: number) => {
+      const s = Math.ceil(ms / 1000);
+      return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+    };
+
+    let fuori = false;
+    let timer = 0;
+    const disegna = () => {
+      const r = resto();
+      const t = formato(r);
+      const corre = Boolean(stato.fine) && r > 0;
+      const finito = r === 0;
+      tempo.textContent = t;
+      mini.textContent = finito ? 'Tempo scaduto' : t;
+      box.dataset.stato = finito ? 'finito' : corre ? 'corre' : r < totale ? 'pausa' : 'fermo';
+      mini.dataset.stato = box.dataset.stato;
+      via.textContent = corre ? 'Pausa' : r < totale && !finito ? 'Riprendi' : 'Avvia';
+      via.disabled = finito;
+      nota.textContent = finito ? 'Tempo scaduto: penne giù. Ora apri le soluzioni e correggi con la griglia.' : notaIniziale;
+      mini.hidden = !fuori || box.dataset.stato === 'fermo';
+      if (finito && stato.fine) {
+        stato = { resto: 0 };
+        salva();
+      }
+      if (!corre) {
+        clearInterval(timer);
+        timer = 0;
+      }
+    };
+    const parti = () => {
+      if (!timer) timer = window.setInterval(disegna, 250);
+    };
+
+    via.addEventListener('click', () => {
+      if (stato.fine) stato = { resto: resto() };
+      else {
+        stato = { fine: Date.now() + stato.resto, resto: stato.resto };
+        parti();
+      }
+      salva();
+      disegna();
+    });
+    azzera.addEventListener('click', () => {
+      if (stato.fine && !confirm('Azzerare il cronometro mentre corre?')) return;
+      stato = { resto: totale };
+      salva();
+      disegna();
+    });
+    mini.addEventListener('click', () => box.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+
+    new IntersectionObserver(([e]) => {
+      fuori = !e.isIntersecting;
+      disegna();
+    }).observe(box);
+
+    if (stato.fine) parti();
+    disegna();
+  }
+</script>

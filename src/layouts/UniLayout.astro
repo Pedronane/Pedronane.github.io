@@ -49,6 +49,7 @@ const materie = [
         {materie.map((m) => (
           <a href={`/uni/${m.slug}/`} aria-current={materia === m.slug ? 'page' : undefined}>{m.nome}</a>
         ))}
+        <a class="runhead-sim" href="/uni/simulazioni/" aria-current={materia === 'simulazioni' ? 'page' : undefined}>Simulazioni</a>
       </nav>
       <button class="cerca-apri" type="button" aria-expanded="false" aria-controls="cerca" aria-keyshortcuts="/">
         <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" /><path d="M12.5 12.5 17 17" /></svg>

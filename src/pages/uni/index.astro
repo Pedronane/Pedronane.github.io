@@ -1,10 +1,11 @@
 ---
 import UniLayout from '../../layouts/UniLayout.astro';
-import { materie, urlOf, giorni } from '../../lib/uni';
+import { materie, simulazioni, urlOf, giorni } from '../../lib/uni';
 import { inlineTex } from '../../lib/tex';
 
 const tutte = await materie();
 const totale = tutte.reduce((s, m) => s + m.note.length, 0);
+const prove = (await simulazioni()).reduce((s, m) => s + m.prove.length, 0);
 ---
 
 <UniLayout title="Note · Ingegneria Informatica UniTN" description="Note del primo anno di Ingegneria Informatica a Trento: Analisi 1, GAL, Programmazione 1.">
@@ -17,6 +18,7 @@ const totale = tutte.reduce((s, m) => s + m.note.length, 0);
       </dl>
       <h1>Note per l’esame</h1>
       <p class="sotto">{totale} note in {tutte.length} materie, una per argomento, scritte dalle slide e dalle lezioni. Ogni nota ha definizioni, enunciati con dimostrazione, gli esempi fatti in aula ed esercizi tipo esame con soluzione da aprire dopo averci provato.</p>
+      {prove > 0 && <p class="sotto"><a href="/uni/simulazioni/">Simulazioni delle prove intermedie</a>: {prove} prove a tempo con correzione.</p>}
     </header>
 
     <ol class="registro">

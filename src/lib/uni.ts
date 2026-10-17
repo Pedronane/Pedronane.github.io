@@ -7,6 +7,7 @@ export const TIPI: Record<string, string> = {
   cheatsheet: 'formulario',
   riferimento: 'materiale',
   esercizi: 'esercizi',
+  simulazione: 'simulazione',
 };
 
 export async function materie() {
@@ -14,10 +15,23 @@ export async function materie() {
   const hubs = all.filter((e) => e.data.hub);
   return hubs.map((hub) => {
     const note = all
-      .filter((e) => !e.data.hub && e.data.materia === hub.data.materia)
+      .filter((e) => !e.data.hub && e.data.tipo !== 'simulazione' && e.data.materia === hub.data.materia)
       .sort((a, b) => a.data.ordine - b.data.ordine || a.data.title.localeCompare(b.data.title, 'it'));
     return { hub, note, lezioni: note.filter((n) => n.data.ordine < 999), materiale: note.filter((n) => n.data.ordine >= 999) };
   });
+}
+
+export async function simulazioni() {
+  const all = await getCollection('uni');
+  return all
+    .filter((e) => e.data.hub)
+    .map((hub) => ({
+      hub,
+      prove: all
+        .filter((e) => e.data.tipo === 'simulazione' && e.data.materia === hub.data.materia)
+        .sort((a, b) => a.data.title.localeCompare(b.data.title, 'it', { numeric: true })),
+    }))
+    .filter((m) => m.prove.length > 0);
 }
 
 export function slugOf(e: Nota) {
@@ -25,7 +39,9 @@ export function slugOf(e: Nota) {
 }
 
 export function urlOf(e: Nota) {
-  return e.data.hub ? `/uni/${e.data.materia}/` : `/uni/${e.data.materia}/${slugOf(e)}/`;
+  if (e.data.hub) return `/uni/${e.data.materia}/`;
+  if (e.data.tipo === 'simulazione') return `/uni/simulazioni/${e.data.materia}/${slugOf(e)}/`;
+  return `/uni/${e.data.materia}/${slugOf(e)}/`;
 }
 
 export function giorni(lezioni: string[]) {

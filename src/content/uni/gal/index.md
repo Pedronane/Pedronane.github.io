@@ -33,6 +33,12 @@ Dall'avviso Moodle della prof del 28/9 e dal <span class="src">piano delle lezio
 - **iscrizione su Esse3** ("prova parziale") **entro il 2/11/2026**;
 - con **almeno 15/30** si è ammessi alla seconda prova intermedia, che si tiene insieme agli appelli invernali.
 
+### Provette passate e simulazioni
+
+Le provette della prof, con soluzioni, da Moodle ("Esami anni precedenti e soluzioni"): <span class="src">2024</span> (<span class="src">soluzioni</span>), <span class="src">2023</span> (<span class="src">soluzioni</span>), <span class="src">2022</span> (<span class="src">soluzioni</span>), <span class="src">2021</span> (<span class="src">soluzioni</span>). Dal 2022 la forma è fissa: due esercizi da 6 punti (uno di geometria nello spazio, uno con parametro su sistema o vettori di $\mathbb{R}^4$) e due domande di teoria da 1,5 (Rouché-Capelli con un esempio esce tutti gli anni), punteggio in quindicesimi. Nel 2021 c'era anche una parte a crocette.
+
+Simulazioni sullo stesso modello, a tempo e con correzione: [Simulazione provetta 1](/uni/simulazioni/gal/simulazione-provetta-1/), [Simulazione provetta 2](/uni/simulazioni/gal/simulazione-provetta-2/).
+
 ### Come si prende 30
 
 - **Sapere cosa copre il primo parziale.** Tutto fino agli spazi vettoriali compreso: geometria nello spazio, sistemi lineari con Gauss-Jordan e Rouché-Capelli, matrici e invertibilità, spazi vettoriali, dipendenza lineare e basi. Nel piano delle lezioni prima del 5/11 ci sono anche determinante (L9-L10) e basi (L11-L12).

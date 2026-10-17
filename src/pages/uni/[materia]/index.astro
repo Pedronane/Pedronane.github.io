@@ -1,7 +1,7 @@
 ---
 import { render } from 'astro:content';
 import UniLayout from '../../../layouts/UniLayout.astro';
-import { materie, urlOf, TIPI, giorni } from '../../../lib/uni';
+import { materie, simulazioni, urlOf, TIPI, giorni } from '../../../lib/uni';
 import { inlineTex } from '../../../lib/tex';
 
 export async function getStaticPaths() {
@@ -10,6 +10,7 @@ export async function getStaticPaths() {
 }
 
 const { hub, note, lezioni, materiale } = Astro.props;
+const prove = (await simulazioni()).find((m) => m.hub.data.materia === hub.data.materia)?.prove ?? [];
 const { Content } = await render(hub);
 const d = hub.data;
 const ultima = [...lezioni].reverse().find((n) => n.data.lezioni.length)?.data.lezioni.at(-1);
@@ -50,6 +51,22 @@ const ultima = [...lezioni].reverse().find((n) => n.data.lezioni.length)?.data.l
                   <span class="n">{String.fromCharCode(65 + i)}</span>
                   <span class="t" set:html={inlineTex(n.data.title)} />
                   <span class="d">{TIPI[n.data.tipo] ?? n.data.tipo}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </>
+      )}
+      {prove.length > 0 && (
+        <>
+          <h2 class="gruppo">Simulazioni della prova intermedia</h2>
+          <ol class="voci">
+            {prove.map((n, i) => (
+              <li class="voce">
+                <a href={urlOf(n)}>
+                  <span class="n">S{i + 1}</span>
+                  <span class="t" set:html={inlineTex(n.data.title)} />
+                  <span class="d">{n.data.durata ? `${n.data.durata} min` : ''}</span>
                 </a>
               </li>
             ))}

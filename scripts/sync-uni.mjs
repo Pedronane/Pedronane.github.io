@@ -70,7 +70,9 @@ for (const materia of MATERIE) {
   for (const f of members) {
     const name = f.slice(0, -3);
     const slug = slugify(name.slice(materia.prefix.length + 3));
-    notes.set(name, { file: f, materia, hub: false, slug, url: `/uni/${materia.slug}/${slug}/`, ...readNote(f) });
+    const note = readNote(f);
+    const url = note.fm.tipo === 'simulazione' ? `/uni/simulazioni/${materia.slug}/${slug}/` : `/uni/${materia.slug}/${slug}/`;
+    notes.set(name, { file: f, materia, hub: false, slug, url, ...note });
   }
 }
 
@@ -265,6 +267,7 @@ for (const [, note] of notes) {
     data: note.fm.data ? String(note.fm.data) : null,
     lezioni: runs.get(name)?.dates ?? [],
     ordine: runs.get(name)?.order ?? 999,
+    ...(note.fm.durata ? { durata: note.fm.durata } : {}),
   };
   const dir = join(OUT, note.materia.slug);
   mkdirSync(dir, { recursive: true });

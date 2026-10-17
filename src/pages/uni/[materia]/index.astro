@@ -1,7 +1,7 @@
 ---
 import { render } from 'astro:content';
 import UniLayout from '../../../layouts/UniLayout.astro';
-import { materie, simulazioni, urlOf, TIPI, giorni } from '../../../lib/uni';
+import { materie, simulazioni, urlOf, TIPI, giorni, senzaSuffisso } from '../../../lib/uni';
 import { inlineTex } from '../../../lib/tex';
 
 export async function getStaticPaths() {
@@ -9,7 +9,7 @@ export async function getStaticPaths() {
   return tutte.map((m) => ({ params: { materia: m.hub.data.materia }, props: m }));
 }
 
-const { hub, note, lezioni, materiale } = Astro.props;
+const { hub, lezioni, esercizi, materiale } = Astro.props;
 const prove = (await simulazioni()).find((m) => m.hub.data.materia === hub.data.materia)?.prove ?? [];
 const { Content } = await render(hub);
 const d = hub.data;
@@ -22,7 +22,7 @@ const ultima = [...lezioni].reverse().find((n) => n.data.lezioni.length)?.data.l
       <dl class="note-meta" data-pagefind-ignore>
         <div><a href="/uni/">Tutte le materie</a></div>
         <div><dt>CFU</dt><dd>{d.cfu}</dd></div>
-        <div><dt>Argomenti</dt><dd>{note.length}</dd></div>
+        <div><dt>Argomenti</dt><dd>{lezioni.length}</dd></div>
         {ultima && <div class="stato"><dt>Ultima lezione</dt><dd>{ultima}</dd></div>}
       </dl>
       <h1>{d.materiaNome}</h1>
@@ -41,6 +41,22 @@ const ultima = [...lezioni].reverse().find((n) => n.data.lezioni.length)?.data.l
           </li>
         ))}
       </ol>
+      {esercizi.length > 0 && (
+        <>
+          <h2 id="pagine-esercizi" class="gruppo">Esercizi</h2>
+          <ol class="voci">
+            {esercizi.map((n, i) => (
+              <li class="voce">
+                <a href={urlOf(n)}>
+                  <span class="n">E{i + 1}</span>
+                  <span class="t" set:html={inlineTex(senzaSuffisso(n.data.title))} />
+                  <span class="d"></span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </>
+      )}
       {materiale.length > 0 && (
         <>
           <h2 class="gruppo">Formulari e ripasso</h2>

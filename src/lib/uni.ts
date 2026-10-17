@@ -17,7 +17,15 @@ export async function materie() {
     const note = all
       .filter((e) => !e.data.hub && e.data.tipo !== 'simulazione' && e.data.materia === hub.data.materia)
       .sort((a, b) => a.data.ordine - b.data.ordine || a.data.title.localeCompare(b.data.title, 'it'));
-    return { hub, note, lezioni: note.filter((n) => n.data.ordine < 999), materiale: note.filter((n) => n.data.ordine >= 999) };
+    const esercizi = note.filter((n) => n.data.tipo === 'esercizi');
+    const resto = note.filter((n) => n.data.tipo !== 'esercizi');
+    return {
+      hub,
+      note,
+      lezioni: resto.filter((n) => n.data.ordine < 999),
+      esercizi,
+      materiale: resto.filter((n) => n.data.ordine >= 999),
+    };
   });
 }
 
@@ -42,6 +50,16 @@ export function urlOf(e: Nota) {
   if (e.data.hub) return `/uni/${e.data.materia}/`;
   if (e.data.tipo === 'simulazione') return `/uni/simulazioni/${e.data.materia}/${slugOf(e)}/`;
   return `/uni/${e.data.materia}/${slugOf(e)}/`;
+}
+
+export function compagna(nota: Nota, note: Nota[]) {
+  const slug = slugOf(nota);
+  const altra = slug.endsWith('-esercizi') ? slug.slice(0, -'-esercizi'.length) : `${slug}-esercizi`;
+  return note.find((n) => slugOf(n) === altra);
+}
+
+export function senzaSuffisso(title: string) {
+  return title.replace(/ \(esercizi\)$/, '');
 }
 
 export function giorni(lezioni: string[]) {

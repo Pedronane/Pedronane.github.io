@@ -4,7 +4,8 @@ import { materie, simulazioni, urlOf, giorni } from '../../lib/uni';
 import { inlineTex } from '../../lib/tex';
 
 const tutte = await materie();
-const totale = tutte.reduce((s, m) => s + m.note.length, 0);
+const totale = tutte.reduce((s, m) => s + m.lezioni.length + m.materiale.length, 0);
+const pagine = tutte.reduce((s, m) => s + m.esercizi.length, 0);
 const prove = (await simulazioni()).reduce((s, m) => s + m.prove.length, 0);
 ---
 
@@ -17,12 +18,12 @@ const prove = (await simulazioni()).reduce((s, m) => s + m.prove.length, 0);
         <div class="stato"><dd>2026-27, primo semestre</dd></div>
       </dl>
       <h1>Note per l’esame</h1>
-      <p class="sotto">{totale} note in {tutte.length} materie, una per argomento, scritte dalle slide e dalle lezioni. Ogni nota ha definizioni, enunciati con dimostrazione, gli esempi fatti in aula ed esercizi tipo esame con soluzione da aprire dopo averci provato.</p>
+      <p class="sotto">{totale} note in {tutte.length} materie, una per argomento, scritte dalle slide e dalle lezioni. Ogni nota ha definizioni, enunciati con dimostrazione e gli esempi fatti in aula; gli esercizi tipo esame stanno in {pagine} pagine a parte, con la soluzione da aprire dopo averci provato.</p>
       {prove > 0 && <p class="sotto"><a href="/uni/simulazioni/">Simulazioni delle prove intermedie</a>: {prove} prove a tempo con correzione.</p>}
     </header>
 
     <ol class="registro">
-      {tutte.map(({ hub, lezioni, materiale }) => (
+      {tutte.map(({ hub, lezioni, esercizi, materiale }) => (
         <li class="materia">
           <div class="materia-head">
             <h2><a href={urlOf(hub)}>{hub.data.materiaNome}</a></h2>
@@ -48,6 +49,15 @@ const prove = (await simulazioni()).reduce((s, m) => s + m.prove.length, 0);
                 </a>
               </li>
             ))}
+            {esercizi.length > 0 && (
+              <li class="voce">
+                <a href={`${urlOf(hub)}#pagine-esercizi`}>
+                  <span class="n">E</span>
+                  <span class="t">Esercizi tipo esame</span>
+                  <span class="d">{esercizi.length} pagine</span>
+                </a>
+              </li>
+            )}
           </ol>
         </li>
       ))}

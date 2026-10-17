@@ -37,7 +37,7 @@ Dall'avviso Moodle della prof del 28/9 e dal <span class="src">piano delle lezio
 
 Le provette della prof, con soluzioni, da Moodle ("Esami anni precedenti e soluzioni"): <span class="src">2024</span> (<span class="src">soluzioni</span>), <span class="src">2023</span> (<span class="src">soluzioni</span>), <span class="src">2022</span> (<span class="src">soluzioni</span>), <span class="src">2021</span> (<span class="src">soluzioni</span>). Dal 2022 la forma è fissa: due esercizi da 6 punti (uno di geometria nello spazio, uno con parametro su sistema o vettori di $\mathbb{R}^4$) e due domande di teoria da 1,5 (Rouché-Capelli con un esempio esce tutti gli anni), punteggio in quindicesimi. Nel 2021 c'era anche una parte a crocette.
 
-Simulazioni sullo stesso modello, a tempo e con correzione: [Simulazione provetta 1](/uni/simulazioni/gal/simulazione-provetta-1/), [Simulazione provetta 2](/uni/simulazioni/gal/simulazione-provetta-2/).
+Simulazioni sullo stesso modello, a tempo e con correzione: [Simulazione provetta 1](/uni/simulazioni/gal/simulazione-provetta-1/), [Simulazione provetta 2](/uni/simulazioni/gal/simulazione-provetta-2/), [Simulazione provetta 3](/uni/simulazioni/gal/simulazione-provetta-3/), [Simulazione provetta 4](/uni/simulazioni/gal/simulazione-provetta-4/).
 
 ### Come si prende 30
 
@@ -102,7 +102,19 @@ Esercitazioni del tutor:
 Altro:
 
 - [Formulario rette e piani](/uni/gal/formulario-rette-e-piani/): tutte le formule della geometria nello spazio.
-- Ogni nota di teoria ha una sezione Esercizi tipo esame con soluzioni verificate.
+- Esercizi tipo esame, una pagina per argomento, separata dalla teoria, con soluzioni verificate:
+  - [Vettori geometrici (esercizi)](/uni/gal/vettori-geometrici-esercizi/)
+  - [Rette e piani nello spazio (esercizi)](/uni/gal/rette-e-piani-nello-spazio-esercizi/)
+  - [Posizioni reciproche nello spazio (esercizi)](/uni/gal/posizioni-reciproche-nello-spazio-esercizi/)
+  - [Distanze nello spazio (esercizi)](/uni/gal/distanze-nello-spazio-esercizi/)
+  - [Sistemi lineari (esercizi)](/uni/gal/sistemi-lineari-esercizi/)
+  - [Algoritmo di Gauss-Jordan (esercizi)](/uni/gal/algoritmo-di-gauss-jordan-esercizi/)
+  - [Rango e Rouché-Capelli (esercizi)](/uni/gal/rango-e-rouche-capelli-esercizi/)
+  - [Matrici e operazioni (esercizi)](/uni/gal/matrici-e-operazioni-esercizi/)
+  - [Nucleo e struttura delle soluzioni (esercizi)](/uni/gal/nucleo-e-struttura-delle-soluzioni-esercizi/)
+  - [Matrici invertibili (esercizi)](/uni/gal/matrici-invertibili-esercizi/)
+  - [Spazi vettoriali (esercizi)](/uni/gal/spazi-vettoriali-esercizi/)
+  - [Generatori (esercizi)](/uni/gal/generatori-esercizi/)
 
 ## Risorse
 

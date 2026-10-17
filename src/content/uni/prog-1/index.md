@@ -50,7 +50,7 @@ appelli              2 sessioni, 5 appelli: gennaio, febbraio | giugno, luglio, 
 
 ### Simulazioni della prima provetta
 
-Il modello è la <span class="src">prima prova teorica del 22/10/2024</span>, l'unica negli archivi: 50 minuti, 6 punti, sei domande (SI/NO sui puntatori, output esatto di cicli, figura con i cicli, somma fra basi, tavola di verità, algoritmo su un array di struct). La cartella "1° Prova Teorica" su Moodle per ora è vuota. Simulazioni sullo stesso modello, a tempo e con correzione: [Simulazione provetta 1](/uni/simulazioni/prog-1/simulazione-provetta-1/), [Simulazione provetta 2](/uni/simulazioni/prog-1/simulazione-provetta-2/).
+Il modello è la <span class="src">prima prova teorica del 22/10/2024</span>, l'unica negli archivi: 50 minuti, 6 punti, sei domande (SI/NO sui puntatori, output esatto di cicli, figura con i cicli, somma fra basi, tavola di verità, algoritmo su un array di struct). La cartella "1° Prova Teorica" su Moodle per ora è vuota. Simulazioni sullo stesso modello, a tempo e con correzione: [Simulazione provetta 1](/uni/simulazioni/prog-1/simulazione-provetta-1/), [Simulazione provetta 2](/uni/simulazioni/prog-1/simulazione-provetta-2/), [Simulazione provetta 3](/uni/simulazioni/prog-1/simulazione-provetta-3/), [Simulazione provetta 4](/uni/simulazioni/prog-1/simulazione-provetta-4/) (la 4 è la più difficile).
 
 ### Corso
 
@@ -118,6 +118,24 @@ Nell'ordine del programma del prof:
 
 ## Esercizi
 
+- Esercizi tipo esame, una pagina per argomento, separata dalla teoria (tracing e codice breve, soluzione chiusa):
+  - [Introduzione al corso e algoritmi (esercizi)](/uni/prog-1/introduzione-al-corso-e-algoritmi-esercizi/)
+  - [Architettura hardware e software di un calcolatore (esercizi)](/uni/prog-1/architettura-hardware-e-software-di-un-calcolatore-esercizi/)
+  - [Il Linguaggio C (esercizi)](/uni/prog-1/il-linguaggio-c-esercizi/)
+  - [Espressioni, operatori e costanti (esercizi)](/uni/prog-1/espressioni-operatori-e-costanti-esercizi/)
+  - [Algebra di Boole (esercizi)](/uni/prog-1/algebra-di-boole-esercizi/)
+  - [Istruzioni condizionali (esercizi)](/uni/prog-1/istruzioni-condizionali-esercizi/)
+  - [Ciclo while ed esempi (esercizi)](/uni/prog-1/ciclo-while-ed-esempi-esercizi/)
+  - [Input e output di caratteri (esercizi)](/uni/prog-1/input-e-output-di-caratteri-esercizi/)
+  - [Cicli for e do-while (esercizi)](/uni/prog-1/cicli-for-e-do-while-esercizi/)
+  - [Switch (esercizi)](/uni/prog-1/switch-esercizi/)
+  - [Array (esercizi)](/uni/prog-1/array-esercizi/)
+  - [Matrici e array multidimensionali (esercizi)](/uni/prog-1/matrici-e-array-multidimensionali-esercizi/)
+  - [Stringhe (esercizi)](/uni/prog-1/stringhe-esercizi/)
+  - [Rappresentazione dell'informazione (esercizi)](/uni/prog-1/rappresentazione-dell-informazione-esercizi/)
+  - [Tipi di dati e conversioni (esercizi)](/uni/prog-1/tipi-di-dati-e-conversioni-esercizi/)
+  - [Struct, typedef ed enum (esercizi)](/uni/prog-1/struct-typedef-ed-enum-esercizi/)
+  - [Puntatori (esercizi)](/uni/prog-1/puntatori-esercizi/)
 - [Esami passati](/uni/prog-1/esami-passati/): formato dell'esame, domande più frequenti 2023-26, struttura del codice della prova al calcolatore, previsione 2026/27
 
 ## Risorse

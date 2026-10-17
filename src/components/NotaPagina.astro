@@ -9,9 +9,10 @@ interface Props {
   nota: Nota;
   prima?: Nota;
   dopo?: Nota;
+  compagna?: Nota;
 }
 
-const { nota, prima, dopo } = Astro.props;
+const { nota, prima, dopo, compagna } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await render(nota);
 const toc: { depth: number; id: string; num: string; text: string }[] = remarkPluginFrontmatter.toc ?? [];
 const d = nota.data;
@@ -29,6 +30,7 @@ const bandiera = '<svg viewBox="0 0 12 14" aria-hidden="true"><path d="M1 0h1.4v
       {simulazione && <div><a href="/uni/simulazioni/">Simulazioni</a></div>}
       <div><a href={`/uni/${d.materia}/`}>{d.materiaNome}</a></div>
       {d.tipo !== 'teoria' && !simulazione && <div><dd>{TIPI[d.tipo] ?? d.tipo}</dd></div>}
+      {compagna && <div><a href={urlOf(compagna)}>{compagna.data.tipo === 'esercizi' ? 'Esercizi' : 'Teoria'}</a></div>}
       {simulazione && d.durata && <div><dt>Durata</dt><dd>{d.durata} minuti</dd></div>}
       {d.lezioni.length > 0 && <div><dt>{d.lezioni.length > 1 ? 'Lezioni' : 'Lezione'}</dt><dd>{giorni(d.lezioni)}</dd></div>}
       {d.stato && <div class="stato"><dd>{d.stato}</dd></div>}

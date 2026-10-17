@@ -266,7 +266,7 @@ for (const [, note] of notes) {
     stato: note.fm.stato ? String(note.fm.stato).replace(/^\S+\s+/, '') : null,
     data: note.fm.data ? String(note.fm.data) : null,
     lezioni: runs.get(name)?.dates ?? [],
-    ordine: runs.get(name)?.order ?? 999,
+    ordine: runs.get(name)?.order ?? runs.get(name.replace(/ \(esercizi\)$/, ''))?.order ?? 999,
     ...(note.fm.durata ? { durata: note.fm.durata } : {}),
   };
   const dir = join(OUT, note.materia.slug);

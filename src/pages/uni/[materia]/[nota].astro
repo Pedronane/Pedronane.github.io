@@ -1,13 +1,13 @@
 ---
 import NotaPagina from '../../../components/NotaPagina.astro';
-import { materie, slugOf } from '../../../lib/uni';
+import { materie, slugOf, compagna } from '../../../lib/uni';
 
 export async function getStaticPaths() {
   const tutte = await materie();
   return tutte.flatMap(({ hub, note }) =>
     note.map((nota, i) => ({
       params: { materia: hub.data.materia, nota: slugOf(nota) },
-      props: { nota, prima: note[i - 1], dopo: note[i + 1] },
+      props: { nota, prima: note[i - 1], dopo: note[i + 1], compagna: compagna(nota, note) },
     })),
   );
 }

@@ -35,7 +35,7 @@ Formato scritto sulle slide 4-5 del 14/9, con le correzioni a mano del prof (<sp
 **Le crocette.**
 - La soglia è $5$ su $12$: bastano 4 risposte giuste senza errori ($6$), e 4 giuste reggono fino a 2 sbagliate ($6 - 1 = 5$). Con 4 giuste e 3 sbagliate si scende a $4{,}5$ e la parte 2 non viene corretta.
 - **Mai rispondere a caso.** Con 4 opzioni il valore atteso di una risposta a caso è $\frac14 \cdot 1{,}5 - \frac34 \cdot 0{,}5 = 0$: in media non guadagni niente e rischi la soglia. Se invece hai escluso con certezza un'opzione diventa $\frac13 \cdot 1{,}5 - \frac23 \cdot 0{,}5 \approx +0{,}17$, con due escluse $+0{,}5$: lì conviene rispondere.
-- Le crocette premiano le definizioni esatte (sup contro max, $\mathrm{Arg}$ contro $\arg$, negazioni con i quantificatori) e i conti veloci senza calcolatrice. Ogni nota ha le sue crocette in fondo.
+- Le crocette premiano le definizioni esatte (sup contro max, $\mathrm{Arg}$ contro $\arg$, negazioni con i quantificatori) e i conti veloci senza calcolatrice. Ogni argomento ha le sue crocette nella pagina di esercizi.
 
 **Gli esercizi da 7.**
 - Lo svolgimento deve essere **completo e giustificato**: un risultato giusto senza passaggi vale poco. Ogni "è il sup" va dimostrato con le due condizioni, ogni "non è iniettiva" con un controesempio esplicito.
@@ -47,6 +47,8 @@ Formato scritto sulle slide 4-5 del 14/9, con le correzioni a mano del prof (<sp
 **I temi passati.** Da metà ottobre, un tema passato a settimana da Moodle, **a tempo** ($2{,}5$ ore, niente calcolatrice, solo formulario), poi correzione. Prima di allora bastano gli esercizi tipo esame delle note e i fogli.
 
 **Il primo parziale (6 novembre).** Copre fin dove arriva il corso a fine ottobre: con il ritmo attuale, probabilmente nozioni preliminari (logica, reali, funzioni, grafici), numeri complessi e limiti di successioni. Il programma esatto del parziale va controllato su Moodle quando esce.
+
+**Simulazioni del parziale.** Stessa forma dello scritto (8 crocette, 3 esercizi da 7, 2,5 ore), programma fino ai limiti di successioni, a tempo e con correzione: [Simulazione provetta 1](/uni/simulazioni/analisi-1/simulazione-provetta-1/) (facile), [Simulazione provetta 2](/uni/simulazioni/analisi-1/simulazione-provetta-2/), [Simulazione provetta 3](/uni/simulazioni/analisi-1/simulazione-provetta-3/) (livello del 30). Se prima del 6/11 il prof arriva a limiti notevoli e continuità, non sono coperti.
 
 ## Programma svolto
 
@@ -99,12 +101,23 @@ Le voci senza link diventano note quando l'argomento parte a lezione.
 
 ## Esercizi
 
-- Ogni nota ha la sezione **Esercizi tipo esame**: crocette stile parte 1 e esercizi stile parte 2 con soluzione in callout chiuso.
+- Ogni argomento ha la sua pagina di **esercizi tipo esame**, separata dalla teoria: crocette stile parte 1 ed esercizi stile parte 2, soluzione in callout chiuso.
+  - [Insiemi e logica (esercizi)](/uni/analisi-1/insiemi-e-logica-esercizi/)
+  - [Numeri reali, sup e inf (esercizi)](/uni/analisi-1/numeri-reali-sup-e-inf-esercizi/)
+  - [Funzioni (esercizi)](/uni/analisi-1/funzioni-esercizi/)
+  - [Funzioni elementari (esercizi)](/uni/analisi-1/funzioni-elementari-esercizi/)
+  - [Trasformazioni di grafici (esercizi)](/uni/analisi-1/trasformazioni-di-grafici-esercizi/)
+  - [Numeri complessi (esercizi)](/uni/analisi-1/numeri-complessi-esercizi/)
+  - [Limiti di successioni (esercizi)](/uni/analisi-1/limiti-di-successioni-esercizi/)
+  - [Successioni monotone e numero di Nepero (esercizi)](/uni/analisi-1/successioni-monotone-e-numero-di-nepero-esercizi/)
+  - [Permanenza del segno e confronto (esercizi)](/uni/analisi-1/permanenza-del-segno-e-confronto-esercizi/)
+  - [Calcolo dei limiti (esercizi)](/uni/analisi-1/calcolo-dei-limiti-esercizi/)
+  - [Limiti di funzioni (esercizi)](/uni/analisi-1/limiti-di-funzioni-esercizi/)
 - <span class="src">Foglio 0 esercizi</span>: logica, insiemi, disequazioni ("per familiarizzare con il linguaggio").
 - <span class="src">Foglio 1 esercizi</span>: sup e inf di successioni e insiemi, grafici elementari, numeri complessi.
 - [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/): i nove insiemi della lavagna dell'esercitazione (gli stessi di <span class="src">Tutoraggio 3 complementi</span>) più l'esercizio 1 del III tutoraggio, con indizio e soluzione chiusi.
 - <span class="src">Tutoraggio 3</span>: III tutoraggio, "Successioni e loro limiti" (Barbon, Favari, Bellomo), senza soluzioni. Svolto in [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/), tranne tre limiti che richiedono la continuità del logaritmo (capitolo 4).
-- <span class="src">Esercitazione 2</span>: esercitazione del 29/9 (tutor), svolta negli esempi delle note su funzioni, trasformazioni e complessi; gli esercizi segnati "non svolto a lezione" sono fra gli esercizi tipo esame.
+- <span class="src">Esercitazione 2</span>: esercitazione del 29/9 (tutor), svolta negli esempi delle note su funzioni, trasformazioni e complessi; gli esercizi segnati "non svolto a lezione" sono fra gli esercizi tipo esame delle pagine di esercizi.
 - <span class="src">Esercizi svolti logica</span>: esercizi svolti di Pinamonti (a.a. 21/22) su quantificatori, insiemi, campo di esistenza.
 - <span class="src">Esercizi svolti complessi</span>: "Qualche esercizio risolto sui complessi" (Moodle, foglio di Ingegneria Industriale 22/23): forme, luoghi, equazioni, radici, crocette con risposte. Alcuni sono svolti per esteso negli esercizi della nota sui complessi.
 - <span class="src">Tutoraggio 2</span>: foglio del tutoraggio sui complessi (foglio 2 di Pinamonti, 25/9/2023), con soluzioni. Gli esercizi 1, 2.i e 4 coincidono con quelli del foglio 1 già svolti nella nota; gli altri restano da fare a te.

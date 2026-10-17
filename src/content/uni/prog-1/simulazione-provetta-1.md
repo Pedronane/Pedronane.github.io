@@ -145,7 +145,7 @@ con l'array già riempito. Scrivere in C un frammento che stampi la **media dei 
 > | 1 | 0 | `0_` | 1 | 4 |
 > | 2 | 4 | `4_` | 5 | 8 |
 > | 3 | 8 | `8_` | 9 | 12 |
-> | — | 12 | esce | | |
+> | fine | 12 | esce | | |
 >
 > **Secondo.** `i++ < n` confronta il valore vecchio e poi incrementa: con `i` a 0 il test è `0 < 5` e la `printf` vede già `1`. L'ultimo test vero è `4 < 5`, che stampa `5`. Poi `5 < 5` è falso, ma l'incremento avviene lo stesso: all'uscita `i` vale 6.
 >

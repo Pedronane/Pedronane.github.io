@@ -24,3 +24,20 @@ Callout Obsidian: `src/lib/remark-callouts.mjs`. Crocette: un elenco `- a) … -
 Ricerca: Pagefind (`pagefind.yml`), indicizza solo le pagine con `data-pagefind-body` (note e hub). UI nella testata di `UniLayout.astro`, scorciatoia `/`, filtro per materia. Con `astro dev` non funziona: serve `npm run build` + `npx astro preview`.
 
 Avviso di aggiornamento: `src/components/Aggiornamento.astro` (in entrambi i layout) confronta il build della pagina con `/version.json` (`GITHUB_SHA`) e propone di ricaricare.
+
+## Progetti collegati
+
+Tre progetti separati sulla stessa materia. Ognuno ha accesso in lettura agli altri (`additionalDirectories` in `.claude/settings.json`), ma i loro CLAUDE.md non si caricano da qui: prima di toccare un altro progetto leggi il suo.
+
+```
+~/Documents/notes            vault Obsidian, fonte di verità delle note uni
+   |  npm run sync-uni (sovrascrive src/content/uni)
+   v
+~/Projects/Pedronane.github.io   sito, pubblica /uni/ su marchesipietro.xyz
+~/Projects/uni/prog1         esercizi C di Prog 1, codice di Pietro
+                             teoria in "00 - Notes/Prog 1 - *.md" e hub "Programmazione 1.md"
+```
+
+- Una nota uni si scrive solo nel vault, mai in `src/content/uni`.
+- Il codice in `~/Projects/uni` resta suo anche quando la sessione parte dal vault o dal sito.
+- `40 - Journal/` resta fuori anche da qui (deny in settings).

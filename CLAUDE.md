@@ -29,6 +29,10 @@ Ricerca: Pagefind (`pagefind.yml`), indicizza solo le pagine con `data-pagefind-
 
 Avviso di aggiornamento: `src/components/Aggiornamento.astro` (in entrambi i layout) confronta il build della pagina con `/version.json` (`GITHUB_SHA`) e propone di ricaricare.
 
+## Chitarra
+
+`/chitarra/`: le lezioni di chitarra, HTML statico con il loro CSS/JS. Fonte in `~/Projects/chitarra` (lezioni, schede, assets, `percorso.html` che diventa anche `index.html`); `public/chitarra/` è generata da `npm run sync-chitarra`, che la cancella e la ricopia: non si modifica qui. Pagine `noindex`, link «guitar» nella nav di `Layout.astro`.
+
 ## Progetti collegati
 
 Tre progetti separati sulla stessa materia. Ognuno ha accesso in lettura agli altri (`additionalDirectories` in `.claude/settings.json`), ma i loro CLAUDE.md non si caricano da qui: prima di toccare un altro progetto leggi il suo.

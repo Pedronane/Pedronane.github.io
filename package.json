@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build && pagefind",
     "preview": "astro preview",
-    "sync-uni": "node scripts/sync-uni.mjs"
+    "sync-uni": "node scripts/sync-uni.mjs",
+    "sync-chitarra": "node scripts/sync-chitarra.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",

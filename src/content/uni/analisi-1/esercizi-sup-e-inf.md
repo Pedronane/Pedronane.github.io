@@ -21,14 +21,14 @@ Esercizi su estremo superiore e inferiore, da queste fonti:
 10      esercizio in più, allena la razionalizzazione
 11      III tutoraggio "Successioni e loro limiti", esercizio 1
 12      esercitazione 3 del tutor, esercizio 4.1
-13-14   tutoraggio del 13/10, esercizi 1.1 e 1.3 (testi dal tuo quaderno)
+13-14c  tutoraggio del 13/10, esercitazione 4 del tutor, esercizi 1.1-1.4
 15-20   foglio 1 del 2015-16, esercizio 1: ii, iii, v, vii, ix, x
 21      foglio 0 del 2015-16, esercizio 7 ii
 C1-C3   crocette tipo esame
 22-27   esercizi tipo esame, dal facile al livello del 30
 ```
 
-Fonti: <span class="src">Tutoraggio 3 complementi</span>, <span class="src">Tutoraggio 3</span>, <span class="src">esercitazione 3, pagina 11</span>, <span class="src">foglio 1</span>, <span class="src">foglio 0, pagina 2</span>. Gli altri quattro insiemi del foglio 1 (i, iv, vi, viii) sono svolti nella nota di teoria, [Numeri reali, sup e inf](/uni/analisi-1/numeri-reali-sup-e-inf/).
+Fonti: <span class="src">Tutoraggio 3 complementi</span>, <span class="src">Tutoraggio 3</span>, <span class="src">esercitazione 3, pagina 11</span>, <span class="src">esercitazione 4, pagine 2-6</span>, <span class="src">foglio 1</span>, <span class="src">foglio 0, pagina 2</span>. Gli altri quattro insiemi del foglio 1 (i, iv, vi, viii) sono svolti nella nota di teoria, [Numeri reali, sup e inf](/uni/analisi-1/numeri-reali-sup-e-inf/).
 
 Ogni esercizio ha un **indizio** e una **soluzione**, entrambi chiusi: prova da solo, apri l'indizio se ti blocchi, la soluzione solo alla fine. Le soluzioni hanno tutte la stessa forma: come si riconosce il tipo di insieme e perché si sceglie quel metodo, poi il candidato, la condizione (1) del maggiorante, la condizione (2) con $\varepsilon$ scritta per intero (con l'elemento trovato **in funzione di** $\varepsilon$), se è massimo o no, e alla fine la verifica numerica.
 
@@ -497,7 +497,7 @@ Dall'esercitazione 3 del tutor, "Esercizi sulle successioni" (<span class="src">
 
 ### 13) $B = \left\{\frac{2n}{n^2 + 1} : n \in \mathbb{Z}\right\}$ (tutoraggio del 13/10, es. 1.1)
 
-Dal quaderno degli esercizi, 13/10. Attenzione: $n \in \mathbb{Z}$, anche negativo.
+Dal tutoraggio del 13/10 (<span class="src">esercitazione 4, pagine 2-3</span>) e dal quaderno degli esercizi. Attenzione: $n \in \mathbb{Z}$, anche negativo.
 
 > [!tip]- Indizio
 > Guarda cosa succede cambiando $n$ in $-n$. Poi prova a dimostrare direttamente $\frac{2n}{n^2+1} \leq 1$: portando tutto da una parte esce un quadrato.
@@ -518,37 +518,112 @@ Dal quaderno degli esercizi, 13/10. Attenzione: $n \in \mathbb{Z}$, anche negati
 > 1. $-1 = b_{-1} \in B$.
 > 2. (3): $\frac{2n}{n^2 + 1} \geq -1 \iff 2n \geq -n^2 - 1 \iff (n + 1)^2 \geq 0$, vero.
 >
-> Sul quaderno hai fatto un'altra strada, giusta anche lei: limitatezza con $\vert b_n\vert = \frac{2\vert n\vert}{n^2 + 1} < \frac{2}{\vert n\vert} \leq 2$ (lì il secondo segno è $\leq$, non $<$: per $\vert n\vert = 1$ vale $2$), poi la monotonia per $n \geq 1$. Con il quadrato è più corto, e dà subito max e min.
+> Il tutor fa due strade. La seconda ("modo 2", pagina 3) è quella qui sopra, scritta in un colpo solo: $\vert b_n\vert \leq 1 \iff 2\vert n\vert \leq n^2 + 1 \iff (\vert n\vert - 1)^2 \geq 0$, quindi $-1 \leq b_n \leq 1$, e $b_1 = 1$, $b_{-1} = -1$.
+>
+> La prima (pagina 2, la stessa del tuo quaderno) è più lunga:
+> 1. limitatezza: $\vert b_n\vert = \frac{2\vert n\vert}{n^2 + 1} < \frac{2\vert n\vert}{n^2} = \frac{2}{\vert n\vert} \leq 2$ per $n \neq 0$. Il tutor scrive “$\frac{2}{\vert n\vert} < 2$": per $\vert n\vert = 1$ vale $2$, quindi il segno giusto è $\leq$ (la conclusione $\vert b_n\vert < 2$ resta vera per il primo $<$);
+> 2. monotonia per $n \geq 1$ (claim 1): $b_{n+1} < b_n \iff (2n + 2)(n^2 + 1) < 2n(n^2 + 2n + 2) \iff 2n^2 + 2n - 2 > 0 \iff n^2 + n - 1 > 0$, vero per $n > \frac{-1 + \sqrt5}{2} \approx 0{,}62$, quindi per ogni $n \geq 1$;
+> 3. teorema delle successioni monotone: decrescente, quindi $\inf_{n \geq 1} b_n = \lim b_n = 0$ e $\sup_{n \geq 1} b_n = b_1 = 1$; per simmetria si ottengono i negativi.
+>
+> Con il quadrato è più corto, e dà subito max e min.
 >
 > *Verifica*: per $\vert n\vert \leq 10^4$ il più grande è $1$ e il più piccolo $-1$.
 
-### 14) $A = \left\{\frac{3n\cos(n\pi) - 1}{2n} : n \geq 1\right\}$ (tutoraggio del 13/10, es. 1.3)
+### 14) $A = \left\{\frac{3n\cos((n+1)\pi) - 1}{2n} : n \geq 1\right\}$ (tutoraggio del 13/10, es. 1.3)
 
-Dal quaderno degli esercizi, 13/10 (lì c'è solo il testo).
+Dal tutoraggio del 13/10 (<span class="src">esercitazione 4, pagina 5</span>). Sul tuo quaderno il testo era con $\cos(n\pi)$: nel PDF del tutor è $\cos((n+1)\pi)$, e i due casi pari e dispari si scambiano (la versione del quaderno è in fondo alla soluzione). Il tutor divide in pari e dispari e si ferma lì: il resto è qui.
 
 > [!tip]- Indizio
-> $\cos(n\pi)$ vale $1$ per $n$ pari e $-1$ per $n$ dispari. Separa i due casi e riscrivi ciascuno come "costante meno qualcosa".
+> $\cos((n+1)\pi) = (-1)^{n+1}$ vale $1$ per $n$ dispari e $-1$ per $n$ pari. Separa i due casi e riscrivi ciascuno come "costante meno qualcosa".
 
 > [!example]- Soluzione
-> *Come si riconosce*: $\cos(n\pi)$ è un $(-1)^n$ travestito. *Metodo*: pari e dispari, ciascuno come costante più resto.
+> *Come si riconosce*: $\cos((n+1)\pi)$ è un $(-1)^{n+1}$ travestito. *Metodo*: pari e dispari, ciascuno come costante più resto.
 >
-> **$\cos(n\pi) = (-1)^n$**: sul cerchio, $n\pi$ è il punto $(1, 0)$ per $n$ pari e $(-1, 0)$ per $n$ dispari.
+> **$\cos((n+1)\pi) = (-1)^{n+1}$**: sul cerchio, $(n+1)\pi$ è il punto $(1, 0)$ se $n + 1$ è pari, cioè $n$ dispari, e $(-1, 0)$ se $n$ è pari (il disegno del tutor: $n = 1, 3$ a destra, $n = 2, 4$ a sinistra).
 >
-> **Pari**: $x_n = \frac{3n - 1}{2n} = \frac32 - \frac{1}{2n}$. Vale $\frac54$ per $n = 2$, poi cresce verso $\frac32$ senza raggiungerlo.
+> **Dispari** ($n = 2m - 1$, $m \geq 1$, il suo insieme $D$): $x_n = \frac{3n - 1}{2n} = \frac32 - \frac{1}{2n}$. Vale $1$ per $n = 1$, $\frac43$ per $n = 3$, poi cresce verso $\frac32$ senza raggiungerlo. Il tutor lo scrive come $\frac{6m - 4}{4m - 2}$: è lo stesso numero.
 >
-> **Dispari**: $x_n = \frac{-3n - 1}{2n} = -\frac32 - \frac{1}{2n}$. Vale $-2$ per $n = 1$, poi cresce verso $-\frac32$ ($-\frac53$, $-\frac85$, ...).
+> **Pari** ($n = 2m$, il suo insieme $P$): $x_n = \frac{-3n - 1}{2n} = -\frac32 - \frac{1}{2n}$, cioè $\frac{-6m - 1}{4m}$. Vale $-\frac74$ per $n = 2$, poi cresce verso $-\frac32$ ($-\frac{13}{8}$, $-\frac{19}{12}$, ...).
 >
 > **$\sup A = \frac32$, non è un massimo.**
-> 1. (1) pari: $x_n = \frac32 - \frac{1}{2n} < \frac32$. Dispari: $x_n < 0 < \frac32$.
-> 2. (2): sia $\varepsilon > 0$. Cerco $n$ pari con $\frac32 - \frac{1}{2n} > \frac32 - \varepsilon$, cioè $\frac{1}{2n} < \varepsilon$, cioè $n > \frac{1}{2\varepsilon}$.
-> 3. Pari: per Archimede $\exists k \in \mathbb{N} : k > \frac1\varepsilon$, e prendo $n = 2k$. Siccome $\frac1\varepsilon > 0$, $k \geq 1$ e quindi $n \geq 2$; poi $2k > \frac2\varepsilon > \frac{1}{2\varepsilon}$, e rileggendo all'indietro $x_n > \frac32 - \varepsilon$.
+> 1. (1) dispari: $x_n = \frac32 - \frac{1}{2n} < \frac32$. Pari: $x_n < 0 < \frac32$.
+> 2. (2): sia $\varepsilon > 0$. Cerco $n$ dispari con $\frac32 - \frac{1}{2n} > \frac32 - \varepsilon$, cioè $\frac{1}{2n} < \varepsilon$, cioè $n > \frac{1}{2\varepsilon}$.
+> 3. Per Archimede $\exists k \in \mathbb{N} : k > \frac1\varepsilon$, e prendo $n = 2k + 1$, dispari. Allora $n > 2k > \frac2\varepsilon > \frac{1}{2\varepsilon}$, e rileggendo all'indietro $x_n > \frac32 - \varepsilon$.
 > 4. $\frac32 = x_n$ chiederebbe $\frac{1}{2n} = 0$: mai. Niente massimo.
 >
-> **$\inf A = \min A = -2$.**
-> 1. $x_1 = -2 \in A$.
-> 2. (3) dispari: $n \geq 1$ dà $\frac{1}{2n} \leq \frac12$, quindi $x_n = -\frac32 - \frac{1}{2n} \geq -\frac32 - \frac12 = -2$. Pari: $x_n \geq \frac54 > -2$.
+> **$\inf A = \min A = -\frac74$.**
+> 1. $x_2 = \frac{-6 - 1}{4} = -\frac74 \in A$.
+> 2. (3) pari: $n \geq 2$ dà $\frac{1}{2n} \leq \frac14$, quindi $x_n = -\frac32 - \frac{1}{2n} \geq -\frac32 - \frac14 = -\frac74$. Dispari: $x_n \geq 1 > -\frac74$.
 >
-> *Verifica*: con $\varepsilon = 0{,}1$ va bene $k = 11$, $n = 22$: $x_{22} = \frac{65}{44} \approx 1{,}477 > 1{,}4$. Sui primi $10^4$ termini il più grande è $\approx 1{,}49995$ e il più piccolo $-2$.
+> *Verifica*: con $\varepsilon = 0{,}1$ va bene $k = 11$, $n = 23$: $x_{23} = \frac32 - \frac{1}{46} \approx 1{,}478 > 1{,}4$. Sui primi $2 \cdot 10^4$ termini il più grande è $\approx 1{,}49997$ e il più piccolo $-1{,}75$.
+>
+> *Con il testo del quaderno*, $\cos(n\pi) = (-1)^n$: i pari danno $\frac32 - \frac{1}{2n}$ e i dispari $-\frac32 - \frac{1}{2n}$. Il sup resta $\frac32$, non massimo (con $n = 2k$ pari); il minimo diventa $x_1 = -2$.
+
+### 14b) $E = \left\{\sin\left(\frac\pi2 \cdot \frac{n^4}{n^4 + 1}\right) : n \in \mathbb{N}\right\}$ (tutoraggio del 13/10, es. 1.2)
+
+Dal tutoraggio del 13/10 (<span class="src">esercitazione 4, pagina 4</span>).
+
+> [!tip]- Indizio
+> Studia prima l'argomento $t_n = \frac\pi2 \cdot \frac{n^4}{n^4 + 1}$: in che intervallo sta? Su quell'intervallo il seno è crescente.
+
+> [!example]- Soluzione
+> *Come si riconosce*: una funzione elementare applicata a una successione. *Metodo*: sup e inf dell'argomento, poi la monotonia della funzione esterna sull'intervallo dove vive l'argomento.
+>
+> **L'argomento** (l'"osservazione" del tutor): $\frac{n^4}{n^4 + 1} = \frac{n^4 + 1 - 1}{n^4 + 1} = 1 - \frac{1}{n^4 + 1}$, quindi $0 \leq \frac{n^4}{n^4 + 1} < 1$ e
+> $$
+> 0 \leq t_n = \frac\pi2 \cdot \frac{n^4}{n^4 + 1} < \frac\pi2
+> $$
+> Su $\left[0, \frac\pi2\right]$ il seno è strettamente crescente, da $\sin 0 = 0$ a $\sin\frac\pi2 = 1$.
+>
+> **L'insieme degli argomenti** (la "morale" del tutor: si studia $A = \left\{\frac{n^4}{n^4 + 1} : n \in \mathbb{N}\right\}$).
+> - $\min A = 0$: $a_0 = 0 \in A$ e $1 - \frac{1}{n^4 + 1} \geq 0$ perché $\frac{1}{n^4 + 1} \leq 1 \iff 1 \leq n^4 + 1$, vero per ogni $n$.
+> - $\sup A = 1$: è un maggiorante perché $\frac{1}{n^4 + 1} > 0$; è il più piccolo perché, dato $\varepsilon > 0$, serve $\bar n$ con $1 - \varepsilon < 1 - \frac{1}{\bar n^4 + 1}$, cioè $(\bar n^4 + 1)\varepsilon > 1$. Il tutor usa Archimede nella forma “$\forall x, y > 0\ \exists n \in \mathbb{N} : nx > y$": esiste $k$ con $k\varepsilon > 1$, e siccome $k^4 + 1 > k$ anche $(k^4 + 1)\varepsilon > 1$; basta $\bar n = k$.
+>
+> **$\min E = \inf E = 0$.** $\sin t_0 = \sin 0 = 0 \in E$, e $\sin t_n \geq 0$ perché $t_n \in \left[0, \frac\pi2\right)$.
+>
+> **$\sup E = 1$, non è un massimo.**
+> 1. (1): $t_n < \frac\pi2$ e il seno è strettamente crescente su $\left[0, \frac\pi2\right]$, quindi $\sin t_n < \sin\frac\pi2 = 1$. Per lo stesso motivo $1$ non è mai raggiunto: niente massimo.
+> 2. (2): sia $\varepsilon \in (0, 1)$ (per $\varepsilon \geq 1$ va bene qualunque elemento, perché $\sin t_n \geq 0 > 1 - \varepsilon$). Sia $t^* = \arcsin(1 - \varepsilon)$, che sta in $\left[0, \frac\pi2\right)$ perché $1 - \varepsilon \in (0, 1)$.
+> 3. Il seno è crescente su $\left[0, \frac\pi2\right]$, quindi $\sin t_n > 1 - \varepsilon = \sin t^* \iff t_n > t^*$.
+> 4. $t_n > t^* \iff 1 - \frac{1}{n^4 + 1} > \frac{2t^*}{\pi} \iff \frac{1}{n^4 + 1} < \eta$, con $\eta = 1 - \frac{2t^*}{\pi} > 0$.
+> 5. Per Archimede $\exists k \in \mathbb{N} : k > \frac1\eta$. Con $n = k$: $n^4 + 1 > k > \frac1\eta$, quindi $\frac{1}{n^4 + 1} < \eta$, e rileggendo all'indietro $\sin t_n > 1 - \varepsilon$.
+>
+> Il tutor arriva prima con “$y = \sin x$ è monotona crescente (e continua) su $\left[0, \frac\pi2\right]$, quindi $\sup \sin(\dots) = \sin(\sup \dots)$": vero, ma è la **continuità** del seno a dare l'uguaglianza (la crescenza da sola dà solo $\leq$), e la continuità delle funzioni elementari a lezione non è ancora fatta. Con l'arcoseno, al passo 2, la si evita.
+>
+> *Verifica*: con $\varepsilon = 0{,}01$: $t^* \approx 1{,}429$, $\eta \approx 0{,}090$, $k = 12$; già $n = 2$ dà $\sin\left(\frac\pi2 \cdot \frac{16}{17}\right) \approx 0{,}9957 > 0{,}99$. I primi valori sono $0$, $0{,}707$, $0{,}9957$, $0{,}9998$.
+
+### 14c) $C = \left\{\log\left(4 + \frac{3n\cos((n+1)\pi) - 1}{2n}\right) : n \geq 1\right\}$ (tutoraggio del 13/10, es. 1.4)
+
+Dal tutoraggio del 13/10 (<span class="src">esercitazione 4, pagine 5-6</span>), segnato dal tutor "esercizio non svolto a lezione". È l'insieme dell'esercizio 14 spostato di $4$ e messo dentro un logaritmo.
+
+> [!tip]- Indizio
+> L'argomento del logaritmo è $4 + x_n$, con $x_n$ dell'esercizio 14. Il logaritmo è crescente: il minimo dell'argomento dà il minimo di $C$. Per il sup serve la (2) con $\varepsilon$, e l'esponenziale per togliere il logaritmo.
+
+> [!example]- Soluzione
+> *Come si riconosce*: funzione crescente (il logaritmo) applicata a un insieme già studiato. *Metodo*: pari e dispari sull'argomento, poi (L1), cioè $\log$ strettamente crescente.
+>
+> **L'argomento**, con l'esercizio 14:
+> - $n$ dispari: $4 + \frac32 - \frac{1}{2n} = \frac{11}{2} - \frac{1}{2n}$ (il tutor, con $n = 2m - 1$: $\frac{11}{2} - \frac{1}{4m - 2}$);
+> - $n$ pari: $4 - \frac32 - \frac{1}{2n} = \frac52 - \frac{1}{2n}$ (il tutor, con $n = 2m$: $\frac52 - \frac{1}{4m}$).
+>
+> Tutti gli argomenti sono $\geq \frac94 > 0$: il logaritmo è definito.
+>
+> **$\min C = \inf C = \log\frac94$.**
+> 1. Per l'esercizio 14, $x_n \geq -\frac74$ per ogni $n$, con $x_2 = -\frac74$. Quindi $4 + x_n \geq \frac94$, con uguaglianza in $n = 2$.
+> 2. $\log$ è crescente: $\log(4 + x_n) \geq \log\frac94$ per ogni $n$, e $\log\frac94 = \log(4 + x_2) \in C$.
+>
+> **$\sup C = \log\frac{11}{2}$, non è un massimo.**
+> 1. (1): $x_n < \frac32$, quindi $4 + x_n < \frac{11}{2}$ e, con $\log$ strettamente crescente, $\log(4 + x_n) < \log\frac{11}{2}$. L'uguaglianza non vale mai: niente massimo.
+> 2. (2): sia $\varepsilon > 0$. Cerco $n$ dispari con $\log\left(\frac{11}{2} - \frac{1}{2n}\right) > \log\frac{11}{2} - \varepsilon$.
+> 3. Applico $e^{(\cdot)}$, crescente, ai due membri: $\frac{11}{2} - \frac{1}{2n} > \frac{11}{2}e^{-\varepsilon}$ (perché $e^{\log a - \varepsilon} = a e^{-\varepsilon}$).
+> 4. $\iff \frac{1}{2n} < \frac{11}{2}\left(1 - e^{-\varepsilon}\right) =: \eta$, e $\eta > 0$ perché $e^{-\varepsilon} < 1$.
+> 5. Per Archimede $\exists k \in \mathbb{N} : k > \frac1\eta$. Con $n = 2k + 1$, dispari: $2n > n > k > \frac1\eta$, quindi $\frac{1}{2n} < \eta$, e rileggendo all'indietro vale la (2).
+>
+> **La via del tutor.** Le due sottosuccessioni $\log\left(\frac52 - \frac{1}{4m}\right)$ e $\log\left(\frac{11}{2} - \frac{1}{4m - 2}\right)$ sono strettamente crescenti (claim 1 e 2: l'argomento cresce e il logaritmo è crescente); per il teorema delle successioni monotone il min di ciascuna è il primo termine e il sup è il limite: $\min P = \log\frac94$, $\sup P = \log\frac52$, $\min D = \log 5$, $\sup D = \log\frac{11}{2}$. Poi $\sup C = \max\left\{\log\frac52, \log\frac{11}{2}\right\} = \log\frac{11}{2}$ e $\inf C = \min\left\{\log\frac94, \log 5\right\} = \log\frac94$. Il passaggio “$\lim \log\left(\frac52 - \frac{1}{4m}\right) = \log\frac52$" usa la continuità del logaritmo, non ancora fatta: per questo qui il sup è dimostrato con la (2).
+>
+> **Un errore del tutor.** Nei primi termini scrive per $n = 1$: “$4 + \frac{3 \cdot 1 - 1}{2 \cdot 1} = 4 - \frac22 = 3$". Il segno è sbagliato: $4 + \frac22 = 5$. Il risultato finale non cambia, perché poi il tutor usa il valore giusto ($\min D = \log 5$).
+>
+> *Verifica*: i primi argomenti sono $5$, $\frac94$, $\frac{16}{3}$, $\frac{19}{8}$. Con $\varepsilon = 0{,}01$: $\eta \approx 0{,}0547$, $k = 19$, $n = 39$, e $\log\left(\frac{11}{2} - \frac{1}{78}\right) \approx 1{,}7024 > \log\frac{11}{2} - 0{,}01 \approx 1{,}6947$. Sui primi $2 \cdot 10^4$ termini il più piccolo è $\log\frac94 \approx 0{,}811$ e il più grande $\approx 1{,}70474$, sotto $\log\frac{11}{2} \approx 1{,}70475$.
 
 ## Foglio 1, esercizio 1
 

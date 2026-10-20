@@ -12,12 +12,12 @@ lezioni: []
 ordine: 11
 ---
 
-Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L7, mar 13/10, prima parte del capitolo 4. Fonte: appunti della prof, <span class="src">13/10, p. 1</span> (definizione), <span class="src">p. 2-3</span> ($\mathbb{R}^n$, combinazioni lineari, forma matriciale), <span class="src">p. 4-6</span> (sottospazi, esempi e non-esempi); quaderno di Pietro p. 69-71 (senza data: la data viene dal <span class="src">piano</span>). Dettagli ed esempi in più dalla dispensa Postinghel, sezioni 4.1-4.3.1: <span class="src">p. 87-88</span> (definizione, esempi), <span class="src">p. 89-90</span> (combinazioni lineari, forma matriciale), <span class="src">p. 90-92</span> (sottospazi, anche di $M_n(\mathbb{R})$); numeri di pagina del PDF. La seconda parte della lezione, i generatori, è in [Generatori](/uni/gal/generatori/). Si appoggia su [Matrici e operazioni](/uni/gal/matrici-e-operazioni/) (le stesse otto proprietà) e [Nucleo e struttura delle soluzioni](/uni/gal/nucleo-e-struttura-delle-soluzioni/) (il nucleo è il primo esempio di sottospazio).
+Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L7, mar 13/10, prima parte del capitolo 4; altri esempi in L8, lun 19/10. Fonte: appunti della prof, <span class="src">13/10, p. 1</span> (definizione), <span class="src">p. 2-3</span> ($\mathbb{R}^n$, combinazioni lineari, forma matriciale), <span class="src">p. 4-6</span> (sottospazi, esempi e non-esempi); in L8, <span class="src">19/10, p. 11-13</span> (altri esempi di spazi vettoriali: $V^3$, $M_{m,n}(\mathbb{R})$, $\mathbb{R}[x]$, $\mathbb{R}[x]_d$, $\mathcal{C}(\mathbb{R})$) e <span class="src">p. 13-14</span> (sottospazi di $M_2(\mathbb{R})$ e di $\mathbb{R}[x]$); quaderno di Pietro p. 69-71 (senza data: la data viene dal <span class="src">piano</span>). Dettagli ed esempi in più dalla dispensa Postinghel, sezioni 4.1-4.3.1: <span class="src">p. 87-88</span> (definizione, esempi), <span class="src">p. 89-90</span> (combinazioni lineari, forma matriciale), <span class="src">p. 90-92</span> (sottospazi, anche di $M_n(\mathbb{R})$); numeri di pagina del PDF. La seconda parte della lezione, i generatori, è in [Generatori](/uni/gal/generatori/). Si appoggia su [Matrici e operazioni](/uni/gal/matrici-e-operazioni/) (le stesse otto proprietà) e [Nucleo e struttura delle soluzioni](/uni/gal/nucleo-e-struttura-delle-soluzioni/) (il nucleo è il primo esempio di sottospazio).
 
 > [!abstract] Per l'esame
-> - **Saper enunciare**: spazio vettoriale reale con le proprietà (1)-(8); lo spazio $\mathbb{R}^n$ con le sue due operazioni; combinazione lineare e la sua forma matriciale $A\vec{\lambda}$; sottospazio vettoriale, con le condizioni (A) e (B) oppure (C); le due osservazioni ($\vec{0} \in U$; se $U \neq \{\vec{0}\}$ ha infiniti elementi).
+> - **Saper enunciare**: spazio vettoriale reale con le proprietà (1)-(8); lo spazio $\mathbb{R}^n$ con le sue due operazioni; gli altri esempi della prof, $V^3$, $M_{m,n}(\mathbb{R})$, i polinomi $\mathbb{R}[x]$ e $\mathbb{R}[x]_d$, le funzioni continue $\mathcal{C}(\mathbb{R})$; combinazione lineare e la sua forma matriciale $A\vec{\lambda}$; sottospazio vettoriale, con le condizioni (A) e (B) oppure (C); le due osservazioni ($\vec{0} \in U$; se $U \neq \{\vec{0}\}$ ha infiniti elementi).
 > - **Saper dimostrare**: le due osservazioni; che le soluzioni di $A\vec{x} = \vec{0}$ sono un sottospazio e quelle di $A\vec{x} = \vec{b}$ con $\vec{b} \neq \vec{0}$ no; l'esempio (5) $\{v_1 = 0\}$ e il non-esempio (6) a coordinate intere. Sono dimostrazioni di tre righe, il tipo di teoria che entra in una domanda del parziale (l'hub: "teoria enunciata e dimostrata").
-> - **Saper fare**: decidere se un sottoinsieme di $\mathbb{R}^n$ o di $M_n(\mathbb{R})$ è un sottospazio (la (C) con vettori generici per dire sì, **un** controesempio numerico per dire no), anche con un parametro; scrivere una combinazione lineare come prodotto $A\vec{\lambda}$; decidere se un vettore è combinazione lineare di altri e trovare i coefficienti risolvendo un sistema.
+> - **Saper fare**: decidere se un sottoinsieme di $\mathbb{R}^n$, di $M_n(\mathbb{R})$ o di $\mathbb{R}[x]$ è un sottospazio (la (C) con vettori generici per dire sì, **un** controesempio numerico per dire no), anche con un parametro; scrivere una combinazione lineare come prodotto $A\vec{\lambda}$; decidere se un vettore è combinazione lineare di altri e trovare i coefficienti risolvendo un sistema.
 > - **Dove esce**: il parziale del 5/11 arriva fino al capitolo 4 compreso; l'esercitazione 4 del 20/10 è sugli spazi vettoriali. La domanda "per quali $k$ l'insieme delle soluzioni è chiuso rispetto alla somma e al prodotto per scalare" è già uscita due volte: esercizio 3.12, punto 2, del [foglio 3](/uni/gal/foglio-3-svolto/) ed esercizio 3, punto 3, degli [esercizi extra](/uni/gal/esercizi-extra-matrici-svolti/) (fatto dalla prof il 12/10).
 
 **L'idea.** In tre capitoli sono comparsi tre tipi di oggetti diversi: i vettori geometrici (capitolo 1), le ennuple di $\mathbb{R}^n$ (capitolo 2), le matrici (capitolo 3). Per tutti e tre si sa sommare due oggetti e moltiplicarne uno per un numero, e le regole di calcolo sono **le stesse** (a lezione, 5/10: "tutto uguale ai vettori"). Uno spazio vettoriale è il nome per "un insieme qualunque dove somma e prodotto per scalare seguono quelle regole". Il vantaggio è che un risultato dimostrato usando solo le regole vale in un colpo per tutti questi insiemi.
@@ -98,6 +98,35 @@ I nomi delle due distributive sono quelli della dispensa (<span class="src">p. 8
 2. **$M_{m \times n}(\mathbb{R})$**, le matrici $m \times n$, con la somma e il prodotto per scalare elemento per elemento. Le otto proprietà sono esattamente la tabella "proprietà della somma e del prodotto per scalare" di [Matrici e operazioni](/uni/gal/matrici-e-operazioni/) (appunti cap. 3, <span class="src">p. 4</span>). Il vettore nullo è $O_{m \times n}$, l'opposto di $A$ è $-A$. Qui un "vettore" è una matrice.
 3. **I vettori geometrici** del capitolo 1, con la somma col parallelogramma e il prodotto per scalare: [Vettori geometrici](/uni/gal/vettori-geometrici/). Il vettore nullo è il segmento orientato di lunghezza zero.
 4. **$\{\vec{0}\}$ da solo**, con $\vec{0} + \vec{0} = \vec{0}$ e $\lambda\vec{0} = \vec{0}$: tutte le otto proprietà diventano $\vec{0} = \vec{0}$. È lo spazio vettoriale più piccolo possibile.
+
+**Altri esempi della prof** (L8, <span class="src">p. 11-13</span>, "Altri esempi di spazi/sottospazi vettoriali").
+
+5. **$V^3$**, l'insieme dei vettori geometrici (cap. 1), dotato di due operazioni, la somma (col parallelogramma) e il prodotto per scalare: è uno spazio vettoriale. È l'esempio 3 qui sopra; la prof lo disegna con $\vec{v} + \vec{w}$ e $2\vec{v}$.
+6. **$M_{m,n}(\mathbb{R})$** con le operazioni di somma e di prodotto per scalare è uno spazio vettoriale: è l'esempio 2.
+7. **I polinomi.** La prof:
+   $$
+   \mathbb{R}[x] = \left\{\sum_{i=0}^{\delta} a_ix^i : \delta \in \mathbb{N},\ a_i \in \mathbb{R}\right\}
+   $$
+   i **polinomi in $x$ a coefficienti reali**. $\mathbb{R}[x]$ con le operazioni di somma e prodotto per scalare è uno spazio vettoriale.
+   - **somma**: si sommano i coefficienti della stessa potenza, $(1 + 2x) + (3 - x + x^2) = (1 + 3) + (2 - 1)x + x^2 = 4 + x + x^2$;
+   - **prodotto per scalare**: si moltiplica ogni coefficiente, $3(1 - x^2) = 3 - 3x^2$;
+   - il vettore nullo è il **polinomio nullo** $0$ (tutti i coefficienti nulli), l'opposto di $p(x)$ è $-p(x)$.
+
+   Le proprietà (1)-(8) valgono perché le operazioni si fanno coefficiente per coefficiente, come in $\mathbb{R}^n$. Qui un "vettore" è un polinomio.
+8. **I polinomi di grado limitato.** La prof (<span class="src">p. 13</span>):
+   $$
+   \mathbb{R}[x]_d = \left\{\sum_{i=0}^{\delta} a_ix^i : \delta \in \mathbb{N},\ \delta \leq d,\ a_i \in \mathbb{R}\right\}
+   $$
+   è l'insieme dei **polinomi di grado al più $d$**. Con le stesse operazioni è uno spazio vettoriale: sommando due polinomi di grado $\leq d$, o moltiplicandone uno per un numero, non compaiono potenze più alte di $x^d$. Per esempio in $\mathbb{R}[x]_2$: $(1 + x^2) + (x - x^2) = 1 + x$, ancora di grado $\leq 2$. "Al più" conta: con "esattamente $d$" non funziona (sottospazi qui sotto).
+9. **Le funzioni continue.** La prof (p. 13):
+   $$
+   \mathcal{C}(\mathbb{R}) = \{f : \mathbb{R} \to \mathbb{R} : f \text{ funzione continua}\}
+   $$
+   è l'insieme delle funzioni continue, ed è uno spazio vettoriale con le operazioni
+   $$
+   (f + g)(x) = f(x) + g(x), \qquad (\lambda f)(x) = \lambda f(x)
+   $$
+   Per esempio, con $f(x) = \sin x$ e $g(x) = x^2$: $(f + 2g)(x) = \sin x + 2x^2$. Il vettore nullo è la funzione costante $0$. Che la somma di funzioni continue sia continua viene da Analisi 1; qui serve solo sapere che l'esempio esiste.
 
 **Controesempi**, dal più facile. In ognuno si dice quale proprietà cade: per dire "non è uno spazio vettoriale" basta una proprietà che fallisce su **un** caso preciso.
 
@@ -407,13 +436,57 @@ La prof (<span class="src">p. 5</span>); gli stessi nella dispensa, Esempi 49-51
 >
 > Nota: $U$ **è** chiuso rispetto alla somma (intero più intero è intero). È la (B) che lo tradisce. $\square$
 
+### Esempi della prof in $M_2(\mathbb{R})$ e in $\mathbb{R}[x]$ (L8)
+
+La prof (<span class="src">19/10, p. 13-14</span>, "Esempi di sottospazi"). Lo schema è lo stesso di $\mathbb{R}^n$: la (C) con elementi generici per dire sì, un controesempio o il vettore nullo mancante per dire no.
+
+Consideriamo $V = M_2(\mathbb{R})$ spazio vettoriale.
+
+1. **Le matrici a traccia nulla.**
+   $$
+   U = \left\{\begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} : a_{11} + a_{22} = 0\right\} \subseteq V
+   $$
+   dove $a_{11} + a_{22}$ è la **traccia** di $A$ (somma degli elementi sulla diagonale). **$U$ è un sottospazio di $V$.**
+2. **Le matrici invertibili.** $U' = \{A \in M_2(\mathbb{R}) : A \text{ è invertibile}\} \subseteq V$ **non** è un sottospazio, perché non contiene l'elemento nullo $\begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}$ (la matrice nulla non è invertibile: $O \cdot B = O \neq I$ per ogni $B$).
+
+> [!note]- Dimostrazione di 1 (della prof, p. 13-14)
+> Verifichiamo (C), ossia che se $A, B \in U$ e $\lambda, \mu \in \mathbb{R}$, allora $\lambda A + \mu B \in U$. Infatti
+> $$
+> \lambda A + \mu B = \begin{pmatrix} \lambda a_{11} + \mu b_{11} & \lambda a_{12} + \mu b_{12} \\ \lambda a_{21} + \mu b_{21} & \lambda a_{22} + \mu b_{22} \end{pmatrix}
+> $$
+> Per verificare che $\lambda A + \mu B \in U$ considero la traccia:
+> $$
+> (\lambda a_{11} + \mu b_{11}) + (\lambda a_{22} + \mu b_{22}) = \lambda(a_{11} + a_{22}) + \mu(b_{11} + b_{22}) \qquad \text{riordino e raccolgo}
+> $$
+> $$
+> = \lambda \cdot 0 + \mu \cdot 0 = 0 \qquad a_{11} + a_{22} = 0 \text{ perché } A \in U,\ b_{11} + b_{22} = 0 \text{ perché } B \in U
+> $$
+> $U$ non è vuoto ($O \in U$, traccia $0$). $\square$
+
+Sia ora $V = \mathbb{R}[x]$, i polinomi.
+
+3. **I polinomi che si annullano in $1$.** $U = \{p(x) \in V \mid p(1) = 0\}$ **è un sottospazio**. La prof lo lascia per esercizio: è l'esercizio 9 di [Spazi vettoriali (esercizi)](/uni/gal/spazi-vettoriali-esercizi/). Per esempio $x - 1$ e $x^2 - 1$ stanno in $U$, e anche $2(x - 1) + 3(x^2 - 1) = 3x^2 + 2x - 5$, che in $1$ vale $3 + 2 - 5 = 0$.
+4. **I polinomi di grado esattamente $d$.** $U' = \{p(x) \in V \mid \text{grado di } p(x) \text{ è } d\}$, $d \in \mathbb{N}$ fissato, **non è un sottospazio**.
+   - **Prima motivazione: non vale (A).** Con $p(x) = x^d$ e $q(x) = 1 - x^d$, entrambi di grado $d$ (per $d > 0$):
+     $$
+     (p + q)(x) = x^d + (1 - x^d) = 1 \notin U'
+     $$
+     perché $1$ ha grado $0 \neq d$.
+   - **Seconda motivazione: $U'$ non contiene l'elemento nullo.** Il polinomio nullo non ha grado $d$ (non ha nessun coefficiente diverso da zero, e il grado non è definito).
+
+   La seconda motivazione basta da sola, e vale anche per $d = 0$, dove $U'$ è l'insieme delle costanti non nulle. Il confronto con l'esempio 8: "grado al più $d$" dà uno spazio vettoriale, "grado esattamente $d$" no.
+
+Altri due esempi graduati, per allenarsi a scegliere la strada:
+- $\{A \in M_2(\mathbb{R}) : a_{12} = 2a_{21}\}$: condizione lineare omogenea sugli elementi, **sottospazio**. Con la (C): $\lambda a_{12} + \mu b_{12} = \lambda(2a_{21}) + \mu(2b_{21}) = 2(\lambda a_{21} + \mu b_{21})$.
+- $\{p(x) \in \mathbb{R}[x] : p(0) = 1\}$: il polinomio nullo vale $0$ in $0$, non $1$. **Non è un sottospazio**, basta il primo controllo.
+
 ### Il quadro in $\mathbb{R}^2$ e $\mathbb{R}^3$
 
 Mettendo insieme le due osservazioni: un sottospazio contiene l'origine, e se contiene un $\vec{u} \neq \vec{0}$ contiene tutta la retta $\{\lambda\vec{u}\}$.
 - In $\mathbb{R}^2$ i sottospazi sono $\{\vec{0}\}$, le rette per l'origine e $\mathbb{R}^2$.
 - In $\mathbb{R}^3$ sono $\{\vec{0}\}$, le rette per l'origine, i piani per l'origine e $\mathbb{R}^3$.
 
-Che non ce ne siano altri si capirà con basi e dimensione (L8 e seguenti); qui basta riconoscerli. Il collegamento con le equazioni: un piano per l'origine ha equazione cartesiana $ax + by + cz = 0$, senza termine noto, quindi è il nucleo di $\begin{pmatrix} a & b & c \end{pmatrix}$ ed è un sottospazio per l'esempio (3). Una retta per l'origine in $\mathbb{R}^3$ è data da due equazioni omogenee, ed è un nucleo anche lei. Un piano con termine noto $d \neq 0$ è l'esempio (4).
+Che non ce ne siano altri si capirà con la dimensione, non ancora fatta a lezione; qui basta riconoscerli. Il collegamento con le equazioni: un piano per l'origine ha equazione cartesiana $ax + by + cz = 0$, senza termine noto, quindi è il nucleo di $\begin{pmatrix} a & b & c \end{pmatrix}$ ed è un sottospazio per l'esempio (3). Una retta per l'origine in $\mathbb{R}^3$ è data da due equazioni omogenee, ed è un nucleo anche lei. Un piano con termine noto $d \neq 0$ è l'esempio (4).
 
 ## Metodo
 
@@ -469,6 +542,12 @@ Gli esempi della prof del 13/10 sono scritti per intero sopra, ognuno accanto al
 - verifica di $(\ast)$ con $n = 2$, $k = 3$ (<span class="src">p. 3</span>), lasciata per esercizio: è l'esercizio 2;
 - le due osservazioni con le dimostrazioni (<span class="src">p. 4</span>);
 - i sottospazi e non-sottospazi (1)-(6) di $\mathbb{R}^n$, con le dimostrazioni di (4), (5), (6) e il disegno di (5) in $\mathbb{R}^2$ (<span class="src">p. 5-6</span>).
+
+In L8 (19/10) la prof ha aggiunto, scritti sopra accanto alle definizioni:
+- gli altri spazi vettoriali $V^3$, $M_{m,n}(\mathbb{R})$, $\mathbb{R}[x]$, $\mathbb{R}[x]_d$, $\mathcal{C}(\mathbb{R})$ (<span class="src">p. 11-13</span>), negli esempi della definizione;
+- i sottospazi di $M_2(\mathbb{R})$ (traccia nulla, con la dimostrazione) e i non-sottospazi (invertibili), quelli di $\mathbb{R}[x]$ ($p(1) = 0$ per esercizio, grado esattamente $d$ con due motivazioni) (<span class="src">p. 13-14</span>), nella sezione "Esempi della prof in $M_2(\mathbb{R})$ e in $\mathbb{R}[x]$".
+
+Le altre parti della L8 stanno in [Generatori](/uni/gal/generatori/) (sottospazi come soluzioni di sistemi omogenei, $\mathbb{R}[x]$ non finitamente generato), [Dipendenza lineare](/uni/gal/dipendenza-lineare/) e [Basi](/uni/gal/basi/).
 
 Il quaderno (p. 69-71) riporta la definizione, $\mathbb{R}^n$, la combinazione lineare con l'esempio della prof e i titoli "Sottospazi vettoriali" e "Generatori"; non ha ★ né ?.
 
@@ -537,3 +616,9 @@ In una pagina a parte, dal più facile al livello del 30: [Spazi vettoriali (ese
 - Cosa si può dire del vettore nullo rispetto a un sottospazio? Come si usa negli esercizi, e perché da solo non basta?
 
 - Quanti elementi può avere un sottospazio? Perché un insieme con due vettori non lo è mai?
+
+- Come sono definiti $\mathbb{R}[x]$ e $\mathbb{R}[x]_d$? Quali sono le operazioni e il vettore nullo?
+
+- Perché i polinomi di grado esattamente $d$ non sono un sottospazio di $\mathbb{R}[x]$, mentre quelli di grado al più $d$ sono uno spazio vettoriale? Dai le due motivazioni della prof.
+
+- Che cos'è $\mathcal{C}(\mathbb{R})$ e con quali operazioni è uno spazio vettoriale?

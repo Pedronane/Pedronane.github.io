@@ -277,3 +277,47 @@ Per quali $k$ $S_k$ è un sottospazio di $\mathbb{R}^2$? In quei casi descriverl
 > **Risposta.** a) $k = 0$ o $k = 1$; b) solo $k = -1$.
 >
 > **Controllo.** a), $k = 2$: l'equazione è $x + 2y + z = 2$, e $(0, 0, 0)$ dà $0 \neq 2$. b), $k = -1$: $(5, 0) \in W_{-1}$ e $3(5, 0) = (15, 0)$ resta sull'asse.
+
+**Esercizio 9** (della prof, <span class="src">19/10, p. 14</span>). Sia $V = \mathbb{R}[x]$.
+
+- a) Dimostrare che $U = \{p(x) \in V \mid p(1) = 0\}$ è un sottospazio di $V$.
+- b) Per quali $c \in \mathbb{R}$ l'insieme $U_c = \{p(x) \in V \mid p(1) = c\}$ è un sottospazio?
+
+> [!tip]- Indizio
+> Valutare in $1$ una somma di polinomi dà la somma dei valori: $(p + q)(1) = p(1) + q(1)$, perché la somma si fa coefficiente per coefficiente.
+
+> [!example]- Soluzione
+> **Come lo riconosco.** "È un sottospazio?" con una condizione **lineare omogenea** ($p(1) = 0$): probabile sì, si dimostra la (C) con polinomi generici.
+>
+> **Un fatto che serve.** Se $p(x) = \sum a_ix^i$ e $q(x) = \sum b_ix^i$, allora $\lambda p + \mu q$ ha coefficienti $\lambda a_i + \mu b_i$, e
+> $$
+> (\lambda p + \mu q)(1) = \sum (\lambda a_i + \mu b_i) \cdot 1^i = \lambda\sum a_i + \mu\sum b_i = \lambda p(1) + \mu q(1)
+> $$
+> (valutare in $1$ vuol dire sommare i coefficienti, perché $1^i = 1$).
+>
+> **a)**
+> - **Non vuoto**: il polinomio nullo vale $0$ in $1$, quindi $0 \in U$.
+> - **(C)**: siano $p, q \in U$, cioè $p(1) = 0$ e $q(1) = 0$, e $\lambda, \mu \in \mathbb{R}$. Per il fatto sopra
+> $$
+> (\lambda p + \mu q)(1) = \lambda p(1) + \mu q(1) = \lambda \cdot 0 + \mu \cdot 0 = 0
+> $$
+> quindi $\lambda p + \mu q \in U$. $\square$
+>
+> **Controllo con numeri**: $p(x) = x - 1$ e $q(x) = x^2 - 1$ stanno in $U$; $2p + 3q = 3x^2 + 2x - 5$ vale $3 + 2 - 5 = 0$ in $1$.
+>
+> **b)** Primo controllo, il vettore nullo: il polinomio nullo vale $0$ in $1$, quindi $0 \in U_c$ se e solo se $c = 0$. Per $c \neq 0$, $U_c$ **non** è un sottospazio. Per $c = 0$ è il sottospazio di a). **Risposta: solo $c = 0$.** (Per $c \neq 0$ cade anche la (A): se $p(1) = q(1) = c$, allora $(p + q)(1) = 2c \neq c$.)
+
+**Esercizio 10** (sul modello della domanda 4.4 del [foglio 4](/uni/gal/foglio-4-svolto/)). In $\mathbb{R}[x]_2$, con $p(x) = a_0 + a_1x + a_2x^2$, dire quali sono sottospazi:
+
+- a) $W_1 = \{p : a_0 = 2a_2\}$;
+- b) $W_2 = \{p : a_1a_2 = 0\}$;
+- c) $W_3 = \{p : p(-x) = p(x) \text{ per ogni } x\}$, i polinomi pari.
+
+> [!example]- Soluzione
+> **Come lo riconosco.** Le condizioni sono sui coefficienti: lineari omogenee (probabile sì) o con un prodotto (probabile no, si cerca un controesempio).
+>
+> **a)** **Sottospazio.** Il polinomio nullo ha $a_0 = 0 = 2 \cdot 0$. Se $p, q \in W_1$ (coefficienti $a_i$ e $b_i$, con $a_0 = 2a_2$ e $b_0 = 2b_2$), il termine noto di $\lambda p + \mu q$ è $\lambda a_0 + \mu b_0 = \lambda(2a_2) + \mu(2b_2) = 2(\lambda a_2 + \mu b_2)$, cioè il doppio del suo coefficiente di $x^2$.
+>
+> **b)** **Non è un sottospazio.** Contiene il nullo, ma cade la (A): $x$ ($a_1 = 1$, $a_2 = 0$) e $x^2$ ($a_1 = 0$, $a_2 = 1$) stanno in $W_2$, mentre $x + x^2$ ha $a_1a_2 = 1 \cdot 1 = 1 \neq 0$.
+>
+> **c)** **Sottospazio.** $p(-x) = a_0 - a_1x + a_2x^2$, ed è uguale a $p(x)$ per ogni $x$ se e solo se i coefficienti coincidono: $-a_1 = a_1$, cioè $a_1 = 0$. Quindi $W_3 = \{a_0 + a_2x^2\}$, descritto dalla condizione lineare omogenea $a_1 = 0$: la (C) si verifica come in a) ($\lambda \cdot 0 + \mu \cdot 0 = 0$).

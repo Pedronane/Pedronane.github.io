@@ -501,3 +501,191 @@ e usarlo per ritrovare che $\lim_{x \to 0^+}\sin\frac1x$ non esiste.
 > **Il caso di $\sin\frac1x$.** Con $f(t) = \sin t$ si ha $g(x) = \sin\frac1x$. Se $\lim_{x \to 0^+}\sin\frac1x$ esistesse e valesse $\ell \in \mathbb{R}$, per ($\Leftarrow$) varrebbe $\lim_{t \to +\infty}\sin t = \ell$, che non esiste (slide 28). Quindi nemmeno il primo esiste. (Un limite $\pm\infty$ è escluso subito: $|\sin\frac1x| \leq 1$.)
 >
 > **Controllo** con un limite noto: $f(t) = \frac{2t + 1}{t + 1} \to 2$ per $t \to +\infty$ (esercizio 7); allora $g(x) = \frac{2/x + 1}{1/x + 1} = \frac{2 + x}{1 + x}$ (moltiplico sopra e sotto per $x$) deve tendere a $2$ per $x \to 0^+$. Infatti $g(0{,}01) = \frac{2{,}01}{1{,}01} \approx 1{,}990$.
+
+### Lasciati dal prof il 14/10
+
+**Esercizio 23** (prof, 14/10, slide 19, <span class="src">pagina 19</span>). Scrivere le definizioni di $\displaystyle\lim_{x \to x_0^+} f(x) = -\infty$ e $\displaystyle\lim_{x \to x_0^-} f(x) = -\infty$, e verificarne una su un esempio.
+
+> [!example]- Soluzione
+> **Come si riconosce**: è la tabella "Tutte le definizioni in una frase" della teoria: si sceglie la riga di $L = -\infty$ e il mezzo intorno giusto per $x_0$.
+>
+> Il modello è la definizione del prof per $+\infty$ da destra: $\forall M > 0\ \exists \delta > 0$ t.c. $\forall x \in (x_0, x_0 + \delta) \cap D$, $f(x) > M$. Cambia solo la condizione finale, come dalla slide 15 alla 18: $f(x) > M$ diventa $f(x) < -M$.
+> $$
+> \lim_{x \to x_0^+} f(x) = -\infty \iff \forall M > 0\ \exists \delta > 0 \text{ t.c. } \forall x \in (x_0, x_0 + \delta) \cap D \quad f(x) < -M
+> $$
+> $$
+> \lim_{x \to x_0^-} f(x) = -\infty \iff \forall M > 0\ \exists \delta > 0 \text{ t.c. } \forall x \in (x_0 - \delta, x_0) \cap D \quad f(x) < -M
+> $$
+> La prima non è banale se $x_0$ è di accumulazione per $D \cap (x_0, +\infty)$, la seconda se lo è per $D \cap (-\infty, x_0)$.
+>
+> **Esempio**: $\lim_{x \to 1^-}\frac{1}{x - 1} = -\infty$. Fisso $M > 0$ e prendo $x \in (1 - \delta, 1)$, dove $x - 1 < 0$.
+> 1. Voglio $\frac{1}{x - 1} < -M$.
+> 2. Moltiplico per $x - 1 < 0$, il verso si gira: $1 > -M(x - 1)$.
+> 3. Divido per $-M < 0$, il verso si gira di nuovo: $-\frac1M < x - 1$.
+> 4. Quindi basta $1 - \frac1M < x < 1$: scelgo $\delta = \frac1M$. $\blacksquare$
+>
+> **Controllo.** $M = 100$, $\delta = 0{,}01$: $x = 0{,}995$ dà $\frac{1}{-0{,}005} = -200 < -100$.
+
+**Esercizio 24** (prof, 14/10, slide 28, <span class="src">pagina 37</span>). Trovare una successione $z_n \to +\infty$ tale che $\displaystyle\lim_{n \to +\infty}\sin(z_n)$ non esista. Concludere che $\displaystyle\lim_{x \to +\infty}\sin x$ non esiste.
+
+> [!example]- Soluzione
+> **Come si riconosce**: è l'altra forma del criterio della slide 28: invece di due successioni con limiti diversi, **una** successione su cui $f$ non ha limite. **Il metodo**: punti dove il seno gira su più valori, poi il teorema della slide 27 nel verso $\Rightarrow$.
+>
+> **La successione.** Prendo $z_n = \frac{n\pi}{2}$, $n \geq 1$: $z_n \to +\infty$ (costante positiva per $n$). I valori di $\sin z_n$, ricordando il cerchio:
+> - $n = 1$: $\sin\frac\pi2 = 1$; $n = 2$: $\sin\pi = 0$; $n = 3$: $\sin\frac{3\pi}{2} = -1$; $n = 4$: $\sin 2\pi = 0$;
+> - poi si ripete con periodo $4$, perché $z_{n+4} = z_n + 2\pi$.
+>
+> **$\sin z_n$ non ha limite.** Due sottosuccessioni:
+> 1. $n = 4k + 1$: $\sin\left(2k\pi + \frac\pi2\right) = 1$, costante, quindi tende a $1$;
+> 2. $n = 4k + 3$: $\sin\left(2k\pi + \frac{3\pi}{2}\right) = -1$, tende a $-1$;
+> 3. $1 \neq -1$: per il corollario sulle sottosuccessioni ([Limiti di successioni](/uni/analisi-1/limiti-di-successioni/), slide 26) $\sin z_n$ non ha limite.
+>
+> **Conclusione, per assurdo.** Se esistesse $\lim_{x \to +\infty}\sin x = \ell$ (con $\ell \in \mathbb{R} \cup \{\pm\infty\}$), per il teorema della slide 27 (verso $\Rightarrow$) ogni successione $x_n \to +\infty$ darebbe $\sin x_n \to \ell$; in particolare $\sin z_n \to \ell$. Ma $\sin z_n$ non ha limite: assurdo. Quindi $\lim_{x \to +\infty}\sin x$ non esiste. $\blacksquare$
+>
+> **Controllo**: i primi otto valori sono $1, 0, -1, 0, 1, 0, -1, 0$. La successione $z_n$ contiene le due del prof: $n$ pari dà $z_{2k} = k\pi$ (il suo $x_n$), $n = 4k + 1$ dà $\frac\pi2 + 2k\pi$ (il suo $y_n$).
+
+### IV tutoraggio, esercizio 3: con la definizione
+
+Dal IV tutoraggio, "Limiti di successioni e funzioni e continuità" (Barbon, Favari, Bellomo: <span class="src">tutoraggio 4, pagina 2</span>): «Calcolare i seguenti limiti di funzioni, se esistono; altrimenti dimostrare che non esistono.» Al 14/10 l'algebra dei limiti di funzioni, la continuità delle funzioni elementari e i limiti notevoli non sono ancora fatti: qui ci sono i limiti che si chiudono con la definizione (25-27) o con il legame con le successioni della slide 27 (28-30). Gli altri sono in fondo, con il testo e la lezione dopo cui si possono fare. Gli esercizi 1 e 2 del foglio (successioni) sono in [Calcolo dei limiti (esercizi)](/uni/analisi-1/calcolo-dei-limiti-esercizi/).
+
+**Esercizio 25** (tutoraggio 4, es. 3.1). Calcolare $\displaystyle\lim_{x \to 0^-}\frac{1}{2^x - 1}$.
+
+> [!example]- Soluzione
+> **Come si riconosce**: limite laterale in un punto dove il denominatore si annulla ($2^0 - 1 = 0$): ci si aspetta $\pm\infty$, e il segno lo dà il lato. **Il metodo**: capire il segno, poi la definizione di limite $-\infty$ da sinistra (esercizio 23), con $2^x$ crescente.
+>
+> **Dominio**: $2^x \neq 1 \iff x \neq 0$, quindi $D = \mathbb{R} \setminus \{0\}$, e $0$ è di accumulazione da sinistra.
+>
+> **Segno.** Per $x < 0$: $0 < 2^x < 2^0 = 1$ ($2^x$ crescente, base $2 > 1$), quindi $-1 < 2^x - 1 < 0$ e $f(x) < 0$. Candidato: $-\infty$.
+>
+> **Definizione.** Fisso $M > 0$; cerco $\delta$ con $\frac{1}{2^x - 1} < -M$ per ogni $x \in (-\delta, 0)$. Basta farlo per $M > 1$: se la condizione vale con una soglia più grande, vale anche con una più piccola.
+> 1. Moltiplico per $2^x - 1 < 0$, il verso si gira: $1 > -M(2^x - 1)$.
+> 2. Divido per $-M < 0$, il verso si gira: $2^x - 1 > -\frac1M$, cioè $2^x > 1 - \frac1M$.
+> 3. Con $M > 1$ il numero $1 - \frac1M$ sta in $(0, 1)$. Applico $\log_2$, crescente: $x > \log_2\left(1 - \frac1M\right)$, che è negativo.
+> 4. Scelgo $\delta = -\log_2\left(1 - \frac1M\right) = \log_2\frac{M}{M - 1} > 0$. Per $x \in (-\delta, 0)$ si ha $x > \log_2\left(1 - \frac1M\right)$, e rileggendo i passi all'indietro $f(x) < -M$. $\blacksquare$
+>
+> $$
+> \lim_{x \to 0^-}\frac{1}{2^x - 1} = -\infty
+> $$
+>
+> **Controllo.** $M = 10$: $\delta = \log_2\frac{10}{9} \approx 0{,}152$. $x = -0{,}1$ dà $2^{-0{,}1} \approx 0{,}933$ e $f(x) \approx -14{,}9 < -10$. Da destra, per $x > 0$, il denominatore è positivo e il limite è $+\infty$: il limite (non laterale) in $0$ non esiste.
+
+**Esercizio 26** (tutoraggio 4, es. 3.2). Calcolare $\displaystyle\lim_{x \to -2^-}\frac{1}{x^2 - 4}$.
+
+> [!example]- Soluzione
+> **Come si riconosce**: il denominatore si annulla in $-2$; il lato sinistro decide il segno. **Il metodo**: segno, poi definizione di limite $+\infty$ da sinistra.
+>
+> **Dominio**: $x^2 \neq 4$, cioè $x \neq \pm 2$; $-2$ è di accumulazione da sinistra.
+>
+> **Segno.** Per $x < -2$: $|x| = -x > 2$, quindi $x^2 = |x|^2 > 4$ e $x^2 - 4 > 0$. Candidato: $+\infty$.
+>
+> **Definizione.** Fisso $M > 0$; cerco $\delta$ con $\frac{1}{x^2 - 4} > M$ per $x \in (-2 - \delta, -2)$.
+> 1. $\frac{1}{x^2 - 4} > M \iff x^2 - 4 < \frac1M$ (reciproci di due positivi, il verso si gira).
+> 2. $\iff x^2 < 4 + \frac1M \iff |x| < \sqrt{4 + \frac1M}$ (radice di due positivi).
+> 3. Per $x \in (-2 - \delta, -2)$ vale $|x| = -x < 2 + \delta$.
+> 4. Quindi basta $2 + \delta \leq \sqrt{4 + \frac1M}$: scelgo $\delta = \sqrt{4 + \frac1M} - 2$, positivo perché $4 + \frac1M > 4$. $\blacksquare$
+>
+> $$
+> \lim_{x \to -2^-}\frac{1}{x^2 - 4} = +\infty
+> $$
+>
+> **Controllo.** $M = 100$: $\delta = \sqrt{4{,}01} - 2 \approx 0{,}0025$. $x = -2{,}002$ dà $x^2 - 4 \approx 0{,}008$ e $f(x) \approx 125 > 100$.
+
+**Esercizio 27** (tutoraggio 4, es. 3.3). Calcolare $\displaystyle\lim_{x \to 1^+}\frac{2^{x-1}}{x - 1}$.
+
+> [!example]- Soluzione
+> **Come si riconosce**: numeratore che va verso $2^0 = 1$, denominatore che va a $0^+$: $\left[\frac{1}{0^+}\right]$, candidato $+\infty$. **Il metodo**: la disequazione $f(x) > M$ non si risolve, ma si **minora** $f$ con una funzione più semplice (come nell'esercizio 9).
+>
+> **Dominio**: $x \neq 1$.
+> 1. Per $x > 1$: $x - 1 > 0$, quindi $2^{x-1} > 2^0 = 1$ ($2^t$ crescente).
+> 2. Divido per $x - 1 > 0$: $f(x) = \frac{2^{x-1}}{x - 1} > \frac{1}{x - 1}$.
+> 3. $\frac{1}{x - 1} > M \iff x - 1 < \frac1M$ (reciproci di positivi).
+> 4. Scelgo $\delta = \frac1M$: per $x \in (1, 1 + \delta)$ vale $f(x) > \frac{1}{x - 1} > M$. $\blacksquare$
+>
+> $$
+> \lim_{x \to 1^+}\frac{2^{x-1}}{x - 1} = +\infty
+> $$
+>
+> **Controllo.** $M = 100$, $\delta = 0{,}01$: $x = 1{,}005$ dà $\frac{2^{0{,}005}}{0{,}005} \approx 200{,}7 > 100$.
+
+### IV tutoraggio, esercizio 3: con le successioni
+
+Il metodo è quello della teoria, "Calcolare un limite con le successioni": si prende una successione **qualunque** $x_n \to x_0$ nel dominio, si calcola $\lim f(x_n)$ con l'algebra dei limiti di successioni, e per la slide 27 (verso $\Leftarrow$) quello è il limite di $f$.
+
+**Esercizio 28** (tutoraggio 4, es. 3.4). Calcolare $\displaystyle\lim_{x \to +\infty}\frac{-x^3 + 3x^2}{2x^2 + 4x^3}$.
+
+> [!example]- Soluzione
+> **Come si riconosce**: quoziente di polinomi per $x \to +\infty$, come i limiti di successioni razionali. **Il metodo**: slide 27 e "raccogli chi comanda" sulla successione.
+>
+> **Dominio**: $2x^2 + 4x^3 = 2x^2(1 + 2x) \neq 0 \iff x \neq 0,\ x \neq -\frac12$. È illimitato superiormente.
+>
+> Sia $(x_n)$ una qualunque successione in $D$ con $x_n \to +\infty$. Da un certo indice in poi $x_n > 0$ (definizione di limite $+\infty$ con $M = 1$), e lì posso dividere per $x_n^3$:
+> 1. $f(x_n) = \frac{x_n^3\left(-1 + \frac{3}{x_n}\right)}{x_n^3\left(\frac{2}{x_n} + 4\right)} = \frac{-1 + \frac{3}{x_n}}{\frac{2}{x_n} + 4}$ (raccolgo $x_n^3$ e semplifico).
+> 2. $\frac{1}{x_n} \to 0$, perché è il reciproco di una successione che tende a $+\infty$ (forme determinate, [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/)).
+> 3. Algebra dei limiti: $f(x_n) \to \frac{-1 + 0}{0 + 4} = -\frac14$.
+> 4. Il risultato non dipende dalla successione scelta: per la slide 27 (verso $\Leftarrow$), $\lim_{x \to +\infty} f(x) = -\frac14$. $\blacksquare$
+>
+> La retta $y = -\frac14$ è un asintoto orizzontale. **Controllo**: $f(10^4) \approx -0{,}24991$.
+
+**Esercizio 29** (tutoraggio 4, es. 3.5). Calcolare $\displaystyle\lim_{x \to -\infty}\frac{x^2 + e^x}{e^{2x} - 3x^2}$.
+
+> [!example]- Soluzione
+> **Come si riconosce**: per $x \to -\infty$ gli esponenziali vanno a $0$ e le potenze esplodono: comandano i $x^2$. **Il metodo**: slide 27 con una successione $x_n \to -\infty$; il mattone che serve è $e^{x_n} \to 0$.
+>
+> **Dominio**: $e^{2x} \neq 3x^2$. Per $x \leq -1$ si ha $e^{2x} \leq e^{-2} < 1 < 3 \leq 3x^2$, quindi la semiretta $(-\infty, -1]$ sta nel dominio: $D$ è illimitato inferiormente.
+>
+> **Il mattone.** $\lim_{x \to -\infty} e^x = 0$ è l'esercizio 8, verificato con la definizione. Per la slide 27 (verso $\Rightarrow$), ogni successione $x_n \to -\infty$ ha $e^{x_n} \to 0$.
+>
+> Sia $(x_n)$ una qualunque successione in $D$ con $x_n \to -\infty$; da un certo indice $x_n \leq -1$.
+> 1. $x_n^2 \to +\infty$ (prodotto di due successioni che tendono a $-\infty$), quindi $\frac{1}{x_n^2} \to 0$.
+> 2. $e^{x_n} \to 0$ (il mattone) e $e^{2x_n} = \left(e^{x_n}\right)^2 \to 0$ (prodotto).
+> 3. Divido sopra e sotto per $x_n^2 > 0$: $f(x_n) = \frac{1 + \frac{e^{x_n}}{x_n^2}}{\frac{e^{2x_n}}{x_n^2} - 3}$.
+> 4. $\frac{e^{x_n}}{x_n^2} = e^{x_n} \cdot \frac{1}{x_n^2} \to 0 \cdot 0 = 0$, e lo stesso per $\frac{e^{2x_n}}{x_n^2}$.
+> 5. Algebra dei limiti: $f(x_n) \to \frac{1 + 0}{0 - 3} = -\frac13$.
+> 6. Per la slide 27 (verso $\Leftarrow$): $\lim_{x \to -\infty} f(x) = -\frac13$. $\blacksquare$
+>
+> **Controllo**: $f(-50) \approx -0{,}33333$, perché $e^{-50} \approx 2 \cdot 10^{-22}$ non si vede.
+
+**Esercizio 30** (tutoraggio 4, es. 3.6). Calcolare $\displaystyle\lim_{x \to +\infty}\frac{x\sqrt x + 2^{-x}}{x^2 - x}$.
+
+> [!example]- Soluzione
+> **Come si riconosce**: sopra $x\sqrt x = x^{3/2}$ e un pezzo che va a $0$, sotto $x^2$: grado $\frac32$ contro $2$, candidato $0$. **Il metodo**: slide 27; i mattoni sono $\frac{1}{\sqrt{x_n}} \to 0$ e $2^{-x_n} \to 0$.
+>
+> **Dominio**: $x \geq 0$ (radice) e $x^2 - x = x(x - 1) \neq 0$: $D = (0, 1) \cup (1, +\infty)$, illimitato superiormente.
+>
+> **I mattoni**, ciascuno con la definizione e poi la slide 27 (verso $\Rightarrow$):
+> - $\lim_{x \to +\infty}\sqrt x = +\infty$: $\sqrt x > M \iff x > M^2$ (quadrato di positivi), $K = M^2$. Quindi $\sqrt{x_n} \to +\infty$ e $\frac{1}{\sqrt{x_n}} \to 0$.
+> - $\lim_{x \to +\infty}2^{-x} = 0$: $2^{-x} < \varepsilon \iff -x < \log_2\varepsilon$ ($\log_2$ crescente) $\iff x > -\log_2\varepsilon$, e $K = \max\{1, -\log_2\varepsilon\}$. Quindi $2^{-x_n} \to 0$.
+>
+> Sia $(x_n)$ una qualunque successione in $D$ con $x_n \to +\infty$; da un certo indice $x_n > 1$.
+> 1. Divido sopra e sotto per $x_n^2$: $f(x_n) = \frac{\frac{x_n\sqrt{x_n}}{x_n^2} + \frac{2^{-x_n}}{x_n^2}}{1 - \frac{1}{x_n}} = \frac{\frac{1}{\sqrt{x_n}} + \frac{2^{-x_n}}{x_n^2}}{1 - \frac{1}{x_n}}$ (perché $\frac{x\sqrt x}{x^2} = \frac{\sqrt x}{x} = \frac{1}{\sqrt x}$).
+> 2. $\frac{1}{\sqrt{x_n}} \to 0$; $\frac{2^{-x_n}}{x_n^2} = 2^{-x_n} \cdot \frac{1}{x_n} \cdot \frac{1}{x_n} \to 0$; $\frac{1}{x_n} \to 0$.
+> 3. Algebra dei limiti: $f(x_n) \to \frac{0 + 0}{1 - 0} = 0$.
+> 4. Per la slide 27: $\lim_{x \to +\infty} f(x) = 0$. $\blacksquare$
+>
+> **Controllo**: $f(10^4) \approx 0{,}0100$, circa $\frac{1}{\sqrt{10^4}} = 0{,}01$.
+
+### IV tutoraggio: da svolgere più avanti
+
+Questi richiedono teoria non ancora fatta al 14/10. Il testo è qui per non perderlo; la soluzione arriva dopo la lezione indicata. Nel foglio la numerazione dell'esercizio 3 salta il (9).
+
+**Da svolgere dopo la lezione sui limiti notevoli** ($\frac{\sin x}{x}$, $\frac{1 - \cos x}{x^2}$, $\frac{e^x - 1}{x}$, $\frac{\log(1 + x)}{x}$, sezione 4.6):
+- tutoraggio 4, es. 3.7: $\displaystyle\lim_{x \to 0}\frac{(1 - \cos x)^2}{2x^3\sin x}$
+- tutoraggio 4, es. 3.8: $\displaystyle\lim_{x \to 0}\frac{e^{-2x^2} - 1}{1 - \cos(2x)}$
+- tutoraggio 4, es. 3.11: $\displaystyle\lim_{x \to +\infty}\left(1 + \frac{x - 5}{25 - x^2}\right)^x$
+- tutoraggio 4, es. 3.13: $\displaystyle\lim_{x \to 0}\frac{e^x - e^{-x}}{\tan x}$
+- tutoraggio 4, es. 3.15: $\displaystyle\lim_{x \to 1}\frac{\sin(\pi x)}{x - 1}$
+- tutoraggio 4, es. 4.1, al variare di $\alpha > 0$: $\displaystyle\lim_{x \to 0^+}\frac{\sqrt{\sin(\pi x^\alpha)}}{1 - \cos(3\sqrt x)}$
+
+**Da svolgere dopo la lezione sui limiti delle funzioni elementari e la gerarchia degli infiniti per funzioni** (sezione 4.4, slide 43):
+- tutoraggio 4, es. 3.10: $\displaystyle\lim_{x \to 0^+}\sin x\,\log\left(\frac1x\right)$
+- tutoraggio 4, es. 3.12: $\displaystyle\lim_{x \to 0^+}\left(\frac{x^5}{x + 7}\right)^{x^3 + x}$
+- tutoraggio 4, es. 3.14: $\displaystyle\lim_{x \to 1^+}\left(\log^6(x - 1)\right)^{x - 1}$
+- tutoraggio 4, es. 4.2, al variare di $\alpha > 0$: $\displaystyle\lim_{x \to +\infty}\frac{2^x + 3^{\alpha x} + x^{10}}{e^x + 100x^2}$
+
+**Da svolgere dopo la lezione sulle funzioni continue** (continuità delle funzioni elementari e classificazione dei punti di discontinuità, capitolo 4 dopo i limiti notevoli). Esercizio 5 del foglio: «Dopo aver provato che le seguenti funzioni sono definite su tutta la retta reale, studiarne la continuità e classificarne gli eventuali punti di non continuità.»
+- tutoraggio 4, es. 5.1: $f(x) = \dfrac{\sqrt{1 - 2x + x^4}}{x + 1}$ per $x \neq -1$, $f(-1) = 2$
+- tutoraggio 4, es. 5.2: $f(x) = \dfrac{\sin(x^2 - 2x + 1)}{\log^2(x^2)}$ per $x \neq \pm 1$, $f(\pm 1) = \frac14$
+
+Esercizio 6 del foglio: «Determinare l'insieme di definizione delle seguenti funzioni e studiarne la continuità, classificando gli eventuali punti di non continuità, al variare del parametro reale positivo $\alpha$.»
+- tutoraggio 4, es. 6.1: $f(x) = \frac1\pi\arctan\frac1x$ per $x > 0$, $f(x) = \alpha(x + 1)$ per $x \leq 0$
+- tutoraggio 4, es. 6.2: $f(x) = \dfrac{\sin(\alpha\log(1 - \alpha x))}{x(\cos(2x) - 2)}$ per $x < 0$, $f(x) = \sqrt{\vert 2 - x - 2x^2\vert}$ per $x \geq 0$

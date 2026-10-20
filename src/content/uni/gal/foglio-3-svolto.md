@@ -12,7 +12,7 @@ lezioni: []
 ordine: 999
 ---
 
-Il <span class="src">foglio 3</span> del tutorato (domande 3.1-3.6 ed esercizi 3.7-3.8 a <span class="src">p. 1</span>, esercizi 3.9-3.12 a <span class="src">p. 2</span>), argomento di [Geometria e Algebra Lineare](/uni/gal/). A lezione queste cose sono la L5 (5/10) e la L6 (6/10), con l'esercitazione 3 del 12/10; la teoria completa sta in [Matrici e operazioni](/uni/gal/matrici-e-operazioni/), [Nucleo e struttura delle soluzioni](/uni/gal/nucleo-e-struttura-delle-soluzioni/) e [Matrici invertibili](/uni/gal/matrici-invertibili/). Si appoggia su [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/) (operazioni elementari, rref) e [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/). Definizioni e notazione vengono dal capitolo 3 della <span class="src">dispensa</span>: prodotto <span class="src">p. 66-68</span>, invertibilità <span class="src">p. 69-71</span>, matrici elementari <span class="src">p. 71-73</span>, rango e inversa <span class="src">p. 73-76</span>, struttura delle soluzioni <span class="src">p. 77-79</span> (numeri di pagina del PDF).
+Il <span class="src">foglio 3</span> del tutorato (domande 3.1-3.6 ed esercizi 3.7-3.8 a <span class="src">p. 1</span>, esercizi 3.9-3.12 a <span class="src">p. 2</span>), argomento di [Geometria e Algebra Lineare](/uni/gal/). <span class="src">Soluzioni ufficiali</span> da Moodle: una pagina, solo l'esercizio 3.11, e coincide con lo svolgimento qui sotto. La versione aggiornata del foglio indica da dove vengono gli esercizi: 3.8 e 3.10 sono CC 6.4 e CC 6.11, 3.9 è della prova intermedia 2017, 3.12 della prova intermedia 2016. A lezione queste cose sono la L5 (5/10) e la L6 (6/10), con l'esercitazione 3 del 12/10; la teoria completa sta in [Matrici e operazioni](/uni/gal/matrici-e-operazioni/), [Nucleo e struttura delle soluzioni](/uni/gal/nucleo-e-struttura-delle-soluzioni/) e [Matrici invertibili](/uni/gal/matrici-invertibili/). Si appoggia su [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/) (operazioni elementari, rref) e [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/). Definizioni e notazione vengono dal capitolo 3 della <span class="src">dispensa</span>: prodotto <span class="src">p. 66-68</span>, invertibilità <span class="src">p. 69-71</span>, matrici elementari <span class="src">p. 71-73</span>, rango e inversa <span class="src">p. 73-76</span>, struttura delle soluzioni <span class="src">p. 77-79</span> (numeri di pagina del PDF).
 
 Come usarla: prova da solo, apri l'**indizio** se ti blocchi, la **soluzione** solo alla fine. Ogni conto è stato ricontrollato.
 
@@ -213,7 +213,7 @@ Si calcolino $AB$, $BA$, $A^2$ e $A^3$ ($A^n = AA \cdots A$, $n$ volte).
 >
 > **Verifica**: $A^3 = A \cdot A^2$ deve dare lo stesso; $A \cdot A^2$ ha colonna 3 uguale ad $A \cdot (-1, 0, 0) = (0, 0, 0)$ e le altre colonne nulle. Coincide.
 
-### Esercizio 3.8
+### Esercizio 3.8 (CC 6.4)
 
 Determinare, se esiste, l'inversa della matrice
 $$
@@ -254,7 +254,7 @@ Nel caso l'inversa esista, fare la verifica effettuando il prodotto $AA^{-1}$.
 >
 > $A \cdot 4A^{-1} = 4I_3$, quindi $AA^{-1} = I_3$.
 
-### Esercizio 3.9
+### Esercizio 3.9 (prova intermedia 2017)
 
 Si consideri la matrice $A_k$, dipendente dal parametro reale $k$:
 $$
@@ -344,7 +344,7 @@ $$
 > | $k = 1$ | parallele | $3$ | $4$ | nessuna |
 > | $1$, $b_3 = 2$ | coincidono | $3$ | $3$ | infinite |
 
-### Esercizio 3.10
+### Esercizio 3.10 (CC 6.11)
 
 Sia $A$ la matrice reale
 $$
@@ -426,9 +426,11 @@ descrivendo l'insieme delle sue soluzioni come somma di una soluzione particolar
 > $$
 > **Soluzione particolare** $\vec{x}_0 = (1, 0, 0, 0)$ (variabili libere a zero). **Soluzioni dell'omogeneo associato**: tutte le combinazioni $t(3, 0, 1, 0) + s(1, 1, 0, 2)$. Con $w = s$ invece di $2s$ il secondo vettore sarebbe $(\frac{1}{2}, \frac{1}{2}, 0, 1)$: stesso insieme, scritto in un altro modo.
 >
+> Le <span class="src">soluzioni ufficiali</span> riducono in un altro ordine ($E_{31}(\frac12)$, $E_{21}(-\frac12)$, $E_{32}(3)$, poi $D_1(\frac12)$ e $D_2(-1)$, senza scambiare righe) e scrivono il risultato con $z$ e $w$ come parametri: $(1, 0, 0, 0) + z(3, 0, 1, 0) + w(\frac12, \frac12, 0, 1)$. È lo stesso insieme: il secondo vettore è la metà di $(1, 1, 0, 2)$.
+>
 > **Verifica.** $\vec{x}_0$ nel sistema: $2 = 2$; $1 = 1$; $-1 = -1$. $(3, 0, 1, 0)$ nell'omogeneo: $6 - 6 = 0$; $3 - 3 = 0$; $-3 + 3 = 0$. $(1, 1, 0, 2)$ nell'omogeneo: $2 - 2 = 0$; $1 - 1 = 0$; $-1 + 3 - 2 = 0$. Per la 3.6, allora $\vec{x}_0 + t(\ldots) + s(\ldots)$ risolve il sistema per ogni $t, s$.
 
-### Esercizio 3.12
+### Esercizio 3.12 (prova intermedia 2016)
 
 Si consideri il sistema lineare
 $$

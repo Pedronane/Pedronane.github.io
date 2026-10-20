@@ -8,8 +8,9 @@ hub: false
 tipo: esercizi
 stato: in corso
 data: 2026-10-06
-lezioni: []
-ordine: 9
+lezioni:
+  - 13 ott
+ordine: 13
 ---
 
 Esercizi tipo esame di [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/), dove stanno teoria, metodo ed esempi svolti a lezione. Testo in chiaro, soluzione chiusa: prima provaci da solo.
@@ -213,12 +214,20 @@ $$
 >
 > *Verifica*: $n = 100$ dà $-0{,}49994$.
 >
+> *Il tutor il 13/10* (<span class="src">esercitazione 4, p. 8</span>, esercizio 2.3) lo scrive con $n \to -\infty$ e trova $\frac12$. Sulla slide 60 è $n \to +\infty$, e per una successione l'indice va solo a $+\infty$: il risultato giusto è $-\frac12$. Il segno cambia per via di $\sqrt{n^2} = |n|$: con $n$ negativo il tutor scrive $|n| = -n$ e il $-n$ al numeratore diventa $+$. Il conto è giusto, il testo no.
+>
 > **c)** *Tipo*: $\left[\frac\infty\infty\right]$ con esponenziali. *Metodo*: raccogli chi comanda; fra esponenziali comanda la base più grande, $3^n$ al denominatore.
 > 1. $2^n + 3^n = 3^n\left(\frac{2^n}{3^n} + 1\right) = 3^n\left(\left(\frac23\right)^n + 1\right)$.
 > 2. $\frac{5^n}{3^n\left(\left(\frac23\right)^n + 1\right)} = \frac{\left(\frac53\right)^n}{\left(\frac23\right)^n + 1}$.
 > 3. $\left(\frac53\right)^n \to +\infty$ (base $> 1$), $\left(\frac23\right)^n \to 0$ (base $< 1$): forma $\left[\frac{+\infty}{0 + 1}\right] = +\infty$.
 >
 > *Verifica*: $n = 20$ dà circa $27\,343$.
+>
+> *La seconda via del tutor* (<span class="src">esercitazione 4, p. 8</span>, "modo 2"): il **criterio della radice**, che a lezione non è stato fatto. Dice: se $a_n > 0$ e $\sqrt[n]{a_n} \to L$, allora $L > 1$ dà $a_n \to +\infty$ e $L < 1$ dà $a_n \to 0$ (come il criterio del rapporto). Qui
+> $$
+> \sqrt[n]{\frac{5^n}{3^n\left(\left(\frac23\right)^n + 1\right)}} = \frac53 \cdot \frac{1}{\sqrt[n]{\left(\frac23\right)^n + 1}} \to \frac53 > 1
+> $$
+> perché $1 \leq \sqrt[n]{\left(\frac23\right)^n + 1} \leq \sqrt[n]{2}$ e $\sqrt[n]2 = 2^{1/n} \to 2^0 = 1$ (carabinieri). Il tutor lo scrive accanto al criterio del rapporto, e scrive anche "se $\frac{a_{n+1}}{a_n} \to L$ allora $\sqrt[n]{a_n} \to L$": è un altro teorema, non fatto a lezione. All'esame la via sicura è la prima, che usa solo strumenti del corso.
 
 **Esercizio 3** (slide 60, esercizi 2, 4, 6). Calcolare
 $$
@@ -441,3 +450,124 @@ $$
 > *Il senso*: la base si avvicina a $1$ come $\frac{1}{n^\alpha}$, l'esponente cresce come $n$. Se la base si avvicina a $1$ più in fretta di quanto l'esponente cresca ($\alpha > 1$) vince la base; se più lentamente ($\alpha < 1$) vince l'esponente; con $\alpha = 1$ pareggiano, e il pareggio vale $e$.
 >
 > *Verifica*: $n = 10\,000$ dà circa $1{,}6 \cdot 10^{43}$ con $\alpha = \frac12$, $2{,}71815$ con $\alpha = 1$, $1{,}0001$ con $\alpha = 2$.
+
+## IV tutoraggio, esercizi 1 e 2
+
+Dal IV tutoraggio, "Limiti di successioni e funzioni e continuità" (Barbon, Favari, Bellomo: <span class="src">tutoraggio 4, pagina 1</span>), senza soluzioni. Consegna dell'esercizio 1: «Calcolare i seguenti limiti di successioni, se esistono; altrimenti dimostrare che non esistono.» Gli esercizi 3-6 del foglio (limiti di funzioni e continuità) sono in [Limiti di funzioni (esercizi)](/uni/analisi-1/limiti-di-funzioni-esercizi/). Il logaritmo si tratta con le stime (L1)-(L3) di [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/), perché la continuità del logaritmo non è ancora fatta.
+
+**Esercizio 12** (tutoraggio 4, es. 1.1). Calcolare $\displaystyle\lim \frac{3n^3 + 3^n + \log n}{\log^6 n + 2^{2n} + n^5}$.
+
+> [!example]- Soluzione
+> *Tipo*: $\left[\frac\infty\infty\right]$ fra somme di infiniti diversi. *Come lo riconosco*: ci sono potenze, esponenziali e logaritmi insieme: si raccoglie chi comanda con la gerarchia. *Il trucco*: $2^{2n} = (2^2)^n = 4^n$, quindi sotto comanda una base $4$.
+> 1. Sopra comanda $3^n$: $n^3 \ll 3^n$ e $\log n \ll n \ll 3^n$ (gerarchia).
+> 2. Sotto comanda $4^n$: $n^5 \ll 4^n$, e $\log^6 n = (\log n)^6 \ll 4^n$ perché $\frac{(\log n)^6}{4^n} = \left(\frac{\log n}{n^{1/6}}\right)^6 \cdot \frac{n}{4^n} \to 0^6 \cdot 0 = 0$ (gerarchia e potenza).
+> 3. Raccolgo:
+> $$
+> \frac{3^n\left(1 + \frac{3n^3}{3^n} + \frac{\log n}{3^n}\right)}{4^n\left(1 + \frac{\log^6 n}{4^n} + \frac{n^5}{4^n}\right)} = \left(\frac34\right)^n \cdot \frac{1 + \frac{3n^3}{3^n} + \frac{\log n}{3^n}}{1 + \frac{\log^6 n}{4^n} + \frac{n^5}{4^n}}
+> $$
+> 4. La frazione tende a $\frac{1 + 0 + 0}{1 + 0 + 0} = 1$; $\left(\frac34\right)^n \to 0$ (base in $(0, 1)$).
+> 5. Il limite è $0 \cdot 1 = 0$.
+>
+> *Verifica*: $n = 30$ dà $1{,}8 \cdot 10^{-4}$, $n = 60$ dà $3{,}2 \cdot 10^{-8}$; $\left(\frac34\right)^{30} \approx 1{,}8 \cdot 10^{-4}$.
+
+**Esercizio 13** (tutoraggio 4, es. 1.2). Calcolare $\displaystyle\lim \frac{n^2 + \log^3 n}{n\log n + 1}$.
+
+> [!example]- Soluzione
+> *Tipo*: $\left[\frac\infty\infty\right]$; sopra comanda $n^2$, sotto $n\log n$. *Metodo*: raccogli e confronta con la gerarchia.
+> 1. Sopra: $\frac{\log^3 n}{n^2} = \left(\frac{\log n}{n^{2/3}}\right)^3 \to 0$, quindi $n^2 + \log^3 n = n^2\left(1 + \frac{\log^3 n}{n^2}\right)$.
+> 2. Sotto, per $n \geq 2$ (dove $\log n > 0$): $n\log n + 1 = n\log n\left(1 + \frac{1}{n\log n}\right)$, e $\frac{1}{n\log n} \to 0$.
+> 3. $\frac{n^2}{n\log n} = \frac{n}{\log n} \to +\infty$: è il reciproco di $\frac{\log n}{n} \to 0^+$ (gerarchia, termini positivi).
+> 4. Il limite è $[+\infty \cdot 1] = +\infty$.
+>
+> *Verifica*: $n = 100$ dà $21{,}9$, $n = 10^4$ dà $1086$: cresce come $\frac{n}{\log n}$ ($\frac{10^4}{\log 10^4} \approx 1086$).
+
+**Esercizio 14** (tutoraggio 4, es. 1.3). Calcolare $\displaystyle\lim \sqrt[n]{n}$.
+
+> [!example]- Soluzione
+> *Tipo*: $[\infty^0]$: la base $n \to +\infty$, l'esponente $\frac1n \to 0$. *Metodo*: riscrivere con $e$, $a^b = e^{b\log a}$ (slide 54).
+> 1. $\sqrt[n]{n} = n^{1/n} = e^{\frac{\log n}{n}}$.
+> 2. $\frac{\log n}{n} \to 0$ (gerarchia).
+> 3. Potenza dei limiti con base costante $e > 0$ (<span class="src">7/10, slide 48</span>): $e^{\frac{\log n}{n}} \to e^0 = 1$.
+>
+> Il limite è $1$. Un'altra strada, senza $e$, con Newton e i carabinieri, è al passo 4 dell'esercizio 3.5 in [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/). *Verifica*: $n = 100$ dà $1{,}047$, $n = 10^4$ dà $1{,}0009$.
+
+**Esercizio 15** (tutoraggio 4, es. 1.4). Calcolare $\displaystyle\lim \frac{\log(n + 2)}{(n + 1)^{n+1}}$.
+
+> [!example]- Soluzione
+> *Tipo*: $\left[\frac\infty\infty\right]$ fra un logaritmo e una potenza con esponente variabile, che corre molto di più. *Metodo*: stringere con i carabinieri, usando (L3) per il logaritmo.
+> 1. Per $n \geq 0$ il numeratore è positivo ($n + 2 > 1$), quindi $f(n) > 0$.
+> 2. (L3) con $y = n + 2 \geq 1$: $\log(n + 2) \leq (n + 2) - 1 = n + 1$.
+> 3. Allora $f(n) \leq \frac{n + 1}{(n + 1)^{n+1}} = \frac{1}{(n + 1)^n}$ (semplifico un fattore $n + 1$).
+> 4. Per $n \geq 1$: $(n + 1)^n \geq n + 1$, quindi $\frac{1}{(n + 1)^n} \leq \frac{1}{n + 1} \to 0$.
+> 5. $0 < f(n) \leq \frac{1}{n + 1}$: per i carabinieri $f(n) \to 0$.
+>
+> *Verifica*: $n = 5$ dà $\frac{\log 7}{6^6} \approx 4{,}2 \cdot 10^{-5}$.
+
+**Esercizio 16** (tutoraggio 4, es. 1.5). Calcolare $\displaystyle\lim \frac{\log(n + 1)}{\log n}$.
+
+> [!example]- Soluzione
+> *Tipo*: $\left[\frac\infty\infty\right]$ fra due logaritmi quasi uguali. *Come lo riconosco*: $n + 1$ e $n$ "si somigliano", e il logaritmo trasforma un prodotto in una somma: si separa il pezzo uguale. *Metodo*: proprietà del logaritmo, poi (L2).
+> 1. $\log(n + 1) = \log\left(n\left(1 + \frac1n\right)\right) = \log n + \log\left(1 + \frac1n\right)$ ($\log(ab) = \log a + \log b$).
+> 2. Per $n \geq 2$ divido per $\log n > 0$: $\frac{\log(n+1)}{\log n} = 1 + \frac{\log\left(1 + \frac1n\right)}{\log n}$.
+> 3. (L2): $0 < \log\left(1 + \frac1n\right) < \frac1n$. Quindi $0 < \frac{\log(1 + 1/n)}{\log n} < \frac{1}{n\log n} \to 0$: per i carabinieri il secondo addendo tende a $0$.
+> 4. Il limite è $1 + 0 = 1$.
+>
+> *Verifica*: $n = 100$ dà $1{,}0022$.
+
+**Esercizio 17** (tutoraggio 4, es. 1.6). Calcolare $\displaystyle\lim \frac{3^n}{n!\,\sqrt[n]{n}}$.
+
+> [!example]- Soluzione
+> *Tipo*: esponenziale contro fattoriale, con un fattore $\sqrt[n]n$ che tende a $1$. *Metodo*: separare il fattore, poi gerarchia.
+> 1. $\frac{3^n}{n!\sqrt[n]n} = \frac{3^n}{n!} \cdot \frac{1}{\sqrt[n]n}$.
+> 2. $\frac{3^n}{n!} \to 0$ (gerarchia, $a^n \ll n!$).
+> 3. $\sqrt[n]n \to 1$ (esercizio 14), quindi $\frac{1}{\sqrt[n]n} \to 1$.
+> 4. Algebra dei limiti: $0 \cdot 1 = 0$.
+>
+> Anche senza l'esercizio 14: $\sqrt[n]n \geq 1$ per $n \geq 1$, quindi $0 < f(n) \leq \frac{3^n}{n!}$, e i carabinieri. *Verifica*: $n = 20$ dà $1{,}2 \cdot 10^{-9}$.
+
+**Esercizio 18** (tutoraggio 4, es. 1.7). Calcolare $\displaystyle\lim \frac{(n!)^2}{2^{n^2}}$.
+
+> [!example]- Soluzione
+> *Tipo*: fattoriali contro un esponenziale con esponente $n^2$, che la gerarchia non elenca. *Come lo riconosco*: termini positivi con $n!$: nel rapporto $\frac{a_{n+1}}{a_n}$ i fattoriali si semplificano. *Metodo*: criterio del rapporto.
+> 1. $\frac{a_{n+1}}{a_n} = \frac{\big((n+1)!\big)^2}{(n!)^2} \cdot \frac{2^{n^2}}{2^{(n+1)^2}}$ (raggruppo).
+> 2. $\frac{(n+1)!}{n!} = n + 1$, quindi il primo fattore è $(n + 1)^2$.
+> 3. $(n + 1)^2 - n^2 = 2n + 1$, quindi $\frac{2^{n^2}}{2^{(n+1)^2}} = 2^{-(2n+1)} = \frac{1}{2 \cdot 4^n}$.
+> 4. $\frac{a_{n+1}}{a_n} = \frac{(n + 1)^2}{2 \cdot 4^n} = \frac12 \left(1 + \frac1n\right)^2 \frac{n^2}{4^n} \to \frac12 \cdot 1 \cdot 0 = 0$ (gerarchia, $n^2 \ll 4^n$).
+> 5. $L = 0 < 1$: per il criterio del rapporto $a_n \to 0$.
+>
+> *Verifica*: $n = 10$ dà $\frac{(10!)^2}{2^{100}} \approx 1{,}0 \cdot 10^{-17}$.
+
+**Esercizio 19** (tutoraggio 4, es. 1.8). Calcolare $\displaystyle\lim \left(n^{\sqrt n} - 2^n\right)$.
+
+> [!example]- Soluzione
+> È l'esercizio 3.4 del tutoraggio del 13/10, svolto per intero in [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/). In breve: $n^{\sqrt n} = e^{\sqrt n\log n}$, $2^n = e^{n\log 2}$; raccolgo $2^n$ e l'esponente che resta è $n\left(\frac{\log n}{\sqrt n} - \log 2\right) \to -\infty$, quindi $2^n\left(e^{(\to -\infty)} - 1\right) \to +\infty \cdot (-1) = -\infty$.
+
+**Esercizio 20** (tutoraggio 4, es. 1.9). Calcolare $\displaystyle\lim \frac{\frac{3}{n^2} - 2^{-n}}{\log\left(1 - \frac{2}{n^2}\right) + \frac{3}{n^3}}$.
+
+Da svolgere dopo la lezione sui limiti notevoli (sezione 4.6 dei limiti di funzioni): serve sapere come va a $0$ il logaritmo $\log\left(1 - \frac{2}{n^2}\right)$, e le stime (L1)-(L3) danno solo una delle due disuguaglianze che servono.
+
+**Esercizio 21** (tutoraggio 4, es. 2). Calcolare al variare del parametro reale $\alpha > 0$ il limite $\displaystyle\lim \frac{3n^{2\alpha} - 2n + 1}{2n - 5n^2 + 3}$.
+
+> [!example]- Soluzione
+> *Tipo*: quoziente di "polinomi" con un esponente che dipende da $\alpha$. *Come lo riconosco*: sotto comanda sempre $-5n^2$; sopra chi comanda dipende dal confronto fra $2\alpha$ e $1$. *Metodo*: casi sul numeratore, poi raccogli chi comanda.
+>
+> **Denominatore**, per ogni $\alpha$: $2n - 5n^2 + 3 = n^2\left(-5 + \frac2n + \frac{3}{n^2}\right)$, e la parentesi tende a $-5$.
+>
+> **Caso $2\alpha > 1$, cioè $\alpha > \frac12$.** Sopra comanda $n^{2\alpha}$:
+> 1. $3n^{2\alpha} - 2n + 1 = n^{2\alpha}\left(3 - \frac{2}{n^{2\alpha - 1}} + \frac{1}{n^{2\alpha}}\right)$, e la parentesi tende a $3$ (perché $2\alpha - 1 > 0$).
+> 2. $f(n) = n^{2\alpha - 2} \cdot \frac{3 - \frac{2}{n^{2\alpha-1}} + \frac{1}{n^{2\alpha}}}{-5 + \frac2n + \frac{3}{n^2}}$, e la frazione tende a $-\frac35$.
+> 3. Il fattore $n^{2\alpha - 2}$ decide:
+>    - $\frac12 < \alpha < 1$: $2\alpha - 2 < 0$, $n^{2\alpha - 2} \to 0$, il limite è $0$;
+>    - $\alpha = 1$: $n^0 = 1$, il limite è $-\frac35$;
+>    - $\alpha > 1$: $n^{2\alpha - 2} \to +\infty$, il limite è $[+\infty \cdot (-\frac35)] = -\infty$.
+>
+> **Caso $\alpha = \frac12$.** $n^{2\alpha} = n$, quindi il numeratore è $3n - 2n + 1 = n + 1$, e $f(n) = \frac{n\left(1 + \frac1n\right)}{n^2(\dots)} = \frac1n \cdot \frac{1 + \frac1n}{-5 + \frac2n + \frac{3}{n^2}} \to 0 \cdot \left(-\frac15\right) = 0$.
+>
+> **Caso $0 < \alpha < \frac12$.** Sopra comanda $-2n$: $3n^{2\alpha} - 2n + 1 = n\left(-2 + \frac{3}{n^{1 - 2\alpha}} + \frac1n\right)$, e $f(n) = \frac1n \cdot \frac{-2 + \dots}{-5 + \dots} \to 0 \cdot \frac25 = 0$.
+>
+> **Riassunto**:
+> $$
+> \lim \frac{3n^{2\alpha} - 2n + 1}{2n - 5n^2 + 3} = \begin{cases} 0 & 0 < \alpha < 1 \\ -\frac35 & \alpha = 1 \\ -\infty & \alpha > 1 \end{cases}
+> $$
+>
+> *Verifica* con $n = 10^4$: $\alpha = \frac14$ dà $4 \cdot 10^{-5}$, $\alpha = \frac34$ dà $-0{,}006$, $\alpha = 1$ dà $-0{,}59998$, $\alpha = \frac32$ dà $-6000$ (circa $-\frac35 n$).

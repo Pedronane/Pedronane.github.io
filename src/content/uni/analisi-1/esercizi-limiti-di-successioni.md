@@ -49,7 +49,7 @@ sin, cos, arctan, (-1)^n diviso un infinito     limitata per infinitesima       
 
 ### Il logaritmo senza continuità
 
-La regola "se $x_n \to x > 0$ allora $\log x_n \to \log x$" è la **continuità del logaritmo**: arriva con la sezione 4.4 dei limiti di funzioni, dopo la slide 28 dove si sono fermate le lezioni del 14/10 ([Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/)). Fino ad allora un logaritmo si tratta con tre fatti già disponibili.
+La regola "se $x_n \to x > 0$ allora $\log x_n \to \log x$" è la **continuità del logaritmo**: arriva con la sezione 4.4 dei limiti di funzioni, dopo la slide 29 dove si è fermata la lezione del 14/10 ([Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/)). Fino ad allora un logaritmo si tratta con tre fatti già disponibili.
 
 **(L1) $\log$ è crescente**: $0 < x < y \Rightarrow \log x < \log y$ ([Funzioni elementari](/uni/analisi-1/funzioni-elementari/)). Serve a stringere: se l'argomento sta fra due quantità, il logaritmo sta fra i loro logaritmi. Per esempio $2^n < 2^n + 1 \leq 2^{n+1}$ dà $n\log 2 < \log(2^n + 1) \leq (n + 1)\log 2$.
 
@@ -156,6 +156,8 @@ Il foglio 2 del 2020 ha gli stessi cinque esercizi, ma con $n \in \mathbb{N}_+ =
 > **Strettamente crescente**.
 >
 > *Verifica*: $a_1 = 3$, $a_2 = \frac92$, $a_3 = \frac{25}{3}$.
+>
+> È anche l'esercizio 5.1 del tutor del 13/10 (<span class="src">esercitazione 4, p. 14</span>, "confronti", "non completato a lezione"). Il tutor arriva a $2^n > \frac{1}{n^2 + n}$, osserva che "non si può risolvere algebricamente", e chiude con un confronto fra due successioni monotone: $2^n$ è crescente, $\frac{1}{n^2 + n}$ è decrescente, quindi per $n \geq 1$ vale $2^n \geq 2^1 = 2 > \frac12 = \frac{1}{1^2 + 1} \geq \frac{1}{n^2 + n}$. È il passo 5 qui sopra.
 
 ### 2.4) $a_n = n + \dfrac1n$, $n \geq 1$
 
@@ -802,7 +804,7 @@ A sinistra il 3.3: $\frac{\log(2^n + 1)}{n}$ sta fra la costante $\log 2$ e $\le
 
 ## Tutoraggio del 13/10
 
-Gli esercizi del tutoraggio del 13/10, dai testi sul tuo quaderno degli esercizi (il foglio non è nel vault: quando arriva da Moodle, va in `20 - Source Materials/` e linkato qui). I numeri sono quelli del quaderno. Gli esercizi 1.1 e 1.3 (sup e inf) sono in [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/), esercizi 13 e 14. Gli esercizi 2.1, 2.2, 2.3 e 2.5 sono quelli della slide 60 del prof (<span class="src">7/10, slide 60</span>), svolti in [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/) (esercizi 2 e 3).
+Gli esercizi del tutoraggio del 13/10, dal PDF del tutor (<span class="src">esercitazione 4</span>, 14 pagine scritte a mano, "menu del giorno": sup e inf, limiti di successioni delle slide, del foglio del tutorato e "nuovi", confronti, limiti con parametro) e dal tuo quaderno degli esercizi. I numeri sono quelli del tutor. Gli esercizi 1.1-1.4 (sup e inf) sono in [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/), esercizi 13-14c. Gli esercizi 2.1-2.5 sono i sei della slide 60 del prof (<span class="src">7/10, slide 60</span>) tranne il 6, svolti in [Calcolo dei limiti (esercizi)](/uni/analisi-1/calcolo-dei-limiti-esercizi/) (esercizi 2 e 3), con due osservazioni sulla versione del tutor. Il tutor segna con "esercizio non svolto a lezione" l'1.4, il 3.5 e il 4.3, e con "non completato a lezione" il 5.1 (la monotonia di $2^n + \frac1n$, già svolta sopra come 2.3).
 
 #### Esempio istruttivo: $\displaystyle\lim \left(\sqrt{n^2 + 2n} - n\right)$
 
@@ -811,6 +813,8 @@ Gli esercizi del tutoraggio del 13/10, dai testi sul tuo quaderno degli esercizi
 
 > [!example]- Soluzione
 > *Come si riconosce*: differenza fra una radice quadrata e un polinomio dello stesso ordine, $[+\infty - \infty]$. *Metodo*: razionalizzare.
+>
+> Il tutor lo chiama "esempio istruttivo (attenzione a 'sostituire')" e scrive in rosso "come sbagliare male" accanto al conto sbagliato (<span class="src">esercitazione 4, p. 7</span>).
 >
 > **La trappola** (sul quaderno: "come fare giusto"). "Sotto la radice comanda $n^2$, quindi $\sqrt{n^2 + 2n} \approx n$ e la differenza fa $n - n = 0$": sbagliato. Che due infiniti siano dello stesso ordine non dice niente sulla loro **differenza**, che è una forma indeterminata.
 >
@@ -853,6 +857,10 @@ Gli esercizi del tutoraggio del 13/10, dai testi sul tuo quaderno degli esercizi
 > 2. $\frac{n!}{n^n} \to 0$ per la gerarchia ($n! \ll n^n$).
 > 3. $|a_n| \to 0$ equivale ad $a_n \to 0$: la definizione di limite $0$ guarda solo $|a_n - 0| = |a_n|$ ([Permanenza del segno e confronto](/uni/analisi-1/permanenza-del-segno-e-confronto/)).
 > 4. Il limite è $0$.
+>
+> Il tutor (<span class="src">esercitazione 4, p. 9</span>) fa due cose in più, utili da vedere.
+> - **$\frac{n!}{n^n} \to 0$ con i carabinieri**, senza citare la gerarchia: $\frac{n!}{n^n} = \frac1n \cdot \frac2n \cdot \frac3n \cdots \frac nn$, prodotto di $n$ fattori; il primo vale $\frac1n$ e ognuno degli altri è $\leq 1$, quindi $0 < \frac{n!}{n^n} \leq \frac1n$. Poi $0 \leq \left|(-1)^n\frac{n!}{n^n}\right| \leq \frac1n \to 0$.
+> - **Lo stesso con il criterio del rapporto** sulla sottosuccessione pari $a_k = \frac{(2k)!}{(2k)^{2k}}$: $\frac{a_{k+1}}{a_k} = \frac{2k+1}{2k+2}\left(\frac{k}{k+1}\right)^{2k} = \frac{2k+1}{2k+2}\left[\left(1 - \frac{1}{k+1}\right)^{-(k+1)}\right]^{-\frac{2k}{k+1}} \to 1 \cdot e^{-2}$, e $e^{-2} < 1$, quindi $a_k \to 0$. Attenzione: così si dimostra solo che la sottosuccessione **pari** tende a $0$, e il tutor conclude per tutta la successione. Per chiudere servono anche i dispari, oppure il criterio direttamente su $b_n = \frac{n!}{n^n}$, dove $\frac{b_{n+1}}{b_n} = \left(\frac{n}{n+1}\right)^n \to \frac1e < 1$ (è il conto della slide 68 con $a = 1$). Più lungo dei carabinieri in ogni caso.
 >
 > Sul quaderno hai scritto solo “$n^n$ più grande": va completato con il passaggio al modulo, altrimenti il $(-1)^n$ resta senza giustificazione. Attenzione: il trucco funziona solo perché il limite del modulo è $0$. Con $(-1)^n \frac{n}{n+1}$ il modulo tende a $1$ e il limite non esiste. *Verifica*: $n = 10$ dà $3{,}6 \cdot 10^{-4}$.
 
@@ -898,13 +906,21 @@ Gli esercizi del tutoraggio del 13/10, dai testi sul tuo quaderno degli esercizi
 > [!example]- Soluzione
 > **Primo.** È il 3.28 sopra: $\sqrt[n]{n!} \to +\infty$ (per ogni $M$, $n! > M^n$ definitivamente, perché $\frac{M^n}{n!} \to 0$).
 >
+> *La dimostrazione del tutor* (<span class="src">esercitazione 4, p. 10</span>, "esercizio non svolto a lezione"), con il confronto. Per $n$ pari:
+> 1. $n! = n \cdot (n - 1) \cdots \left(\frac n2 + 1\right) \cdot \frac n2 \cdots 1$: i primi $\frac n2$ fattori, da $n$ fino a $\frac n2 + 1$, sono tutti $\geq \frac n2$; gli altri sono $\geq 1$.
+> 2. Quindi $n! \geq \left(\frac n2\right)^{n/2}$.
+> 3. Radice $n$-esima (crescente): $\sqrt[n]{n!} \geq \left(\frac n2\right)^{1/2} = \sqrt{\frac n2} \to +\infty$.
+> 4. Per il confronto, $\sqrt[n]{n!} \to +\infty$.
+>
+> Per $n$ dispari il tutor fa lo stesso conto con i $\frac{n+1}{2}$ fattori più grandi, tutti $\geq \frac n2$: $n! \geq \left(\frac n2\right)^{\frac{n+1}{2}}$. *Verifica*: $n = 10$: $10! = 3\,628\,800 \geq 5^5 = 3125$.
+>
 > **Secondo.** *Come si riconosce*: $\sqrt[n]{n!}$ e $n$ sono infiniti dello stesso ordine, $\left[\frac\infty\infty\right]$; il limite vale $\frac1e$.
 >
-> *La via del tutor*, che si ferma un passo prima. Con $a_n = \frac{n!}{n^n}$ vale $\frac{\sqrt[n]{n!}}{n} = \sqrt[n]{a_n}$, e
+> *La via del tutor* (<span class="src">esercitazione 4, p. 11</span>, "esercizio non svolto a lezione"). Con $a_n = \frac{n!}{n^n}$ vale $\frac{\sqrt[n]{n!}}{n} = \sqrt[n]{a_n}$, e
 > $$
-> \frac{a_{n+1}}{a_n} = \frac{(n+1)!}{(n+1)^{n+1}} \cdot \frac{n^n}{n!} = \frac{n^n}{(n+1)^n} = \left(1 + \frac1n\right)^{-n} \to \frac1e
+> \frac{a_{n+1}}{a_n} = \frac{(n+1)!}{(n+1)^{n+1}} \cdot \frac{n^n}{n!} = \frac{n^n}{(n+1)^n} = \left(1 - \frac{1}{n+1}\right)^n = \left[\left(1 - \frac{1}{n+1}\right)^{-(n+1)}\right]^{-\frac{n}{n+1}} \to e^{-1}
 > $$
-> (lo stesso conto di $\frac{n!\,a^n}{n^n}$ della slide 68 con $a = 1$). Per concludere servirebbe un teorema **non fatto a lezione**: se $\frac{a_{n+1}}{a_n} \to L$ allora anche $\sqrt[n]{a_n} \to L$. Se all'esame serve, si cita come teorema.
+> (lo stesso conto di $\frac{n!\,a^n}{n^n}$ della slide 68 con $a = 1$). Il tutor conclude con un teorema **non fatto a lezione**, "se $\lim \frac{a_{n+1}}{a_n} = L$ vale anche $\lim \sqrt[n]{a_n} = L$", e trova $\frac1e$. Se all'esame serve, si cita come teorema; con gli strumenti del corso c'è la via sotto.
 >
 > *La via con gli strumenti fatti* (livello del 30 e oltre): stringere $n!$ fra due potenze.
 > 1. **Sotto**: $n! \geq \left(\frac ne\right)^n$ per ogni $n \geq 1$. Per induzione: per $n = 1$, $1 \geq \frac1e$. Se vale per $n$, allora
@@ -918,6 +934,80 @@ Gli esercizi del tutoraggio del 13/10, dai testi sul tuo quaderno degli esercizi
 > 5. Il carabiniere sopra tende a $\frac{1 \cdot 1}{e}$, quello sotto è $\frac1e$: il limite è $\frac1e$.
 >
 > *Verifica*: $n = 10$ dà $0{,}453$, fra $\frac1e \approx 0{,}368$ e $0{,}512$; $n = 1000$ dà $0{,}3695$.
+
+#### 4.1) $\displaystyle\lim \left(n^{n^\alpha} - e^n\right)$ al variare di $\alpha$
+
+Dal tutor (<span class="src">esercitazione 4, p. 12</span>), "limiti di successioni con parametro".
+
+> [!tip]- Indizio
+> Come nel 3.4: tutto in base $e$, poi raccogli $e^n$ e guarda l'esponente che resta. Il caso si decide confrontando $n^{\alpha - 1}\log n$ con $1$.
+
+> [!example]- Soluzione
+> *Come si riconosce*: $[+\infty - \infty]$ fra due esponenziali "travestiti", come il 3.4, con un parametro nell'esponente. *Metodo*: $a^b = e^{b\log a}$, raccogliere $e^n$, discutere l'esponente.
+> 1. $n^{n^\alpha} = e^{n^\alpha\log n}$ (slide 54).
+> 2. Raccolgo $e^n$: $n^{n^\alpha} - e^n = e^n\left(e^{n^\alpha\log n - n} - 1\right)$ (perché $\frac{e^a}{e^b} = e^{a - b}$).
+> 3. Raccolgo $n$ nell'esponente: $n^\alpha\log n - n = n\left(n^{\alpha - 1}\log n - 1\right)$.
+> 4. Tutto dipende da $n^{\alpha - 1}\log n$:
+>    - $\alpha < 1$: $n^{\alpha - 1}\log n = \frac{\log n}{n^{1 - \alpha}} \to 0$ (gerarchia, $1 - \alpha > 0$). La parentesi tende a $-1$, l'esponente $n(\dots) \to -\infty$, $e^{(\dots)} \to 0$, e $e^n(0 - 1) \to -\infty$;
+>    - $\alpha = 1$: $n^0\log n - 1 = \log n - 1 \to +\infty$, l'esponente $\to +\infty$, e $e^n\left(e^{(\to +\infty)} - 1\right) \to +\infty$;
+>    - $\alpha > 1$: $n^{\alpha - 1}\log n \to +\infty$ (prodotto di due infiniti), stessa conclusione: $+\infty$.
+>
+> $$
+> \lim\left(n^{n^\alpha} - e^n\right) = \begin{cases} -\infty & \alpha < 1 \\ +\infty & \alpha \geq 1 \end{cases}
+> $$
+>
+> *Il senso*: con $\alpha = 1$ è $n^n$ contro $e^n$, e $n^n$ vince perché la base $n$ supera $e$ da $n = 3$ in poi. *Verifica*: $n = 20$ dà circa $-4{,}8 \cdot 10^8$ con $\alpha = \frac12$ e $1{,}0 \cdot 10^{26}$ con $\alpha = 1$.
+
+#### 4.2) $\displaystyle\lim \frac{\log(1 + n^\alpha)}{\log n}$ al variare di $\alpha \in \mathbb{R}$
+
+Dal tutor (<span class="src">esercitazione 4, p. 12</span>).
+
+> [!tip]- Indizio
+> Tre casi: $n^\alpha$ infinito, costante, infinitesimo. Nel primo raccogli $n^\alpha$ dentro il logaritmo.
+
+> [!example]- Soluzione
+> *Come si riconosce*: logaritmo di una somma, e chi comanda nella somma dipende da $\alpha$. *Metodo*: tre casi; il logaritmo si stringe con (L3), perché la continuità del logaritmo non è ancora fatta.
+>
+> **$\alpha > 0$** ($n^\alpha \to +\infty$, "infinito" nella nota del tutor).
+> 1. $1 + n^\alpha = n^\alpha\left(1 + \frac{1}{n^\alpha}\right)$, quindi $\log(1 + n^\alpha) = \alpha\log n + \log\left(1 + \frac{1}{n^\alpha}\right)$ ($\log(ab) = \log a + \log b$, $\log n^\alpha = \alpha\log n$).
+> 2. Divido per $\log n > 0$ ($n \geq 2$): $f(n) = \alpha + \frac{\log(1 + n^{-\alpha})}{\log n}$.
+> 3. (L3): $0 \leq \log(1 + n^{-\alpha}) \leq n^{-\alpha} \to 0$, quindi per i carabinieri il secondo addendo tende a $0$.
+> 4. Il limite è $\alpha$.
+>
+> **$\alpha = 0$** ($n^0 = 1$): $f(n) = \frac{\log 2}{\log n} \to 0$ (costante su un infinito).
+>
+> **$\alpha < 0$** ($n^\alpha \to 0$, "infinitesimo").
+> 1. (L3) con $x = n^\alpha > 0$: $0 \leq \log(1 + n^\alpha) \leq n^\alpha \leq 1$.
+> 2. Quindi $0 \leq f(n) \leq \frac{1}{\log n} \to 0$: per i carabinieri il limite è $0$.
+>
+> $$
+> \lim \frac{\log(1 + n^\alpha)}{\log n} = \begin{cases} 0 & \alpha \leq 0 \\ \alpha & \alpha > 0 \end{cases}
+> $$
+>
+> Il tutor scrive $\log\left(1 + \frac{1}{n^\alpha}\right) \to 0$ e $\log(1 + n^\alpha) \to \log 1 = 0$: è la continuità del logaritmo, ancora da fare a lezione. Con (L3) il risultato è lo stesso. *Verifica*: $n = 10^6$ dà $7 \cdot 10^{-8}$ con $\alpha = -1$, $0{,}05$ con $\alpha = 0$ (va a $0$ molto lentamente), $0{,}50007$ con $\alpha = \frac12$, $2{,}0000$ con $\alpha = 2$.
+
+#### 4.3) $\displaystyle\lim \frac{\sqrt{n^4 + n^3} - \sqrt{n^4 - n^3}}{n + n^\alpha}$ al variare di $\alpha$
+
+Dal tutor (<span class="src">esercitazione 4, p. 13</span>, "esercizio non svolto a lezione").
+
+> [!tip]- Indizio
+> Sopra c'è una differenza di radici dello stesso ordine: razionalizza. Sotto comanda $n$ o $n^\alpha$, a seconda di $\alpha$.
+
+> [!example]- Soluzione
+> *Come si riconosce*: numeratore $[+\infty - \infty]$ con due radici "uguali in testa" ($\sqrt{n^4} = n^2$ in entrambe); denominatore con un parametro. *Metodo*: razionalizzare il numeratore, poi casi su chi comanda sotto.
+> 1. Moltiplico e divido per $\sqrt{n^4 + n^3} + \sqrt{n^4 - n^3}$ (per $n \geq 1$, $n^4 - n^3 \geq 0$): il numeratore diventa $(n^4 + n^3) - (n^4 - n^3) = 2n^3$.
+> 2. Raccolgo $n^4$ sotto le radici: $\sqrt{n^4 \pm n^3} = n^2\sqrt{1 \pm \frac1n}$.
+> 3. $f(n) = \frac{2n^3}{(n + n^\alpha)\,n^2\left(\sqrt{1 + \frac1n} + \sqrt{1 - \frac1n}\right)} = \frac{2n}{(n + n^\alpha)\left(\sqrt{1 + \frac1n} + \sqrt{1 - \frac1n}\right)}$, e la parentesi con le radici tende a $2$.
+> 4. Casi sul denominatore:
+>    - $\alpha < 1$: $n + n^\alpha = n\left(1 + \frac{1}{n^{1 - \alpha}}\right)$, quindi $f(n) = \frac{2}{\left(1 + n^{\alpha - 1}\right)(\dots)} \to \frac{2}{1 \cdot 2} = 1$;
+>    - $\alpha = 1$: $n + n = 2n$, quindi $f(n) = \frac{2n}{2n(\dots)} \to \frac12$;
+>    - $\alpha > 1$: $n + n^\alpha = n^\alpha\left(1 + \frac{1}{n^{\alpha - 1}}\right)$, quindi $f(n) = \frac{2n^{1 - \alpha}}{(1 + n^{1 - \alpha})(\dots)} \to \frac{0}{1 \cdot 2} = 0$.
+>
+> $$
+> \lim f(n) = \begin{cases} 1 & \alpha < 1 \\ \frac12 & \alpha = 1 \\ 0 & \alpha > 1 \end{cases}
+> $$
+>
+> *Verifica*: $n = 10^4$ dà $0{,}990$ con $\alpha = \frac12$, $0{,}5000$ con $\alpha = 1$, $10^{-4}$ con $\alpha = 2$.
 
 ## Esercizi tipo esame
 

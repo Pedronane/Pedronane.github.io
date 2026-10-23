@@ -18,7 +18,7 @@ Argomento di [Programmazione 1](/uni/prog-1/). Fatto a lezione a ottobre, due de
 > [!abstract] Per l'esame
 > - **Saper enunciare**: differenza fra informazione, dato e rappresentazione; cos'è un sistema posizionale; perché un intero del calcolatore ha sempre un massimo; quali valori si codificano con $N$ bit senza segno, in modulo e segno e in complemento a 2; i due vantaggi del complemento a 2; virgola fissa contro virgola mobile; cos'è la tabella ASCII.
 > - **Saper fare**: convertire fra basi 10, 2, 8 e 16 in tutte le direzioni mostrando ogni passaggio; sommare numeri scritti in basi diverse; leggere una sequenza di bit come naturale, in modulo e segno e in complemento a 2; cambiare segno e sottrarre in complemento a 2 riconoscendo l'overflow; dire quanti bit servono per $K$ valori; decodificare un numero in virgola fissa e nel formato a virgola mobile semplificato del prof.
-> - **Dove esce**: è il tipo 4 della teorica in [Esami passati](/uni/prog-1/esami-passati/), 10 prove su 18: «`(2B)₁₆ + (73)₈` con tutti i passaggi», «un binario letto come naturale, con segno e in CA2», «sottrazione in CA2», «301 può essere un numero in base 3?», «quanti bit servono per 300 valori». Sono punti meccanici: si perdono solo saltando passaggi.
+> - **Dove esce**: nella prima provetta del 22/10/2024 come domanda 4, da 1 punto su 6: «somma tra $(16)_8$ e $(80)_{16}$» con quattro risultati in basi diverse da marcare SI/NO (svolta nella pagina esercizi, Esercizio 11). È il tipo 4 della teorica in [Esami passati](/uni/prog-1/esami-passati/), 10 prove su 18: «`(2B)₁₆ + (73)₈` con tutti i passaggi», «un binario letto come naturale, con segno e in CA2», «sottrazione in CA2», «301 può essere un numero in base 3?», «quanti bit servono per 300 valori». Sono punti meccanici: si perdono solo saltando passaggi.
 
 Il filo dei due deck:
 
@@ -117,6 +117,8 @@ La frase sottolineata dal prof: **gli interi come oggetti matematici non hanno u
 
 **Modulo e segno** (<span class="src">slide 16</span>). Il modo più semplice per gli interi relativi: il bit più a sinistra è il **bit di segno** (0 positivo, 1 negativo), gli altri sono il modulo in binario. Con 8 bit: `00011010` è $+26$, `10011010` è $-26$. Due difetti: lo zero ha due codifiche (`00000000` è $+0$, `10000000` è $-0$), e la somma richiede un circuito che guardi i segni, perché sommare i bit "così come sono" dà risultati sbagliati.
 
+Con $N$ bit il modulo ha $N - 1$ bit, quindi si rappresentano i valori da $-(2^{N-1} - 1)$ a $+(2^{N-1} - 1)$: con 8 bit da $-127$ a $+127$, cioè 255 valori con 256 codici, perché lo zero ne spreca uno. Il secondo difetto con un esempio su 4 bit: $+2$ è `0010`, $-2$ è `1010`; sommati in colonna danno `1100`, che in modulo e segno è $-4$ invece di 0.
+
 **Complemento a 2 (CA2)** (<span class="src">slide 17-21</span>). Nei calcolatori il segno non si rappresenta esplicitamente: si usano le rappresentazioni in **complemento** (a uno e a due), meno intuitive ma con due vantaggi:
 1. lo zero ha **una sola** codifica;
 2. non serve un circuito apposta per il segno: **le addizioni in complemento a due servono anche per le sottrazioni**.
@@ -208,6 +210,135 @@ Con $N$ bit si hanno $2^N$ configurazioni. Per rappresentare $K$ valori diversi 
 
 Per i naturali da 0 a $M$ i valori sono $M + 1$: per arrivare a 255 bastano 8 bit (256 valori), per 256 ne servono 9.
 
+### Una sequenza di bit, tre letture
+
+Gli stessi 8 bit cambiano valore a seconda della codifica con cui li leggi. Due esempi agli estremi, che conviene sapere a memoria:
+
+| bit | naturale | modulo e segno | CA2 |
+| --- | --- | --- | --- |
+| `11111111` | $128 + 64 + \ldots + 1 = 255$ | segno −, modulo `1111111` $= 127$: $-127$ | $255 - 256 = -1$ |
+| `10000000` | $128$ | segno −, modulo 0: $-0$ | $128 - 256 = -128$ |
+| `01111111` | $127$ | $+127$ | $+127$ (MSB 0: come il naturale) |
+
+L'ultima riga è la regola che fa risparmiare tempo: **con MSB 0 le tre letture coincidono**. Solo con MSB 1 bisogna fare conti diversi. La prima riga spiega perché `11111111` è "tutti 1" in tre sensi: il massimo senza segno, il negativo più grande in modulo e segno, e $-1$ in CA2 (sulla ruota, il codice subito prima di zero).
+
+### Somma direttamente in base 8 e in base 16
+
+Il deck somma solo in binario (slide 53-55), ma la regola della somma in colonna vale in ogni base, ed è più veloce di due conversioni quando i due addendi sono già nella stessa base. In base $b$, per ogni colonna da destra:
+1. somma le due cifre e il riporto entrante (in decimale, è comodo);
+2. se la somma è **minore di $b$**, scrivila e il riporto è 0;
+3. se è **maggiore o uguale a $b$**, scrivi somma meno $b$ e porta 1.
+
+È la stessa cosa che fai in base 10 con $7 + 5 = 12$: scrivi 2 e porti 1, perché 12 supera 10. In base 8 il "giro" avviene a 8, in base 16 a 16.
+
+Esempio 1, $47_8 + 35_8$:
+
+| posizione | 2 | 1 | 0 |
+| --- | --- | --- | --- |
+| riporto entrante | 1 | 1 | 0 |
+| $47_8$ | 0 | 4 | 7 |
+| $35_8$ | 0 | 3 | 5 |
+| somma | 1 | 0 | 4 |
+
+- colonna 0: $7 + 5 + 0 = 12 \geq 8$, scrivo $12 - 8 = 4$, porto 1;
+- colonna 1: $4 + 3 + 1 = 8 \geq 8$, scrivo $8 - 8 = 0$, porto 1;
+- colonna 2: $0 + 0 + 1 = 1$, scrivo 1.
+
+Risultato $104_8$. Controllo in decimale: $47_8 = 39$, $35_8 = 29$, $39 + 29 = 68$, e $104_8 = 64 + 0 + 4 = 68$.
+
+Esempio 2, $9C_{16} + 7B_{16}$ (le lettere si convertono prima: C = 12, B = 11):
+
+| posizione | 2 | 1 | 0 |
+| --- | --- | --- | --- |
+| riporto entrante | 1 | 1 | 0 |
+| $9C_{16}$ | 0 | 9 | C |
+| $7B_{16}$ | 0 | 7 | B |
+| somma | 1 | 1 | 7 |
+
+- colonna 0: $12 + 11 + 0 = 23 \geq 16$, scrivo $23 - 16 = 7$, porto 1;
+- colonna 1: $9 + 7 + 1 = 17 \geq 16$, scrivo $17 - 16 = 1$, porto 1;
+- colonna 2: $0 + 0 + 1 = 1$.
+
+Risultato $117_{16}$. Controllo: $9C_{16} = 156$, $7B_{16} = 123$, $156 + 123 = 279$, e $117_{16} = 256 + 16 + 7 = 279$ (verificati in Python).
+
+Con basi **diverse** non si può sommare in colonna: una cifra in posizione 1 vale 8 da una parte e 16 dall'altra. Prima si porta tutto nella stessa base (vedi Metodo).
+
+### Sottrazione e overflow in CA2: due esempi su 4 bit
+
+Su 4 bit i numeri sono pochi e si controllano sulla ruota. La regola: $a - b$ si fa come $a + (-b)$, e il riporto oltre l'ultimo bit si **scarta**.
+
+Esempio 1, $5 - 3$. $+5$ = `0101`; $+3$ = `0011`, invertito `1100`, più 1 `1101` $= -3$ (controllo: $-8 + 4 + 1 = -3$).
+
+| posizione | 3 | 2 | 1 | 0 |
+| --- | --- | --- | --- | --- |
+| riporto entrante | 1 | 0 | 1 | 0 |
+| $+5$ | 0 | 1 | 0 | 1 |
+| $-3$ | 1 | 1 | 0 | 1 |
+| somma | 0 | 0 | 1 | 0 |
+
+Dalla colonna 3 esce un riporto 1, che si scarta. Restano i 4 bit `0010` $= +2$, ed è giusto. Il riporto in uscita qui c'è ma non è un errore: addendi di segno diverso non vanno mai in overflow.
+
+Esempio 2, $(-6) + (-5)$. $-6$ = `1010` (slide 22), $-5$: `0101` invertito `1010`, più 1 `1011`.
+
+| posizione | 3 | 2 | 1 | 0 |
+| --- | --- | --- | --- | --- |
+| riporto entrante | 0 | 1 | 0 | 0 |
+| $-6$ | 1 | 0 | 1 | 0 |
+| $-5$ | 1 | 0 | 1 | 1 |
+| somma | 0 | 1 | 0 | 1 |
+
+Scartato il riporto, `0101` $= +5$. Due negativi hanno dato un positivo: **overflow**. Il valore vero, $-11$, è fuori da $[-8, 7]$. Sulla ruota: partendo da $-6$ e facendo 5 passi indietro si scavalca $-8$ e si ricomincia da $+7$.
+
+### Parte frazionaria: da decimale a binario
+
+La slide 26 va solo da binario a decimale (pesi $2^{-1}, 2^{-2}, \ldots$). Per andare al contrario serve l'algoritmo "rovesciato": **moltiplicare per 2** la parte frazionaria e prendere la parte intera come bit, ripetendo sulla parte frazionaria che resta. Perché funziona: moltiplicare per 2 sposta la virgola di un posto a destra, e il bit che passa a sinistra della virgola è il primo dopo la virgola. A differenza dei resti, i bit si leggono **dal primo all'ultimo**.
+
+Esempio 1, $0.375$:
+
+| passo | calcolo | bit | resta |
+| --- | --- | --- | --- |
+| 1 | $0.375 \cdot 2 = 0.75$ | 0 | 0.75 |
+| 2 | $0.75 \cdot 2 = 1.5$ | 1 | 0.5 |
+| 3 | $0.5 \cdot 2 = 1.0$ | 1 | 0 |
+
+$0.375 = 0.011_2$. Controllo: $0.25 + 0.125 = 0.375$.
+
+Esempio 2, $0.1$:
+
+| passo | calcolo | bit | resta |
+| --- | --- | --- | --- |
+| 1 | $0.1 \cdot 2 = 0.2$ | 0 | 0.2 |
+| 2 | $0.2 \cdot 2 = 0.4$ | 0 | 0.4 |
+| 3 | $0.4 \cdot 2 = 0.8$ | 0 | 0.8 |
+| 4 | $0.8 \cdot 2 = 1.6$ | 1 | 0.6 |
+| 5 | $0.6 \cdot 2 = 1.2$ | 1 | 0.2 |
+| 6 | $0.2 \cdot 2 = 0.4$ | 0 | 0.4, come al passo 2 |
+
+Al passo 6 il resto 0.2 è già comparso: da qui la sequenza si ripete per sempre. $0.1 = 0.0\overline{0011}_2$, periodico, come $1/3 = 0.\overline{3}$ in decimale (verificato con frazioni esatte in Python). Con un numero finito di bit 0.1 si può solo **approssimare**: è il motivo per cui in C `0.1 + 0.2 == 0.3` è falso, in [Tipi di dati e conversioni](/uni/prog-1/tipi-di-dati-e-conversioni/).
+
+### Codificare nella virgola mobile del prof
+
+La slide fa solo la decodifica (bit → numero). La codifica si fa al contrario:
+1. scrivi il modulo in binario, parte intera e frazionaria;
+2. sposta la virgola finché il numero ha la forma $0.1\ldots$ (prima della virgola 0, subito dopo un 1): ogni posto a sinistra aumenta l'esponente di 1, ogni posto a destra lo diminuisce;
+3. segno in 1 bit, esponente in CA2 su 8 bit, mantissa = i bit dopo la virgola, completati con zeri fino a 23.
+
+Esempio 1, $-2.75$. $2 = 10_2$, $0.75 = 0.11_2$, quindi $2.75 = 10.11_2$. Virgola 2 posti a sinistra: $0.1011 \cdot 2^2$. Segno 1, esponente $+2$ = `00000010`, mantissa `1011` e 19 zeri:
+
+```
+1 00000010 10110000000000000000000
+```
+
+Controllo: $0.1011_2 = 0.5 + 0.125 + 0.0625 = 0.6875$, e $-0.6875 \cdot 4 = -2.75$.
+
+Esempio 2, $0.125$, esponente negativo. $0.125 = 0.001_2$: la virgola va spostata 2 posti a **destra** per avere $0.1$, quindi $0.1 \cdot 2^{-2}$. Esponente $-2$ in CA2: $2$ = `00000010`, invertito `11111101`, più 1 `11111110`.
+
+```
+0 11111110 10000000000000000000000
+```
+
+Controllo: $0.5 \cdot 2^{-2} = 0.125$. È lo stesso schema della slide 30 ($-0.25$ con esponente `11111111`).
+
 ### Shift: moltiplicare e dividere per 2
 
 (<span class="src">slide 57</span>) Spostare tutti i bit di una posizione a sinistra (**shift**, in C l'operatore `<<`) moltiplica per 2, esattamente come aggiungere uno zero a destra in base 10 moltiplica per 10. Lo shift a destra (`>>`) divide per 2, scartando il resto.
@@ -239,7 +370,26 @@ Prima di ogni esercizio si riconosce la **direzione**: da una base qualsiasi ver
 
 **Fra ottale ed esadecimale.** Si passa per il binario: cifre in gruppi da 4, poi raggruppa da 3 (o il contrario). In alternativa, passando per il decimale come nella slide 58: prima pesi, poi resti.
 
-**Somma fra basi diverse** (esercizio d'esame). Porta entrambi gli addendi nella stessa base (il decimale è il più sicuro), somma, poi converti il risultato nella base richiesta. Se il testo non dice la base del risultato, dalla in decimale e anche nelle basi di partenza.
+**Somma fra basi diverse** (esercizio d'esame, nella provetta del 22/10/2024: «Calcolare la somma tra $(16)_8$ e $(80)_{16}$ [...] mostrando tutti i passaggi per la somma e le conversioni», con quattro risultati da marcare SI/NO). Si riconosce dai pedici diversi sugli addendi. Due strade, e all'esame conviene farle tutte e due, una come controllo dell'altra:
+
+```
+strada A, dal decimale              strada B, dal binario (solo basi 2, 8, 16)
+  1. ogni addendo in base 10           1. ogni addendo in binario: 3 bit per cifra
+     con i pesi                           ottale, 4 per cifra esadecimale
+  2. somma in base 10                  2. somma in colonna con i riporti
+  3. risultato nelle basi richieste    3. risultato in 8 e 16 con i gruppi
+     con i resti (o in binario            da destra, in 10 con i pesi
+     e poi a gruppi)
+```
+
+- Se il testo non dice la base del risultato, dalla in decimale e anche nelle basi di partenza.
+- Se ci sono risultati da marcare SI/NO, converti il tuo risultato **in tutte le basi delle opzioni** e confronta cifra per cifra: le opzioni sbagliate sono quasi sempre il risultato con un riporto dimenticato.
+- La strada B evita le divisioni ed è quella che il prof usa nella slide 58 per collegare ottale ed esadecimale. La strada A funziona con qualsiasi base (anche 3 o 5).
+- Scrivi tutto: le tabelle dei resti, le colonne della somma con la riga dei riporti, il controllo. Il testo chiede "tutti i passaggi" e il punteggio va a quelli.
+
+La serie graduata di esercizi è nella pagina esercizi, Esercizi 6-14.
+
+**Somma nella stessa base $b$, in colonna.** Come in base 10: per ogni colonna cifra più cifra più riporto; se arriva a $b$ o lo supera scrivi somma meno $b$ e porta 1. Le lettere esadecimali si convertono in numero prima di sommare e si riconvertono dopo.
 
 **Somma binaria in colonna.** Da destra, con la tabella $0+0=0$, $0+1=1$, $1+0=1$, $1+1=0$ con riporto 1. Con il riporto entrante: $1+1+1 = 1$ con riporto 1.
 
@@ -262,6 +412,8 @@ Scorciatoia per il passo 3-4: da destra copia i bit fino al primo 1 compreso, po
 **Overflow in CA2.** C'è overflow se e solo se i due addendi hanno lo **stesso segno** e il risultato ha **segno opposto**. Due numeri di segno diverso non vanno mai in overflow. Il riporto in uscita da solo non dice niente (nella sottrazione si scarta sempre).
 
 **Decodificare un numero in virgola fissa.** Pesi positivi a sinistra della virgola, $2^{-1}, 2^{-2}, \ldots$ a destra.
+
+**Codificare un decimale con la virgola.** Parte intera con i resti (letti dall'ultimo), parte frazionaria con le moltiplicazioni per 2 (lette dal primo). Se i bit a disposizione finiscono prima che la parte frazionaria arrivi a 0, il numero è approssimato: si troncano i bit in più e si dice di quanto si sbaglia.
 
 **Decodificare la virgola mobile semplificata del prof.** Segno dal primo bit; esponente $e$ dagli 8 bit in CA2; mantissa $m$ letta come $0.{\rm bit}$; $X = \pm m \cdot 2^e$.
 
@@ -617,11 +769,11 @@ Il `%c` e il `%d` sullo stesso `char` sono la dimostrazione di "un dato, due int
 | --- | --- | --- | --- |
 | $25_{10}$ in base 8 | 25:8 = 3 r **1**; 3:8 = 0 r **3** | $31_8$ | $24 + 1$ |
 | $125_{10}$ in base 8 | 125:8 = 15 r **5**; 15:8 = 1 r **7**; 1:8 = 0 r **1** | $175_8$ | $64 + 56 + 5$ |
-| $1024_{10}$ in base 8 | r 0, 0, 0, 2 | $2000_8$ | $2 \cdot 512$ |
+| $1024_{10}$ in base 8 | 1024:8 = 128 r **0**; 128:8 = 16 r **0**; 16:8 = 2 r **0**; 2:8 = 0 r **2** | $2000_8$ | $2 \cdot 512$ |
 | $25_{10}$ in base 16 | 25:16 = 1 r **9**; 1:16 = 0 r **1** | $19_{16}$ | $16 + 9$ |
 | $255_{10}$ in base 16 | 255:16 = 15 r **15**; 15:16 = 0 r **15** | $FF_{16}$ | $240 + 15$ |
 | $100_{10}$ in base 16 | 100:16 = 6 r **4**; 6:16 = 0 r **6** | $64_{16}$ | $96 + 4$ |
-| $4095_{10}$ in base 16 | r 15, 15, 15 | $FFF_{16}$ | $4096 - 1$ |
+| $4095_{10}$ in base 16 | 4095:16 = 255 r **15**; 255:16 = 15 r **15**; 15:16 = 0 r **15** | $FFF_{16}$ | $3840 + 240 + 15$ |
 
 $1024 = 2^{10} = 8^{3} \cdot 2$ spiega il $2000_8$; $4095 = 16^3 - 1$ spiega le tre F, come $999 = 10^3 - 1$ in decimale.
 
@@ -643,6 +795,10 @@ In una pagina a parte, dal più facile al livello del 30: [Rappresentazione dell
 - "Quanti bit per 256 valori": 8, non 9. Per i valori da 0 a 256: 9.
 - Calcolare potenze intere con `exp` e `log` o con `pow` e assegnare a un `int`: il risultato `double` può essere 127.99999 e viene troncato (slide 36).
 - Leggere caratteri con `scanf("%c")` e stupirsi degli a capo: lo spazio in `" %c"` li salta.
+- Sommare in colonna due numeri scritti in basi diverse, per esempio $16_8 + 80_{16}$ cifra per cifra: le posizioni pesano in modo diverso, prima si porta tutto in una base.
+- In una somma in base 16 scrivere la somma di colonna così com'è (`17` invece di 1 con riporto), o in base 8 dimenticare che 8 non è una cifra.
+- Dimenticare la riga dei riporti nella somma binaria: le opzioni sbagliate delle domande SI/NO sono costruite proprio così.
+- Parte frazionaria: leggere i bit delle moltiplicazioni per 2 dall'ultimo al primo (quello vale per i resti, qui è il contrario).
 
 ## Domande
 
@@ -671,3 +827,15 @@ In una pagina a parte, dal più facile al livello del 30: [Rappresentazione dell
 - Cos'è la tabella ASCII? Quanti valori copre lo standard e cosa sono i primi 32?
 
 - Perché il programma della slide 36 converte `10000011` in 130 invece di 131?
+
+- Quale intervallo si rappresenta in modulo e segno con $N$ bit? Perché un valore in meno del CA2?
+
+- Come si somma in colonna in base 8 o 16? Cosa fai quando la somma di una colonna arriva a $b$?
+
+- Come imposti una somma fra due numeri in basi diverse? Quali sono le due strade e quando si può usare quella dal binario?
+
+- Come si converte in binario la parte frazionaria di un numero decimale? In che ordine si leggono i bit?
+
+- Perché 0.1 non si rappresenta esattamente in binario?
+
+- `11111111` su 8 bit: quanto vale come naturale, in modulo e segno e in CA2?

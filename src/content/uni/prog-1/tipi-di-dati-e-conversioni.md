@@ -191,7 +191,7 @@ Le ultime due righe sono la doppia natura del `char`: `'a'` stampato con `%d` è
 
 ### Confrontare i `float`
 
-(<span class="src">slide 26-27</span>) I numeri come 0.1 in binario hanno infinite cifre (come 1/3 in decimale), quindi vengono memorizzati **approssimati**. Due calcoli che "matematicamente" danno lo stesso valore possono differire nell'ultima cifra binaria. Le avvertenze della slide:
+(<span class="src">slide 26-27</span>) I numeri come 0.1 in binario hanno infinite cifre (come 1/3 in decimale: $0.1 = 0.0\overline{0011}_2$, il conto passo per passo è in [Rappresentazione dell'informazione](/uni/prog-1/rappresentazione-dell-informazione/), sezione "Parte frazionaria"), quindi vengono memorizzati **approssimati**. Due calcoli che "matematicamente" danno lo stesso valore possono differire nell'ultima cifra binaria. Le avvertenze della slide:
 - `if (a == b)` fra `float` può non dare il risultato atteso, per le approssimazioni o per una conversione di tipo;
 - `(x / y) * y == x` può risultare **falso**.
 
@@ -254,6 +254,71 @@ L'idea dietro: si converte verso il tipo che può rappresentare entrambi i valor
 
 La regola si applica **operazione per operazione**, seguendo l'albero dell'espressione, non all'espressione intera. In `1 / 2 * 3.0` la prima operazione è `1 / 2`, fra due `int`: fa 0. Solo dopo entra il `double`: $0 \cdot 3.0 = 0.0$.
 
+Esempio 1, la stessa divisione con i tipi che cambiano:
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    printf("%d\n", 7 / 2);
+    printf("%f\n", 7 / 2.0);
+    printf("%f\n", 7.0 / 2);
+    printf("%f\n", (float)7 / 2);
+    printf("%f\n", (float)(7 / 2));
+    printf("%f\n", 1 / 2 * 3.0);
+    printf("%f\n", 3.0 * 1 / 2);
+    printf("%d\n", 'a' + 1);
+    printf("%d\n", '7' - '0');
+    return 0;
+}
+```
+
+| espressione | prima operazione | tipi | seconda operazione | valore e tipo |
+| --- | --- | --- | --- | --- |
+| `7 / 2` | $7 / 2 = 3$ | `int`, `int`: intera | | 3, `int` |
+| `7 / 2.0` | 7 sale a 7.0, $7.0 / 2.0$ | `int`, `double` | | 3.5, `double` |
+| `7.0 / 2` | 2 sale a 2.0 | `double`, `int` | | 3.5, `double` |
+| `(float)7 / 2` | cast: 7.0 (unario, prima di `/`) | | $7.0 / 2.0$ | 3.5, `float` |
+| `(float)(7 / 2)` | $7 / 2 = 3$, intera | `int`, `int` | cast: 3.0 | 3.0, `float` |
+| `1 / 2 * 3.0` | $1 / 2 = 0$ (da sinistra) | `int`, `int` | $0.0 \cdot 3.0$ | 0.0, `double` |
+| `3.0 * 1 / 2` | $3.0 \cdot 1 = 3.0$ | `double`, `int` | $3.0 / 2.0$ | 1.5, `double` |
+| `'a' + 1` | `'a'` promosso a `int` 97 | | $97 + 1$ | 98, `int` |
+| `'7' - '0'` | $55 - 48$ | `int`, `int` | | 7, `int` |
+
+Output (verificato): `3`, `3.500000`, `3.500000`, `3.500000`, `3.000000`, `0.000000`, `1.500000`, `98`, `7`. Le righe 6 e 7 sono la stessa moltiplicazione e la stessa divisione in ordine diverso: `*` e `/` associano da sinistra, quindi l'ordine decide se la divisione avviene fra interi. L'ultima riga è il trucco per avere la cifra da un carattere: le cifre sono consecutive nella tabella ASCII.
+
+Esempio 2, `int` contro `unsigned`. Fra un `int` e un `unsigned int` il risultato è `unsigned` (gerarchia sopra), anche in un confronto. Il programma compila, ma con un warning (per questo il blocco non è marcato come C compilabile senza avvisi):
+
+```
+#include <stdio.h>
+
+int main(void)
+{
+    int a = -1;
+    unsigned int b = 1;
+
+    if (a < b)
+        printf("-1 < 1\n");
+    else
+        printf("-1 >= 1 ?!\n");
+    printf("%u\n", (unsigned int)a);
+    if (a < (int)b)
+        printf("con il cast: -1 < 1\n");
+    return 0;
+}
+```
+
+Output (verificato):
+
+```
+-1 >= 1 ?!
+4294967295
+con il cast: -1 < 1
+```
+
+Per fare il confronto, `a` viene convertito in `unsigned`: i suoi 32 bit tutti a 1 (CA2 di $-1$) letti senza segno valgono $2^{32} - 1 = 4294967295$, che è più grande di 1. È l'esempio della slide 15 (stessi bit, $-1$ o 65535) dentro un `if`. gcc con `-Wall -Wextra` avvisa: `comparison of integer expressions of different signedness`. Con il cast `(int)b` il confronto torna fra `int`.
+
 ### Conversioni nell'assegnazione
 
 (<span class="src">slide 83-92</span>) Le assegnazioni sono "insidiose", perché lo stesso simbolo `/` fa operazioni diverse su `int` e `float`. La regola: **il valore dell'espressione a destra viene convertito al tipo della variabile a sinistra**. Questo può causare:
@@ -299,6 +364,50 @@ c=a   -> c=10.000000
 a=a/b -> a=3
 a=a/c -> a=0
 ```
+
+Le due "trasformazioni indesiderate" della slide 84 (da `int` a `char`, da `float` a `int`) e una terza, da `int` a `float`, in un altro esempio:
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int x = 300;
+    int y = 321;
+    char c = x;
+    unsigned char u = y;
+    int t = -7.9;
+    float f = 16777217;
+    float g = 123456789;
+
+    printf("c=%d\n", c);
+    printf("u=%d %c\n", u, u);
+    printf("t=%d\n", t);
+    printf("f=%.1f\n", f);
+    printf("g=%.1f\n", g);
+    return 0;
+}
+```
+
+Output (verificato):
+
+```
+c=44
+u=65 A
+t=-7
+f=16777216.0
+g=123456792.0
+```
+
+| assegnazione | cosa succede | valore |
+| --- | --- | --- |
+| `char c = x;` con 300 | 300 = `1 0010 1100`, restano gli 8 bit bassi `00101100` | $300 - 256 = 44$ |
+| `unsigned char u = y;` con 321 | modulo 256: $321 - 256 = 65$ | 65, cioè `'A'` |
+| `int t = -7.9;` | troncamento verso lo zero, non verso $-\infty$ | $-7$, non $-8$ |
+| `float f = 16777217;` | $2^{24} + 1$: un `float` ha 24 bit di mantissa, l'ultimo 1 non ci sta | 16777216 |
+| `float g = 123456789;` | 9 cifre, il `float` ne tiene circa 6-7 | 123456792 |
+
+Le ultime due righe mostrano che anche la conversione verso un tipo "superiore" può perdere informazione: un `int` da 32 bit ha più cifre significative di un `float` da 32 bit, che ne usa 8 per l'esponente. Il `double` (53 bit di mantissa) li tiene tutti e due esatti.
 
 Gli errori delle slide: la slide 88 scrive "`c = a`, `c = 2.0`", ma `a` vale già 10 dopo la prima riga, quindi `c` è 10.0 (come dicono le altre slide della sequenza). La slide 90 scrive "`a = a / b`, `a = 0`": lo sarebbe con `a` ancora 2 ($2 / 3 = 0$), ma `a` è 10 e $10 / 3 = 3$. Lo zero arriva solo alla riga dopo, con `a / c` (slide 92, corretta).
 
@@ -540,6 +649,9 @@ In una pagina a parte, dal più facile al livello del 30: [Tipi di dati e conver
 - Dare per scontate le dimensioni dei tipi: `long` è 8 byte su Linux a 64 bit e 4 su Windows.
 - Scrivere costanti `100` dove serve `100.0`: per il float casuale con due decimali dell'esame, `(rand() % 2001 + 1500) / 100` è intero.
 - Superare `INT_MAX` in un calcolo con `int`: è comportamento indefinito, non un "giro" come per gli `unsigned`.
+- Credere che la conversione verso `float` non perda niente: un `int` grande (oltre $2^{24}$) perde le ultime cifre.
+- Contare all'indietro con un `unsigned` e la condizione `i >= 0`: è sempre vera, e dopo lo 0 viene 4294967295.
+- Leggere `a / b * c` come `a / (b * c)`, o dimenticare che `1 / 2 * x` fa prima la divisione intera: `*` e `/` vanno da sinistra.
 
 ## Domande
 
@@ -566,3 +678,11 @@ In una pagina a parte, dal più facile al livello del 30: [Tipi di dati e conver
 - Perché `(float)(num1 + num2) / 2` dà la media giusta e `(float)((num1 + num2) / 2)` no?
 
 - Perché il programma di Leibniz della slide 101 stampa sempre 4?
+
+- Quanto valgono `1 / 2 * 3.0` e `3.0 * 1 / 2`, e perché sono diversi?
+
+- Perché `-1 < 1u` è falso in C?
+
+- Una conversione da `int` a `float` può perdere informazione? Fai un esempio.
+
+- Come si ottiene il valore numerico di un carattere cifra come `'7'`?

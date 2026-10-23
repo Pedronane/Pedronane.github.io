@@ -114,7 +114,7 @@ Esercizi tipo esame di [Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/),
 - d) vale $+\infty$
 
 > [!example]- Soluzione
-> **a**. Per $x > 0$: $\left|\frac{\sin x}{x}\right| \leq \frac1x$ (perché $|\sin x| \leq 1$), e $\frac1x < \varepsilon$ per $x > \frac1\varepsilon$: con $K = \frac1\varepsilon$ la definizione è verificata. La c) è l'errore di [Permanenza del segno e confronto](/uni/analisi-1/permanenza-del-segno-e-confronto/): un fattore senza limite può essere schiacciato da uno infinitesimo. La b) confonde con il limite notevole $\frac{\sin x}{x} \to 1$ per $x \to 0$ (sezione 4.6, non ancora fatta): il punto è diverso. *Verifica*: $\frac{\sin 100}{100} \approx -0{,}005$.
+> **a**. Per $x > 0$: $\left|\frac{\sin x}{x}\right| \leq \frac1x$ (perché $|\sin x| \leq 1$), e $\frac1x < \varepsilon$ per $x > \frac1\varepsilon$: con $K = \frac1\varepsilon$ la definizione è verificata. La c) è l'errore di [Permanenza del segno e confronto](/uni/analisi-1/permanenza-del-segno-e-confronto/): un fattore senza limite può essere schiacciato da uno infinitesimo. La b) confonde con il limite notevole $\frac{\sin x}{x} \to 1$ per $x \to 0$ ([Teoremi sui limiti di funzioni](/uni/analisi-1/teoremi-sui-limiti-di-funzioni/)): il punto è diverso. *Verifica*: $\frac{\sin 100}{100} \approx -0{,}005$.
 
 ## Esercizi (stile parte 2)
 
@@ -664,28 +664,16 @@ Il metodo è quello della teoria, "Calcolare un limite con le successioni": si p
 >
 > **Controllo**: $f(10^4) \approx 0{,}0100$, circa $\frac{1}{\sqrt{10^4}} = 0{,}01$.
 
-### IV tutoraggio: da svolgere più avanti
+### IV tutoraggio: gli altri esercizi
 
-Questi richiedono teoria non ancora fatta al 14/10. Il testo è qui per non perderlo; la soluzione arriva dopo la lezione indicata. Nel foglio la numerazione dell'esercizio 3 salta il (9).
+Questi richiedevano teoria non ancora fatta al 14/10. Nel foglio la numerazione dell'esercizio 3 salta il (9).
 
-**Da svolgere dopo la lezione sui limiti notevoli** ($\frac{\sin x}{x}$, $\frac{1 - \cos x}{x^2}$, $\frac{e^x - 1}{x}$, $\frac{\log(1 + x)}{x}$, sezione 4.6):
-- tutoraggio 4, es. 3.7: $\displaystyle\lim_{x \to 0}\frac{(1 - \cos x)^2}{2x^3\sin x}$
-- tutoraggio 4, es. 3.8: $\displaystyle\lim_{x \to 0}\frac{e^{-2x^2} - 1}{1 - \cos(2x)}$
-- tutoraggio 4, es. 3.11: $\displaystyle\lim_{x \to +\infty}\left(1 + \frac{x - 5}{25 - x^2}\right)^x$
-- tutoraggio 4, es. 3.13: $\displaystyle\lim_{x \to 0}\frac{e^x - e^{-x}}{\tan x}$
-- tutoraggio 4, es. 3.15: $\displaystyle\lim_{x \to 1}\frac{\sin(\pi x)}{x - 1}$
-- tutoraggio 4, es. 4.1, al variare di $\alpha > 0$: $\displaystyle\lim_{x \to 0^+}\frac{\sqrt{\sin(\pi x^\alpha)}}{1 - \cos(3\sqrt x)}$
+**Svolti dopo le lezioni del 20-21/10:**
+- limiti notevoli, es. 3.7, 3.8, 3.11, 3.13, 3.15 e 4.1: [Teoremi sui limiti di funzioni (esercizi)](/uni/analisi-1/teoremi-sui-limiti-di-funzioni-esercizi/), esercizi 4-7, 9 e 10;
+- continuità e classificazione, es. 5.1, 5.2, 6.1 e 6.2: [Continuità (esercizi)](/uni/analisi-1/continuita-esercizi/), esercizi 6-9 (il testo del 5.1 e del 5.2 ha due errori, segnalati lì).
 
-**Da svolgere dopo la lezione sui limiti delle funzioni elementari e la gerarchia degli infiniti per funzioni** (sezione 4.4, slide 43):
+**Ancora da svolgere**, dopo la lezione sui limiti delle funzioni elementari e la gerarchia degli infiniti per funzioni (sezione 4.4, slide 43: il 20/10 il prof l'ha saltata, è in <span class="src">slide non annotate, slide 43</span>):
 - tutoraggio 4, es. 3.10: $\displaystyle\lim_{x \to 0^+}\sin x\,\log\left(\frac1x\right)$
 - tutoraggio 4, es. 3.12: $\displaystyle\lim_{x \to 0^+}\left(\frac{x^5}{x + 7}\right)^{x^3 + x}$
 - tutoraggio 4, es. 3.14: $\displaystyle\lim_{x \to 1^+}\left(\log^6(x - 1)\right)^{x - 1}$
 - tutoraggio 4, es. 4.2, al variare di $\alpha > 0$: $\displaystyle\lim_{x \to +\infty}\frac{2^x + 3^{\alpha x} + x^{10}}{e^x + 100x^2}$
-
-**Da svolgere dopo la lezione sulle funzioni continue** (continuità delle funzioni elementari e classificazione dei punti di discontinuità, capitolo 4 dopo i limiti notevoli). Esercizio 5 del foglio: «Dopo aver provato che le seguenti funzioni sono definite su tutta la retta reale, studiarne la continuità e classificarne gli eventuali punti di non continuità.»
-- tutoraggio 4, es. 5.1: $f(x) = \dfrac{\sqrt{1 - 2x + x^4}}{x + 1}$ per $x \neq -1$, $f(-1) = 2$
-- tutoraggio 4, es. 5.2: $f(x) = \dfrac{\sin(x^2 - 2x + 1)}{\log^2(x^2)}$ per $x \neq \pm 1$, $f(\pm 1) = \frac14$
-
-Esercizio 6 del foglio: «Determinare l'insieme di definizione delle seguenti funzioni e studiarne la continuità, classificando gli eventuali punti di non continuità, al variare del parametro reale positivo $\alpha$.»
-- tutoraggio 4, es. 6.1: $f(x) = \frac1\pi\arctan\frac1x$ per $x > 0$, $f(x) = \alpha(x + 1)$ per $x \leq 0$
-- tutoraggio 4, es. 6.2: $f(x) = \dfrac{\sin(\alpha\log(1 - \alpha x))}{x(\cos(2x) - 2)}$ per $x < 0$, $f(x) = \sqrt{\vert 2 - x - 2x^2\vert}$ per $x \geq 0$

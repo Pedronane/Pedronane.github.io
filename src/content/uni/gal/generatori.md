@@ -12,13 +12,13 @@ lezioni: []
 ordine: 12
 ---
 
-Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L7, mar 13/10, seconda parte del capitolo 4, e ripreso in L8, lun 19/10. Fonte: appunti della prof, <span class="src">13/10, p. 6</span> (sottospazio generato, finitamente generato), <span class="src">p. 7</span> ($\mathbb{R}^2$ e $\mathbb{R}^n$, criterio col rango), <span class="src">p. 8</span> (due esempi in $\mathbb{R}^3$), <span class="src">p. 9</span> (spazio delle righe e delle colonne); in L8, <span class="src">19/10, p. 10-11</span> (ogni sottospazio generato di $\mathbb{R}^n$ come insieme delle soluzioni di un sistema omogeneo, esempio in $\mathbb{R}^4$), <span class="src">p. 12</span> ($\mathrm{Span}(\vec{\imath}, \vec{\jmath})$ in $V^3$, $\mathbb{R}[x]$ non finitamente generato), <span class="src">p. 13</span> ($\mathbb{R}[x]_d$ finitamente generato). Dispensa: <span class="src">§4.3.2, p. 92-95</span> (stesse definizioni, esempi 55 e 57, e le equazioni di uno Span nell'esempio 58). Nel quaderno (p. 71) c'è solo il titolo "Generatori": il contenuto viene dagli appunti della prof, e il <span class="src">piano</span> mette i generatori nella L7. Prima: [Spazi vettoriali](/uni/gal/spazi-vettoriali/) (combinazioni lineari, forma matriciale $(\ast)$, sottospazi). Il calcolo passa da [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/) e [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/). Dopo, nella L8 del 19/10: [Dipendenza lineare](/uni/gal/dipendenza-lineare/) e [Basi](/uni/gal/basi/).
+Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L7, mar 13/10, seconda parte del capitolo 4, e ripreso in L8, lun 19/10. Fonte: appunti della prof, <span class="src">13/10, p. 6</span> (sottospazio generato, finitamente generato), <span class="src">p. 7</span> ($\mathbb{R}^2$ e $\mathbb{R}^n$, criterio col rango), <span class="src">p. 8</span> (due esempi in $\mathbb{R}^3$), <span class="src">p. 9</span> (spazio delle righe e delle colonne); in L8, <span class="src">19/10, p. 10-11</span> (ogni sottospazio generato di $\mathbb{R}^n$ come insieme delle soluzioni di un sistema omogeneo, esempio in $\mathbb{R}^4$), <span class="src">p. 12</span> ($\mathrm{Span}(\vec{\imath}, \vec{\jmath})$ in $V^3$, $\mathbb{R}[x]$ non finitamente generato), <span class="src">p. 13</span> ($\mathbb{R}[x]_d$ finitamente generato). Dispensa: <span class="src">§4.3.2, p. 92-95</span> (stesse definizioni, esempi 55 e 57, e le equazioni di uno Span nell'esempio 58). Nel quaderno (p. 71) c'è solo il titolo "Generatori": il contenuto viene dagli appunti della prof, e il <span class="src">piano</span> mette i generatori nella L7. Prima: [Spazi vettoriali](/uni/gal/spazi-vettoriali/) (combinazioni lineari, forma matriciale $(\ast)$, sottospazi). Il calcolo passa da [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/) e [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/). Dopo, nella L8 del 19/10: [Dipendenza lineare](/uni/gal/dipendenza-lineare/) e [Basi](/uni/gal/basi/). Esercitazione 4 del tutor, mar 20/10: <span class="src">p. 4-5</span> (esercizio 2 del foglio [esercizi extra sugli spazi vettoriali](/uni/gal/esercizi-extra-spazi-vettoriali-svolti/)).
 
 > [!abstract] Per l'esame
 > - **Saper enunciare**: sottospazio generato $\mathrm{Span}(\vec{v}_1, \ldots, \vec{v}_k)$ (o $\langle \vec{v}_1, \ldots, \vec{v}_k \rangle$); spazio finitamente generato; sistema di generatori; il criterio “$\{\vec{v}_1, \ldots, \vec{v}_k\}$ genera $\mathbb{R}^n$ se e solo se $\operatorname{rg}[\vec{v}_1 \mid \cdots \mid \vec{v}_k] = n$" con l'osservazione $k \geq n$; spazio delle righe $R(A)$ e delle colonne $C(A)$, e in quale $\mathbb{R}^?$ vive ciascuno; ogni sottospazio $\mathrm{Span}(\vec{v}_1, \ldots, \vec{v}_k)$ di $\mathbb{R}^n$ è l'insieme delle soluzioni di un sistema lineare omogeneo; $\mathbb{R}[x]_d$ è finitamente generato, $\mathbb{R}[x]$ no.
 > - **Saper dimostrare**: che $\{\vec{e}_1, \ldots, \vec{e}_n\}$ genera $\mathbb{R}^n$; che $\mathrm{Span}$ è un sottospazio; perché servono almeno $n$ vettori per generare $\mathbb{R}^n$; che $\mathbb{R}[x]$ non è finitamente generato (la prof, p. 12).
 > - **Saper fare**: decidere se un vettore sta in uno $\mathrm{Span}$ e trovare i coefficienti; decidere col rango se dei vettori generano $\mathbb{R}^n$, anche con un parametro; quando non generano, scrivere lo Span come insieme delle soluzioni di un sistema omogeneo (le sue equazioni cartesiane), in $\mathbb{R}^3$ come in $\mathbb{R}^4$ e $\mathbb{R}^5$.
-> - **Dove esce**: è il ponte fra matrici e spazi vettoriali, e prepara [Dipendenza lineare](/uni/gal/dipendenza-lineare/) e [Basi](/uni/gal/basi/) (L8, 19/10). Un esercizio "per quali $k$ questi vettori generano $\mathbb{R}^3$?" è dello stesso tipo di "per quali $k$ la matrice è invertibile?": rango con parametro.
+> - **Dove esce**: è il ponte fra matrici e spazi vettoriali, e prepara [Dipendenza lineare](/uni/gal/dipendenza-lineare/) e [Basi](/uni/gal/basi/) (L8, 19/10). Un esercizio "per quali $k$ questi vettori generano $\mathbb{R}^3$?" è dello stesso tipo di "per quali $k$ la matrice è invertibile?": rango con parametro. Il tutor ne ha svolto uno all'esercitazione 4 del 20/10, con in più le equazioni dello Span (esercizio 2 degli [esercizi extra](/uni/gal/esercizi-extra-spazi-vettoriali-svolti/)).
 
 **L'idea.** In [Spazi vettoriali](/uni/gal/spazi-vettoriali/) si è visto che, presi dei vettori, le loro combinazioni lineari restano nello spazio. Ora si guarda l'insieme di **tutte** quelle combinazioni: è il pezzo di spazio che quei vettori "raggiungono". Un vettore solo raggiunge una retta per l'origine, due vettori non paralleli un piano per l'origine. La domanda chiave è: questi vettori raggiungono **tutto** lo spazio? In $\mathbb{R}^n$ si risponde con un rango, perché "raggiungere $\vec{b}$" vuol dire "un certo sistema lineare ha soluzione".
 
@@ -421,6 +421,32 @@ Si riconosce da: "descrivere lo Span", "scrivere il sottospazio generato come sp
 > **Verifica** sui generatori: $\vec{v}_1 = (-1, 1, 0, -3)$ dà $0 - 3 + 3 = 0$ e $-1 + 1 = 0$; $\vec{v}_2 = (1, -1, 2, 1)$ dà $2 + 1 - 3 = 0$ e $1 - 1 = 0$. Un vettore fuori: $(1, 0, 0, 0)$, che dà $-3 \neq 0$.
 >
 > **Il viceversa, per controllo.** Risolvendo $(\star)$: $y = -x$, $z = 3x - w$, con $x = s$ e $w = r$ libere. Le soluzioni sono $s(1, -1, 3, 0) + r(0, 0, -1, 1)$. Anche $\vec{v}_1$ e $\vec{v}_2$ sono di questa forma, come deve essere: $\vec{v}_1$ ha $s = -1$, $r = -3$: $-(1, -1, 3, 0) - 3(0, 0, -1, 1) = (-1, 1, -3 + 3, -3) = (-1, 1, 0, -3)$. $\vec{v}_2$ ha $s = 1$, $r = 1$: $(1, -1, 3, 0) + (0, 0, -1, 1) = (1, -1, 2, 1)$.
+
+> [!example]- Tutor, esercitazione 4, 20/10, p. 4-5: quattro vettori di $\mathbb{R}^3$ con parametro, generatori, indipendenza ed equazioni dello Span
+> Esercizio 2 del foglio [esercizi extra sugli spazi vettoriali](/uni/gal/esercizi-extra-spazi-vettoriali-svolti/). $\vec{v}_1 = (1, 0, 1)$, $\vec{v}_2 = (2, -1, 1)$, $\vec{v}_3 = (3, -1, k)$, $\vec{v}_4 = (k - 2, -1, -1)$, $k \in \mathbb{R}$.
+> - 1) Per quali $k$ l'insieme $\{\vec{v}_1, \ldots, \vec{v}_4\}$ è un sistema di generatori di $\mathbb{R}^3$?
+> - 2) Ci sono valori di $k$ per cui è linearmente indipendente?
+> - 3) Con $k = 2$, trovare il sistema lineare il cui insieme delle soluzioni è $\mathrm{Span}(\vec{v}_1, \ldots, \vec{v}_4)$.
+>
+> **Riconoscere il tipo**: tre metodi sulla stessa matrice $A = [\vec{v}_1 \mid \cdots \mid \vec{v}_4]$, $3 \times 4$: rango contro $n = 3$, rango contro $k = 4$, righe nulle di $[A \mid \vec{x}]$.
+>
+> **1)**
+> $$
+> A = \begin{pmatrix} 1 & 2 & 3 & k - 2 \\ 0 & -1 & -1 & -1 \\ 1 & 1 & k & -1 \end{pmatrix} \xrightarrow{E_{31}(-1)} \begin{pmatrix} 1 & 2 & 3 & k - 2 \\ 0 & -1 & -1 & -1 \\ 0 & -1 & k - 3 & 1 - k \end{pmatrix} \xrightarrow{E_{32}(-1)} \begin{pmatrix} 1 & 2 & 3 & k - 2 \\ 0 & -1 & -1 & -1 \\ 0 & 0 & k - 2 & 2 - k \end{pmatrix}
+> $$
+> ($R_3 - R_1 = (0,\ 1 - 2,\ k - 3,\ -1 - k + 2) = (0, -1, k - 3, 1 - k)$; poi $R_3 - R_2 = (0,\ 0,\ k - 3 + 1,\ 1 - k + 1) = (0, 0, k - 2, 2 - k)$.) Il tutor cerchia $k - 2$: è l'unico pivot che può sparire.
+> - $k \neq 2$: $\operatorname{rg}(A) = 3 = n$, **sistema di generatori di $\mathbb{R}^3$**;
+> - $k = 2$: la terza riga è nulla, $\operatorname{rg}(A) = 2$, **non è un sistema di generatori**.
+>
+> **2)** Servirebbe $\operatorname{rg}(A) = 4 = k$, "cosa che non può mai succedere": $A$ ha tre righe, il rango è al più $3$. **Mai indipendenti.**
+>
+> **3)** Con $k = 2$ il tutor riduce $[A \mid \vec{x}]$, $\vec{x} = (x_1, x_2, x_3)$:
+> $$
+> \left[\begin{array}{cccc|c} 1 & 2 & 3 & 0 & x_1 \\ 0 & -1 & -1 & -1 & x_2 \\ 1 & 1 & 2 & -1 & x_3 \end{array}\right] \xrightarrow{E_{31}(-1)} \left[\begin{array}{cccc|c} 1 & 2 & 3 & 0 & x_1 \\ 0 & -1 & -1 & -1 & x_2 \\ 0 & -1 & -1 & -1 & x_3 - x_1 \end{array}\right] \xrightarrow{E_{32}(-1)} \left[\begin{array}{cccc|c} 1 & 2 & 3 & 0 & x_1 \\ 0 & -1 & -1 & -1 & x_2 \\ 0 & 0 & 0 & 0 & x_3 - x_1 - x_2 \end{array}\right]
+> $$
+> Imponendo $\operatorname{rg}(A) = \operatorname{rg}(A \mid \vec{x})$ si ottiene il sistema $\{x_3 - x_1 - x_2 = 0\}$: una equazione ($3 - 2 = 1$), lo Span è un piano per l'origine.
+>
+> **Verifica** sui quattro vettori con $k = 2$: $1 - 1 - 0 = 0$; $1 - 2 + 1 = 0$; $2 - 3 + 1 = 0$; $-1 - 0 + 1 = 0$. Per $k = 2$ si ha anche $\vec{v}_3 = \vec{v}_1 + \vec{v}_2$ e $\vec{v}_4 = -2\vec{v}_1 + \vec{v}_2$ (dalla forma ridotta), ed è per questo che il rango scende a $2$.
 
 ## Esercizi tipo esame
 

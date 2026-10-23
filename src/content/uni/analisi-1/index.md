@@ -48,7 +48,7 @@ Formato scritto sulle slide 4-5 del 14/9, con le correzioni a mano del prof (<sp
 
 **Il primo parziale (6 novembre).** Copre fin dove arriva il corso a fine ottobre: con il ritmo attuale, probabilmente nozioni preliminari (logica, reali, funzioni, grafici), numeri complessi e limiti di successioni. Il programma esatto del parziale va controllato su Moodle quando esce.
 
-**Simulazioni del parziale.** Stessa forma dello scritto (8 crocette, 3 esercizi da 7, 2,5 ore), programma fino ai limiti di successioni, a tempo e con correzione: [Simulazione provetta 1](/uni/simulazioni/analisi-1/simulazione-provetta-1/) (facile), [Simulazione provetta 2](/uni/simulazioni/analisi-1/simulazione-provetta-2/), [Simulazione provetta 3](/uni/simulazioni/analisi-1/simulazione-provetta-3/) (livello del 30). Se prima del 6/11 il prof arriva a limiti notevoli e continuità, non sono coperti.
+**Simulazioni del parziale.** Stessa forma dello scritto (8 crocette, 3 esercizi da 7, 2,5 ore), programma fino ai limiti di successioni, a tempo e con correzione: [Simulazione provetta 1](/uni/simulazioni/analisi-1/simulazione-provetta-1/) (facile), [Simulazione provetta 2](/uni/simulazioni/analisi-1/simulazione-provetta-2/), [Simulazione provetta 3](/uni/simulazioni/analisi-1/simulazione-provetta-3/) (livello del 30). Non coprono i limiti di funzioni, i limiti notevoli e la continuità, fatti dal 12/10 al 21/10: per quelli ci sono le pagine di esercizi delle note relative.
 
 ## Programma svolto
 
@@ -69,8 +69,10 @@ Formato scritto sulle slide 4-5 del 14/9, con le correzioni a mano del prof (<sp
 | 12/10 | limiti 65-68; funzioni 1-9 di 80 | 3.8 dimostrazione della gerarchia con il criterio del rapporto, "attenti a come la si usa", esercizi sul criterio del rapporto; 4.1 intorni, punti di accumulazione, limite finito in un punto, $x\sin\frac1x$ | <span class="src">Lezione 2026-10-12</span> | [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/), [Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/) |
 | 13/10 | esercitazione 4 | tutor: sup e inf con $n \in \mathbb{Z}$, con $\sin$, con $\cos((n+1)\pi)$ e con il logaritmo; limiti della slide 60; $\sqrt{n^2+2n} - n$; $(1 + \frac{1}{n!})^n$, $(-1)^n\frac{n!}{n^n}$, $n^{\sqrt n} - 2^n$, $\sqrt[n]{n!}$; limiti con parametro; monotonia di $2^n + \frac1n$ | <span class="src">Esercitazione 4</span> (Moodle, "Esercitazione 4", 14 pagine scritte dal tutor, "menu del giorno") e quaderno degli esercizi | [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/), [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/), [Calcolo dei limiti (esercizi)](/uni/analisi-1/calcolo-dei-limiti-esercizi/) |
 | 14/10 | funzioni 10-29 | 4.1 continuità (punti isolati), limite destro e sinistro, continuità da destra e da sinistra; 4.2 limite infinito in un punto, limite all'infinito, asintoti; 4.3 legame con i limiti di successioni (★), criterio di non esistenza, teorema di unicità del limite con dimostrazione | <span class="src">Lezione 2026-10-14</span> e quaderno, pagine 150-169 | [Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/) |
+| 20/10 | funzioni 30-33, 55, 61-71 | 4.3 permanenza del segno, confronto, carabinieri ($\frac{\sin x}{x^2}$), algebra dei limiti, limite delle monotone; limiti notevoli $\frac{a^x - 1}{x}$ e $\frac{(1+x)^\alpha - 1}{x}$ (slide 55); 4.7 continuità, tipi di discontinuità, algebra e composizione, esercizio con parametro (slide 69); 4.8 enunciato del teorema degli zeri. Saltate le slide 34-54 e 56-60 | <span class="src">Lezione 2026-10-20</span> | [Teoremi sui limiti di funzioni](/uni/analisi-1/teoremi-sui-limiti-di-funzioni/), [Continuità](/uni/analisi-1/continuita/), [Teoremi sulle funzioni continue](/uni/analisi-1/teoremi-sulle-funzioni-continue/) |
+| 21/10 | funzioni 72-80; derivate 1-10 di 71 | dimostrazione del teorema degli zeri (bisezione), valori intermedi, massimo e minimo, Weierstrass con i controesempi, Bolzano-Weierstrass (idea), esercizio della slide 80 (non svolto); 5.1 derivata, retta tangente, approssimazione affine, $x^2$ in $1$, derivabile implica continua, $\vert x\vert$ non derivabile in $0$ | <span class="src">Lezione 2026-10-21</span> | [Teoremi sulle funzioni continue](/uni/analisi-1/teoremi-sulle-funzioni-continue/), [Derivate](/uni/analisi-1/derivate/) |
 
-Prossimo: limiti di funzioni dalla slide 30 (teoremi di permanenza del segno, confronto e algebra dei limiti; 4.4 limiti delle funzioni elementari e gerarchia), da <span class="src">slide non annotate, pagina 1 = slide 30</span>.
+Prossimo: derivate dalla slide 11 (5.1 continua, poi 5.2 derivate delle funzioni elementari e regole di derivazione). Restano da fare a lezione le slide 34-54 e 56-60 dei limiti di funzioni (4.4 limiti delle funzioni elementari, polinomi e razionali, gerarchia degli infiniti per funzioni; 4.5 cambio di variabile; 4.6 dimostrazione dei limiti notevoli ed esempi), saltate il 20/10 anche se il prof ne usa i risultati: stanno in <span class="src">slide non annotate 34-60</span>.
 
 ## Argomenti
 
@@ -90,8 +92,12 @@ Il programma dalla slide 7 del 14/9 (quello completo è nel Syllabus su Esse3/Mo
    - [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/) (forme indeterminate, criterio del rapporto, gerarchia)
    - [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/) (III tutoraggio)
    - [Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/) (intorni, punti di accumulazione, definizioni di limite, limite destro e sinistro, legame con le successioni, unicità)
-4. Funzioni continue (definizione di continuità e continuità da destra e sinistra in [Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/); il resto del capitolo non ancora fatto)
-5. Derivate di funzioni; studio del grafico di una funzione
+   - [Teoremi sui limiti di funzioni](/uni/analisi-1/teoremi-sui-limiti-di-funzioni/) (permanenza del segno, confronto, algebra, monotone, limiti notevoli, cambio di variabile)
+4. **Funzioni continue**
+   - [Continuità](/uni/analisi-1/continuita/) (tipi di discontinuità, algebra, composizione, parametri)
+   - [Teoremi sulle funzioni continue](/uni/analisi-1/teoremi-sulle-funzioni-continue/) (zeri, valori intermedi, Weierstrass)
+5. **Derivate** di funzioni; studio del grafico di una funzione
+   - [Derivate](/uni/analisi-1/derivate/) (definizione, retta tangente, derivabile implica continua)
 6. Formula di Taylor
 7. Integrali
 8. Serie numeriche
@@ -113,6 +119,10 @@ Le voci senza link diventano note quando l'argomento parte a lezione.
   - [Permanenza del segno e confronto (esercizi)](/uni/analisi-1/permanenza-del-segno-e-confronto-esercizi/)
   - [Calcolo dei limiti (esercizi)](/uni/analisi-1/calcolo-dei-limiti-esercizi/)
   - [Limiti di funzioni (esercizi)](/uni/analisi-1/limiti-di-funzioni-esercizi/)
+  - [Teoremi sui limiti di funzioni (esercizi)](/uni/analisi-1/teoremi-sui-limiti-di-funzioni-esercizi/)
+  - [Continuità (esercizi)](/uni/analisi-1/continuita-esercizi/)
+  - [Teoremi sulle funzioni continue (esercizi)](/uni/analisi-1/teoremi-sulle-funzioni-continue-esercizi/)
+  - [Derivate (esercizi)](/uni/analisi-1/derivate-esercizi/)
 - <span class="src">Foglio 0 esercizi</span>: logica, insiemi, disequazioni ("per familiarizzare con il linguaggio").
 - <span class="src">Foglio 1 esercizi</span>: sup e inf di successioni e insiemi, grafici elementari, numeri complessi.
 - [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/): i nove insiemi della lavagna dell'esercitazione (gli stessi di <span class="src">Tutoraggio 3 complementi</span>) più l'esercizio 1 del III tutoraggio, con indizio e soluzione chiusi.
@@ -123,15 +133,15 @@ Le voci senza link diventano note quando l'argomento parte a lezione.
 - <span class="src">Tutoraggio 2</span>: foglio del tutoraggio sui complessi (foglio 2 di Pinamonti, 25/9/2023), con soluzioni. Gli esercizi 1, 2.i e 4 coincidono con quelli del foglio 1 già svolti nella nota; gli altri restano da fare a te.
 - <span class="src">Esercitazione 3</span>: esercitazione 3 del tutor (complessi e un sup), svolta per intero in [Numeri complessi](/uni/analisi-1/numeri-complessi/) (sezione "Esercitazione 3") e in [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/) (esercizio 12), con due errori del tutor corretti.
 - <span class="src">Esercizi limiti di successioni 2020</span>: foglio 2 di Ingegneria Industriale 2020, con risultati. Gli esercizi 1, 3, 4, 5 sono gli stessi limiti del III tutoraggio, già svolti; le crocette dell'esercizio 6 sono in [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/) (la risposta 4 del foglio è sbagliata). Gli esercizi 7 e 8 sono "difficili": il 7 è il 3.28.
-- <span class="src">Esercizi limiti di successioni e funzioni 2022</span>: foglio 4 di Ingegneria Industriale 2022, con risultati. Usati per ora l'esercizio 1 (i)-(iii) (criterio del rapporto, in [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/)) e alcuni limiti di funzioni che non chiedono il calcolo (esercizi 3 (x) e 7.5-7.6, in [Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/)). Il resto chiede limiti notevoli e continuità: si fa quando il prof ci arriva.
+- <span class="src">Esercizi limiti di successioni e funzioni 2022</span>: foglio 4 di Ingegneria Industriale 2022, con risultati. Usati per ora l'esercizio 1 (i)-(iii) (criterio del rapporto, in [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/)) e alcuni limiti di funzioni che non chiedono il calcolo (esercizi 3 (x) e 7.5-7.6, in [Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/)). Il resto chiede limiti notevoli e continuità, fatti il 20/10: ora si può svolgere, non è ancora stato fatto nelle note.
 - <span class="src">Esercitazione 4</span>: esercitazione del 13/10 (tutor, scritta a mano): sup e inf, limiti di successioni, confronti, limiti con parametro. Svolta in [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/) (esercizi 13-14c), [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/) (sezione "Tutoraggio del 13/10") e [Calcolo dei limiti (esercizi)](/uni/analisi-1/calcolo-dei-limiti-esercizi/) (esercizi 2 e 3), con due errori del tutor segnalati.
-- <span class="src">Tutoraggio 4</span>: IV tutoraggio, "Limiti di successioni e funzioni e continuità" (Barbon, Favari, Bellomo), senza soluzioni. Gli esercizi 1 e 2 (successioni) sono in [Calcolo dei limiti (esercizi)](/uni/analisi-1/calcolo-dei-limiti-esercizi/) (esercizi 12-21), i limiti di funzioni che si fanno con la definizione o con le successioni in [Limiti di funzioni (esercizi)](/uni/analisi-1/limiti-di-funzioni-esercizi/) (esercizi 25-30). Gli altri (limiti notevoli, gerarchia per funzioni, continuità) sono elencati lì, da svolgere dopo le lezioni che servono.
+- <span class="src">Tutoraggio 4</span>: IV tutoraggio, "Limiti di successioni e funzioni e continuità" (Barbon, Favari, Bellomo), senza soluzioni. Gli esercizi 1 e 2 (successioni) sono in [Calcolo dei limiti (esercizi)](/uni/analisi-1/calcolo-dei-limiti-esercizi/) (esercizi 12-21), i limiti di funzioni che si fanno con la definizione o con le successioni in [Limiti di funzioni (esercizi)](/uni/analisi-1/limiti-di-funzioni-esercizi/) (esercizi 25-30). Quelli con limiti notevoli sono in [Teoremi sui limiti di funzioni (esercizi)](/uni/analisi-1/teoremi-sui-limiti-di-funzioni-esercizi/), quelli sulla continuità in [Continuità (esercizi)](/uni/analisi-1/continuita-esercizi/) (due errori nel testo degli esercizi 5.1 e 5.2, segnalati lì); restano quelli con la gerarchia per funzioni, elencati in fondo a [Limiti di funzioni (esercizi)](/uni/analisi-1/limiti-di-funzioni-esercizi/).
 - Temi d'esame degli anni passati: su Moodle.
 
 ## Risorse
 
 - Slide annotate dal prof, una per lezione: vedi [Programma svolto](#programma-svolto).
-- Deck non ancora coperti da un PDF annotato: <span class="src">Slide cap 1 da 62 (non annotate)</span> (slide 62-92 del 21/9; il PDF dell'esercitazione copre tutto tranne le slide 62-63 sulle monotone), <span class="src">Slide limiti di funzioni da 30 (non annotate)</span> (capitolo 4 dalla slide 30; le slide 1-9 sono nel PDF annotato del 12/10, le 10-29 in quello del 14/10).
+- Deck non ancora coperti da un PDF annotato: <span class="src">Slide cap 1 da 62 (non annotate)</span> (slide 62-92 del 21/9; il PDF dell'esercitazione copre tutto tranne le slide 62-63 sulle monotone), <span class="src">Slide limiti di funzioni 34-60 (non annotate)</span> (capitolo 4, slide 34-54 e 56-60, saltate il 20/10; tutte le altre slide del deck sono nei PDF annotati del 12/10, 14/10, 20/10 e 21/10).
 - Testi consigliati per la teoria (slide 8, in alternativa fra loro):
   - Conti, Ferrario, Terracini, Verzini, *Analisi Matematica. Dal Calcolo all'Analisi*
   - Bertsch, Dal Passo, Giacomelli, *Analisi Matematica*, seconda edizione

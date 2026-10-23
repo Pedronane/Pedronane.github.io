@@ -49,7 +49,7 @@ sin, cos, arctan, (-1)^n diviso un infinito     limitata per infinitesima       
 
 ### Il logaritmo senza continuità
 
-La regola "se $x_n \to x > 0$ allora $\log x_n \to \log x$" è la **continuità del logaritmo**: arriva con la sezione 4.4 dei limiti di funzioni, dopo la slide 29 dove si è fermata la lezione del 14/10 ([Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/)). Fino ad allora un logaritmo si tratta con tre fatti già disponibili.
+La regola "se $x_n \to x > 0$ allora $\log x_n \to \log x$" è la **continuità del logaritmo**: è arrivata il 20/10 (slide 67, continuità delle funzioni elementari, in [Continuità](/uni/analisi-1/continuita/)), insieme all'osservazione “$f$ continua in $x$ e $x_n \to x$ $\Rightarrow$ $f(x_n) \to f(x)$". Questa pagina è stata scritta prima: qui un logaritmo si tratta con tre fatti che non la usano, e i conti restano validi.
 
 **(L1) $\log$ è crescente**: $0 < x < y \Rightarrow \log x < \log y$ ([Funzioni elementari](/uni/analisi-1/funzioni-elementari/)). Serve a stringere: se l'argomento sta fra due quantità, il logaritmo sta fra i loro logaritmi. Per esempio $2^n < 2^n + 1 \leq 2^{n+1}$ dà $n\log 2 < \log(2^n + 1) \leq (n + 1)\log 2$.
 

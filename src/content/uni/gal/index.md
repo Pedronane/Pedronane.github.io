@@ -68,6 +68,7 @@ Date e titoli dal <span class="src">piano delle lezioni</span> della prof.
 | esercitazione 3 (la prof) | lun 12/10 | riepilogo matrici; fine dell'esercizio con parametro della L6 ($A_0^{-1}$, $A_0\vec{x} = \vec{b}$); esercizi 1, 2, 3 e 6 del foglio extra: inversa, $AB^{-1}C$, invertibilità con parametro, chiusura delle soluzioni, sistema con l'inversa | <span class="src">p. 1-9</span>, <span class="src">foglio extra</span>; quaderno p. 68 | [Matrici invertibili](/uni/gal/matrici-invertibili/), [Nucleo e struttura delle soluzioni](/uni/gal/nucleo-e-struttura-delle-soluzioni/), [Esercizi extra matrici svolti](/uni/gal/esercizi-extra-matrici-svolti/) |
 | L7 | mar 13/10 | capitolo 4: spazio vettoriale reale, $\mathbb{R}^n$, combinazioni lineari in forma matriciale; sottospazi, esempi e non-esempi; sottospazio generato $\mathrm{Span}$, spazio finitamente generato, sistema di generatori, criterio col rango; spazio delle righe e delle colonne | <span class="src">p. 1-9</span>; quaderno p. 69-71 (arriva al titolo "Generatori") | [Spazi vettoriali](/uni/gal/spazi-vettoriali/), [Generatori](/uni/gal/generatori/) |
 | L8 (3 ore) | lun 19/10 | sistemi lineari omogenei e sottospazi: ogni $\mathrm{Span}$ di $\mathbb{R}^n$ come insieme delle soluzioni di un sistema omogeneo, esempio in $\mathbb{R}^4$; altri spazi vettoriali $V^3$, $M_{m,n}(\mathbb{R})$, $\mathbb{R}[x]$ (non finitamente generato), $\mathbb{R}[x]_d$, $\mathcal{C}(\mathbb{R})$; sottospazi di $M_2(\mathbb{R})$ e di $\mathbb{R}[x]$; dipendenza e indipendenza lineare, osservazione, proposizione (b) col rango, relazione dalla rref, esercizio in $\mathbb{R}^5$ con parametro; basi, unicità della scrittura, basi standard, proposizioni (a), (b), (c) | <span class="src">p. 10-23</span> (il segno "L8 (3 ore)" è a p. 10); quaderno di Pietro assente | [Generatori](/uni/gal/generatori/), [Spazi vettoriali](/uni/gal/spazi-vettoriali/), [Dipendenza lineare](/uni/gal/dipendenza-lineare/), [Basi](/uni/gal/basi/) |
+| esercitazione 4 (tutor) | mar 20/10 | spazi vettoriali in $\mathbb{R}^n$: promemoria sui criteri col rango (generatori, indipendenza, base); l'esercizio in $\mathbb{R}^5$ con parametro della L8 (indipendenza ed equazioni dello Span); esercizi 1, 2 e 4 del foglio extra: dipendenza e combinazione lineare, generatori con parametro ed equazioni dello Span, base di $\mathbb{R}^4$ con parametro | <span class="src">p. 1-6</span>, <span class="src">foglio extra</span> | [Dipendenza lineare](/uni/gal/dipendenza-lineare/), [Generatori](/uni/gal/generatori/), [Basi](/uni/gal/basi/), [Esercizi extra spazi vettoriali svolti](/uni/gal/esercizi-extra-spazi-vettoriali-svolti/) |
 
 ## Argomenti
 
@@ -94,12 +95,14 @@ Fogli del tutorato svolti per intero: teoria ed esercizi col testo in chiaro, in
 - [Foglio 3 svolto](/uni/gal/foglio-3-svolto/): teoria 3.1-3.6 ed esercizi 3.7-3.12, matrici, inversa, struttura delle soluzioni (<span class="src">PDF</span>, <span class="src">soluzioni ufficiali</span> del 3.11).
 - [Foglio 4 svolto](/uni/gal/foglio-4-svolto/): teoria 4.1-4.11 ed esercizi 4.12-4.21, spazi vettoriali, sottospazi, generatori, indipendenza, basi (<span class="src">PDF</span>).
 - [Esercizi extra matrici svolti](/uni/gal/esercizi-extra-matrici-svolti/): i sei esercizi del foglio "Esercizi - Matrici" della prof, quattro dei quali svolti all'esercitazione 3 (<span class="src">PDF</span>).
+- [Esercizi extra spazi vettoriali svolti](/uni/gal/esercizi-extra-spazi-vettoriali-svolti/): i quattro esercizi del foglio "Esercizi - Lo spazio Rn" della prof, tre dei quali svolti all'esercitazione 4 (<span class="src">PDF</span>).
 
 Esercitazioni del tutor:
 
 - <span class="src">Esercitazione 1</span>: sei esercizi svolti, riportati per esteso nelle note di teoria.
 - <span class="src">Esercitazione 2</span>: quattro esercizi sui sistemi, con il testo in chiaro e la soluzione chiusa in [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/) e [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/).
 - <span class="src">Esercitazione 3</span> (12/10, tenuta dalla prof, non dal tutor: lo annuncia lei negli appunti della L6, p. 13, "lunedì prossimo: esercitazioni (con me)", e la grafia è la sua): matrici, svolta per intero in [Esercizi extra matrici svolti](/uni/gal/esercizi-extra-matrici-svolti/) e negli esempi di [Matrici invertibili](/uni/gal/matrici-invertibili/).
+- <span class="src">Esercitazione 4</span> (mar 20/10, tutor): spazi vettoriali, svolta per intero negli esempi di [Dipendenza lineare](/uni/gal/dipendenza-lineare/), [Generatori](/uni/gal/generatori/) e [Basi](/uni/gal/basi/) e in [Esercizi extra spazi vettoriali svolti](/uni/gal/esercizi-extra-spazi-vettoriali-svolti/).
 
 Altro:
 
@@ -123,7 +126,7 @@ Altro:
 ## Risorse
 
 - Appunti della prof: <span class="src">1, Geometria nello spazio</span> (27 pagine), <span class="src">2, Sistemi lineari</span> (14 pagine), <span class="src">3, Matrici</span> (20 pagine, L5 e L6), <span class="src">4, Spazi vettoriali</span> (23 pagine finora, L7 e L8).
-- <span class="src">Esercitazione 1</span> ed <span class="src">esercitazione 2</span> del tutor Lejdi Lusha; <span class="src">esercitazione 3</span> della prof, con il foglio <span class="src">Esercizi - Matrici</span>.
+- <span class="src">Esercitazione 1</span> ed <span class="src">esercitazione 2</span> del tutor Lejdi Lusha; <span class="src">esercitazione 3</span> della prof, con il foglio <span class="src">Esercizi - Matrici</span>. <span class="src">Esercitazione 4</span> del tutor, con il foglio <span class="src">Esercizi - Lo spazio Rn</span>.
 - <span class="src">Piano delle lezioni</span>: date e argomenti di tutte le lezioni ed esercitazioni fino al 15/12.
 - <span class="src">Dispensa Postinghel</span>: capitolo 1 geometria nello spazio, capitolo 2 sistemi lineari, capitolo 3 matrici (esempi in più per le note di L5-L6, che ora seguono gli appunti della prof). Contiene le dimostrazioni a cui la prof rimanda.
 - Linguaggio matematico: definizione, enunciato, teorema, dimostrazione.

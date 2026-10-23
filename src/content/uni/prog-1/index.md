@@ -68,7 +68,7 @@ Il modello è la <span class="src">prima prova teorica del 22/10/2024</span>, l'
 
 ## Lezioni
 
-Le date delle lezioni dopo l'11 settembre non si ricavano dal materiale: il quaderno arriva alla slide 51 del deck 2.2. Il resto del 2.2, il 3.1 e il 3.2 sono stati fatti a lezione a settembre, il 3.3 fra settembre e ottobre, il 4.1 (tutto, matrici comprese) a ottobre, poi 4.2, 4.3, 4.4, 5.1 e 6.1 (tutti, interi) sempre a ottobre. Il deck 2.2 è stato ricaricato a fine settembre con una slide in più (esercizio sull'assegnazione a catena, slide 64-65): le pagine dopo la 54 sono rinumerate.
+Le date delle lezioni dopo l'11 settembre non si ricavano dal materiale: il quaderno arriva alla slide 51 del deck 2.2. Il resto del 2.2, il 3.1 e il 3.2 sono stati fatti a lezione a settembre, il 3.3 fra settembre e ottobre, il 4.1 (tutto, matrici comprese) a ottobre, poi 4.2, 4.3, 4.4, 5.1, 6.1 e 6.2 (tutti, interi) sempre a ottobre, e l'8.1 (tutto) a ottobre dopo il 6.2. Il deck 2.2 è stato ricaricato a fine settembre con una slide in più (esercizio sull'assegnazione a catena, slide 64-65): le pagine dopo la 54 sono rinumerate.
 
 | #   | Data       | Argomento                              | Slide                                                    | Nota                                                            |
 | --- | ---------- | -------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------- |
@@ -91,8 +91,9 @@ Le date delle lezioni dopo l'11 settembre non si ricavano dal materiale: il quad
 |     | ott        | tipi predefiniti, sizeof, conversioni, cast, Leibniz | <span class="src">5.1</span> (slide 3-33, 77-102) | [Tipi di dati e conversioni](/uni/prog-1/tipi-di-dati-e-conversioni/) |
 |     | ott        | struct, typedef, enum | <span class="src">5.1</span> (slide 34-76) | [Struct, typedef ed enum](/uni/prog-1/struct-typedef-ed-enum/) |
 |     | ott        | puntatori: & e *, aliasing, ->, aritmetica, const | <span class="src">6.1</span> (tutto) | [Puntatori](/uni/prog-1/puntatori/) |
-
-Prossimo: 6.2 Funzioni, non ancora nel vault. Si prende con `uvx --with playwright python tools/moodle.py prendi 6.2` quando è stato fatto a lezione.
+|     | ott        | funzioni: sottoprogrammi, definizione, return, prototipi, pila delle chiamate, visibilità, static | <span class="src">6.2</span> (slide 4-90, 132-149) | [Funzioni](/uni/prog-1/funzioni/) |
+|     | ott        | passaggio per valore e per indirizzo, swap, struct e array come parametri, const | <span class="src">6.2</span> (slide 91-131, 150-154) | [Passaggio dei parametri](/uni/prog-1/passaggio-dei-parametri/) |
+|     | ott        | ricorsione: caso base e induttivo, pila dei record, Hanoi, Fibonacci, memoization | <span class="src">8.1</span> (tutto, slide 1-122) | [Ricorsione](/uni/prog-1/ricorsione/) |
 
 ## Argomenti
 
@@ -115,6 +116,9 @@ Nell'ordine del programma del prof:
 15. [Tipi di dati e conversioni](/uni/prog-1/tipi-di-dati-e-conversioni/): tipi predefiniti e qualificatori, `sizeof`, `float` e confronti, conversioni implicite, cast
 16. [Struct, typedef ed enum](/uni/prog-1/struct-typedef-ed-enum/): `struct` e dot notation, memoria allocata, `typedef`, `enum`
 17. [Puntatori](/uni/prog-1/puntatori/): `&` e `*`, `P = Q` e aliasing, `->`, array e aritmetica dei puntatori, `const`, array di puntatori
+18. [Funzioni](/uni/prog-1/funzioni/): definizione e prototipo, `return`, invocazione come espressione, record di attivazione e pila, visibilità e mascheramento, `static`, `rand`/`srand`
+19. [Passaggio dei parametri](/uni/prog-1/passaggio-dei-parametri/): per valore e per indirizzo, `swap`, struct e array come parametri, più risultati con i puntatori, `const` e privilegio minimo
+20. [Ricorsione](/uni/prog-1/ricorsione/): caso base e caso induttivo, ricorsione diretta e indiretta, record di attivazione e pila, Hanoi, fattoriale, MCD, Fibonacci, memoization, scala 1-2-3 e cammini del robot
 
 ## Esercizi
 
@@ -136,6 +140,9 @@ Nell'ordine del programma del prof:
   - [Tipi di dati e conversioni (esercizi)](/uni/prog-1/tipi-di-dati-e-conversioni-esercizi/)
   - [Struct, typedef ed enum (esercizi)](/uni/prog-1/struct-typedef-ed-enum-esercizi/)
   - [Puntatori (esercizi)](/uni/prog-1/puntatori-esercizi/)
+  - [Funzioni (esercizi)](/uni/prog-1/funzioni-esercizi/)
+  - [Passaggio dei parametri (esercizi)](/uni/prog-1/passaggio-dei-parametri-esercizi/)
+  - [Ricorsione (esercizi)](/uni/prog-1/ricorsione-esercizi/)
 - [Esami passati](/uni/prog-1/esami-passati/): formato dell'esame, domande più frequenti 2023-26, struttura del codice della prova al calcolatore, previsione 2026/27
 
 ## Risorse
@@ -154,6 +161,8 @@ Nell'ordine del programma del prof:
   - <span class="src">4.4 Operazioni e conversioni tra basi</span>
   - <span class="src">5.1 Tipi di dato</span>
   - <span class="src">6.1 Puntatori</span>
-- Figure delle note: `tools/figure_uni/prog1.py`
+  - <span class="src">6.2 Funzioni</span>
+  - <span class="src">8.1 Programmazione ricorsiva</span>
+- Figure delle note: `tools/figure_uni/prog1.py` e `prog1_funzioni.py`
 - Compilatore online usato a lezione: [onlinegdb.com](https://www.onlinegdb.com)
 - Base utile già nel vault: CS50 Introduction to programming with Python, Python - Sintassi base

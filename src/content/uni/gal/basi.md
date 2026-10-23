@@ -12,13 +12,13 @@ lezioni: []
 ordine: 14
 ---
 
-Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L8, lun 19/10 (3 ore), ultima parte della lezione. Fonte: appunti della prof, <span class="src">19/10, p. 19</span> (definizione, proposizione sull'unicità), <span class="src">p. 20</span> (dimostrazione, base canonica di $\mathbb{R}^n$, base di $M_2(\mathbb{R})$), <span class="src">p. 21</span> (base di $\mathbb{R}[x]_d$ e di $V^3$, proposizioni (a) e (b) ricordate, proposizione (c)), <span class="src">p. 22</span> (dimostrazione di (c), due basi di $\mathbb{R}^3$). Gli appunti si fermano a p. 23 con l'esercizio in $\mathbb{R}^5$ ripreso: è svolto in [Dipendenza lineare](/uni/gal/dipendenza-lineare/). Quaderno di Pietro per questa lezione: non c'è. Dispensa, §4.5: <span class="src">p. 100-101</span> (definizione 44, proposizioni 15 e 16, esempi 63-65); numeri di pagina del PDF. Prima: [Generatori](/uni/gal/generatori/) e [Dipendenza lineare](/uni/gal/dipendenza-lineare/), di cui la base è la somma. Si collega a [Matrici invertibili](/uni/gal/matrici-invertibili/): $n$ vettori di $\mathbb{R}^n$ sono una base esattamente quando la matrice che li ha come colonne è invertibile.
+Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L8, lun 19/10 (3 ore), ultima parte della lezione. Fonte: appunti della prof, <span class="src">19/10, p. 19</span> (definizione, proposizione sull'unicità), <span class="src">p. 20</span> (dimostrazione, base canonica di $\mathbb{R}^n$, base di $M_2(\mathbb{R})$), <span class="src">p. 21</span> (base di $\mathbb{R}[x]_d$ e di $V^3$, proposizioni (a) e (b) ricordate, proposizione (c)), <span class="src">p. 22</span> (dimostrazione di (c), due basi di $\mathbb{R}^3$). Gli appunti si fermano a p. 23 con l'esercizio in $\mathbb{R}^5$ ripreso: è svolto in [Dipendenza lineare](/uni/gal/dipendenza-lineare/). Quaderno di Pietro per questa lezione: non c'è. Dispensa, §4.5: <span class="src">p. 100-101</span> (definizione 44, proposizioni 15 e 16, esempi 63-65); numeri di pagina del PDF. Prima: [Generatori](/uni/gal/generatori/) e [Dipendenza lineare](/uni/gal/dipendenza-lineare/), di cui la base è la somma. Si collega a [Matrici invertibili](/uni/gal/matrici-invertibili/): $n$ vettori di $\mathbb{R}^n$ sono una base esattamente quando la matrice che li ha come colonne è invertibile. Esercitazione 4 del tutor, mar 20/10: <span class="src">p. 1</span> (promemoria sui criteri col rango) e <span class="src">p. 5-6</span> (esercizio 4 del foglio [esercizi extra sugli spazi vettoriali](/uni/gal/esercizi-extra-spazi-vettoriali-svolti/)).
 
 > [!abstract] Per l'esame
 > - **Saper enunciare**: base di uno spazio vettoriale finitamente generato (sistema di generatori linearmente indipendente); la proposizione "rispetto a una base ogni vettore si scrive in modo unico"; le proposizioni (a), (b), (c) col rango, in particolare "(c) $\{\vec{v}_1, \ldots, \vec{v}_k\} \subseteq \mathbb{R}^n$ è una base se e solo se $\operatorname{rg}(A) = k$ e $k = n$"; le basi standard di $\mathbb{R}^n$ (canonica), $M_2(\mathbb{R})$, $\mathbb{R}[x]_d$, $V^3$.
 > - **Saper dimostrare**: l'unicità della scrittura (esistenza dai generatori, unicità dall'indipendenza); la (c) a partire da (a) e (b); che $\{\vec{e}_1, \ldots, \vec{e}_n\}$ e le quattro matrici $A_1, \ldots, A_4$ sono basi.
 > - **Saper fare**: decidere se $k$ vettori di $\mathbb{R}^n$ sono una base, anche con un parametro; scrivere un vettore come combinazione degli elementi di una base risolvendo $[A \mid \vec{v}]$; decidere se un insieme di matrici o di polinomi è una base.
-> - **Dove esce**: il parziale del 5/11 copre tutto il capitolo 4; "per quali $k$ questi vettori formano una base di $\mathbb{R}^4$" è l'esercizio 17 della dispensa e la forma tipica delle provette.
+> - **Dove esce**: il parziale del 5/11 copre tutto il capitolo 4; "per quali $k$ questi vettori formano una base di $\mathbb{R}^4$" è l'esercizio 17 della dispensa e la forma tipica delle provette; il tutor l'ha svolto all'esercitazione 4 del 20/10 (esercizio 4 degli [esercizi extra](/uni/gal/esercizi-extra-spazi-vettoriali-svolti/)).
 
 **L'idea.** Un sistema di generatori raggiunge tutto lo spazio, ma può avere doppioni ([Generatori](/uni/gal/generatori/)). Un insieme indipendente non ha doppioni, ma può non raggiungere tutto ([Dipendenza lineare](/uni/gal/dipendenza-lineare/)). Una **base** ha le due cose insieme: raggiunge ogni vettore, senza vettori superflui. La conseguenza è che ogni vettore si ottiene in **un modo solo**: una base funziona come un sistema di riferimento, e i coefficienti con cui si scrive un vettore lo descrivono senza ambiguità.
 
@@ -234,6 +234,35 @@ Il sistema che esce, uguagliando elemento per elemento o coefficiente per coeffi
 > Tre pivot ($1$, $-1$, $2$): $\operatorname{rg}(B) = 3$, quindi $\{\vec{v}_1, \vec{v}_2, \vec{v}_3\}$ è una base.
 >
 > **Controllo**: nessun vettore è combinazione degli altri due. Per esempio $\vec{v}_3 = a\vec{v}_1 + b\vec{v}_2$ chiederebbe $a + b = 0$, $a = 1$, $b = 1$ dalle tre componenti: $1 + 1 \neq 0$. La figura "non complanari" in [Dipendenza lineare](/uni/gal/dipendenza-lineare/) è questa base. L'esempio 65 della dispensa, qui sopra, scrive $(4, 3, 2)$ in questa base.
+
+> [!example]- Tutor, esercitazione 4, 20/10, p. 1: il promemoria sui tre criteri
+> L'esercitazione si apre con un "MEMO" (<span class="src">p. 1</span>). Si dice che $\{\vec{v}_1, \ldots, \vec{v}_k\} \subseteq \mathbb{R}^n$ è:
+> - un sistema di generatori di $\mathbb{R}^n$ $\iff$ $\operatorname{rg}[\vec{v}_1 \mid \cdots \mid \vec{v}_k] = n$;
+> - linearmente indipendente $\iff$ $\operatorname{rg}[\vec{v}_1 \mid \cdots \mid \vec{v}_k] = k$;
+> - una base di $\mathbb{R}^n$ $\iff$ $\operatorname{rg}[\vec{v}_1 \mid \cdots \mid \vec{v}_k] = k$ e $k = n$.
+>
+> Sono le proposizioni (a), (b), (c) qui sopra, in una riga ciascuna.
+
+> [!example]- Tutor, esercitazione 4, 20/10, p. 5-6: per quali $k$ quattro vettori sono una base di $\mathbb{R}^4$
+> Esercizio 4 del foglio [esercizi extra sugli spazi vettoriali](/uni/gal/esercizi-extra-spazi-vettoriali-svolti/). $\vec{v}_1 = (1, 1, 2, 0)$, $\vec{v}_2 = (0, 3, -2, k - 2)$, $\vec{v}_3 = (0, 1, -1, -1)$, $\vec{v}_4 = (1, 0, 2, k)$, $k \in \mathbb{R}$. Per quali $k$ l'insieme è una base di $\mathbb{R}^4$?
+>
+> **Riconoscere il tipo**: "per essere una base, l'insieme deve essere un sistema di generatori linearmente indipendente" (il tutor); con $k = n = 4$ per la (c) basta $\operatorname{rg}(A) = 4$.
+> $$
+> A = \begin{pmatrix} 1 & 0 & 0 & 1 \\ 1 & 3 & 1 & 0 \\ 2 & -2 & -1 & 2 \\ 0 & k - 2 & -1 & k \end{pmatrix} \xrightarrow{E_{21}(-1),\ E_{31}(-2)} \begin{pmatrix} 1 & 0 & 0 & 1 \\ 0 & 3 & 1 & -1 \\ 0 & -2 & -1 & 0 \\ 0 & k - 2 & -1 & k \end{pmatrix}
+> $$
+> ($R_2 - R_1 = (0, 3, 1, -1)$; $R_3 - 2R_1 = (0,\ -2,\ -1,\ 2 - 2) = (0, -2, -1, 0)$.) Pivot $3$, senza parametro:
+> $$
+> \xrightarrow{E_{32}(\frac23),\ E_{42}(-\frac{k-2}{3})} \begin{pmatrix} 1 & 0 & 0 & 1 \\ 0 & 3 & 1 & -1 \\ 0 & 0 & -\frac13 & -\frac23 \\ 0 & 0 & -\frac{k + 1}{3} & \frac{4k - 2}{3} \end{pmatrix}
+> $$
+> ($R_3 + \frac23 R_2 = (0,\ 0,\ -1 + \frac23,\ -\frac23)$; $R_4 - \frac{k-2}{3}R_2$: terza componente $-1 - \frac{k - 2}{3} = -\frac{k + 1}{3}$, quarta $k + \frac{k - 2}{3} = \frac{4k - 2}{3}$.) Pivot $-\frac13$, senza parametro:
+> $$
+> \xrightarrow{E_{43}(-(k + 1))} \begin{pmatrix} 1 & 0 & 0 & 1 \\ 0 & 3 & 1 & -1 \\ 0 & 0 & -\frac13 & -\frac23 \\ 0 & 0 & 0 & 2k \end{pmatrix}
+> $$
+> Il conto a margine del tutor: $\frac{4k - 2}{3} - (k + 1)\left(-\frac23\right) = \frac{4k - 2 + 2k + 2}{3} = 2k$.
+>
+> Se $k = 0$, $\operatorname{rg}(A) = 3 \neq 4$. **I vettori sono una base di $\mathbb{R}^4$ se e solo se $k \neq 0$.**
+>
+> **Controllo**: per $k = 0$ vale $\vec{v}_4 = \vec{v}_1 - \vec{v}_2 + 2\vec{v}_3$, cioè $(1, 1, 2, 0) - (0, 3, -2, -2) + (0, 2, -2, -2) = (1, 0, 2, 0)$. Il prodotto dei pivot, $1 \cdot 3 \cdot (-\frac13) \cdot 2k = -2k$, è il determinante di $A$ (verificato con sympy), nullo solo per $k = 0$.
 
 ## Esercizi tipo esame
 

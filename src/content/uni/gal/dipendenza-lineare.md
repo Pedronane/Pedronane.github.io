@@ -12,13 +12,13 @@ lezioni: []
 ordine: 13
 ---
 
-Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L8, lun 19/10 (3 ore), terza parte del capitolo 4. Fonte: appunti della prof, <span class="src">19/10, p. 15</span> (definizione (I) e (II), osservazione), <span class="src">p. 16</span> (dimostrazione, esempio 1 in $\mathbb{R}^4$), <span class="src">p. 17</span> (criterio col rango, proposizione (b)), <span class="src">p. 18</span> (esempio 1 con la forma ridotta, come leggere la relazione), <span class="src">p. 19</span> (esercizio in $\mathbb{R}^5$ con parametro), <span class="src">p. 23</span> (l'esercizio ripreso, impostato e lasciato a metà). Il quaderno di Pietro per questa lezione non c'è: l'unica fonte della lezione sono gli appunti della prof. Dispensa, §4.4: <span class="src">p. 96-100</span> (definizione 43, esempi 59-62, osservazioni 16-19, proposizione 14); numeri di pagina del PDF. Prima: [Generatori](/uni/gal/generatori/) (Span, criterio (a)). Il calcolo passa da [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/) e [Nucleo e struttura delle soluzioni](/uni/gal/nucleo-e-struttura-delle-soluzioni/). Dopo, nella stessa lezione: [Basi](/uni/gal/basi/).
+Argomento di [Geometria e Algebra Lineare](/uni/gal/). Fatto a lezione in L8, lun 19/10 (3 ore), terza parte del capitolo 4. Fonte: appunti della prof, <span class="src">19/10, p. 15</span> (definizione (I) e (II), osservazione), <span class="src">p. 16</span> (dimostrazione, esempio 1 in $\mathbb{R}^4$), <span class="src">p. 17</span> (criterio col rango, proposizione (b)), <span class="src">p. 18</span> (esempio 1 con la forma ridotta, come leggere la relazione), <span class="src">p. 19</span> (esercizio in $\mathbb{R}^5$ con parametro), <span class="src">p. 23</span> (l'esercizio ripreso, impostato e lasciato a metà). Il quaderno di Pietro per questa lezione non c'è: l'unica fonte della lezione sono gli appunti della prof. Dispensa, §4.4: <span class="src">p. 96-100</span> (definizione 43, esempi 59-62, osservazioni 16-19, proposizione 14); numeri di pagina del PDF. Prima: [Generatori](/uni/gal/generatori/) (Span, criterio (a)). Il calcolo passa da [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/) e [Nucleo e struttura delle soluzioni](/uni/gal/nucleo-e-struttura-delle-soluzioni/). Dopo, nella stessa lezione: [Basi](/uni/gal/basi/). Esercitazione 4 del tutor, mar 20/10: <span class="src">p. 1-3</span> (l'esercizio in $\mathbb{R}^5$ della prof, svolto per intero, e l'esercizio 1 del foglio [esercizi extra sugli spazi vettoriali](/uni/gal/esercizi-extra-spazi-vettoriali-svolti/)).
 
 > [!abstract] Per l'esame
 > - **Saper enunciare**: insieme linearmente dipendente (I) e linearmente indipendente (II) con le parole della prof; l'osservazione "dipendente con $k \geq 2$ vuol dire che un vettore è combinazione degli altri, e si può togliere senza cambiare lo Span"; la proposizione (b), “$\{\vec{v}_1, \ldots, \vec{v}_k\} \subseteq \mathbb{R}^n$ è linearmente indipendente se e solo se $\operatorname{rg}(A) = k$", con la conseguenza $k \leq n$.
 > - **Saper dimostrare**: l'osservazione (si divide per il coefficiente non nullo); perché il criterio è "rango uguale al numero di colonne" (il sistema omogeneo $A\vec{\lambda} = \vec{0}$ ha solo la soluzione nulla).
 > - **Saper fare**: decidere se dei vettori di $\mathbb{R}^n$ sono indipendenti, anche con un parametro; quando sono dipendenti, trovare la relazione e scrivere un vettore come combinazione degli altri leggendo la forma ridotta; decidere l'indipendenza in $M_2(\mathbb{R})$ o fra polinomi con la definizione.
-> - **Dove esce**: il parziale del 5/11 copre tutto il capitolo 4. L'esercizio della prof in $\mathbb{R}^5$ con parametro (indipendenza più equazioni dello Span) è la forma dell'esercizio da 6 punti "vettori di $\mathbb{R}^4$ con parametro" delle provette dal 2022; nel [foglio 4](/uni/gal/foglio-4-svolto/) sono le domande 4.10-4.11 e gli esercizi 4.14-4.18.
+> - **Dove esce**: il parziale del 5/11 copre tutto il capitolo 4. L'esercizio della prof in $\mathbb{R}^5$ con parametro (indipendenza più equazioni dello Span) è la forma dell'esercizio da 6 punti "vettori di $\mathbb{R}^4$ con parametro" delle provette dal 2022; nel [foglio 4](/uni/gal/foglio-4-svolto/) sono le domande 4.10-4.11 e gli esercizi 4.14-4.18. Il tutor lo ha ripreso come primo esercizio dell'esercitazione 4 (20/10), e gli [esercizi extra](/uni/gal/esercizi-extra-spazi-vettoriali-svolti/) 1 e 3 sono dello stesso tipo.
 
 **L'idea.** In [Generatori](/uni/gal/generatori/) si è visto che un vettore che è già combinazione degli altri non allarga lo Span: è un doppione. Dipendenza lineare è il nome di "c'è almeno un doppione". Il modo di dirlo senza scegliere quale vettore è il doppione: si può ottenere il vettore nullo combinando i vettori con coefficienti **non tutti nulli**. Indipendenza vuol dire il contrario: l'unico modo di ottenere $\vec{0}$ è il modo banale, tutti i coefficienti $0$.
 
@@ -273,7 +273,7 @@ In $M_2(\mathbb{R})$ o fra polinomi si usa la **definizione**: si scrive $\lambd
 > $$
 > $\operatorname{rg}(A) = 2 < k = 3$, quindi $\{\vec{v}_1, \vec{v}_2, \vec{v}_3\}$ è linearmente dipendente. La colonna 3 non ha pivot e contiene $2, 3$: $\vec{v}_3 = 2\vec{v}_1 + 3\vec{v}_2$, cioè $2\vec{v}_1 + 3\vec{v}_2 - \vec{v}_3 = \vec{0}$. Sono esattamente i coefficienti scelti a p. 16.
 
-> [!example]- Prof, 19/10, p. 19 e 23: tre vettori di $\mathbb{R}^5$ con parametro $t$ (impostato a lezione, qui finito)
+> [!example]- Prof, 19/10, p. 19 e 23, e tutor, esercitazione 4, 20/10, p. 1-2: tre vettori di $\mathbb{R}^5$ con parametro $t$
 > $$
 > \vec{v}_1 = (0, 1, -1, 0, 1), \quad \vec{v}_2 = (-1, 2, -3, 0, 0), \quad \vec{v}_3 = (1, 0, 1, 0, t) \in \mathbb{R}^5, \qquad t \in \mathbb{R}
 > $$
@@ -327,6 +327,37 @@ In $M_2(\mathbb{R})$ o fra polinomi si usa la **definizione**: si scrive $\lambd
 > - $\vec{v}_3 = (1, 0, 1, 0, t)$: $1 - 0 - 1 = 0$; $x_4 = 0$ per ogni $t$; la terza dà $2 + 0 - t = 2 - t$, nulla solo per $t = 2$. Coerente: per $t \neq 2$ la terza equazione non vale per $\vec{v}_3$, ed è per questo che sparisce.
 >
 > **Un'osservazione.** Per $t \neq 2$ le equazioni non contengono $t$: il terzo vettore cambia con $t$, ma lo Span è sempre lo stesso sottospazio di $\mathbb{R}^5$.
+>
+> **Il tutor, esercitazione 4, 20/10** (<span class="src">p. 1-2</span>). È il primo esercizio dell'esercitazione, svolto per intero con lo stesso risultato. Lo imposta con il richiamo “$\vec{x} \in \mathrm{Span}(\vec{v}_1, \ldots, \vec{v}_k)$ se e solo se esistono $\lambda_1, \ldots, \lambda_k$ con $\vec{x} = \sum \lambda_i\vec{v}_i$, se e solo se $A\vec{\lambda} = \vec{x}$ è compatibile, se e solo se $\operatorname{rg}(A) = \operatorname{rg}(A \mid \vec{x})$ (R-C)". L'unica differenza è l'ordine degli scambi: all'inizio fa insieme $S_{12}$ e $S_{45}$, così la riga $(0, 0, 0 \mid x_4)$ va subito in fondo; poi $E_{31}(1)$ ed $E_{41}(-1)$, poi $E_{32}(-1)$ ed $E_{42}(-2)$, infine $S_{34}$ per portare su la riga con $t - 2$. Arriva a
+> $$
+> \left[\begin{array}{ccc|c} 1 & 2 & 0 & x_2 \\ 0 & -1 & 1 & x_1 \\ 0 & 0 & t - 2 & x_5 - x_2 - 2x_1 \\ 0 & 0 & 0 & x_2 + x_3 - x_1 \\ 0 & 0 & 0 & x_4 \end{array}\right]
+> $$
+> e conclude: $\operatorname{rg}(A) = 3$ se e solo se $t \neq 2$, quindi indipendenti per ogni $t \neq 2$; per $t \neq 2$ lo Span è $\{x_2 + x_3 - x_1 = 0,\ x_4 = 0\}$, per $t = 2$ $\mathrm{Span}(\vec{v}_1, \vec{v}_2, \vec{v}_3) = \mathrm{Span}(\vec{v}_1, \vec{v}_2)$ con in più $x_5 - x_2 - 2x_1 = 0$. Sono le equazioni scritte sopra, moltiplicate per $-1$.
+
+> [!example]- Tutor, esercitazione 4, 20/10, p. 2-3: quattro vettori di $\mathbb{R}^4$ dipendenti, e $\vec{v}_4$ come combinazione degli altri
+> Esercizio 1 del foglio [esercizi extra sugli spazi vettoriali](/uni/gal/esercizi-extra-spazi-vettoriali-svolti/) (lì c'è ogni riga calcolata, con indizio). $\vec{v}_1 = (2, 1, 1, 1)$, $\vec{v}_2 = (-1, 1, 2, 0)$, $\vec{v}_3 = (3, -2, -1, 0)$, $\vec{v}_4 = (0, 5, 5, 2)$.
+> - 1) $\{\vec{v}_1, \vec{v}_2, \vec{v}_3, \vec{v}_4\}$ è linearmente indipendente?
+> - 2) Si può scrivere $\vec{v}_4$ come combinazione lineare di $\vec{v}_1, \vec{v}_2, \vec{v}_3$?
+>
+> **Riconoscere il tipo**: rango confrontato con $k = 4$, poi forma ridotta per leggere la relazione. Una sola matrice, $A = [\vec{v}_1 \mid \vec{v}_2 \mid \vec{v}_3 \mid \vec{v}_4]$.
+> $$
+> A = \begin{pmatrix} 2 & -1 & 3 & 0 \\ 1 & 1 & -2 & 5 \\ 1 & 2 & -1 & 5 \\ 1 & 0 & 0 & 2 \end{pmatrix} \xrightarrow{E_{21}(-\frac12),\ E_{31}(-\frac12),\ E_{41}(-\frac12)} \begin{pmatrix} 2 & -1 & 3 & 0 \\ 0 & \frac32 & -\frac72 & 5 \\ 0 & \frac52 & -\frac52 & 5 \\ 0 & \frac12 & -\frac32 & 2 \end{pmatrix} \xrightarrow{D_2(2),\ D_3(2),\ D_4(2)} \begin{pmatrix} 2 & -1 & 3 & 0 \\ 0 & 3 & -7 & 10 \\ 0 & 5 & -5 & 10 \\ 0 & 1 & -3 & 4 \end{pmatrix}
+> $$
+> (per esempio $R_2 - \frac12 R_1 = (1 - 1,\ 1 + \frac12,\ -2 - \frac32,\ 5) = (0, \frac32, -\frac72, 5)$; le $D_i(2)$ tolgono le frazioni e non cambiano il rango.)
+> $$
+> \xrightarrow{E_{32}(-\frac53),\ E_{42}(-\frac13)} \begin{pmatrix} 2 & -1 & 3 & 0 \\ 0 & 3 & -7 & 10 \\ 0 & 0 & \frac{20}{3} & -\frac{20}{3} \\ 0 & 0 & -\frac23 & \frac23 \end{pmatrix} \xrightarrow{E_{43}(\frac{1}{10})} \begin{pmatrix} 2 & -1 & 3 & 0 \\ 0 & 3 & -7 & 10 \\ 0 & 0 & \frac{20}{3} & -\frac{20}{3} \\ 0 & 0 & 0 & 0 \end{pmatrix}
+> $$
+> ($R_3 - \frac53 R_2 = (0,\ 0,\ -5 + \frac{35}{3},\ 10 - \frac{50}{3}) = (0, 0, \frac{20}{3}, -\frac{20}{3})$; $R_4 - \frac13 R_2 = (0,\ 0,\ -3 + \frac73,\ 4 - \frac{10}{3}) = (0, 0, -\frac23, \frac23)$; $R_4 + \frac{1}{10}R_3 = (0, 0, 0, 0)$.)
+>
+> **1)** "Il numero di pivot non nulli è $3$", quindi $\operatorname{rg}(A) = 3 < 4 = k$: **non è linearmente indipendente.**
+>
+> **2)** I tre pivot sono nelle prime tre colonne, quindi $\vec{v}_4$ è combinazione di $\vec{v}_1, \vec{v}_2, \vec{v}_3$. Il tutor procede con la riduzione all'indietro:
+> $$
+> \xrightarrow{D_1(\frac12),\ D_2(\frac13),\ D_3(\frac{3}{20})} \begin{pmatrix} 1 & -\frac12 & \frac32 & 0 \\ 0 & 1 & -\frac73 & \frac{10}{3} \\ 0 & 0 & 1 & -1 \\ 0 & 0 & 0 & 0 \end{pmatrix} \xrightarrow{E_{12}(\frac12)} \begin{pmatrix} 1 & 0 & \frac13 & \frac53 \\ 0 & 1 & -\frac73 & \frac{10}{3} \\ 0 & 0 & 1 & -1 \\ 0 & 0 & 0 & 0 \end{pmatrix} \xrightarrow{E_{13}(-\frac13),\ E_{23}(\frac73)} \begin{pmatrix} 1 & 0 & 0 & 2 \\ 0 & 1 & 0 & 1 \\ 0 & 0 & 1 & -1 \\ 0 & 0 & 0 & 0 \end{pmatrix}
+> $$
+> ($\frac32 - \frac12 \cdot \frac73 = \frac96 - \frac76 = \frac13$; $\frac53 + \frac13 = 2$; $\frac{10}{3} - \frac73 = 1$.) La quarta colonna dà $\vec{v}_4 = 2\vec{v}_1 + \vec{v}_2 - \vec{v}_3$.
+>
+> **Verifica** (il tutor scrive: "per verificare la correttezza dei conti, esplicitatelo"): $2(2, 1, 1, 1) + (-1, 1, 2, 0) - (3, -2, -1, 0) = (4 - 1 - 3,\ 2 + 1 + 2,\ 2 + 2 + 1,\ 2) = (0, 5, 5, 2)$.
 
 ## Esercizi tipo esame
 

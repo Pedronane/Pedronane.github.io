@@ -107,6 +107,14 @@ Le voci senza link diventano note quando l'argomento parte a lezione.
 
 ## Esercizi
 
+Schede del tutorato svolte per intero: teoria che serve, esercizi col testo in chiaro, indizio e soluzione chiusi.
+
+- [Tutoraggio 2 svolto](/uni/analisi-1/tutoraggio-2-svolto/): II tutoraggio, numeri complessi (forma algebrica, equazioni e luoghi, potenze, radici), 6 esercizi (<span class="src">PDF</span>).
+- [Tutoraggio 3 svolto](/uni/analisi-1/tutoraggio-3-svolto/): III tutoraggio, sup e inf, monotonia, 39 limiti di successioni, più i 9 insiemi del III bis (<span class="src">PDF</span>, <span class="src">III bis</span>).
+- [Tutoraggio 4 svolto](/uni/analisi-1/tutoraggio-4-svolto/): IV tutoraggio, limiti di successioni e di funzioni, continuità con parametro, 30 esercizi; due errori nel testo del 5.1 e del 5.2 corretti (<span class="src">PDF</span>).
+
+Pagine di esercizi per argomento:
+
 - Ogni argomento ha la sua pagina di **esercizi tipo esame**, separata dalla teoria: crocette stile parte 1 ed esercizi stile parte 2, soluzione in callout chiuso.
   - [Insiemi e logica (esercizi)](/uni/analisi-1/insiemi-e-logica-esercizi/)
   - [Numeri reali, sup e inf (esercizi)](/uni/analisi-1/numeri-reali-sup-e-inf-esercizi/)
@@ -126,16 +134,16 @@ Le voci senza link diventano note quando l'argomento parte a lezione.
 - <span class="src">Foglio 0 esercizi</span>: logica, insiemi, disequazioni ("per familiarizzare con il linguaggio").
 - <span class="src">Foglio 1 esercizi</span>: sup e inf di successioni e insiemi, grafici elementari, numeri complessi.
 - [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/): i nove insiemi della lavagna dell'esercitazione (gli stessi di <span class="src">Tutoraggio 3 complementi</span>) più l'esercizio 1 del III tutoraggio, con indizio e soluzione chiusi.
-- <span class="src">Tutoraggio 3</span>: III tutoraggio, "Successioni e loro limiti" (Barbon, Favari, Bellomo), senza soluzioni. Svolto in [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/), tranne tre limiti che richiedono la continuità del logaritmo (capitolo 4).
+- <span class="src">Tutoraggio 3</span>: III tutoraggio, "Successioni e loro limiti" (Barbon, Favari, Bellomo), senza soluzioni. Svolto per intero in [Tutoraggio 3 svolto](/uni/analisi-1/tutoraggio-3-svolto/) e in [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/).
 - <span class="src">Esercitazione 2</span>: esercitazione del 29/9 (tutor), svolta negli esempi delle note su funzioni, trasformazioni e complessi; gli esercizi segnati "non svolto a lezione" sono fra gli esercizi tipo esame delle pagine di esercizi.
 - <span class="src">Esercizi svolti logica</span>: esercizi svolti di Pinamonti (a.a. 21/22) su quantificatori, insiemi, campo di esistenza.
 - <span class="src">Esercizi svolti complessi</span>: "Qualche esercizio risolto sui complessi" (Moodle, foglio di Ingegneria Industriale 22/23): forme, luoghi, equazioni, radici, crocette con risposte. Alcuni sono svolti per esteso negli esercizi della nota sui complessi.
-- <span class="src">Tutoraggio 2</span>: foglio del tutoraggio sui complessi (foglio 2 di Pinamonti, 25/9/2023), con soluzioni. Gli esercizi 1, 2.i e 4 coincidono con quelli del foglio 1 già svolti nella nota; gli altri restano da fare a te.
+- <span class="src">Tutoraggio 2</span>: foglio del tutoraggio sui complessi (foglio 2 di Pinamonti, 25/9/2023), con soluzioni. Svolto per intero in [Tutoraggio 2 svolto](/uni/analisi-1/tutoraggio-2-svolto/).
 - <span class="src">Esercitazione 3</span>: esercitazione 3 del tutor (complessi e un sup), svolta per intero in [Numeri complessi](/uni/analisi-1/numeri-complessi/) (sezione "Esercitazione 3") e in [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/) (esercizio 12), con due errori del tutor corretti.
 - <span class="src">Esercizi limiti di successioni 2020</span>: foglio 2 di Ingegneria Industriale 2020, con risultati. Gli esercizi 1, 3, 4, 5 sono gli stessi limiti del III tutoraggio, già svolti; le crocette dell'esercizio 6 sono in [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/) (la risposta 4 del foglio è sbagliata). Gli esercizi 7 e 8 sono "difficili": il 7 è il 3.28.
 - <span class="src">Esercizi limiti di successioni e funzioni 2022</span>: foglio 4 di Ingegneria Industriale 2022, con risultati. Usati per ora l'esercizio 1 (i)-(iii) (criterio del rapporto, in [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/)) e alcuni limiti di funzioni che non chiedono il calcolo (esercizi 3 (x) e 7.5-7.6, in [Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/)). Il resto chiede limiti notevoli e continuità, fatti il 20/10: ora si può svolgere, non è ancora stato fatto nelle note.
 - <span class="src">Esercitazione 4</span>: esercitazione del 13/10 (tutor, scritta a mano): sup e inf, limiti di successioni, confronti, limiti con parametro. Svolta in [Esercizi sup e inf](/uni/analisi-1/esercizi-sup-e-inf/) (esercizi 13-14c), [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/) (sezione "Tutoraggio del 13/10") e [Calcolo dei limiti (esercizi)](/uni/analisi-1/calcolo-dei-limiti-esercizi/) (esercizi 2 e 3), con due errori del tutor segnalati.
-- <span class="src">Tutoraggio 4</span>: IV tutoraggio, "Limiti di successioni e funzioni e continuità" (Barbon, Favari, Bellomo), senza soluzioni. Gli esercizi 1 e 2 (successioni) sono in [Calcolo dei limiti (esercizi)](/uni/analisi-1/calcolo-dei-limiti-esercizi/) (esercizi 12-21), i limiti di funzioni che si fanno con la definizione o con le successioni in [Limiti di funzioni (esercizi)](/uni/analisi-1/limiti-di-funzioni-esercizi/) (esercizi 25-30). Quelli con limiti notevoli sono in [Teoremi sui limiti di funzioni (esercizi)](/uni/analisi-1/teoremi-sui-limiti-di-funzioni-esercizi/), quelli sulla continuità in [Continuità (esercizi)](/uni/analisi-1/continuita-esercizi/) (due errori nel testo degli esercizi 5.1 e 5.2, segnalati lì); restano quelli con la gerarchia per funzioni, elencati in fondo a [Limiti di funzioni (esercizi)](/uni/analisi-1/limiti-di-funzioni-esercizi/).
+- <span class="src">Tutoraggio 4</span>: IV tutoraggio, "Limiti di successioni e funzioni e continuità" (Barbon, Favari, Bellomo), senza soluzioni. Svolto per intero in [Tutoraggio 4 svolto](/uni/analisi-1/tutoraggio-4-svolto/), compresi i limiti con la gerarchia per funzioni, fatti con una stima del logaritmo. Molti esercizi sono anche nelle pagine di esercizi di [Calcolo dei limiti (esercizi)](/uni/analisi-1/calcolo-dei-limiti-esercizi/), [Limiti di funzioni (esercizi)](/uni/analisi-1/limiti-di-funzioni-esercizi/), [Teoremi sui limiti di funzioni (esercizi)](/uni/analisi-1/teoremi-sui-limiti-di-funzioni-esercizi/) e [Continuità (esercizi)](/uni/analisi-1/continuita-esercizi/).
 - Temi d'esame degli anni passati: su Moodle.
 
 ## Risorse

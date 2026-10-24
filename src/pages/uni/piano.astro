@@ -1,0 +1,254 @@
+---
+import UniLayout from '../../layouts/UniLayout.astro';
+import { getCollection } from 'astro:content';
+import { urlOf, slugOf } from '../../lib/uni';
+import { GIORNI, PROVE, MATERIE, DA_FARE, OGNI_GIORNO, type Materia, type Giorno } from '../../data/piano-parziali';
+
+const note = await getCollection('uni');
+const perId = new Map(note.map((n) => [`${n.data.materia}/${slugOf(n)}`, n]));
+
+const link = (id: string) => {
+  if (id.startsWith('simulazioni:')) {
+    const m = id.slice('simulazioni:'.length) as Materia;
+    return { href: '/uni/simulazioni/', titolo: `Simulazioni di ${MATERIE[m].breve}` };
+  }
+  const n = perId.get(id);
+  if (!n) throw new Error(`piano-parziali: la nota ${id} non esiste in src/content/uni`);
+  return { href: urlOf(n), titolo: n.data.title };
+};
+
+const settimana = new Intl.DateTimeFormat('it-IT', { weekday: 'short', timeZone: 'UTC' });
+const giornoMese = new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', timeZone: 'UTC' });
+const ora = (o: number) => `${String(o).replace('.', ',')} h`;
+
+const ordine: Materia[] = ['analisi-1', 'gal', 'prog-1'];
+const orePer = Object.fromEntries(
+  ordine.map((m) => [m, GIORNI.flatMap((g) => g.blocchi).filter((b) => b.materia === m).reduce((s, b) => s + b.ore, 0)]),
+) as Record<Materia, number>;
+const oreTotali = ordine.reduce((s, m) => s + orePer[m], 0);
+
+const fasi: { fase: Giorno['fase']; titolo: string; sotto: string }[] = [
+  { fase: 'argomenti', titolo: 'Un argomento alla volta', sotto: 'Due blocchi da 2 ore, materie diverse. Prima le domande della nota a voce, poi gli esercizi tipo esame scritti fino in fondo.' },
+  { fase: 'simulazioni', titolo: 'A tempo, come il giorno vero', sotto: 'Niente note aperte, cronometro, poi la correzione con la griglia. Prima le simulazioni non ancora fatte, poi i temi degli anni scorsi.' },
+  { fase: 'prove', titolo: 'Il giorno delle prove', sotto: 'Solo ripasso leggero. La sera prima di Analisi niente argomenti nuovi.' },
+];
+
+const primaProva = PROVE[0].quando.slice(0, 10);
+---
+
+<UniLayout title="Verso i parziali · Note" description="Piano di studio di quattro ore al giorno verso i parziali del 5 e 6 novembre.">
+  <main class="sheet senza-indice piano" id="contenuto" data-prima-prova={primaProva}>
+    <header class="registro-head">
+      <dl class="note-meta">
+        <div><a href="/uni/">Tutte le materie</a></div>
+        <div><dt>Ritmo</dt><dd>4 h al giorno</dd></div>
+        <div class="stato"><dt>Fatte</dt><dd><span data-fatte-tot>0</span> di {ora(oreTotali)}</dd></div>
+      </dl>
+      <h1>Verso i parziali</h1>
+      <p class="sotto" data-conto>Tre prove fra il 5 e il 6 novembre.</p>
+      <p class="piano-vai"><a href="#oggi" data-vai-oggi hidden>Vai a oggi</a></p>
+    </header>
+
+    <ol class="piano-prove">
+      {PROVE.map((p) => (
+        <li data-quando={p.quando.slice(0, 10)}>
+          <p class="piano-prova-data">
+            <span class="g">{settimana.format(new Date(p.quando.slice(0, 10)))}</span>
+            <span class="n">{new Date(p.quando.slice(0, 10)).getUTCDate()}</span>
+            <span class="m">nov</span>
+          </p>
+          <div>
+            <h2>{p.nome}</h2>
+            <p>{p.quando.length > 10 ? `ore ${p.quando.slice(11)}, ` : ''}{p.dove} · {p.durata}</p>
+            <p class="soglia">{p.soglia}</p>
+          </div>
+          <p class="piano-prova-manca" data-manca></p>
+        </li>
+      ))}
+    </ol>
+
+    <section class="piano-ore" aria-labelledby="ore-titolo">
+      <h2 id="ore-titolo" class="gruppo">Le ore</h2>
+      <ul>
+        {ordine.map((m) => (
+          <li data-materia={m}>
+            <span class="t">{MATERIE[m].nome}</span>
+            <span class="d"><span data-fatte={m}>0</span> di {ora(orePer[m])}</span>
+            <span class="barra" aria-hidden="true"><span data-barra={m}></span></span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="piano-lato" aria-label="Da fare e abitudini">
+      <div>
+        <h2 class="gruppo">Da fare</h2>
+        <ul class="piano-check">
+          {DA_FARE.map((d) => (
+            <li>
+              <label>
+                <input type="checkbox" data-chiave={`fare:${d.id}`} />
+                <span class="t">{d.cosa}<span class="perche">{d.perche}</span></span>
+              </label>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h2 class="gruppo">Ogni giorno</h2>
+        <dl class="piano-abitudini">
+          {OGNI_GIORNO.map((o) => (
+            <div><dt>{o.cosa}</dt><dd>{o.come}</dd></div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    {fasi.map(({ fase, titolo, sotto }) => {
+      const giorni = GIORNI.filter((g) => g.fase === fase);
+      return (
+        <section class="piano-fase">
+          <div class="materia-head">
+            <h2>{titolo}</h2>
+            <p>{giornoMese.format(new Date(giorni[0].data))}{giorni.length > 1 ? ` → ${giornoMese.format(new Date(giorni[giorni.length - 1].data))}` : ''}</p>
+          </div>
+          <p class="piano-fase-sotto">{sotto}</p>
+          <ol class="piano-giorni">
+            {giorni.map((g) => (
+              <li class="piano-giorno" data-data={g.data}>
+                <div class="piano-giorno-head">
+                  <h3>
+                    <span class="g">{settimana.format(new Date(g.data))}</span>
+                    <span class="n">{new Date(g.data).getUTCDate()}</span>
+                  </h3>
+                  <p class="piano-stato" data-stato-giorno></p>
+                  {g.avviso && <p class="avviso">{g.avviso}</p>}
+                </div>
+                <ul class="piano-check">
+                  {g.blocchi.map((b) => (
+                    <li data-materia={b.materia}>
+                      <label>
+                        <input type="checkbox" data-chiave={`blocco:${b.id}`} data-ore={b.ore} data-mat={b.materia} />
+                        <span class="t">
+                          <span class="cosa">{b.cosa}</span>
+                          {b.dettaglio && <span class="perche">{b.dettaglio}</span>}
+                        </span>
+                        <span class="d"><span class="mat">{MATERIE[b.materia].breve}</span> {ora(b.ore)}</span>
+                      </label>
+                      {b.note && (
+                        <ul class="piano-note">
+                          {b.note.map((id) => {
+                            const l = link(id);
+                            return <li><a href={l.href}>{l.titolo}</a></li>;
+                          })}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ol>
+        </section>
+      );
+    })}
+  </main>
+</UniLayout>
+
+<script>
+  const PREFISSO = 'uni:piano:';
+  const leggi = (k: string) => {
+    try {
+      return localStorage.getItem(PREFISSO + k) === '1';
+    } catch {
+      return false;
+    }
+  };
+  const scrivi = (k: string, v: boolean) => {
+    try {
+      if (v) localStorage.setItem(PREFISSO + k, '1');
+      else localStorage.removeItem(PREFISSO + k);
+    } catch (e) {
+      console.warn('piano: spunta non salvata', k, e);
+    }
+  };
+
+  const oggi = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome' }).format(new Date());
+  const giorniFra = (da: string, a: string) => Math.round((Date.parse(a) - Date.parse(da)) / 86_400_000);
+  const ore = (o: number) => `${String(o).replace('.', ',')}`;
+
+  const caselle = [...document.querySelectorAll<HTMLInputElement>('input[data-chiave]')];
+
+  const aggiorna = () => {
+    const fatte: Record<string, number> = {};
+    let tot = 0;
+    for (const c of caselle) {
+      const li = c.closest('li');
+      li?.classList.toggle('fatto', c.checked);
+      if (c.checked && c.dataset.ore && c.dataset.mat) {
+        const o = Number(c.dataset.ore);
+        fatte[c.dataset.mat] = (fatte[c.dataset.mat] ?? 0) + o;
+        tot += o;
+      }
+    }
+    document.querySelectorAll<HTMLElement>('[data-fatte]').forEach((el) => {
+      const m = el.dataset.fatte ?? '';
+      const f = fatte[m] ?? 0;
+      el.textContent = ore(f);
+      const barra = document.querySelector<HTMLElement>(`[data-barra="${m}"]`);
+      const totale = [...document.querySelectorAll<HTMLInputElement>(`input[data-mat="${m}"]`)].reduce((s, c) => s + Number(c.dataset.ore), 0);
+      if (barra) barra.style.inlineSize = `${totale ? (f / totale) * 100 : 0}%`;
+    });
+    const totEl = document.querySelector('[data-fatte-tot]');
+    if (totEl) totEl.textContent = ore(tot);
+
+    document.querySelectorAll<HTMLElement>('.piano-giorno').forEach((g) => {
+      const data = g.dataset.data ?? '';
+      const mie = [...g.querySelectorAll<HTMLInputElement>('input[data-chiave]')];
+      const tutte = mie.every((c) => c.checked);
+      const stato = g.querySelector<HTMLElement>('[data-stato-giorno]');
+      g.classList.toggle('oggi', data === oggi);
+      g.classList.toggle('passato', data < oggi);
+      g.classList.toggle('completo', tutte);
+      g.classList.toggle('indietro', data < oggi && !tutte);
+      if (stato) stato.textContent = data === oggi ? 'oggi' : data < oggi && !tutte ? 'da recuperare' : tutte ? 'fatto' : '';
+    });
+  };
+
+  for (const c of caselle) {
+    c.checked = leggi(c.dataset.chiave ?? '');
+    c.addEventListener('change', () => {
+      scrivi(c.dataset.chiave ?? '', c.checked);
+      aggiorna();
+    });
+  }
+  aggiorna();
+
+  const giornoOggi = document.querySelector<HTMLElement>(`.piano-giorno[data-data="${oggi}"]`);
+  const vai = document.querySelector<HTMLAnchorElement>('[data-vai-oggi]');
+  if (giornoOggi && vai) {
+    giornoOggi.id = 'oggi';
+    vai.hidden = false;
+  }
+
+  document.querySelectorAll<HTMLElement>('.piano-prove li').forEach((li) => {
+    const n = giorniFra(oggi, li.dataset.quando ?? oggi);
+    const el = li.querySelector<HTMLElement>('[data-manca]');
+    if (!el) return;
+    el.textContent = n > 1 ? `fra ${n} giorni` : n === 1 ? 'domani' : n === 0 ? 'oggi' : 'fatta';
+    li.classList.toggle('vicina', n >= 0 && n <= 2);
+  });
+
+  const main = document.querySelector<HTMLElement>('.piano');
+  const conto = document.querySelector<HTMLElement>('[data-conto]');
+  if (main && conto) {
+    const n = giorniFra(oggi, main.dataset.primaProva ?? oggi);
+    const restano = caselle.filter((c) => c.dataset.ore && !c.checked).reduce((s, c) => s + Number(c.dataset.ore), 0);
+    conto.textContent =
+      n > 0
+        ? `${n} ${n === 1 ? 'giorno' : 'giorni'} alla prima prova, ${ore(restano)} ore di studio ancora da fare.`
+        : n === 0
+          ? 'Oggi GAL e Prog 1, domani Analisi.'
+          : 'Prove finite.';
+  }
+</script>

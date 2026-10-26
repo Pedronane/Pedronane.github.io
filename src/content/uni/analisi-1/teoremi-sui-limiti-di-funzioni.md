@@ -193,6 +193,15 @@ Da lì si ricava una catena di limiti, ognuno dal precedente. Il prof ha scritto
 
 **Lo strumento: la sostituzione.** Ogni freccia della catena è una sostituzione. Si dà un nome nuovo a un pezzo dell'espressione, per esempio $y = a^x - 1$, e **si scrive dove va** $y$ quando $x \to x_0$. Poi si riscrive tutto in $y$ e si calcola il limite in $y$. Il prof scrive sempre la riga “$y \to 0$ per $x \to 0$" e la cerchia: è quella che rende lecito il passaggio (teorema di cambio di variabile, slide 46).
 
+> [!note]- L'enunciato del cambio di variabile (slide 46, dalle slide saltate)
+> Supponiamo che esista (finito o infinito) il limite $\displaystyle\lim_{x \to x_0} f(x) = y_0$. Sia poi $g$ una funzione definita in un intorno di $y_0$ tale che:
+> - se $y_0 \in \mathbb{R}$, $g$ è continua in $y_0$;
+> - se $y_0 = +\infty$ o $y_0 = -\infty$, esiste (finito o infinito) $\displaystyle\lim_{y \to y_0} g(y)$.
+>
+> Allora $\displaystyle\lim_{x \to x_0} g(f(x)) = \lim_{y \to y_0} g(y)$.
+>
+> A parole: per calcolare il limite di “$g$ di qualcosa", guardi dove va il qualcosa ($y_0$) e calcoli il limite di $g$ lì. Nei limiti notevoli $g$ in $0$ non è definita ma ha limite: la si intende prolungata con quel valore, che la rende continua. Lo stesso teorema dà la continuità della composizione in [Continuità](/uni/analisi-1/continuita/) (<span class="src">slide 46, non annotata</span>).
+
 **Passo 1: $\displaystyle\lim_{x \to 0}\frac{\log(1 + x)}{x} = 1$.**
 1. $\frac{\log(1 + x)}{x} = \frac1x\log(1 + x) = \log\left((1 + x)^{1/x}\right)$ (proprietà del logaritmo: $c\log b = \log b^c$).
 2. Pongo $y = \frac1x$: per $x \to 0^\pm$, $y \to \pm\infty$. Allora $(1 + x)^{1/x} = \left(1 + \frac1y\right)^y \to e$ (Nepero).

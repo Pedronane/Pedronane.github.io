@@ -25,7 +25,7 @@ export const MATERIE: Record<Materia, { nome: string; breve: string }> = {
 export const PROVE = [
   { id: 'gal', materia: 'gal' as Materia, nome: 'GAL, primo parziale', quando: '2026-11-05T15:30', dove: 'Povo 1, A104-A106', durata: '90 min', soglia: 'serve almeno 15/30' },
   { id: 'prog', materia: 'prog-1' as Materia, nome: 'Prog 1, prima prova teorica', quando: '2026-11-05', dove: 'orario sul sito del corso', durata: '50 min', soglia: '6 punti, chi non la passa non fa la seconda' },
-  { id: 'analisi', materia: 'analisi-1' as Materia, nome: 'Analisi 1, primo parziale', quando: '2026-11-06', dove: 'formulario A4 ammesso', durata: '2,5 h', soglia: 'crocette almeno 5/12, poi 3 esercizi da 7' },
+  { id: 'analisi', materia: 'analisi-1' as Materia, nome: 'Analisi 1, primo parziale', quando: '2026-11-06', dove: 'formulario A4 ammesso', durata: '2,5 h', soglia: '8 crocette (almeno 5/12), poi 2 esercizi' },
 ];
 
 export const DA_FARE = [

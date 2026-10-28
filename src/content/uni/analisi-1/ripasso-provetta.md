@@ -12,7 +12,7 @@ lezioni: []
 ordine: 999
 ---
 
-Questa pagina serve per ripassare il **primo parziale** di [Analisi Matematica 1](/uni/analisi-1/), venerdì **6 novembre 2026**. Copre tutto il corso fino alle derivate comprese: logica e insiemi, numeri reali con sup e inf, funzioni ed elementari, trasformazioni di grafici, numeri complessi, limiti di successioni e di funzioni, continuità e teoremi sulle continue, derivate. La prova dura **2,5 ore**, senza calcolatrice e con un **formulario A4 fronte/retro**. Parte 1: **8 crocette**, $+1{,}5$ la giusta, $-0{,}5$ la sbagliata, $0$ la non data, massimo $12$. Parte 2: **3 esercizi da 7 punti**, corretti **solo se** nella parte 1 hai almeno $5$ su $12$. Il programma ufficiale del parziale va controllato su Moodle.
+Questa pagina serve per ripassare il **primo parziale** di [Analisi Matematica 1](/uni/analisi-1/), venerdì **6 novembre 2026**. Copre tutto il corso fino alle derivate comprese: logica e insiemi, numeri reali con sup e inf, funzioni ed elementari, trasformazioni di grafici, numeri complessi, limiti di successioni e di funzioni, continuità e teoremi sulle continue, derivate. La prova dura **2,5 ore**, senza calcolatrice e con un **formulario A4 fronte/retro**. Parte 1: **8 crocette**, $+1{,}5$ la giusta, $-0{,}5$ la sbagliata, $0$ la non data, massimo $12$. Parte 2: **2 esercizi**, corretti **solo se** nella parte 1 hai almeno $5$ su $12$. Il programma ufficiale del parziale va controllato su Moodle.
 
 > [!info] Come usarla
 > 1. Leggi **Da sapere** della sezione, poi coprila.

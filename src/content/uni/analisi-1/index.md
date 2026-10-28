@@ -46,11 +46,11 @@ Formato scritto sulle slide 4-5 del 14/9, con le correzioni a mano del prof (<sp
 
 **I temi passati.** Da metà ottobre, un tema passato a settimana da Moodle, **a tempo** ($2{,}5$ ore, niente calcolatrice, solo formulario), poi correzione. Prima di allora bastano gli esercizi tipo esame delle note e i fogli.
 
-**Il primo parziale (6 novembre).** Copre fin dove arriva il corso a fine ottobre: con il ritmo attuale, probabilmente nozioni preliminari (logica, reali, funzioni, grafici), numeri complessi e limiti di successioni. Il programma esatto del parziale va controllato su Moodle quando esce.
+**Il primo parziale (6 novembre).** Forma: **8 crocette** come nello scritto e **2 esercizi**, non 3 (Pietro, 28/10). Copre fin dove arriva il corso a fine ottobre: con il ritmo attuale, probabilmente nozioni preliminari (logica, reali, funzioni, grafici), numeri complessi e limiti di successioni. Il programma esatto del parziale va controllato su Moodle quando esce.
 
 **Ripasso del parziale.** Tutti gli argomenti fino alle derivate in una pagina, con tabelle di metodo, trappole e crocette di verifica: [Ripasso provetta](/uni/analisi-1/ripasso-provetta/).
 
-**Simulazioni del parziale.** Stessa forma dello scritto (8 crocette, 3 esercizi da 7, 2,5 ore), programma fino ai limiti di successioni, a tempo e con correzione: [Simulazione provetta 1](/uni/simulazioni/analisi-1/simulazione-provetta-1/) (facile), [Simulazione provetta 2](/uni/simulazioni/analisi-1/simulazione-provetta-2/), [Simulazione provetta 3](/uni/simulazioni/analisi-1/simulazione-provetta-3/) (livello del 30). Non coprono i limiti di funzioni, i limiti notevoli e la continuità, fatti dal 12/10 al 21/10: per quelli ci sono le pagine di esercizi delle note relative.
+**Simulazioni del parziale.** Forma dello scritto completo (8 crocette, 3 esercizi da 7, 2,5 ore), quindi un esercizio in più del parziale, programma fino ai limiti di successioni, a tempo e con correzione: [Simulazione provetta 1](/uni/simulazioni/analisi-1/simulazione-provetta-1/) (facile), [Simulazione provetta 2](/uni/simulazioni/analisi-1/simulazione-provetta-2/), [Simulazione provetta 3](/uni/simulazioni/analisi-1/simulazione-provetta-3/) (livello del 30). Non coprono i limiti di funzioni, i limiti notevoli e la continuità, fatti dal 12/10 al 21/10: per quelli ci sono le pagine di esercizi delle note relative.
 
 ## Programma svolto
 

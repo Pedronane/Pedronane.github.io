@@ -18,7 +18,7 @@ Terza simulazione del primo parziale di [Analisi Matematica 1](/uni/analisi-1/) 
 > [!info] Regole
 > - **2 ore e 30 minuti**, niente calcolatrice, ammesso il formulario A4 fronte/retro. Fai partire il cronometro e non guardare la correzione prima della fine.
 > - **Parte 1**: 8 crocette, una sola risposta giusta. Giusta $+1{,}5$, sbagliata $-0{,}5$, non data $0$. Massimo $12$.
-> - **Parte 2**: 3 esercizi con svolgimento completo e giustificato, fino a 7 punti ciascuno. Massimo $21$.
+> - **Parte 2**: 3 esercizi con svolgimento completo e giustificato, fino a 7 punti ciascuno. Massimo $21$. Il parziale vero ne ha **2**: questa simulazione ha la forma dello scritto completo, con un esercizio in più.
 > - La parte 2 si corregge **solo se** nella parte 1 hai almeno $5$ su $12$.
 > - **Mai rispondere a caso**: con 4 opzioni il valore atteso è $\frac14 \cdot 1{,}5 - \frac34 \cdot 0{,}5 = 0$. Rispondi quando hai escluso almeno un'opzione con certezza.
 

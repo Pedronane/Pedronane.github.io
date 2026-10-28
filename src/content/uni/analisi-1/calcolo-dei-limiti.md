@@ -12,7 +12,7 @@ lezioni:
   - 6 ott
   - 7 ott
   - 12 ott
-ordine: 9
+ordine: 10
 ---
 
 Argomento di [Analisi Matematica 1](/uni/analisi-1/), capitolo 3, sezioni 3.6 ("Regole di calcolo dei limiti. Forme determinate"), 3.7 ("Forme indeterminate di limite") e 3.8 ("Criterio del rapporto. Gerarchia di infiniti"). Fatto a lezione il 6/10, slide 44-47 (<span class="src">slide annotate del 6/10</span>), il 7/10, slide 48-65 (<span class="src">slide annotate del 7/10</span>), e il 12/10, slide 65-68 (<span class="src">slide annotate del 12/10</span>, pagine 1-13): dimostrazione della gerarchia, "attenti a come la si usa", esercizi sul criterio del rapporto. Con il 12/10 il capitolo 3 è chiuso; il seguito è [Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/). Usa [Permanenza del segno e confronto](/uni/analisi-1/permanenza-del-segno-e-confronto/) e [Successioni monotone e numero di Nepero](/uni/analisi-1/successioni-monotone-e-numero-di-nepero/). Esercizi del tutoraggio in [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/).

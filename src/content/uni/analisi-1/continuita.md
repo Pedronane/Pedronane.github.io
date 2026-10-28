@@ -10,7 +10,7 @@ stato: in corso
 data: 2026-10-20
 lezioni:
   - 20 ott
-ordine: 15
+ordine: 16
 ---
 
 Argomento di [Analisi Matematica 1](/uni/analisi-1/), lezione del 20/10, slide 61-69 (<span class="src">slide annotate del 20/10</span>, pagine 18-36).

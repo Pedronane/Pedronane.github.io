@@ -1728,9 +1728,9 @@ Dimostra che l'equazione $e^{-x} = x$ ha una e una sola soluzione reale, e che s
 
 ## Derivate
 
-Teoria: [Derivate](/uni/analisi-1/derivate/) · Esercizi: [Derivate (esercizi)](/uni/analisi-1/derivate-esercizi/)
+Teoria: [Derivate](/uni/analisi-1/derivate/), [Regole di derivazione](/uni/analisi-1/regole-di-derivazione/), [Massimi e minimi relativi](/uni/analisi-1/massimi-e-minimi-relativi/) · Esercizi: [Derivate (esercizi)](/uni/analisi-1/derivate-esercizi/), [Regole di derivazione (esercizi)](/uni/analisi-1/regole-di-derivazione-esercizi/), [Massimi e minimi relativi (esercizi)](/uni/analisi-1/massimi-e-minimi-relativi-esercizi/)
 
-La nota arriva alla slide 10 di 71 (lezione del 21/10). Questa prima parte viene da lì; la seconda, più sotto, copre quello che probabilmente è stato fatto il 26 e il 28/10.
+Questa prima parte viene dalla lezione del 21/10 (slide 1-10); la seconda, più sotto, dal 27 e dal 28/10 (slide 11-33).
 
 ### Da sapere
 
@@ -1852,10 +1852,10 @@ Calcola con la definizione la derivata di $f(x) = \sqrt x$ in $x_0 = 4$ e scrivi
 > - Tangente: $f(4) = 2$, $y = 2 + \frac14(x - 4) = \frac14 x + 1$.
 > - *Controllo*: in $x = 4$ dà $2$; in $x = 4{,}41$ la tangente dà $2{,}1025$ e $\sqrt{4{,}41} = 2{,}1$, molto vicini.
 
-### Probabilmente fatto il 26 e il 28/10
+### Fatto il 27 e il 28/10, e quello che viene dopo
 
-> [!warning] Da controllare con le slide
-> Questa parte **non** viene dalle slide del prof: le lezioni del 26/10 e del 28/10 sono andate avanti sulle derivate, ma le slide non sono ancora nel vault. Qui ci sono gli enunciati standard, nell'ordine del sommario del capitolo (slide 3): regole di derivazione, Fermat, Rolle e Lagrange con la monotonia, Cauchy e de l'Hôpital. Quando escono le slide, confronta ipotesi e notazioni, e se il prof usa una forma diversa vale la sua.
+> [!warning] Fin dove è arrivato il prof
+> Al 28/10 il prof è arrivato a **Fermat** (slide 33): regole di derivazione, derivata dell'inversa, tabella, derivabilità di $x\vert x\vert$ e $x^\alpha\sin\frac1x$, massimi relativi e Fermat. **Rolle, Lagrange, monotonia, Cauchy e de l'Hôpital non sono ancora stati fatti**: qui sotto sono nella forma standard. Entrano nel parziale solo se il prof li fa prima del 6/11, e allora vale la forma delle sue slide.
 
 **Derivate delle funzioni elementari.**
 
@@ -1881,7 +1881,7 @@ Calcola con la definizione la derivata di $f(x) = \sqrt x$ in $x_0 = 4$ e scrivi
 - prodotto: $(fg)' = f'g + fg'$;
 - quoziente: $\left(\frac fg\right)' = \frac{f'g - fg'}{g^2}$, dove $g(x) \neq 0$;
 - composta: $(g \circ f)'(x) = g'(f(x)) \cdot f'(x)$, con $f$ derivabile in $x$ e $g$ derivabile in $f(x)$;
-- inversa: $f$ continua e strettamente monotona su un intervallo, derivabile in $x_0$ con $f'(x_0) \neq 0$; allora $f^{-1}$ è derivabile in $y_0 = f(x_0)$ e $(f^{-1})'(y_0) = \frac{1}{f'(x_0)}$. Con $f'(x_0) = 0$ l'inversa ha tangente verticale: $x^3$ in $0$ e $\sqrt[3]{y}$ in $0$;
+- inversa (slide 23): $f$ invertibile su $(a, b)$, derivabile in $x_0$ con $f'(x_0) \neq 0$; allora $f^{-1}$ è derivabile in $y_0 = f(x_0)$ e $(f^{-1})'(y_0) = \frac{1}{f'(x_0)}$. Con $f'(x_0) = 0$ l'inversa ha tangente verticale: $x^3$ in $0$ e $\sqrt[3]{y}$ in $0$;
 - $u(x)^{v(x)}$ con $u > 0$: si scrive $e^{v\log u}$ e si deriva come composta, $(u^v)' = u^v\left(v'\log u + v\frac{u'}{u}\right)$.
 
 **Massimo e minimo locale.** $x_0$ è punto di massimo locale se esiste un intorno $U$ di $x_0$ con $f(x) \leq f(x_0)$ per ogni $x \in U \cap D$; di minimo locale con $\geq$.

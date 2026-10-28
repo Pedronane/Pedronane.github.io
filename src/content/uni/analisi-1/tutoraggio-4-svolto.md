@@ -14,7 +14,7 @@ ordine: 999
 
 Il IV tutoraggio, "Limiti di successioni e funzioni e continuità" (Barbon, Favari, Bellomo), svolto per intero: esercizi 1 e 2 a <span class="src">p. 1</span>, esercizio 3 fino al (13) a <span class="src">p. 2</span>, esercizio 3 (14)-(15) ed esercizi 4-6 a <span class="src">p. 3</span>, argomento di [Analisi Matematica 1](/uni/analisi-1/). La teoria sta in [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/) (gerarchia, criterio del rapporto), [Successioni monotone e numero di Nepero](/uni/analisi-1/successioni-monotone-e-numero-di-nepero/), [Limiti di funzioni](/uni/analisi-1/limiti-di-funzioni/) (il legame con le successioni), [Teoremi sui limiti di funzioni](/uni/analisi-1/teoremi-sui-limiti-di-funzioni/) (algebra, carabinieri, limiti notevoli, cambio di variabile), [Continuità](/uni/analisi-1/continuita/) e [Teoremi sulle funzioni continue](/uni/analisi-1/teoremi-sulle-funzioni-continue/). Pezzi del foglio erano già sparsi nelle pagine di esercizi ([Calcolo dei limiti (esercizi)](/uni/analisi-1/calcolo-dei-limiti-esercizi/), [Limiti di funzioni (esercizi)](/uni/analisi-1/limiti-di-funzioni-esercizi/), [Teoremi sui limiti di funzioni (esercizi)](/uni/analisi-1/teoremi-sui-limiti-di-funzioni-esercizi/), [Continuità (esercizi)](/uni/analisi-1/continuita-esercizi/)); qui c'è tutto in un posto, con i metodi delle lezioni fino al 21/10.
 
-Tutti gli esercizi usano solo argomenti fatti a lezione. Quattro limiti (3.10, 3.12, 3.14, 4.2) di solito si fanno con la gerarchia degli infiniti per le funzioni, che a lezione non c'è ancora (slide 43, saltata il 20/10): qui sono risolti con una stima del logaritmo che viene da (L3), spiegata in T6. Anche l'1.9, rimasto in sospeso in [Calcolo dei limiti (esercizi)](/uni/analisi-1/calcolo-dei-limiti-esercizi/), ora si fa: serve il limite notevole del logaritmo. Il foglio ha due errori di testo (5.1 e 5.2, corretti e segnalati negli esercizi) e nell'esercizio 3 la numerazione salta il (9).
+Tutti gli esercizi usano solo argomenti fatti a lezione. Quattro limiti (3.10, 3.12, 3.14, 4.2) di solito si fanno con la gerarchia degli infiniti per le funzioni, fatta dal tutor solo il 19/10 (slide 43, saltata dal prof il 20/10, in [Esercitazione 5 svolta](/uni/analisi-1/esercitazione-5-svolta/)): qui sono risolti con una stima del logaritmo che viene da (L3), spiegata in T6. Anche l'1.9, rimasto in sospeso in [Calcolo dei limiti (esercizi)](/uni/analisi-1/calcolo-dei-limiti-esercizi/), ora si fa: serve il limite notevole del logaritmo. Il foglio ha due errori di testo (5.1 e 5.2, corretti e segnalati negli esercizi) e nell'esercizio 3 la numerazione salta il (9).
 
 Come usarla: prova da solo, apri l'**indizio** se ti blocchi, la **soluzione** solo alla fine. Ogni conto è stato ricontrollato. Prima degli esercizi c'è [La teoria che serve agli esercizi](#la-teoria-che-serve-agli-esercizi): sette idee (T1-T7) con il perché, a cui le soluzioni rimandano. Ogni soluzione dice come si riconosce il tipo di esercizio, svolge un passaggio per riga con la regola accanto e chiude con un controllo.
 
@@ -105,7 +105,7 @@ Il metodo, ogni volta:
 
 ### T6. Logaritmi contro potenze, senza la gerarchia per le funzioni
 
-A lezione la gerarchia c'è solo per le **successioni**: $\frac{\log n}{n} \to 0$ con $n \in \mathbb{N}$. Per le funzioni (slide 43) non c'è ancora, e quattro limiti del foglio la chiedono. La si sostituisce con una stima che viene da (L3) di [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/), “$\log y \leq y - 1$ per $y \geq 1$".
+A lezione la gerarchia c'è solo per le **successioni**: $\frac{\log n}{n} \to 0$ con $n \in \mathbb{N}$. Per le funzioni (slide 43) l'ha fatta il tutor il 19/10, dopo questo foglio; quattro limiti la chiedono. La si sostituisce con una stima che viene da (L3) di [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/), “$\log y \leq y - 1$ per $y \geq 1$".
 
 **La stima.** Per ogni $y \geq 1$:
 $$
@@ -940,7 +940,7 @@ $$
 
 - Confrontare $3^n$ con $2^{2n}$ senza riscriverlo come $4^n$ (1.1): fra esponenziali vince la base più grande, e $4 > 3$.
 - Trattare $1^\infty$, $0^0$, $\infty^0$ come forme determinate (“$1^\infty = 1$", “$0^0 = 1$"): sono indeterminate, e si sbloccano in base $e$ (3.12, 3.14) o con Nepero (3.11).
-- Usare la gerarchia per le funzioni come se fosse fatta. A lezione c'è per le successioni; per le funzioni o si passa dalle successioni (slide 27) o si usa la stima $\log y < 2\sqrt y$ (T6).
+- Usare la gerarchia per le funzioni senza dire quale: per le successioni è della lezione, per le funzioni della slide 43 (tutor, 19/10). In alternativa si passa dalle successioni (slide 27) o si usa la stima $\log y < 2\sqrt y$ (T6).
 - Applicare $\frac{\sin\square}{\square} \to 1$ con $\square$ che non va a $0$, come $\frac{\sin(\pi x)}{\pi x}$ per $x \to 1$ (3.15): prima si sposta il punto in $0$.
 - Mettere sotto un $\square$ diverso da quello dentro la funzione: in $1 - \cos(3\sqrt x)$ il $\square$ è $3\sqrt x$, quindi sotto serve $(3\sqrt x)^2 = 9x$ (4.1).
 - Dimenticare il segno del denominatore in $\left[\frac{\ell}{0}\right]$: il lato del limite decide se è $+\infty$ o $-\infty$ (3.1, 3.2), e va dimostrato.

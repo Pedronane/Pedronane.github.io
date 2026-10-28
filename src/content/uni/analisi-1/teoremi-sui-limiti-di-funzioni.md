@@ -10,7 +10,7 @@ stato: in corso
 data: 2026-10-20
 lezioni:
   - 20 ott
-ordine: 14
+ordine: 15
 ---
 
 Argomento di [Analisi Matematica 1](/uni/analisi-1/), lezione del 20/10, slide 30-33 e 55 (<span class="src">slide annotate del 20/10</span>, pagine 1-17).
@@ -193,14 +193,14 @@ Da lì si ricava una catena di limiti, ognuno dal precedente. Il prof ha scritto
 
 **Lo strumento: la sostituzione.** Ogni freccia della catena è una sostituzione. Si dà un nome nuovo a un pezzo dell'espressione, per esempio $y = a^x - 1$, e **si scrive dove va** $y$ quando $x \to x_0$. Poi si riscrive tutto in $y$ e si calcola il limite in $y$. Il prof scrive sempre la riga “$y \to 0$ per $x \to 0$" e la cerchia: è quella che rende lecito il passaggio (teorema di cambio di variabile, slide 46).
 
-> [!note]- L'enunciato del cambio di variabile (slide 46, dalle slide saltate)
+> [!note]- L'enunciato del cambio di variabile (slide 46, saltata dal prof, fatta dal tutor il 19/10)
 > Supponiamo che esista (finito o infinito) il limite $\displaystyle\lim_{x \to x_0} f(x) = y_0$. Sia poi $g$ una funzione definita in un intorno di $y_0$ tale che:
 > - se $y_0 \in \mathbb{R}$, $g$ è continua in $y_0$;
 > - se $y_0 = +\infty$ o $y_0 = -\infty$, esiste (finito o infinito) $\displaystyle\lim_{y \to y_0} g(y)$.
 >
 > Allora $\displaystyle\lim_{x \to x_0} g(f(x)) = \lim_{y \to y_0} g(y)$.
 >
-> A parole: per calcolare il limite di “$g$ di qualcosa", guardi dove va il qualcosa ($y_0$) e calcoli il limite di $g$ lì. Nei limiti notevoli $g$ in $0$ non è definita ma ha limite: la si intende prolungata con quel valore, che la rende continua. Lo stesso teorema dà la continuità della composizione in [Continuità](/uni/analisi-1/continuita/) (<span class="src">slide 46, non annotata</span>).
+> A parole: per calcolare il limite di “$g$ di qualcosa", guardi dove va il qualcosa ($y_0$) e calcoli il limite di $g$ lì. Nei limiti notevoli $g$ in $0$ non è definita ma ha limite: la si intende prolungata con quel valore, che la rende continua. Lo stesso teorema dà la continuità della composizione in [Continuità](/uni/analisi-1/continuita/) (<span class="src">slide 46, annotata dal tutor il 19/10</span>).
 
 **Passo 1: $\displaystyle\lim_{x \to 0}\frac{\log(1 + x)}{x} = 1$.**
 1. $\frac{\log(1 + x)}{x} = \frac1x\log(1 + x) = \log\left((1 + x)^{1/x}\right)$ (proprietà del logaritmo: $c\log b = \log b^c$).
@@ -255,7 +255,7 @@ Con $\alpha = n$ naturale il prof scrive $(1 + x)^n = 1 + nx + \dots + x^n$ (bin
 > $$
 > \lim_{x \to 0}\frac{\sin x}{x} = 1 \qquad \lim_{x \to 0}\frac{1 - \cos x}{x^2} = \frac12 \qquad \lim_{x \to 0}\frac{\tan x}{x} = 1
 > $$
-> La regola per usarli è la stessa. Stanno nelle <span class="src">slide non annotate, tabella della slide 56</span> e si vedono al lavoro in [Continuità](/uni/analisi-1/continuita/).
+> La regola per usarli è la stessa. Stanno nelle <span class="src">tabella della slide 56, esercitazione del 19/10</span> e si vedono al lavoro in [Continuità](/uni/analisi-1/continuita/).
 
 ### 6. Osservazione sulla notazione (pagina 17)
 

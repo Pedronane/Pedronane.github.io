@@ -9,7 +9,7 @@ tipo: esercizi
 stato: in corso
 data: 2026-10-20
 lezioni: []
-ordine: 15
+ordine: 16
 ---
 
 Esercizi tipo esame di [Continuità](/uni/analisi-1/continuita/), dove stanno definizioni, teoremi, metodo e l'esercizio della slide 69. I limiti notevoli sono in [Teoremi sui limiti di funzioni](/uni/analisi-1/teoremi-sui-limiti-di-funzioni/). Testo in chiaro, soluzione chiusa: prima provaci da solo. Gli esercizi 6-9 sono gli esercizi 5 e 6 del IV tutoraggio (<span class="src">tutoraggio 4, pagina 3</span>), con due errori del testo segnalati.

@@ -10,7 +10,7 @@ stato: in corso
 data: 2026-10-21
 lezioni:
   - 21 ott
-ordine: 17
+ordine: 18
 ---
 
 Argomento di [Analisi Matematica 1](/uni/analisi-1/), capitolo 5 "Calcolo differenziale", slide 1-10 di 71, lezione del 21/10 (<span class="src">slide annotate del 21/10</span>, pagine 32-45).
@@ -171,7 +171,7 @@ Il prof chiude con un'osservazione: "abbiamo (quasi) mostrato che $f'(x) = +1$ p
 > Derivabile $\Rightarrow$ continua: sì. Continua $\Rightarrow$ derivabile: no, $|x|$ in $0$ è il controesempio. Le crocette chiedono spesso proprio questo.
 
 > [!tip] Dove si va dopo
-> Calcolare ogni derivata con il limite è lento. La prossima parte (slide 11 e seguenti) dà le derivate delle funzioni elementari e le regole per somme, prodotti, quozienti e composizioni, così le derivate si calcolano senza limiti.
+> Calcolare ogni derivata con il limite è lento. [Regole di derivazione](/uni/analisi-1/regole-di-derivazione/) (27-28/10, slide 11-30) dà le derivate delle funzioni elementari e le regole per somme, prodotti, quozienti e composizioni, così le derivate si calcolano senza limiti.
 
 ## Metodo
 

@@ -10,7 +10,7 @@ stato: in corso
 data: 2026-10-06
 lezioni:
   - 6 ott
-ordine: 7
+ordine: 8
 ---
 
 Argomento di [Analisi Matematica 1](/uni/analisi-1/), capitolo 3, sezione 3.4 ("Esistenza del limite per successioni monotòne. Il numero di Nepero"). Fatto a lezione il 6/10, slide 28-37 (<span class="src">slide annotate del 6/10</span>). Viene dopo [Limiti di successioni](/uni/analisi-1/limiti-di-successioni/) (definizione di limite, sottosuccessioni) e usa sup e inf di [Numeri reali, sup e inf](/uni/analisi-1/numeri-reali-sup-e-inf/). Il seguito è [Permanenza del segno e confronto](/uni/analisi-1/permanenza-del-segno-e-confronto/). Gli esercizi di monotonia del III tutoraggio sono svolti in [Esercizi limiti di successioni](/uni/analisi-1/esercizi-limiti-di-successioni/).

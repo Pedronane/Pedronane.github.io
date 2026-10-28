@@ -9,7 +9,7 @@ tipo: esercizi
 stato: in corso
 data: 2026-10-06
 lezioni: []
-ordine: 8
+ordine: 9
 ---
 
 Esercizi tipo esame di [Permanenza del segno e confronto](/uni/analisi-1/permanenza-del-segno-e-confronto/), dove stanno teoria, metodo ed esempi svolti a lezione. Testo in chiaro, soluzione chiusa: prima provaci da solo.

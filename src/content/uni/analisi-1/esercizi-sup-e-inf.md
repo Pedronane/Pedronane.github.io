@@ -9,8 +9,9 @@ tipo: esercizi
 stato: in corso
 data: 2026-10-05
 lezioni:
+  - 5 ott
   - 13 ott
-ordine: 10
+ordine: 7
 ---
 
 Esercizi su estremo superiore e inferiore, da queste fonti:

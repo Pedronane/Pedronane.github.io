@@ -12,7 +12,7 @@ lezioni: []
 ordine: 999
 ---
 
-Ripasso completo per la prima prova intermedia di [Geometria e Algebra Lineare](/uni/gal/): **giovedì 5/11/2026, ore 15:30**, Povo 1, aule A104-A106, **90 minuti**, niente appunti né calcolatrici. Il programma va dall'inizio del corso fino al capitolo 4 (spazi vettoriali) compreso: vettori geometrici, rette e piani nello spazio, sistemi lineari con Gauss-Jordan e Rouché-Capelli, matrici e matrici invertibili, spazi vettoriali, generatori, dipendenza lineare e basi. Dal 2022 la prova ha sempre la stessa forma: due esercizi da 6 punti (uno di geometria nello spazio, uno con un parametro su un sistema o su vettori di $\mathbb{R}^4$) e due domande di teoria da 1,5 punti, con Rouché-Capelli e un esempio presente tutti gli anni. Per restare nel percorso a parziali serve **almeno 15/30**. Il determinante non è nel perimetro e il prodotto vettoriale non è nel programma: qui non compaiono.
+Ripasso completo per la prima prova intermedia di [Geometria e Algebra Lineare](/uni/gal/): **giovedì 5/11/2026, ore 15:30**, Povo 1, aule A104-A106, **90 minuti**, niente appunti né calcolatrici. Il programma va dall'inizio del corso fino al capitolo 4 (spazi vettoriali) compreso: vettori geometrici, rette e piani nello spazio, sistemi lineari con Gauss-Jordan e Rouché-Capelli, matrici e matrici invertibili, spazi vettoriali, generatori, dipendenza lineare e basi. Dal 2022 la prova ha sempre la stessa forma: due esercizi da 6 punti (uno di geometria nello spazio, uno con un parametro su un sistema o su vettori di $\mathbb{R}^4$) e due domande di teoria da 1,5 punti, con Rouché-Capelli e un esempio presente tutti gli anni. Per restare nel percorso a parziali serve **almeno 15/30**. Determinante (capitolo 5, L9-L10) e dimensione (capitolo 6, seconda parte della L10) sono stati fatti prima del 5/11, ma l'avviso del 28/9 dice "fino al capitolo 4 compreso" e l'esercitazione su questi argomenti è il 9/11, dopo la prova: non è chiaro se entrino. Hanno le loro sezioni in fondo, [Determinante](#determinante) e [Dimensione](#dimensione), da fare dopo il resto.
 
 > [!info] Come usarla
 > 1. Leggi la sezione **Da sapere** di un argomento e la tabella **Come si riconosce e come si fa**.
@@ -1588,6 +1588,168 @@ Per quali $k$ i vettori $(1, 0, 1, 0)$, $(0, 1, 0, 1)$, $(1, 1, k, 0)$, $(0, 0, 
 > 6. $E_{23}(-1)$: $R_2 = (0, 1, 0 \mid 0)$.
 > 7. $E_{12}(-1)$: $R_1 = (1, 0, 0 \mid 2)$. A sinistra $I_3$, a destra i coefficienti $2, 0, 1$.
 > 8. Controllo: $2(1, 1, 0) + 0(1, 0, 1) + 1(0, 1, 1) = (2, 3, 1)$.
+
+## Determinante
+
+Teoria: [Determinante](/uni/gal/determinante/) · Esercizi: [Determinante (esercizi)](/uni/gal/determinante-esercizi/) · [Foglio 5 svolto](/uni/gal/foglio-5-svolto/)
+
+> [!warning] È nel parziale del 5/11?
+> Non si sa. È il capitolo 5, fatto alle lezioni L9 (26/10) e L10 (27/10), prima della prova. Ma l'avviso della prof del 28/9 dà come programma "fino al capitolo 4 (spazi vettoriali) compreso", e l'esercitazione 5 "determinante e basi" è il 9/11, dopo la prova. Da chiedere alla prof o da controllare negli avvisi di Moodle.
+
+### Da sapere
+
+- **$A_{ij}$**: la matrice $(n - 1) \times (n - 1)$ che resta togliendo da $A$ la riga $i$ e la colonna $j$.
+- **Determinante**: $\det[a_{11}] = a_{11}$; per $n \geq 2$, $\det(A) = \sum_{i=1}^{n}(-1)^{i+1}a_{i1}\det(A_{i1})$, sviluppo sulla prima colonna. Per $n = 2$: $a_{11}a_{22} - a_{21}a_{12}$.
+- **Laplace**: si può sviluppare su qualunque riga o colonna, coi segni $(-1)^{i+j}$ a scacchiera. Si sceglie quella con più zeri.
+- **Casi facili**: triangolare superiore, prodotto della diagonale; riga o colonna nulla, $0$; $\det(A^T) = \det(A)$; $\det(I_n) = 1$.
+- **Binet**: $\det(AB) = \det(A)\det(B)$, quindi $\det(A^{-1}) = \frac{1}{\det(A)}$.
+- **Operazioni elementari**: $S_{ij}$ cambia il segno, $D_i(\lambda)$ moltiplica per $\lambda$, $E_{ij}(\mu)$ non cambia niente. Con Gauss: $\det(A) = (-1)^s\det(A')$, $s$ scambi.
+- **$\det A \neq 0 \iff \operatorname{rg}(A) = n \iff A$ invertibile**; $n$ vettori di $\mathbb{R}^n$ sono una base $\iff \det[\vec{v}_1 \mid \cdots \mid \vec{v}_n] \neq 0$.
+- **Cramer**: sistema quadrato con $\det A \neq 0$ ha un'unica soluzione.
+- **Prodotto vettoriale**: $\vert\vec{v} \times \vec{w}\vert = \vert\vec{v}\vert\,\vert\vec{w}\vert\sin\vartheta$, ortogonale a tutti e due, verso della mano destra; $\vec{0}$ se paralleli. Anticommutativo. In coordinate “$\det$" con prima riga $\vec{\imath}, \vec{\jmath}, \vec{k}$.
+- **Prodotto misto**: $\vec{v} \cdot (\vec{w} \times \vec{u}) = \det$ della matrice con righe $\vec{v}, \vec{w}, \vec{u}$.
+
+### Come si riconosce e come si fa
+
+| se vedi | fai |
+| --- | --- |
+| "calcola il determinante" | Laplace sulla riga o colonna con più zeri; per $4 \times 4$ Gauss con solo $S_{ij}$, $E_{ij}(\mu)$ |
+| "per quali $k$ è invertibile" | $\det A$ in funzione di $k$, fattorizzato; invertibile dove non si annulla |
+| “$n$ vettori di $\mathbb{R}^n$, per quali $k$ sono una base" | $\det$ della matrice con i vettori in colonna $\neq 0$ |
+| "area del triangolo $ABC$" | $\frac12\vert\overrightarrow{AB} \times \overrightarrow{AC}\vert$ |
+| "volume del parallelepipedo" | $\vert\det\vert$ della matrice dei tre spigoli |
+| "le rette sono complanari?" | $\det[\vec{v} \mid \vec{w} \mid \overrightarrow{PQ}] = 0$ |
+| "piano per tre punti" | $\det[\overrightarrow{AB} \mid \overrightarrow{AC} \mid \overrightarrow{AQ}] = 0$ con $Q = (x, y, z)$ |
+
+### Trappole
+
+- **Segni della scacchiera** dimenticati nello sviluppo.
+- **$D_i(\lambda)$ in Gauss** senza dividere per $\lambda$; scambi non contati.
+- **$\det(A + B)$** non è $\det A + \det B$; **$\det(\lambda A) = \lambda^n\det A$**, non $\lambda\det A$ (ogni riga è moltiplicata per $\lambda$).
+- **Matrice non quadrata**: il determinante non c'è, si usa il rango.
+- **Area del triangolo** senza $\frac12$; **volume** senza valore assoluto.
+
+### Verifica
+
+#### Domanda 48
+
+Il determinante di $\begin{pmatrix} 2 & 1 & 3 \\ 0 & -1 & 4 \\ 0 & 0 & 5 \end{pmatrix}$ vale:
+
+- a) $6$
+- b) $-10$
+- c) $10$
+- d) $0$
+
+> [!example]- Soluzione
+> **b**. Triangolare superiore: prodotto della diagonale, $2 \cdot (-1) \cdot 5 = -10$.
+> - a) è la somma della diagonale.
+> - c) segno perso.
+> - d) gli zeri sotto la diagonale non annullano il determinante.
+
+#### Domanda 49
+
+Sia $A \in M_3(\mathbb{R})$ con $\det A = 3$. Allora $\det(2A)$ vale:
+
+- a) $6$
+- b) $24$
+- c) $9$
+- d) $5$
+
+> [!example]- Soluzione
+> **b**. $2A = D_1(2)D_2(2)D_3(2)A$: ogni riga è moltiplicata per $2$, e ogni $D_i(2)$ moltiplica il determinante per $2$. $\det(2A) = 2^3 \cdot 3 = 24$.
+> - a) è l'errore $\det(\lambda A) = \lambda\det A$.
+> - c), d) non vengono da nessuna regola.
+
+#### Domanda 50
+
+I vettori $(1, k)$ e $(k, 4)$ sono una base di $\mathbb{R}^2$:
+
+- a) per $k \neq 2$
+- b) per $k \neq \pm 2$
+- c) per ogni $k$
+- d) solo per $k = \pm 2$
+
+> [!example]- Soluzione
+> **b**. $\det\begin{pmatrix} 1 & k \\ k & 4 \end{pmatrix} = 4 - k^2 = (2 - k)(2 + k)$, nullo per $k = \pm 2$.
+> - a) dimentica la radice negativa: per $k = -2$ i vettori sono $(1, -2)$ e $(-2, 4) = -2(1, -2)$.
+> - d) sono proprio i valori in cui **non** è una base.
+
+**Esercizio a mano.** Area del triangolo di vertici $A = (0, 0, 0)$, $B = (1, 2, 0)$, $C = (0, 1, 3)$.
+
+> [!example]- Soluzione
+> 1. $\overrightarrow{AB} = (1, 2, 0)$, $\overrightarrow{AC} = (0, 1, 3)$.
+> 2. $\overrightarrow{AB} \times \overrightarrow{AC} = (2 \cdot 3 - 0 \cdot 1,\ 0 \cdot 0 - 1 \cdot 3,\ 1 \cdot 1 - 2 \cdot 0) = (6, -3, 1)$.
+> 3. Controllo: $(6, -3, 1) \cdot (1, 2, 0) = 0$ e $(6, -3, 1) \cdot (0, 1, 3) = 0$.
+> 4. Area $= \frac12\sqrt{36 + 9 + 1} = \frac{\sqrt{46}}{2}$.
+
+## Dimensione
+
+Teoria: [Dimensione](/uni/gal/dimensione/) · Esercizi: [Dimensione (esercizi)](/uni/gal/dimensione-esercizi/) · [Basi](/uni/gal/basi/)
+
+> [!warning] È nel parziale del 5/11?
+> Come il determinante, non si sa: capitolo 6, seconda parte della L10 (27/10), fuori dal "fino al capitolo 4" dell'avviso del 28/9. Le lezioni L11 e L12 (2/11 e 3/11) continuano il capitolo prima della prova.
+
+### Da sapere
+
+- **Esistenza**: ogni $V \neq \{\vec{0}\}$ finitamente generato ha una base. Da un sistema di generatori si tolgono, uno alla volta, i vettori che sono combinazione degli altri.
+- **Caratterizzazione**: $\mathcal{B}$ è una base $\iff$ ogni $\vec{v} \in V$ si scrive in modo unico come combinazione degli elementi di $\mathcal{B}$.
+- **Procedimento 1**: da $\{\vec{v}_1, \ldots, \vec{v}_m\}$ in $\mathbb{R}^n$, matrice coi vettori in colonna, Gauss; i vettori di partenza delle colonne con pivot sono una base dello Span.
+- **Completamento**: con $\mathcal{B}$ base di $V$ con $n$ elementi e $\{\vec{v}_1, \ldots, \vec{v}_m\}$ indipendente, $m < n$, si completa a una base aggiungendo $n - m$ elementi di $\mathcal{B}$. Ogni base di $V$ ha lo stesso numero di elementi.
+- **Dimensione**: $\dim V$ è il numero di elementi di una qualunque base. $\dim\mathbb{R}^n = n$, $\dim M_2(\mathbb{R}) = 4$, $\dim M_{m,n}(\mathbb{R}) = mn$, $\dim\mathbb{R}[x]_d = d + 1$.
+
+### Come si riconosce e come si fa
+
+| se vedi | fai |
+| --- | --- |
+| "estrai una base da questi generatori" | vettori in colonna, Gauss, si tengono i vettori delle colonne pivot |
+| "trova una base di $U = \mathrm{Span}(\ldots)$" | lo stesso; $\dim U$ è il numero di pivot, cioè il rango |
+| "completa a una base di $\mathbb{R}^n$" | $[\vec{v}_1 \cdots \vec{v}_m \mid \vec{e}_1 \cdots \vec{e}_n]$, procedimento 1 |
+| "dimensione di uno spazio di matrici o polinomi" | elemento generico scritto come combinazione, si contano i parametri liberi |
+
+### Trappole
+
+- **Colonne della forma a scalini** prese come base: vanno presi i vettori di partenza.
+- **$\dim\mathbb{R}[x]_d = d$**: è $d + 1$, c'è anche il monomio $1$.
+- **Dimensione uguale al numero di generatori**: è il rango, i generatori possono essere dipendenti.
+
+### Verifica
+
+#### Domanda 51
+
+La dimensione di $\mathbb{R}[x]_3$, i polinomi di grado al più $3$, è:
+
+- a) $3$
+- b) $4$
+- c) infinita
+- d) $6$
+
+> [!example]- Soluzione
+> **b**. Base $\{1, x, x^2, x^3\}$: quattro elementi.
+> - a) dimentica $1 = x^0$.
+> - c) è $\mathbb{R}[x]$, senza limite sul grado, che non è finitamente generato.
+
+#### Domanda 52
+
+Sia $U = \mathrm{Span}\big((1, 2), (2, 4), (3, 6)\big) \subseteq \mathbb{R}^2$. Allora $\dim U$ è:
+
+- a) $3$
+- b) $2$
+- c) $1$
+- d) $0$
+
+> [!example]- Soluzione
+> **c**. I tre vettori sono multipli di $(1, 2)$: la matrice in colonna ha rango $1$, base $\{(1, 2)\}$.
+> - a) conta i generatori.
+> - b) è $\dim\mathbb{R}^2$, ma $U$ è una retta.
+
+**Esercizio a mano.** Estrai una base di $U = \mathrm{Span}(\vec{v}_1, \vec{v}_2, \vec{v}_3, \vec{v}_4)$ con $\vec{v}_1 = (1, 0, 1)$, $\vec{v}_2 = (2, 0, 2)$, $\vec{v}_3 = (0, 1, 1)$, $\vec{v}_4 = (1, 1, 2)$ e dai $\dim U$.
+
+> [!example]- Soluzione
+> 1. Vettori in colonna: righe $(1, 2, 0, 1)$, $(0, 0, 1, 1)$, $(1, 2, 1, 2)$.
+> 2. $E_{31}(-1)$: $R_3 = (0, 0, 1, 1)$.
+> 3. $E_{32}(-1)$: $R_3 = (0, 0, 0, 0)$.
+> 4. Pivot nelle colonne 1 e 3: base $\{\vec{v}_1, \vec{v}_3\}$, $\dim U = 2$.
+> 5. Controllo: $\vec{v}_2 = 2\vec{v}_1$, $\vec{v}_4 = \vec{v}_1 + \vec{v}_3$.
 
 ## Ultimo giro
 

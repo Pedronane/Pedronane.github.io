@@ -9,7 +9,7 @@ tipo: esercizi
 stato: in corso
 data: 2026-10-20
 lezioni: []
-ordine: 14
+ordine: 15
 ---
 
 Esercizi tipo esame di [Teoremi sui limiti di funzioni](/uni/analisi-1/teoremi-sui-limiti-di-funzioni/), dove stanno teoremi, limiti notevoli, metodo ed esempi del 20/10. Testo in chiaro, soluzione chiusa: prima provaci da solo. Gli esercizi 4-7, 9 e 10 sono del IV tutoraggio (<span class="src">tutoraggio 4, pagine 2-3</span>), che al 14/10 erano rimasti in sospeso in [Limiti di funzioni (esercizi)](/uni/analisi-1/limiti-di-funzioni-esercizi/).

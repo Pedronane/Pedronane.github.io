@@ -11,7 +11,7 @@ data: 2026-10-06
 lezioni:
   - 6 ott
   - 7 ott
-ordine: 8
+ordine: 9
 ---
 
 Argomento di [Analisi Matematica 1](/uni/analisi-1/), capitolo 3, sezione 3.5 ("I teoremi di permanenza del segno e di confronto. Il teorema dei carabinieri"). Fatto a lezione il 6/10, slide 38-43 (<span class="src">slide annotate del 6/10</span>), con due riprese il 7/10: l'osservazione sulla slide 42 e la negazione di "definitivamente" (<span class="src">slide annotate del 7/10</span>). Prima: [Successioni monotone e numero di Nepero](/uni/analisi-1/successioni-monotone-e-numero-di-nepero/). Dopo: [Calcolo dei limiti](/uni/analisi-1/calcolo-dei-limiti/), che usa questi teoremi per l'algebra dei limiti.

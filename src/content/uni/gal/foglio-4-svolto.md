@@ -14,6 +14,8 @@ ordine: 999
 
 Il <span class="src">foglio 4</span> del tutorato (domande 4.1-4.11 a <span class="src">p. 1</span>, esercizi 4.12-4.17 a <span class="src">p. 2</span>, esercizi 4.18-4.21 a <span class="src">p. 3</span>), argomento di [Geometria e Algebra Lineare](/uni/gal/). A lezione queste cose sono la L7 (13/10) e la L8 (19/10); la teoria completa sta in [Spazi vettoriali](/uni/gal/spazi-vettoriali/), [Generatori](/uni/gal/generatori/), [Dipendenza lineare](/uni/gal/dipendenza-lineare/) e [Basi](/uni/gal/basi/). Tutte le domande e tutti gli esercizi usano solo argomenti già fatti a lezione: la dimensione non serve, e la domanda 4.9, che di solito si risolve con la dimensione, qui è risolta con la proposizione (a) sui generatori. Il calcolo passa da [Algoritmo di Gauss-Jordan](/uni/gal/algoritmo-di-gauss-jordan/) e [Rango e Rouché-Capelli](/uni/gal/rango-e-rouche-capelli/).
 
+La versione aggiornata del foglio indica da dove vengono gli esercizi: 4.13, 4.16, 4.17, 4.18 e 4.19 sono CC 7.50, CC 5.6, CC 7.22, CC 7.25 e CC 3.9; 4.14 è della prova intermedia 2018, 4.20 di febbraio 2016, 4.21 della prova intermedia 2017. <span class="src">Soluzioni ufficiali</span> da Moodle, scritte a mano e con la numerazione di un foglio vecchio: il loro 4.8 (<span class="src">p. 1</span>) è il 4.12, il loro 4.11 (<span class="src">p. 2</span>) è il 4.15, il loro 4.15 (<span class="src">p. 3-4</span>) non è su questo foglio ed è svolto in fondo come [Esercizio extra delle soluzioni ufficiali](#esercizio-extra-delle-soluzioni-ufficiali). I risultati coincidono con quelli qui sotto.
+
 Come usarla: prova da solo, apri l'**indizio** se ti blocchi, la **soluzione** solo alla fine. Ogni conto è stato ricontrollato. Prima degli esercizi c'è [La teoria che serve agli esercizi](#la-teoria-che-serve-agli-esercizi): sette idee (T1-T7) con il perché, a cui le soluzioni rimandano. Ogni soluzione dice come si riconosce il tipo di esercizio, svolge un passaggio per riga con la regola accanto e chiude con un controllo.
 
 ## Lo schema
@@ -333,6 +335,12 @@ come insieme delle soluzioni di un sistema omogeneo.
 > E un vettore fuori dallo Span deve violarne almeno una: $\vec{e}_1 = (1, 0, 0, 0, 0)$ dà $2 \neq 0$ nella seconda.
 >
 > **Un'altra risposta giusta.** Facendo le operazioni in un altro ordine si può ottenere, al posto della terza, $-6x_1 + x_2 + 4x_5 = 0$. È equivalente: $(2x_1 + x_2 - 4x_4) - 4(2x_1 - x_4 - x_5) = -6x_1 + x_2 + 4x_5$, quindi è una combinazione delle equazioni trovate e il sistema ha le stesse soluzioni. All'esame va bene qualunque sistema equivalente, purché si verifichi sui generatori.
+>
+> **Le soluzioni ufficiali** (<span class="src">p. 1</span>) fanno prima $S_{35}$, poi $E_{41}(-1)$, $E_{31}(-1)$, $E_{21}(-2)$ ed $E_{42}(-\frac14)$, $E_{32}(\frac14)$ col pivot $-4$, e arrivano a
+> $$
+> 6x_1 - x_2 - 4x_5 = 0, \qquad 2x_1 + x_2 - 4x_4 = 0, \qquad x_3 = 0.
+> $$
+> La prima è l'"altra risposta giusta" qui sopra cambiata di segno; le altre due sono le stesse. Sistema equivalente.
 
 ### Esercizio 4.13
 
@@ -500,6 +508,8 @@ dove $k \in \mathbb{R}$, determinare per quali valori di $k$ l'insieme $\{\vec{v
 > Pivot $1$, $2$, $-1$, nessuno con $k$: rango $3$ = numero di vettori per ogni valore del parametro. Stessa risposta.
 >
 > **Da ricordare.** Un parametro nell'esercizio non vuol dire che la risposta dipenda dal parametro. "Per ogni $k$" (e "per nessun $k$") sono risposte che escono spesso.
+>
+> **Le soluzioni ufficiali** (<span class="src">p. 2</span>) fanno lo stesso conto col rango, con $S_{25}$ per primo, e concludono anche loro rango $3$ per ogni $k$. Due imprecisioni: la conclusione dice "linearmente equivalenti" invece di "linearmente indipendenti"; e la riduzione si ferma con $k - 1$ ancora sotto il pivot $-1$ della terza colonna (serve un'ultima $E_{43}(k - 1)$, come qui sopra). Il rango è comunque $3$.
 
 ### Esercizio 4.16
 
@@ -788,6 +798,36 @@ Si mostri che $U$ è un sottospazio di $M_2(\mathbb{R})$.
 > - $M = N$: $C = O$, e $OA = O$ per ogni $A$. $U = M_2(\mathbb{R})$, il più grande.
 >
 > **Perché la linearità conta.** Con $U' = \{A : A^2 = A\}$ (dove $A$ compare due volte) la dimostrazione non funziona più: $I \in U'$ ma $2I \notin U'$, perché $(2I)^2 = 4I \neq 2I$. Non è un sottospazio.
+
+### Esercizio extra delle soluzioni ufficiali
+
+Il 4.15 delle <span class="src">soluzioni ufficiali, p. 3-4</span>, che non è sul foglio attuale. Si considerino le ennuple di $\mathbb{R}^4$
+$$
+\vec{v}_1 = (k, 0, 1, 1), \quad \vec{v}_2 = (1, k, 1, 0), \quad \vec{v}_3 = (1, 1, k, k), \quad \vec{v}_4 = (1, 0, k, k).
+$$
+Si trovino i valori del parametro $k$ per i quali $\{\vec{v}_1, \vec{v}_2, \vec{v}_3, \vec{v}_4\}$ è una base di $\mathbb{R}^4$.
+
+> [!tip]- Indizio
+> Quattro vettori di $\mathbb{R}^4$: base se e solo se il rango è $4$ (T3). La prima colonna ha $k$ in alto: porta su una riga con $1$ al posto del pivot, così non dividi per $k$.
+
+> [!example]- Soluzione
+> **Come si riconosce.** Base con parametro, $k = n = 4$: basta il rango della matrice con i vettori in colonna (T3, T6).
+> $$
+> A = \begin{pmatrix} k & 1 & 1 & 1 \\ 0 & k & 1 & 0 \\ 1 & 1 & k & k \\ 1 & 0 & k & k \end{pmatrix}
+> $$
+> - $S_{13}$ e $S_{24}$ (come le soluzioni ufficiali): righe $(1, 1, k, k)$, $(1, 0, k, k)$, $(k, 1, 1, 1)$, $(0, k, 1, 0)$.
+> - $E_{21}(-1)$: $R_2 = (0, -1, 0, 0)$; $E_{31}(-k)$: $R_3 = (k, 1, 1, 1) - k(1, 1, k, k) = (0,\ 1 - k,\ 1 - k^2,\ 1 - k^2)$. Per $k = 0$ questa operazione non cambia niente, ed è lecita lo stesso.
+> - Pivot $-1$ in seconda colonna. $E_{42}(k)$: $R_4 = (0, k, 1, 0) + k(0, -1, 0, 0) = (0, 0, 1, 0)$; $E_{32}(1 - k)$: $R_3 = (0, 0, 1 - k^2, 1 - k^2)$.
+> - $S_{34}$: il pivot della terza colonna diventa l'$1$ senza parametro; $E_{43}(k^2 - 1)$: $R_4 = (0, 0, 1 - k^2, 1 - k^2) + (k^2 - 1)(0, 0, 1, 0) = (0, 0, 0, 1 - k^2)$.
+>
+> $$
+> \begin{pmatrix} 1 & 1 & k & k \\ 0 & -1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 - k^2 \end{pmatrix}
+> $$
+> Il quarto pivot è $1 - k^2 = (1 - k)(1 + k)$.
+> - $k = \pm 1$: $\operatorname{rg}(A) = 3$, **non è una base** di $\mathbb{R}^4$ (le soluzioni ufficiali scrivono “$\mathbb{R}^5$", è un refuso).
+> - $k \neq \pm 1$: $\operatorname{rg}(A) = 4$, **è una base**.
+>
+> **Controllo.** Per $k = 1$, $\vec{v}_1 = \vec{v}_4 = (1, 0, 1, 1)$: due vettori uguali. Per $k = -1$, $\vec{v}_1 = (-1, 0, 1, 1) = -\vec{v}_4$. Con il [determinante](/uni/gal/determinante/) (capitolo 5): $\det A = -(k - 1)(k + 1)$, nullo proprio per $k = \pm 1$. Il prodotto dei pivot della forma a scalini, $1 \cdot (-1) \cdot 1 \cdot (1 - k^2)$, cambiato di segno per i tre scambi, dà lo stesso: $(-1)^3 \cdot (-(1 - k^2)) = 1 - k^2 = -(k - 1)(k + 1)$.
 
 ## Errori tipici
 

@@ -9,7 +9,7 @@ tipo: esercizi
 stato: in corso
 data: 2026-10-21
 lezioni: []
-ordine: 17
+ordine: 18
 ---
 
 Esercizi tipo esame di [Derivate](/uni/analisi-1/derivate/), dove stanno definizione, retta tangente, "derivabile implica continua" e gli esempi del 21/10. Al 21/10 le regole di derivazione non sono ancora fatte: **ogni derivata qui si calcola con la definizione**. Testo in chiaro, soluzione chiusa: prima provaci da solo.

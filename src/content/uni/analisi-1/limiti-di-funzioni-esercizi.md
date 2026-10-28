@@ -672,7 +672,7 @@ Questi richiedevano teoria non ancora fatta al 14/10. Nel foglio la numerazione 
 - limiti notevoli, es. 3.7, 3.8, 3.11, 3.13, 3.15 e 4.1: [Teoremi sui limiti di funzioni (esercizi)](/uni/analisi-1/teoremi-sui-limiti-di-funzioni-esercizi/), esercizi 4-7, 9 e 10;
 - continuità e classificazione, es. 5.1, 5.2, 6.1 e 6.2: [Continuità (esercizi)](/uni/analisi-1/continuita-esercizi/), esercizi 6-9 (il testo del 5.1 e del 5.2 ha due errori, segnalati lì).
 
-**Ancora da svolgere**, dopo la lezione sui limiti delle funzioni elementari e la gerarchia degli infiniti per funzioni (sezione 4.4, slide 43: il 20/10 il prof l'ha saltata, è in <span class="src">slide non annotate, slide 43</span>):
+**Si fanno con la gerarchia degli infiniti per funzioni** (sezione 4.4, slide 43, saltata dal prof il 20/10 e fatta dal tutor il 19/10: <span class="src">esercitazione 5, slide 43</span>; svolti nel [Tutoraggio 4 svolto](/uni/analisi-1/tutoraggio-4-svolto/) anche senza):
 - tutoraggio 4, es. 3.10: $\displaystyle\lim_{x \to 0^+}\sin x\,\log\left(\frac1x\right)$
 - tutoraggio 4, es. 3.12: $\displaystyle\lim_{x \to 0^+}\left(\frac{x^5}{x + 7}\right)^{x^3 + x}$
 - tutoraggio 4, es. 3.14: $\displaystyle\lim_{x \to 1^+}\left(\log^6(x - 1)\right)^{x - 1}$

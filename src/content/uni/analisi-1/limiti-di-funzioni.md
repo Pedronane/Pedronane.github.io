@@ -601,7 +601,7 @@ Il tipo di esercizio: "calcolare $\lim_{x \to +\infty} f(x)$" con $f$ fatta di p
    allora è il limite di f
 ```
 
-Attenzione al passo 3: la gerarchia degli infiniti è stata dimostrata per $n$ **naturale**. Per $x_n$ reali (per esempio $\frac{x_n^{10}}{e^{x_n}}$) non si può ancora usare: arriva con la slide 43. Gli esercizi 25-30 del IV tutoraggio usano questo metodo o la definizione.
+Attenzione al passo 3: la gerarchia degli infiniti è stata dimostrata per $n$ **naturale**. Per $x_n$ reali (per esempio $\frac{x_n^{10}}{e^{x_n}}$) serve la gerarchia per le funzioni, slide 43, fatta dal tutor il 19/10 ([Esercitazione 5 svolta](/uni/analisi-1/esercitazione-5-svolta/)). Gli esercizi 25-30 del IV tutoraggio usano questo metodo o la definizione.
 
 ### Come si scrive all'esame
 
@@ -769,7 +769,7 @@ perché la radice cubica è crescente. "Quindi scegliendo qualunque valore $K \g
 
 **$\log x \to +\infty$** (lasciato come esercizio). Dominio $(0, +\infty)$, illimitato superiormente. Fissato $M > 0$: $\log x > M \iff x > e^M$ ($e^x$ è crescente). Quindi $K = e^M$.
 
-Controllo di buon senso sulle velocità: per $M = 1000$, $x^3$ supera $1000$ già da $K = 10$, $e^x$ da $K = \log 1000 \approx 6{,}9$, $\log x$ solo da $K = e^{1000}$, un numero con 435 cifre. La gerarchia degli infiniti per le funzioni (slide 43) dirà proprio questo.
+Controllo di buon senso sulle velocità: per $M = 1000$, $x^3$ supera $1000$ già da $K = 10$, $e^x$ da $K = \log 1000 \approx 6{,}9$, $\log x$ solo da $K = e^{1000}$, un numero con 435 cifre. La gerarchia degli infiniti per le funzioni (slide 43, [esercitazione del 19/10](/uni/analisi-1/esercitazione-5-svolta/)) dice proprio questo.
 
 ### Limiti per $x \to -\infty$ (slide 24, esercizio)
 

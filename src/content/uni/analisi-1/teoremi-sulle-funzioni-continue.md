@@ -11,7 +11,7 @@ data: 2026-10-21
 lezioni:
   - 20 ott
   - 21 ott
-ordine: 16
+ordine: 17
 ---
 
 Argomento di [Analisi Matematica 1](/uni/analisi-1/), slide 70-80. Enunciato del teorema degli zeri il 20/10 (<span class="src">20/10, pagine 37-39</span>), tutto il resto il 21/10 (<span class="src">slide annotate del 21/10</span>, pagine 1-31).

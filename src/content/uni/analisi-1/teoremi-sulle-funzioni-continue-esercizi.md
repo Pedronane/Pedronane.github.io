@@ -9,7 +9,7 @@ tipo: esercizi
 stato: in corso
 data: 2026-10-21
 lezioni: []
-ordine: 16
+ordine: 17
 ---
 
 Esercizi tipo esame di [Teoremi sulle funzioni continue](/uni/analisi-1/teoremi-sulle-funzioni-continue/), dove stanno enunciati, dimostrazioni del prof e metodo. Testo in chiaro, soluzione chiusa: prima provaci da solo. L'esercizio 3 è quello della slide 80, lasciato dal prof il 21/10; il 9 è il completamento di Bolzano-Weierstrass che il prof ha lasciato come esercizio.

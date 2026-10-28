@@ -9,7 +9,7 @@ tipo: esercizi
 stato: in corso
 data: 2026-10-06
 lezioni: []
-ordine: 7
+ordine: 8
 ---
 
 Esercizi tipo esame di [Successioni monotone e numero di Nepero](/uni/analisi-1/successioni-monotone-e-numero-di-nepero/), dove stanno teoria, metodo ed esempi svolti a lezione. Testo in chiaro, soluzione chiusa: prima provaci da solo.

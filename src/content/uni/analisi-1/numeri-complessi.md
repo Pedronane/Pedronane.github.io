@@ -13,6 +13,7 @@ lezioni:
   - 23 set
   - 28 set
   - 29 set
+  - 5 ott
 ordine: 5
 ---
 

@@ -8,7 +8,8 @@ hub: false
 tipo: teoria
 stato: in corso
 data: 2026-09-16
-lezioni: []
+lezioni:
+  - 15 set
 ordine: 1
 ---
 

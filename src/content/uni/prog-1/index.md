@@ -48,6 +48,10 @@ appelli              2 sessioni, 5 appelli: gennaio, febbraio | giugno, luglio, 
 - Il **5/11 alle 15:30** c'è anche la prova intermedia di GAL (Povo 1, A104-A106, 90 min, vedi [Geometria e Algebra Lineare](/uni/gal/)). L'orario della provetta di Prog non è sulla slide: va controllato sul sito del corso.
 - Il piano consigliato dal prof (slide 40-41): frequentare, preparare e passare le due provette, poi puntare all'appello di gennaio (meglio) o febbraio.
 
+### Ripasso della prima provetta
+
+Tutti gli argomenti fino ai puntatori (deck 6.1) in una pagina, con metodi, trappole e crocette con output verificato: [Ripasso provetta](/uni/prog-1/ripasso-provetta/).
+
 ### Simulazioni della prima provetta
 
 Il modello è la <span class="src">prima prova teorica del 22/10/2024</span>, l'unica negli archivi: 50 minuti, 6 punti, sei domande (SI/NO sui puntatori, output esatto di cicli, figura con i cicli, somma fra basi, tavola di verità, algoritmo su un array di struct). La cartella "1° Prova Teorica" su Moodle per ora è vuota. Simulazioni sullo stesso modello, a tempo e con correzione: [Simulazione provetta 1](/uni/simulazioni/prog-1/simulazione-provetta-1/), [Simulazione provetta 2](/uni/simulazioni/prog-1/simulazione-provetta-2/), [Simulazione provetta 3](/uni/simulazioni/prog-1/simulazione-provetta-3/), [Simulazione provetta 4](/uni/simulazioni/prog-1/simulazione-provetta-4/) (la 4 è la più difficile).

@@ -8,7 +8,8 @@ hub: false
 tipo: esercizi
 stato: completa
 data: 2026-10-12
-lezioni: []
+lezioni:
+  - 12 ott
 ordine: 10
 ---
 

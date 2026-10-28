@@ -8,7 +8,9 @@ hub: false
 tipo: teoria
 stato: in corso
 data: 2026-10-06
-lezioni: []
+lezioni:
+  - 6 ott
+  - 12 ott
 ordine: 9
 ---
 

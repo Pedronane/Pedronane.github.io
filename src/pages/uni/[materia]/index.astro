@@ -9,7 +9,7 @@ export async function getStaticPaths() {
   return tutte.map((m) => ({ params: { materia: m.hub.data.materia }, props: m }));
 }
 
-const { hub, lezioni, esercizi, materiale } = Astro.props;
+const { hub, lezioni, esercizi, materiale, ripasso } = Astro.props;
 const prove = (await simulazioni()).find((m) => m.hub.data.materia === hub.data.materia)?.prove ?? [];
 const { Content } = await render(hub);
 const d = hub.data;
@@ -29,6 +29,22 @@ const ultima = [...lezioni].reverse().find((n) => n.data.lezioni.length)?.data.l
     </header>
 
     <section aria-labelledby="registro" data-pagefind-ignore>
+      {ripasso.length > 0 && (
+        <>
+          <h2 id="ripasso" class="gruppo">Ripasso per la prova intermedia</h2>
+          <ol class="voci">
+            {ripasso.map((n) => (
+              <li class="voce">
+                <a href={urlOf(n)}>
+                  <span class="n">R</span>
+                  <span class="t" set:html={inlineTex(n.data.title)} />
+                  <span class="d">tutti gli argomenti</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </>
+      )}
       <h2 id="registro" class="gruppo">In ordine di lezione</h2>
       <ol class="voci">
         {lezioni.map((n, i) => (

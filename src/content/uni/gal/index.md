@@ -37,6 +37,8 @@ Dall'avviso Moodle della prof del 28/9 e dal <span class="src">piano delle lezio
 
 Le provette della prof, con soluzioni, da Moodle ("Esami anni precedenti e soluzioni"): <span class="src">2024</span> (<span class="src">soluzioni</span>), <span class="src">2023</span> (<span class="src">soluzioni</span>), <span class="src">2022</span> (<span class="src">soluzioni</span>), <span class="src">2021</span> (<span class="src">soluzioni</span>). Dal 2022 la forma è fissa: due esercizi da 6 punti (uno di geometria nello spazio, uno con parametro su sistema o vettori di $\mathbb{R}^4$) e due domande di teoria da 1,5 (Rouché-Capelli con un esempio esce tutti gli anni), punteggio in quindicesimi. Nel 2021 c'era anche una parte a crocette.
 
+Ripasso di tutto il programma del parziale (capitoli 1-4) in una pagina, con metodi, trappole, crocette e le domande di teoria tipiche: [Ripasso provetta](/uni/gal/ripasso-provetta/).
+
 Simulazioni sullo stesso modello, a tempo e con correzione: [Simulazione provetta 1](/uni/simulazioni/gal/simulazione-provetta-1/), [Simulazione provetta 2](/uni/simulazioni/gal/simulazione-provetta-2/), [Simulazione provetta 3](/uni/simulazioni/gal/simulazione-provetta-3/), [Simulazione provetta 4](/uni/simulazioni/gal/simulazione-provetta-4/).
 
 ### Come si prende 30

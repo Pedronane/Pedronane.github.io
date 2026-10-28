@@ -202,7 +202,7 @@ function normDate(cell) {
   const c = cell.replace(/[*_]/g, '').trim();
   let m = c.match(/(\d{4})-(\d{2})-(\d{2})/);
   if (m) return `${+m[3]} ${MESI[+m[2] - 1]}`;
-  m = c.match(/^(\d{1,2})\/(\d{1,2})$/);
+  m = c.match(/^(?:(?:lun|mar|mer|gio|ven|sab|dom) )?(\d{1,2})\/(\d{1,2})$/i);
   if (m) return `${+m[1]} ${MESI[+m[2] - 1]}`;
   m = c.match(/^(\d{1,2}) ([a-z]{3})/i);
   if (m) return `${+m[1]} ${m[2].toLowerCase()}`;

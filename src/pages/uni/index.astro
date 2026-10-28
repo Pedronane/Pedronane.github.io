@@ -7,6 +7,7 @@ const tutte = await materie();
 const totale = tutte.reduce((s, m) => s + m.lezioni.length + m.materiale.length, 0);
 const pagine = tutte.reduce((s, m) => s + m.esercizi.length, 0);
 const prove = (await simulazioni()).reduce((s, m) => s + m.prove.length, 0);
+const ripassi = tutte.flatMap((m) => m.ripasso);
 ---
 
 <UniLayout title="Note · Ingegneria Informatica UniTN" description="Note del primo anno di Ingegneria Informatica a Trento: Analisi 1, GAL, Programmazione 1.">
@@ -19,11 +20,12 @@ const prove = (await simulazioni()).reduce((s, m) => s + m.prove.length, 0);
       </dl>
       <h1>Note per l’esame</h1>
       <p class="sotto">{totale} note in {tutte.length} materie, una per argomento, scritte dalle slide e dalle lezioni. Ogni nota ha definizioni, enunciati con dimostrazione e gli esempi fatti in aula; gli esercizi tipo esame stanno in {pagine} pagine a parte, con la soluzione da aprire dopo averci provato.</p>
+      {ripassi.length > 0 && <p class="sotto">Ripasso per le prove intermedie, tutti gli argomenti con crocette di verifica: {ripassi.map((n, i) => <>{i > 0 && ' · '}<a href={urlOf(n)}>{n.data.materiaBreve}</a></>)}.</p>}
       {prove > 0 && <p class="sotto"><a href="/uni/simulazioni/">Simulazioni delle prove intermedie</a>: {prove} prove a tempo con correzione.</p>}
     </header>
 
     <ol class="registro">
-      {tutte.map(({ hub, lezioni, esercizi, materiale }) => (
+      {tutte.map(({ hub, lezioni, esercizi, materiale, ripasso }) => (
         <li class="materia">
           <div class="materia-head">
             <h2><a href={urlOf(hub)}>{hub.data.materiaNome}</a></h2>
@@ -31,6 +33,15 @@ const prove = (await simulazioni()).reduce((s, m) => s + m.prove.length, 0);
             <a class="apri" href={urlOf(hub)}>Esame e programma</a>
           </div>
           <ol class="voci">
+            {ripasso.map((n) => (
+              <li class="voce">
+                <a href={urlOf(n)}>
+                  <span class="n">R</span>
+                  <span class="t" set:html={inlineTex(n.data.title)} />
+                  <span class="d">prova intermedia</span>
+                </a>
+              </li>
+            ))}
             {lezioni.map((n, i) => (
               <li class="voce">
                 <a href={urlOf(n)}>

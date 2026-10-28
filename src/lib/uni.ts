@@ -8,6 +8,7 @@ export const TIPI: Record<string, string> = {
   riferimento: 'materiale',
   esercizi: 'esercizi',
   simulazione: 'simulazione',
+  ripasso: 'ripasso',
 };
 
 export async function materie() {
@@ -18,10 +19,12 @@ export async function materie() {
       .filter((e) => !e.data.hub && e.data.tipo !== 'simulazione' && e.data.materia === hub.data.materia)
       .sort((a, b) => a.data.ordine - b.data.ordine || a.data.title.localeCompare(b.data.title, 'it'));
     const esercizi = note.filter((n) => n.data.tipo === 'esercizi');
-    const resto = note.filter((n) => n.data.tipo !== 'esercizi');
+    const ripasso = note.filter((n) => n.data.tipo === 'ripasso');
+    const resto = note.filter((n) => n.data.tipo !== 'esercizi' && n.data.tipo !== 'ripasso');
     return {
       hub,
       note,
+      ripasso,
       lezioni: resto.filter((n) => n.data.ordine < 999),
       esercizi,
       materiale: resto.filter((n) => n.data.ordine >= 999),

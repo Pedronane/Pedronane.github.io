@@ -23,6 +23,8 @@ Simulazioni: le note con `tipo: simulazione` (es. `GAL - Simulazione provetta 1`
 
 Esercizi: le note `<Argomento> (esercizi)` (slug `<slug>-esercizi`, `tipo: esercizi`) sono gli esercizi tipo esame separati dalla teoria. `sync-uni.mjs` dà loro l'`ordine` della teoria; `materie()` in `src/lib/uni.ts` le mette nel gruppo `esercizi` (anche i fogli svolti), mostrato come «Esercizi» (`#pagine-esercizi`) nell'indice della materia e come una riga sola in `/uni/`. `compagna()` collega teoria ed esercizi nella `note-meta` di `NotaPagina.astro`.
 
+Ripasso: una nota `<Prefisso> - Ripasso provetta` per materia (`tipo: ripasso`) riassume tutti gli argomenti della prova intermedia con crocette di verifica. `materie()` la mette nel gruppo `ripasso`, mostrato in cima all'indice della materia (`#ripasso`) e come riga R in `/uni/`.
+
 Callout Obsidian: `src/lib/remark-callouts.mjs`. Crocette: un elenco `- a) … - d)` seguito da `> [!example]- Soluzione` che inizia con `**b**` diventa quiz cliccabile (rehype in `rehype-uni-sections.mjs`, script in `UniLayout.astro`); `**Vero**`/`**Falso**` nelle soluzioni prendono ✓/✗. Numeri di sezione e indice: `src/lib/rehype-uni-sections.mjs` (solo file in `content/uni`). KaTeX: la versione di `katex` deve restare uguale a quella interna di `rehype-katex`, altrimenti il CSS non combacia (vettori e pedici sballati). Dopo una modifica ai plugin markdown: `rm -rf node_modules/.astro .astro` prima della build, se no le note non cambiate restano renderizzate col plugin vecchio.
 
 Ricerca: Pagefind (`pagefind.yml`), indicizza solo le pagine con `data-pagefind-body` (note e hub). UI nella testata di `UniLayout.astro`, scorciatoia `/`, filtro per materia. Con `astro dev` non funziona: serve `npm run build` + `npx astro preview`.

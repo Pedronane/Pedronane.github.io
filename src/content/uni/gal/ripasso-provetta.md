@@ -1879,7 +1879,9 @@ Le domande di teoria uscite davvero nelle provette su Moodle, raccolte per tipo.
 Si enunci il teorema di Rouché-Capelli e si fornisca un esempio di sistema lineare: (a) non compatibile formato da due equazioni in tre incognite; (b) compatibile formato da tre equazioni in due incognite; (c) compatibile formato da due equazioni in tre incognite; (d) non compatibile formato da tre equazioni in due incognite.
 
 > [!example]- Soluzione
-> **Enunciato.** Dato un sistema lineare in $n$ incognite con matrice dei coefficienti $A$ e matrice completa $[A \mid \vec{b}]$, il sistema è compatibile se e solo se $\operatorname{rg}(A) = \operatorname{rg}([A \mid \vec{b}])$. In tal caso, se $\operatorname{rg}(A) = n$ ha un'unica soluzione; se $\operatorname{rg}(A) < n$ ha infinite soluzioni, che dipendono da $n - \operatorname{rg}(A)$ parametri.
+> **Enunciato** (appunti della prof, cap. 2). Dato un sistema lineare in $n$ incognite, sia $[A \mid \vec{b}]$ la matrice completa associata. Tale sistema è compatibile se e solo se $\operatorname{rg}(A) = \operatorname{rg}(A \mid \vec{b})$. Inoltre, se $\operatorname{rg}(A) = \operatorname{rg}(A \mid \vec{b})$, allora: (1) se $\operatorname{rg}(A) = n$ (numero di colonne di $A$) abbiamo un'unica soluzione; (2) se $\operatorname{rg}(A) < n$ abbiamo infinite soluzioni.
+>
+> In più, se vuoi: nel caso (2) le soluzioni dipendono da $n - \operatorname{rg}(A)$ parametri liberi.
 >
 > **(a)** $\{x + y + z = 1,\ x + y + z = 2\}$. Con $E_{21}(-1)$ la seconda riga diventa $(0, 0, 0 \mid 1)$: $\operatorname{rg}(A) = 1 \neq 2 = \operatorname{rg}([A \mid \vec{b}])$, incompatibile.
 >
@@ -1896,7 +1898,7 @@ Si enunci il teorema di Rouché-Capelli e si fornisca un esempio di sistema line
 Si dia la definizione di insieme di vettori linearmente indipendenti (o dipendenti) e si fornisca un esempio di insieme linearmente indipendente (o dipendente) di vettori di $\mathbb{R}^3$.
 
 > [!example]- Soluzione
-> **Definizione.** Sia $V$ uno spazio vettoriale reale. $\{\vec{v}_1, \ldots, \vec{v}_k\} \subseteq V$ è **linearmente dipendente** se esistono $\lambda_1, \ldots, \lambda_k \in \mathbb{R}$ non tutti nulli tali che $\lambda_1\vec{v}_1 + \cdots + \lambda_k\vec{v}_k = \vec{0}$. È **linearmente indipendente** in caso contrario, cioè se $\lambda_1\vec{v}_1 + \cdots + \lambda_k\vec{v}_k = \vec{0}$ implica $\lambda_1 = \cdots = \lambda_k = 0$.
+> **Definizione** (appunti della prof, cap. 4). Sia $V$ uno spazio vettoriale. (I) $\{\vec{v}_1, \ldots, \vec{v}_k\} \subset V$ è **linearmente dipendente** se $\exists\, \lambda_1, \ldots, \lambda_k \in \mathbb{R}$ non tutti nulli tali che $\sum_{i=1}^{k} \lambda_i\vec{v}_i = \vec{0}$. (II) In caso contrario, cioè se $\sum_{i=1}^{k} \lambda_i\vec{v}_i = \vec{0} \Rightarrow \lambda_i = 0$ $\forall i = 1, \ldots, k$, allora l'insieme $\{\vec{v}_1, \ldots, \vec{v}_k\}$ è **linearmente indipendente**.
 >
 > **Indipendente.** $\{(1, 0, 0), (0, 1, 0), (0, 0, 1)\}$: $\lambda_1(1, 0, 0) + \lambda_2(0, 1, 0) + \lambda_3(0, 0, 1) = (\lambda_1, \lambda_2, \lambda_3) = (0, 0, 0)$ obbliga $\lambda_1 = \lambda_2 = \lambda_3 = 0$.
 >
@@ -1909,50 +1911,50 @@ Si dia la definizione di insieme di vettori linearmente indipendenti (o dipenden
 Dare la definizione di matrice (quadrata) invertibile, fornendo un esempio di una matrice invertibile con la sua inversa e un esempio di una matrice non invertibile. Che relazione c'è tra invertibilità e rango?
 
 > [!example]- Soluzione
-> **Definizione.** $A \in M_n(\mathbb{R})$ è invertibile se esiste $B \in M_n(\mathbb{R})$ tale che $AB = BA = I_n$. Questa $B$ è unica, si chiama inversa e si indica con $A^{-1}$.
+> **Definizione** (appunti della prof, cap. 3). $A \in M_n(\mathbb{R})$ quadrata è **invertibile** se $\exists\, B \in M_n(\mathbb{R})$ tale che $AB = BA = I_n$. In tal caso, $B$ è detta l'**inversa** di $A$ e la denotiamo $A^{-1}$.
 >
 > **Invertibile.** $A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$, $A^{-1} = \begin{pmatrix} 1 & -1 \\ 0 & 1 \end{pmatrix}$. Verifica: $AA^{-1} = \begin{pmatrix} 1 \cdot 1 + 1 \cdot 0 & 1 \cdot (-1) + 1 \cdot 1 \\ 0 & 1 \end{pmatrix} = I_2$, e allo stesso modo $A^{-1}A = I_2$.
 >
 > **Non invertibile.** $\begin{pmatrix} 1 & 2 \\ 2 & 4 \end{pmatrix}$: $E_{21}(-2)$ dà la riga $(0, 0)$, rango $1 < 2$.
 >
-> **Relazione col rango.** $A \in M_n(\mathbb{R})$ è invertibile se e solo se $\operatorname{rg}(A) = n$, cioè $\operatorname{rref}(A) = I_n$. L'inversa si calcola riducendo $[A \mid I_n]$ fino a $[I_n \mid A^{-1}]$.
+> **Relazione col rango** (teorema della prof). Sia $A \in M_n(\mathbb{R})$. $A$ è invertibile $\iff \operatorname{rg}(A) = n$. Collegata: tutte le matrici quadrate che hanno una riga (o una colonna) di zeri non sono invertibili. L'inversa si calcola riducendo $[A \mid I_n]$ fino a $[I_n \mid A^{-1}]$.
 
 #### Vera 4: vettore geometrico, somma e prodotto scalare (2016, 2017, 2018, 2022)
 
 Cos'è un vettore geometrico? Elencare le proprietà della somma (o del prodotto scalare) di due vettori geometrici. Variante 2018: definire il prodotto scalare, elencarne le proprietà e spiegare come si usa per la proiezione ortogonale.
 
 > [!example]- Soluzione
-> **Vettore geometrico.** Due segmenti orientati sono equipollenti se hanno stessa direzione, stesso verso e stessa lunghezza. Un vettore geometrico è una classe di equivalenza di segmenti orientati equipollenti; ogni segmento della classe è un suo rappresentante. In coordinate $\overrightarrow{AB} = (x_B - x_A,\ y_B - y_A,\ z_B - z_A)$.
+> **Vettore geometrico** (appunti della prof, cap. 1). Dati $A, B$ punti nello spazio tridimensionale, un **segmento orientato** $\overrightarrow{AB}$ è un segmento con estremi iniziale e finale in $A$ e $B$. $\overrightarrow{AB}$ e $\overrightarrow{CD}$ sono **equipollenti** se hanno le stesse: direzione, verso, modulo (o lunghezza). Un **vettore geometrico** è una classe di equivalenza di segmenti orientati. Il **vettore nullo** è la classe di equivalenza del segmento orientato $\overrightarrow{AA}$: ha modulo nullo, mentre direzione e verso sono indeterminati. $V^3$ è l'insieme di tutti i vettori geometrici dello spazio 3D.
 >
-> **Somma.** Si mette la coda di $\vec{w}$ sulla punta di $\vec{v}$, e $\vec{v} + \vec{w}$ va dalla coda di $\vec{v}$ alla punta di $\vec{w}$ (regola del parallelogramma). Proprietà: commutativa $\vec{v} + \vec{w} = \vec{w} + \vec{v}$; associativa $(\vec{u} + \vec{v}) + \vec{w} = \vec{u} + (\vec{v} + \vec{w})$; vettore nullo $\vec{v} + \vec{0} = \vec{v}$; opposto $\vec{v} + (-\vec{v}) = \vec{0}$.
+> **Somma.** Dati $\vec{v}, \vec{w}$ vettori geometrici con rappresentanti $\vec{v} = \overrightarrow{AB}$, $\vec{w} = \overrightarrow{BC}$, definiamo $\vec{v} + \vec{w}$ come la classe di equivalenza di $\overrightarrow{AC}$. Proprietà: commutativa $\vec{v} + \vec{w} = \vec{w} + \vec{v}$; associativa $(\vec{v} + \vec{w}) + \vec{u} = \vec{v} + (\vec{w} + \vec{u})$; dato $\vec{v} \neq \vec{0}$, l'**opposto** di $\vec{v}$ è $-\vec{v}$, il vettore geometrico che ha la stessa direzione di $\vec{v}$, verso opposto e lo stesso modulo, e vale $\vec{v} + (-\vec{v}) = \vec{0}$.
 >
-> **Prodotto scalare.** $\vec{v} \cdot \vec{w} = |\vec{v}|\,|\vec{w}|\cos\theta$, con $\theta \in [0, \pi]$ l'angolo fra i rappresentanti con la stessa origine; in coordinate $v_1w_1 + v_2w_2 + v_3w_3$. Proprietà: commutativo; $(\lambda\vec{v}) \cdot \vec{w} = \lambda(\vec{v} \cdot \vec{w})$; distributivo rispetto alla somma; $\vec{v} \cdot \vec{v} = |\vec{v}|^2 \geq 0$; per $\vec{v}, \vec{w} \neq \vec{0}$, $\vec{v} \perp \vec{w} \iff \vec{v} \cdot \vec{w} = 0$.
+> **Prodotto scalare.** Dati $\vec{v}, \vec{w}$ vettori geometrici, il prodotto scalare $\vec{v} \cdot \vec{w}$ è lo scalare seguente: $\vec{v} \cdot \vec{w} = |\vec{v}|\,|\vec{w}|\cos\vartheta$, dove $\vartheta$ è l'angolo compreso tra due rappresentanti di $\vec{v}$ e $\vec{w}$ con lo stesso estremo iniziale. Proprietà: $\forall\, \vec{v}, \vec{w}, \vec{u} \in V^3$, $\forall \lambda \in \mathbb{R}$, vale che (1) $\vec{v} \cdot \vec{w} = \vec{w} \cdot \vec{v}$; (2) $(\lambda\vec{v}) \cdot \vec{w} = \lambda(\vec{v} \cdot \vec{w})$; (3) $\vec{v} \cdot (\vec{w} + \vec{u}) = \vec{v} \cdot \vec{w} + \vec{v} \cdot \vec{u}$; (4) $\vec{v} \cdot \vec{v} = |\vec{v}|^2 \geq 0$. Se $\vec{v}, \vec{w} \neq \vec{0}$ e $\vec{v} \cdot \vec{w} = 0$, allora $\vec{v}$ e $\vec{w}$ sono perpendicolari.
 >
-> **Proiezione.** $pr_{\vec{w}}(\vec{v}) = \frac{\vec{v} \cdot \vec{w}}{|\vec{w}|^2}\,\vec{w}$ per $\vec{w} \neq \vec{0}$. Esempio: $\vec{v} = (1, 2, 0)$, $\vec{w} = (1, 0, 0)$, $pr_{\vec{w}}(\vec{v}) = (1, 0, 0)$, e il resto $(0, 2, 0)$ è ortogonale a $\vec{w}$.
+> **Proiezione.** Sia $\vec{e}$ un versore: la proiezione ortogonale di $\vec{v}$ su $\vec{e}$ è il vettore geometrico $pr_{\vec{e}}(\vec{v}) = (\vec{v} \cdot \vec{e})\,\vec{e}$. Per $\vec{w} \neq \vec{0}$ qualunque, $pr_{\vec{w}}(\vec{v}) = \frac{\vec{v} \cdot \vec{w}}{|\vec{w}|^2}\,\vec{w}$. Esempio: $\vec{v} = (1, 2, 0)$, $\vec{w} = (1, 0, 0)$, $pr_{\vec{w}}(\vec{v}) = (1, 0, 0)$, e il resto $(0, 2, 0)$ è ortogonale a $\vec{w}$.
 
 #### Vera 5: nucleo, nullità, rango massimo (2017, 2022)
 
 Dire cos'è il nucleo di una matrice e descrivere il nucleo della matrice identità $2 \times 2$. Dire cos'è la nullità e qual è la massima nullità di una matrice $3 \times 4$. Variante 2017: definire il rango e dire il massimo rango di una $3 \times 4$ e di una $5 \times 2$.
 
 > [!example]- Soluzione
-> **Nucleo.** Il nucleo di $A \in M_{m \times n}(\mathbb{R})$ è l'insieme $N(A) = \{\vec{x} \in \mathbb{R}^n : A\vec{x} = \vec{0}\}$ delle soluzioni del sistema omogeneo associato. Contiene sempre $\vec{0}$. Per $I_2$: $I_2\vec{x} = \vec{x}$, quindi $I_2\vec{x} = \vec{0}$ solo per $\vec{x} = \vec{0}$, e $N(I_2) = \{(0, 0)\}$.
+> **Nucleo** (appunti della prof, cap. 3). Data $A \in M_{m \times n}(\mathbb{R})$, il **nucleo** di $A$ è l'insieme delle soluzioni del sistema lineare omogeneo $A\vec{x} = \vec{0}$. Notazione $N(A)$. Per $I_2$: $I_2\vec{x} = \vec{x}$, quindi $I_2\vec{x} = \vec{0}$ solo per $\vec{x} = \vec{0}$, e $N(I_2) = \{(0, 0)\}$.
 >
-> **Nullità.** $\operatorname{null}(A)$ è il numero di colonne di $\operatorname{rref}(A)$ senza pivot, cioè di variabili libere; vale $\operatorname{null}(A) = n - \operatorname{rg}(A)$. In una $3 \times 4$ è $4 - \operatorname{rg}(A)$, massima $4$ con la matrice nulla. Con $A \neq O$ il rango è almeno $1$ e la nullità al più $3$.
+> **Nullità.** Chiamiamo **nullità** di $A$ il numero di colonne di $\operatorname{rref}(A)$ che non contengono pivot, ossia il numero di variabili libere da cui dipendono le soluzioni. Notazione $\operatorname{null}(A)$. Osservazione: $\operatorname{null}(A) + \operatorname{rg}(A) = n$, con $n$ il numero di colonne di $A$. In una $3 \times 4$ è $4 - \operatorname{rg}(A)$, massima $4$ con la matrice nulla. Con $A \neq O$ il rango è almeno $1$ e la nullità al più $3$.
 >
-> **Rango.** $\operatorname{rg}(A)$ è il numero di pivot di una forma a scalini di $A$, e vale $\operatorname{rg}(A) \leq \min(m, n)$: al massimo $3$ per una $3 \times 4$ e $2$ per una $5 \times 2$.
+> **Rango** (cap. 2). Il **rango** di una matrice $A$, $\operatorname{rg}(A)$, è il numero di pivot di una sua forma a scalini. Vale $\operatorname{rg}(A) \leq \min(m, n)$: al massimo $3$ per una $3 \times 4$ e $2$ per una $5 \times 2$.
 
 #### Vera 6: sottospazio, sottospazio generato, generatori (2016, 2017, 2018)
 
 Si dia la definizione di sottospazio e si facciano due esempi di sottoinsiemi, uno sottospazio e uno no. Si dia la definizione di sottospazio generato da $k$ vettori e di sistema di generatori; si fornisca un sistema di generatori di $\mathbb{R}^3$ con quattro elementi.
 
 > [!example]- Soluzione
-> **Sottospazio.** $U \subseteq V$ non vuoto è un sottospazio se è chiuso rispetto alle operazioni: $\vec{u}_1 + \vec{u}_2 \in U$ e $\lambda\vec{u} \in U$ per ogni $\vec{u}_1, \vec{u}_2, \vec{u} \in U$ e $\lambda \in \mathbb{R}$. Contiene sempre $\vec{0}$.
+> **Sottospazio** (appunti della prof, cap. 4). Sia $V$ uno spazio vettoriale reale. Un sottoinsieme non vuoto $U \subseteq V$ è detto **sottospazio vettoriale** (o sottospazio) di $V$ se è chiuso rispetto alle due operazioni di $V$, ossia se (A) $\forall\, \vec{u}_1, \vec{u}_2 \in U$ si ha $\vec{u}_1 + \vec{u}_2 \in U$; (B) $\forall\, \vec{u} \in U$, $\forall \lambda \in \mathbb{R}$ si ha $\lambda\vec{u} \in U$. Equivalentemente, $U \subseteq V$ è un sottospazio se (C) $\forall\, \vec{u}_1, \vec{u}_2 \in U$, $\forall \lambda_1, \lambda_2 \in \mathbb{R}$ si ha $\lambda_1\vec{u}_1 + \lambda_2\vec{u}_2 \in U$. Un sottospazio contiene sempre $\vec{0}$.
 >
 > **Sì.** $U = \{(x, y, z) \in \mathbb{R}^3 : x + y + z = 0\}$: se $x_1 + y_1 + z_1 = 0$ e $x_2 + y_2 + z_2 = 0$, la somma ha coordinate a somma $0$, e $\lambda x + \lambda y + \lambda z = \lambda \cdot 0 = 0$.
 >
 > **No.** $W = \{(x, y, z) : x + y + z = 1\}$ non contiene $(0, 0, 0)$. Anche $\{(t, t, t^2) : t \in \mathbb{R}\}$ (provetta 2021) non lo è: contiene $(1, 1, 1)$ ma non $2(1, 1, 1) = (2, 2, 2)$, perché $t = 2$ darebbe terza coordinata $4$.
 >
-> **Sottospazio generato.** $\mathrm{Span}(\vec{v}_1, \ldots, \vec{v}_k) = \{\lambda_1\vec{v}_1 + \cdots + \lambda_k\vec{v}_k : \lambda_i \in \mathbb{R}\}$, l'insieme di tutte le combinazioni lineari: è un sottospazio di $V$. Se $\mathrm{Span}(\vec{v}_1, \ldots, \vec{v}_k) = V$, $\{\vec{v}_1, \ldots, \vec{v}_k\}$ è un **sistema di generatori** di $V$.
+> **Sottospazio generato.** Sia $V$ uno spazio vettoriale reale. Dati $\vec{v}_1, \ldots, \vec{v}_k \in V$, l'insieme dato da tutte le combinazioni lineari di $\vec{v}_1, \ldots, \vec{v}_k$ è detto **sottospazio generato** da $\vec{v}_1, \ldots, \vec{v}_k$. Notazione: $\langle \vec{v}_1, \ldots, \vec{v}_k \rangle$ oppure $\mathrm{Span}(\vec{v}_1, \ldots, \vec{v}_k) = \{\lambda_1\vec{v}_1 + \cdots + \lambda_k\vec{v}_k : \lambda_1, \ldots, \lambda_k \in \mathbb{R}\} \subseteq V$. Se $V$ spazio vettoriale reale è tale che $V = \mathrm{Span}(\vec{v}_1, \ldots, \vec{v}_k)$, allora diciamo che $V$ è **finitamente generato** e $\{\vec{v}_1, \ldots, \vec{v}_k\}$ è detto **insieme di generatori** (o sistema di generatori) di $V$.
 >
 > **Quattro generatori di $\mathbb{R}^3$.** $\{(1, 0, 0), (0, 1, 0), (0, 0, 1), (1, 1, 1)\}$: già i primi tre danno ogni $(a, b, c) = a\vec{e}_1 + b\vec{e}_2 + c\vec{e}_3$; la matrice con queste colonne ha rango $3$.
 
@@ -1961,9 +1963,9 @@ Si dia la definizione di sottospazio e si facciano due esempi di sottoinsiemi, u
 Si dia la definizione di spazio vettoriale reale e si facciano alcuni esempi. Si dia la definizione di base di $\mathbb{R}^n$ e si facciano due esempi di quattro vettori di $\mathbb{R}^4$, uno base e uno no.
 
 > [!example]- Soluzione
-> **Spazio vettoriale reale.** Un insieme $V$ con una somma $V \times V \to V$ e un prodotto per scalare $\mathbb{R} \times V \to V$ tali che: la somma è commutativa e associativa, esiste $\vec{0}$ con $\vec{v} + \vec{0} = \vec{v}$, ogni $\vec{v}$ ha un opposto; $\lambda(\mu\vec{v}) = (\lambda\mu)\vec{v}$, $1\vec{v} = \vec{v}$, $(\lambda + \mu)\vec{v} = \lambda\vec{v} + \mu\vec{v}$, $\lambda(\vec{v} + \vec{w}) = \lambda\vec{v} + \lambda\vec{w}$. Esempi: $\mathbb{R}^n$, i vettori geometrici $V^3$, le matrici $M_{m \times n}(\mathbb{R})$, i polinomi $\mathbb{R}[x]$.
+> **Spazio vettoriale reale** (appunti della prof, cap. 4). Uno **spazio vettoriale reale** è un insieme $V$ (i cui elementi sono detti vettori) su cui sono definite due operazioni, la somma di vettori e il prodotto di un vettore per uno scalare, che soddisfano le seguenti proprietà: (1) $\forall\, \vec{v}, \vec{w} \in V$, $\vec{v} + \vec{w} = \vec{w} + \vec{v}$; (2) $\forall\, \vec{v}, \vec{w}, \vec{u} \in V$, $(\vec{v} + \vec{w}) + \vec{u} = \vec{v} + (\vec{w} + \vec{u})$; (3) $\exists$ vettore nullo $\vec{0} \in V$ tale che $\vec{v} + \vec{0} = \vec{v}$ $\forall \vec{v} \in V$; (4) $\forall\, \vec{v} \in V$ $\exists$ elemento opposto $-\vec{v}$ tale che $\vec{v} + (-\vec{v}) = \vec{0}$; (5) $\forall \lambda, \mu \in \mathbb{R}$, $\forall\, \vec{v} \in V$, $\lambda(\mu\vec{v}) = (\lambda\mu)\vec{v}$; (6) $\forall\, \vec{v} \in V$, $1\vec{v} = \vec{v}$; (7) $\forall \lambda, \mu \in \mathbb{R}$, $\forall\, \vec{v} \in V$, $(\lambda + \mu)\vec{v} = \lambda\vec{v} + \mu\vec{v}$; (8) $\forall \lambda \in \mathbb{R}$, $\forall\, \vec{v}, \vec{w} \in V$, $\lambda(\vec{v} + \vec{w}) = \lambda\vec{v} + \lambda\vec{w}$. Esempi: $\mathbb{R}^n$, i vettori geometrici $V^3$, le matrici $M_{m \times n}(\mathbb{R})$, i polinomi $\mathbb{R}[x]$.
 >
-> **Base.** $\{\vec{v}_1, \ldots, \vec{v}_m\}$ è una base di $V$ se è un sistema di generatori di $V$ linearmente indipendente. In $\mathbb{R}^n$, con i vettori come colonne di $A$: base se e solo se $\operatorname{rg}(A) = m$ e $m = n$.
+> **Base.** Sia $V$ spazio vettoriale reale finitamente generato. Un insieme di vettori $\mathcal{B} = \{\vec{v}_1, \ldots, \vec{v}_m\} \subseteq V$ è detto **base** di $V$ se è un sistema di generatori di $V$ linearmente indipendente. Proposizione: allora $\forall\, \vec{v} \in V$ si scrive in modo unico come combinazione lineare di $\vec{v}_1, \ldots, \vec{v}_m$. In $\mathbb{R}^n$, con i vettori come colonne di $A$: base se e solo se $\operatorname{rg}(A) = m$ e $m = n$.
 >
 > **Base di $\mathbb{R}^4$.** $\vec{e}_1, \vec{e}_2, \vec{e}_3, \vec{e}_4$: la matrice è $I_4$, rango $4$.
 >
@@ -1974,11 +1976,11 @@ Si dia la definizione di spazio vettoriale reale e si facciano alcuni esempi. Si
 Dare la definizione di matrice a scalini e di matrice a scalini ridotta per righe, illustrandole con esempi. Dare la definizione di rango di una matrice.
 
 > [!example]- Soluzione
-> **A scalini.** Scendendo di riga il primo elemento non nullo (il **pivot**) si sposta strettamente a destra, e le righe nulle stanno in fondo. Esempio: $\begin{pmatrix} 1 & 2 & 3 \\ 0 & 0 & 5 \\ 0 & 0 & 0 \end{pmatrix}$.
+> **A scalini** (appunti della prof, cap. 2). Una matrice $A$ è detta **a scalini** se $\forall\, R_i, R_{i+1}$ (coppia di righe consecutive) abbiamo una delle seguenti possibilità: (a) $R_i$ e $R_{i+1}$ sono non nulle e il numero di zeri che precedono il primo numero non nullo di $R_i$ è inferiore rispetto al numero di zeri che precedono il primo numero non nullo di $R_{i+1}$; (b) $R_{i+1}$ è nulla (riga di zeri). I primi numeri non nulli $p_1, p_2, p_3, \ldots \neq 0$ sono detti **pivot**. Esempio: $\begin{pmatrix} 1 & 2 & 3 \\ 0 & 0 & 5 \\ 0 & 0 & 0 \end{pmatrix}$.
 >
-> **Ridotta per righe.** A scalini, ogni pivot vale $1$ ed è l'unico elemento non nullo della sua colonna. Esempio: $\begin{pmatrix} 1 & 2 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix}$. La forma ridotta di una matrice è unica, quella a scalini no.
+> **Ridotta per righe.** Una matrice è **ridotta per righe** se è a scalini e inoltre se ogni pivot è $1$ ed è l'unico elemento non nullo della propria colonna. Ogni matrice ammette un'unica forma a scalini ridotta per righe, $\operatorname{rref}(A)$. Esempio: $\begin{pmatrix} 1 & 2 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix}$.
 >
-> **Rango.** Il numero di pivot di una qualunque forma a scalini di $A$; nei due esempi vale $2$.
+> **Rango.** Il rango di una matrice $A$, $\operatorname{rg}(A)$, è il numero di pivot di una sua forma a scalini; nei due esempi vale $2$.
 
 Nelle provette 2017 e 2018 c'erano anche gruppo e campo (definizioni ed esempi di gruppo abeliano e non abeliano): quest'anno non sono stati fatti a lezione.
 

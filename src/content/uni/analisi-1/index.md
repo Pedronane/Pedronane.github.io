@@ -50,7 +50,7 @@ Formato scritto sulle slide 4-5 del 14/9, con le correzioni a mano del prof (<sp
 
 **Ripasso del parziale.** Tutti gli argomenti fino alle derivate in una pagina, con tabelle di metodo, trappole e crocette di verifica: [Ripasso provetta](/uni/analisi-1/ripasso-provetta/).
 
-**Simulazioni del parziale.** Forma dello scritto completo (8 crocette, 3 esercizi da 7, 2,5 ore), quindi un esercizio in più del parziale, programma fino ai limiti di successioni, a tempo e con correzione: [Simulazione provetta 1](/uni/simulazioni/analisi-1/simulazione-provetta-1/) (facile), [Simulazione provetta 2](/uni/simulazioni/analisi-1/simulazione-provetta-2/), [Simulazione provetta 3](/uni/simulazioni/analisi-1/simulazione-provetta-3/) (livello del 30). Non coprono i limiti di funzioni, i limiti notevoli e la continuità, fatti dal 12/10 al 21/10: per quelli ci sono le pagine di esercizi delle note relative.
+**Simulazioni del parziale.** Forma dello scritto completo (8 crocette, 3 esercizi da 7, 2,5 ore), quindi un esercizio in più del parziale, programma fino ai limiti di successioni, a tempo e con correzione: [Simulazione provetta 1](/uni/simulazioni/analisi-1/simulazione-provetta-1/) (facile), [Simulazione provetta 2](/uni/simulazioni/analisi-1/simulazione-provetta-2/), [Simulazione provetta 3](/uni/simulazioni/analisi-1/simulazione-provetta-3/) (livello del 30). [Simulazione provetta 4](/uni/simulazioni/analisi-1/simulazione-provetta-4/) è la più difficile, nella forma della prova del 31/10/25 (8 crocette, esercizi da 8 e 12 punti) e con il programma fino a Fermat. Le prime tre non coprono i limiti di funzioni, i limiti notevoli e la continuità, fatti dal 12/10 al 21/10: per quelli ci sono le pagine di esercizi delle note relative.
 
 ## Programma svolto
 
